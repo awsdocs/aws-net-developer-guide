@@ -14,39 +14,38 @@
 Send an Amazon SQS Message
 ##########################
 
- You can use the Amazon SDK for .NET to send a message to an |SQS| queue.
+You can use the |sdk-net| to send a message to an |SQS| queue.
 
-.. important:: Due to the distributed nature of the queue, |SQS| cannot guarantee you will receive messages in
-   the exact order they are sent. If you require that message order be preserved, place sequencing
-   information in each message so you can reorder the messages upon receipt.
+.. important:: Due to the distributed nature of the queue, |SQS| cannot guarantee you will receive 
+   messages in the precise order they are sent. If you require message order to be preserved, place 
+   sequencing information in each message so you can reorder the messages upon receipt.
 
 **To send a message to an Amazon SQS queue**
 
-1. Create and initialize a :sdk-net-api-v2:`SendMessageRequest <TSQSSendMessageRequestNET45>` instance. Specify
-   the queue name and the message you want to send, as follows:
+1. Create and initialize a :sdk-net-api:`SendMessageRequest <SQS/TSQSSendMessageRequest>` instance. 
+   Specify the queue name and the message you want to send, as follows:
 
    .. code-block:: csharp
 
-       sendMessageRequest.QueueUrl = myQueueURL; sendMessageRequest.MessageBody = "{YOUR_QUEUE_MESSAGE}";
+      sendMessageRequest.QueueUrl = myQueueURL; sendMessageRequest.MessageBody = "{YOUR_QUEUE_MESSAGE}";
 
    For more information about your queue URL, see :ref:`sqs-queue-url`.
 
-   Each queue message must be composed of only Unicode characters, and can be up to 64 kB in size.
-   For more information about queue messages, go to :sqs-api:`SendMessage <SendMessage>` in the Amazon SQS
-   service API reference.
+   Each queue message must be composed of Unicode characters only, and can be up to 64 kB in size.
+   For more information about queue messages, see :sqs-api:`SendMessage` in the |SQS| service API reference.
 
-2. After you create the request, pass it as a parameter to the :sdk-net-api-v2:`SendMessage
-   <TSQSSendMessageRequestNET45>` method. The method returns a :sdk-net-api-v2:`SendMessageResponse
-   <TSQSSendMessageResponseNET45>` object, as follows:
+2. After you create the request, pass it as a parameter to the 
+   :sdk-net-api:`SendMessage <SQS/MSQSSQSSendMessageSendMessageRequest>` method. 
+   The method returns a :sdk-net-api:`SendMessageResponse <SQS/TSQSSendMessageResponse>` object, 
+   as follows:
 
    .. code-block:: csharp
 
-       SendMessageResponse sendMessageResponse = 
-           amazonSQSClient.SendMessage(sendMessageRequest);
+      var sendMessageResponse = sqsClient.SendMessage(sendMessageRequest);
 
-   The sent message will stay in your queue until the visibility timeout is exceeded, or until it
-   is deleted from the queue. For more information about visibility timeouts, go to :sqs-dg:`Visibility 
-   Timeout <AboutVT>`.
+   The sent message will stay in your queue until the visibility timeout is exceeded, 
+   or until it is deleted from the queue. For more information about visibility timeouts, 
+   go to :sqs-dg:`Visibility Timeout <AboutVT>`.
 
 For information on deleting messages from your queue, see :ref:`delete-sqs-message`.
 

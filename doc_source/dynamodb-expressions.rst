@@ -11,15 +11,15 @@
 .. _dynamodb-expressions:
 
 #############################################################
-|DDBlong| Programming with Expressions by Using the |sdk-net|
+Using Expressions with |DDBlong| and the |sdk-net|
 #############################################################
 
-The following code examples demonstrate how to use the the SDK to program |DDB| with expressions.
-*Expressions* denote the attributes that you want to read from an item in a |DDB| table. You also
-use expressions when writing an item, to indicate any conditions that must be met (also known as a
-*conditional update*) and to indicate how the attributes are to be updated. Some update examples are
-replacing the attribute with a new value, or adding new data to a list or a map. For more
-information see :ddb-dg:`Reading and Writing Items Using Expressions <Expressions>`.
+The following code examples demonstrate how to use the |sdk-net| to program |DDB| with expressions.
+*Expressions* denote the attributes you want to read from an item in a |DDB| table. You also use
+expressions when writing an item, to indicate any conditions that must be met (also known as a
+*conditional update*) and how the attributes are to be updated. Some update examples are replacing
+the attribute with a new value, or adding new data to a list or a map. For more information, see
+:ddb-dg:`Reading and Writing Items Using Expressions <Expressions>`.
 
 
 .. contents:: **Topics**
@@ -33,10 +33,10 @@ Sample Data
 
 The code examples in this topic rely on the following two example items in a |DDB| table named
 :code:`ProductCatalog`. These items describe information about product entries in a fictitious
-bicycle store catalog. These items are based on the example that is provided in :ddb-dg:`Case Study: A
-ProductCatalog Item <Expressions.CaseStudy>`. The data type descriptors such as :code:`BOOL`,
-:code:`L`, :code:`M`, :code:`N`, :code:`NS`, :code:`S`, and :code:`SS` correspond to those in the
-:ddb-dg:`JSON Data Format <DataFormat>`.
+bicycle store catalog. These items are based on the example provided in 
+:ddb-dg:`Case Study: A ProductCatalog Item <Expressions.CaseStudy>`. The data type descriptors such 
+as :code:`BOOL`, :code:`L`, :code:`M`, :code:`N`, :code:`NS`, :code:`S`, and :code:`SS` correspond 
+to those in the :ddb-dg:`JSON Data Format <DataFormat>`.
 
 .. literalinclude:: how-to/dynamodb/dynamodb-expressions-sample-data.txt
    :language: csharp
@@ -75,7 +75,7 @@ are returned: :code:`Id`, :code:`Title`, and all of the :code:`ThreeStar` attrib
 
 .. literalinclude:: how-to/dynamodb/dynamodb-expressions-query.txt
    :language: csharp
-   
+
 In the preceding example, the :code:`ProjectionExpression` property specifies the attributes to be
 returned. The :code:`ExpressionAttributeNames` property specifies the placeholder :code:`#pr` to
 represent the :code:`ProductReviews` attribute and the placeholder :code:`#p` to represent the
@@ -123,15 +123,14 @@ the preceding examples that show how to :ref:`dynamodb-expressions-get-item`,
 
 In the preceding example, each attribute value has several data-type-specific properties that can be
 evaluated to determine the correct format to print the attribute. These properties include
-properties such as :code:`B`, :code:`BOOL`, :code:`BS`, :code:`L`, :code:`M`, :code:`N`, :code:`NS`,
-:code:`NULL`, :code:`S`, and :code:`SS`, which correspond to those in the `JSON Data Format
-<DataFormat.html>`_. For properties such as :code:`B`, :code:`N`, :code:`NULL`, and :code:`S`, if
-the corresponding property is not :code:`null`, then the attribute is of the corresponding
-non-:code:`null` data type. For properties such as :code:`BS`, :code:`L`, :code:`M`, :code:`NS`, and
-:code:`SS`, if :code:`Count` is greater than zero, then the attribute is of the corresponding
-non-zero-value data type. If all of the attribute's data-type-specific properties are either
-:code:`null` or the :code:`Count` equals zero, then the attribute corresponds to the :code:`BOOL`
-data type.
+:code:`B`, :code:`BOOL`, :code:`BS`, :code:`L`, :code:`M`, :code:`N`, :code:`NS`, :code:`NULL`,
+:code:`S`, and :code:`SS`, which correspond to those in the `JSON Data Format <DataFormat.html>`_.
+For properties such as :code:`B`, :code:`N`, :code:`NULL`, and :code:`S`, if the corresponding
+property is not :code:`null`, then the attribute is of the corresponding non-:code:`null` data type.
+For properties such as :code:`BS`, :code:`L`, :code:`M`, :code:`NS`, and :code:`SS`, if
+:code:`Count` is greater than zero, then the attribute is of the corresponding non-zero-value data
+type. If all of the attribute's data-type-specific properties are either :code:`null` or the
+:code:`Count` equals zero, then the attribute corresponds to the :code:`BOOL` data type.
 
 
 .. _dynamodb-expressions-put-item:
@@ -159,7 +158,7 @@ following custom function:
 In the preceding example, an example item with sample data is returned to the caller. A series of
 attributes and corresponding values are constructed, using data types such as :code:`BOOL`,
 :code:`L`, :code:`M`, :code:`N`, :code:`NS`, :code:`S`, and :code:`SS`, which correspond to those in
-the `JSON Data Format <DataFormat.html>`_.
+the :ddb-dg:`JSON Data Format <DataFormat>`.
 
 
 .. _dynamodb-expressions-update-item:
@@ -205,7 +204,7 @@ The :code:`ConditionExpression` property specifies that :code:`#title` (:code:`T
 Additional Resources
 ====================
 
-For additonal information and code examples, see:
+For more information and code examples, see:
 
 * :aws-blogs-net:`DynamoDB Series - Expressions <TxZQM7VA9AUZ9L/DynamoDB-Series-Expressions>`
 
@@ -226,5 +225,3 @@ For additonal information and code examples, see:
 * :ddb-dg:`Working with Local Secondary Indexes Using the AWS SDK for .NET Low-Level API <LSILowLevelDotNet>`
 
 * :ddb-dg:`Working with Global Secondary Indexes Using the AWS SDK for .NET Low-Level API <GSILowLevelDotNet>`
-
-

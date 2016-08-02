@@ -8,24 +8,29 @@
    either express or implied. See the License for the specific language governing permissions and
    limitations under the License.
 
-.. _ec2-apis-intro:
+.. _net-dg-dev-env:
 
 ########################################
-|EC2long| Programming with the |sdk-net|
+Install the .NET Development Environment
 ########################################
 
-The |sdk-net| supports |EC2long| (|EC2|), which is a web service that provides resizable computing
-capacity |mdash| literally, servers in Amazon's data centers |mdash| that you use to build and host
-your software systems. The |EC2| APIs are provided by the `AWSSDK.EC2
-<http://www.nuget.org/packages/AWSSDK.EC2>`_ assembly.
+To use the |sdk-net|, you must have the following installed.
 
 
+Requirements
+============
 
-.. toctree::
-    :titlesonly:
-    :maxdepth: 1
+* (Required) Microsoft .NET Framework 3.5 or later
 
-    how-to/ec2/how-to-ec2
-    how-to/ec2/how-to-spot-instances
+* (Required) Microsoft Visual Studio 2010 or later
+
+* (Required) |sdk-net|
+
+* (Recommended) |TVSlong|, a plugin that provides a user interface for managing your AWS resources
+  from Visual Studio, and includes the |sdk-net|. For more information, see 
+  :tvs-ug:`Using the AWS Toolkit for Visual Studio <welcome>`.
+
+.. note:: We recommend using Visual Studio Professional 2010 or later to implement your applications.
+
 
 

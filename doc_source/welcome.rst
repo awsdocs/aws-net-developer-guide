@@ -8,7 +8,7 @@
    either express or implied. See the License for the specific language governing permissions and
    limitations under the License.
 
-.. _welcome:
+   .. _welcome:
 
 ############
 |sdk-net-dg|
@@ -30,49 +30,44 @@ The |sdk-net| includes the following:
 To simplify installation, AWS provides the |TFW|, which is a Windows installation package that
 includes:
 
-* The |sdk-net|.
+* The |sdk-net|_.
 
-* The |TWPlong|. For more information about the |TWPlong|, see the |TWP-ug|_.
+* The |TWPlong|. For more information, see the |TWP-ug|_.
 
-* The |TVSlong|. For more information about the |TVSlong|, see the |TVS-ug|_.
+* The |TVSlong|. For more information, see the |TVS-ug|_.
 
-As an alternative to installing the |TFW|, you can use NuGet to download the AWSSDK assembly for a
-specific application project. For more information, see :ref:`net-dg-nuget`.
+As an alternative to installing the |TFW|, you can use NuGet to download individual AWSSDK service
+assemblies for a specific application project. For more information, see :ref:`net-dg-nuget`.
 
-.. note:: We recommend using Visual Studio Professional 2010 or higher to implement your applications. It is
-   possible to use Visual Studio Express to implement applications with the the SDK, including
-   installing the |TVS|. However, the installation includes only the AWS project templates and the
-   Standalone Deployment Tool. In particular, |TVS| on Visual Studio Express does not support AWS
-   Explorer.
+.. note:: We recommend using Visual Studio Professional 2010 or later to implement your applications.
 
 .. _guidemap:
 
 How to Use This Guide
 =====================
 
-The *AWS SDK for .NET Developer Guide* describes how to implement applications for AWS using the the
-SDK, and includes the following:
+The *AWS SDK for .NET Developer Guide* describes how to implement applications for AWS using the
+|sdk-net|, and includes the following:
 
 :ref:`net-dg-setup`
-    How to install and configure the the SDK. If you have not used the the SDK before or are having
-    trouble with its configuration, you should start here.
+    How to install and configure the |sdk-net|. If you have not used the |sdk-net| before or are
+    having trouble with its configuration, you should start here.
 
 :ref:`net-dg-programming-techniques`
-    The basics of how to implement applications with the the SDK that applies to all AWS services.
+    The basics of how to implement applications with the |sdk-net| that applies to all AWS services.
     This chapter also includes information about how to migrate code to the latest version of the
-    the SDK, and describes the differences between the last version and this one.
+    |sdk-net|, and describes the differences between the last version and this one.
 
 :ref:`tutorials-examples`
-    A set of tutorials, walkthroughs, and examples of how to use the the SDK to create applications
-    for particular AWS services.
+    A set of tutorials, walkthroughs, and examples showing how to use the |sdk-net| to create
+    applications for particular AWS services.
 
 :ref:`net-dg-additional-resources`
-    Additional resources outside of this guide that provide more information about AWS and the the
-    SDK.
+    Additional resources outside of this guide that provide more information about AWS and the
+    |sdk-net|.
 
-
-.. note:: A related document, |sdk-net-api|_, provides a detailed description
-   of each namespace and class.
+A related document, |sdk-net-api|_, provides a detailed description
+of each namespace and class.
 
 
 .. _supported-services:
@@ -80,9 +75,9 @@ SDK, and includes the following:
 Supported Services and Revision History
 =======================================
 
-The |sdk-net| supports most AWS infrastructure products, and we regularly release updates to the the
-SDK to support new services and new service features. To see what changed with a given release, see
-the `the SDK README file <https://github.com/aws/aws-sdk-net/blob/master/README.md>`_.
+The |sdk-net| supports most AWS infrastructure products, and more services are added frequently. For
+a list of the AWS services supported by the SDK, see the `SDK README file
+<https://github.com/aws/aws-sdk-net/blob/master/README.md>`_.
 
 To see what changed in a given release, see the `the SDK change log
 <https://github.com/aws/aws-sdk-net/blob/master/SDK.CHANGELOG.md>`_.
@@ -100,10 +95,10 @@ application synchronization (messaging and queuing).
 AWS uses a pay-as-you-go service model. You are charged only for the services that you |mdash| or
 your applications |mdash| use. Also, to make AWS useful as a platform for prototyping and
 experimentation, AWS offers a free usage tier, in which services are free below a certain level of
-usage. For more information about AWS costs and the free usage tier go to 
-`Test-Driving AWS in the Free Usage Tier <http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-free-tier.html>`_.
+use. For more information, see 
+`Test-Driving AWS in the Free Usage Tier <https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-free-tier.html>`_.
 
-To obtain an AWS account, go to the |aws-home|_ and click :guilabel:`Sign Up Now`.
+To obtain an AWS account, visit the |aws-home|_ and click **Create a Free Account**.
 
 
 

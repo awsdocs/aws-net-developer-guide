@@ -14,11 +14,10 @@
 Programming with the |sdk-net|
 ##############################
 
-This section provides general information for developing software with the |sdk-net|.
+This section provides general information about developing software with the |sdk-net|.
 
 For information about developing software with the |sdk-net| for specific AWS services, see
 :ref:`tutorials-examples`.
-
 
 
 .. toctree::
@@ -28,8 +27,7 @@ For information about developing software with the |sdk-net| for specific AWS se
     net-dg-config
     sdk-net-async-api
     retries-timeouts
-    migration-v2-net-sdk
-    net-dg-platform-diffs-v2
-    net-dg-nuget
+    migration-v3
+    net-dg-platform-diffs-v3
 
 

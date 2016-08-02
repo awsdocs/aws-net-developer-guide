@@ -14,37 +14,37 @@
 Receive a Message from an Amazon SQS Queue
 ##########################################
 
- You can use the Amazon SDK for .NET to receive messages from an Amazon SQS queue.
+You can use the |sdk-net| to receive messages from an |SQS| queue.
 
 **To receive a message from an Amazon SQS queue**
 
-1. Create and initialize a :sdk-net-api-v2:`ReceiveMessageRequest 
-   <MSQSSQSReceiveMessageReceiveMessageRequestNET45>` instance. Specify the queue URL to
-   receive a message from, as follows:
+1. Create and initialize a :sdk-net-api:`ReceiveMessageRequest <SQS/TSQSReceiveMessageRequest>` 
+   instance. Specify the queue URL to receive a message from, as follows:
 
    .. code-block:: csharp
-   
-       ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest();
-       
+
+       var receiveMessageRequest = new ReceiveMessageRequest();
+                       
        receiveMessageRequest.QueueUrl = myQueueURL;
-   
+
    For more information about your queue URL, see :ref:`Your Amazon SQS Queue URL <sqs-queue-url>`.
 
-2. Pass the request object as a parameter to the :sdk-net-api-v2:`ReceiveMessage 
-   <MSQSSQSReceiveMessageReceiveMessageRequestNET45>` method, as follows:
+2. Pass the request object as a parameter to the 
+   :sdk-net-api:`ReceiveMessage<SQS/MSQSSQSReceiveMessageReceiveMessageRequest>` method, as 
+   follows:
 
    .. code-block:: csharp
 
-       ReceiveMessageResponse receiveMessageResponse =
-         amazonSQSClient.ReceiveMessage(receiveMessageRequest);
+       var receiveMessageResponse = sqsClient.ReceiveMessage(receiveMessageRequest);
 
-   The method returns a :sdk-net-api-v2:`ReceiveMessageResponse <TSQSReceiveMessageResponseNET45>` instance,
-   containing the list of messages the queue contains.
+   The method returns a :sdk-net-api:`ReceiveMessageResponse <SQS/TSQSReceiveMessageResponse>` 
+   instance, containing the list of messages the queue contains.
 
-3. The response object contains a :sdk-net-api-v2:`ReceiveMessageResult <TSQSReceiveMessageResultNET45>` member.
-   This member includes a :sdk-net-api-v2:`Messages <TSQSMessageNET45>` list. Iterate through this list to
-   find a specific message, and use the :code:`Body` property to determine if the list contains a
-   specified message, as follows:
+3. The :code:`ReceiveMessageResponse.ReceiveMessageResult` property contains a 
+   :sdk-net-api:`ReceiveMessageResponse <SQS/TSQSReceiveMessageResponse>` object, which contains 
+   a list of the messages that were received. Iterate through this list to find a specific message, 
+   and use the :code:`Body` property to determine if the list contains a specified message, as 
+   follows:
 
    .. code-block:: csharp
 
@@ -59,16 +59,14 @@ Receive a Message from an Amazon SQS Queue
          }
        }
 
-   Once the message is found in the list, use the :code:`ReceiptHandle` property to obtain a
-   receipt handle for the message. You can use this receipt handle to change message visibility
+   After the message is found in the list, use the :code:`ReceiptHandle` property to obtain a
+   receipt handle for the message. You can use this receipt handle to change the message visibility
    timeout or to delete the message from the queue. For more information about how to change the
-   visibility timeout for a message, go to :sdk-net-api-v2:`ChangeMessageVisibility
-   <TSQSChangeMessageVisibilityRequestNET45>`.
+   visibility timeout for a message, go to 
+   :sdk-net-api:`ChangeMessageVisibility<SQS/MSQSSQSChangeMessageVisibilityChangeMessageVisibilityRequest>`.
 
-For information about sending a message to your queue, see :ref:`Send an Amazon SQS Message
-<send-sqs-message>`.
+For information about sending a message to your queue, see :ref:`send-sqs-message`.
 
-For more information about deleting a message from the queue, see :ref:`Delete a Message from an
-Amazon SQS Queue <delete-sqs-message>`.
+For more information about deleting a message from the queue, see :ref:`delete-sqs-message`.
 
 

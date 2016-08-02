@@ -11,16 +11,18 @@
 .. _top:
 
 ################################
-|sdk-net| Developer Guide v2.0.0
+|sdk-net| Developer Guide v3.0.0
 ################################
 
-.. toctree::
-    :titlesonly:
-    :maxdepth: 1
+This documentation is for version 3.0 of the |sdk-net|, which is the latest version.
 
-    welcome
-    net-dg-setup
-    net-dg-programming-techniques
-    tutorials-examples
-    net-dg-additional-resources
-    document-history
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   welcome
+   net-dg-setup
+   net-dg-programming-techniques
+   tutorials-examples
+   net-dg-additional-resources
+   document-history

@@ -59,7 +59,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'AWS .NET SDK Developer Guide'
+project = u'AWS .NET Developer Guide'
 copyright = u'2016, Amazon Web Services'
 author = u'Amazon Web Services'
 
@@ -387,7 +387,6 @@ extlinks['r53-dg-deep']  = (aws_docs_url + 'Route53/latest/DeveloperGuide/%s', '
 extlinks['r53-api-deep'] = (aws_docs_url + 'Route53/latest/APIReference/API_%s', '')
 extlinks['s3-dg-deep']   = (aws_docs_url + 'AmazonS3/latest/dev/%s', '')
 extlinks['ddb-dg-deep']  = (aws_docs_url + 'amazondynamodb/latest/developerguide/%s', '')
-extlinks['net-api-v2']   = (aws_docs_url + 'sdkfornet/latest/apidocs/items/%s.html', '')
 
 # usage: :mktplace-search:`Amazon Machine Images <AMISAWS>` where AMISAWS is the search term.
 # usage: :mktplace-search:`Windows server <windows+server>` 

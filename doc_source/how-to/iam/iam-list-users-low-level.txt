@@ -1,49 +1,49 @@
-// using Amazon.IdentityManagement;
-// using Amazon.IdentityManagement.Model;
-
-var client = new AmazonIdentityManagementServiceClient();
-var requestUsers = new ListUsersRequest();
-var responseUsers = client.ListUsers(requestUsers);
-
-foreach (var user in responseUsers.Users)
+public static void ListUsers()
 {
-  Console.WriteLine("For user {0}:", user.UserName);
-  Console.WriteLine("  In groups:");
+  var iamClient = new AmazonIdentityManagementServiceClient();
+  var requestUsers = new ListUsersRequest();
+  var responseUsers = iamClient.ListUsers(requestUsers);
 
-  var requestGroups = new ListGroupsForUserRequest
+  foreach (var user in responseUsers.Users)
   {
-    UserName = user.UserName
-  };
-  var responseGroups = client.ListGroupsForUser(requestGroups);
+    Console.WriteLine("For user {0}:", user.UserName);
+    Console.WriteLine("  In groups:");
 
-  foreach (var group in responseGroups.Groups)
-  {
-    Console.WriteLine("    {0}", group.GroupName);
-  }
+    var requestGroups = new ListGroupsForUserRequest
+    {
+      UserName = user.UserName
+    };
+    var responseGroups = iamClient.ListGroupsForUser(requestGroups);
 
-  Console.WriteLine("  Policies:");
+    foreach (var group in responseGroups.Groups)
+    {
+      Console.WriteLine("    {0}", group.GroupName);
+    }
 
-  var requestPolicies = new ListUserPoliciesRequest
-  {
-    UserName = user.UserName
-  };
-  var responsePolicies = client.ListUserPolicies(requestPolicies);
+    Console.WriteLine("  Policies:");
 
-  foreach (var policy in responsePolicies.PolicyNames)
-  {
-    Console.WriteLine("    {0}", policy);
-  }
+    var requestPolicies = new ListUserPoliciesRequest
+    {
+      UserName = user.UserName
+    };
+    var responsePolicies = iamClient.ListUserPolicies(requestPolicies);
 
-  var requestAccessKeys = new ListAccessKeysRequest
-  {
-    UserName = user.UserName
-  };
-  var responseAccessKeys = client.ListAccessKeys(requestAccessKeys);
+    foreach (var policy in responsePolicies.PolicyNames)
+    {
+      Console.WriteLine("    {0}", policy);
+    }
 
-  Console.WriteLine("  Access keys:");
+    var requestAccessKeys = new ListAccessKeysRequest
+    {
+      UserName = user.UserName
+    };
+    var responseAccessKeys = iamClient.ListAccessKeys(requestAccessKeys);
 
-  foreach (var accessKey in responseAccessKeys.AccessKeyMetadata)
-  {
-    Console.WriteLine("    {0}", accessKey.AccessKeyId);
+    Console.WriteLine("  Access keys:");
+
+    foreach (var accessKey in responseAccessKeys.AccessKeyMetadata)
+    {
+      Console.WriteLine("    {0}", accessKey.AccessKeyId);
+    }
   }
 }

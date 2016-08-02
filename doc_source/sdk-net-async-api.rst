@@ -21,25 +21,26 @@
 
 .. _async-api-45:
 
-Asynchronous API for .NET 4.5, Windows Store, and |WP|
-======================================================
+Asynchronous API for .NET Framework 4.5, Windows Store, and |WP|
+================================================================
 
-The |sdk-net| uses the new task-based asynchronous pattern for .NET 4.5, Windows Store, and |WP|.
-You can use the :code:`async` and :code:`await` keywords to perform and manage asynchronous
-operations for all AWS products without blocking.
+The |sdk-net| uses the new task-based asynchronous pattern for .NET Framework version 4.5, Windows
+Store, and |WP|. You can use the :code:`async` and :code:`await` keywords to perform and manage
+asynchronous operations for all AWS products without blocking.
 
-To learn more about the task-based asynchronous pattern, see `Task-based Asynchronous Pattern (TAP) 
-<http://msdn.microsoft.com/en-us/library/hh873175(v=vs.110).aspx>`_ on MSDN.
+To learn more about the task-based asynchronous pattern, see 
+`Task-based Asynchronous Pattern (TAP) <http://msdn.microsoft.com/en-us/library/hh873175(v=vs.110).aspx>`_ 
+on MSDN.
 
 
 .. _async-api-35:
 
-Asynchronous API for .NET 3.5
-=============================
+Asynchronous API for .NET Framework 3.5
+=======================================
 
 The |sdk-net| supports asynchronous (async) versions of most of the method calls exposed by the .NET
 client classes. The async methods enable you to call AWS services without having your code block on
-the response from the service. For example, you could make a request to write data to |S3| or |DDB|
+the response from the service. For example, you can make a request to write data to |S3| or |DDB|
 and then have your code continue to do other work while AWS processes the requests.
 
 .. _sdk-net-async-request-syntax:
@@ -48,28 +49,26 @@ Syntax of Async Request Methods
 -------------------------------
 
 There are two phases to making an asynchronous request to an AWS service. The first is to call the
-:code:`Begin` method for the request. This method initiates the asynchronous operation. Then, after
-some period of time, you would call the corresponding :code:`End` method. This method retrieves the
-response from the service and also provides an opportunity to handle exceptions that might have
-occurred during the operation.
+:code:`Begin` method for the request. This method initiates the asynchronous operation. The
+corresponding :code:`End` method retrieves the response from the service and also provides an
+opportunity to handle exceptions that might have occurred during the operation.
 
-.. note:: It is not required that you call the :code:`End` method. Assuming that no errors are encountered,
-   the asynchronous operation will complete whether or not you call :code:`End`.
+.. note:: Calling the :code:`End` method is not required. Assuming no errors are encountered, the 
+   asynchronous operation will complete whether or not you call :code:`End`.
 
 .. _sdk-net-async-begin-request:
 
 Begin Method Syntax
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
-In addition to taking a request object parameter, such as :sdk-net-api-v2:`PutItemRequest
-<TDynamoDBv2PutItemRequestNET35>`, the async :code:`Begin` methods take two additional
-parameters: a callback function, and a state object. Instead of returning a 
-:sdk-net-api-v2:`service response object <TRuntimeWebServiceResponseNET35>`, the :code:`Begin` methods  
+In addition to taking a request object parameter, such as 
+:sdk-net-api:`PutItemRequest <DynamoDBv2/TDynamoDBv2PutItemRequest>`, the async :code:`Begin` methods 
+take two additional parameters: a callback function and a state object. Instead of returning a 
+:sdk-net-api:`service response object <Runtime/TRuntimeWebServiceResponse>`, the :code:`Begin` methods 
 return a result of type :code:`IAsyncResult`. For the definition of this type, go to the 
 `MSDN documentation <http://msdn.microsoft.com/en-us/library/bkbsbb9x.aspx>`_.
 
-Synchronous Method
-""""""""""""""""""
+*Synchronous Method*
 
 .. code-block:: csharp
 
@@ -77,35 +76,32 @@ Synchronous Method
       PutItemRequest putItemRequest
     )
 
-Asynchronous Method
-"""""""""""""""""""
+*Asynchronous Method*
 
 .. code-block:: csharp
 
-    IAsyncResult BeginPutItem( GetSessionTokenRequest getSessionTokenRequest, {AsyncCallback callback}, {Object state}
+    IAsyncResult BeginPutItem( 
+      GetSessionTokenRequest getSessionTokenRequest, {AsyncCallback callback}, {Object state}
     )
 
-AsyncCallback callback
-""""""""""""""""""""""
+*AsyncCallback Callback*
 
-The callback function is called when the asynchronous operation completes. When the function is
-called, it receives a single parameter of type `IAsyncResult 
-<http://msdn.microsoft.com/en-us/library/bkbsbb9x.aspx>`_. The callback function has the following
-signature.
+The callback function is called when the asynchronous operation is complete. When the function is
+called, it receives a single parameter of type 
+`IAsyncResult <http://msdn.microsoft.com/en-us/library/bkbsbb9x.aspx>`_. The callback function has 
+the following signature.
 
 .. code-block:: csharp
 
     void Callback(IAsyncResult asyncResult)
 
-Object state
-""""""""""""
+*Object State*
 
 The third parameter, :code:`state`, is a user-defined object that is made available to the callback
 function as the :code:`AsyncState` property of the :code:`asyncResult` parameter, that is,
 :code:`asyncResult.AsyncState`.
 
-Calling Patterns
-----------------
+*Calling Patterns*
 
 * Passing a callback function and a state object.
 
@@ -115,16 +111,32 @@ Calling Patterns
 
 This topic provides an example of each of these patterns.
 
+.. _sdk-net-async-waithandle:
+
+Using IAsyncResult.AsyncWaitHandle
+""""""""""""""""""""""""""""""""""
+
+In some circumstances, the code that calls the :code:`Begin` method might need to enable another
+method that it calls to wait on the completion of the asynchronous operation. In these situations,
+it can pass the method the :code:`WaitHandle` returned by the :code:`IAsyncResult.AsyncWaitHandle`
+property of the :code:`IAsyncResult` return value. The method can then wait for the asynchronous
+operation to complete by calling :code:`WaitOne` on this :code:`WaitHandle`.
+
+
+.. _sdk-net-async-examples:
+
 Examples
-^^^^^^^^
+--------
 
 All of the following examples assume the following initialization code.
 
 .. code-block:: csharp
 
-    public static void TestPutObjectAsync() { 
-      // Create a client 
-      AmazonS3Client client = new AmazonS3Client(); 
+    public static void TestPutObjectAsync() 
+    { 
+      // Create a client AmazonS3Client 
+      client = new AmazonS3Client(); 
+      
       PutObjectResponse response; 
       IAsyncResult asyncResult; 
       
@@ -134,7 +146,9 @@ All of the following examples assume the following initialization code.
       // You will need to use your own bucket name below in order 
       // to run this sample code. 
       // 
-      PutObjectRequest request = new PutObjectRequest { BucketName = "{PUT YOUR OWN EXISTING BUCKET NAME HERE}",
+      PutObjectRequest request = new PutObjectRequest 
+      { 
+        BucketName = "{PUT YOUR OWN EXISTING BUCKET NAME HERE}",
         Key = "Item",
         ContentBody = "This is sample content..."
       };
@@ -144,23 +158,11 @@ All of the following examples assume the following initialization code.
       //
     }
 
-.. _sdk-net-async-waithandle:
-
-Using IAsyncResult.AsyncWaitHandle
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In some circumstances, the code that calls the :code:`Begin` method might need to enable another
-method that it calls to wait on the completion of the asynchronous operation. In these situations,
-it can pass the method the :code:`WaitHandle` returned by the :code:`IAsyncResult.AsyncWaitHandle`
-property of the :code:`IAsyncResult` return value. The method can then wait for the asynchronous
-operation to complete by calling :code:`WaitOne` on this :code:`WaitHandle`.
-
-.. _sdk-net-async-examples:
 
 No Callback Specified
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
-The following example code calls :code:`BeginPutObject`, performs some work, then calls
+The following example code calls :code:`BeginPutObject`, performs some work, and then calls
 :code:`EndPutObject` to retrieve the service response. The call to :code:`EndPutObject` is enclosed
 in a :code:`try` block to catch any exceptions that might have been thrown during the operation.
 
@@ -184,9 +186,9 @@ in a :code:`try` block to catch any exceptions that might have been thrown durin
 
 
 Simple Callback
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
-This example assumes that the following callback function has been defined.
+This example assumes the following callback function has been defined.
 
 .. code-block:: csharp
 
@@ -196,7 +198,7 @@ This example assumes that the following callback function has been defined.
     }
 
 The following line of code calls :code:`BeginPutObject` and specifies the above callback function.
-When the :code:`PutObject` operation completes, the callback function is called. The call to
+When the :code:`PutObject` operation is complete, the callback function is called. The call to
 :code:`BeginPutObject` specifies :code:`null` for the :code:`state` parameter because the simple
 callback function does not access the :code:`AsyncState` property of the :code:`asyncResult`
 parameter. Neither the calling code or the callback function call :code:`EndPutObject`. Therefore,
@@ -208,10 +210,11 @@ ignored.
     asyncResult = client.BeginPutObject(request, SimpleCallback, null);
 
 
-Callback with Client
-^^^^^^^^^^^^^^^^^^^^
 
-This example assumes that the following callback function has been defined.
+Callback with Client
+~~~~~~~~~~~~~~~~~~~~
+
+This example assumes the following callback function has been defined.
 
 .. code-block:: csharp
 
@@ -230,22 +233,22 @@ This example assumes that the following callback function has been defined.
     }
 
 The following line of code calls :code:`BeginPutObject` and specifies the preceding callback
-function. When the :code:`PutObject` operation completes, the callback function is called. In this
-example, the call to :code:`BeginPutObject` specifies the Amazon S3 client object for the
-:code:`state` parameter. The callback function uses the client to call the :code:`EndPutObject`
-method to retrieve the server response. Because any exceptions that occurred during the operation
-will be received when the callback calls :code:`EndPutObject`, this call is placed within a
-:code:`try` block.
+function. When the :code:`PutObject` operation is complete, the callback function is called. In this
+example, the call to :code:`BeginPutObject` specifies the |S3| client object for the :code:`state`
+parameter. The callback function uses the client to call the :code:`EndPutObject` method to retrieve
+the server response. Because any exceptions that occurred during the operation will be received when
+the callback calls :code:`EndPutObject`, this call is placed within a :code:`try` block.
 
 .. code-block:: csharp
 
     asyncResult = client.BeginPutObject(request, CallbackWithClient, client);
 
 
-Callback with State Object
-^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This example assumes that the following class and callback function have been defined.
+Callback with State Object
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This example assumes the following class and callback function have been defined.
 
 .. code-block:: csharp
 
@@ -286,7 +289,7 @@ This example assumes that the following class and callback function have been de
     }
 
 The following line of code calls :code:`BeginPutObject` and specifies the above callback function.
-When the :code:`PutObject` operation completes, the callback function is called. In this example,
+When the :code:`PutObject` operation is complete, the callback function is called. In this example,
 the call to :code:`BeginPutObject` specifies, for the :code:`state` parameter, an instance of the
 :code:`ClientState` class defined previously. This class embeds the |S3| client as well as the time
 at which :code:`BeginPutObject` is called. The callback function uses the |S3| client object to call
@@ -309,8 +312,8 @@ As in the previous examples, because exceptions that occur during the operation 
 Complete Sample
 ---------------
 
-The following code sample demonstrates the various patterns that you can use when calling the
-asynchronous request methods.
+The following code sample demonstrates the patterns you can use when calling the asynchronous
+request methods.
 
 .. literalinclude:: samples/async_net35_complete.cs
     :language: csharp

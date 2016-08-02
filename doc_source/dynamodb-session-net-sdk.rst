@@ -14,14 +14,14 @@
 Managing ASP.NET Session State with |DDBlong|
 #############################################
 
-ASP.NET applications often store session-state data in memory. However, this approach doesn't scale
+ASP.NET applications often store session state data in memory. However, this approach doesn't scale
 well. After the application grows beyond a single web server, the session state must be shared
 between servers. A common solution is to set up a dedicated session-state server with Microsoft SQL
-Server. But this approach also has drawbacks: you must administer another machine, the session-state
-server is a single point of failure, and the session-state server itself can become a performance
+Server, but this approach also has drawbacks: you must administer another machine; the session-state
+server is a single point of failure; and the session-state server itself can become a performance
 bottleneck.
 
-|DDBlong|_, a NoSQL database store from |AWSlong| (AWS), provides an
+|DDB|_, a NoSQL database store from |AWSlong| (AWS), provides an
 effective solution for sharing session state across web servers without incurring any of these
 drawbacks.
 
@@ -33,7 +33,7 @@ The |sdk-net| includes :file:`AWS.SessionProvider.dll`, which contains an ASP.NE
 provider. It also includes the *AmazonDynamoDBSessionProviderSample* sample, which demonstrates how
 to use |DDBlong| as a session state provider.
 
-For more information about using Session State with ASP.NET applications, go to the `MSDN
+For more information about using session state with ASP.NET applications, go to the `MSDN
 documentation <http://msdn.microsoft.com/en-us/library/ms178581.aspx>`_.
 
 .. _asdf:
@@ -69,7 +69,7 @@ The :functionname:`ASP.NET_SessionState` table is ready for use when its status 
 Configure the Session State Provider
 ====================================
 
-**To configure an ASP.NET application to use DynamoDB as the session state server**
+**To configure an ASP.NET application to use DynamoDB as the session-state server**
 
 1. Add references to both :file:`AWSSDK.dll` and :file:`AWS.SessionProvider.dll` to your Visual Studio
    ASP.NET project. These assemblies are available by installing the :ref:`AWS SDK for .NET
@@ -78,34 +78,31 @@ Configure the Session State Provider
    In earlier versions of the SDK, the functionality for the session state provider was contained
    in :file:`AWS.Extension.dll`. To improve usability, the functionality was moved to
    :file:`AWS.SessionProvider.dll`. For more information, see the blog post 
-   :aws-blogs-net:`AWS.Extension Renaming <Tx27RWMCNAVWZN9/AWS-Extensions-renaming>`.
+   :aws-blogs-net:`AWS.Extension Renaming  <Tx27RWMCNAVWZN9/AWS-Extensions-renaming>`.
 
-2. Edit your application's *Web.config* file. In the :code:`system.web` element, replace the existing
-   :code:`sessionState` element with the following XML fragment:
+2. Edit your application's :file:`Web.config` file. In the :code:`system.web` element, replace the
+   existing :code:`sessionState` element with the following XML fragment:
 
    .. code-block:: xml
 
-         <sessionState timeout="20" 
-           mode="Custom" 
-           customProvider="DynamoDBSessionStoreProvider"> 
-             <providers> 
-               <add 
-                 name="DynamoDBSessionStoreProvider" 
-                 type="Amazon.SessionProvider.DynamoDBSessionStateStore" 
-                 AWSProfileName="{profile_name}"
-                 Region="us-west-2" />
-          </providers>
-        </sessionState>
+       <sessionState timeout="20" mode="Custom" customProvider="DynamoDBSessionStoreProvider"> 
+         <providers> 
+           <add name="DynamoDBSessionStoreProvider" 
+                type="Amazon.SessionProvider.DynamoDBSessionStateStore" 
+                AWSProfileName="{profile_name}"
+                Region="us-west-2" />
+         </providers>
+       </sessionState>
 
-   The profile represents the AWS credentials used to communicate with |DDB| to store and retrieve
-   the session state. If you are using the |sdk-net| and are specifying a profile in the
+   The profile represents the AWS credentials that are used to communicate with |DDB| to store and
+   retrieve the session state. If you are using the |sdk-net| and are specifying a profile in the
    :code:`appSettings` section of your application's :file:`Web.config` file, you do not need to
    specify a profile in the :code:`providers` section; the AWS .NET client code will discover it at
    run time. For more information, see :ref:`net-dg-config`.
-
-   If the web server is running on an |EC2| instance that is configured to use IAM roles for EC2
-   instances, then you do not need to specify any credentials in the :file:`web.config` file. In
-   this case, the AWS .NET client will use the IAM roles' credentials. For more information, see
+ 
+   If the web server is running on an |EC2| instance configured to use IAM roles for EC2 instances,
+   then you do not need to specify any credentials in the :file:`Web.config` file. In this case,
+   the AWS .NET client will use the IAM role credentials. For more information, see
    :ref:`net-dg-roles` and :ref:`net-dg-ddb-sess-security`.
 
 .. _net-dg-dd-config-opts:
@@ -114,7 +111,7 @@ Web.config Options
 ------------------
 
 You can use the following configuration attributes in the :code:`providers` section of your
-:file:`web.config` file:
+:file:`Web.config` file:
 
 *AWSAccessKey*
     Access key ID to use. This can be set either in the :code:`providers` or :code:`appSettings`
@@ -166,8 +163,8 @@ Security Considerations
 After the |DDB| table is created and the application is configured, sessions can be used as with any
 other session provider.
 
-As a security best practice, we recommend you run your applications with the credentials of an |IAM|_ 
-user. You can use either the :console:`AWS Management Console <iam>` or the 
+As a security best practice, we recommend you run your applications with the credentials of an 
+|IAM-ug|_ user. You can use either the :console:`IAM Management Console <iam>` or the 
 :tvs-ug:`AWS Toolkit for Visual Studio` to create IAM users and define access policies.
 
 The session state provider needs to be able to call the :ddb-dg:`DeleteItem <DeleteItem>`,
@@ -179,20 +176,18 @@ operations needed by the provider for an instance of |DDB| running in |region_ap
 .. code-block:: json
 
     { "Version" : "2012-10-17", 
-      "Statement" : [ 
-        { 
-          "Sid" : "1", 
-          "Effect" : "Allow", 
-          "Action" : [ 
+    "Statement" : [ 
+      { 
+        "Sid" : "1", 
+        "Effect" : "Allow", 
+        "Action" : [ 
             "dynamodb:DeleteItem", 
             "dynamodb:DescribeTable", 
             "dynamodb:GetItem", 
             "dynamodb:PutItem", 
-            "dynamodb:UpdateItem" ], 
-          "Resource" : "arn:aws:dynamodb:us-west-2{<YOUR-AWS-ACCOUNT-ID>}:table/ASP.NET_SessionState"
+            "dynamodb:UpdateItem" 
+        ], 
+        "Resource" : "arn:aws:dynamodb:|region_api_default|:{<YOUR-AWS-ACCOUNT-ID>}:table/ASP.NET_SessionState"
         }
       ]
     }
-
-
-

@@ -18,59 +18,53 @@ You will need an |SQS| client in order to create and use an |SQS| queue. Before 
 client, you should create an :file:`App.Config` file to specify your AWS credentials.
 
 You specify your credentials by referencing the appropriate profile in the appSettings section of
-the file. The following example specifies a profile named {my_profile}. For more information on
-credentials and profiles, see :ref:`net-dg-config`.
+the file. The following example specifies a profile named :code:`my_profile`. For more information
+about credentials and profiles, see :ref:`net-dg-config`.
 
 .. code-block:: xml
 
-    <?xml version="1.0"?> 
-      <configuration> 
-        <startup> 
-          <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/> 
-        </startup> 
-        <configSections> 
-          <section name="aws" type="Amazon.AWSSection, AWSSDK"/> 
-        </configSections> <aws profileName="{my_profile}"/>
-      </configuration>
+    <?xml version="1.0"?>
+    <configuration>   
+      <configSections>
+        <section name="aws" type="Amazon.AWSSection, AWSSDK.Core"/>
+      </configSections>
+      <aws profileName="my_profile"/>
+      <startup>
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/>
+      </startup>
+    </configuration>
 
 After you create this file, you are ready to create and initialize your |SQS| client.
 
 **To create and initialize an Amazon SQS client**
 
-1. Create and initialize an :sdk-net-api-v2:`AmazonSQSConfig <TSQSSQSConfigNET45>` instance, and set the
-   :sdk-net-api-v2:`ServiceURL <PRuntimeClientConfigServiceURLNET45>` property with the protocol and service
-   endpoint, as follows:
+1. Create and initialize an :sdk-net-api:`AmazonSQSConfig <SQS/TSQSSQSConfig>` instance, and then set the 
+   :code:`ServiceURL` property with the protocol and service endpoint, as follows:
 
    .. code-block:: csharp
 
-       AmazonSQSConfig amazonSQSConfig = new AmazonSQSConfig();
-           
-       amazonSQSConfig.ServiceURL = "http://sqs.us-west-2.amazonaws.com";
+       var sqsConfig = new AmazonSQSConfig();
+        
+       sqsConfig.ServiceURL = "http://sqs.us-west-2.amazonaws.com";
 
-   .. code-block:: csharp
+   The |sdk-net| uses |region-us-east-1| as the default region if you do not specify a region in
+   your code. However, the |console| uses |region-us-west-2| as its default. Therefore, when using
+   the |console| in conjunction with your development, be sure to specify the same region in both
+   your code and the console.
 
-       AmazonSQSConfig amazonSQSConfig = new AmazonSQSConfig();
-           
-       amazonSQSConfig.ServiceURL = "http://sqs.cn-north-1.amazonaws.com";
-
-   The |sdk-net| uses |useast1-name| as the default region if you do not specify a region in your
-   code. However, the |console| uses |uswest2-name| as its default. Therefore, when using the
-   |console| in conjunction with your development, be sure to specify the same region in both your
-   code and the console.
-
-   The |sdk-net| uses |cnnorth1-name| as the default region if you do not specify a region in your
-   code. Therefore, when using the |console| in conjunction with your development, be sure to
+   The |sdk-net| uses |region-cn-north-1| as the default region if you do not specify a region in
+   your code. Therefore, when using the |console| in conjunction with your development, be sure to
    specify that region in both your code and the console.
 
-   Go to |regions-and-endpoints|_ for the current list of regions and corresponding endpoints
-   for each of the services offered by AWS.
+   Go to |regions-and-endpoints| for the current list of regions and endpoints for each of the
+   services offered by AWS.
 
-2. Use the :code:`AmazonSQSConfig` instance to create and initialize an :sdk-net-api-v2:`AmazonSQSClient
-   <TSQSSQSNET45>` instance, as follows:
+2. Use the :classname:`AmazonSQSConfig` instance to create and initialize an 
+   :sdk-net-api:`AmazonSQSClient <SQS/TSQSSQSClient>` instance, as follows:
 
    .. code-block:: csharp
-
-       amazonSQSClient = new AmazonSQSClient(amazonSQSConfig);
+    
+      var sqsClient = new AmazonSQSClient(sqsConfig);
 
 You can now use the client to create an |SQS| queue. For information about creating a queue, see
 :ref:`create-sqs-queue`.

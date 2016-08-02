@@ -14,38 +14,37 @@
 Delete a Message from an Amazon SQS Queue
 #########################################
 
-You can use the Amazon SDK for .NET to receive messages from an Amazon SQS queue.
+ You can use the |sdk-net| to receive messages from an |SQS| queue.
 
 **To delete a message from an Amazon SQS queue**
 
-1. Create and initialize a :sdk-net-api-v2:`DeleteMessageRequest <TSQSDeleteMessageRequestNET45>` instance.
-   Specify the Amazon SQS queue to delete a message from and the receipt handle of the message to
-   delete, as follows:
+1. Create and initialize a :sdk-net-api:`DeleteMessageRequest <SQS/TSQSDeleteMessageRequest>` instance. 
+   Specify the |SQS| queue to delete a message from and the receipt handle of the message to delete, 
+   as follows:
 
    .. code-block:: csharp
 
-       DeleteMessageRequest deleteMessageRequest = new DeleteMessageRequest();
-       
-       deleteMessageRequest.QueueUrl = queueUrl;
-       deleteMessageRequest.ReceiptHandle = recieptHandle;
+      var deleteMessageRequest = new DeleteMessageRequest();
+    
+      deleteMessageRequest.QueueUrl = queueUrl;
+      deleteMessageRequest.ReceiptHandle = recieptHandle;
 
-2. Pass the request object as a parameter to the :sdk-net-api-v2:`DeleteMessage
-   <MSQSSQSDeleteMessageDeleteMessageRequestNET45>` method. The method returns a
-   :sdk-net-api-v2:`DeleteMessageResponse <TSQSDeleteMessageResponseNET45>` object, as follows:
+2. Pass the request object as a parameter to the 
+   :sdk-net-api:`DeleteMessage <SQS/MSQSSQSDeleteMessageDeleteMessageRequest>` method. The method returns 
+   a :sdk-net-api:`DeleteMessageResponse <SQS/TSQSDeleteMessageResponse>` object, as follows:
 
    .. code-block:: csharp
 
-       DeleteMessageResponse response = 
-         amazonSQSClient.DeleteMessage(deleteMessageRequest);
+      var response = sqsClient.DeleteMessage(deleteMessageRequest);
 
    Calling :code:`DeleteMessage` unconditionally removes the message from the queue, regardless of
-   the visibility timeout setting. For more information about visibility timeouts, go to
-   `Visibility Timeout <http:///AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html>`_.
+   the visibility timeout setting. For more information about visibility timeouts, see 
+   :sqs-dg:`Visibility Timeout <AboutVT>`.
 
-For information about sending a message to a queue, see :ref:`Sending an Amazon SQS Message
-<send-sqs-message>`.
+For information about sending a message to a queue, see 
+:ref:`Sending an Amazon SQS Message <send-sqs-message>`.
 
-For information about receiving messages from a queue, see :ref:`Receiving a Message from an Amazon
-SQS Queue <receive-sqs-message>`.
+For information about receiving messages from a queue, see 
+:ref:`Receiving a Message from an Amazon SQS Queue <receive-sqs-message>`.
 
 

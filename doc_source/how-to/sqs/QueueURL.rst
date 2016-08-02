@@ -14,18 +14,17 @@
 Amazon SQS Queue URLs
 #####################
 
-You require the queue URL to send, receive, and delete queue messages. A queue URL is constructed
-in the following format:
+You require the queue URL to send, receive, and delete queue messages. A queue URL is constructed in
+the following format:
 
 .. code-block:: none
 
      https://{REGION_ENDPOINT}/queue.|api-domain|/{YOUR_ACCOUNT_NUMBER}/{YOUR_QUEUE_NAME}
 
-To find your AWS account number, go to `Security Credentials
-<https:///gp/aws/securityCredentials>`_. Your account number is located under :guilabel:`Account
-Number` in the upper right of the page.
+To find your AWS account number, go to :console:`Security Credentials <iam>`. 
+Your account number is located under :guilabel:`Account Number` in the upper-right of the page.
 
- or information on sending a message to a queue, see :ref:`send-sqs-message`.
+For information about sending a message to a queue, see :ref:`send-sqs-message`.
 
 For information about receiving messages from a queue, see :ref:`receive-sqs-message`.
 

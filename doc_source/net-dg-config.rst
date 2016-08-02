@@ -25,7 +25,7 @@ The recommended way to configure an application is to use the :code:`<aws>` elem
 
     <configuration>
       <configSections>
-        <section name="aws" type="Amazon.AWSSection, AWSSDK"/>
+        <section name="aws" type="Amazon.AWSSection, AWSSDK.Core"/>
       </configSections>
       <aws region="us-west-2">
         <logging logTo="Log4Net"/>
@@ -48,7 +48,7 @@ project's :file:`App.config` or :file:`Web.config` file. The following example s
 These settings take effect only after the application has been rebuilt.
 
 Although you can configure an |sdk-net| application programmatically by setting property values in
-the :sdk-net-api-v2:`AWSConfigs <TAWSConfigsNET45>` class, we recommend you use the :code:`aws`
+the :sdk-net-api:`AWSConfigs <Amazon/TAWSConfigs>` class, we recommend you use the :code:`aws`
 element instead. The following example specifies the :ref:`config-setting-awsregion` and
 :ref:`config-setting-awslogging` parameters:
 
@@ -62,13 +62,16 @@ or :file:`Web.config` file. Some programmatically defined parameter values take 
 others take effect only after you create a new client object. For more information, see
 :ref:`net-dg-config-creds`.
 
+Topics
+^^^^^^
 
 .. toctree:: 
     :maxdepth: 1
-
+    
     net-dg-config-creds
     net-dg-region-selection
     net-dg-config-other
     net-dg-config-ref
+
 
 

@@ -14,26 +14,26 @@
 Additional Resources
 ####################
 
-**Home Page for AWS SDK for .NET**
+*Home Page for AWS SDK for .NET*
 
 For more information about the |sdk-net|, go to the home page for the SDK at
-|sdk-net|_.
+`http://aws.amazon.com/sdk-for-net/ <http://aws.amazon.com/sdk-for-net/>`_.
 
-**SDK Reference Documentation**
+*SDK Reference Documentation*
 
 The SDK reference documentation includes the ability to browse and search across all code included
 with the SDK. It provides thorough documentation, usage examples, and even the ability to browse
-method source. For more information, see the :sdk-net-api-v2:`AWS SDK for .NET API Reference <Index>`.
+method source. For more information, see the |sdk-net-ref|_.
 
-**AWS Forums**
+*AWS Forums*
 
-Visit the AWS forums to ask questions or provide feedback about AWS. AWS engineers monitor the forums 
-and respond to questions, feedback, and issues. You can also subscribe to RSS feeds for any of the 
-forums.
+Visit the AWS forums to ask questions or provide feedback about AWS. Each documentation page has a
+:guilabel:`Go to the forums` button at the top of the page that takes you to the associated forum.
+AWS engineers monitor the forums and respond to questions, feedback, and issues. You can also
+subscribe to RSS feeds for any of the forums.
 
-**AWS Toolkit for Visual Studio**
+*AWS Toolkit for Visual Studio*
 
-If you use the Microsoft Visual Studio IDE, you should check out the |TVS| and the accompanying 
-|tvs-ug|_.
+If you use the Microsoft Visual Studio IDE, you should check out the |TVS-ug|_.
 
 

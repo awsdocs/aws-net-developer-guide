@@ -14,38 +14,25 @@
 AWS Region Selection
 ####################
 
-AWS regions allow you to access AWS services that reside physically in a specific geographic region.
-This can be useful both for redundancy and to keep your data and applications running close to where
-you and your users will access them. To select a particular region, configure the AWS client object
-with an endpoint that corresponds to that region.
+AWS regions allow you to access AWS services that physically reside in a specific geographic region.
+This can be useful both for redundancy, and to keep your data and applications running close to
+where you and your users will access them. You can specify a region when creating the AWS service
+client using the :sdk-net-api:`RegionEndpoint <Amazon/TRegionEndpoint>` class.
 
-For example:
+Here is an example that instantiates an |EC2| client in a specific region:
 
-.. code-block:: csharp
+.. code-block:: none
 
-    AmazonEC2Config config = new AmazonEC2Config();
-    config.ServiceURL = "https://us-east-1.amazonaws.com";
-    Amazon.Runtime.AWSCredentials credentials = new Amazon.Runtime.StoredProfileAWSCredentials("profile_name");
-    AmazonEC2Client ec2 = new AmazonEC2Client(credentials, config);
+     AmazonEC2Client ec2Client = new AmazonEC2Client(RegionEndpoint.USEast1);
 
-You can also specify the region using the :sdk-net-api-v2:`RegionEndpoint <TRegionEndpointNET45>` class. 
-Here is an example that instantiates an |EC2| client using :sdk-net-api-v2:`AWSClientFactory
-<TAWSClientFactoryNET45>` and specifies the region:
+Regions are isolated from each other. For example, you can't access |region-us-east-1| resources
+when using the |region-eu-west-1| region. If your code needs access to multiple AWS regions, we
+recommend you create a separate client for each region.
 
-.. code-block:: csharp
+Regions are logically isolated from each other. You can't access another region's resources when
+communicating with the |region-cn-north-1| region endpoint.
 
-    Amazon.Runtime.AWSCredentials credentials = new Amazon.Runtime.StoredProfileAWSCredentials("profile_name");
-    AmazonEC2Client ec2 = AWSClientFactory.CreateAmazonEC2Client(
-       credentials, RegionEndpoint.USEast1 );
-
-Regions are isolated from each other. For example, you can't access *US East* resources when using
-the *EU West* region. If your code needs access to multiple AWS regions, we recommend that you
-create a client specific to each region.
-
-Regions are logically isolated from each other; you can't access another region's resources when
-communicating with the |cnnorth1-name| endpoint.
-
-Go to |regions-and-endpoints|_ in the |aws-gr| to view the current list of regions and
-corresponding endpoints for each of the services offered by AWS.
+To view the current list of regions and endpoints for each AWS service, see |regions-and-endpoints|_ 
+in the |AWS-gr|.
 
 

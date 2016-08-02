@@ -15,10 +15,12 @@ Programming AWS Services with the |sdk-net|
 ###########################################
 
 The following concepts, tutorials, and examples demonstrate how to use the |sdk-net| to work with
-individual |AWSlong|.
+individual AWS services.
 
-Before you begin, be sure that you have :ref:`set up the AWS SDK for .NET <net-dg-setup>` and that
-you have reviewed the material in the :ref:`net-dg-programming-techniques`.
+Additional samples are available on :github:`GitHub <awslabs/aws-sdk-net-samples>`.
+
+Before you begin, be sure you have :ref:`set up the AWS SDK for .NET <net-dg-setup>` and reviewed
+the material in the :ref:`net-dg-programming-techniques`.
 
 
 
@@ -26,7 +28,6 @@ you have reviewed the material in the :ref:`net-dg-programming-techniques`.
     :titlesonly:
     :maxdepth: 1
 
-    resource-level-apis-intro
     cloudformation-apis-intro
     dynamodb-intro
     ec2-apis-intro
@@ -36,6 +37,7 @@ you have reviewed the material in the :ref:`net-dg-programming-techniques`.
     s3-apis-intro
     sns-apis-intro
     sqs-apis-intro
+    opsworks-apis-intro
     other-apis-intro
 
 

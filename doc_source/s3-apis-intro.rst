@@ -15,9 +15,9 @@
 #######################################
 
 The |sdk-net| supports |S3long| (|S3|), which is storage for the Internet. It is designed to make
-web-scale computing easier for developers. For more information, see |S3long|_.
+web-scale computing easier for developers. For more information, see |S3|_.
 
-The following links provide examples of programming |S3| with the the SDK:
+The following links provide examples of programming |S3| with the |sdk-net|:
 
 * :s3-dg:`Using the AWS SDK for .NET for Amazon S3 Programming <UsingTheMPDotNetAPI>`
 
@@ -25,7 +25,8 @@ The following links provide examples of programming |S3| with the the SDK:
 
 * :s3-dg:`Making Requests Using IAM User Temporary Credentials <AuthUsingTempSessionTokenDotNet>`
 
-* :s3-dg:`Making Requests Using Federated User Temporary Credentials <AuthUsingTempFederationTokenDotNet>`
+* :s3-dg:`Making Requests Using Federated User Temporary Credentials
+  <AuthUsingTempFederationTokenDotNet>`
 
 * :s3-dg:`Managing ACLs <acl-using-dot-net-sdk>`
 
@@ -37,7 +38,8 @@ The following links provide examples of programming |S3| with the the SDK:
 
 * :s3-dg:`Multipart Upload with the Low-Level API <usingLLmpuDotNet>`
 
-* :s3-dg-deep:`Listing Objects <list-obj-version-enabled-bucket.html#list-obj-version-enabled-bucket-sdk-examples>`
+* :s3-dg-deep:`Listing Objects
+  <list-obj-version-enabled-bucket.html#list-obj-version-enabled-bucket-sdk-examples>`
 
 * :s3-dg:`Listing Keys <ListingObjectKeysUsingNetSDK>`
 
@@ -65,6 +67,7 @@ The following links provide examples of programming |S3| with the the SDK:
 
 * :s3-dg:`Specifying Server-Side Encryption <SSEUsingDotNetSDK>`
 
-* :s3-dg:`Specifying Server-Side Encryption with Customer-Provided Encryption Keys <sse-c-using-dot-net-sdk>`
+* :s3-dg:`Specifying Server-Side Encryption with Customer-Provided Encryption Keys
+  <sse-c-using-dot-net-sdk>`
 
 

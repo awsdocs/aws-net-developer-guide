@@ -15,21 +15,34 @@ Programming Additional AWS Services with the |sdk-net|
 ######################################################
 
 The |sdk-net| supports programming AWS services in addition to the ones that are described
-previously in this chapter. For information about programming specific services with the the SDK,
-see the |sdk-net-api|_.
+previously in this chapter. For information about programming specific services with the |sdk-net|,
+see the |sdk-net-api|.
 
-In addition to the namespaces for individual AWS services, the the SDK also provides the following
+In addition to the namespaces for individual AWS services, the |sdk-net| also provides the following
 APIs:
 
-+-------------+------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
-| Area        | Description                                                            | Resources                                                                                                                    |
-+=============+========================================================================+==============================================================================================================================+
-| AWS Support | Programmatic access to AWS Support cases and Trusted Advisor features. | See :sdk-net-api-v2:`Amazon.AWSSupport <NAWSSupportNET45>` and :sdk-net-api-v2:`Amazon.AWSSupport.Model <NAWSSupportNET45>`. |
-+-------------+------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
-|  General    | Helper classes and enumerations.                                       | See :sdk-net-api-v2:`Amazon <NNET45>` and :sdk-net-api-v2:`Amazon.Util <NUtilNET45>`.                                        |
-+-------------+------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+.. list-table: 
+    :header-rows: 1
+    :widths: 1 1 1
 
-Other general programming information for the the SDK includes the following:
+    *   * Area 
+        * Description 
+        * Resources 
+
+    *   * AWS Support 
+
+        * Programmatic access to AWS Support cases and Trusted Advisor features. 
+
+        * See :sdk-net-api:`Amazon.AWSSupport <AWSSupport/NAWSSupport>` and 
+        :sdk-net-api:`Amazon.AWSSupport.Model <AWSSupport/NAWSSupportModel>`. 
+
+    *   * General 
+
+        * Helper classes and enumerations. 
+
+        * See :sdk-net-api:`Amazon <Amazon/N>` and :sdk-net-api:`Amazon.Util <Util/NUtil>`. 
+
+Other general programming information for the |sdk-net| includes the following:
 
 * :aws-blogs-net:`Overriding Endpoints in the AWS SDK for .NET <Tx1P7UD2UN3DHK6/Overriding-Endpoints-in-the-AWS-SDK-for-NET>`
 

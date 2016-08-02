@@ -18,12 +18,13 @@ The |sdk-net| supports |R53long|, which is a Domain Name System (DNS) web servic
 secure and reliable routing to your infrastructure that uses Amazon Web Services (AWS) products,
 such as |EC2long| (|EC2|), |ELB|, or |S3long| (|S3|). You can also use |R53| to route users to your
 infrastructure outside of AWS. This topic describes how to use the |sdk-net| to create an |R53|
-:r53-dg:`hosted zone <AboutHZWorkingWith>` and add a new :r53-dg:`resource record set
-<resource-record-sets-values>` to that zone.
+:r53-dg:`hosted zone <AboutHZWorkingWith>` and add a new 
+:r53-dg:`resource record set <resource-record-sets-values>` to that zone.
 
-.. note:: This topic assumes that you are already familiar with how to use |R53| and have already installed
-   the AWS SDK for .NET. For more information on |R53|, see the :r53-dg:`Amazon Route 53 Developer Guide
-   <Welcome>`. For information on how to install the |sdk-net|, see :ref:`net-dg-setup`.
+.. note:: This topic assumes you are already familiar with how to use |R53| and have already 
+   installed the |sdk-net|. For more information about |R53|, see the 
+   `Amazon Route 53 Developer Guide <Welcome>`. For information about how to install the 
+   |sdk-net|, see :ref:`net-dg-setup`.
 
 The basic procedure is as follows.
 
@@ -31,26 +32,26 @@ The basic procedure is as follows.
 
 1. Create a hosted zone.
 
-2. Create a change batch that contains one or more record sets, and instructions on what action to take
-   for each set.
+2. Create a change batch that contains one or more record sets, and instructions on which action to
+   take for each set.
 
 3. Submit a change request to the hosted zone that contains the change batch.
 
-4. Monitor the change to verify that it is complete.
+4. Monitor the change to verify it is complete.
 
-The example is a simple console application that shows how to use the the SDK to implement this
+The example is a simple console application that shows how to use the |sdk-net| to implement this
 procedure for a basic record set.
 
 **To run this example**
 
-1. In the Visual Studio :guilabel:`File` menu, click :guilabel:`New` and then click
+1. In the Visual Studio :guilabel:`File` menu, choose :guilabel:`New`, and then choose
    :guilabel:`Project`.
 
-2. Select the :guilabel:`AWS Empty Project` template and specify the project's name and location.
+2. Choose the :guilabel:`AWS Empty Project` template and specify the project's name and location.
 
 3. Specify the application's default credentials profile and AWS region, which are added to the
-   project's :file:`App.config` file. This example assumes that the region is set to US East
-   (Northern Virginia) and the profile is set to default. For more information on profiles, see
+   project's :file:`App.config` file. This example assumes the region is set to |region-us-east-1|
+   and the profile is set to default. For more information on profiles, see
    :ref:`net-dg-config-creds`.
 
 4. Open :file:`program.cs` and replace the :code:`using` declarations and the code in :code:`Main` with
@@ -143,137 +144,132 @@ procedure for a basic record set.
 The numbers in the following sections are keyed to the comments in the preceding example.
 
 [1] Create a Client Object
-    The :sdk-net-api-v2:`AmazonRoute53Client <TRoute53Route53NET45>` class supports a set of public methods
-    that you use to invoke :r53-dg:`Amazon Route 53 actions <Welcome>`. You create the client object
-    by instantiating a new instance of the :classname:`AmazonRoute53Client` class. There are
-    multiple constructors. The object must have the following information: 
-    
-    An AWS region
-        When you call a client method, the underlying HTTP request is sent to this endpoint.
+  The object must have the following information: 
 
-    A credentials profile
-        The profile must grant permissions for the actions that you intend to use |mdash| the |R53|
-        actions in this case. Attempts to call actions that lack permissions will fail. For more
-        information, see :ref:`net-dg-config-creds`.
+  An AWS region
+      When you call a client method, the underlying HTTP request is sent to this endpoint.
 
-    The example uses the default constructor to create
-    the object, which implicitly specifies the application's default profile and region. Other
-    constructors allow you to override either or both default values.
+  A credentials profile
+      The profile must grant permissions for the actions you intend to use |mdash| the |R53|
+      actions in this case. Attempts to call actions that lack permissions will fail. For more
+      information, see :ref:`net-dg-config-creds`.
 
+  The :sdk-net-api:`AmazonRoute53Client <Route53/TRoute53Route53Client>` class supports a set of public methods
+  that you use to invoke :r53-dg:`Amazon Route 53 actions <Welcome>`. You create the client object
+  by instantiating a new instance of the :classname:`AmazonRoute53Client` class. There are
+  multiple constructors. 
+  
 [2] Create a hosted zone
-    A hosted zone serves the same purpose as a traditional DNS zone file. It represents a collection
-    of resource record sets that are managed together under a single domain name.
+  A hosted zone serves the same purpose as a traditional DNS zone file. It represents a collection
+  of resource record sets that are managed together under a single domain name.
+
+  **To create a hosted zone**
+
+  1. Create a :sdk-net-api:`CreateHostedZoneRequest <Route53/TRoute53CreateHostedZoneRequest>` object 
+     and specify the following request parameters. There are also two optional parameters that 
+     aren't used by this example.
+
+    :code:`Name`
+        (Required) The domain name you want to register, :code:`www.example.com` for this
+        example. This domain name is intended only for examples. It can't be registered with a
+        domain name registrar, but you can use it to create a hosted zone for learning purposes.
     
-    **To create a hosted zone**
-
-    1. Create a :sdk-net-api-v2:`CreateHostedZoneRequest <TRoute53CreateHostedZoneRequestNET45>` object 
-       and specify following request parameters. There are also two optional parameters that aren't 
-       used by this example.
-
-        :code:`Name`
-            (Required) The domain name that you want to register, :code:`www.example.com` for this
-            example. This domain name is intended only for examples and can't be registered with a
-            domain name registrar for an actual site, but you can use it to create a hosted zone for
-            learning purposes.
-
-        :code:`CallerReference`
-            (Required) An arbitrary user-defined string that serves as a request ID and can be used
-            to retry failed requests. If you run this application multiple times, you must change
-            the :code:`CallerReference` value.
-
-    2. Pass the :classname:`CreateHostedZoneRequest` object to the client object's 
-       :sdk-net-api-v2:`CreateHostedZone <MRoute53Route53CreateHostedZoneCreateHostedZoneRequestNET45>` 
-       method. The method returns a :sdk-net-api-v2:`CreateHostedZoneResponse <TRoute53CreateHostedZoneResponseNET45>` object
-       that contains a variety of information about the request, including the :sdk-net-api-v2:`HostedZone.Id
-       <TRoute53HostedZoneNET45>` property that identifies zone.
+    :code:`CallerReference`
+        (Required) An arbitrary user-defined string that serves as a request ID and can be used
+        to retry failed requests. If you run this application multiple times, you must change
+        the :code:`CallerReference` value.
+    
+  2. Pass the :classname:`CreateHostedZoneRequest` object to the client object's 
+     :sdk-net-api:`CreateHostedZone <Route53/MRoute53Route53CreateHostedZoneCreateHostedZoneRequest>` 
+     method. The method returns a :sdk-net-api:`CreateHostedZoneResponse <Route53/TRoute53CreateHostedZoneResponse>` 
+     object that contains information about the request, including the 
+     :sdk-net-api:`HostedZone.Id <Route53/TRoute53HostedZone>` property that identifies zone.
 
 [3] Create a resource record set change batch
-    A hosted zone can have multiple resource record sets. Each set specifies how a subset the
-    domain's traffic, such as email requests, should be routed. You can update a zone's resource
-    record sets with a single request. The first step is to package all the updates in a
-    :sdk-net-api-v2:`ChangeBatch <TRoute53ChangeBatchNET45>` object. This example specifies only one update,
-    adding a basic resource record set to the zone, but a :code:`ChangeBatch` object can contain
-    updates for multiple resource record sets. 
-    
-    **To create a ChangeBatch object**
+  A hosted zone can have multiple resource record sets. Each set specifies how a subset of the 
+  domain's traffic, such as email requests, should be routed. You can update a zone's resource record 
+  sets with a single request. The first step is to package all the updates in a 
+  :sdk-net-api:`ChangeBatch <Route53/TRoute53ChangeBatch>` object. This example specifies only one update, 
+  adding a basic resource record set to the zone, but a :code:`ChangeBatch` object can contain updates
+  for multiple resource record sets.
 
-    1. Create a :sdk-net-api-v2:`ResourceRecordSet <TRoute53ResourceRecordSetNET45>` object for each 
-       resource record set that you want to update. The group of properties that you specify depends 
-       on the type of resource record set. For a complete description of the properties used by the 
-       different resource record sets, see :r53-dg:`Values that You Specify When You Create or Edit 
-       Amazon Route 53 Resource Record Sets <resource-record-sets-values>`. The example
-       :classname:`ResourceRecordSet` object represents a :r53-dg:`basic resource record set
-       <resource-record-sets-values>`, and specifies the following required properties.
-
-       :code:`Name`
-           The domain or subdomain name, :code:`www.example.com` for this example.
+  **To create a ChangeBatch object**
+ 
+  1. Create a :sdk-net-api:`ResourceRecordSet <Route53/TRoute53ResourceRecordSet>` object for each 
+     resource record set you want to update. The group of properties you specify depends on the 
+     type of resource record set. For a complete description of the properties used by the different 
+     resource record sets, see 
+     :r53-dg:`Values that You Specify When You Create or Edit Amazon Route 53 Resource Record Sets <resource-record-sets-values>`. 
+     The example :classname:`ResourceRecordSet` object represents a 
+     :r53-dg-deep:`basic resource record set <resource-record-sets-values.html#resource-record-sets-values-basic>`
+     , and specifies the following required properties.
+ 
+     :code:`Name`
+        The domain or subdomain name, :code:`www.example.com` for this example.
      
-       :code:`TTL`
-           The amount of time in seconds that the DNS recursive resolvers should cache information
-           about this resource record set, 60 seconds for this example.
+     :code:`TTL`
+        The amount of time, in seconds, the DNS recursive resolvers should cache information
+        about this resource record set, 60 seconds for this example.
      
-       :code:`Type`
-           The DNS record type, :code:`A` for this example. For a complete list, see `Supported DNS
-           Resource Record Types <ResourceRecordTypes.html>`_.
+     :code:`Type`
+        The DNS record type, :code:`A` for this example. For a complete list, see 
+        :r53-dg:`Supported DNS Resource Record Types <ResourceRecordTypes>`.
      
-       :code:`ResourceRecords`
-           A list of one or more `ResourceRecord <TRoute53ResourceRecordNET45.html>`_ objects, each
-           of which contains a DNS record value that depends on the DNS record type. For an
-           :code:`A` record type, the record value is an IPv4 address, which for this example is
-           set to a standard example address, :code:`192.0.2.235`.
-
-    2. Create a :sdk-net-api-v2:`Change <TRoute53ChangeNET45>` object for each for each resource record 
-       set, and set the following properties.
-
-        :code:`ResourceRecordSet`
-            The :classname:`ResourceRecordSet` object that you created in the previous step.
-
-        :code:`Action`
-            The action to be taken for this resource record set: :code:`CREATE`, :code:`DELETE`, or
-            :code:`UPSERT`. For more information on these actions, see :r53-api:`Elements
-            <ChangeResourceRecordSets_Requests>`.
-            This example creates a new resource record set in the hosted zone, so :code:`Action` is
-            set to :code:`CREATE`.
-
-    3. Create a :sdk-net-api-v2:`ChangeBatch <TRoute53ChangeBatchNET45>` object and set its :code:`Changes` 
-       property to a list of the :classname:`Change` objects that you created in the previous step.
-
-
+     :code:`ResourceRecords`
+        A list of one or more :sdk-net-api:`ResourceRecord <Route53/TRoute53ResourceRecord>` objects, each of
+        which contains a DNS record value that depends on the DNS record type. For an :code:`A`
+        record type, the record value is an IPv4 address, which for this example is set to a
+        standard example address, :code:`192.0.2.235`.
+ 
+  2. Create a :sdk-net-api:`Change <Route53/TRoute53Change>` object for each resource record set, and set the following
+     properties.
+ 
+     :code:`ResourceRecordSet`
+        The :classname:`ResourceRecordSet` object you created in the previous step.
+ 
+     :code:`Action`
+        The action to be taken for this resource record set: :code:`CREATE`, :code:`DELETE`, or
+        :code:`UPSERT`. For more information about these actions, see 
+        :r53-dg-deep:`Elements <ChangeResourceRecordSets_Requests.html#API_ChangeResourceRecordSets_RequestParameters>`.
+        This example creates a new resource record set in the hosted zone, so :code:`Action` is
+        set to :code:`CREATE`.
+ 
+  3. Create a :sdk-net-api:`ChangeBatch <Route53/TRoute53ChangeBatch>` object and set its :code:`Changes` 
+     property to a list of the :classname:`Change` objects that you created in the previous step.
+ 
 [4] Update the zone's resource record sets
-    To update the resource record sets, pass the :classname:`ChangeBatch` object to the hosted zone,
-    as follows. 
-    
-    **To update a hosted zone's resource record sets**
+  To update the resource record sets, pass the :classname:`ChangeBatch` object to the hosted zone,
+  as follows. 
+  
+  **To update a hosted zone's resource record sets**
 
-    1. Create a :sdk-net-api-v2:`ChangeResourceRecordSetsRequest <TRoute53ChangeResourceRecordSetsRequestNET45>`
-       object with the following property settings.
+  1. Create a :sdk-net-api:`ChangeResourceRecordSetsRequest <Route53/TRoute53ChangeResourceRecordSetsRequest>` 
+     object with the following property settings.
 
-       :code:`HostedZoneId`
-           The hosted zone's ID, which the example sets to the ID that was returned in the
-           :classname:`CreateHostedZoneResponse` object. To get the ID of an existing hosted zone,
-           call :sdk-net-api-v2:`ListHostedZones <MRoute53Route53ListHostedZonesNET45>`.
-       
-       :code:`ChangeBatch`
-           A :classname:`ChangeBatch` object that contains the updates.
-       
-    2. Pass the :classname:`ChangeResourceRecordSetsRequest` object to the client object's
-       :sdk-net-api-v2:`ChangeResourceRecordSets 
-       <MRoute53Route53ChangeResourceRecordSetsChangeResourceRecordSetsRequestNET45>` method.
-       It returns a :sdk-net-api-v2:`ChangeResourceRecordSetsResponse
-       <TRoute53ChangeResourceRecordSetsResponseNET45>` object, which contains a request ID
-       that you can use to monitor the request's progress.
+     :code:`HostedZoneId`
+         The hosted zone's ID, which the example sets to the ID that was returned in the
+         :classname:`CreateHostedZoneResponse` object. To get the ID of an existing hosted zone,
+         call :sdk-net-api:`ListHostedZones <Route53/MRoute53Route53ListHostedZones>`.
+
+     :code:`ChangeBatch`
+         A :classname:`ChangeBatch` object that contains the updates.
+
+  2. Pass the :classname:`ChangeResourceRecordSetsRequest` object to the 
+     :sdk-net-api:`ChangeResourceRecordSets <Route53/MRoute53Route53ChangeResourceRecordSetsChangeResourceRecordSetsRequest>` 
+     method of the client object. It returns a 
+     :sdk-net-api:`ChangeResourceRecordSetsResponse <Route53/TRoute53ChangeResourceRecordSetsResponse>` 
+     object, which contains a request ID you can use to monitor the request's progress.
 
 [5] Monitor the update status
-    Resource record set updates typically take a minute or so to propagate through the system. You
-    can monitor the update's progress and verify that it has completed as follows. 
-    
-    **To monitor update status**
+  Resource record set updates typically take a minute or so to propagate through the system. You
+  can monitor the update's progress and verify that it is complete as follows. 
+  
+  **To monitor update status**
 
-    1. Create a :sdk-net-api-v2:`GetChangeRequest <TRoute53GetChangeRequestNET45>` object and set its :code:`Id`
-       property to the request ID that was returned by :methodname:`ChangeResourceRecordSets`.
+  1. Create a :sdk-net-api:`GetChangeRequest <Route53/TRoute53GetChangeRequest>` object and set its 
+     :code:`Id` property to the request ID that was returned by :methodname:`ChangeResourceRecordSets`.
 
-    2. Use a wait loop to periodically call the client object's :sdk-net-api-v2:`GetChange
-       <MRoute53Route53GetChangeGetChangeRequestNET45>` method. :methodname:`GetChange`
-       returns :code:`PENDING` while the update is in progress and :code:`INSYNC` after the update
-       is complete. You can use the same :classname:`GetChangeRequest` object for all of the method
-       calls.
+  2. Use a wait loop to periodically call the :sdk-net-api:`GetChange <Route53/MRoute53Route53GetChangeGetChangeRequest>` 
+     method of the client object. :methodname:`GetChange` returns :code:`PENDING` while the update 
+     is in progress and :code:`INSYNC` after the update is complete. You can use the same
+     :classname:`GetChangeRequest` object for all of the method calls.
