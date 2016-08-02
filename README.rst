@@ -82,8 +82,8 @@ repository.
 .. =================================================================================
 
 .. _`available sphinx builders`: http://www.sphinx-doc.org/en/stable/builders.html
-.. _`aws sdk for net developer guide`: http://docs.aws.amazon.com/AWSSdkDocsNET/V3/DeveloperGuide/welcome.html
-.. _`aws sdk for net`: https://aws.amazon.com/sdk-for-net/
+.. _`aws sdk for .net developer guide`: http://docs.aws.amazon.com/AWSSdkDocsNET/V3/DeveloperGuide/welcome.html
+.. _`aws sdk for .net`: https://aws.amazon.com/sdk-for-net/
 .. _`forking the repository`: https://help.github.com/articles/fork-a-repo/
 .. _`pull request`: https://help.github.com/articles/using-pull-requests/
 .. _`shared content`: https://github.com/awsdocs/aws-doc-shared-content
