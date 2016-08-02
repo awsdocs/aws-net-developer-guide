@@ -1,0 +1,20 @@
+// using Amazon.DynamoDBv2;
+// using Amazon.DynamoDBv2.Model;
+
+var client = new AmazonDynamoDBClient();
+var request = new PutItemRequest
+{
+  TableName = "ProductCatalog",
+  ExpressionAttributeNames = new Dictionary<string, string>
+  {
+    { "#title", "Title" }
+  },
+  ExpressionAttributeValues = new Dictionary<string, AttributeValue>
+  {
+    { ":product", new AttributeValue { S = "18-Bicycle 301" } }
+  },
+  ConditionExpression = "#title = :product", 
+  // CreateItemData() is a custom function.
+  Item = CreateItemData()
+};
+client.PutItem(request);

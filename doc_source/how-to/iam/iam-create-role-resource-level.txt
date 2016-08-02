@@ -1,0 +1,21 @@
+// using Amazon.IdentityManagement.Resources;
+// using Amazon.IdentityManagement.Model;
+
+var iam = new IdentityManagementService();
+// GenerateAssumeRolePolicy() is a custom method.
+string assumeRole = GenerateAssumeRolePolicy();
+
+try
+{
+  var role = iam.CreateRole(new CreateRoleRequest
+  {
+    RoleName = "DemoEC2",
+    AssumeRolePolicyDocument = assumeRole 
+  });
+
+  Console.WriteLine(role.Name + " was created.");
+}
+catch (EntityAlreadyExistsException)
+{
+  Console.WriteLine("Role 'DemoEC2' already exists.");
+}

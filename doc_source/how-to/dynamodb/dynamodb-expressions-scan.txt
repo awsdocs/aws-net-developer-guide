@@ -1,0 +1,28 @@
+// using Amazon.DynamoDBv2;
+// using Amazon.DynamoDBv2.Model;
+
+var client = new AmazonDynamoDBClient();
+var request = new ScanRequest
+{
+  TableName = "ProductCatalog",
+  ProjectionExpression = "Id, Title, #pr",
+  ExpressionAttributeValues = new Dictionary<string,AttributeValue>
+  {
+    { ":catg", new AttributeValue { S = "Bike" } }
+  },
+  ExpressionAttributeNames = new Dictionary<string, string>
+  {
+    { "#pr", "ProductReviews" },
+    { "#pc", "ProductCategory" }
+  },
+  FilterExpression = "#pc = :catg",  
+};
+var response = client.Scan(request);
+
+foreach (var item in response.Items)
+{
+  // Write out the first page/scan of an item's attribute keys and values.
+  // PrintItem() is a custom function.
+  PrintItem(item);
+  Console.WriteLine("=====");
+}

@@ -1,0 +1,28 @@
+// using Amazon.IdentityManagement.Resources;
+// using Amazon.IdentityManagement.Model;
+
+var iam = new IdentityManagementService();
+
+try
+{
+  var role = iam.GetRoleByName("DemoEC2");
+  
+  Console.WriteLine("For role {0}:", role.Name);
+  Console.WriteLine("  Policies:");
+
+  foreach (var policy in role.GetPolicies())
+  {
+    Console.WriteLine("    {0}", policy.Name);
+  }
+
+  Console.WriteLine("  InstanceProfiles:");
+
+  foreach (var instanceProfile in role.GetInstanceProfiles())
+  {
+    Console.WriteLine("    {0}", instanceProfile.Name);
+  }
+}
+catch (NoSuchEntityException)
+{
+  Console.WriteLine("Role 'DemoEC2' does not exist.");
+}

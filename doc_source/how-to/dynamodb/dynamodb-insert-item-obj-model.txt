@@ -1,0 +1,13 @@
+// using Amazon.DynamoDBv2;
+// using Amazon.DynamoDBv2.DataModel;
+    
+var client = new AmazonDynamoDBClient();
+var context = new DynamoDBContext(client);
+var item = new Item
+{
+  Id = 4,
+  Type = "Fish",
+  Name = "Goldie"
+};
+
+context.Save(item);

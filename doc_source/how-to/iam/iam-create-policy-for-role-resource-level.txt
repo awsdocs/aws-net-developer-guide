@@ -1,0 +1,54 @@
+public static string GenerateRolePolicyDocument()
+{
+  // using Amazon.Auth.AccessControlPolicy;
+
+  // Create a policy that looks like this:
+  /*
+  {
+    "Version" : "2012-10-17",
+    "Id"  : "DemoEC2Permissions",
+    "Statement" : [
+      {
+        "Sid" : "DemoEC2PermissionsStatement",
+        "Effect" : "Allow",
+        "Action" : [
+          "s3:Get*",
+          "s3:List*"
+        ],
+        "Resource" : "*"
+      } 
+    ]
+  }
+  */
+
+  var actionGet = new ActionIdentifier("s3:Get*");
+  var actionList = new ActionIdentifier("s3:List*");
+  var actions = new List<ActionIdentifier>();
+
+  actions.Add(actionGet);
+  actions.Add(actionList);
+
+  var resource = new Resource("*");
+  var resources = new List<Resource>();
+
+  resources.Add(resource);
+
+  var statement = new Statement(Statement.StatementEffect.Allow)
+  {
+    Actions = actions,
+    Id = "DemoEC2PermissionsStatement",
+    Resources = resources
+  };
+  var statements = new List<Statement>();
+
+  statements.Add(statement);
+
+  var policy = new Policy
+  {
+    Id = "DemoEC2Permissions",
+    Version = "2012-10-17",
+    Statements = statements
+  };
+
+  return policy.ToJson();
+}

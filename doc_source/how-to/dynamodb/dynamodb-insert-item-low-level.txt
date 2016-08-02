@@ -1,0 +1,29 @@
+// using Amazon.DynamoDBv2;
+// using Amazon.DynamoDBv2.Model;
+
+var client = new AmazonDynamoDBClient();
+
+var request1 = new PutItemRequest
+{
+  TableName = "AnimalsInventory",
+  Item = new Dictionary<string, AttributeValue>
+  {
+    { "Id", new AttributeValue { N = "1" }},
+    { "Type", new AttributeValue { S = "Dog" }},
+    { "Name", new AttributeValue { S = "Fido" }}
+  }
+};
+
+var request2 = new PutItemRequest
+{
+  TableName = "AnimalsInventory",
+  Item = new Dictionary<string, AttributeValue>
+  {
+    { "Id", new AttributeValue { N = "2" }},
+    { "Type", new AttributeValue { S = "Cat" }},
+    { "Name", new AttributeValue { S = "Patches" }}
+  }
+};
+        
+client.PutItem(request1);
+client.PutItem(request2);

@@ -1,0 +1,90 @@
+// using Amazon.Glacier;
+// using Amazon.Glacier.Model;
+
+var client = new AmazonGlacierClient();
+var request = new ListVaultsRequest();
+var response = client.ListVaults(request);
+
+foreach (var vault in response.VaultList)
+{
+  Console.WriteLine("Vault: {0}", vault.VaultName);
+  Console.WriteLine("  Creation date: {0}", vault.CreationDate);
+  Console.WriteLine("  Size in bytes: {0}", vault.SizeInBytes);
+  Console.WriteLine("  Number of archives: {0}", vault.NumberOfArchives);
+  
+  try 
+  {
+    var requestNotifications = new GetVaultNotificationsRequest
+    {
+      VaultName = vault.VaultName
+    };
+    var responseNotifications = 
+      client.GetVaultNotifications(requestNotifications);
+
+    Console.WriteLine("  Notifications:");
+    Console.WriteLine("    Topic: {0}", 
+      responseNotifications.VaultNotificationConfig.SNSTopic);
+
+    var events = responseNotifications.VaultNotificationConfig.Events;
+
+    if (events.Any())
+    {
+      Console.WriteLine("    Events:");
+
+      foreach (var e in events)
+      {
+        Console.WriteLine("{0}", e);
+      }
+    }
+    else
+    {
+      Console.WriteLine("    No events set.");
+    }
+    
+  }
+  catch (ResourceNotFoundException)
+  {
+    Console.WriteLine("  No notifications set.");
+  }
+    
+  var requestJobs = new ListJobsRequest{
+    VaultName = vault.VaultName
+  };
+  var responseJobs = client.ListJobs(requestJobs);
+  var jobs = responseJobs.JobList;
+  
+  if (jobs.Any())
+  {
+    Console.WriteLine("  Jobs:");
+
+    foreach (var job in jobs)
+    {
+      Console.WriteLine("    For job ID: {0}", 
+        job.JobId);
+      Console.WriteLine("Archive ID: {0}", 
+        job.ArchiveId);
+      Console.WriteLine("Archive size in bytes: {0}", 
+        job.ArchiveSizeInBytes.ToString());
+      Console.WriteLine("Completed: {0}", 
+        job.Completed);
+      Console.WriteLine("Completion date: {0}", 
+        job.CompletionDate);
+      Console.WriteLine("Creation date: {0}", 
+        job.CreationDate);
+      Console.WriteLine("Inventory size in bytes: {0}", 
+        job.InventorySizeInBytes);
+      Console.WriteLine("Job description: {0}", 
+        job.JobDescription);
+      Console.WriteLine("Status code: {0}", 
+        job.StatusCode.Value);
+      Console.WriteLine("Status message: {0}", 
+        job.StatusMessage);
+    }
+
+  }
+  else
+  {
+    Console.WriteLine("  No jobs.");
+  }
+
+}

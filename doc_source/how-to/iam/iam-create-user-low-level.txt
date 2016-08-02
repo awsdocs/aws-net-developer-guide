@@ -1,0 +1,20 @@
+// using Amazon.IdentityManagement;
+// using Amazon.IdentityManagement.Model;
+
+var client = new AmazonIdentityManagementServiceClient();
+var request = new CreateUserRequest 
+{ 
+  UserName = "DemoUser" 
+};
+
+try
+{
+  var response = client.CreateUser(request);
+
+  Console.WriteLine("User Name = '{0}', ARN = '{1}'", 
+    response.User.UserName, response.User.Arn);
+}
+catch (EntityAlreadyExistsException)
+{
+  Console.WriteLine("User 'DemoUser' already exists.");
+}

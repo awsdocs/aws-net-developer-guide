@@ -1,0 +1,23 @@
+// using Amazon.IdentityManagement;
+// using Amazon.IdentityManagement.Model;
+
+var client = new AmazonIdentityManagementServiceClient();
+// GenerateRolePolicyDocument() is a custom method.
+string policyDoc = GenerateRolePolicyDocument();
+
+var request = new PutRolePolicyRequest
+{
+  RoleName = "DemoEC2",
+  PolicyName = "DemoEC2Permissions",
+  PolicyDocument = policyDoc
+};
+
+try
+{
+  client.PutRolePolicy(request);
+}
+catch (NoSuchEntityException)
+{
+  Console.WriteLine
+    ("Role 'DemoEC2' or policy 'DemoEC2Permissions' does not exist.");
+}

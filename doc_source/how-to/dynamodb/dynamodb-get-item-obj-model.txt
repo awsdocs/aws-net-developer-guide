@@ -1,0 +1,10 @@
+// using Amazon.DynamoDBv2;
+// using Amazon.DynamoDBv2.DataModel;
+
+var client = new AmazonDynamoDBClient();
+var context = new DynamoDBContext(client);
+var item = context.Load<Item>(4, "Fish");
+
+Console.WriteLine("Id = {0}", item.Id);
+Console.WriteLine("Type = {0}", item.Type);
+Console.WriteLine("Name = {0}", item.Name);

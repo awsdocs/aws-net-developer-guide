@@ -1,0 +1,22 @@
+// using Amazon.DynamoDBv2;
+// using Amazon.DynamoDBv2.Model;
+
+var client = new AmazonDynamoDBClient();
+var request = new GetItemRequest
+{
+  TableName = "ProductCatalog",
+  ProjectionExpression = "Id, Title, Description, Color, #ri, Pictures, #pr",
+  ExpressionAttributeNames = new Dictionary<string, string>
+  {
+    { "#pr", "ProductReviews" },
+    { "#ri", "RelatedItems" }
+  },
+  Key = new Dictionary<string, AttributeValue>
+  {
+    { "Id", new AttributeValue { N = "205" } }
+  },
+};
+var response = client.GetItem(request);
+
+// PrintItem() is a custom function.
+PrintItem(response.Item);

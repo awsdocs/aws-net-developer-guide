@@ -1,0 +1,47 @@
+// using Amazon.DynamoDBv2;
+// using Amazon.DynamoDBv2.Model;
+
+var client = new AmazonDynamoDBClient();
+
+var request = new CreateTableRequest
+{
+  TableName = "AnimalsInventory",
+  AttributeDefinitions = new List<AttributeDefinition>
+  {
+    new AttributeDefinition
+    {
+      AttributeName = "Id",
+      // "S" = string, "N" = number, and so on.
+      AttributeType = "N"
+    },
+    new AttributeDefinition
+    {
+      AttributeName = "Type",
+      AttributeType = "S"
+    }
+  },
+  KeySchema = new List<KeySchemaElement>
+  {
+    new KeySchemaElement
+    {
+      AttributeName = "Id",
+      // "HASH" = hash key, "RANGE" = range key.
+      KeyType = "HASH"
+    },
+    new KeySchemaElement
+    {
+      AttributeName = "Type",
+      KeyType = "RANGE"
+    },
+  },
+  ProvisionedThroughput = new ProvisionedThroughput
+  {
+    ReadCapacityUnits = 10,
+    WriteCapacityUnits = 5
+  },  
+};
+
+var response = client.CreateTable(request);
+
+Console.WriteLine("Table created with request ID: " + 
+  response.ResponseMetadata.RequestId);

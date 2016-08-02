@@ -1,0 +1,335 @@
+.. Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+
+   This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+   International License (the "License"). You may not use this file except in compliance with the
+   License. A copy of the License is located at http://creativecommons.org/licenses/by-nc-sa/4.0/.
+
+   This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+   either express or implied. See the License for the specific language governing permissions and
+   limitations under the License.
+
+.. _run-instance:
+
+Launch an EC2 Instance Using the the SDK
+========================================
+
+Use the following procedure to launch one or more identically configured EC2 instances from the same
+Amazon Machine Image (AMI). After you create your EC2 instances, you can check their status. After
+your EC2 instances are running, you can connect to them.
+
+
+.. contents:: **Contents**
+    :local:
+    :depth: 1
+
+.. _launch-instance:
+
+Launching an EC2 Instance
+-------------------------
+
+You launch an instance in either EC2-Classic or in a VPC. For more information about EC2-Classic and
+EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-platforms>` in the |EC2-ug-win|.
+
+**To launch an EC2 instance in EC2-Classic**
+
+1. Create and initialize a :sdk-net-api-v2:`RunInstancesRequest <TEC2RunInstancesRequestNET45>` object. 
+   Make sure that the AMI, key pair, and security group that you specify exist in the region that you
+   specified when you created the client object.
+
+   .. code-block:: csharp
+
+       string amiID = "ami-e189c8d1";
+       string keyPairName = "my-sample-key";
+       
+       List<string> groups = new List<string>() { mySG.GroupId };
+       var launchRequest = new RunInstancesRequest()
+       {
+           ImageId = amiID,
+           InstanceType = "t1.micro",
+           MinCount = 1,
+           MaxCount = 1,
+           KeyName = keyPairName,
+           SecurityGroupIds = groups
+       };
+
+   :code:`ImageId`
+       The ID of the AMI. For a list of public AMIs provided by Amazon, see 
+       :mktplace-search:`Amazon Machine Images <AMISAWS>`.
+
+   :code:`InstanceType`
+       An instance type that is compatible with the specified AMI. For more information, see
+       :ec2-ug-win:`Instance Types <instance-types>` in the |EC2-ug-win|.
+
+   :code:`MinCount`
+       The minimum number of EC2 instances to launch. If this is more instances than |EC2| can
+       launch in the target Availability Zone, |EC2| launches no instances.
+
+   :code:`MaxCount`
+       The maximum number of EC2 instances to launch. If this is more instances than |EC2| can
+       launch in the target Availability Zone, |EC2| launches the largest possible number of
+       instances above :code:`MinCount`. You can launch between 1 and the maximum number of
+       instances you're allowed for the instance type. For more information, see 
+       :ec2-faq:`How many instances can I run in Amazon EC2 <#How_many_instances_can_I_run_in_Amazon_EC2>` 
+       in the |EC2| General FAQ.
+
+   :code:`KeyName`
+       The name of the EC2 key pair. If you launch an instance without specifying a key pair, you
+       can't connect to it. For more information, see :ref:`create-key-pair`.
+
+   :code:`SecurityGroupIds`
+       The identifiers of one or more security groups. For more information, see
+       :ref:`create-security-group`.
+
+2. (Optional) To launch the instance with an :ref:`IAM role <net-dg-roles>`, specify an IAM instance
+   profile in the :code:`RunInstancesRequest` object.
+
+   Note that an IAM user can't launch an instance with an IAM role without the permissions granted
+   by the following policy.
+
+   .. code-block:: json
+
+       {
+         "Version": "2012-10-17",
+         "Statement": [{
+           "Effect": "Allow",
+           "Action": [
+             "iam:PassRole",
+             "iam:ListInstanceProfiles",
+             "ec2:*"
+           ],
+           "Resource": "*"
+         }]
+       }
+
+   For example, the following snippet instantiates and configures an
+   :sdk-net-api-v2:`IamInstanceProfileSpecification <TEC2IamInstanceProfileSpecificationNET45>` object for an
+   IAM role named :code:`winapp-instance-role-1`.
+
+   .. code-block:: csharp
+
+       var instanceProfile = new IamInstanceProfile();
+       instanceProfile.Id  = "winapp-instance-role-1";
+       instanceProfile.Arn = "arn:aws:iam::|ExampleAWSAccountNo2H|:instance-profile/winapp-instance-role-1";
+
+   To specify this instance profile in the :code:`RunInstancesRequest` object, add the following
+   line.
+
+   .. code-block:: csharp
+
+       launchRequest.IamInstanceProfile = instanceProfile;
+
+3. Launch the instance by passing the request object to the :sdk-net-api-v2:`RunInstances
+   <MEC2EC2RunInstancesRunInstancesRequestNET45>` method. Save the ID of the instances, as
+   you need it to manage the instance.
+
+   Use the returned :sdk-net-api-v2:`RunInstancesResponse <TEC2RunInstancesResponseNET45>` object to get the
+   instance IDs for the new instances. The :code:`Reservation.Instances` property contains a list
+   of :sdk-net-api-v2:`Instance <TEC2InstanceNET45>` objects, one for each EC2 instance that you successfully
+   launched. You can retrieve the ID for each instance from the :code:`Instance` object's
+   :code:`InstanceId` property.
+
+   .. code-block:: csharp
+
+       var launchResponse = ec2Client.RunInstances(launchRequest);
+       var instances = launchResponse.Reservation.Instances;
+       var instanceIds = new List<string>();
+       foreach (Instance item in instances)
+       {
+           instanceIds.Add(item.InstanceId);
+           Console.WriteLine();
+           Console.WriteLine("New instance: " + item.InstanceId);
+           Console.WriteLine("Instance state: " + item.State.Name);
+       }
+
+**To launch an EC2 instance in a VPC**
+
+1. Create and initialize a network interface.
+
+   .. code-block:: csharp
+
+       string subnetID = "subnet-cb663da2";
+       
+       List<string> groups = new List<string>() { mySG.GroupId };
+       var eni = new InstanceNetworkInterfaceSpecification()
+       {
+           DeviceIndex = 0,
+           SubnetId = subnetID,
+           Groups = groups,
+           AssociatePublicIpAddress = true
+       };
+       List<InstanceNetworkInterfaceSpecification> enis = new List<InstanceNetworkInterfaceSpecification>() {eni};
+
+   :code:`DeviceIndex`
+       The index of the device on the instance for the network interface attachment.
+
+   :code:`SubnetId`
+       The ID of the subnet to launch the instance into.
+
+   :code:`GroupIds`
+       One or more security groups. For more information, see :ref:`create-security-group`.
+
+   :code:`AssociatePublicIpAddress`
+       Indicates whether to auto-assign a public IP address to an instance in a VPC.
+
+2. Create and initialize a `RunInstancesRequest <TEC2RunInstancesRequestNET45.html>`_ object. Make sure
+   that the AMI, key pair, and security group that you specify exist in the region that you
+   specified when you created the client object.
+
+   .. code-block:: none
+
+       string amiID = "ami-e189c8d1";
+       string keyPairName = "my-sample-key";
+       
+       var launchRequest = new RunInstancesRequest()
+       {
+           ImageId = amiID,
+           InstanceType = "t1.micro",
+           MinCount = 1,
+           MaxCount = 1,
+           KeyName = keyPairName,
+           NetworkInterfaces = enis
+       };
+
+   :code:`ImageId`
+       The ID of the AMI. For a list of public AMIs provided by Amazon, see :mktplace-search:`Amazon Machine Images <AMISAWS>`.
+
+   :code:`InstanceType`
+       An instance type that is compatible with the specified AMI. For more information, see
+       :ec2-ug-win:`Instance Types <instance-types>` in the |EC2-ug-win|.
+
+   :code:`MinCount`
+       The minimum number of EC2 instances to launch. If this is more instances than |EC2| can
+       launch in the target Availability Zone, |EC2| launches no instances.
+
+   :code:`MaxCount`
+       The maximum number of EC2 instances to launch. If this is more instances than |EC2| can
+       launch in the target Availability Zone, |EC2| launches the largest possible number of
+       instances above :code:`MinCount`. You can launch between 1 and the maximum number of
+       instances you're allowed for the instance type. For more information, see :ec2-faq:`How many
+       instances can I run in Amazon EC2 <#How_many_instances_can_I_run_in_Amazon_EC2>` in the |EC2| 
+       General FAQ.
+
+   :code:`KeyName`
+       The name of the EC2 key pair. If you launch an instance without specifying a key pair, you
+       can't connect to it. For more information, see :ref:`create-key-pair`.
+
+   :code:`NetworkInterfaces`
+       One or more network interfaces.
+
+3. (Optional) To launch the instance with an :ref:`IAM role <net-dg-roles>`, specify an 
+   :sdk-net-api-v2:`IAM instance profile <PEC2RunInstancesRequestIamInstanceProfileNET45>` in the
+   :code:`RunInstancesRequest` object.
+
+   Note that an IAM user can't launch an instance with an IAM role without the permissions granted
+   by the following policy.
+
+   .. code-block:: csharp
+
+       {
+         "Version": "2012-10-17",
+         "Statement": [{
+           "Effect": "Allow",
+           "Action": [
+             "iam:PassRole",
+             "iam:ListInstanceProfiles",
+             "ec2:*"
+           ],
+           "Resource": "*"
+         }]
+       }
+
+   For example, the following snippet instantiates and configures an
+   :sdk-net-api-v2:`IamInstanceProfileSpecification <TEC2IamInstanceProfileSpecificationNET45>` object for an
+   IAM role named :code:`winapp-instance-role-1`.
+
+   .. code-block:: csharp
+
+       var instanceProfile = new IamInstanceProfile();
+       instanceProfile.Id  = "winapp-instance-role-1";
+       instanceProfile.Arn = "arn:aws:iam::|ExampleAWSAccountNo2H|:instance-profile/winapp-instance-role-1";
+
+   To specify this instance profile in the :code:`RunInstancesRequest` object, add the following
+   line.
+
+   .. code-block:: csharp
+
+       InstanceProfile = instanceProfile
+
+4. Launch the instances by passing the request object to the :sdk-net-api-v2:`RunInstances <MEC2EC2RunInstancesRunInstancesRequestNET45>` 
+   method. Save the IDs of the instances, as
+   you need them to manage the instances.
+
+   Use the returned :sdk-net-api-v2:`RunInstancesResponse <TEC2RunInstancesResponseNET45>` object to get a
+   list of instance IDs for the new instances. The :code:`Reservation.Instances` property contains
+   a list of :sdk-net-api-v2:`Instance <TEC2InstanceNET45>` objects, one for each EC2 instance that you
+   successfully launched. You can retrieve the ID for each instance from the :code:`Instance`
+   object's :code:`InstanceId` property.
+
+   .. code-block:: csharp
+
+       RunInstancesResponse launchResponse = ec2Client.RunInstances(launchRequest);
+       
+       List<String> instanceIds = new List<string>();
+       foreach (Instance instance in launchResponse.Reservation.Instances)
+       {
+           Console.WriteLine(instance.InstanceId);
+           instanceIds.Add(instance.InstanceId);
+       }
+
+
+.. _check-instance-state:
+
+Checking the State of Your Instance
+-----------------------------------
+
+Use the following procedure to get the current state of your instance. Initially, your instance is
+in the :code:`pending` state. You can connect to your instance after it enters the :code:`running`
+state.
+
+**To check the state of your instance**
+
+1. Create and configure a :sdk-net-api-v2:`DescribeInstancesRequest <TEC2DescribeInstancesRequestNET45>` 
+   object and assign your instance's instance ID to the :code:`InstanceIds` property. You can also 
+   use the :code:`Filter` property to limit the request to certain instances, such as instances with 
+   a particular user-specified tag.
+
+   .. code-block:: csharp
+
+       var instanceRequest = new DescribeInstancesRequest();
+       instanceRequest.InstanceIds = new List<string>();
+       instanceRequest.InstanceIds.Add(instanceId);
+
+2. Call the EC2 client's :sdk-net-api-v2:`DescribeInstances <MEC2EC2DescribeInstancesDescribeInstancesRequestNET45>` 
+   method, and pass it the request
+   object from step 1. The method returns a :sdk-net-api-v2:`DescribeInstancesResponse
+   <TEC2DescribeInstancesResponseNET45>` object that contains information about the instance.
+
+   .. code-block:: csharp
+
+       var response = ec2Client.DescribeInstances(instanceRequest);
+
+3. The :code:`DescribeInstancesResponse.Reservations` property contains a list of reservations. In this
+   case, there is only one reservation. Each reservation contains a list of :code:`Instance`
+   objects. Again, in this case, there is only one instance. You can get the instance's status from
+   the :code:`State` property.
+
+   .. code-block:: csharp
+
+       Console.WriteLine(response.Reservations[0].Instances[0].State.Name);
+
+
+.. _connect-to-instance:
+
+Connecting to Your Running Instance
+-----------------------------------
+
+After an instance is running, you can remotely connect to it using an RDP client on your computer.
+Before connecting to your instance, you must ensure that the instance's RDP port is open to traffic.
+To connect, you need the instance ID and the private key for instance's key pair. For more
+information, see :ec2-ug-win:`Connecting to Your Windows Instance Using RDP
+<connecting_to_windows_instance>` in the |EC2-ug-win|.
+
+When you have finished with your EC2 instance, see :ref:`terminate-instance`.
+
+
+

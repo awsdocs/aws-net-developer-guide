@@ -1,0 +1,22 @@
+// using Amazon.IdentityManagement.Resources;
+      
+var iam = new IdentityManagementService();
+var roles = iam.GetRoles(); 
+
+foreach (var role in roles)
+{
+  Console.WriteLine("For role {0}:", role.Name);
+  Console.WriteLine("  Policies:");
+
+  foreach (var policy in role.GetPolicies()) 
+  {
+    Console.WriteLine("    {0}", policy.Name);
+  }
+
+  Console.WriteLine("  InstanceProfiles:");
+
+  foreach (var instanceProfile in role.GetInstanceProfiles()) 
+  {
+    Console.WriteLine("    {0}", instanceProfile.Name);
+  }
+}

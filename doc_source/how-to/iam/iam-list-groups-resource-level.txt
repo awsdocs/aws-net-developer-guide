@@ -1,0 +1,22 @@
+// using Amazon.IdentityManagement.Resources;
+
+var iam = new IdentityManagementService();
+var groups = iam.GetGroups(); 
+
+foreach (var group in groups)
+{
+  Console.WriteLine("For group {0}:", group.Name);
+  Console.WriteLine("  Policies:");
+
+  foreach (var policy in group.GetPolicies())
+  {
+    Console.WriteLine("    {0}", policy.Name);
+  }
+  
+  Console.WriteLine("  Users:");
+
+  foreach (var user in group.GetUsers()) 
+  {
+    Console.WriteLine("    {0}", user.Name);
+  }
+}

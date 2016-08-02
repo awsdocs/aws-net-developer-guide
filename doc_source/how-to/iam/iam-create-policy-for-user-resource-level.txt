@@ -1,0 +1,49 @@
+public static string GenerateUserPolicyDocument()
+{
+  // using Amazon.Auth.AccessControlPolicy;
+
+  // Create a policy that looks like this:
+  /*
+  {
+    "Version" : "2012-10-17",
+    "Id"  : "ListDeploymentsPolicy",
+    "Statement" : [
+      {
+        "Sid" : "ListDeploymentsStatement",
+        "Effect" : "Allow",
+        "Action" : "codedeploy:ListDeployments",
+        "Resource" : "*"
+      }
+    ]
+  }
+  */
+
+  var action = new ActionIdentifier("codedeploy:ListDeployments");
+  var actions = new List<ActionIdentifier>();
+
+  actions.Add(action);
+
+  var resource = new Resource("*");
+  var resources = new List<Resource>();
+
+  resources.Add(resource);
+
+  var statement = new Statement(Statement.StatementEffect.Allow)
+  {
+    Actions = actions,
+    Id = "ListDeploymentsStatement",
+    Resources = resources
+  };
+  var statements = new List<Statement>();
+
+  statements.Add(statement);
+
+  var policy = new Policy
+  {
+    Id = "ListDeploymentsPolicy",
+    Version = "2012-10-17",
+    Statements = statements
+  };
+
+  return policy.ToJson();
+}

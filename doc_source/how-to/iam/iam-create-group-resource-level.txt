@@ -1,0 +1,15 @@
+// using Amazon.IdentityManagement.Resources;
+// using Amazon.IdentityManagement.Model;
+
+var iam = new IdentityManagementService();
+
+try
+{
+  var group = iam.CreateGroup("DemoGroup");  
+
+  Console.WriteLine(group.Name + " was created.");
+}
+catch (EntityAlreadyExistsException)
+{
+  Console.WriteLine("Group 'DemoGroup' already exists.");
+}

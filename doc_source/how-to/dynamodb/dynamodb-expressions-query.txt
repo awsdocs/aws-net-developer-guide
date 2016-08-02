@@ -1,0 +1,40 @@
+// using Amazon.DynamoDBv2;
+// using Amazon.DynamoDBv2.Model;
+
+var client = new AmazonDynamoDBClient();
+var request = new QueryRequest
+{
+  TableName = "ProductCatalog",
+  KeyConditions = new Dictionary<string,Condition>
+  {
+    { "Id", new Condition()
+      {
+        ComparisonOperator = ComparisonOperator.EQ,
+        AttributeValueList = new List<AttributeValue>
+        {
+          new AttributeValue { N = "301" }
+        }
+      }
+    }
+  },
+  ProjectionExpression = "Id, Title, #pr.ThreeStar",
+  ExpressionAttributeNames = new Dictionary<string, string>
+  {
+    { "#pr", "ProductReviews" },
+    { "#p", "Price" }
+  },
+  ExpressionAttributeValues = new Dictionary<string,AttributeValue>
+  {
+    { ":val", new AttributeValue { N = "150" } }
+  },
+  FilterExpression = "#p > :val"
+};
+var response = client.Query(request);
+
+foreach (var item in response.Items)
+{
+  // Write out the first page of an item's attribute keys and values.
+  // PrintItem() is a custom function.
+  PrintItem(item);
+  Console.WriteLine("=====");
+}

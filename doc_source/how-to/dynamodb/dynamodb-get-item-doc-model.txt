@@ -1,0 +1,10 @@
+// using Amazon.DynamoDBv2;
+// using Amazon.DynamoDBv2.DocumentModel;
+
+var client = new AmazonDynamoDBClient();
+var table = Table.LoadTable(client, "AnimalsInventory");
+var item = table.GetItem(3, "Horse");
+
+Console.WriteLine("Id = " + item["Id"]);
+Console.WriteLine("Type = " + item["Type"]);
+Console.WriteLine("Name = " + item["Name"]);

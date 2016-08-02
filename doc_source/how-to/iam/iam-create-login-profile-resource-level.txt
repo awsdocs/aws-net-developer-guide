@@ -1,0 +1,19 @@
+// using Amazon.IdentityManagement;
+// using Amazon.IdentityManagement.Model; 
+
+var client = new AmazonIdentityManagementServiceClient();
+var request = new CreateLoginProfileRequest
+{
+  UserName = "DemoUser",
+  Password = "ksdD9JHm",
+  PasswordResetRequired = true
+};
+
+try
+{
+  client.CreateLoginProfile(request); 
+}
+catch (NoSuchEntityException)
+{
+  Console.WriteLine("User 'DemoUser' doesn't exist.");
+}
