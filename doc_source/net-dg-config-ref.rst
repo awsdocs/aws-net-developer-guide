@@ -15,7 +15,7 @@ Configuration Files Reference for |sdk-net|
 ###########################################
 
 You can use a .NET project's :file:`App.config` or :file:`Web.config` file to specify AWS settings,
-such as AWS credentials, logging options, AWS service end points, and AWS regions, as well as some
+such as AWS credentials, logging options, AWS service endpoints, and AWS regions, as well as some
 settings for AWS services, such as |DDBlong|, |EC2|, and |S3|. The following information describes
 how to properly format an :file:`App.config` or :file:`Web.config` file to specify these types of
 settings.
