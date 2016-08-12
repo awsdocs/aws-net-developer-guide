@@ -40,3 +40,5 @@ with your project on a public site. For more information, see
 
 For more information about managing your credentials, see 
 :aws-gr:`Best Practices for Managing AWS Access Keys <aws-access-keys-best-practices>`.
+
+My suggested change.
