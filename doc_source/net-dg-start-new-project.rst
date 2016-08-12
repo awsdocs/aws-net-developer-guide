@@ -66,7 +66,7 @@ more information about how to configure an AWS application, see :ref:`net-dg-con
       <configuration>
         <appSettings>
           <add key="AWSProfileName" value="development"/>
-          <add key="AWSRegion" value="us-east-1"/>
+          <add key="AWSRegion" value="us-west-1"/>
         </appSettings>
       </configuration>
 
