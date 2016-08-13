@@ -107,3 +107,5 @@ the SDK. The following |S3| functionality is currently unavailable in the |WP8| 
 
 Also, the |WP8| version of the SDK does not support decryption of the Windows password using the
 :sdk-net-api:`GetDecryptedPassword <EC2/MEC2GetPasswordDataResponseGetDecryptedPasswordString>` method.
+
+My new proposed change.
