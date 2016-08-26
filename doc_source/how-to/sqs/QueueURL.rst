@@ -21,11 +21,7 @@ in the following format:
 
      https://{REGION_ENDPOINT}/queue.|api-domain|/{YOUR_ACCOUNT_NUMBER}/{YOUR_QUEUE_NAME}
 
-To find your AWS account number, go to `Security Credentials
-<https:///gp/aws/securityCredentials>`_. Your account number is located under :guilabel:`Account
-Number` in the upper right of the page.
-
- or information on sending a message to a queue, see :ref:`send-sqs-message`.
+For information on sending a message to a queue, see :ref:`send-sqs-message`.
 
 For information about receiving messages from a queue, see :ref:`receive-sqs-message`.
 

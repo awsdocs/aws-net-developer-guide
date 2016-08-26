@@ -40,7 +40,7 @@ You can use the Amazon SDK for .NET to receive messages from an Amazon SQS queue
 
    Calling :code:`DeleteMessage` unconditionally removes the message from the queue, regardless of
    the visibility timeout setting. For more information about visibility timeouts, go to
-   `Visibility Timeout <http:///AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html>`_.
+   :SQS-dg:`Visibility Timeout <AboutVT>`.
 
 For information about sending a message to a queue, see :ref:`Sending an Amazon SQS Message
 <send-sqs-message>`.

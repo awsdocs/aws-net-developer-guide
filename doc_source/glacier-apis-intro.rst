@@ -16,7 +16,7 @@
 
 The |sdk-net| supports |GLlong|, which is a storage service optimized for infrequently used data, or
 "cold data." The service provides durable and extremely low-cost storage with security features for
-data archiving and backup. For more information, see `Amazon Glacier <http:///glacier/>`_.
+data archiving and backup. For more information, see |GL|_.
 
 The following information introduces you to the |GL| programming models in the the SDK.
 

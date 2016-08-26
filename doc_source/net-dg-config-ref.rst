@@ -253,7 +253,7 @@ The <dynamoDB> element represents a collection of settings for Amazon DynamoDB. 
 include the conversionSchema attribute, which represents the version to use for converting between
 .NET and DynamoDB objects. Allowed values include V1 and V2. (This attribute maps to the
 Amazon.DynamoDBv2.DynamoDBEntryConversion class in the AWS SDK for .NET.) For more information, see
-:aws-blogs-net:`DynamoDB Series - Conversion Schemas
+:aws-blogs-net:`DynamoDB Series - Conversion Schemas 
 <Tx2TCOGWG7ARUH5/DynamoDB-Series-Conversion-Schemas>`.
 
 The parent of the :code:`<dynamoDB>` element is the element.
@@ -281,9 +281,9 @@ The <dynamoDBContext> element represents a collection of Amazon DynamoDB context
 This element can include the tableNamePrefix attribute, which represents the default table name
 prefix that the DynamoDB context will use if it is not manually configured. (This attribute maps to
 the :code:`Amazon.Util.DynamoDBContextConfig.TableNamePrefix` property from the
-:code:`Amazon.AWSConfigs.DynamoDBConfig.Context.TableNamePrefix` property in the AWS SDK for .NET.) For more
-information, see `Enhancements to the DynamoDB SDK
-<net/post/Tx2C4MHH2H0SA5W/Enhancements-to-the-DynamoDB-SDK>`_.
+:code:`Amazon.AWSConfigs.DynamoDBConfig.Context.TableNamePrefix` property in the AWS SDK for .NET.) 
+For more information, see 
+:aws-blogs-net:`Enhancements to the DynamoDB SDK <Tx2C4MHH2H0SA5W/Enhancements-to-the-DynamoDB-SDK>`.
 
 The parent of the :code:`<dynamoDBContext>` element is the element.
 
@@ -452,7 +452,7 @@ property
 
 The :code:`<property>` element represents a DynamoDB property. (This element maps to an instance of the
 Amazon.Util.PropertyConfig class from the Amazon.Util.TypeMapping.AddProperty method in the AWS SDK
-for .NET.) For more information, see :aws-blogs-net:`Enhancements to the DynamoDB SDK
+for .NET.) For more information, see :aws-blogs-net:`Enhancements to the DynamoDB SDK 
 <Tx2C4MHH2H0SA5W/Enhancements-to-the-DynamoDB-SDK>` and 
 :ddb-dg:`DynamoDB Attributes <DeclarativeTagsList>`. This element can include the following
 attributes:
