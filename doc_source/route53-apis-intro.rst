@@ -23,7 +23,7 @@ infrastructure outside of AWS. This topic describes how to use the |sdk-net| to 
 
 .. note:: This topic assumes you are already familiar with how to use |R53| and have already 
    installed the |sdk-net|. For more information about |R53|, see the 
-   `Amazon Route 53 Developer Guide <Welcome>`. For information about how to install the 
+   :r53-dg:`Amazon Route 53 Developer Guide <Welcome>`. For information about how to install the 
    |sdk-net|, see :ref:`net-dg-setup`.
 
 The basic procedure is as follows.
