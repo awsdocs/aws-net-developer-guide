@@ -114,9 +114,11 @@ section. You can generate the latest version of this list by calling the
         conversionSchema="V1 | V2">
         <dynamoDBContext
           tableNamePrefix="string value">
-          <alias
-            fromTable="string value"
-            toTable="string value" />
+          <tableAliases>
+            <alias
+              fromTable="string value"
+              toTable="string value" />
+          </tableAliases>
           <map
             type="NameSpace.Class, Assembly"
             targetTable="string value">
@@ -175,7 +177,7 @@ This element can include the following attributes:
     The to-table portion of the from-table to to-table mapping. This attribute maps to the
     :code:`Amazon.Util.TableAlias.ToTable` property in the |sdk-net|.
 
-The parent of the :code:`<alias>` element is the :code:`<dynamoDBContext>` element.
+The parent of the :code:`<alias>` element is the :code:`<tableAliases>` element.
 
 The :code:`<alias>` element contains no child elements.
 
