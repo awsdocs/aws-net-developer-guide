@@ -25,4 +25,3 @@ Developer Guide*.
 |  New SDK version  |  Version 3 of the |sdk-net| released.  |  July 28th, 2015  |
 +-------------------+----------------------------------------+-------------------+
 
-

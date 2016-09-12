@@ -389,7 +389,7 @@ extlinks['s3-dg-deep']   = (aws_docs_url + 'AmazonS3/latest/dev/%s', '')
 extlinks['ddb-dg-deep']  = (aws_docs_url + 'amazondynamodb/latest/developerguide/%s', '')
 
 # usage: :mktplace-search:`Amazon Machine Images <AMISAWS>` where AMISAWS is the search term.
-# usage: :mktplace-search:`Windows server <windows+server>` 
+# usage: :mktplace-search:`Windows server <windows+server>`
 extlinks['mktplace-search'] = (aws_url + 'marketplace/search/results/&searchTerms=%s?browse=1', '')
 
 extlinks['ec2-faq']         = (aws_url + 'ec2/faqs/%s', '')

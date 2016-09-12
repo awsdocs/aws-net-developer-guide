@@ -35,8 +35,9 @@ in the |sdk-store|. You can create and manage profiles with the |TVSlong|, Power
 programmatically with the |sdk-net|. These credentials are encrypted and stored separately from any
 project. You then reference the profile by name in your application, and the credentials are
 inserted at build time. This approach ensures that your credentials are not unintentionally exposed
-with your project on a public site. For more information, see 
+with your project on a public site. For more information, see
 :tvs-ug:`Setting Up the AWS Toolkit for Visual Studio <tkv_setup>` and :ref:`net-dg-config-creds`.
 
-For more information about managing your credentials, see 
+For more information about managing your credentials, see
 :aws-gr:`Best Practices for Managing AWS Access Keys <aws-access-keys-best-practices>`.
+
