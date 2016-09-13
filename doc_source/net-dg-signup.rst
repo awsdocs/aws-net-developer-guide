@@ -1,5 +1,6 @@
 .. Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
+
    This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
    International License (the "License"). You may not use this file except in compliance with the
    License. A copy of the License is located at http://creativecommons.org/licenses/by-nc-sa/4.0/.

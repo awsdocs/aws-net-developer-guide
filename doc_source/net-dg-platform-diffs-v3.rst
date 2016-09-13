@@ -18,6 +18,13 @@ The |sdk-net| provides distinct groups of assemblies for developers to target di
 However, not all SDK functionality is available on each of these platforms. This topic describes the
 differences in support for each platform.
 
+.. note:: The |sdk-net| is not Federal Information Processing Standard (FIPS) compliant when used 
+   by applications built against version 2.0 of the CLR. For details on how you can substitute a 
+   FIPS compliant implementation in that environment, refer to 
+   `CryptoConfig <https://blogs.msdn.microsoft.com/shawnfa/2008/12/02/cryptoconfig/>`_ on the 
+   Microsoft blog and the `CLR Security <http://clrsecurity.codeplex.com/>` team's  HMACSHA256 class 
+   ( HMACSHA256Cng ) in Security.Cryptography.dll.
+
 .. _net-dg-platform-diff-netfx35:
 
 |sdk-net| Framework 3.5
