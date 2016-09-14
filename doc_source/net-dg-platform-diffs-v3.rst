@@ -11,7 +11,7 @@
 .. _net-dg-platform-diffs-v3:
 
 #####################################
-Platform Differences in the |sdk-net|
+Platforms Supported by the |sdk-net|
 #####################################
 
 The |sdk-net| provides distinct groups of assemblies for developers to target different platforms.
@@ -22,7 +22,7 @@ differences in support for each platform.
    by applications built against version 2.0 of the CLR. For details on how you can substitute a 
    FIPS compliant implementation in that environment, refer to 
    `CryptoConfig <https://blogs.msdn.microsoft.com/shawnfa/2008/12/02/cryptoconfig/>`_ on the 
-   Microsoft blog and the `CLR Security <http://clrsecurity.codeplex.com/>` team's  HMACSHA256 class 
+   Microsoft blog and the `CLR Security <http://clrsecurity.codeplex.com/>`_ team's  HMACSHA256 class 
    ( HMACSHA256Cng ) in Security.Cryptography.dll.
 
 .. _net-dg-platform-diff-netfx35:
@@ -52,65 +52,15 @@ in `C# 5.0 <https://en.wikipedia.org/wiki/C_Sharp_%28programming_language%29#Ver
 
 .. _net-dg-platform-diff-winrt:
 
-AWS SDK for |WinRT|
-===================
+AWS SDK for Portable Class Library
+==================================
 
-The version of the |sdk-net| compiled for `WinRT <http://windows.microsoft.com/en-us/windows/rt-welcome>`_ 
-supports only asynchronous method calls using :code:`async` and :code:`await`.
+The |sdk-net| supports Portable Class Library projects, which allow you to target multiple platforms, 
+including Windows Store, Windows Phone, and Xamarin on iOS and Android. See the AWS Mobile SDK for 
+.NET and Xamarin for more details.
 
-This version does not provide all of the functionality for |S3| and |DDB| that was available in
-version 1 of the SDK. The following |S3| functionality is currently unavailable in the |WinRT|
-version of SDK.
+Unity Support
+=============
 
-* :sdk-net-api:`Transfer Utility <S3/TS3TransferTransferUtility>`
-
-* :sdk-net-api:`IO Namespace <S3/NS3IO>`
-
-
-.. _net-dg-platform-diff-winphone:
-
-AWS SDK for |WP8|
-=================
-
-The version of the |sdk-net| compiled for |WP8| has a programming model similar to |WinRT|. As with
-the |WinRT| version, it supports only asynchronous method calls using :code:`async` and
-:code:`await`. Also, because |WP8| doesn't natively support :code:`System.Net.Http.HttpClient`, the
-SDK depends on Microsoft's portable class implementation of :code:`HttpClient`, which is hosted on
-NuGet at the following URL:
-
-* http://nuget.org/packages/Microsoft.Net.Http/2.1.10
-
-This version of the |sdk-net| supports the same set of services supported in the 
-|sdk-android|_ and the |sdk-ios|_:
-
-* |EC2|
-
-* |ELB|
-
-* |AS|
-
-* |S3|
-
-* |SNS|
-
-* |SQS|
-
-* |SES|
-
-* |DDB|
-
-* |SDB|
-
-* |CW|
-
-* |STS|
-
-This version does not provide all of the functionality for |S3| and |DDB| available in version 1 of
-the SDK. The following |S3| functionality is currently unavailable in the |WP8| version of SDK.
-
-* :sdk-net-api:`Transfer Utility <S3/TS3TransferTransferUtility>`
-
-* :sdk-net-api:`IO Namespace <S3/NS3IO>`
-
-Also, the |WP8| version of the SDK does not support decryption of the Windows password using the
-:sdk-net-api:`GetDecryptedPassword <EC2/MEC2GetPasswordDataResponseGetDecryptedPasswordString>` method.
+The |sdk-net| supports generating Assemplies for Unity. More information can be found in the 
+`Unity README <https://github.com/aws/aws-sdk-net/blob/master/Unity.README.md>`_.
