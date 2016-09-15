@@ -3,8 +3,11 @@
 .. |WinRT| replace:: Windows RT
 .. |WP| replace:: Windows Phone 8
 .. |WP8| replace:: |WP|
+.. |net-core| replace:: .NET Core
+
 
 .. |aws-home| replace:: AWS home page
-.. _aws-home: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html
+.. _aws-home: http://portal.aws.amazon.com/gp/aws/developer/registration/index.html
+
 
 

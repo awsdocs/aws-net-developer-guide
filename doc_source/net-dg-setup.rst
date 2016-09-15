@@ -26,3 +26,5 @@ To get started with the |sdk-net|, complete the following tasks:
     net-dg-dev-env
     net-dg-install-assemblies
     net-dg-start-new-project
+    net-dg-platform-diffs-v3
+    

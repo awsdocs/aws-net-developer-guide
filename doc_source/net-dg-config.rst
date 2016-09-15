@@ -68,6 +68,7 @@ Topics
 .. toctree:: 
     :maxdepth: 1
     
+    net-dg-config-netcore
     net-dg-config-creds
     net-dg-region-selection
     net-dg-config-other

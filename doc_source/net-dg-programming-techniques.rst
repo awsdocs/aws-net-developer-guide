@@ -27,7 +27,6 @@ For information about developing software with the |sdk-net| for specific AWS se
     net-dg-config
     sdk-net-async-api
     retries-timeouts
-    migration-v3
-    net-dg-platform-diffs-v3
+
 
 
