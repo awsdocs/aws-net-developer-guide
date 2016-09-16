@@ -102,7 +102,7 @@ github_doc_url = 'http://github.com/awsdocs/aws-net-developer-guide/tree/master/
 #
 
 aws_docs_url = 'http://docs.aws.amazon.com/'
-aws_url = 'https://aws.amazon.com/'
+aws_url = 'http://aws.amazon.com/'
 aws_blogs = 'http://blogs.aws.amazon.com/'
 aws_blogs_net = aws_blogs + 'net/post/'
 
