@@ -19,22 +19,29 @@ cost-effective, scalable, and reliable AWS services such as |S3long| (|S3|) and 
 The the SDK supports development on any platform that supports the .NET Framework 3.5 or later, and
 you can develop applications with the SDK using Visual Studio 2010 or later.
 
+.. contents:: Topics
+     :local:
+     :depth: 1
+
+What's in the SDK
+=================
+     
 The |sdk-net| includes the following:
 
-* The current version of the |sdk-net|.
+* The current version of the |sdk-net|
 
-* All previous major versions of the |sdk-net|.
+* All previous major versions of the |sdk-net|
 
-* Sample code that demonstrates how to use the |sdk-net| with several AWS services.
+* Sample code that demonstrates how to use the |sdk-net| with several AWS services
 
 To simplify installation, AWS provides the |TFW|, which is a Windows installation package that
 includes:
 
-* The |sdk-net|_.
+* The |sdk-net|_
 
-* The |TWPlong|. For more information, see the |TWP-ug|_.
+* The |TWPlong| (see the |TWP-ug|_)
 
-* The |TVSlong|. For more information, see the |TVS-ug|_.
+* The |TVSlong| (see the |TVS-ug|_)
 
 As an alternative to installing the |TFW|, you can use NuGet to download individual AWSSDK service
 assemblies for a specific application project. For more information, see :ref:`net-dg-nuget`.
@@ -55,7 +62,7 @@ The *AWS SDK for .NET Developer Guide* describes how to implement applications f
 
 :ref:`net-dg-programming-techniques`
     The basics of how to implement applications with the |sdk-net| that applies to all AWS services.
-    This chapter also includes information about how to migrate code to the latest version of the
+    This section also includes information about how to migrate code to the latest version of the
     |sdk-net|, and describes the differences between the last version and this one.
 
 :ref:`tutorials-examples`
@@ -63,7 +70,7 @@ The *AWS SDK for .NET Developer Guide* describes how to implement applications f
     applications for particular AWS services.
 
 :ref:`net-dg-additional-resources`
-    Additional resources outside of this guide that provide more information about AWS and the
+    More resources outside of this guide that provide valuable information about AWS and the
     |sdk-net|.
 
 A related document, |sdk-net-api|_, provides a detailed description
@@ -81,24 +88,3 @@ a list of the AWS services supported by the SDK, see the `SDK README file
 
 To see what changed in a given release, see the `the SDK change log
 <https://github.com/aws/aws-sdk-net/blob/master/SDK.CHANGELOG.md>`_.
-
-
-.. _about-aws:
-
-About Amazon Web Services
-=========================
-
-Amazon Web Services (AWS) is a collection of digital infrastructure services that developers can
-leverage when developing their applications. The services include computing, storage, database, and
-application synchronization (messaging and queuing).
-
-AWS uses a pay-as-you-go service model. You are charged only for the services that you |mdash| or
-your applications |mdash| use. Also, to make AWS useful as a platform for prototyping and
-experimentation, AWS offers a free usage tier, in which services are free below a certain level of
-use. For more information, see 
-`Test-Driving AWS in the Free Usage Tier <https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-free-tier.html>`_.
-
-To obtain an AWS account, visit the |aws-home|_ and click **Create a Free Account**.
-
-
-

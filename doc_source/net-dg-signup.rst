@@ -28,7 +28,7 @@ and a secret key. These keys are used to sign programmatic web service requests 
 verify the request comes from an authorized source. You can obtain a set of account credentials when
 you create your account. However, we recommend that you do not use these credentials with |sdk-net|.
 Instead, :iam-ug:`create one or more IAM users <Using_SettingUpUser>`, and use those credentials. For
-applications that run on EC2 instances, you can use :iam-ug:`IAM roles <WorkingWithRoles>` to provide
+applications that run on |EC2| instances, you can use :iam-ug:`IAM roles <WorkingWithRoles>` to provide
 temporary credentials.
 
 The preferred approach for handling credentials is to create a profile for each set of credentials
