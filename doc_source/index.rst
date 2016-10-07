@@ -16,6 +16,10 @@
 
 This documentation is for version 3.0 of the |sdk-net|, which is the latest version.
 
+.. meta::
+    :description: Developer Guide for the AWS SDK for .NET
+    :keywords: .net, sdk, aws
+
 .. toctree::
    :titlesonly:
    :maxdepth: 1
@@ -26,3 +30,5 @@ This documentation is for version 3.0 of the |sdk-net|, which is the latest vers
    tutorials-examples
    net-dg-additional-resources
    document-history
+   
+.. include:: about-aws.txt
