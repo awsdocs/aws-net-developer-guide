@@ -17,7 +17,7 @@
 The |sdk-net| supports |CFNLong|, which creates and provisions AWS infrastructure deployments
 predictably and repeatedly. For more information, see |CFN-gsg|_.
 
-The following example shows how to use the low-level APIs to list accessible resources in |CFN|:
+The following example shows how to use the low-level APIs to list accessible resources in |CFN|.
 
 .. literalinclude:: how-to/cloudformation/cloudformation-list-stacks-low-level.txt
    :language: csharp

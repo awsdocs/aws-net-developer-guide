@@ -14,7 +14,7 @@
 Programming AWS Services with the |sdk-net|
 ###########################################
 
-The following concepts, tutorials, and examples demonstrate how to use the |sdk-net| to work with
+The following topics, tutorials, and examples demonstrate how to use the |sdk-net| to work with
 individual AWS services.
 
 Additional samples are available on :github:`GitHub <awslabs/aws-sdk-net-samples>`.
