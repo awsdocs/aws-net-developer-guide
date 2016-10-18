@@ -104,8 +104,8 @@ Using NuGet from Solution Explorer
 
    .. figure:: images/nuget-install-vs-dlg.png
       :scale: 65
-      :alt: Figure shows AWSSDK - Core Runtime package and dependency on the :code:`AWSSDK.Core` 
-            assembly package
+      :alt: AWSSDK Core Runtime package and dependency on :code:`AWSSDK.Core` 
+            assembly shown in Manage NuGet Packages dialog
 
 
 .. _package-install-cmd:

@@ -14,8 +14,8 @@
 Migrating Your Code to Version 3 of the |sdk-net|
 #################################################
 
-This guide describes changes in version 3 of the |sdk-net|, and how you can migrate your code to
-this version of the |sdk-net|.
+This topic describes changes in version 3 of the |sdk-net| and how to migrate your code to
+this version of the SDK.
 
 
 .. contents:: Topics
@@ -27,8 +27,8 @@ this version of the |sdk-net|.
 About the |sdk-net| Versions
 ============================
 
-The |sdk-net| was released in November 2009 and was originally designed for .NET Framework 2.0.
-Since then, .NET has improved with .NET Framework 4.0 and .NET Framework 4.5. It has also added new
+The |sdk-net|, originally released in November 2009, was designed for .NET Framework 2.0.
+Since that release, .NET has improved with .NET Framework 4.0 and .NET Framework 4.5, and added new
 target platforms: WinRT and Windows Phone.
 
 |sdk-net| version 2 was updated to take advantage of the new features of the .NET platform and to
@@ -42,7 +42,7 @@ target WinRT and Windows Phone.
 Architecture Redesign for the SDK
 =================================
 
-The entire |sdk-net| has been redesigned to be modular. Each service is now implemented in its own assembly,
+The entire version 3 of the |sdk-net| is redesigned to be modular. Each service is now implemented in its own assembly,
 instead of in one global assembly. You no longer have to add the entire |sdk-net| to your
 application. You can now add assemblies only for the AWS services your application uses.
 
@@ -59,7 +59,7 @@ The following sections describe changes to version 3 of the |sdk-net|.
 AWSClientFactory Removed
 ------------------------
 
-The :classname:`Amazon.AWSClientFactory` class has been removed. Now, to create a service client,
+The :classname:`Amazon.AWSClientFactory` class was removed. Now, to create a service client,
 use the constructor of the service client. For example, to create an :classname:`AmazonEC2Client`:
 
 .. code-block:: csharp
@@ -73,8 +73,8 @@ Amazon.Runtime.AssumeRoleAWSCredentials Removed
 -----------------------------------------------
 
 The :classname:`Amazon.Runtime.AssumeRoleAWSCredentials` class was removed because it was in a core
-namespace but had a dependency on the |STSlong|. It has been obsolete in the SDK for some
-time, so it was removed. Use the :classname:`Amazon.SecurityToken.AssumeRoleAWSCredentials` class
+namespace but had a dependency on the |STSlong|, and because it has been obsolete in the SDK for some
+time. Use the :classname:`Amazon.SecurityToken.AssumeRoleAWSCredentials` class
 instead.
 
 
@@ -101,7 +101,7 @@ For most services in the |sdk-net|, operations return a response object that con
 the operation, such as the request ID and a result object. Having a separate response and
 result class was redundant and created extra typing for developers. In version 2 of the |sdk-net|, 
 we put all the information in the result class into the response class. We also marked
-the result classes obsolete to discourage their use. In version 3 of the |sdk-net|, we have removed 
+the result classes obsolete to discourage their use. In version 3 of the |sdk-net|, we removed 
 these obsolete result classes to help reduce the SDK's size.
 
 
@@ -142,7 +142,7 @@ to the :classname:`AWSSDK` assembly in your :file:`App.config` or :file:`Web.con
     </configuration>
 
 You can also manipulate the config settings with the :classname:`Amazon.AWSConfigs` class. In
-version 3 of the |sdk-net|, we have moved the config settings for |DDB| from
+version 3 of the |sdk-net|, we moved the config settings for |DDB| from
 the :classname:`Amazon.AWSConfigs` class to the :classname:`Amazon.AWSConfigsDynamoDB` class.
 
 

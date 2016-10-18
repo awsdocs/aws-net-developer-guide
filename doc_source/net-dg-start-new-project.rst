@@ -1,4 +1,4 @@
-.. Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+:.. Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
    This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
    International License (the "License"). You may not use this file except in compliance with the
@@ -27,17 +27,17 @@ AWS Web Project
     An ASP.NET application that makes basic requests to |S3|, |SDB|, and |EC2|.
 
 You can also base your application on one of the standard Visual Studio project templates. You can
-add the desired NuGet packages as described in :ref:`net-dg-nuget`, or manually add references to
-the desired AWSSDK assemblies, which are located in the :file:`bin\Net45` subdirectory where the
+add the NuGet packages you need as described in :ref:`net-dg-nuget`, or manually add references to
+the AWSSDK assemblies you need, which are located in the :file:`bin\Net45` subdirectory where the
 |sdk-net| was installed.
 
-The following procedure gets you started by creating and running a new AWS Console project for
+Use the following procedure to get started by creating and running a new AWS Console project for
 Visual Studio 2012. The process is similar for other project types and Visual Studio versions. For
-more information about how to configure an AWS application, see :ref:`net-dg-config`.
+more information about how to configure an AWS application:, see :ref:`net-dg-config`.
 
 **To start a new project**
 
-1. In Visual Studio, on the :guilabel:`File` menu, choose :guilabel:`New` -> :guilabel:`Project` to
+1. In Visual Studio, on the :guilabel:`File` menu, choose :guilabel:`New`, and then choose :guilabel:`Project` to
    open the :guilabel:`New Project` dialog box.
 
 2. Choose :guilabel:`AWS` from the list of installed templates, and then choose the 
@@ -45,21 +45,24 @@ more information about how to configure an AWS application, see :ref:`net-dg-con
 
    .. figure:: images/new-proj-dlg-net-dg.png
        :scale: 50
+       :alt: AWS template and AWS Console project selected in New Project dialog box
 
 3. Use the :guilabel:`AWS Access Credentials` dialog box to configure your application.
 
-   * Specify which account profile your code should use to access AWS. To use an existing profile, 
+   * Specify the account profile that your code should use to access AWS. To use an existing profile, 
      choose :guilabel:`Use existing profile`, and then choose the profile from the list. To add a new
-     profile, choose :guilabel:`Use a new profile` and type the credentials information. For more
+     profile, choose :guilabel:`Use a new profile`, and then type the credentials information. For more
      information about profiles, see :ref:`net-dg-config`.
 
-   * Specify a default AWS region.
+   * Specify a default AWS Region to use.
 
    .. figure:: images/creds-new-proj-net-dg.png
        :scale: 50
+       :alt: Configure application access account profile, credentials, and default 
+             AWS Region in AWS Access Credentials dialog
 
-4. Choose :guilabel:`OK` to accept the configuration, which opens the project. Examine the project's
-   :file:`App.config` file, which will contain something similar to the following:
+4. Choose :guilabel:`OK` to accept the configuration and open the project. The project's
+   :file:`App.config` file will contain something similar to the following.
 
    .. code-block:: xml
 
@@ -86,9 +89,9 @@ more information about how to configure an AWS application, see :ref:`net-dg-con
             <aws region="us-east-1" profileName="development"/>
           </configuration>
 
-      For more information about the use of the :code:`aws` element, see :ref:`net-dg-config-ref`.
+      For more information about the :code:`aws` element, see :ref:`net-dg-config-ref`.
 
-5. Choose :kbd:`F5` to compile and run the application, which prints the number of EC2 instances, |SDB|
+5. Choose :kbd:`F5` to compile and run the application, which prints the number of |EC2| instances, |SDB|
    tables, and |S3| buckets in your account.
 
 For more information about configuring an AWS application, see :ref:`net-dg-config`.

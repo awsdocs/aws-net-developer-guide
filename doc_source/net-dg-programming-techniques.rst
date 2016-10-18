@@ -16,7 +16,7 @@ Programming with the |sdk-net|
 
 This section provides general information about developing software with the |sdk-net|.
 
-For information about developing software with the |sdk-net| for specific AWS services, see
+For information about developing software for specific AWS services, see
 :ref:`tutorials-examples`.
 
 
