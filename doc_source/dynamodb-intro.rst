@@ -16,15 +16,15 @@
 
 The |sdk-net| supports |DDBlong|, which is a fast NoSQL database service offered by AWS.
 The SDK provides three programming models for communicating with |DDB|: the *low-level* model,
-the *document* model, and the *object persistence* model. 
+the *document* model, and the *object persistence* model.
 
-The following information introduces these models and their APIs, provides examples for how and when 
-to use them, and gives you links to additional |DDB|programmibng resources in the |sdk-net|.
+The following information introduces these models and their APIs, provides examples for how and when
+to use them, and gives you links to additional |DDB| programming resources in the |sdk-net|.
 
 .. contents:: Topics
     :local:
     :depth: 1
-    
+
 .. toctree::
     :hidden:
     :maxdepth: 1
@@ -45,7 +45,7 @@ Of the three models, the low-level model requires you to write the most code. Fo
 convert .NET data types to their equivalents in |DDB|. However, this model gives you access to the
 most features.
 
-The following examples show you how to use the low-level model to create a table, modify a table, 
+The following examples show you how to use the low-level model to create a table, modify a table,
 and insert items into a table in |DDB|.
 
 .. _dynamodb-intro-apis-low-level_create-table:
@@ -64,12 +64,12 @@ of the :code:`CreateTableResponse` class.
 
 
 .. _dynamodb-intro-apis-low-level-verify-table:
-   
+
 Verifying That a Table is Ready to Modify
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Before you can change or modify a table, the table has to be ready for modification. 
-The following example shows how to use the low-level model to verify that a table in |DDB| is ready. 
+Before you can change or modify a table, the table has to be ready for modification.
+The following example shows how to use the low-level model to verify that a table in |DDB| is ready.
 In this example, the target table to check is referenced through the :code:`DescribeTable`
 method of the :code:`AmazonDynamoDBClient` class. Every five seconds, the code checks the value of
 the table's :code:`TableStatus` property. When the status is set to :code:`ACTIVE`, the table is
@@ -78,16 +78,16 @@ ready to be modified.
 .. literalinclude:: how-to/dynamodb/dynamodb-check-table-low-level.txt
    :language: csharp
 
-   
+
 .. _dynamodb-intro-apis-low-level_insert-item:
-   
+
 Inserting an Item into a Table
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the following example, you use the low-level model to insert two items into a table in
 |DDB|. Each item is inserted through the :code:`PutItem` method of the
 :code:`AmazonDynamoDBClient` class, using an instance of the :code:`PutItemRequest` class. Each of
-the two instances of the :code:`PutItemRequest` class takes the name of the table that the items will be 
+the two instances of the :code:`PutItemRequest` class takes the name of the table that the items will be
 inserted in, with a series of item attribute values.
 
 .. literalinclude:: how-to/dynamodb/dynamodb-insert-item-low-level.txt
@@ -110,7 +110,7 @@ For example, you can use this model to create, retrieve, update, and delete item
 However, to create the tables, you must use the low-level model. Compared to the object persistence
 model, this model requires you to write more code to store, load, and query .NET objects.
 
-The following examples show you how to use the document model to insert items and get items 
+The following examples show you how to use the document model to insert items and get items
 in tables in |DDB|.
 
 
@@ -130,7 +130,7 @@ specifying an instance of the :code:`AmazonDynamoDBClient` class and the name of
    :language: csharp
 
 .. _dynamodb-intro-apis-document-get-item:
-   
+
 Getting an Item from a Table
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -167,7 +167,7 @@ Object Persistence Model
 ========================
 
 The object persistence programming model is specifically designed for storing, loading, and querying
-.NET objects in |DDB|. You access this model through the 
+.NET objects in |DDB|. You access this model through the
 :sdk-net-api:`Amazon.DynamoDBv2.DataModel <DynamoDBv2/NDynamoDBv2DataModel>` namespace.
 
 Of the three models, the object persistence model is the easiest to code against whenever you are
@@ -179,7 +179,7 @@ your .NET classes to the tables.
 
 The following examples show you how to define a .NET class that represents an item, use an
 instance of the .NET class to insert an item, and use an instance of a .NET object to get an item
-from a table in |DDB|. 
+from a table in |DDB|.
 
 .. _dynamodb-intro-apis-object-persistence-net-class-item:
 
@@ -208,20 +208,20 @@ the item. (The instance of the :code:`DynamoDBContext` class is initialized with
 
 
 .. _dynamodb-intro-apis-object-persistence-net-get-item:
-   
+
 Using an Instance of a .NET Object to Get an Item from a Table
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this example, the item is retrieved through the :code:`Load` method of the
 :code:`DynamoDBContext` class, which takes a partially initialized instance of the .NET class that
-represents the hash-and-range primary key of the item to be retrieved. (As shown previously, the 
+represents the hash-and-range primary key of the item to be retrieved. (As shown previously, the
 instance of the :code:`DynamoDBContext` class is initialized with an instance of the
 :code:`AmazonDynamoDBClient` class.)
 
 .. literalinclude:: how-to/dynamodb/dynamodb-get-item-obj-model.txt
    :language: csharp
 
-   
+
 .. _dynamodb-intro-more-info:
 
 More Info

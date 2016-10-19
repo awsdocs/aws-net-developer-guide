@@ -77,7 +77,7 @@ Configure the Session State Provider
 
    In earlier versions of the SDK, the functionality for the session state provider was contained
    in :file:`AWS.Extension.dll`. To improve usability, the functionality was moved to
-   :file:`AWS.SessionProvider.dll`. For more information, see the blog post 
+   :file:`AWS.SessionProvider.dll`. For more information, see the blog post
    :aws-blogs-net:`AWS.Extension Renaming  <Tx27RWMCNAVWZN9/AWS-Extensions-renaming>`.
 
 2. Edit your application's :file:`Web.config` file. In the :code:`system.web` element, replace the
@@ -85,10 +85,10 @@ Configure the Session State Provider
 
    .. code-block:: xml
 
-       <sessionState timeout="20" mode="Custom" customProvider="DynamoDBSessionStoreProvider"> 
-         <providers> 
-           <add name="DynamoDBSessionStoreProvider" 
-                type="Amazon.SessionProvider.DynamoDBSessionStateStore" 
+       <sessionState timeout="20" mode="Custom" customProvider="DynamoDBSessionStoreProvider">
+         <providers>
+           <add name="DynamoDBSessionStoreProvider"
+                type="Amazon.SessionProvider.DynamoDBSessionStateStore"
                 AWSProfileName="{profile_name}"
                 Region="us-west-2" />
          </providers>
@@ -99,7 +99,7 @@ Configure the Session State Provider
    :code:`appSettings` section of your application's :file:`Web.config` file, you do not need to
    specify a profile in the :code:`providers` section; the AWS .NET client code will discover it at
    run time. For more information, see :ref:`net-dg-config`.
- 
+
    If the web server is running on an |EC2| instance configured to use IAM roles for EC2 instances,
    then you do not need to specify any credentials in the :file:`Web.config` file. In this case,
    the AWS .NET client will use the IAM role credentials. For more information, see
@@ -163,31 +163,32 @@ Security Considerations
 After the |DDB| table is created and the application is configured, sessions can be used as with any
 other session provider.
 
-As a security best practice, we recommend you run your applications with the credentials of an 
-|IAM-ug|_ user. You can use either the :console:`IAM Management Console <iam>` or the 
+As a security best practice, we recommend you run your applications with the credentials of an
+|IAM-ug|_ user. You can use either the :console:`IAM Management Console <iam>` or the
 :tvs-ug:`AWS Toolkit for Visual Studio` to create IAM users and define access policies.
 
 The session state provider needs to be able to call the :ddb-dg:`DeleteItem <DeleteItem>`,
-:ddb-dg:`DescribeTable <DescribeTable>`, :ddb-dg:`GetItem <GetItem>`, :ddb-dg:`PutItem <PutItem>`, 
+:ddb-dg:`DescribeTable <DescribeTable>`, :ddb-dg:`GetItem <GetItem>`, :ddb-dg:`PutItem <PutItem>`,
 and :ddb-dg:`UpdateItem <UpdateItem>` operations for the table that stores
 the session data. The sample policy below can be used to restrict the IAM user to only the
-operations needed by the provider for an instance of |DDB| running in |region_api_default|:
+operations needed by the provider for an instance of |DDB| running in |region-api-default|:
 
 .. code-block:: json
 
-    { "Version" : "2012-10-17", 
-    "Statement" : [ 
-      { 
-        "Sid" : "1", 
-        "Effect" : "Allow", 
-        "Action" : [ 
-            "dynamodb:DeleteItem", 
-            "dynamodb:DescribeTable", 
-            "dynamodb:GetItem", 
-            "dynamodb:PutItem", 
-            "dynamodb:UpdateItem" 
-        ], 
+    { "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Sid" : "1",
+        "Effect" : "Allow",
+        "Action" : [
+            "dynamodb:DeleteItem",
+            "dynamodb:DescribeTable",
+            "dynamodb:GetItem",
+            "dynamodb:PutItem",
+            "dynamodb:UpdateItem"
+        ],
         "Resource" : "arn:aws:dynamodb:|region_api_default|:{<YOUR-AWS-ACCOUNT-ID>}:table/ASP.NET_SessionState"
         }
       ]
     }
+

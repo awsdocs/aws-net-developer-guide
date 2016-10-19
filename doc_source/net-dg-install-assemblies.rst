@@ -14,13 +14,13 @@
 Install AWSSDK Assemblies
 #########################
 
-You can install the AWSSDK assemblies by installing the |sdk-net| or by installing 
+You can install the AWSSDK assemblies by installing the |sdk-net| or by installing
 the AWS assemblies with NuGet.
 
 .. contents:: Topics
      :local:
      :depth: 1
-     
+
 .. _net-dg-install-net-sdk:
 
 Installing the |sdk-net|
@@ -43,33 +43,33 @@ The following procedure describes how to install the |TFW|, which contains the |
        privileges. To install |TFW| as a non-administrator, choose a different installation
        directory.
 
-4. (Optional) You can use NuGet to install individual AWSSDK service assemblies and extensions for the
-   |sdk-net|, which include a session state provider and a trace listener. For more information,
-   see `Install AWSSDK Assemblies with NuGet`_.
+4. (Optional) You can use NuGet to install individual AWSSDK service assemblies and extensions for
+   the |sdk-net|, which include a session state provider and a trace listener. For more information,
+   see :ref:`net-dg-nuget`.
 
-   
+
 .. _net-dg-nuget:
 
 Installing AWSSDK Assemblies with NuGet
 =======================================
 
 `NuGet <http://nuget.org/>`_ is a package management system for the .NET platform. With NuGet, you
-can add the AWSSDK assemblies, as well as the 
-`TraceListener <http://www.nuget.org/packages/AWS.TraceListener>`_ and 
+can add the AWSSDK assemblies, as well as the
+`TraceListener <http://www.nuget.org/packages/AWS.TraceListener>`_ and
 `SessionProvider <http://www.nuget.org/packages/AWS.SessionProvider>`_ extensions, to your
 application.
 
 NuGet always has the most recent versions of the AWSSDK assemblies, and also enables you to install
 previous versions. NuGet is aware of dependencies between assemblies and installs all required
 assemblies automatically. Assemblies installed with NuGet are stored with your solution instead of
-in a central location, such as in the Program Files directory. This enables you to install assembly 
+in a central location, such as in the Program Files directory. This enables you to install assembly
 versions specific to a given application without creating compatibility issues for other applications.
 For more information about NuGet, see the `NuGet documentation <http://docs.nuget.org/>`_.
 
 NuGet is installed automatically with Visual Studio 2010 or later.
-If you are using an earlier version of Visual Studio, you can install NuGet from the 
+If you are using an earlier version of Visual Studio, you can install NuGet from the
 `Visual Studio Gallery on MSDN
-<http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c>`_. 
+<http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c>`_.
 
 You can use NuGet from :guilabel:`Solution Explorer` or from the Package Manager
 Console.
@@ -96,15 +96,15 @@ Using NuGet from Solution Explorer
 
 #. In the left pane of the :guilabel:`Manage NuGet Packages` dialog box, choose :guilabel:`Online`.
    You can then use the search box in the top-right corner to search for the package you want to
-   install. 
-   
+   install.
+
    The following figure shows the :guilabel:`AWSSDK - Core Runtime` assembly package. You can see
-   NuGet is aware that this package has a dependency on the :code:`AWSSDK.Core` assembly package; 
+   NuGet is aware that this package has a dependency on the :code:`AWSSDK.Core` assembly package;
    NuGet automatically installs the :code:`AWSSDK.Core` package, if it is not already installed.
 
    .. figure:: images/nuget-install-vs-dlg.png
       :scale: 65
-      :alt: AWSSDK Core Runtime package and dependency on :code:`AWSSDK.Core` 
+      :alt: AWSSDK Core Runtime package and dependency on :code:`AWSSDK.Core`
             assembly shown in Manage NuGet Packages dialog
 
 
@@ -115,12 +115,12 @@ Using NuGet from the Package Manager Console
 
 **To use NuGet from the Package Manager Console in Visual Studio**
 
-* *Visual Studio 2010* 
-      From the :guilabel:`Tools` menu, choose :guilabel:`Library Package Manager`, 
+* *Visual Studio 2010*
+      From the :guilabel:`Tools` menu, choose :guilabel:`Library Package Manager`,
       and then click :guilabel:`Package Manager Console`.
 
-* *Visual Studio 2012 and later* 
-      From the :guilabel:`Tools` menu, choose :guilabel:`Nuget Package 
+* *Visual Studio 2012 and later*
+      From the :guilabel:`Tools` menu, choose :guilabel:`Nuget Package
       Manager`, and then click :guilabel:`Package Manager Console`.
 
 You can install the AWSSDK assemblies you want from the Package Manager Console by using the
@@ -142,6 +142,7 @@ following command line.
 
     PM> Install-Package AWSSDK.Core -Version 3.1.0.0
 
-For more information about Package Manager Console commands, see 
-`Package Manager Console Commands (v1.3) 
+For more information about Package Manager Console commands, see
+`Package Manager Console Commands (v1.3)
 <http://nuget.codeplex.com/wikipage?title=Package%20Manager%20Console%20Command%20Reference%20%28v1.3%29>`_.
+
