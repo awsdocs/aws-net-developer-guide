@@ -121,7 +121,9 @@ Each profile has the following format:
 
 .. code-block:: none
 
-    [{profile_name}] aws_access_key_id = {accessKey} aws_secret_access_key = {secretKey}
+    [{profile_name}]
+    aws_access_key_id = {accessKey} 
+    aws_secret_access_key = {secretKey}
 
 A profile can optionally include a session token. For more information, see `Best Practices for 
 Managing AWS Access Keys <aws-access-keys-best-practices.html>`_.
