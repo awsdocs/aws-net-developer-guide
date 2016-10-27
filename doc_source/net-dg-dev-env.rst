@@ -27,7 +27,7 @@ Requirements
 * (Required) |sdk-net|
 
 * (Recommended) |TVSlong|, a plugin that provides a user interface for managing your AWS resources
-  from Visual Studio, and includes the |sdk-net|. For more information, see 
+  from Visual Studio, and includes the |sdk-net|. For more information, see
   :tvs-ug:`Using the AWS Toolkit for Visual Studio <welcome>`.
 
 .. note:: We recommend using Visual Studio Professional 2010 or later to implement your applications.

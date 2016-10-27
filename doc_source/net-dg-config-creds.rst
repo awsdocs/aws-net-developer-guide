@@ -47,7 +47,7 @@ Some general guidelines for securely managing credentials include:
   outside your organization.
 
 The following topics describe how to manage credentials for an |sdk-net| application. For a general
-discussion of how to securely manage AWS credentials, see 
+discussion of how to securely manage AWS credentials, see
 :aws-gr:`Best Practices for Managing AWS Access Keys <aws-access-keys-best-practices>`.
 
 
@@ -74,25 +74,25 @@ following benefits:
 
 * The |sdk-store| also provides credentials to the |TWPlong| and the |TVSlong|.
 
-.. note:: |sdk-store| profiles are specific to a particular user on a particular host. They cannot 
+.. note:: |sdk-store| profiles are specific to a particular user on a particular host. They cannot
    be copied to other hosts or other users. For this reason, |sdk-store| profiles cannot be used in
    production applications. For more information, see :ref:`creds-assign`.
 
 There are several ways to manage the profiles in the |sdk-store|.
 
 * The |TVS| includes a graphical user interface for managing profiles. For more information about
-  adding credentials to the |sdk-store| with the graphical user interface, see 
+  adding credentials to the |sdk-store| with the graphical user interface, see
   :tvs-ug:`Specifying Credentials <tkv_setup.html#tkv_setup.creds>` in the |TVSlong|.
 
 * You can manage your profiles from the command line by using the :code:`Set-AWSCredentials` cmdlet in
-  the |TWPlong|. For more information, see 
+  the |TWPlong|. For more information, see
   :twp-ug:`Using AWS Credentials <specifying-your-aws-credentials>` in the |TWPlong|.
 
 * While it is not a commonly used feature, you can manage your profiles programmatically using the
-  :sdk-net-api:`Amazon.Util.ProfileManager <Util/TUtilProfileManager>` class. The following 
-  example uses the 
-  :sdk-net-api:`RegisterProfile <Util/MUtilProfileManagerRegisterProfileStringStringString>` method 
-  :sdk-net-api:`RegisterProfile <Util/MUtilProfileManagerRegisterProfileStringStringString>` method 
+  :sdk-net-api:`Amazon.Util.ProfileManager <Util/TUtilProfileManager>` class. The following
+  example uses the
+  :sdk-net-api:`RegisterProfile <Util/MUtilProfileManagerRegisterProfileStringStringString>` method
+  :sdk-net-api:`RegisterProfile <Util/MUtilProfileManagerRegisterProfileStringStringString>` method
   to add a new profile to the |sdk-store|.
 
   .. code-block:: csharp
@@ -122,16 +122,16 @@ Each profile has the following format:
 
 .. code-block:: none
 
-   [{profile_name}] 
-   aws_access_key_id = {accessKey} 
+   [{profile_name}]
+   aws_access_key_id = {accessKey}
    aws_secret_access_key = {secretKey}
 
-A profile can optionally include a session token. For more information, see 
-:aws-gr:`Best Practices for Managing AWS Access Keys <aws-access-keys-best-practices>`. 
-Profiles in the SDK Store do not accept session tokens. The |sdk-store| is for "long lived" 
+A profile can optionally include a session token. For more information, see
+:aws-gr:`Best Practices for Managing AWS Access Keys <aws-access-keys-best-practices>`.
+Profiles in the SDK Store do not accept session tokens. The |sdk-store| is for "long lived"
 credentials.
 
-.. tip:: If you include a profile named :code:`default`, the |sdk-net| will use that profile by 
+.. tip:: If you include a profile named :code:`default`, the |sdk-net| will use that profile by
    default if it cannot find the specified profile.
 
 You can store profiles in a credentials file in a location you choose, such as
@@ -172,9 +172,9 @@ the current application.
 |sdk-store| profiles are specific to a particular user on a particular host. They cannot be copied
 to other hosts or other users. For this reason, |sdk-store| profiles on your development machine
 cannot be re-used on other hosts or developer machines. If your application is running on an |EC2|
-instance, you should use an |IAM| role as described in 
-:ref:`Using IAM Roles for EC2 Instances with the AWS SDK for .NET <net-dg-roles>`. 
-Otherwise, you should store your credentials in a credentials file that your web application has 
+instance, you should use an |IAM| role as described in
+:ref:`Using IAM Roles for EC2 Instances with the AWS SDK for .NET <net-dg-roles>`.
+Otherwise, you should store your credentials in a credentials file that your web application has
 access to on the server.
 
 .. _net-dg-config-creds-assign-profile:
@@ -227,17 +227,17 @@ recommended.
       </configSections>
       <aws profileName="development" profilesLocation="C:\aws_service_credentials\credentials"/>
     </configuration>
-      
-    <configuration> 
-      <configSections> 
-        <section name="aws" type="Amazon.AWSSection,AWSSDK.Core"/> 
-      </configSections> 
-      <aws profileName="development" profilesLocation="C:\aws_service_credentials\credentials"/> 
+
+    <configuration>
+      <configSections>
+        <section name="aws" type="Amazon.AWSSection,AWSSDK.Core"/>
+      </configSections>
+      <aws profileName="development" profilesLocation="C:\aws_service_credentials\credentials"/>
     </configuration>
 
 You can also reference a profile programmatically using the
-:sdk-net-api:`Amazon.Runtime.StoredProfileAWSCredentials <Runtime/TRuntimeStoredProfileAWSCredentials>` 
-class. The following example demonstrates how to create an :classname:`AmazonS3Client` object that 
+:sdk-net-api:`Amazon.Runtime.StoredProfileAWSCredentials <Runtime/TRuntimeStoredProfileAWSCredentials>`
+class. The following example demonstrates how to create an :classname:`AmazonS3Client` object that
 uses the credentials for a specific profile. The SDK will load the credentials contained in the profile
 automatically. You might do this if you want to use a specific profile for a given client that is
 different from the "global" profile you specify in App.Config.
@@ -269,7 +269,7 @@ granted. (For non-domain-joined accounts, the user is prompted to enter credenti
 re-authentication.)
 
 To use this support in your .NET application, you must first set up the role profile using a
-PowerShell cmdlet. Use PowerShell cmdlets to set up the role profile as described in the 
+PowerShell cmdlet. Use PowerShell cmdlets to set up the role profile as described in the
 :twp-ug:`Tools for Windows PowerShell documentation <saml-pst>`.
 
 After you setup the role profile, simply reference the profile in your application's
@@ -287,7 +287,7 @@ Specifying Roles or Temporary Credentials
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For applications that run on |EC2| instances, the most secure way to manage credentials is to use
-IAM roles, as described in 
+IAM roles, as described in
 :ref:`Using IAM Roles for EC2 Instances with the AWS SDK for .NET <net-dg-roles>`.
 
 For application scenarios in which the software executable will be available to users outside your
@@ -310,11 +310,11 @@ Using Proxy Credentials
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 If your software communicates with AWS through a proxy, you can specify credentials for the proxy
-using the :code:`ProxyCredentials` property on the 
-:sdk-net-api:`ClientConfig <TRuntimeClientConfig>` 
+using the :code:`ProxyCredentials` property on the
+:sdk-net-api:`ClientConfig <TRuntimeClientConfig>`
 class for the service. For example, for |S3|, you could use code
 similar to the following, where {my-username} and {my-password} are the proxy user name and password
-specified in a `NetworkCredential <http://msdn.microsoft.com/en-us/library/system.net.networkcredential.aspx>`_ 
+specified in a `NetworkCredential <http://msdn.microsoft.com/en-us/library/system.net.networkcredential.aspx>`_
 object.
 
 .. code-block:: csharp

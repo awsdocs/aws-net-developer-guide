@@ -15,12 +15,12 @@
 Create an AWS Account and Credentials
 #####################################
 
-To use the |sdk-net| to access AWS, you need an AWS account and AWS credentials. To increase the 
-security of your AWS account, we recommend that you use an *IAM user* to provide access credentials 
+To use the |sdk-net| to access AWS, you need an AWS account and AWS credentials. To increase the
+security of your AWS account, we recommend that you use an *IAM user* to provide access credentials
 instead of using your root account credentials.
 
-.. tip:: For an overview of IAM users and why they are important for the security of your account, 
-         see :iam-ug:`Overview of Identity Management: Users <introduction_identity-management>` 
+.. tip:: For an overview of IAM users and why they are important for the security of your account,
+         see :iam-ug:`Overview of Identity Management: Users <introduction_identity-management>`
          in the |IAM-ug|.
 
 **To sign up for an AWS account**
@@ -30,7 +30,7 @@ instead of using your root account credentials.
 #. Follow the on-screen instructions. Part of the sign-up procedure involves receiving a phone call
    and entering a PIN using your phone keypad.
 
-Next, create an IAM user and download (or copy) its secret access key. To use the |sdk-net|, 
+Next, create an IAM user and download (or copy) its secret access key. To use the |sdk-net|,
 you must have a set of valid AWS credentials, which consist of an access key
 and a secret key. These keys are used to sign programmatic web service requests and enable AWS to
 verify that the request comes from an authorized source. You can obtain a set of account credentials when

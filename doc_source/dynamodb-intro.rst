@@ -223,7 +223,8 @@ instance of the :code:`DynamoDBContext` class is initialized with an instance of
 More Info
 =========
 
-**Using the |sdk-net| to program |DDB| ** 
+Using the |sdk-net| to program |DDB|
+------------------------------------
 
 * :aws-blogs-net:`DynamoDB APIs <Tx17SQHVEMW8MXC/DynamoDB-APIs>`
 
@@ -243,8 +244,8 @@ More Info
 
 * :ref:`net-dg-dynamodb-session`
 
-
-**Low-Level model information and examples**
+Low-Level model information and examples
+----------------------------------------
 
 * :ddb-dg:`Working with Tables Using the AWS SDK for .NET Low-Level API <LowLevelDotNetWorkingWithTables>`
 
@@ -258,8 +259,8 @@ More Info
 
 * :ddb-dg:`Working with Global Secondary Indexes Using the AWS SDK for .NET Low-Level API <GSILowLevelDotNet>`
 
-
-**Document model information and examples**
+Document model information and examples
+---------------------------------------
 
 * :ddb-dg-deep:`DynamoDB Data Types <DataModel.html#DataModel.DataTypes>`
 
@@ -267,7 +268,8 @@ More Info
 
 * :ddb-dg:`.NET: Document Model <DotNetSDKMidLevel>`
 
-
-**Object persistance model information and examples**
+Object persistance model information and examples
+-------------------------------------------------
 
 * :ddb-dg:`.NET: Object Persistence Model <DotNetSDKHighLevel>`
+

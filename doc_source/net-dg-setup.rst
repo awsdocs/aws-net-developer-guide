@@ -17,7 +17,6 @@ Getting Started with the |sdk-net|
 To get started with the |sdk-net|, complete the following tasks:
 
 
-  
 .. toctree::
     :titlesonly:
     :maxdepth: 1
@@ -27,4 +26,4 @@ To get started with the |sdk-net|, complete the following tasks:
     net-dg-install-assemblies
     net-dg-start-new-project
     net-dg-platform-diffs-v3
-    
+

@@ -23,6 +23,7 @@ This documentation is for version 3.0 of the |sdk-net|, which is the latest vers
 .. toctree::
    :titlesonly:
    :maxdepth: 1
+   :includehidden:
 
    welcome
    net-dg-setup
@@ -30,5 +31,6 @@ This documentation is for version 3.0 of the |sdk-net|, which is the latest vers
    tutorials-examples
    net-dg-additional-resources
    document-history
-   
+
 .. include:: about-aws.txt
+
