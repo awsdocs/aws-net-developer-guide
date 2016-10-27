@@ -18,11 +18,6 @@ Use the following procedure to launch one or more identically configured EC2 ins
 Amazon Machine Image (AMI). After you create your EC2 instances, you can check their status. After
 your EC2 instances are running, you can connect to them.
 
-
-.. contents:: **Contents**
-    :local:
-    :depth: 1
-
 .. _launch-instance:
 
 Launching an EC2 Instance

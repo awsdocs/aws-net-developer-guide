@@ -16,11 +16,6 @@ Tutorial: |EC2| Spot Instances
 
 This topic describes how to use the |sdk-net| with |EC2| Spot Instances.
 
-
-.. contents:: **Topics**
-    :local:
-    :depth: 1
-
 .. _tutor-spot-net-overview:
 
 Overview

@@ -28,7 +28,8 @@ infrastructure outside of AWS. This topic describes how to use the |sdk-net| to 
 
 The basic procedure is as follows.
 
-**To create a hosted zone and update its record sets**
+To create a hosted zone and update its record sets
+==================================================
 
 1. Create a hosted zone.
 
@@ -42,7 +43,8 @@ The basic procedure is as follows.
 The example is a simple console application that shows how to use the |sdk-net| to implement this
 procedure for a basic record set.
 
-**To run this example**
+To run this example
+===================
 
 1. In the Visual Studio :guilabel:`File` menu, choose :guilabel:`New`, and then choose
    :guilabel:`Project`.
@@ -143,7 +145,11 @@ procedure for a basic record set.
 
 The numbers in the following sections are keyed to the comments in the preceding example.
 
-[1] Create a Client Object
+.. _create_client_object:
+
+1. Create a Client Object
+==========================
+
   The object must have the following information: 
 
   An AWS region
@@ -159,7 +165,11 @@ The numbers in the following sections are keyed to the comments in the preceding
   by instantiating a new instance of the :classname:`AmazonRoute53Client` class. There are
   multiple constructors. 
   
-[2] Create a hosted zone
+.. _create_hoste_zone:
+
+2. Create a hosted zone
+=======================
+
   A hosted zone serves the same purpose as a traditional DNS zone file. It represents a collection
   of resource record sets that are managed together under a single domain name.
 
@@ -185,7 +195,11 @@ The numbers in the following sections are keyed to the comments in the preceding
      object that contains information about the request, including the 
      :sdk-net-api:`HostedZone.Id <Route53/TRoute53HostedZone>` property that identifies zone.
 
-[3] Create a resource record set change batch
+.. _create_resource_change_batch:
+
+3. Create a resource record set change batch
+=============================================
+
   A hosted zone can have multiple resource record sets. Each set specifies how a subset of the 
   domain's traffic, such as email requests, should be routed. You can update a zone's resource record 
   sets with a single request. The first step is to package all the updates in a 
@@ -236,8 +250,12 @@ The numbers in the following sections are keyed to the comments in the preceding
  
   3. Create a :sdk-net-api:`ChangeBatch <Route53/TRoute53ChangeBatch>` object and set its :code:`Changes` 
      property to a list of the :classname:`Change` objects that you created in the previous step.
- 
+
+.. _update_zones_resource_recorde_sets:
+
 [4] Update the zone's resource record sets
+==========================================
+
   To update the resource record sets, pass the :classname:`ChangeBatch` object to the hosted zone,
   as follows. 
   
@@ -260,7 +278,11 @@ The numbers in the following sections are keyed to the comments in the preceding
      :sdk-net-api:`ChangeResourceRecordSetsResponse <Route53/TRoute53ChangeResourceRecordSetsResponse>` 
      object, which contains a request ID you can use to monitor the request's progress.
 
+.. _monitor_update_status:
+
 [5] Monitor the update status
+=============================
+
   Resource record set updates typically take a minute or so to propagate through the system. You
   can monitor the update's progress and verify that it is complete as follows. 
   

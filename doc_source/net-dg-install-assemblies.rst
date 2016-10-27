@@ -17,10 +17,6 @@ Install AWSSDK Assemblies
 You can install the AWSSDK assemblies by installing the |sdk-net| or by installing
 the AWS assemblies with NuGet.
 
-.. contents:: Topics
-     :local:
-     :depth: 1
-
 .. _net-dg-install-net-sdk:
 
 Installing the |sdk-net|
@@ -30,7 +26,7 @@ The following procedure describes how to install the |TFW|, which contains the |
 
 .. tip:: The |sdk-net| is also available on `GitHub <https://github.com/aws/aws-sdk-net>`_.
 
-**To install |TFW|**
+To install |TFW|
 
 1. Go to |sdk-net|_.
 

@@ -46,9 +46,8 @@ we launch an instance with an IAM role that provides the AWS credentials to the 
 running on the instance.
 
 
-.. contents:: **Walkthrough**
-    :local:
-    :depth: 1
+Walkthrough
+===========
 
 .. _net-dg-using-hosm-to-retrieve-an-object-from-ec2:
 

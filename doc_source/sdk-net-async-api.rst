@@ -14,11 +14,6 @@
 |AWSlong| Asynchronous APIs for .NET
 ####################################
 
-
-.. contents:: **Topics**
-    :local:
-    :depth: 1
-
 .. _async-api-45:
 
 Asynchronous API for .NET Framework 4.5, Windows Store, and |WP|

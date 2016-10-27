@@ -28,11 +28,6 @@ EC2-Classic and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-pla
 Alternatively, you can create a security group using the |EC2| console. For more information, see
 :ec2-ug-win:`Amazon EC2 Security Groups <using-network-security>` in the |EC2-ug-win|.
 
-
-.. contents:: **Contents**
-    :local:
-    :depth: 1
-
 .. _enumerate-security-groups:
 
 Enumerating Your Security Groups

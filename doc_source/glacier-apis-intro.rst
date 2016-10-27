@@ -28,15 +28,10 @@ Programming Models
 The |sdk-net| provides two programming models for working with |GL|. The following information
 describes these models and why and how to use them.
 
-
-.. contents:: **Topics**
-    :local:
-    :depth: 1
-
 .. _glacier-apis-intro-low-level:
 
 Low-Level APIs
---------------
+==============
 
 The |sdk-net| provides low-level APIs for programming with |GL|. These low-level APIs map closely to
 the underlying REST API supported by |GL|. For each |GL| REST operation, the low-level APIs provide
@@ -78,7 +73,7 @@ and :sdk-net-api:`Amazon.Glacier <Glacier/NGlacierModel>`.
 .. _glacier-apis-intro-high-level:
 
 High-Level APIs
----------------
+===============
 
 The |sdk-net| provides high-level APIs for programming with |GL|. To further simplify application
 development, these high-level APIs offer a higher-level abstraction for some of the operations,

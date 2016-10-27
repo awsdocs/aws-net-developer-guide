@@ -62,11 +62,9 @@ or :file:`Web.config` file. Some programmatically defined parameter values take 
 others take effect only after you create a new client object. For more information, see
 :ref:`net-dg-config-creds`.
 
-Topics
-^^^^^^
-
 .. toctree:: 
     :maxdepth: 1
+    :hidden:
     
     net-dg-config-netcore
     net-dg-config-creds

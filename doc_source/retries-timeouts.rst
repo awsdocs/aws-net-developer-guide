@@ -32,10 +32,6 @@ To determine which values to use for retries and timeouts, consider the followin
   location with unreliable connectivity?
 
 
-.. contents:: **Topics**
-    :local:
-    :depth: 1
-
 .. _retries:
 
 Retries

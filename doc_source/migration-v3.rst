@@ -17,11 +17,6 @@ Migrating Your Code to Version 3 of the |sdk-net|
 This topic describes changes in version 3 of the |sdk-net| and how to migrate your code to
 this version of the SDK.
 
-
-.. contents:: Topics
-    :local:
-    :depth: 2
-
 .. _net-dg-migrate-v3-intro:
 
 About the |sdk-net| Versions

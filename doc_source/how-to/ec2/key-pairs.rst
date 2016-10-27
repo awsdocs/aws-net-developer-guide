@@ -19,11 +19,6 @@ pair when you connect to the instance. You can create a key pair or use one you'
 launching other instances. For more information, see :ec2-ug-win:`Amazon EC2 Key Pairs <ec2-key-pairs>` in
 the |EC2-ug-win|.
 
-
-.. contents:: **Topics**
-    :local:
-    :depth: 1
-
 .. _enumerate-key-pairs:
 
 Enumerating Your Key Pairs

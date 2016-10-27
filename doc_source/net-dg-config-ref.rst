@@ -27,8 +27,8 @@ settings.
    examples in :ref:`net-dg-config`.
 
 
-.. note:: Although you can continue to use the following :sdk-net-api:`AWSConfigs
-   <Amazon/TAWSConfigs>` class properties in a code file to specify AWS settings, the following
+.. note:: Although you can continue to use the following :sdk-net-api:`AWSConfigs <Amazon/TAWSConfigs>` 
+   class properties in a code file to specify AWS settings, the following
    properties are deprecated and may not be supported in future releases:
 
     * :code:`DynamoDBContextTableNamePrefix`
@@ -151,7 +151,7 @@ Elements Reference
 The following is a list of the elements that are allowed in an AWS settings section. For each
 element, its allowed attributes and parent-child elements are listed.
 
-.. contents:: **Topics**
+.. contents::
     :local:
     :depth: 1
 

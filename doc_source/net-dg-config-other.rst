@@ -38,16 +38,10 @@ application's :file:`.config` file. Both approaches are described here.
 For more information about use of the :code:`<aws>` element as described later in this topic, see
 :ref:`net-dg-config-ref`.
 
-
-.. _application-parameters:
-
-Additional Application Parameters
----------------------------------
-
 .. _config-setting-awsendpointdefinition:
 
 AWSEndpointDefinition
-^^^^^^^^^^^^^^^^^^^^^
+=====================
 
     Configures whether the SDK should use a custom configuration file that defines the regions and
     endpoints. 
@@ -80,7 +74,7 @@ AWSEndpointDefinition
 .. _config-setting-awslogging:
     
 AWSLogging
-^^^^^^^^^^
+==========
 
     Configures how the SDK should log events, if at all. For example, the recommended approach is to
     use the :code:`<logging>` element, which is a child element of the :code:`<aws>` element:
@@ -136,7 +130,7 @@ AWSLogging
 .. _config-setting-awslogmetrics:
     
 AWSLogMetrics
-^^^^^^^^^^^^^
+=============
 
     Specifies whether or not the SDK should log performance metrics. To set the metrics logging
     configuration in the :file:`.config` file, set the :code:`logMetrics` attribute value in the
@@ -168,7 +162,7 @@ AWSLogMetrics
 .. _config-setting-awsregion:
 
 AWSRegion
-^^^^^^^^^
+=========
 
     Configures the default AWS region for clients that have not explicitly specified a region. To
     set the region in the :file:`.config` file, the recommended approach is to set the
@@ -199,7 +193,7 @@ AWSRegion
 .. _config-setting-awsresponselogging:
 
 AWSResponseLogging
-^^^^^^^^^^^^^^^^^^
+==================
 
     Configures when the SDK should log service responses. The possible values are: 
     
@@ -246,7 +240,7 @@ AWSResponseLogging
 .. _config-setting-aws-dynamodbcontext-tablenameprefix:
 
 AWS.DynamoDBContext.TableNamePrefix
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+===================================
 
     Configures the default :code:`TableNamePrefix` the :code:`DynamoDBContext` will use if not
     manually configured. 
@@ -282,7 +276,7 @@ AWS.DynamoDBContext.TableNamePrefix
 .. _config-setting-aws-s3-usesignatureversion4:
 
 AWS.S3.UseSignatureVersion4
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+===========================
 
     Configures whether or not the |S3| client should use signature version 4 signing with requests.
     
