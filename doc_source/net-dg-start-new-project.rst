@@ -35,12 +35,12 @@ Use the following procedure to get started by creating and running a new AWS Con
 Visual Studio 2012. The process is similar for other project types and Visual Studio versions. For
 more information about how to configure an AWS application:, see :ref:`net-dg-config`.
 
-**To start a new project**
+.. topic:: To start a new project
 
 1. In Visual Studio, on the :guilabel:`File` menu, choose :guilabel:`New`, and then choose :guilabel:`Project` to
    open the :guilabel:`New Project` dialog box.
 
-2. Choose :guilabel:`AWS` from the list of installed templates, and then choose the 
+2. Choose :guilabel:`AWS` from the list of installed templates, and then choose the
    :guilabel:`AWS Console Project` project template. Type a project name, and then click :guilabel:`OK`.
 
    .. figure:: images/new-proj-dlg-net-dg.png
@@ -49,7 +49,7 @@ more information about how to configure an AWS application:, see :ref:`net-dg-co
 
 3. Use the :guilabel:`AWS Access Credentials` dialog box to configure your application.
 
-   * Specify the account profile that your code should use to access AWS. To use an existing profile, 
+   * Specify the account profile that your code should use to access AWS. To use an existing profile,
      choose :guilabel:`Use existing profile`, and then choose the profile from the list. To add a new
      profile, choose :guilabel:`Use a new profile`, and then type the credentials information. For more
      information about profiles, see :ref:`net-dg-config`.
@@ -58,7 +58,7 @@ more information about how to configure an AWS application:, see :ref:`net-dg-co
 
    .. figure:: images/creds-new-proj-net-dg.png
        :scale: 50
-       :alt: Configure application access account profile, credentials, and default 
+       :alt: Configure application access account profile, credentials, and default
              AWS Region in AWS Access Credentials dialog
 
 4. Choose :guilabel:`OK` to accept the configuration and open the project. The project's
@@ -73,7 +73,7 @@ more information about how to configure an AWS application:, see :ref:`net-dg-co
         </appSettings>
       </configuration>
 
-        
+
    The |TVS| puts the values you specified in the :guilabel:`AWS Access Credentials` dialog box
    into the two key-value pairs in :code:`appSettings`.
 
