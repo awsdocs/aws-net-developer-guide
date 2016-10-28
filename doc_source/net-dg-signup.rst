@@ -23,7 +23,10 @@ instead of using your root account credentials.
          see :iam-ug:`Overview of Identity Management: Users <introduction_identity-management>`
          in the |IAM-ug|.
 
-**To sign up for an AWS account**
+Signing Up for an AWS Account
+=============================
+
+.. topic:: To sign up for an AWS account
 
 #. Open http://aws.amazon.com/ and click :guilabel:`Sign Up`.
 
@@ -39,7 +42,10 @@ Instead, :iam-ug:`create one or more IAM users <Using_SettingUpUser>`, and use t
 applications that run on |EC2| instances, you can use :iam-ug:`IAM roles <WorkingWithRoles>` to provide
 temporary credentials.
 
-**To create an IAM user**
+Creating an IAM User
+====================
+
+.. topic:: To create an IAM user
 
 #.  Go to the :console:`IAM console <iam>` (you may need to sign in to AWS first).
 
