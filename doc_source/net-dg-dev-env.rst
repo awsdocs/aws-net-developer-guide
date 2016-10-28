@@ -17,20 +17,27 @@ Install the .NET Development Environment
 To use the |sdk-net|, you must have the following installed.
 
 
-Requirements
-============
+Required
+========
 
-* (Required) Microsoft .NET Framework 3.5 or later
+* Microsoft .NET Framework 3.5 or later
 
-* (Required) Microsoft Visual Studio 2010 or later
+* Microsoft Visual Studio 2010 or later
 
-* (Required) |sdk-net|
+  .. note:: We recommend using Visual Studio Professional 2010 or later to implement your applications.
 
-* (Recommended) |TVSlong|, a plugin that provides a user interface for managing your AWS resources
-  from Visual Studio, and includes the |sdk-net|. For more information, see
+* |sdk-net|
+
+Recommended
+===========
+
+* |TVSlong|, a plugin that provides a user interface for managing your AWS resources
+  from Visual Studio, and includes the |sdk-net|.
+
+  For more information, see
   :tvs-ug:`Using the AWS Toolkit for Visual Studio <welcome>`.
 
-.. note:: We recommend using Visual Studio Professional 2010 or later to implement your applications.
+
 
 
 
