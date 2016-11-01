@@ -26,7 +26,7 @@ The following procedure describes how to install the |TFW|, which contains the |
 
 .. tip:: The |sdk-net| is also available on `GitHub <https://github.com/aws/aws-sdk-net>`_.
 
-To install |TFW|
+.. topic:: To install |TFW|
 
 1. Go to |sdk-net|_.
 
@@ -85,7 +85,7 @@ NuGet. For a list of AWSSDK packages available from NuGet, see `AWSSDK Packages
 Using NuGet from Solution Explorer
 ----------------------------------
 
-**To use NuGet from Solution Explorer**
+.. topic:: To use NuGet from Solution Explorer
 
 #. In :guilabel:`Solution Explorer`, right-click your project, and then choose :guilabel:`Manage NuGet
    Packages` from the context menu.
@@ -109,7 +109,7 @@ Using NuGet from Solution Explorer
 Using NuGet from the Package Manager Console
 --------------------------------------------
 
-**To use NuGet from the Package Manager Console in Visual Studio**
+.. topic:: To use NuGet from the Package Manager Console in Visual Studio
 
 * *Visual Studio 2010*
       From the :guilabel:`Tools` menu, choose :guilabel:`Library Package Manager`,

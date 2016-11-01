@@ -16,7 +16,7 @@
 
 The |sdk-net| makes it easier for Windows developers to build .NET applications that tap into the
 cost-effective, scalable, and reliable AWS services such as |S3long| (|S3|) and |EC2long| (|EC2|).
-The the SDK supports development on any platform that supports the .NET Framework 3.5 or later, and
+The SDK supports development on any platform that supports the .NET Framework 3.5 or later, and
 you can develop applications with the SDK using Visual Studio 2010 or later.
 
 .. contents:: Topics
@@ -25,7 +25,7 @@ you can develop applications with the SDK using Visual Studio 2010 or later.
 
 What's in the SDK
 =================
-     
+
 The |sdk-net| includes the following:
 
 * The current version of the |sdk-net|
@@ -86,5 +86,5 @@ The |sdk-net| supports most AWS infrastructure products, and more services are a
 a list of the AWS services supported by the SDK, see the `SDK README file
 <https://github.com/aws/aws-sdk-net/blob/master/README.md>`_.
 
-To see what changed in a given release, see the `the SDK change log
+To see what changed in a given release, see the `SDK change log
 <https://github.com/aws/aws-sdk-net/blob/master/SDK.CHANGELOG.md>`_.
