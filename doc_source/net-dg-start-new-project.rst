@@ -37,61 +37,63 @@ more information about how to configure an AWS application:, see :ref:`net-dg-co
 
 .. topic:: To start a new project
 
-1. In Visual Studio, on the :guilabel:`File` menu, choose :guilabel:`New`, and then choose :guilabel:`Project` to
-   open the :guilabel:`New Project` dialog box.
+    #. In Visual Studio, on the :guilabel:`File` menu, choose :guilabel:`New`, and then choose
+       :guilabel:`Project` to open the :guilabel:`New Project` dialog box.
 
-2. Choose :guilabel:`AWS` from the list of installed templates, and then choose the
-   :guilabel:`AWS Console Project` project template. Type a project name, and then click :guilabel:`OK`.
+    #. Choose :guilabel:`AWS` from the list of installed templates, and then choose the
+       :guilabel:`AWS Console Project` project template. Type a project name, and then click
+       :guilabel:`OK`.
 
-   .. figure:: images/new-proj-dlg-net-dg.png
-       :scale: 50
-       :alt: AWS template and AWS Console project selected in New Project dialog box
+       .. figure:: images/new-proj-dlg-net-dg.png
+           :scale: 50
+           :alt: AWS template and AWS Console project selected in New Project dialog box
 
-3. Use the :guilabel:`AWS Access Credentials` dialog box to configure your application.
+    #. Use the :guilabel:`AWS Access Credentials` dialog box to configure your application.
 
-   * Specify the account profile that your code should use to access AWS. To use an existing profile,
-     choose :guilabel:`Use existing profile`, and then choose the profile from the list. To add a new
-     profile, choose :guilabel:`Use a new profile`, and then type the credentials information. For more
-     information about profiles, see :ref:`net-dg-config`.
+       * Specify the account profile that your code should use to access AWS. To use an existing
+         profile, choose :guilabel:`Use existing profile`, and then choose the profile from the
+         list. To add a new profile, choose :guilabel:`Use a new profile`, and then type the
+         credentials information. For more information about profiles, see :ref:`net-dg-config`.
 
-   * Specify a default AWS Region to use.
+       * Specify a default AWS Region to use.
 
-   .. figure:: images/creds-new-proj-net-dg.png
-       :scale: 50
-       :alt: Configure application access account profile, credentials, and default
-             AWS Region in AWS Access Credentials dialog
+       .. figure:: images/creds-new-proj-net-dg.png
+           :scale: 50
+           :alt: Configure application access account profile, credentials, and default AWS Region
+                 in AWS Access Credentials dialog
 
-4. Choose :guilabel:`OK` to accept the configuration and open the project. The project's
-   :file:`App.config` file will contain something similar to the following.
+    #. Choose :guilabel:`OK` to accept the configuration and open the project. The project's
+       :file:`App.config` file will contain something similar to the following.
 
-   .. code-block:: xml
-
-      <configuration>
-        <appSettings>
-          <add key="AWSProfileName" value="development"/>
-          <add key="AWSRegion" value="us-west-1"/>
-        </appSettings>
-      </configuration>
-
-
-   The |TVS| puts the values you specified in the :guilabel:`AWS Access Credentials` dialog box
-   into the two key-value pairs in :code:`appSettings`.
-
-   .. note:: Although using the :code:`appSettings` element is still supported, we recommend you use the
-      :code:`aws` element instead, for example:
-
-      .. code-block:: xml
+       .. code-block:: xml
 
           <configuration>
-            <configSections>
-              <section name="aws" type="Amazon.AWSSection, AWSSDK.Core"/>
-            </configSections>
-            <aws region="us-east-1" profileName="development"/>
+            <appSettings>
+              <add key="AWSProfileName" value="development"/>
+              <add key="AWSRegion" value="us-west-1"/>
+            </appSettings>
           </configuration>
 
-      For more information about the :code:`aws` element, see :ref:`net-dg-config-ref`.
 
-5. Choose :kbd:`F5` to compile and run the application, which prints the number of |EC2| instances, |SDB|
-   tables, and |S3| buckets in your account.
+       The |TVS| puts the values you specified in the :guilabel:`AWS Access Credentials` dialog box
+       into the two key-value pairs in :code:`appSettings`.
+
+       .. note:: Although using the :code:`appSettings` element is still supported, we recommend you
+          use the :code:`aws` element instead, for example:
+
+          .. code-block:: xml
+
+              <configuration>
+                <configSections>
+                  <section name="aws" type="Amazon.AWSSection, AWSSDK.Core"/>
+                </configSections>
+                <aws region="us-east-1" profileName="development"/>
+              </configuration>
+
+          For more information about the :code:`aws` element, see :ref:`net-dg-config-ref`.
+
+    #. Choose :kbd:`F5` to compile and run the application, which prints the number of |EC2|
+       instances, |SDB| tables, and |S3| buckets in your account.
 
 For more information about configuring an AWS application, see :ref:`net-dg-config`.
+

@@ -28,10 +28,10 @@ Signing Up for an AWS Account
 
 .. topic:: To sign up for an AWS account
 
-#. Open http://aws.amazon.com/ and click :guilabel:`Sign Up`.
+    #. Open http://aws.amazon.com/ and click :guilabel:`Sign Up`.
 
-#. Follow the on-screen instructions. Part of the sign-up procedure involves receiving a phone call
-   and entering a PIN using your phone keypad.
+    #. Follow the on-screen instructions. Part of the sign-up procedure involves receiving a phone
+       call and entering a PIN using your phone keypad.
 
 Next, create an IAM user and download (or copy) its secret access key. To use the |sdk-net|,
 you must have a set of valid AWS credentials, which consist of an access key
@@ -47,26 +47,26 @@ Creating an IAM User
 
 .. topic:: To create an IAM user
 
-#.  Go to the :console:`IAM console <iam>` (you may need to sign in to AWS first).
+    #.  Go to the :console:`IAM console <iam>` (you may need to sign in to AWS first).
 
-#.  Click :guilabel:`Users` in the sidebar to view your IAM users.
+    #.  Click :guilabel:`Users` in the sidebar to view your IAM users.
 
-#.  If you don't have any IAM users set up, click :guilabel:`Create New Users` to create one.
+    #.  If you don't have any IAM users set up, click :guilabel:`Create New Users` to create one.
 
-#.  Select the IAM user in the list that you'll use to access AWS.
+    #.  Select the IAM user in the list that you'll use to access AWS.
 
-#.  Open the :guilabel:`Security Credentials` tab, and click :guilabel:`Create Access Key`.
+    #.  Open the :guilabel:`Security Credentials` tab, and click :guilabel:`Create Access Key`.
 
-    .. note:: You can have a maximum of two active access keys for any given IAM user. If your IAM
-        user has two access keys already, then you'll need to delete one of them before creating a
-        new key.
+        .. note:: You can have a maximum of two active access keys for any given IAM user. If your
+           IAM user has two access keys already, then you'll need to delete one of them before
+           creating a new key.
 
-#.  In the resulting dialog box, choose :guilabel:`Download Credentials` to download the
-    credential file to your computer, or click :guilabel:`Show User Security Credentials` to view
-    the IAM user's access key ID and secret access key (which you can copy and paste).
+    #.  In the resulting dialog box, choose :guilabel:`Download Credentials` to download the
+        credential file to your computer, or click :guilabel:`Show User Security Credentials` to
+        view the IAM user's access key ID and secret access key (which you can copy and paste).
 
-    .. important:: There is no way to obtain the secret access key once you close the dialog. You
-        can, however, delete its associated access key ID and create a new one.
+        .. important:: There is no way to obtain the secret access key once you close the dialog.
+           You can, however, delete its associated access key ID and create a new one.
 
 Next, you :doc:`set your credentials <setup-credentials>` in the AWS shared credentials file or in
 the environment.
