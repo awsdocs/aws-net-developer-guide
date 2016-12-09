@@ -28,20 +28,20 @@ The following procedure describes how to install the |TFW|, which contains the |
 
 .. topic:: To install |TFW|
 
-1. Go to |sdk-net|_.
+    #. Go to |sdk-net|_.
 
-2. In the :guilabel:`Downloads` section, choose :guilabel:`AWS SDK for .NET` to download the installer.
+    #. In the :guilabel:`Downloads` section, choose :guilabel:`AWS SDK for .NET` to download the
+       installer.
 
-3. To start installation, run the downloaded installer and follow the on-screen
-   instructions.
+    #. To start installation, run the downloaded installer and follow the on-screen instructions.
 
-    .. tip:: By default, |TFW| are installed in the Program Files directory, which requires administrator
-       privileges. To install |TFW| as a non-administrator, choose a different installation
-       directory.
+        .. tip:: By default, |TFW| are installed in the Program Files directory, which requires
+           administrator privileges. To install |TFW| as a non-administrator, choose a different
+           installation directory.
 
-4. (Optional) You can use NuGet to install individual AWSSDK service assemblies and extensions for
-   the |sdk-net|, which include a session state provider and a trace listener. For more information,
-   see :ref:`net-dg-nuget`.
+    #. (Optional) You can use NuGet to install individual AWSSDK service assemblies and extensions
+       for the |sdk-net|, which include a session state provider and a trace listener. For more
+       information, see :ref:`net-dg-nuget`.
 
 
 .. _net-dg-nuget:
@@ -87,21 +87,22 @@ Using NuGet from Solution Explorer
 
 .. topic:: To use NuGet from Solution Explorer
 
-#. In :guilabel:`Solution Explorer`, right-click your project, and then choose :guilabel:`Manage NuGet
-   Packages` from the context menu.
+    #. In :guilabel:`Solution Explorer`, right-click your project, and then choose :guilabel:`Manage
+       NuGet Packages` from the context menu.
 
-#. In the left pane of the :guilabel:`Manage NuGet Packages` dialog box, choose :guilabel:`Online`.
-   You can then use the search box in the top-right corner to search for the package you want to
-   install.
+    #. In the left pane of the :guilabel:`Manage NuGet Packages` dialog box, choose
+       :guilabel:`Online`.  You can then use the search box in the top-right corner to search for
+       the package you want to install.
 
-   The following figure shows the :guilabel:`AWSSDK - Core Runtime` assembly package. You can see
-   NuGet is aware that this package has a dependency on the :code:`AWSSDK.Core` assembly package;
-   NuGet automatically installs the :code:`AWSSDK.Core` package, if it is not already installed.
+       The following figure shows the :guilabel:`AWSSDK - Core Runtime` assembly package. You can
+       see NuGet is aware that this package has a dependency on the :code:`AWSSDK.Core` assembly
+       package; NuGet automatically installs the :code:`AWSSDK.Core` package, if it is not already
+       installed.
 
-   .. figure:: images/nuget-install-vs-dlg.png
-      :scale: 65
-      :alt: AWSSDK Core Runtime package and dependency on :code:`AWSSDK.Core`
-            assembly shown in Manage NuGet Packages dialog
+       .. figure:: images/nuget-install-vs-dlg.png
+          :scale: 65
+          :alt: AWSSDK Core Runtime package and dependency on :code:`AWSSDK.Core` assembly shown in
+                Manage NuGet Packages dialog
 
 
 .. _package-install-cmd:
@@ -111,13 +112,15 @@ Using NuGet from the Package Manager Console
 
 .. topic:: To use NuGet from the Package Manager Console in Visual Studio
 
-* *Visual Studio 2010*
-      From the :guilabel:`Tools` menu, choose :guilabel:`Library Package Manager`,
-      and then click :guilabel:`Package Manager Console`.
+    * *Visual Studio 2010*
 
-* *Visual Studio 2012 and later*
-      From the :guilabel:`Tools` menu, choose :guilabel:`Nuget Package
-      Manager`, and then click :guilabel:`Package Manager Console`.
+      From the :guilabel:`Tools` menu, choose :guilabel:`Library Package Manager`, and then click
+      :guilabel:`Package Manager Console`.
+
+    * *Visual Studio 2012 and later*
+
+      From the :guilabel:`Tools` menu, choose :guilabel:`Nuget Package Manager`, and then click
+      :guilabel:`Package Manager Console`.
 
 You can install the AWSSDK assemblies you want from the Package Manager Console by using the
 :command:`Install-Package` command. For example, to install the `AWSSDK.AutoScaling
