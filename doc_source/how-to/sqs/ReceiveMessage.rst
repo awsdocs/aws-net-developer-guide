@@ -48,14 +48,11 @@ You can use the |sdk-net| to receive messages from an |SQS| queue.
 
    .. code-block:: csharp
 
-       if (result.Message.Count != 0)
+       foreach (var message in result.Messages)
        {
-         for (int i = 0; i < result.Message.Count; i++)
+         if (message.Body == messageBody)
          {
-           if (result.Message[i].Body == messageBody)
-           {
-             receiptHandle = result.Message[i].ReceiptHandle;
-           }
+           receiptHandle = message.ReceiptHandle;
          }
        }
 
