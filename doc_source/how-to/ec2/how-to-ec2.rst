@@ -10,9 +10,9 @@
 
 .. _how-to-ec2:
 
-#####################################################
-Tutorial: Creating |EC2| Instances with the |sdk-net|
-#####################################################
+###########################################
+Creating |EC2| Instances with the |sdk-net|
+###########################################
 
 You can access the features of |EC2| using the |sdk-net|. For example, you can create, start, and 
 terminate EC2 instances.

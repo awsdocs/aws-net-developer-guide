@@ -10,9 +10,9 @@
 
 .. _tutorial-spot-instances-net:
 
-##############################
-Tutorial: |EC2| Spot Instances
-##############################
+####################
+|EC2| Spot Instances
+####################
 
 This topic describes how to use the |sdk-net| with |EC2| Spot Instances.
 
