@@ -314,8 +314,8 @@ using the :code:`ProxyCredentials` property on the
 :sdk-net-api:`ClientConfig <TRuntimeClientConfig>`
 class for the service. For example, for |S3|, you could use code
 similar to the following, where {my-username} and {my-password} are the proxy user name and password
-specified in a `NetworkCredential <http://msdn.microsoft.com/en-us/library/system.net.networkcredential.aspx>`_
-object.
+specified in a `NetworkCredential <https://msdn.microsoft.com/en-us/library/system.net.networkcredential.aspx>`_
+object.                 
 
 .. code-block:: csharp
 

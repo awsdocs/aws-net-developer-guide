@@ -225,7 +225,7 @@ AWSResponseLogging
       <add key="AWSResponseLogging" value="OnError"/> 
       
     Alternatively, to set service logging with the |sdk-net| API, set the 
-    :sdk-net-api:`AWSConfigs.ResponseLogging <Amazon.TAWSConfigs>` 
+    :sdk-net-api:`AWSConfigs.ResponseLogging <Amazon/TAWSConfigs>` 
     property to one of the values of the 
     :sdk-net-api:`ResponseLoggingOption <Amazon/TResponseLoggingOption>` enumeration:
     
