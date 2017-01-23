@@ -15,9 +15,9 @@
 ########################################
 
 The |sdk-net| supports |SQSlong| (|SQS|), which is a message queuing service that handles message or
-workflows between other components in a system. For more information, see |SQS|_
+workflows between other components in a system. For more information, see |SQS|_.
 
-The following example shows how to use the APIs to list accessible queues in |SQS|:
+The following example shows how to use the APIs to list accessible queues in |SQS|.
 
 .. literalinclude:: how-to/sqs/sqs-list-queues-low-level.txt
    :language: csharp
@@ -29,6 +29,6 @@ The following example shows how to use the APIs to list accessible queues in |SQ
 
     how-to-sqs
 
-For related API reference information, see :sdk-net-api:`Amazon.SQS <SQS/NSQS>`, 
-:sdk-net-api:`Amazon.SQS.Model <SQS/NSQS>`, and 
+For related API reference information, see :sdk-net-api:`Amazon.SQS <SQS/NSQS>`,
+:sdk-net-api:`Amazon.SQS.Model <SQS/NSQS>`, and
 :sdk-net-api:`Amazon.SQS.Util <SQS/NSQSUtil>` in the |sdk-net-ref|.
