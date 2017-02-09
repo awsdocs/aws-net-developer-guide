@@ -6,7 +6,7 @@ using Amazon;
 using Amazon.S3;
 using Amazon.S3.Model;
 
-namespace s3.amazon.com.docsamples.retrieveobject
+namespace Aws3Sample
 {
   class S3Sample
   {
