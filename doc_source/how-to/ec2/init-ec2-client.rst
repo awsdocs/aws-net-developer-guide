@@ -10,13 +10,18 @@
 
 .. _init-ec2-client:
 
-##########################################
-Create an |EC2| Client Using the |sdk-net|
-##########################################
+########################
+Creating an |EC2| Client
+########################
+
+.. meta::
+   :description: Use this .NET code example to learn how to create an Amazon EC2 client.
+   :keywords: AWS SDK for .NET examples, EC2 clients
+
 
 Create an |EC2| client to manage your EC2 resources, such as instances and security groups. This
-client is represented by an :sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` object, which 
-you can create as follows:
+client is represented by an :sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` object, which
+you can create as follows.
 
 .. code-block:: csharp
 
@@ -24,6 +29,6 @@ you can create as follows:
 
 The permissions for the client object are determined by the policy attached to the profile you
 specified in the :file:`App.config` file. By default, we use the region specified in
-:file:`App.config`. To use a different region, pass the appropriate 
-:sdk-net-api:`RegionEndpoint <Amazon/TRegionEndpoint>` value to the constructor. For more information, see 
-:rande:`Regions and Endpoints: EC2 <ec2>` in the *Amazon Web Services General Reference*.
+:file:`App.config`. To use a different region, pass the appropriate
+:sdk-net-api:`RegionEndpoint <Amazon/TRegionEndpoint>` value to the constructor. For more information, see
+:rande:`Regions and Endpoints: EC2 <ec2>` in the |AWS-gr|.

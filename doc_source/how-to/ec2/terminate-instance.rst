@@ -10,36 +10,40 @@
 
 .. _terminate-instance:
 
-###########################################
-Terminate an EC2 Instance Using the the SDK
-###########################################
+#############################
+Terminating an |EC2| Instance
+#############################
 
-When you no longer need one or more of your EC2 instances, you can terminate them.
+.. meta::
+   :description: Use this .NET code example to learn how to terminate an Amazon EC2 instance.
+   :keywords: AWS SDK for .NET examples, EC2 instances terminating
 
-**To terminate an EC2 instance**
+When you no longer need one or more of your |EC2| instances, you can terminate them.
 
-1. Create and initialize a :sdk-net-api:`TerminateInstancesRequest <EC2/TEC2TerminateInstancesRequest>` object.
+.. topic:: To terminate an EC2 instance
 
-2. Set the :code:`TerminateInstancesRequest.InstanceIds` property to a list of one or more instance
-   IDs. These identify the instances to terminate.
+#. Create and initialize a :sdk-net-api:`TerminateInstancesRequest <EC2/TEC2TerminateInstancesRequest>` object.
 
-3. Pass the request object to the 
-   :sdk-net-api:`TerminateInstances<EC2/MEC2EC2TerminateInstancesTerminateInstancesRequest>` 
+#. Set the :code:`TerminateInstancesRequest.InstanceIds` property to a list of one or more instance
+   IDs for the instances to terminate.
+
+#. Pass the request object to the
+   :sdk-net-api:`TerminateInstances<EC2/MEC2EC2TerminateInstancesTerminateInstancesRequest>`
    method. If the specified instance
-   does not exist, an :sdk-net-api:`AmazonEC2Exception <EC2/TEC2EC2Exception>` is thrown.
+   doesn't exist, an :sdk-net-api:`AmazonEC2Exception <EC2/TEC2EC2Exception>` is thrown.
 
-4. You can use the :sdk-net-api:`TerminateInstancesResponse <EC2/TEC2TerminateInstancesResponse>` object as 
-   follows to list the terminated instances.
+#. You can use the :sdk-net-api:`TerminateInstancesResponse <EC2/TEC2TerminateInstancesResponse>` object
+   to list the terminated instances, as follows.
 
 .. code-block:: csharp
 
     public static void TerminateInstance(
-      AmazonEC2Client ec2Client, 
+      AmazonEC2Client ec2Client,
       string instanceId)
     {
       var request = new TerminateInstancesRequest();
       request.InstanceIds = new List<string>() { instanceId };
-    
+
       try
       {
         var response = ec2Client.TerminateInstances(request);

@@ -10,27 +10,27 @@
 
 .. _how-to-ec2:
 
-###########################################
-Creating |EC2| Instances with the |sdk-net|
-###########################################
+########################
+|EC2| Instances Examples
+########################
 
-You can access the features of |EC2| using the |sdk-net|. For example, you can create, start, and 
-terminate EC2 instances.
+You can access the features of |EC2| using the |sdk-net|. For example, you can create, start, and
+terminate |EC2| instances.
 
-The sample code in this tutorial is written in C#, but you can use the |sdk-net| with any compatible 
-language. The |sdk-net| installs a set of C# project templates, so the simplest way to start this 
-project is to open Visual Studio, choose :guilabel:`New Project` from the :guilabel:`File` menu, 
-and then choose :guilabel:`AWS Empty Project`.
+The sample code is written in C#, but you can use the |sdk-net| with any compatible
+language. When you install the |TVSlong| a set of C# project templates are installed. So the easiest
+way to start this project is to open Visual Studio, and then choose :guilabel:`File`, :guilabel:`New Project`,
+:guilabel:`AWS Sample Projects`, :guilabel:`Compute and Networking`,
+:guilabel:`AWS EC2 Sample`.
 
-**Prerequisites**
+Prerequisites
+=============
 
 Before you begin, be sure that you have created an AWS account and set up your AWS credentials. For
 more information, see :ref:`net-dg-setup`.
 
-Tasks
-=====
-
-The following tasks demonstrate how to manage EC2 instances using the |sdk-net|.
+Examples
+========
 
 .. toctree::
     :titlesonly:
@@ -41,3 +41,6 @@ The following tasks demonstrate how to manage EC2 instances using the |sdk-net|.
     key-pairs
     run-instance
     terminate-instance
+    using-regions-and-availability-zones
+    using-vpc-endpoints
+    ec2-example-elastic-ip-addresses

@@ -10,11 +10,16 @@
 
 .. _tutorial-spot-instances-net:
 
-####################
-|EC2| Spot Instances
-####################
+#############################
+|EC2| Spot Instances Examples
+#############################
 
 This topic describes how to use the |sdk-net| with |EC2| Spot Instances.
+
+
+.. contents:: **Topics**
+    :local:
+    :depth: 1
 
 .. _tutor-spot-net-overview:
 

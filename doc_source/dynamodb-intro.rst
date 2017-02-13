@@ -10,9 +10,9 @@
 
 .. _dynamodb-intro:
 
-########################################
-|DDBlong| Programming with the |sdk-net|
-########################################
+##################
+|DDBlong| Examples
+##################
 
 The |sdk-net| supports |DDBlong|, which is a fast NoSQL database service offered by AWS.
 The SDK provides three programming models for communicating with |DDB|: the *low-level* model,
@@ -20,6 +20,10 @@ the *document* model, and the *object persistence* model.
 
 The following information introduces these models and their APIs, provides examples for how and when
 to use them, and gives you links to additional |DDB| programming resources in the |sdk-net|.
+
+.. contents:: Topics
+    :local:
+    :depth: 1
 
 .. toctree::
     :hidden:
@@ -47,7 +51,7 @@ and insert items into a table in |DDB|.
 .. _dynamodb-intro-apis-low-level_create-table:
 
 Creating a Table
-----------------
+~~~~~~~~~~~~~~~~
 
 In the following example, you create a table by using the :code:`CreateTable` method of the
 :code:`AmazonDynamoDBClient` class. The :code:`CreateTable` method uses an instance of the
@@ -62,7 +66,7 @@ of the :code:`CreateTableResponse` class.
 .. _dynamodb-intro-apis-low-level-verify-table:
 
 Verifying That a Table is Ready to Modify
------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Before you can change or modify a table, the table has to be ready for modification.
 The following example shows how to use the low-level model to verify that a table in |DDB| is ready.
@@ -78,7 +82,7 @@ ready to be modified.
 .. _dynamodb-intro-apis-low-level_insert-item:
 
 Inserting an Item into a Table
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the following example, you use the low-level model to insert two items into a table in
 |DDB|. Each item is inserted through the :code:`PutItem` method of the
@@ -113,7 +117,7 @@ in tables in |DDB|.
 .. _dynamodb-intro-apis-document-insert-item:
 
 Inserting an Item into a Table
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the following example, an item is inserted into the table through the :code:`PutItem` method of
 the :code:`Table` class. The :code:`PutItem` method takes an instance of the :code:`Document` class;
@@ -128,7 +132,7 @@ specifying an instance of the :code:`AmazonDynamoDBClient` class and the name of
 .. _dynamodb-intro-apis-document-get-item:
 
 Getting an Item from a Table
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the following example, the item is retrieved through the :code:`GetItem` method of the
 :code:`Table` class. To determine the item to get, the :code:`GetItem` method uses
@@ -180,7 +184,7 @@ from a table in |DDB|.
 .. _dynamodb-intro-apis-object-persistence-net-class-item:
 
 Defining a .NET Class that Represents an Item in a Table
---------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the following example, the :code:`DynamoDBTable` attribute specifies the table name, while the
 :code:`DynamoDBHashKey` and :code:`DynamoDBRangeKey` attributes model the table's hash-and-range
@@ -192,7 +196,7 @@ primary key.
 .. _dynamodb-intro-apis-object-persistence-net-insert-item:
 
 Using an Instance of the .NET Class to Insert an Item into a Table
-------------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this example, the item is inserted through the :code:`Save` method of the
 :code:`DynamoDBContext` class, which takes an initialized instance of the .NET class that represents
@@ -206,7 +210,7 @@ the item. (The instance of the :code:`DynamoDBContext` class is initialized with
 .. _dynamodb-intro-apis-object-persistence-net-get-item:
 
 Using an Instance of a .NET Object to Get an Item from a Table
---------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this example, the item is retrieved through the :code:`Load` method of the
 :code:`DynamoDBContext` class, which takes a partially initialized instance of the .NET class that
@@ -223,8 +227,7 @@ instance of the :code:`DynamoDBContext` class is initialized with an instance of
 More Info
 =========
 
-Using the |sdk-net| to program |DDB|
-------------------------------------
+**Using the |sdk-net| to program |DDB|** information and examples**
 
 * :aws-blogs-net:`DynamoDB APIs <Tx17SQHVEMW8MXC/DynamoDB-APIs>`
 
@@ -244,8 +247,8 @@ Using the |sdk-net| to program |DDB|
 
 * :ref:`net-dg-dynamodb-session`
 
-Low-Level model information and examples
-----------------------------------------
+
+**Low-Level model information and examples**
 
 * :ddb-dg:`Working with Tables Using the AWS SDK for .NET Low-Level API <LowLevelDotNetWorkingWithTables>`
 
@@ -259,8 +262,8 @@ Low-Level model information and examples
 
 * :ddb-dg:`Working with Global Secondary Indexes Using the AWS SDK for .NET Low-Level API <GSILowLevelDotNet>`
 
-Document model information and examples
----------------------------------------
+
+**Document model information and examples**
 
 * :ddb-dg-deep:`DynamoDB Data Types <DataModel.html#DataModel.DataTypes>`
 
@@ -268,8 +271,7 @@ Document model information and examples
 
 * :ddb-dg:`.NET: Document Model <DotNetSDKMidLevel>`
 
-Object persistance model information and examples
--------------------------------------------------
+
+**Object persistance model information and examples**
 
 * :ddb-dg:`.NET: Object Persistence Model <DotNetSDKHighLevel>`
-

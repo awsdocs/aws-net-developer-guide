@@ -10,41 +10,41 @@
 
 .. _delete-sqs-message:
 
-#########################################
-Delete a Message from an Amazon SQS Queue
-#########################################
+######################################
+Deleting a Message from an |SQS| Queue
+######################################
 
- You can use the |sdk-net| to receive messages from an |SQS| queue.
+You can use the |sdk-net| to delete messages from an |SQS| queue.
 
-**To delete a message from an Amazon SQS queue**
+.. topic:: To delete a message from an |SQS| queue
 
-1. Create and initialize a :sdk-net-api:`DeleteMessageRequest <SQS/TSQSDeleteMessageRequest>` instance. 
-   Specify the |SQS| queue to delete a message from and the receipt handle of the message to delete, 
-   as follows:
+#. Create and initialize a :sdk-net-api:`DeleteMessageRequest <SQS/TSQSDeleteMessageRequest>` object.
+   Specify the |SQS| queue to delete a message from and the receipt handle of the message to delete,
+   as follows.
 
    .. code-block:: csharp
 
       var deleteMessageRequest = new DeleteMessageRequest();
-    
+
       deleteMessageRequest.QueueUrl = queueUrl;
       deleteMessageRequest.ReceiptHandle = recieptHandle;
 
-2. Pass the request object as a parameter to the 
-   :sdk-net-api:`DeleteMessage <SQS/MSQSSQSDeleteMessageDeleteMessageRequest>` method. The method returns 
-   a :sdk-net-api:`DeleteMessageResponse <SQS/TSQSDeleteMessageResponse>` object, as follows:
+#. Pass the request object as a parameter to the
+   :sdk-net-api:`DeleteMessage <SQS/MSQSSQSDeleteMessageDeleteMessageRequest>` method. The method returns
+   a :sdk-net-api:`DeleteMessageResponse <SQS/TSQSDeleteMessageResponse>` object, as follows.
 
    .. code-block:: csharp
 
       var response = sqsClient.DeleteMessage(deleteMessageRequest);
 
    Calling :code:`DeleteMessage` unconditionally removes the message from the queue, regardless of
-   the visibility timeout setting. For more information about visibility timeouts, see 
+   the visibility timeout setting. For more information about visibility timeouts, see
    :sqs-dg:`Visibility Timeout <AboutVT>`.
 
-For information about sending a message to a queue, see 
+For information about sending a message to a queue, see
 :ref:`Sending an Amazon SQS Message <send-sqs-message>`.
 
-For information about receiving messages from a queue, see 
+For information about receiving messages from a queue, see
 :ref:`Receiving a Message from an Amazon SQS Queue <receive-sqs-message>`.
 
 

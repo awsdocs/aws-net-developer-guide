@@ -10,17 +10,17 @@
 
 .. _tutorials-examples:
 
-###########################################
-Programming AWS Services with the |sdk-net|
-###########################################
+##################
+|sdk-net| Examples
+##################
 
-The following topics, tutorials, and examples demonstrate how to use the |sdk-net| to work with
+The following examples demonstrate how to use the |sdk-net| to work with
 individual AWS services.
 
 Additional samples are available on :github:`GitHub <awslabs/aws-sdk-net-samples>`.
 
-Before you begin, be sure you have :ref:`set up the AWS SDK for .NET <net-dg-setup>` and reviewed
-the material in the :ref:`net-dg-programming-techniques`.
+Before you begin, be sure you have :ref:`set up the AWS SDK for .NET <net-dg-setup>` and review
+:ref:`net-dg-programming-techniques`.
 
 
 
@@ -37,6 +37,7 @@ the material in the :ref:`net-dg-programming-techniques`.
     s3-apis-intro
     sns-apis-intro
     sqs-apis-intro
+    cloudwatch
     opsworks-apis-intro
     other-apis-intro
 

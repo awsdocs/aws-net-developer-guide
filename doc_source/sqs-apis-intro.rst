@@ -10,25 +10,52 @@
 
 .. _sqs-apis-intro:
 
-########################################
-|SQSlong| Programming with the |sdk-net|
-########################################
+##############
+|SQS| Examples
+##############
 
-The |sdk-net| supports |SQSlong| (|SQS|), which is a message queuing service that handles message or
-workflows between other components in a system. For more information, see |SQS|_
+.. meta::
+   :description: .NET code examples for Amazon SQS
+   :keywords: AWS SDK for .NET examples, SQS
 
-The following example shows how to use the APIs to list accessible queues in |SQS|:
 
-.. literalinclude:: how-to/sqs/sqs-list-queues-low-level.txt
-   :language: csharp
+The |sdk-net|_ supports |SQS|, which is a message queuing service that handles messages or
+workflows between components in a system. For more information, see |SQS|_.
+
+The following examples demonstrate how to use the |sdk-net| to create and use |SQS| queues.
+
+The sample code is written in C#, but you can use the |sdk-net| with any compatible
+language. The |sdk-net| installs a set of C# project templates. So the simplest way to start this
+project is to open Visual Studio, and then choose :guilabel:`File`, :guilabel:`New Project`,
+:guilabel:`AWS Sample Projects`, :guilabel:`App Services`,
+:guilabel:`AWS SQS Sample`.
+
+Prerequisite Tasks
+==================
+
+Before you begin, be sure that you have created an AWS account and set up your AWS credentials. For
+more information, see :ref:`net-dg-setup`.
+
+For related API reference information, see :sdk-net-api:`Amazon.SQS <SQS/NSQS>`,
+:sdk-net-api:`Amazon.SQS.Model <SQS/NSQSModel>`, and
+:sdk-net-api:`Amazon.SQS.Util <SQS/NSQSUtil>` in the |sdk-net-ref|.
+
+Examples
+========
 
 .. toctree::
     :titlesonly:
-    :caption: For more examples, see the following:
     :maxdepth: 1
 
-    how-to-sqs
+    how-to/sqs/InitSQSClient
+    how-to/sqs/CreateQueue
+    how-to/sqs/QueueURL
+    how-to/sqs/SendMessage
+    how-to/sqs/SendMessageBatch
+    how-to/sqs/ReceiveMessage
+    how-to/sqs/DeleteMessage
+    how-to/sqs/EnableLongPolling
+    how-to/sqs/UsingSQSQueues
+    how-to/sqs/UsingSQSDeadLetterQueues
 
-For related API reference information, see :sdk-net-api:`Amazon.SQS <SQS/NSQS>`, 
-:sdk-net-api:`Amazon.SQS.Model <SQS/NSQS>`, and 
-:sdk-net-api:`Amazon.SQS.Util <SQS/NSQSUtil>` in the |sdk-net-ref|.
+

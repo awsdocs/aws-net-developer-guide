@@ -10,9 +10,9 @@
 
 .. _sns-apis-intro:
 
-########################################
-|SNSlong| Programming with the |sdk-net|
-########################################
+##########################
+|SNSlong| (|SNS|) Examples
+##########################
 
 The |sdk-net| supports |SNSlong| (|SNS|), which is a web service that enables applications, end
 users, and devices to instantly send and receive notifications from the cloud. For more information,

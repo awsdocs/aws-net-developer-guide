@@ -70,4 +70,3 @@ The following links provide examples of programming |S3| with the |sdk-net|:
 * :s3-dg:`Specifying Server-Side Encryption with Customer-Provided Encryption Keys
   <sse-c-using-dot-net-sdk>`
 
-

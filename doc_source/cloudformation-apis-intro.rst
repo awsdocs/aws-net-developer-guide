@@ -10,9 +10,9 @@
 
    .. _cloudformation-apis-intro:
 
-########################################
-|CFNLong| Programming with the |sdk-net|
-########################################
+##################
+|CFNLong| Examples
+##################
 
 The |sdk-net| supports |CFNLong|, which creates and provisions AWS infrastructure deployments
 predictably and repeatedly. For more information, see |CFN-gsg|_.
