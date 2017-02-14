@@ -49,7 +49,7 @@ Describe Elastic IP Addresses
 =============================
 
 Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` object. Next, create a :sdk-net-api:`DescribeAddressesRequest <EC2/TEC2DescribeAddressesRequest>`
-object to pass as parameter, filtering the addresses returned by those in your VPC. To retrieve descriptions
+object to pass as a parameter, filtering the addresses returned by those in your VPC. To retrieve descriptions
 of all your Elastic IP addresses, omit the filter from the parameters.
 Then call the :sdk-net-api:`DescribeAddresses <EC2/MEC2EC2DescribeAddressesDescribeAddressesRequest>`
 method of the :code:`AmazonEC2Client` object.
@@ -90,7 +90,7 @@ Allocate and Associate an Elastic IP Address
 ============================================
 
 Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` object. Next, create an :sdk-net-api:`AllocateAddressRequest <EC2/TEC2AllocateAddressRequest>`
-object for the parameters used to allocate an Elastic IP address, which in this case specifies that the
+object for the parameter used to allocate an Elastic IP address, which in this case specifies that the
 domain is a VPC. Call the :sdk-net-api:`AllocateAddress <EC2/MEC2EC2AllocateAddressAllocateAddressRequest>` method of the
 :code:`AmazonEC2Client` object.
 

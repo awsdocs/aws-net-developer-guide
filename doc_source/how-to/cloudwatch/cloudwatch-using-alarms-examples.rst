@@ -118,7 +118,8 @@ Disable Actions on an Alarm
 ===========================
 
 Create an :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchCloudWatchClient>` instance and a
-:sdk-net-api:`DisableAlarmActionsRequest <CloudWatch/TCloudWatchDisableAlarmActionsRequest>` object containing the name of the |CW| alarm. Call the :sdk-net-api:`DisableAlarmActionsRequest <CloudWatch/TCloudWatchDisableAlarmActionsRequest>`
+:sdk-net-api:`DisableAlarmActionsRequest <CloudWatch/TCloudWatchDisableAlarmActionsRequest>` object 
+containing the name of the |CW| alarm. Call the :sdk-net-api:`DisableAlarmActions <CloudWatch/MCloudWatchCloudWatchDisableAlarmActionsDisableAlarmActionsRequest>`
 method to disable the actions for this alarm.
 
     .. code-block:: c#
