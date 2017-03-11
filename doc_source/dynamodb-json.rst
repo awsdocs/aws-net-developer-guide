@@ -86,8 +86,8 @@ JSON data you call the :code:`FromJson` method to convert the JSON data back int
 
 .. _dynamodb-json-more-info:
 
-Additional Resources
-====================
+More Info
+=========
 
 For more information and examples of programming JSON with |DDB| with the |sdk-net|, see:
 

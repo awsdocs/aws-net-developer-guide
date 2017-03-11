@@ -201,8 +201,8 @@ The :code:`ConditionExpression` property specifies that :code:`#title` (:code:`T
 
 .. _dynamodb-expressions-resources:
 
-Additional Resources
-====================
+More Info
+=========
 
 For more information and code examples, see:
 
