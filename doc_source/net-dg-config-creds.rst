@@ -14,40 +14,42 @@
 Configuring AWS Credentials
 ###########################
 
-This topic describes how to configure your application's AWS credentials. It assumes you have
-created an AWS account and have access to your credentials, as described in :ref:`net-dg-signup`. It
-is important to manage your credentials securely and avoid practices that could unintentionally
-expose your credentials publicly. In particular:
+You must manage your AWS credentials securely and avoid practices that can unintentionally expose 
+your credentials to the public. In this topic, we describe how you configure your application's AWS 
+credentials so that they remain secure. 
 
 * Don't use your account's root credentials to access your AWS resources. These credentials provide
   unrestricted account access and are difficult to revoke.
 
 * Don't put literal access keys in your application, including the project's :file:`App.config` or
-  :file:`Web.config` file. Doing so creates a risk of accidentally exposing your credentials if,
+  :file:`Web.config` file. If you do, you create a risk of accidentally exposing your credentials if,
   for example, you upload the project to a public repository.
 
-Some general guidelines for securely managing credentials include:
+.. note::
+  
+We assume you have
+created an AWS account and have access to your credentials.  If you haven't yet, see :ref:`net-dg-signup`. 
 
-* Create |IAM| users and use the credentials for the |IAM| users instead of your account's root
-  credentials to provide account access. |IAM| user credentials are easier to revoke if they are
-  compromised. You can apply to each |IAM| user a policy that restricts the user to a specified
-  set of resources and actions.
+The following are general guidelines for securely managing credentials:
 
-* The preferred approach for managing credentials during application development is to put a profile
+* Create |IAM| users and use their IAM user credentials instead of using your AWS root
+  user. |IAM| user credentials are easier to revoke if they're compromised. You can apply a policy 
+  to each |IAM| user that restricts the user to a specific  set of resources and actions.
+
+* During application development, the preferred approach for managing credentials is to put a profile
   for each set of |IAM| user credentials in the |sdk-store|. You can also use a plaintext
-  credentials file to store profiles that contain credentials. You can then reference a particular
-  profile programmatically or in your application's :file:`App.config` or :file:`Web.config` file
-  instead of storing the credentials in your project files. To limit the risk of unintentionally
-  exposing credentials, the |sdk-store| or credentials file should be stored separately from your
-  project files.
+  credentials file to store profiles that contain credentials. Then you can reference a specific
+  profile programmatically instead of storing the credentials in your project files. To limit the 
+  risk of unintentionally exposing credentials, you should store the |sdk-store| or credentials file 
+  separately from your project files.
 
 * Use |IAM| roles for applications that are running on |EC2| instances.
 
 * Use temporary credentials or environment variables for applications that are available to users
   outside your organization.
 
-The following topics describe how to manage credentials for an |sdk-net| application. For a general
-discussion of how to securely manage AWS credentials, see
+The following topics describe how to manage credentials for an |sdk-net| application. For a discussion 
+of how to securely manage AWS credentials, see
 :aws-gr:`Best Practices for Managing AWS Access Keys <aws-access-keys-best-practices>`.
 
 
@@ -56,126 +58,387 @@ discussion of how to securely manage AWS credentials, see
 Using the |sdk-store|
 ---------------------
 
-During development of your |sdk-net| application, you should add a profile to the |sdk-store| for
-each set of credentials you want to use in your application. This will prevent the accidental
-exposure of your AWS credentials while developing your application. The |sdk-store| provides the
-following benefits:
+During development of your |sdk-net| application, add a profile to the |sdk-store| for
+each set of credentials you want to use in your application. This prevents the accidental
+exposure of your AWS credentials. The |sdk-store| is located in the :code:`C:Users<username>AppData\Local\AWSToolkit` folder in the :code:`RegisteredAccounts.json` 
+file. The |sdk-store| provides the following benefits:
 
 * The |sdk-store| can contain multiple profiles from any number of accounts.
 
 * The credentials in the |sdk-store| are encrypted, and the |sdk-store| resides in the user's home
-  directory, which limits the risk of accidentally exposing your credentials.
+  directory. This limits the risk of accidentally exposing your credentials.
 
 * You reference the profile by name in your application and the associated credentials are referenced
   at run time. Your source files never contain the credentials.
 
-* If you include a profile named :code:`default`, the |sdk-net| will use that profile. This is also
-  true if no other profile name is supplied, or the given name is not found
+* If you include a profile named :code:`default`, the |sdk-net| uses that profile. This is also
+  true if you don't provide another profile name, or if the specified name isn't found.
 
-* The |sdk-store| also provides credentials to the |TWPlong| and the |TVSlong|.
+* The |sdk-store| also provides credentials to |TWPlong| and the |TVSlong|.
 
 .. note:: |sdk-store| profiles are specific to a particular user on a particular host. They cannot
-   be copied to other hosts or other users. For this reason, |sdk-store| profiles cannot be used in
+   be copied to other hosts or other users. For this reason, you cannot use |sdk-store| profiles in
    production applications. For more information, see :ref:`creds-assign`.
 
-There are several ways to manage the profiles in the |sdk-store|.
+You can manage the profiles in the |sdk-store| in several ways.
 
-* The |TVS| includes a graphical user interface for managing profiles. For more information about
-  adding credentials to the |sdk-store| with the graphical user interface, see
+* Use the graphical user interface (GUI) in the |TVSlong| to manage profiles. For more information about
+  adding credentials to the |sdk-store| by using the GUI, see
   :tvs-ug:`Specifying Credentials <tkv_setup.html#tkv_setup.creds>` in the |TVSlong|.
 
 * You can manage your profiles from the command line by using the :code:`Set-AWSCredentials` cmdlet in
-  the |TWPlong|. For more information, see
-  :twp-ug:`Using AWS Credentials <specifying-your-aws-credentials>` in the |TWPlong|.
+  |TWPlong|. For more information, see :twp-ug:`Using AWS Credentials <specifying-your-aws-credentials>`.
 
-* While it is not a commonly used feature, you can manage your profiles programmatically using the
-  :sdk-net-api:`Amazon.Util.ProfileManager <Util/TUtilProfileManager>` class. The following
-  example uses the
-  :sdk-net-api:`RegisterProfile <Util/MUtilProfileManagerRegisterProfileStringStringString>` method
-  :sdk-net-api:`RegisterProfile <Util/MUtilProfileManagerRegisterProfileStringStringString>` method
-  to add a new profile to the |sdk-store|.
+* You can create and manage your profiles programmatically by using the
+  :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TRuntimeCredentialManagementCredentialProfile>` 
+  class. 
+  
+The following examples show how to create a basic profile and SAML profile and add them to 
+the |sdk-store| by using the :sdk-net-api:`RegisterProfile <Runtime/MRuntimeCredentialManagementNetSDKCredentialsFileRegisterProfileCredentialProfile>` 
+method. 
+  
+Create a Profile and Save it to the .NET Credentials File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+    Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TRuntimeCredentialManagementCredentialProfileOptions>` 
+    object and set its :code:`AccessKey` and :code:`SecretKey` properties. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TRuntimeCredentialManagementCredentialProfile>` 
+    object. Provide the name of the profile and the :code:`CredentialProfileOptions` object
+    you created. Optionally, set the Region property for the profile. Instantiate a NetSDKCredentialsFile object 
+    and call the :sdk-net-api:`RegisterProfile <Runtime/MRuntimeCredentialManagementNetSDKCredentialsFileRegisterProfileCredentialProfile>`
+    method to register the profile.
+  
+    .. code-block:: csharp
 
-  .. code-block:: csharp
+             var options = new CredentialProfileOptions
+            {
+                AccessKey = "access_key",
+                SecretKey = "secret_key"
+            };
+            var profile = new Amazon.Runtime.CredentialManagement.CredentialProfile("basic_profile", options);
+            profile.Region = RegionEndpoint.USWest1;
+            var netSDKFile = new NetSDKCredentialsFile();
+            netSDKFile.RegisterProfile(profile);
 
-      Amazon.Util.ProfileManager.RegisterProfile({profileName}, {accessKey}, {secretKey})
+    The :methodname:`RegisterProfile` method is used to register a new profile. Your application
+    typically calls this method only once for each profile.
+    
+Create a SAMLEndpoint and an Associated Profile and Save it to the .NET Credentials File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+    Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SAMLEndpoint <Runtime/TRuntimeCredentialManagementCredentialProfileOptions>` 
+    object. Provide the name and endpoint URI parameters. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SAMLEndpointManager <Runtime/TRuntimeCredentialManagementCredentialProfile>` 
+    object.  Call the :sdk-net-api:`RegisterEndpoint <Runtime/MRuntimeCredentialManagementNetSDKCredentialsFileRegisterEndpointSAMLEndpoint>`
+    method to register the endpoint. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TRuntimeCredentialManagementCredentialProfileOptions>` 
+    object and set its :code:`EndpointName` and :code:`RoleArn` properties. Create an 
+    :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TRuntimeCredentialManagementCredentialProfile>` 
+    object and provide the name of the profile and the :code:`CredentialProfileOptions` object you created. 
+    Optionally, set the Region property for the profile. Instantiate a NetSDKCredentialsFile object 
+    and call the :sdk-net-api:`RegisterProfile <Runtime/MRuntimeCredentialManagementNetSDKCredentialsFileRegisterProfileCredentialProfile>`
+    method to register the profile.
 
-  The :methodname:`RegisterProfile` method is used to register a new profile. Your application
-  will normally call this method only once for each profile.
-
+    .. code-block:: csharp
+   
+            var endpoint = new SAMLEndpoint("endpoint1", new Uri("https://some_saml_endpoint"), SAMLAuthenticationType.Kerberos);
+            var endpointManager = new SAMLEndpointManager();
+            endpointManager.RegisterEndpoint(endpoint);
+            options = new CredentialProfileOptions
+            {
+                EndpointName = "endpoint1",
+                RoleArn = "arn:aws:iam::999999999999:role/some-role"
+            };
+            profile = new CredentialProfile("federated_profile", options);
+            netSDKFile = new NetSDKCredentialsFile();
+            netSDKFile.RegisterProfile(profile);
 
 .. _creds-file:
 
 Using a Credentials File
 ------------------------
 
-You can also store profiles in a credentials file, which can be used by the other AWS SDKs, the
-|CLI|, and |TWPLong|. To reduce the risk of accidentally exposing credentials, the credentials file
-should be stored separately from any project files, usually in the user's home folder. *Be aware
-that the profiles in a credentials files are stored in plaintext.*
+You can also store profiles in a shared credentials file. This file can be used by the other AWS SDKs, the
+|CLI| and |TWPLong|. To reduce the risk of accidentally exposing credentials, store the credentials file
+separately from any project files, usually in the user's home folder. *Be aware
+that the profiles in credentials files are stored in plaintext.*
 
-You use a text editor to manage the profiles in a credentials file. The file is named
-:file:`credentials`, and the default location is under your user's home folder. For example, if your
-user name is :code:`awsuser`, the credentials file would be
-:file:`C:\\users\\awsuser\\.aws\\credentials`.
+Use can manage the profiles in the shared credentials file in two ways: 
 
-Each profile has the following format:
+* You can a text editor. The file is named 
+  :file:`credentials`, and the default location is under your user's home folder. For example, if your
+  user name is :code:`awsuser`, the credentials file would be
+  :file:`C:\\users\\awsuser\\.aws\\credentials`.
 
-.. code-block:: none
+  The following is an example of a profile in the credentials file.
 
-   [{profile_name}]
-   aws_access_key_id = {accessKey}
-   aws_secret_access_key = {secretKey}
+ .. code-block:: none
 
-A profile can optionally include a session token. For more information, see
-:aws-gr:`Best Practices for Managing AWS Access Keys <aws-access-keys-best-practices>`.
-Profiles in the SDK Store do not accept session tokens. The |sdk-store| is for "long lived"
-credentials.
+     [{profile_name}]
+     aws_access_key_id = {accessKey}
+     aws_secret_access_key = {secretKey}
+   
+   For more information, see
+  `Best Practices for Managing AWS Access Keys <http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`_.
+  
+ .. tip:: If you include a profile named :code:`default`, the |sdk-net| uses that profile by default if it can't find the specified profile.
 
-.. tip:: If you include a profile named :code:`default`, the |sdk-net| will use that profile by
-   default if it cannot find the specified profile.
+  You can store the credentials file that contains the profiles in a location you choose, such as
+  :file:`C:\\aws_service_credentials\\credentials`. You then explicitly specify the file path in the
+  :code:`AWSProfilesLocation` attribute in your project's :file:`App.config` or :file:`Web.config`
+  file. For more information, see :ref:`net-dg-config-creds-assign-profile`.
+  
+* You can programmatically manage the credentials file by using the classes in the :sdk-net-api:`Amazon.Runtime.CredentialManagement <Runtime/NRuntimeCredentialManagement>` namespace.
+ 
+Create a Profile and Save it to the Shared Credentials File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+      Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TRuntimeCredentialManagementCredentialProfileOptions>` 
+      object and set its :code:`AccessKey` and :code:`SecretKey` properties.
+      Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TRuntimeCredentialManagementCredentialProfile>` 
+      object. Provide the name of the profile and the :code:`CredentialProfileOptions` you created. 
+      Optionally, set the Region property for the profile. Instantiate an 
+      :sdk-net-api:`Amazon.Runtime.CredentialManagement.SharedCredentialsFile <Runtime/TRuntimeCredentialManagementSharedCredentialsFile>` 
+      object and call the :sdk-net-api:`RegisterProfile <Runtime/MRuntimeCredentialManagementSharedCredentialsFileRegisterProfileCredentialProfile>`
+      method to register the profile.
+      
+      .. code-block:: csharp
+       
+        options = new CredentialProfileOptions
+        {
+            AccessKey = "access_key",
+            SecretKey = "secret_key"
+        };
+        profile = new CredentialProfile("shared_profile", options);
+        profile.Region = RegionEndpoint.USWest1;
+        var sharedFile = new SharedCredentialsFile();
+        sharedFile.RegisterProfile(profile);
+        
+      The :methodname:`RegisterProfile` method is used to register a new profile. Your application
+      will normally call this method only once for each profile.
 
-You can store profiles in a credentials file in a location you choose, such as
-:file:`C:\\aws_service_credentials\\credentials`. You then explicitly specify the file path in the
-:code:`AWSProfilesLocation` attribute in your project's :file:`App.config` or :file:`Web.config`
-file. For more information, see :ref:`net-dg-config-creds-assign-profile`.
+Create a Source Profile and an Associated Assume Role Profile and Save It to the Credentials File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+  
+      Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TRuntimeCredentialManagementCredentialProfileOptions>` 
+      object for the source profile and set its :code:`AccessKey` and :code:`SecretKey` properties. 
+      Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TRuntimeCredentialManagementCredentialProfile>` 
+      object. Provide the name of the profile and the :code:`CredentialProfileOptions` 
+      you created. Instantiate an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SharedCredentialsFile <Runtime/TRuntimeCredentialManagementSharedCredentialsFile>` 
+      object and call the :sdk-net-api:`RegisterProfile <Runtime/MRuntimeCredentialManagementNetSDKCredentialsFileRegisterProfileCredentialProfile>`
+      method to register the profile. Create another :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TRuntimeCredentialManagementCredentialProfileOptions>` 
+      object for the assumed role profile and set the :code:`SourceProfile` and :code:`RoleArn` properties 
+      for the profile. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TRuntimeCredentialManagementCredentialProfile>` 
+      object for the assumed role. Provide the name of the profile and the :code:`CredentialProfileOptions` 
+      you created.
+      
+      .. code-block:: csharp
 
+        // Create the source profile and save it to the shared credentials file
+        var sourceProfileOptions = new CredentialProfileOptions
+        {
+            AccessKey = "access_key",
+            SecretKey = "secret_key"
+        };
+        var sourceProfile = new CredentialProfile("source_profile", sourceProfileOptions);
+        sharedFile = new SharedCredentialsFile();
+        sharedFile.RegisterProfile(sourceProfile);
+
+        // Create the assume role profile and save it to the shared credentials file
+        var assumeRoleProfileOptions = new CredentialProfileOptions
+        {
+            SourceProfile = "source_profile",
+            RoleArn = "arn:aws:iam::999999999999:role/some-role"
+        };
+        var assumeRoleProfile = new CredentialProfile("assume_role_profile", assumeRoleProfileOptions);
+        sharedFile.RegisterProfile(assumeRoleProfile);
+
+Update an Existing Profile in the Shared Credentials File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
+  
+      Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TRuntimeCredentialManagementCredentialProfile>` 
+      object. Set the :code:`Region`, :code:`AccessKey` and :code:`SecretKey` properties for the profile. 
+      Call the :sdk-net-api:`TryGetProfile <Runtime/MRuntimeCredentialManagementCredentialProfileTryGetProfileString>`
+      method. If the profile exists, use an 
+      :sdk-net-api:`Amazon.Runtime.CredentialManagement.SharedCredentialsFile <Runtime/TRuntimeCredentialManagementSharedCredentialsFile>` 
+      instance to call the :sdk-net-api:`RegisterProfile <Runtime/MRuntimeCredentialManagementNetSDKCredentialsFileRegisterProfileCredentialProfile>`
+      method to register the updated profile.
+     
+      .. code-block:: csharp
+     
+            sharedFile = new SharedCredentialsFile();
+            CredentialProfile basicProfile;
+            if (sharedFile.TryGetProfile("basicProfile", out basicProfile))
+            {
+                basicProfile.Region = RegionEndpoint.USEast1;
+                basicProfile.Options.AccessKey = "different_access_key";
+                basicProfile.Options.SecretKey = "different_secret_key";
+
+                sharedFile.RegisterProfile(basicProfile);
+            }
+            
+.. _creds-locate:
+
+Accessing Credentials and Profiles in an Application
+----------------------------------------------------
+
+You can easily locate credentials and profiles in the .NET credentials file or in the shared credentials file by using the 
+:sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileSourceChain <Runtime/TRuntimeCredentialManagementCredentialProfileSourceChain>` 
+class. This is the way the .NET SDK looks for credentials and profiles.  The :code:`CredentialProfileSourceChain` 
+class automatically checks in both credentials files. 
+
+You can get credentials or profiles by using the 
+:sdk-net-api:`TryGetAWSCredentials <Runtime/MRuntimeCredentialManagementCredentialProfileSourceChainTryGetAWSCredentialsstringAWSCredentials>` 
+or :sdk-net-api:`TryGetProfile <Runtime/MRuntimeCredentialManagementCredentialProfileSourceChainTryGetProfilestringAWSCredentials>` 
+methods.  The :code:`ProfilesLocation` property determines the behavior of the 
+:code:`CredentialsProfileChain`, as follows:  
+
+#. If ProfilesLocation is non-null and non-empty, search the shared credentials file at the disk path 
+   in the :code:`ProfilesLocation` property.
+   
+#. If :code:`ProfilesLocation` is null or empty and the platform supports the .NET credentials file, search 
+   the .NET credentials file. If the profile is not found, search the shared credentials file in the 
+   default location.
+   
+#. If :code:`ProfilesLocation` is null or empty and the platform doesn’t support the .NET credentials 
+   file, search the shared credentials file in the default location.
+   
+Get Credentials from the SDK Credentials File or the Shared Credentials File in the Default Location.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Create a :code:`CredentialProfileStoreChain` object and an :sdk-net-api:`Amazon.Runtime.AWSCredentials <Runtime/TRuntimeAWSCredentials>` 
+  object. Call the :code:`TryGetAWSCredentials` method. Provide the profile name and the :code:`AWSCredentials` 
+  object in which to return the credentials.
+
+  .. code-block:: csharp
+  
+            var chain = new CredentialProfileStoreChain();
+            AWSCredentials awsCredentials;
+            if (chain.TryGetAWSCredentials("basic_profile", out awsCredentials))
+            {
+                // use awsCredentials
+            }
+  
+Get a Profile from the SDK Credentials File or the Shared Credentials File in the Default Location
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Create a :code:`CredentialProfileStoreChain` object and an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TRuntimeCredentialManagementCredentialProfile>`  
+object. Call the :code:`TryGetProfile` method and  provide the profile name and :code:`CredentialProfile` 
+object in which to return the credentials.
+
+.. code-block:: csharp
+
+            var chain = new CredentialProfileStoreChain();
+            CredentialProfile basicProfile;
+            if (chain.TryGetProfile("basic_profile", out basicProfile))
+            {
+                // Use basicProfile
+            }
+        
+Get AWSCredentials from a File in the Shared Credentials File Format at a File Location
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Create a :code:`CredentialProfileStoreChain` object and provide the path to the credentials file. Create an 
+:code:`AWSCredentials` object. Call the :code:`TryGetAWSCredentials` method. Provide the profile name and the 
+:code:`AWSCredentials` object in which to return the credentials.
+
+.. code-block:: csharp
+
+            var chain = new  
+                CredentialProfileStoreChain("c:\\Users\\sdkuser\\customCredentialsFile.ini");
+            AWSCredentials awsCredentials;
+            if (chain.TryGetAWSCredentials("basic_profile", out awsCredentials))
+            {
+                // Use awsCredentials
+            }
+
+How to Create an AmazonS3Client Using the SharedCredentialsFile Class
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can create an :sdk-net-api:`AmazonS3Client <S3/TS3S3Client>` 
+object that uses the credentials for a specific profile by using the 
+:sdk-net-api:`Amazon.Runtime.CredentialManagement.SharedCredentialsFile <Runtime/TRuntimeCredentialManagementSharedCredentialsFile>` 
+class. The |sdk-net| loads the credentials contained in the profile automatically. You might do this 
+if you want to use a specific profile for a given client that is different from the :code:`profile` 
+you specify in :code:`App.Config`.
+
+.. code-block:: csharp
+
+        CredentialProfile basicProfile;
+        AWSCredentials awsCredentials;
+        var sharedFile = new SharedCredentialsFile();
+        if (sharedFile.TryGetProfile("basic_profile", out basicProfile) &&
+            AWSCredentialsFactory.TryGetAWSCredentials(basicProfile, sharedFile, out awsCredentials))
+        {
+            using (var client = new AmazonS3Client(awsCredentials, basicProfile.Region))
+            {
+                var response = client.ListBuckets();
+            }
+        }
+
+If you want to use the default profile, and have the |sdk-net| automatically use your default 
+credentials to create the client object use the following code.
+
+.. code-block:: csharp
+
+        using (var client = new AmazonS3Client(RegionEndpoint.US-West2))
+        {
+            var response = client.ListBuckets();
+        }
 
 .. _creds-assign:
 
-Using Credentials in an Application
------------------------------------
+Credential and Profile Resolution
+---------------------------------
 
 The |sdk-net| searches for credentials in the following order and uses the first available set for
 the current application.
 
-1. Access key and secret key values that are passed to the service client constructors in your source
-   code, or stored in the application's :file:`App.config` or :file:`Web.config` file. We *strongly
-   recommend* using profiles rather than storing literal credentials in your project files.
+1. The client configuration, or what is explicitly set on the AWS service client.
 
-2. If a profile is specified:
+2. :code:`BasicAWSCredentials` that are created from the :code:`AWSAccessKey` and :code:`AWSSecretKey` 
+   :code:`AppConfig` values, if they're available.
 
-  a. The specified profile in the |sdk-store|.
+3. A credentials profile with the name specified by a value in 
+   :code:`AWSConfigs.AWSProfileName` (set explicitly or in :code:`AppConfig`). 
+   
+4. The :code"`default` credentials profile. 
 
-  b. The specified profile in the credentials file.
+5. :code:`SessionAWSCredentials` that are created from the :code:`AWS_ACCESS_KEY_ID`, :code:`AWS_SECRET_ACCESS_KEY`, 
+   and :code:`AWS_SESSION_TOKEN` environment variables, if they're all non-empty.
+   
+6. :code:`BasicAWSCredentials` that are created from the :code:`AWS_ACCESS_KEY_ID` and :code:`AWS_SECRET_ACCESS_KEY` 
+   environment variables, if they're both non-empty.
 
-  If no profile is specified:
+7. EC2 instance metadata.
 
-  a. A profile named :code:`default` in the |sdk-store|.
+|sdk-store| profiles are specific to a particular user on a particular host. You can't copy them 
+to other hosts or other users. For this reason, you can't reuse |sdk-store| profiles that are on 
+your development machine on other hosts or developer machines. If your application is running on an |EC2|
+instance, use an |IAM| role as described in :ref:`Using IAM Roles for EC2 Instances with the AWS SDK for .NET <net-dg-roles>`.
+Otherwise, store your credentials in a credentials file that your web application has access to on the server.
 
-  b. A profile named :code:`default` in the credentials file.
+.. _net-dg-config-creds-profile-resolution:
 
-3. Credentials stored in the :code:`AWS_ACCESS_KEY_ID` and :code:`AWS_SECRET_ACCESS_KEY` environment
-   variables.
+Profile Resolution
+~~~~~~~~~~~~~~~~~~
 
-4. For applications running on an |EC2| instance, credentials stored in an instance profile.
+With two different credentials file types, it's important to understand how to configure the |sdk-net| and 
+|TWPLong| to use them.  The :code:`AWSConfigs.AWSProfilesLocation` (set explicitly or in :code:`AppConfig`) 
+controls how the |sdk-net| finds credential profiles. The :code:`-ProfileLocation` command line argument 
+controls how |TWPLong| finds a profile.  Here's how the configuration works in both cases.
 
-|sdk-store| profiles are specific to a particular user on a particular host. They cannot be copied
-to other hosts or other users. For this reason, |sdk-store| profiles on your development machine
-cannot be re-used on other hosts or developer machines. If your application is running on an |EC2|
-instance, you should use an |IAM| role as described in
-:ref:`Using IAM Roles for EC2 Instances with the AWS SDK for .NET <net-dg-roles>`.
-Otherwise, you should store your credentials in a credentials file that your web application has
-access to on the server.
+.. list-table::
+   :widths: 1 2 
+   :header-rows: 1
+
+   * - Profile Location Value
+     - Profile Resolution Behavior
+
+   * - null (not set) or empty
+     - First search the .NET credentials file for a profile with the specified name.  If the profile 
+       isn't there, search :code:`%HOME%\.aws\credentials`.  If the profile isn't there, search 
+       :code:`%HOME%\.aws\config`.
+
+   * - The path to a file in the shared credentials file format
+     - Search *only* the specified file for a profile with the specified name.
 
 .. _net-dg-config-creds-assign-profile:
 
@@ -183,7 +446,7 @@ Specifying a Profile
 ~~~~~~~~~~~~~~~~~~~~
 
 Profiles are the preferred way to use credentials in an |sdk-net| application. You don't have to
-specify where the profile is stored; you only reference the profile by name. The |sdk-net| retrieves
+specify where the profile is stored. You only reference the profile by name. The |sdk-net| retrieves
 the corresponding credentials, as described in the previous section.
 
 The preferred way to specify a profile is to define an :code:`AWSProfileName` value in the
@@ -200,7 +463,7 @@ The following example specifies a profile named :code:`development`.
       </appSettings>
     </configuration>
 
-This example assumes the profile exists in the |sdk-store| or a credentials file in the default
+This example assumes the profile exists in the |sdk-store| or in a credentials file in the default
 location.
 
 If your profiles are stored in a credentials file in another location, specify the location by
@@ -216,8 +479,8 @@ following example specifies :file:`C:\\aws_service_credentials\\credentials` as 
       </appSettings>
     </configuration>
 
-The deprecated alternative way to specify a profile is shown below for completeness, but is not
-recommended.
+The deprecated alternative way to specify a profile is shown below for completeness, but we do not 
+recommend it.
 
 .. code-block:: xml
 
@@ -235,50 +498,34 @@ recommended.
       <aws profileName="development" profilesLocation="C:\aws_service_credentials\credentials"/>
     </configuration>
 
-You can also reference a profile programmatically using the
-:sdk-net-api:`Amazon.Runtime.StoredProfileAWSCredentials <Runtime/TRuntimeStoredProfileAWSCredentials>`
-class. The following example demonstrates how to create an :classname:`AmazonS3Client` object that
-uses the credentials for a specific profile. The SDK will load the credentials contained in the profile
-automatically. You might do this if you want to use a specific profile for a given client that is
-different from the "global" profile you specify in App.Config.
-
-.. code-block:: csharp
-
-    var credentials = new StoredProfileAWSCredentials(profileName);
-    var s3Client = new AmazonS3Client(credentials, RegionEndpoint.USWest2);
-
-.. tip:: If you want to use the default profile, omit the :code:`AWSCredentials` object, and the |sdk-net|
-   will automatically use your default credentials to create the client object.
-
-
 .. _net-dg-config-creds-saml:
 
 Using Federated User Account Credentials
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Applications that use the |sdk-net| (:file:`AWSSDK.Core` version 3.1.6.0 and higher) can use
-federated user accounts through Active Directory Federation Services (AD FS) to access AWS services
+Applications that use the |sdk-net| (:file:`AWSSDK.Core` version 3.1.6.0 and later) can use
+federated user accounts through Active Directory Federation Services (AD FS) to access AWS web services
 by using Security Assertion Markup Language (SAML).
 
-Federated access support means users can authenticate using your Active Directory; temporary
-credentials will be granted to the user automatically. These temporary credentials, which are valid
-for one hour, are used when your application invokes AWS services. The SDK handles management of the
+Federated access support means users can authenticate using your Active Directory. Temporary
+credentials are granted to the user automatically. These temporary credentials, which are valid
+for one hour, are used when your application invokes AWS web services. The SDK handles management of the
 temporary credentials. For domain-joined user accounts, if your application makes a call but the
-credentials have expired, the user is re-authenticated automatically and fresh credentials are
-granted. (For non-domain-joined accounts, the user is prompted to enter credentials prior to
-re-authentication.)
+credentials have expired, the user is reauthenticated automatically and fresh credentials are
+granted. (For non-domain-joined accounts, the user is prompted to enter credentials before
+reauthentication.)
 
-To use this support in your .NET application, you must first set up the role profile using a
-PowerShell cmdlet. Use PowerShell cmdlets to set up the role profile as described in the
-:twp-ug:`Tools for Windows PowerShell documentation <saml-pst>`.
+To use this support in your .NET application, you must first set up the role profile by using a
+PowerShell cmdlet. To learn how, see the
+:twp-ug:`AWS Tools for Windows PowerShell documentation <saml-pst>`.
 
-After you setup the role profile, simply reference the profile in your application's
-app.config/web.config file with the AWSProfileName appsetting key in the same way you would with
+After you setup the role profile, reference the profile in your application's
+app.config/web.config file with the :code:`AWSProfileName` key in the same way you would with
 other credential profiles.
 
 The SDK Security Token Service assembly (:file:`AWSSDK.SecurityToken.dll`), which is loaded at
-runtime, provides the SAML support to obtain AWS credentials, so be sure this assembly is available
-to your application at runtime.
+runtime, provides the SAML support to obtain AWS credentials. Be sure this assembly is available
+to your application at run time.
 
 
 .. _net-dg-config-creds-assign-role:
@@ -290,11 +537,11 @@ For applications that run on |EC2| instances, the most secure way to manage cred
 IAM roles, as described in
 :ref:`Using IAM Roles for EC2 Instances with the AWS SDK for .NET <net-dg-roles>`.
 
-For application scenarios in which the software executable will be available to users outside your
+For application scenarios in which the software executable is available to users outside your
 organization, we recommend you design the software to use *temporary security credentials*. In
 addition to providing restricted access to AWS resources, these credentials have the benefit of
 expiring after a specified period of time. For more information about temporary security
-credentials, go to:
+credentials, see the following:
 
 * :iam-ug:`Using Security Tokens to Grant Temporary Access to Your AWS Resources <TokenBasedAuth>`
 
@@ -309,10 +556,10 @@ contains information that is useful for any AWS application deployed outside of 
 Using Proxy Credentials
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-If your software communicates with AWS through a proxy, you can specify credentials for the proxy
+If your software communicates with AWS through a proxy, you can specify credentials for the proxy by
 using the :code:`ProxyCredentials` property on the
 :sdk-net-api:`ClientConfig <TRuntimeClientConfig>`
-class for the service. For example, for |S3|, you could use code
+class for the service. For example, for |S3| you could use code
 similar to the following, where {my-username} and {my-password} are the proxy user name and password
 specified in a `NetworkCredential <https://msdn.microsoft.com/en-us/library/system.net.networkcredential.aspx>`_
 object.                 
@@ -323,4 +570,4 @@ object.
     config.ProxyCredentials = new NetworkCredential("my-username", "my-password");
 
 Earlier versions of the SDK used :code:`ProxyUsername` and :code:`ProxyPassword`, but these
-properties have been deprecated.
+properties are deprecated.
