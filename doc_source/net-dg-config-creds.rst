@@ -280,13 +280,13 @@ Accessing Credentials and Profiles in an Application
 ----------------------------------------------------
 
 You can easily locate credentials and profiles in the .NET credentials file or in the shared credentials file by using the 
-:sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileSourceChain <Runtime/TRuntimeCredentialManagementCredentialProfileSourceChain>` 
-class. This is the way the .NET SDK looks for credentials and profiles.  The :code:`CredentialProfileSourceChain` 
+:sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileStoreChain <Runtime/TRuntimeCredentialManagementCredentialProfileStoreChain>` 
+class. This is the way the .NET SDK looks for credentials and profiles.  The :code:`CredentialProfileStoreChain` 
 class automatically checks in both credentials files. 
 
 You can get credentials or profiles by using the 
-:sdk-net-api:`TryGetAWSCredentials <Runtime/MRuntimeCredentialManagementCredentialProfileSourceChainTryGetAWSCredentialsstringAWSCredentials>` 
-or :sdk-net-api:`TryGetProfile <Runtime/MRuntimeCredentialManagementCredentialProfileSourceChainTryGetProfilestringAWSCredentials>` 
+:sdk-net-api:`TryGetAWSCredentials <Runtime/MRuntimeCredentialManagementCredentialProfileStoreChainTryGetAWSCredentialsStringAWSCredentials>` 
+or :sdk-net-api:`TryGetProfile <Runtime/MRuntimeCredentialManagementCredentialProfileStoreChainTryGetProfileStringCredentialProfile>` 
 methods.  The :code:`ProfilesLocation` property determines the behavior of the 
 :code:`CredentialsProfileChain`, as follows:  
 
