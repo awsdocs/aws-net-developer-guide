@@ -28,8 +28,7 @@ Required
 
 * |sdk-net|
 
-.. note:: The |sdk-net| is installed with the |TVSlong|, a plugin that provides a user interface for 
-   managing your AWS resources from Visual Studio, and also includes the |TWPlong|.
+.. note:: The |sdk-net| is installed with the |TVSlong|, a plugin that provides a user interface for managing your AWS resources from Visual Studio, and also includes the |TWPlong|.
 
   For more information, see
   :tvs-ug:`Using the AWS Toolkit for Visual Studio <welcome>`.
