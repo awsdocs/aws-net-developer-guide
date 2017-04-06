@@ -86,7 +86,7 @@ Alternatively:
   <add key="AWSLogging" value="log4net, SystemDiagnostics"/> 
 
 Alternatively, using the |sdk-net| API, combine the values of the
-:sdk-net-api:`LoggingOptions <Amazon/TLoggingOptions.html>` enumeration and set the 
+:sdk-net-api:`LoggingOptions <Amazon/TLoggingOptions>` enumeration and set the 
 :sdk-net-api:`AWSConfigs.Logging <Amazon/TAWSConfigs>` property: 
 
 .. code-block:: csharp

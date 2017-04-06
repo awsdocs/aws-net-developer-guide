@@ -297,7 +297,7 @@ state.
 
 #. Call the :sdk-net-api:`DescribeInstances <EC2/MEC2EC2DescribeInstancesDescribeInstancesRequest>`
    method, and pass it the request object from step 1. The method returns a
-   :sdk-net-api:`DescribeInstancesResponse<EC2/TEC2DescribeInstancesResponse.>` object that
+   :sdk-net-api:`DescribeInstancesResponse <EC2/TEC2DescribeInstancesResponse>` object that
    contains information about the instance.
 
    .. code-block:: csharp

@@ -45,11 +45,11 @@ Create and initialize a :sdk-net-api:`CreateKeyPairRequest <EC2/TEC2CreateKeyPai
 :code:`KeyName` property to the name of the key pair.
 
 Pass the request object to the :sdk-net-api:`CreateKeyPair <EC2/MEC2EC2CreateKeyPairCreateKeyPairRequest>`
-method, which returns a :sdk-net-api:`CreateKeyPairResult <EC2/TEC2CreateKeyPairResult>` object. If a key
+method, which returns a :sdk-net-api:`CreateKeyPairResponse <EC2/TEC2CreateKeyPairResponse>` object. If a key
 pair with the specified name already exists, an :sdk-net-api:`AmazonEC2Exception <EC2/TEC2EC2Exception>` is
 thrown.
 
-The response object includes a :sdk-net-api:`CreateKeyPairResult <EC2/TEC2CreateKeyPairResult>` object that
+The response object includes a :sdk-net-api:`CreateKeyPairResponse <EC2/TEC2CreateKeyPairResponse>` object that
 contains the new key's :sdk-net-api:`KeyPair <EC2/TEC2KeyPair>` object. The :sdk-net-api:`KeyPair <EC2/TEC2KeyPair>`
 object's :code:`KeyMaterial` property contains the unencrypted private key for the key pair. Save
 the private key as a :file:`.pem` file in a safe location. You'll need this file when you connect to

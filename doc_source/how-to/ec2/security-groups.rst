@@ -112,12 +112,12 @@ name, and return the appropriate :sdk-net-api:`SecurityGroup <EC2/TEC2SecurityGr
 
 .. topic:: To create a security group for EC2-Classic
 
-Create and initialize a :sdk-net-api:`CreateSecurityGroupRequest <TEC2CreateSecurityGroupRequest>` object.
+Create and initialize a :sdk-net-api:`CreateSecurityGroupRequest <EC2/TEC2CreateSecurityGroupRequest>` object.
 Assign a name and description to the :code:`GroupName` and :code:`Description` properties,
 respectively.
 
 The :sdk-net-api:`CreateSecurityGroup <EC2/MEC2EC2CreateSecurityGroupCreateSecurityGroupRequest>` method
-returns a :sdk-net-api:`CreateSecurityGroupResponse <EC2/TEC2CreateSecurityGroupRequest>` object. You
+returns a :sdk-net-api:`CreateSecurityGroupResponse <EC2/TEC2CreateSecurityGroupResponse>` object. You
 can get the identifier of the new security group from the response and then use
 :sdk-net-api:`DescribeSecurityGroups <EC2/MEC2EC2DescribeSecurityGroupsDescribeSecurityGroupsRequest>`
 with the security group identifier to get the :sdk-net-api:`SecurityGroup <EC2/TEC2SecurityGroup>` object

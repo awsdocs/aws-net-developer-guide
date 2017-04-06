@@ -127,7 +127,7 @@ Create a SAMLEndpoint and an Associated Profile and Save it to the .NET Credenti
   
     Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SAMLEndpoint <Runtime/TRuntimeCredentialManagementCredentialProfileOptions>` 
     object. Provide the name and endpoint URI parameters. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SAMLEndpointManager <Runtime/TRuntimeCredentialManagementCredentialProfile>` 
-    object.  Call the :sdk-net-api:`RegisterEndpoint <Runtime/MRuntimeCredentialManagementNetSDKCredentialsFileRegisterEndpointSAMLEndpoint>`
+    object.  Call the :sdk-net-api:`RegisterEndpoint <Runtime/MRuntimeCredentialManagementSAMLEndpointManagerRegisterEndpointSAMLEndpoint>`
     method to register the endpoint. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TRuntimeCredentialManagementCredentialProfileOptions>` 
     object and set its :code:`EndpointName` and :code:`RoleArn` properties. Create an 
     :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TRuntimeCredentialManagementCredentialProfile>` 
@@ -253,9 +253,9 @@ Create a Source Profile and an Associated Assume Role Profile and Save It to the
 Update an Existing Profile in the Shared Credentials File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
   
-      Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TRuntimeCredentialManagementCredentialProfile>` 
+      Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SharedCredentialsFile <Runtime/TRuntimeCredentialManagementSharedCredentialsFile>` 
       object. Set the :code:`Region`, :code:`AccessKey` and :code:`SecretKey` properties for the profile. 
-      Call the :sdk-net-api:`TryGetProfile <Runtime/MRuntimeCredentialManagementCredentialProfileTryGetProfileString>`
+      Call the :sdk-net-api:`TryGetProfile <Runtime/MRuntimeCredentialManagementSharedCredentialsFileTryGetProfileStringCredentialProfile>`
       method. If the profile exists, use an 
       :sdk-net-api:`Amazon.Runtime.CredentialManagement.SharedCredentialsFile <Runtime/TRuntimeCredentialManagementSharedCredentialsFile>` 
       instance to call the :sdk-net-api:`RegisterProfile <Runtime/MRuntimeCredentialManagementNetSDKCredentialsFileRegisterProfileCredentialProfile>`
@@ -558,7 +558,7 @@ Using Proxy Credentials
 
 If your software communicates with AWS through a proxy, you can specify credentials for the proxy by
 using the :code:`ProxyCredentials` property on the
-:sdk-net-api:`ClientConfig <TRuntimeClientConfig>`
+:sdk-net-api:`AmazonS3Config <S3/TS3S3Config>`
 class for the service. For example, for |S3| you could use code
 similar to the following, where {my-username} and {my-password} are the proxy user name and password
 specified in a `NetworkCredential <https://msdn.microsoft.com/en-us/library/system.net.networkcredential.aspx>`_
