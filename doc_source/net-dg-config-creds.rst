@@ -60,7 +60,7 @@ Using the |sdk-store|
 
 During development of your |sdk-net| application, add a profile to the |sdk-store| for
 each set of credentials you want to use in your application. This prevents the accidental
-exposure of your AWS credentials. The |sdk-store| is located in the :code:`C:Users<username>AppData\Local\AWSToolkit` folder in the :code:`RegisteredAccounts.json` 
+exposure of your AWS credentials. The |sdk-store| is located in the :code:`C:\Users\<username>\AppData\Local\AWSToolkit` folder in the :code:`RegisteredAccounts.json` 
 file. The |sdk-store| provides the following benefits:
 
 * The |sdk-store| can contain multiple profiles from any number of accounts.
