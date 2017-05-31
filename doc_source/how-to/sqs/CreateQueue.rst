@@ -28,7 +28,9 @@ programmatically create an |SQS| queue.
       var createQueueRequest = new CreateQueueRequest();
 
       createQueueRequest.QueueName = "MySQSQueue";
-      createQueueRequest.DefaultVisibilityTimeout = 10;
+      var attrs = new Dictionary<string, string>();
+      attrs.Add(QueueAttributeName.VisibilityTimeout, "10");
+      createQueueRequest.Attributes = attrs;
 
    Your queue name must be composed of only alphanumeric characters, hyphens, and underscores.
 
