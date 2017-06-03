@@ -20,7 +20,7 @@ Terminating an |EC2| Instance
 
 When you no longer need one or more of your |EC2| instances, you can terminate them.
 
-.. topic:: To terminate an EC2 instance
+To terminate an EC2 instance:
 
 #. Create and initialize a :sdk-net-api:`TerminateInstancesRequest <EC2/TEC2TerminateInstancesRequest>` object.
 
@@ -67,5 +67,3 @@ When you no longer need one or more of your |EC2| instances, you can terminate t
         }
       }
     }
-
-

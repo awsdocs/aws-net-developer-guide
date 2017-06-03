@@ -26,7 +26,6 @@ to use them, and gives you links to additional |DDB| programming resources in th
     :depth: 1
 
 .. toctree::
-    :hidden:
     :maxdepth: 1
 
     dynamodb-expressions

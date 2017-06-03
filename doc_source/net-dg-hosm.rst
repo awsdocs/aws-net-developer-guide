@@ -15,8 +15,7 @@ Granting Access Using an |IAM| Role
 ###################################
 
 .. meta::
-   :description: Use this .NET code example to learn how to grant access to an application running on
-   Amazon EC2.
+   :description: Use this .NET code example to learn how to grant access to an application running on Amazon EC2.
    :keywords: AWS SDK for .NET examples, IAM roles
 
 This .NET example shows you how to:
@@ -75,7 +74,7 @@ see the |S3-gsg|_. For more information about AWS credentials, see :ref:`net-dg-
 .. literalinclude:: samples/iamroles.cs
     :language: csharp
 
-.. topic:: To test the sample code
+To test the sample code:
 
 #. Open Visual Studio and create an AWS Console project.
 
@@ -116,7 +115,7 @@ Create an |IAM| Role
 
 Create an IAM role that has the appropriate permissions to access |S3|.
 
-.. topic:: To create the IAM role
+To create the IAM role:
 
 #. Open the |IAM| console.
 
@@ -180,7 +179,7 @@ described in the following procedure.
    and then copy the files from your local drive to the instance. The Remote Desktop session is
    automatically configured so that your local drives are available to the instance.
 
-.. topic:: To run the sample program on the EC2 instance
+To run the sample program on the EC2 instance:
 
 #. Open the |EC2| console.
 

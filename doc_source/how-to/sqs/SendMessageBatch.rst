@@ -26,7 +26,7 @@ For more information about sending batch messages, see
 in the |SQS-api|.
 
 
-.. topic:: To send batch messages to an |SQS| queue
+To send batch messages to an |SQS| queue:
 
 #. Create an :sdk-net-api:`AmazonSQSClient <SQS/TSQSSQSClient>` instance and initialize a
    :sdk-net-api:`SendMessageBatchRequest <SQS/TSQSSendMessageBatchRequest>` object.
@@ -74,4 +74,3 @@ in the |SQS-api|.
                 Console.WriteLine("    Message content : {0}", failed.Message);
                 Console.WriteLine("    Sender's fault? : {0}", failed.SenderFault);
             }
-

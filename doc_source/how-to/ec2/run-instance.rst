@@ -30,7 +30,7 @@ Launch an EC2 Instance in EC2-Classic or in a VPC
 You can launch an instance in either EC2-Classic or in a VPC. For more information about EC2-Classic
 and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-platforms>` in the |EC2-ug-win|.
 
-.. topic:: To launch an EC2 instance in EC2-Classic
+To launch an EC2 instance in EC2-Classic:
 
 #. Create and initialize a :sdk-net-api:`RunInstancesRequest <EC2/TEC2RunInstancesRequest>` object.
    Be sure the AMI, key pair, and security group you specify exist in the region you specified when
@@ -140,7 +140,7 @@ and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-platforms>` in 
         Console.WriteLine("Instance state: " + item.State.Name);
       }
 
-.. topic:: To launch an EC2 instance in a VPC
+To launch an EC2 instance in a VPC:
 
 #. Create and initialize an elastic network interface in a subnet of the VPC.
 
@@ -366,6 +366,3 @@ information, see :ec2-ug-win:`Connecting to Your Windows Instance Using RDP <con
     }
 
 When you no longer need your EC2 instance, see :ref:`terminate-instance`.
-
-
-

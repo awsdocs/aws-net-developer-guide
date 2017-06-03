@@ -63,7 +63,6 @@ others take effect only after you create a new client object. For more informati
 :ref:`net-dg-config-creds`.
 
 .. toctree::
-    :hidden:
     :maxdepth: 1
 
     net-dg-config-netcore
@@ -71,4 +70,3 @@ others take effect only after you create a new client object. For more informati
     net-dg-region-selection
     net-dg-config-other
     net-dg-config-ref
-

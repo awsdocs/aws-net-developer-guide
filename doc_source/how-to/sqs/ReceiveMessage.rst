@@ -16,7 +16,7 @@ Receiving a Message from an |SQS| Queue
 
 You can use the |sdk-net| to receive messages from an |SQS| queue.
 
-.. topic:: To receive a message from an |SQS| queue
+To receive a message from an |SQS| queue:
 
 #. Create and initialize a :sdk-net-api:`ReceiveMessageRequest <SQS/TSQSReceiveMessageRequest>`
    instance. Specify the queue URL to receive a message from, as follows.
@@ -61,5 +61,3 @@ You can use the |sdk-net| to receive messages from an |SQS| queue.
 For information about sending a message to your queue, see :ref:`send-sqs-message`.
 
 For more information about deleting a message from the queue, see :ref:`delete-sqs-message`.
-
-
