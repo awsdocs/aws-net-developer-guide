@@ -399,7 +399,7 @@ the current application.
 3. A credentials profile with the name specified by a value in 
    :code:`AWSConfigs.AWSProfileName` (set explicitly or in :code:`AppConfig`). 
    
-4. The :code"`default` credentials profile. 
+4. The :code:`default` credentials profile. 
 
 5. :code:`SessionAWSCredentials` that are created from the :code:`AWS_ACCESS_KEY_ID`, :code:`AWS_SECRET_ACCESS_KEY`, 
    and :code:`AWS_SESSION_TOKEN` environment variables, if they're all non-empty.
