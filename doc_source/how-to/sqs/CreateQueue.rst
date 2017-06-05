@@ -18,7 +18,7 @@ Creating an |SQS| queue is an administrative task that you can do by using the
 :console:`SQS Management Console <sqs>`. However, you can also use the |sdk-net| to
 programmatically create an |SQS| queue.
 
-.. topic:: To create an |SQS| queue
+To create an |SQS| queue:
 
 #. Create and initialize a :sdk-net-api:`CreateQueueRequest <SQS/TSQSCreateQueueRequest>` instance.
    Provide the name of your queue and specify a visibility timeout for your queue messages, as follows.
@@ -51,5 +51,3 @@ programmatically create an |SQS| queue.
 For information about how queues work in |SQS|, see :sqs-dg:`How SQS Queues Work <SQSConcepts>`.
 
 For information about your queue URL, see :ref:`sqs-queue-url`.
-
-

@@ -16,7 +16,7 @@ Deleting a Message from an |SQS| Queue
 
 You can use the |sdk-net| to delete messages from an |SQS| queue.
 
-.. topic:: To delete a message from an |SQS| queue
+To delete a message from an |SQS| queue:
 
 #. Create and initialize a :sdk-net-api:`DeleteMessageRequest <SQS/TSQSDeleteMessageRequest>` object.
    Specify the |SQS| queue to delete a message from and the receipt handle of the message to delete,
@@ -46,5 +46,3 @@ For information about sending a message to a queue, see
 
 For information about receiving messages from a queue, see
 :ref:`Receiving a Message from an Amazon SQS Queue <receive-sqs-message>`.
-
-

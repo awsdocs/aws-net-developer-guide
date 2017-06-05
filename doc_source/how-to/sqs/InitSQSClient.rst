@@ -39,7 +39,7 @@ about credentials and profiles, see :ref:`net-dg-config`.
 
 After you create this file, you're ready to create and initialize your |SQS| client.
 
-.. topic:: To create and initialize an |SQS| client
+To create and initialize an |SQS| client:
 
 #. Create and initialize an :sdk-net-api:`AmazonSQSConfig <SQS/TSQSSQSConfig>` instance, and then set the
    :code:`ServiceURL` property with the protocol and service endpoint, as follows.
@@ -60,5 +60,3 @@ After you create this file, you're ready to create and initialize your |SQS| cli
 
 You can now use the client to create an |SQS| queue. For information about creating a queue, see
 :ref:`create-sqs-queue`.
-
-

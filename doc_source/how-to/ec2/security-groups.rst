@@ -40,7 +40,7 @@ Enumerate Your Security Groups
 
 You can enumerate your security groups and check whether a security group exists.
 
-.. topic:: To enumerate your security groups
+To enumerate your security groups:
 
 Get the complete list of your security groups using
 :sdk-net-api:`DescribeSecurityGroups <EC2/MEC2EC2DescribeSecurityGroupsDescribeSecurityGroupsRequest>`
@@ -66,7 +66,7 @@ The following example enumerates all of the security groups in the region.
       }
     }
 
-.. topic:: To enumerate your security groups for a particular VPC
+To enumerate your security groups for a particular VPC:
 
 Use :sdk-net-api:`DescribeSecurityGroups <EC2/MEC2EC2DescribeSecurityGroupsDescribeSecurityGroupsRequest>`
 with a filter.
@@ -110,7 +110,7 @@ If you attempt to create a security group with a name of an existing security gr
 an exception. To avoid this, the following examples search for a security group with the specified
 name, and return the appropriate :sdk-net-api:`SecurityGroup <EC2/TEC2SecurityGroup>` object if one is found.
 
-.. topic:: To create a security group for EC2-Classic
+To create a security group for EC2-Classic:
 
 Create and initialize a :sdk-net-api:`CreateSecurityGroupRequest <EC2/TEC2CreateSecurityGroupRequest>` object.
 Assign a name and description to the :code:`GroupName` and :code:`Description` properties,
@@ -157,7 +157,7 @@ for the security group.
       return describeResponse.SecurityGroups[0];
     }
 
-.. topic:: To create a security group for EC2-VPC
+To create a security group for EC2-VPC:
 
 Create and initialize a :sdk-net-api:`CreateSecurityGroupRequest <EC2/TEC2CreateSecurityGroupRequest>`
 object. Assign values to the :code:`GroupName`, :code:`Description`, and :code:`VpcId` properties.
@@ -224,7 +224,7 @@ enables you to connect to a Windows instance. If you're launching a Linux instan
 The examples in this section follow from the examples in the previous sections. They assume
 :code:`secGroup` is an existing security group.
 
-.. topic:: To add a rule to a security group
+To add a rule to a security group
 
 #. Create and initialize an :sdk-net-api:`IpPermission <EC2/TEC2IpPermission>` object.
 
