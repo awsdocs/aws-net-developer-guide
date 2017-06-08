@@ -71,7 +71,7 @@ shown in the following example:
     <configuration>
       ...
       <configSections>
-        <section name="aws" type="Amazon.AWSSection, AWSSDK"/>
+        <section name="aws" type="Amazon.AWSSection, AWSSDK.Core"/>
       </configSections>
       <aws>
         <!-- Add your desired AWS settings declarations here. -->
