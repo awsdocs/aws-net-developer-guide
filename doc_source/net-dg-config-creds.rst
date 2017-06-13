@@ -42,6 +42,8 @@ The following are general guidelines for securely managing credentials:
   risk of unintentionally exposing credentials, you should store the |sdk-store| or credentials file
   separately from your project files.
 
+* Use `IAM Roles for Tasks <http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html>`_ for |ECSlong| (|ECS|) tasks.
+
 * Use |IAM| roles for applications that are running on |EC2| instances.
 
 * Use temporary credentials or environment variables for applications that are available to users
@@ -406,7 +408,9 @@ the current application.
 6. :code:`BasicAWSCredentials` that are created from the :code:`AWS_ACCESS_KEY_ID` and :code:`AWS_SECRET_ACCESS_KEY`
    environment variables, if they're both non-empty.
 
-7. EC2 instance metadata.
+7. IAM Roles for Tasks for Amazon EC2 Container Service (Amazon ECS) tasks.
+
+8. EC2 instance metadata.
 
 |sdk-store| profiles are specific to a particular user on a particular host. You can't copy them
 to other hosts or other users. For this reason, you can't reuse |sdk-store| profiles that are on
