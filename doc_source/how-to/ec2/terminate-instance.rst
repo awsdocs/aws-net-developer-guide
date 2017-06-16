@@ -20,50 +20,50 @@ Terminating an |EC2| Instance
 
 When you no longer need one or more of your |EC2| instances, you can terminate them.
 
-To terminate an EC2 instance:
+.. topic:: To terminate an EC2 instance
 
-#. Create and initialize a :sdk-net-api:`TerminateInstancesRequest <EC2/TEC2TerminateInstancesRequest>` object.
+    #. Create and initialize a :sdk-net-api:`TerminateInstancesRequest <EC2/TEC2TerminateInstancesRequest>` object.
 
-#. Set the :code:`TerminateInstancesRequest.InstanceIds` property to a list of one or more instance
-   IDs for the instances to terminate.
+    #. Set the :code:`TerminateInstancesRequest.InstanceIds` property to a list of one or more instance
+       IDs for the instances to terminate.
 
-#. Pass the request object to the
-   :sdk-net-api:`TerminateInstances<EC2/MEC2EC2TerminateInstancesTerminateInstancesRequest>`
-   method. If the specified instance
-   doesn't exist, an :sdk-net-api:`AmazonEC2Exception <EC2/TEC2EC2Exception>` is thrown.
+    #. Pass the request object to the
+       :sdk-net-api:`TerminateInstances<EC2/MEC2EC2TerminateInstancesTerminateInstancesRequest>`
+       method. If the specified instance
+       doesn't exist, an :sdk-net-api:`AmazonEC2Exception <EC2/TEC2EC2Exception>` is thrown.
 
-#. You can use the :sdk-net-api:`TerminateInstancesResponse <EC2/TEC2TerminateInstancesResponse>` object
-   to list the terminated instances, as follows.
+    #. You can use the :sdk-net-api:`TerminateInstancesResponse <EC2/TEC2TerminateInstancesResponse>` object
+       to list the terminated instances, as follows.
 
-.. code-block:: csharp
+    .. code-block:: csharp
 
-    public static void TerminateInstance(
-      AmazonEC2Client ec2Client,
-      string instanceId)
-    {
-      var request = new TerminateInstancesRequest();
-      request.InstanceIds = new List<string>() { instanceId };
-
-      try
-      {
-        var response = ec2Client.TerminateInstances(request);
-        foreach (InstanceStateChange item in response.TerminatingInstances)
+        public static void TerminateInstance(
+          AmazonEC2Client ec2Client,
+          string instanceId)
         {
-          Console.WriteLine("Terminated instance: " + item.InstanceId);
-          Console.WriteLine("Instance state: " + item.CurrentState.Name);
+          var request = new TerminateInstancesRequest();
+          request.InstanceIds = new List<string>() { instanceId };
+
+          try
+          {
+            var response = ec2Client.TerminateInstances(request);
+            foreach (InstanceStateChange item in response.TerminatingInstances)
+            {
+              Console.WriteLine("Terminated instance: " + item.InstanceId);
+              Console.WriteLine("Instance state: " + item.CurrentState.Name);
+            }
+          }
+          catch(AmazonEC2Exception ex)
+          {
+            // Check the ErrorCode to see if the instance does not exist.
+            if ("InvalidInstanceID.NotFound" == ex.ErrorCode)
+            {
+              Console.WriteLine("Instance {0} does not exist.", instanceId);
+            }
+            else
+            {
+              // The exception was thrown for another reason, so re-throw the exception.
+              throw;
+            }
+          }
         }
-      }
-      catch(AmazonEC2Exception ex)
-      {
-        // Check the ErrorCode to see if the instance does not exist.
-        if ("InvalidInstanceID.NotFound" == ex.ErrorCode)
-        {
-          Console.WriteLine("Instance {0} does not exist.", instanceId);
-        }
-        else
-        {
-          // The exception was thrown for another reason, so re-throw the exception.
-          throw;
-        }
-      }
-    }

@@ -18,36 +18,36 @@ Creating an |SQS| queue is an administrative task that you can do by using the
 :console:`SQS Management Console <sqs>`. However, you can also use the |sdk-net| to
 programmatically create an |SQS| queue.
 
-To create an |SQS| queue:
+.. topic:: To create an |SQS| queue
 
-#. Create and initialize a :sdk-net-api:`CreateQueueRequest <SQS/TSQSCreateQueueRequest>` instance.
-   Provide the name of your queue and specify a visibility timeout for your queue messages, as follows.
+    #. Create and initialize a :sdk-net-api:`CreateQueueRequest <SQS/TSQSCreateQueueRequest>` instance.
+       Provide the name of your queue and specify a visibility timeout for your queue messages, as follows.
 
-   .. code-block:: csharp
+       .. code-block:: csharp
 
-      var createQueueRequest = new CreateQueueRequest();
+          var createQueueRequest = new CreateQueueRequest();
 
-      createQueueRequest.QueueName = "MySQSQueue";
-      var attrs = new Dictionary<string, string>();
-      attrs.Add(QueueAttributeName.VisibilityTimeout, "10");
-      createQueueRequest.Attributes = attrs;
+          createQueueRequest.QueueName = "MySQSQueue";
+          var attrs = new Dictionary<string, string>();
+          attrs.Add(QueueAttributeName.VisibilityTimeout, "10");
+          createQueueRequest.Attributes = attrs;
 
-   Your queue name must be composed of only alphanumeric characters, hyphens, and underscores.
+       Your queue name must be composed of only alphanumeric characters, hyphens, and underscores.
 
-   Any message in the queue remains in the queue unless the specified visibility timeout is
-   exceeded. The default visibility timeout for a queue is 30 seconds. For more information about
-   visibility timeouts, see :sqs-dg:`Visibility Timeout <AboutVT>`. For more information about
-   different queue attributes you can set, see :sqs-api:`SetQueueAttributes <SetQueueAttributes>`.
+       Any message in the queue remains in the queue unless the specified visibility timeout is
+       exceeded. The default visibility timeout for a queue is 30 seconds. For more information about
+       visibility timeouts, see :sqs-dg:`Visibility Timeout <AboutVT>`. For more information about
+       different queue attributes you can set, see :sqs-api:`SetQueueAttributes <SetQueueAttributes>`.
 
-#. After you create the request, pass it as a parameter to the
-   :sdk-net-api:`CreateQueue <SQS/MSQSSQSCreateQueueCreateQueueRequest>` method.
-   The method returns a :sdk-net-api:`CreateQueueResponse<SQS/TSQSCreateQueueResponse>`
-   object, as follows.
+    #. After you create the request, pass it as a parameter to the
+       :sdk-net-api:`CreateQueue <SQS/MSQSSQSCreateQueueCreateQueueRequest>` method.
+       The method returns a :sdk-net-api:`CreateQueueResponse<SQS/TSQSCreateQueueResponse>`
+       object, as follows.
 
-   .. code-block:: csharp
+       .. code-block:: csharp
 
-      var createQueueResponse = sqsClient.CreateQueue(createQueueRequest);
+          var createQueueResponse = sqsClient.CreateQueue(createQueueRequest);
 
-For information about how queues work in |SQS|, see :sqs-dg:`How SQS Queues Work <SQSConcepts>`.
+    For information about how queues work in |SQS|, see :sqs-dg:`How SQS Queues Work <SQSConcepts>`.
 
-For information about your queue URL, see :ref:`sqs-queue-url`.
+    For information about your queue URL, see :ref:`sqs-queue-url`.

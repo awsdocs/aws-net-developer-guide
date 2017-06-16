@@ -21,10 +21,6 @@ the *document* model, and the *object persistence* model.
 The following information introduces these models and their APIs, provides examples for how and when
 to use them, and gives you links to additional |DDB| programming resources in the |sdk-net|.
 
-.. contents:: Topics
-    :local:
-    :depth: 1
-
 .. toctree::
     :maxdepth: 1
 

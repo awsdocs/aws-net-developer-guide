@@ -16,48 +16,48 @@ Receiving a Message from an |SQS| Queue
 
 You can use the |sdk-net| to receive messages from an |SQS| queue.
 
-To receive a message from an |SQS| queue:
+.. topic:: To receive a message from an |SQS| queue
 
-#. Create and initialize a :sdk-net-api:`ReceiveMessageRequest <SQS/TSQSReceiveMessageRequest>`
-   instance. Specify the queue URL to receive a message from, as follows.
+    #. Create and initialize a :sdk-net-api:`ReceiveMessageRequest <SQS/TSQSReceiveMessageRequest>`
+       instance. Specify the queue URL to receive a message from, as follows.
 
-   .. code-block:: csharp
+       .. code-block:: csharp
 
-       var receiveMessageRequest = new ReceiveMessageRequest();
+           var receiveMessageRequest = new ReceiveMessageRequest();
 
-       receiveMessageRequest.QueueUrl = myQueueURL;
+           receiveMessageRequest.QueueUrl = myQueueURL;
 
-   For more information about your queue URL, see :ref:`Your Amazon SQS Queue URL <sqs-queue-url>`.
+       For more information about your queue URL, see :ref:`Your Amazon SQS Queue URL <sqs-queue-url>`.
 
-#. Pass the request object as a parameter to the
-   :sdk-net-api:`ReceiveMessage<SQS/MSQSSQSReceiveMessageReceiveMessageRequest>` method, as
-   follows.
+    #. Pass the request object as a parameter to the
+       :sdk-net-api:`ReceiveMessage<SQS/MSQSSQSReceiveMessageReceiveMessageRequest>` method, as
+       follows.
 
-   .. code-block:: csharp
+       .. code-block:: csharp
 
-       var receiveMessageResponse = sqsClient.ReceiveMessage(receiveMessageRequest);
+           var receiveMessageResponse = sqsClient.ReceiveMessage(receiveMessageRequest);
 
-   The method returns a :sdk-net-api:`ReceiveMessageResponse <SQS/TSQSReceiveMessageResponse>`
-   instance, containing the list of messages the queue contains.
+       The method returns a :sdk-net-api:`ReceiveMessageResponse <SQS/TSQSReceiveMessageResponse>`
+       instance, containing the list of messages the queue contains.
 
-#. The :code:`ReceiveMessageResponse.ReceiveMessageResult` property contains a
-   :sdk-net-api:`ReceiveMessageResponse <SQS/TSQSReceiveMessageResponse>` object, which contains
-   a list of the messages that were received. Iterate through this list and call the :code:`ProcessMessage`
-   method to process each message.
+    #. The :code:`ReceiveMessageResponse.ReceiveMessageResult` property contains a
+       :sdk-net-api:`ReceiveMessageResponse <SQS/TSQSReceiveMessageResponse>` object, which contains
+       a list of the messages that were received. Iterate through this list and call the :code:`ProcessMessage`
+       method to process each message.
 
-   .. code-block:: csharp
+       .. code-block:: csharp
 
-       foreach (var message in result.Messages)
-       {
-         ProcessMessage(message);  // Go to a method to process messages.
-       }
+           foreach (var message in result.Messages)
+           {
+             ProcessMessage(message);  // Go to a method to process messages.
+           }
 
-   The :code:`ProcessMessage` method can use the :code:`ReceiptHandle` property to obtain a
-   receipt handle for the message. You can use this receipt handle to change the message visibility
-   timeout or to delete the message from the queue. For more information about how to change the
-   visibility timeout for a message, see
-   :sdk-net-api:`ChangeMessageVisibility<SQS/MSQSSQSChangeMessageVisibilityChangeMessageVisibilityRequest>`.
+       The :code:`ProcessMessage` method can use the :code:`ReceiptHandle` property to obtain a
+       receipt handle for the message. You can use this receipt handle to change the message visibility
+       timeout or to delete the message from the queue. For more information about how to change the
+       visibility timeout for a message, see
+       :sdk-net-api:`ChangeMessageVisibility<SQS/MSQSSQSChangeMessageVisibilityChangeMessageVisibilityRequest>`.
 
-For information about sending a message to your queue, see :ref:`send-sqs-message`.
+    For information about sending a message to your queue, see :ref:`send-sqs-message`.
 
-For more information about deleting a message from the queue, see :ref:`delete-sqs-message`.
+    For more information about deleting a message from the queue, see :ref:`delete-sqs-message`.

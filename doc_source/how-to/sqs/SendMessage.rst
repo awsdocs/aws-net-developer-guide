@@ -20,33 +20,33 @@ You can use the |sdk-net| to send a message to an |SQS| queue.
    messages in the precise order they are sent. If you need to preserve the message order,
    place sequencing information in each message so you can reorder the messages upon receipt.
 
-To end a message to an |SQS| queue:
+.. topic:: To end a message to an |SQS| queue
 
-#. Create and initialize a :sdk-net-api:`SendMessageRequest <SQS/TSQSSendMessageRequest>` instance.
-   Specify the queue name and the message you want to send, as follows.
+    #. Create and initialize a :sdk-net-api:`SendMessageRequest <SQS/TSQSSendMessageRequest>` instance.
+       Specify the queue name and the message you want to send, as follows.
 
-   .. code-block:: csharp
+       .. code-block:: csharp
 
-      sendMessageRequest.QueueUrl = myQueueURL; sendMessageRequest.MessageBody = "{YOUR_QUEUE_MESSAGE}";
+          sendMessageRequest.QueueUrl = myQueueURL; sendMessageRequest.MessageBody = "{YOUR_QUEUE_MESSAGE}";
 
-   For more information about your queue URL, see :ref:`sqs-queue-url`.
+       For more information about your queue URL, see :ref:`sqs-queue-url`.
 
-   Each queue message must be composed of Unicode characters only, and can be up to 64 KB in size.
-   For more information about queue messages, see :sqs-api:`SendMessage` in the |SQS-api|.
+       Each queue message must be composed of Unicode characters only, and can be up to 64 KB in size.
+       For more information about queue messages, see :sqs-api:`SendMessage` in the |SQS-api|.
 
-#. After you create the request, pass it as a parameter to the
-   :sdk-net-api:`SendMessage <SQS/MSQSSQSSendMessageSendMessageRequest>` method.
-   The method returns a :sdk-net-api:`SendMessageResponse <SQS/TSQSSendMessageResponse>` object,
-   as follows.
+    #. After you create the request, pass it as a parameter to the
+       :sdk-net-api:`SendMessage <SQS/MSQSSQSSendMessageSendMessageRequest>` method.
+       The method returns a :sdk-net-api:`SendMessageResponse <SQS/TSQSSendMessageResponse>` object,
+       as follows.
 
-   .. code-block:: csharp
+       .. code-block:: csharp
 
-      var sendMessageResponse = sqsClient.SendMessage(sendMessageRequest);
+          var sendMessageResponse = sqsClient.SendMessage(sendMessageRequest);
 
-   The sent message will stay in your queue until the visibility timeout is exceeded,
-   or until it is deleted from the queue. For more information about visibility timeouts,
-   go to :sqs-dg:`Visibility Timeout <AboutVT>`.
+       The sent message will stay in your queue until the visibility timeout is exceeded,
+       or until it is deleted from the queue. For more information about visibility timeouts,
+       go to :sqs-dg:`Visibility Timeout <AboutVT>`.
 
-For information about deleting messages from your queue, see :ref:`delete-sqs-message`.
+    For information about deleting messages from your queue, see :ref:`delete-sqs-message`.
 
-For information about receiving messages from your queue, see :ref:`receive-sqs-message`.
+    For information about receiving messages from your queue, see :ref:`receive-sqs-message`.

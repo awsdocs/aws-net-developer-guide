@@ -39,24 +39,24 @@ about credentials and profiles, see :ref:`net-dg-config`.
 
 After you create this file, you're ready to create and initialize your |SQS| client.
 
-To create and initialize an |SQS| client:
+.. topic:: To create and initialize an |SQS| client
 
-#. Create and initialize an :sdk-net-api:`AmazonSQSConfig <SQS/TSQSSQSConfig>` instance, and then set the
-   :code:`ServiceURL` property with the protocol and service endpoint, as follows.
+    #. Create and initialize an :sdk-net-api:`AmazonSQSConfig <SQS/TSQSSQSConfig>` instance, and then set the
+       :code:`ServiceURL` property with the protocol and service endpoint, as follows.
 
-   .. code-block:: csharp
+       .. code-block:: csharp
 
-       var sqsConfig = new AmazonSQSConfig();
+           var sqsConfig = new AmazonSQSConfig();
 
-       sqsConfig.ServiceURL = "http://sqs.us-west-2.amazonaws.com";
+           sqsConfig.ServiceURL = "http://sqs.us-west-2.amazonaws.com";
 
 
-#. Use the :classname:`AmazonSQSConfig` instance to create and initialize an
-   :sdk-net-api:`AmazonSQSClient <SQS/TSQSSQSClient>` instance, as follows.
+    #. Use the :classname:`AmazonSQSConfig` instance to create and initialize an
+       :sdk-net-api:`AmazonSQSClient <SQS/TSQSSQSClient>` instance, as follows.
 
-   .. code-block:: csharp
+       .. code-block:: csharp
 
-      var sqsClient = new AmazonSQSClient(sqsConfig);
+          var sqsClient = new AmazonSQSClient(sqsConfig);
 
-You can now use the client to create an |SQS| queue. For information about creating a queue, see
-:ref:`create-sqs-queue`.
+    You can now use the client to create an |SQS| queue. For information about creating a queue, see
+    :ref:`create-sqs-queue`.

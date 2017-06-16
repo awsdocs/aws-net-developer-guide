@@ -26,51 +26,51 @@ For more information about sending batch messages, see
 in the |SQS-api|.
 
 
-To send batch messages to an |SQS| queue:
+.. topic:: To send batch messages to an |SQS| queue
 
-#. Create an :sdk-net-api:`AmazonSQSClient <SQS/TSQSSQSClient>` instance and initialize a
-   :sdk-net-api:`SendMessageBatchRequest <SQS/TSQSSendMessageBatchRequest>` object.
-   Specify the queue name and the message you want to send, as follows.
+    #. Create an :sdk-net-api:`AmazonSQSClient <SQS/TSQSSQSClient>` instance and initialize a
+       :sdk-net-api:`SendMessageBatchRequest <SQS/TSQSSendMessageBatchRequest>` object.
+       Specify the queue name and the message you want to send, as follows.
 
-   .. code-block:: csharp
+       .. code-block:: csharp
 
-            AmazonSQSClient client = new AmazonSQSClient();
-            var sendMessageBatchRequest = new SendMessageBatchRequest
-            {
-                Entries = new List<SendMessageBatchRequestEntry>
+                AmazonSQSClient client = new AmazonSQSClient();
+                var sendMessageBatchRequest = new SendMessageBatchRequest
                 {
-                    new SendMessageBatchRequestEntry("message1", "FirstMessageContent"),
-                    new SendMessageBatchRequestEntry("message2", "SecondMessageContent"),
-                    new SendMessageBatchRequestEntry("message3", "ThirdMessageContent")
-                },
-                QueueUrl = "SQS_QUEUE_URL"
-            };
+                    Entries = new List<SendMessageBatchRequestEntry>
+                    {
+                        new SendMessageBatchRequestEntry("message1", "FirstMessageContent"),
+                        new SendMessageBatchRequestEntry("message2", "SecondMessageContent"),
+                        new SendMessageBatchRequestEntry("message3", "ThirdMessageContent")
+                    },
+                    QueueUrl = "SQS_QUEUE_URL"
+                };
 
-   For more information about your queue URL, see :ref:`sqs-queue-url`.
+       For more information about your queue URL, see :ref:`sqs-queue-url`.
 
-   Each queue message must be composed of Unicode characters only, and can be up to 64 KB in size.
-   For more information about queue messages, see :sqs-api:`SendMessage` in the |SQS-api|.
+       Each queue message must be composed of Unicode characters only, and can be up to 64 KB in size.
+       For more information about queue messages, see :sqs-api:`SendMessage` in the |SQS-api|.
 
-#. After you create the request, pass it as a parameter to the
-   :sdk-net-api:`SendMessageBatch <SQS/MSQSSQSSendMessageBatchSendMessageBatchRequest>` method.
-   The method returns a :sdk-net-api:`SendMessageBatchResponse <SQS/TSQSSendMessageBatchResponse>` object,
-   which contains the unique ID of each message and the message content for each successfully sent message.
-   It also returns the message ID, message content, and a sender's fault flag if the message failed to send.
+    #. After you create the request, pass it as a parameter to the
+       :sdk-net-api:`SendMessageBatch <SQS/MSQSSQSSendMessageBatchSendMessageBatchRequest>` method.
+       The method returns a :sdk-net-api:`SendMessageBatchResponse <SQS/TSQSSendMessageBatchResponse>` object,
+       which contains the unique ID of each message and the message content for each successfully sent message.
+       It also returns the message ID, message content, and a sender's fault flag if the message failed to send.
 
-   .. code-block:: csharp
+       .. code-block:: csharp
 
-            SendMessageBatchResponse response = client.SendMessageBatch(sendMessageBatchRequest);
-            Console.WriteLine("Messages successfully sent:");
-            foreach (var success in response.Successful)
-            {
-                Console.WriteLine("    Message id : {0}", success.MessageId);
-                Console.WriteLine("    Message content MD5 : {0}", success.MD5OfMessageBody);
-            }
+                SendMessageBatchResponse response = client.SendMessageBatch(sendMessageBatchRequest);
+                Console.WriteLine("Messages successfully sent:");
+                foreach (var success in response.Successful)
+                {
+                    Console.WriteLine("    Message id : {0}", success.MessageId);
+                    Console.WriteLine("    Message content MD5 : {0}", success.MD5OfMessageBody);
+                }
 
-            Console.WriteLine("Messages failed to send:");
-            foreach (var failed in response.Failed)
-            {
-                Console.WriteLine("    Message id : {0}", failed.Id);
-                Console.WriteLine("    Message content : {0}", failed.Message);
-                Console.WriteLine("    Sender's fault? : {0}", failed.SenderFault);
-            }
+                Console.WriteLine("Messages failed to send:");
+                foreach (var failed in response.Failed)
+                {
+                    Console.WriteLine("    Message id : {0}", failed.Id);
+                    Console.WriteLine("    Message content : {0}", failed.Message);
+                    Console.WriteLine("    Sender's fault? : {0}", failed.SenderFault);
+                }
