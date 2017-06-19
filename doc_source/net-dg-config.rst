@@ -25,7 +25,7 @@ The recommended way to configure an application is to use the :code:`<aws>` elem
 
     <configuration>
       <configSections>
-        <section name="aws" type="Amazon.AWSSection, AWSSDK"/>
+        <section name="aws" type="Amazon.AWSSection, AWSSDK.Core"/>
       </configSections>
       <aws region="us-west-2">
         <logging logTo="Log4Net"/>
