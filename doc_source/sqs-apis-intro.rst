@@ -39,8 +39,6 @@ For related API reference information, see :sdk-net-api:`Amazon.SQS <SQS/NSQS>`,
 :sdk-net-api:`Amazon.SQS.Model <SQS/NSQSModel>`, and
 :sdk-net-api:`Amazon.SQS.Util <SQS/NSQSUtil>` in the |sdk-net-ref|.
 
-**Examples**
-
 .. toctree::
     :titlesonly:
     :maxdepth: 1

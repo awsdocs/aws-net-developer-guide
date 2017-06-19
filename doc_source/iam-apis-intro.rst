@@ -35,8 +35,6 @@ For related API reference information, see :sdk-net-api:`Amazon.IdentityManageme
 Before you begin, be sure that you have created an AWS account and set up your AWS credentials. For
 more information, see :ref:`net-dg-setup`.
 
-**Examples**
-
 .. toctree::
     :titlesonly:
     :maxdepth: 1
