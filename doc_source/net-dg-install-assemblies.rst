@@ -27,7 +27,7 @@ and the |TWP|.
 
 .. tip:: The |sdk-net| is also available on `GitHub <https://github.com/aws/aws-sdk-net>`_.
 
-.. topic:: To install |sdk-net|
+.. topic:: To install the |sdk-net|
 
     #. Go to |sdk-net|_.
 
@@ -36,8 +36,8 @@ and the |TWP|.
 
     #. To start installation, run the downloaded installer and follow the on-screen instructions.
 
-        .. tip:: By default, |TFW| are installed in the Program Files directory, which requires
-           administrator privileges. To install |TFW| as a non-administrator, choose a different
+        .. tip:: By default, the |sdk-net| is installed in the Program Files directory, which requires
+           administrator privileges. To install the |sdk-net| as a non-administrator, choose a different
            installation directory.
 
     #. (Optional) You can use NuGet to install individual AWSSDK service assemblies and extensions
