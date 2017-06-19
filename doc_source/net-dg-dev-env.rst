@@ -27,7 +27,7 @@ Required
   .. note:: We recommend using Visual Studio Professional 2010 or later to implement your applications.
 
 The |sdk-net| is installed with the |TVSlong|, a plugin that provides a user interface for managing 
-your AWS resources from Visual Studio, and also includes the |TWPlong|. To install thr |sdk-net| and 
+your AWS resources from Visual Studio, and also includes the |TWPlong|. To install the |sdk-net| and 
 |TVSlong|, see :tvs-ug:`Setting Up the AWS Toolkit for Visual Studio <getting-set-up>`.
 
 For more information, see  :tvs-ug:`Using the AWS Toolkit for Visual Studio <welcome>`.
