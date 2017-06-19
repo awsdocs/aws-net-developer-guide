@@ -23,14 +23,12 @@ way to start this project is to open Visual Studio, and then choose :guilabel:`F
 :guilabel:`AWS Sample Projects`, :guilabel:`Compute and Networking`,
 :guilabel:`AWS EC2 Sample`.
 
-Prerequisites
-=============
+**Prerequisites**
 
 Before you begin, be sure that you have created an AWS account and set up your AWS credentials. For
 more information, see :ref:`net-dg-setup`.
 
-Examples
-========
+**Examples**
 
 .. toctree::
     :titlesonly:

@@ -30,8 +30,7 @@ project is to open Visual Studio, and then choose :guilabel:`File`, :guilabel:`N
 :guilabel:`AWS Sample Projects`, :guilabel:`App Services`,
 :guilabel:`AWS SQS Sample`.
 
-Prerequisite Tasks
-==================
+**Prerequisite Tasks**
 
 Before you begin, be sure that you have created an AWS account and set up your AWS credentials. For
 more information, see :ref:`net-dg-setup`.
@@ -40,8 +39,7 @@ For related API reference information, see :sdk-net-api:`Amazon.SQS <SQS/NSQS>`,
 :sdk-net-api:`Amazon.SQS.Model <SQS/NSQSModel>`, and
 :sdk-net-api:`Amazon.SQS.Util <SQS/NSQSUtil>` in the |sdk-net-ref|.
 
-Examples
-========
+**Examples**
 
 .. toctree::
     :titlesonly:

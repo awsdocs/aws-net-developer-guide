@@ -31,14 +31,12 @@ project is to open Visual Studio, and then choose :guilabel:`File`, :guilabel:`N
 :guilabel:`AWS Sample Projects`, :guilabel:`Deployment and Management`,
 :guilabel:`AWS CloudWatch Example`.
 
-Prerequisite Tasks
-==================
+**Prerequisite Tasks**
 
 Before you begin, be sure that you have created an AWS account and set up your AWS credentials. For
 more information, see :ref:`net-dg-setup`.
 
-Examples
-========
+**Examples**
 
 .. toctree::
     :titlesonly:
