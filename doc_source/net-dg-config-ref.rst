@@ -561,6 +561,3 @@ The following is an example of the :code:`<s3>` element in use:
       useSignatureVersion4="true" />
     ...
 
-
-
-
