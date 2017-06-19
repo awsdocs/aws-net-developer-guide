@@ -22,7 +22,8 @@ the AWS assemblies with NuGet.
 Installing the |sdk-net|
 ========================
 
-The following procedure describes how to install the |TFW|, which contains the |sdk-net| and the |TWP|.
+The following procedure describes how to install the |sdk-net|, which contains the |sdk-net|, the |TVSlong|, 
+and the |TWP|.
 
 .. tip:: The |sdk-net| is also available on `GitHub <https://github.com/aws/aws-sdk-net>`_.
 
