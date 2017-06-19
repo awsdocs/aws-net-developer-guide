@@ -27,7 +27,7 @@ and the |TWP|.
 
 .. tip:: The |sdk-net| is also available on `GitHub <https://github.com/aws/aws-sdk-net>`_.
 
-.. topic:: To install |TFW|
+.. topic:: To install |sdk-net|
 
     #. Go to |sdk-net|_.
 
