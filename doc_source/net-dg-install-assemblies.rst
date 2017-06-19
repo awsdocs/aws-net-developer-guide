@@ -30,7 +30,7 @@ The following procedure describes how to install the |TFW|, which contains the |
 
     #. Go to |sdk-net|_.
 
-    #. In the :guilabel:`Downloads` section, choose :guilabel:`AWS SDK for .NET` to download the
+    #. In the :guilabel:`Downloads` section, choose :guilabel:`Download MSI Installer` to download the
        installer.
 
     #. To start installation, run the downloaded installer and follow the on-screen instructions.
