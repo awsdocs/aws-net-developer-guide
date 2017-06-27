@@ -192,7 +192,7 @@ The following example specifies a profile named :code:`development`.
 
     <configuration>
       <configSections>
-        <section name="aws" type="Amazon.AWSSection, AWSSDK"/>
+        <section name="aws" type="Amazon.AWSSection, AWSSDK.Core"/>
       </configSections>
       <aws profileName="development"/>
     </configuration>
