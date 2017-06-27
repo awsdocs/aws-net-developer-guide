@@ -10,9 +10,9 @@
 
 .. _tutorials-examples:
 
-##################
-|sdk-net| Examples
-##################
+#############
+Code Examples
+#############
 
 The following examples demonstrate how to use the |sdk-net| to work with
 individual AWS services.

@@ -173,7 +173,7 @@ an exception is thrown.
             }
             catch (NoSuchEntityException)
             {
-                Console.WriteLine("User DemoUser' does not exist.");
+                Console.WriteLine("User 'DemoUser' does not exist.");
             }
         }
 
