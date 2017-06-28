@@ -101,25 +101,27 @@ method of the ``AmazonCloudWatchClient`` object.
 .. code-block:: C#
 
             var client = new AmazonCloudWatchClient(RegionEndpoint.USWest2);
-            client.PutMetricAlarm(new PutMetricAlarmRequest
-            {
-                AlarmName = "Web_Server_CPU_Utilization",
-                ComparisonOperator = ComparisonOperator.GreaterThanThreshold,
-                EvaluationPeriods = 1,
-                MetricName = "CPUUtilization",
-                Namespace = "AWS/EC2",
-                Period = 60,
-                Statistic = Statistic.Average,
-                Threshold = 70.0,
-                ActionsEnabled = true,
-                AlarmActions = new List<string> { "arn:aws:swf:us-west-2:" + "customerAccount" + ":action/actions/AWS_EC2.InstanceId.Reboot/1.0" },
-                AlarmDescription = "Alarm when server CPU exceeds 70%",
-                Dimensions = new List<Dimension>
-                    {
-                        new Dimension { Name = "InstanceId", Value = "INSTANCE_ID" }
-                    },
-                Unit = StandardUnit.Seconds
-            });
+            client.PutMetricAlarm(
+                new PutMetricAlarmRequest
+                {
+                    AlarmName = "Web_Server_CPU_Utilization",
+                    ComparisonOperator = ComparisonOperator.GreaterThanThreshold,
+                    EvaluationPeriods = 1,
+                    MetricName = "CPUUtilization",
+                    Namespace = "AWS/EC2",
+                    Period = 60,
+                    Statistic = Statistic.Average,
+                    Threshold = 70.0,
+                    ActionsEnabled = true,
+                    AlarmActions = new List<string> { "arn:aws:swf:us-west-2:" + "customerAccount" + ":action/actions/AWS_EC2.InstanceId.Reboot/1.0" },
+                    AlarmDescription = "Alarm when server CPU exceeds 70%",
+                    Dimensions = new List<Dimension>
+                        {
+                            new Dimension { Name = "InstanceId", Value = "INSTANCE_ID" }
+                        },
+                    Unit = StandardUnit.Seconds
+                } 
+            );
 
 .. _cloudwatch-example-deleting-alarms:
 
