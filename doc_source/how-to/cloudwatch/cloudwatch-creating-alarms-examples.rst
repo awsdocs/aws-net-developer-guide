@@ -112,15 +112,14 @@ method of the ``AmazonCloudWatchClient`` object.
                 Statistic = Statistic.Average,
                 Threshold = 70.0,
                 ActionsEnabled = true,
-                AlarmActions = new List<string> { "arn:aws:swf:us-west-2:" + "customerAccount" +
-                       ":action/actions/AWS_EC2.InstanceId.Reboot/1.0" },
+                AlarmActions = new List<string> { "arn:aws:swf:us-west-2:" + "customerAccount" + ":action/actions/AWS_EC2.InstanceId.Reboot/1.0" },
                 AlarmDescription = "Alarm when server CPU exceeds 70%",
                 Dimensions = new List<Dimension>
                     {
                         new Dimension { Name = "InstanceId", Value = "INSTANCE_ID" }
                     },
                 Unit = StandardUnit.Seconds
-            };
+            });
 
 .. _cloudwatch-example-deleting-alarms:
 
