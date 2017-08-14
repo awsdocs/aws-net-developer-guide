@@ -163,7 +163,7 @@ that the profiles in credentials files are stored in plaintext.*
 
 Use can manage the profiles in the shared credentials file in two ways:
 
-* You can a text editor. The file is named
+* You can use a text editor. The file is named
   :file:`credentials`, and the default location is under your user's home folder. For example, if your
   user name is :code:`awsuser`, the credentials file would be
   :file:`C:\\users\\awsuser\\.aws\\credentials`.
