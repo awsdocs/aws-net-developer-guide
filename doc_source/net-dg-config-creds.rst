@@ -126,8 +126,8 @@ Create a Profile and Save it to the .NET Credentials File
 Create a SAMLEndpoint and an Associated Profile and Save it to the .NET Credentials File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SAMLEndpoint <Runtime/TRuntimeCredentialManagementCredentialProfileOptions>`
-    object. Provide the name and endpoint URI parameters. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SAMLEndpointManager <Runtime/TRuntimeCredentialManagementCredentialProfile>`
+    Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SAMLEndpoint <Runtime/TRuntimeCredentialManagementSAMLEndpoint>`
+    object. Provide the name and endpoint URI parameters. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SAMLEndpointManager <Runtime/TRuntimeCredentialManagementSAMLEndpointManager>`
     object.  Call the :sdk-net-api:`RegisterEndpoint <Runtime/MRuntimeCredentialManagementSAMLEndpointManagerRegisterEndpointSAMLEndpoint>`
     method to register the endpoint. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TRuntimeCredentialManagementCredentialProfileOptions>`
     object and set its :code:`EndpointName` and :code:`RoleArn` properties. Create an
