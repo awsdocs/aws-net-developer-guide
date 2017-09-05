@@ -14,12 +14,21 @@
 Constructing |SQS| Queue URLs
 #############################
 
-You need a queue URL to send, receive, and delete queue messages. A queue URL is constructed in
-the following format.
+You need a queue URL to send, receive, and delete queue messages. You can get your queue URL using the :sdk-net-api:`GetQueueUrl <SQS/MSQSSQSGetQueueUrlGetQueueUrlRequest>`  method. 
 
-.. code-block:: none
+.. code-block:: csharp
 
-     https://{REGION_ENDPOINT}/queue.|api-domain|/{YOUR_ACCOUNT_NUMBER}/{YOUR_QUEUE_NAME}
+    var client = new AmazonSQSClient();
+ 
+    var request = new GetQueueUrlRequest
+    {
+      QueueName = "MyTestQueue",
+      QueueOwnerAWSAccountId = "80398EXAMPLE"
+    };
+     
+    var response = client.GetQueueUrl(request);
+     
+    Console.WriteLine("Queue URL: " + response.QueueUrl);
 
 To find your AWS account number, go to :console:`Security Credentials <iam>`.
 Your account number is located under :guilabel:`Account Number` at the top-right of the page.
