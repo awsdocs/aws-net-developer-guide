@@ -42,8 +42,7 @@ individual messages before they are routed to the dead letter queue.
 Create an :sdk-net-api:`AmazonSQSClient <SQS/TSQSSQSClient>` object to set the queue attrributes. Create
 a :sdk-net-api:`SetQueueAttributesRequest <SQS/MSQSSQSSetQueueAttributesSetQueueAttributesRequest>` object
 containing the properties needed to update queue attributes, including the :code:`RedrivePolicy` property
-that specifies both the ARN of the dead letter queue, and the value of :code:`maxReceiveCount`. Also specify
-the URL source queue you want to configure. Call the
+that specifies both the Amazon Resource Name (ARN) of the dead letter queue, and the value of :code:`maxReceiveCount`. Also specify the URL source queue you want to configure. Call the 
 :sdk-net-api:`SetQueueAttributes <SQS/MSQSSQSSetQueueAttributesSetQueueAttributesRequest>` method.
 
 .. code-block:: c#

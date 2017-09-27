@@ -29,10 +29,12 @@ Before you begin, be sure you have :ref:`set up the AWS SDK for .NET <net-dg-set
     :maxdepth: 1
 
     cloudformation-apis-intro
+    cognito-apis-intro
     dynamodb-intro
     ec2-apis-intro
     glacier-apis-intro
     iam-apis-intro
+    kms-keys-s3-encryption
     route53-apis-intro
     s3-apis-intro
     sns-apis-intro

@@ -10,9 +10,9 @@
 
 .. _cloudwatch-examples-intro:
 
-#################
-|CWlong| Examples
-#################
+############################################
+Monitoring Your AWS Resources Using |CWlong|
+############################################
 
 .. meta::
    :description: .NET code examples for Amazon CloudWatch

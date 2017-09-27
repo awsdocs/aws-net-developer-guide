@@ -10,37 +10,30 @@
 
 .. _other-apis-intro:
 
-######################################################
-Programming Additional AWS Services with the |sdk-net|
-######################################################
+###############################################
+Programming Support for Additional AWS Services 
+###############################################
 
-The |sdk-net| supports programming AWS services in addition to the ones that are described
-previously in this chapter. For information about programming specific services with the |sdk-net|,
-see the |sdk-net-api|.
+The |sdk-net| supports programming AWS services in addition to those described in the code examples.  For information about programming specific services with the |sdk-net|, see the `AWS SDK for .NET API Reference <http://docs.aws.amazon.com/sdkfornet/v3/apidocs/Index.html>`_.
 
 In addition to the namespaces for individual AWS services, the |sdk-net| also provides the following
 APIs:
 
-.. list-table: 
+.. list-table:: 
     :header-rows: 1
     :widths: 1 1 1
 
-    *   * Area 
-        * Description 
-        * Resources 
+    * - Area 
+      - Description 
+      - Resources 
 
-    *   * AWS Support 
+    * - AWS Support 
+      - Programmatic access to AWS Support cases and Trusted Advisor features. 
+      - See :sdk-net-api:`Amazon.AWSSupport <AWSSupport/NAWSSupport>` and :sdk-net-api:`Amazon.AWSSupport.Model <AWSSupport/NAWSSupportModel>`. 
 
-        * Programmatic access to AWS Support cases and Trusted Advisor features. 
-
-        * See :sdk-net-api:`Amazon.AWSSupport <AWSSupport/NAWSSupport>` and 
-        :sdk-net-api:`Amazon.AWSSupport.Model <AWSSupport/NAWSSupportModel>`. 
-
-    *   * General 
-
-        * Helper classes and enumerations. 
-
-        * See :sdk-net-api:`Amazon <Amazon/N>` and :sdk-net-api:`Amazon.Util <Util/NUtil>`. 
+    * - General 
+      - Helper classes and enumerations. 
+      - See :sdk-net-api:`Amazon <Amazon/N>` and :sdk-net-api:`Amazon.Util <Util/NUtil>`. 
 
 Other general programming information for the |sdk-net| includes the following:
 

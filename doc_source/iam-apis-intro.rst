@@ -10,9 +10,9 @@
 
 .. _iam-apis-intro:
 
-##########################
-|IAMlong| (|IAM|) Examples
-##########################
+#####################################
+Managing Users With |IAMlong| (|IAM|)
+#####################################
 
 .. meta::
    :description: .NET code examples for AWS IAM

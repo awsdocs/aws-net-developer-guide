@@ -10,9 +10,9 @@
 
 .. _dynamodb-intro:
 
-##################
-|DDBlong| Examples
-##################
+###############################
+Using |DDBlong| NoSQL Databases
+###############################
 
 The |sdk-net| supports |DDBlong|, which is a fast NoSQL database service offered by AWS.
 The SDK provides three programming models for communicating with |DDB|: the *low-level* model,
@@ -222,7 +222,7 @@ instance of the :code:`DynamoDBContext` class is initialized with an instance of
 More Info
 =========
 
-**Using the |sdk-net| to program |DDB|** information and examples**
+**Using the AWS SDK for .NET to program DynamoDB** information and examples**
 
 * :aws-blogs-net:`DynamoDB APIs <Tx17SQHVEMW8MXC/DynamoDB-APIs>`
 

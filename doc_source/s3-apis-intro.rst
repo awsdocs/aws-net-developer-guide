@@ -10,9 +10,9 @@
 
 .. _s3-apis-intro:
 
-#######################################
-|S3long| Programming with the |sdk-net|
-#######################################
+###############################
+Using |S3long| Internet Storage
+###############################
 
 The |sdk-net| supports |S3long| (|S3|), which is storage for the Internet. It is designed to make
 web-scale computing easier for developers. For more information, see |S3|_.

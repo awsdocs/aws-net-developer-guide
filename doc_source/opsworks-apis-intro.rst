@@ -10,9 +10,9 @@
 
 .. _opsworks-apis-intro:
 
-########################################
-|OPSlong| Programming with the |sdk-net|
-########################################
+##########################################################
+Programming |OPSlong| to Work with Stacks and Applications
+##########################################################
 
 The |sdk-net| supports |OPSlong|, which provides a simple and flexible way to create and manage
 stacks and applications. With |OPS|, you can provision AWS resources, manage their configuration,

@@ -10,9 +10,9 @@
 
 .. _ec2-apis-intro:
 
-##############
-|EC2| Examples
-##############
+##################################
+Deploying Applications Using |EC2|
+##################################
 
 .. meta::
    :description:

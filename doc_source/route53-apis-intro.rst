@@ -10,9 +10,9 @@
 
 .. _route53-apis-intro:
 
-##################
-|R53long| Examples
-##################
+###########################################################
+Managing Domain Name System (DNS) Resources Using |R53long|
+###########################################################
 
 The |sdk-net| supports |R53long|, which is a Domain Name System (DNS) web service that provides
 secure and reliable routing to your infrastructure that uses Amazon Web Services (AWS) products,

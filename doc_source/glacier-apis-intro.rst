@@ -10,9 +10,9 @@
 
 .. _glacier-apis-intro:
 
-#################
-|GLlong| Examples
-#################
+####################################
+Storing Archival Data Using |GLlong|
+####################################
 
 The |sdk-net| supports |GLlong|, which is a storage service optimized for infrequently used data, or
 *cold data*. The service provides durable and extremely low-cost storage with security features for

@@ -10,12 +10,16 @@
 
 .. _sns-apis-intro:
 
-##########################
-|SNSlong| (|SNS|) Examples
-##########################
+##################################################################
+Sending and Receiving Notifications From the Cloud Using |SNSlong| 
+##################################################################
+
+.. meta::
+   :description: .NET code examples for Amazon SNS
+   :keywords: AWS SDK for .NET examples, SNS
 
 The |sdk-net| supports |SNSlong| (|SNS|), which is a web service that enables applications, end
-users, and devices to instantly send and receive notifications from the cloud. For more information,
+users, and devices to instantly send and receive notifications from the cloud. For more information, 
 see |sns|_.
 
 The following example shows how to use the low-level APIs to list accessible topics in |SNS|. This
@@ -24,12 +28,64 @@ example uses the default client constructor which constructs
 the application's default configuration, and if unsuccessful from the Instance Profile service on an 
 EC2 instance.
 
-.. literalinclude:: how-to/sns/sns-list-topics-low-level.txt
-   :language: csharp
+.. code-block:: csharp
 
-For related API reference information, see :sdk-net-api:`Amazon.SimpleNotificationService <SNS/NSNS>`,
-:sdk-net-api:`Amazon.SimpleNotificationService.Model <SNS/NSNSModel>`, and
-:sdk-net-api:`Amazon.SimpleNotificationService.Util <SNS/NSNSUtil>` in the 
-|sdk-net-api|_.
+    // using Amazon.SimpleNotificationService;
+    // using Amazon.SimpleNotificationService.Model;
+
+    var client = new AmazonSimpleNotificationServiceClient();
+    var request = new ListTopicsRequest();
+    var response = new ListTopicsResponse();
+
+    do
+    {
+      response = client.ListTopics(request);  
+
+      foreach (var topic in response.Topics)
+      {
+        Console.WriteLine("Topic: {0}", topic.TopicArn);
+
+        var subs = client.ListSubscriptionsByTopic(
+          new ListSubscriptionsByTopicRequest
+          {
+            TopicArn = topic.TopicArn
+          });
+
+        var ss = subs.Subscriptions;
+
+        if (ss.Any())
+        {
+          Console.WriteLine("  Subscriptions:");
+
+          foreach (var sub in ss)
+          {
+            Console.WriteLine("    {0}", sub.SubscriptionArn);
+          }
+        }
+
+        var attrs = client.GetTopicAttributes(
+          new GetTopicAttributesRequest
+          {
+            TopicArn = topic.TopicArn
+          }).Attributes;
+
+        if (attrs.Any())
+        {
+          Console.WriteLine("  Attributes:");
+
+          foreach (var attr in attrs)
+          {
+            Console.WriteLine("    {0} = {1}", attr.Key, attr.Value);
+          }
+        }    
+
+        Console.WriteLine();
+      }
+
+      request.NextToken = response.NextToken;
+
+    } while (!string.IsNullOrEmpty(response.NextToken));
+        
+
 
 

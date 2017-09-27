@@ -10,9 +10,9 @@
 
 .. _sqs-apis-intro:
 
-##############
-|SQS| Examples
-##############
+#####################
+Messaging Using |SQS|
+#####################
 
 .. meta::
    :description: .NET code examples for Amazon SQS
