@@ -60,7 +60,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'AWS .NET Developer Guide'
-copyright = u'2016, Amazon Web Services'
+copyright = u'2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.'
 author = u'Amazon Web Services'
 
 # The version info for the project you're documenting, acts as replacement for
