@@ -67,7 +67,7 @@ build the docs into a single HTML page, you can use the ``singlehtml`` target, l
 Copyright and license
 =====================
 
-All content in this repository, unless otherwise stated, is Copyright © 2010-2016, Amazon Web
+All content in this repository, unless otherwise stated, is Copyright © 2010-2018, Amazon Web
 Services, Inc. or its affiliates. All rights reserved.
 
 Except where otherwise noted, this work is licensed under a `Creative Commons
