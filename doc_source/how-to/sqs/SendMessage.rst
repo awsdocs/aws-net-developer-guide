@@ -20,7 +20,7 @@ You can use the |sdk-net| to send a message to an |SQS| queue.
    messages in the precise order they are sent. If you need to preserve the message order,
    place sequencing information in each message so you can reorder the messages upon receipt.
 
-.. topic:: To end a message to an |SQS| queue
+.. topic:: To send a message to an |SQS| queue
 
     #. Create and initialize a :sdk-net-api:`SendMessageRequest <SQS/TSQSSendMessageRequest>` instance.
        Specify the queue name and the message you want to send, as follows.
