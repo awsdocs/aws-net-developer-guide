@@ -49,7 +49,7 @@ namespace s3.amazon.com.docsamples.retrieveobject
         using (var s = new FileStream(filename, FileMode.Create))
         using (var writer = new StreamWriter(s))
         {
-          writer.WriteLine(responseBody);
+          writer.Write(responseBody);
         }
       }
       catch (AmazonS3Exception s3Exception)
