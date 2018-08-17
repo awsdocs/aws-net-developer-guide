@@ -14,7 +14,7 @@
 |sdk-net| Developer Guide v3.0.0
 ################################
 
-This documentation is for version 3.0 of the |sdk-net|, which is the latest version.
+This documentation is for the current version of the |sdk-net|, **3.0**.
 
 .. meta::
     :description: Developer Guide for the AWS SDK for .NET
