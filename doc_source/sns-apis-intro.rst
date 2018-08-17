@@ -25,7 +25,7 @@ The following information introduces you to the |SNS| programming models in the 
 Programming Models
 ==================
 
-The the SDK provides two programming models for working with |SNS|. These programming models are
+The SDK provides two programming models for working with |SNS|. These programming models are
 known as the *low-level* and *resource* models. The following information describes these models,
 how to use them, and why you would want to use them.
 
@@ -34,7 +34,7 @@ how to use them, and why you would want to use them.
 Low-Level APIs
 --------------
 
-The the SDK provides low-level APIs for programming with |SNS|. These low-level APIs typically
+The SDK provides low-level APIs for programming with |SNS|. These low-level APIs typically
 consist of sets of matching request-and-response objects that correspond to HTTP-based API calls
 focusing on their corresponding service-level constructs.
 
@@ -53,7 +53,7 @@ the |sdk-net-api|_..
 Resource APIs
 -------------
 
-The the SDK provides the AWS Resource APIs for .NET for programming with |SNS|. These resource APIs
+The SDK provides the AWS Resource APIs for .NET for programming with |SNS|. These resource APIs
 provide a resource-level programming model that enables you to write code to work more directly with
 |SNS| resources as compared to their low-level API counterparts. (For more information about the AWS
 Resource APIs for .NET, including how to download and reference these resource APIs, see
