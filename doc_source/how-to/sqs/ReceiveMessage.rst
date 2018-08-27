@@ -18,7 +18,7 @@ You can use the |sdk-net| to receive messages from an |SQS| queue.
 
 .. topic:: To receive a message from an |SQS| queue
 
-    #. Create and initialize a :sdk-net-api:`ReceiveMessageRequest <SQS/TSQSReceiveMessageRequest>`
+    #. Create and initialize a :sdk-net-api:`ReceiveMessageRequest <SQS/TReceiveMessageRequest>`
        instance. Specify the queue URL to receive a message from, as follows.
 
        .. code-block:: csharp
@@ -30,7 +30,7 @@ You can use the |sdk-net| to receive messages from an |SQS| queue.
        For more information about your queue URL, see :ref:`Your Amazon SQS Queue URL <sqs-queue-url>`.
 
     #. Pass the request object as a parameter to the
-       :sdk-net-api:`ReceiveMessage<SQS/MSQSSQSReceiveMessageReceiveMessageRequest>` method, as
+       :sdk-net-api:`ReceiveMessage<SQS/MSQSReceiveMessageReceiveMessageRequest>` method, as
        follows.
 
        .. code-block:: csharp
@@ -41,7 +41,7 @@ You can use the |sdk-net| to receive messages from an |SQS| queue.
        instance, containing the list of messages the queue contains.
 
     #. The :code:`ReceiveMessageResponse.ReceiveMessageResult` property contains a
-       :sdk-net-api:`ReceiveMessageResponse <SQS/TSQSReceiveMessageResponse>` object, which contains
+       :sdk-net-api:`ReceiveMessageResponse <SQS/TReceiveMessageResponse>` object, which contains
        a list of the messages that were received. Iterate through this list and call the :code:`ProcessMessage`
        method to process each message.
 
@@ -56,7 +56,7 @@ You can use the |sdk-net| to receive messages from an |SQS| queue.
        receipt handle for the message. You can use this receipt handle to change the message visibility
        timeout or to delete the message from the queue. For more information about how to change the
        visibility timeout for a message, see
-       :sdk-net-api:`ChangeMessageVisibility<SQS/MSQSSQSChangeMessageVisibilityChangeMessageVisibilityRequest>`.
+       :sdk-net-api:`ChangeMessageVisibility<SQS/MSQSChangeMessageVisibilityChangeMessageVisibilityRequest>`.
 
     For information about sending a message to your queue, see :ref:`send-sqs-message`.
 
