@@ -25,9 +25,9 @@ created or existing queue, or upon receipt of a message.
 These examples use the following methods of the :sdk-net-api:`AmazonSQSClient <SQS/TSQSSQSClient>` class
 to enable long polling:
 
-* :sdk-net-api:`CreateQueue <SQS/MSQSSQSCreateQueueCreateQueueRequest>`
-* :sdk-net-api:`SetQueueAttributes <SQS/MSQSSQSSetQueueAttributesSetQueueAttributesRequest>`
-* :sdk-net-api:`ReceiveMessage <SQS/MSQSSQSReceiveMessageReceiveMessageRequest>`
+* :sdk-net-api:`CreateQueue <SQS/MSQSCreateQueueCreateQueueRequest>`
+* :sdk-net-api:`SetQueueAttributes <SQS/MSQSSetQueueAttributesSetQueueAttributesRequest>`
+* :sdk-net-api:`ReceiveMessage <SQS/MSQSReceiveMessageReceiveMessageRequest>`
 
 For more information about long polling, see :sqs-dg:`Amazon SQS Long Polling <sqs-long-polling>`
 in the |SQS-dg|.
