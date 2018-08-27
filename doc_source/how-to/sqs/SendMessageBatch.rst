@@ -15,9 +15,9 @@ Sending an |SQS| Message Batch
 ##############################
 
 You can use the |sdk-net| to send batch messages to an |SQS| queue. The
-:sdk-net-api:`SendMessageBatch <SQS/MSQSSQSSendMessageBatchSendMessageBatchRequest>` method
+:sdk-net-api:`SendMessageBatch <SQS/MSQSSendMessageBatchSendMessageBatchRequest>` method
 delivers up to 10 messages to the specified queue. This is a batch version of
-:sdk-net-api:`SendMessage <SQS/MSQSSQSSendMessageSendMessageRequest>`.
+:sdk-net-api:`SendMessage <SQS/MSQSSendMessageSendMessageRequest>`.
 
 For a FIFO queue, multiple messages within a single batch are enqueued in the order they are sent.
 
@@ -28,8 +28,8 @@ in the |SQS-api|.
 
 .. topic:: To send batch messages to an |SQS| queue
 
-    #. Create an :sdk-net-api:`AmazonSQSClient <SQS/TSQSSQSClient>` instance and initialize a
-       :sdk-net-api:`SendMessageBatchRequest <SQS/TSQSSendMessageBatchRequest>` object.
+    #. Create an :sdk-net-api:`AmazonSQSClient <SQS/TSQSClient>` instance and initialize a
+       :sdk-net-api:`SendMessageBatchRequest <SQS/TSendMessageBatchRequest>` object.
        Specify the queue name and the message you want to send, as follows.
 
        .. code-block:: csharp
@@ -52,8 +52,8 @@ in the |SQS-api|.
        For more information about queue messages, see :sqs-api:`SendMessage` in the |SQS-api|.
 
     #. After you create the request, pass it as a parameter to the
-       :sdk-net-api:`SendMessageBatch <SQS/MSQSSQSSendMessageBatchSendMessageBatchRequest>` method.
-       The method returns a :sdk-net-api:`SendMessageBatchResponse <SQS/TSQSSendMessageBatchResponse>` object,
+       :sdk-net-api:`SendMessageBatch <SQS/MSQSSendMessageBatchSendMessageBatchRequest>` method.
+       The method returns a :sdk-net-api:`SendMessageBatchResponse <SQS/TSendMessageBatchResponse>` object,
        which contains the unique ID of each message and the message content for each successfully sent message.
        It also returns the message ID, message content, and a sender's fault flag if the message failed to send.
 
