@@ -20,7 +20,7 @@ programmatically create an |SQS| queue.
 
 .. topic:: To create an |SQS| queue
 
-    #. Create and initialize a :sdk-net-api:`CreateQueueRequest <SQS/TSQSCreateQueueRequest>` instance.
+    #. Create and initialize a :sdk-net-api:`CreateQueueRequest <SQS/TCreateQueueRequest>` instance.
        Provide the name of your queue and specify a visibility timeout for your queue messages, as follows.
 
        .. code-block:: csharp
@@ -40,8 +40,8 @@ programmatically create an |SQS| queue.
        different queue attributes you can set, see :sqs-api:`SetQueueAttributes <SetQueueAttributes>`.
 
     #. After you create the request, pass it as a parameter to the
-       :sdk-net-api:`CreateQueue <SQS/MSQSSQSCreateQueueCreateQueueRequest>` method.
-       The method returns a :sdk-net-api:`CreateQueueResponse<SQS/TSQSCreateQueueResponse>`
+       :sdk-net-api:`CreateQueue <SQS/MSQSCreateQueueCreateQueueRequest>` method.
+       The method returns a :sdk-net-api:`CreateQueueResponse<SQS/TCreateQueueResponse>`
        object, as follows.
 
        .. code-block:: csharp
