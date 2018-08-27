@@ -35,11 +35,11 @@ in the |SQS-dg|.
 Enable Long Polling When Creating a Queue
 =========================================
 
-Create an :sdk-net-api:`AmazonSQSClient <SQS/TSQSSQSClient>` service object. Create a
-:sdk-net-api:`CreateQueueRequest <SQS/TSQSCreateQueueRequest>` object containing the properties
+Create an :sdk-net-api:`AmazonSQSClient <SQS/TSQSClient>` service object. Create a
+:sdk-net-api:`CreateQueueRequest <SQS/TCreateQueueRequest>` object containing the properties
 needed to create a queue, including a non-zero value for the :code:`ReceiveMessageWaitTimeSeconds` property.
 
-Call the :sdk-net-api:`CreateQueue <SQS/MSQSSQSCreateQueueCreateQueueRequest>` method. Long polling
+Call the :sdk-net-api:`CreateQueue <SQS/MSQSCreateQueueCreateQueueRequest>` method. Long polling
 is then enabled for the queue.
 
     .. code-block:: c#
@@ -60,11 +60,11 @@ is then enabled for the queue.
 Enable Long Polling on an Existing Queue
 ========================================
 
-Create an :sdk-net-api:`AmazonSQSClient <SQS/TSQSSQSClient>` service object.
-Create a :sdk-net-api:`SetQueueAttributesRequest <SQS/TSQSSetQueueAttributesRequest>`
+Create an :sdk-net-api:`AmazonSQSClient <SQS/TSQSClient>` service object.
+Create a :sdk-net-api:`SetQueueAttributesRequest <SQS/TSetQueueAttributesRequest>`
 object containing the properties needed to set the attributes of the queue, including a non-zero value
 for the :code:`ReceiveMessageWaitTimeSeconds` property and the URL of the queue. Call the
-:sdk-net-api:`SetQueueAttributes <SQS/MSQSSQSSetQueueAttributesSetQueueAttributesRequest>` method.
+:sdk-net-api:`SetQueueAttributes <SQS/MSQSSetQueueAttributesSetQueueAttributesRequest>` method.
 Long polling is then enabled for the queue.
 
     .. code-block:: c#
@@ -85,10 +85,10 @@ Long polling is then enabled for the queue.
 Receive a Message
 =================
 
-Create an :sdk-net-api:`AmazonSQSClient <SQS/TSQSSQSClient>` service object. Create a
-:sdk-net-api:`ReceiveMessageRequest <SQS/TSQSReceiveMessageRequest>` object containing the properties
+Create an :sdk-net-api:`AmazonSQSClient <SQS/TSQSClient>` service object. Create a
+:sdk-net-api:`ReceiveMessageRequest <SQS/TReceiveMessageRequest>` object containing the properties
 needed to receive a message, including a non-zero value for the :code:`WaitTimeSeconds` parameter and the
-URL of the queue. Call the :sdk-net-api:`ReceiveMessage <SQS/MSQSSQSReceiveMessageReceiveMessageRequest>`
+URL of the queue. Call the :sdk-net-api:`ReceiveMessage <SQS/MSQSReceiveMessageReceiveMessageRequest>`
 method.
 
     .. code-block:: c#
