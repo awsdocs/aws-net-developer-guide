@@ -37,7 +37,7 @@ You can use the |sdk-net| to receive messages from an |SQS| queue.
 
            var receiveMessageResponse = sqsClient.ReceiveMessage(receiveMessageRequest);
 
-       The method returns a :sdk-net-api:`ReceiveMessageResponse <SQS/TSQSReceiveMessageResponse>`
+       The method returns a :sdk-net-api:`ReceiveMessageResponse <SQS/TReceiveMessageResponse>`
        instance, containing the list of messages the queue contains.
 
     #. The :code:`ReceiveMessageResponse.ReceiveMessageResult` property contains a
