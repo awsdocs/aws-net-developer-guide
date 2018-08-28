@@ -31,7 +31,7 @@ You can use the |sdk-net| to delete messages from an |SQS| queue.
 
     #. Pass the request object as a parameter to the
        :sdk-net-api:`DeleteMessage <SQS/MSQSDeleteMessageDeleteMessageRequest>` method. The method returns
-       a :sdk-net-api:`DeleteMessageResponse <SQS/TSQSDeleteMessageResponse>` object, as follows.
+       a :sdk-net-api:`DeleteMessageResponse <SQS/TDeleteMessageResponse>` object, as follows.
 
        .. code-block:: csharp
 
