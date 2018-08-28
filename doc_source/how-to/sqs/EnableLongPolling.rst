@@ -22,7 +22,7 @@ polling, you must specify a non-zero wait time for received messages. You can do
 on a message when it's received. This .NET example shows you how to enable long polling in |SQS| for a newly
 created or existing queue, or upon receipt of a message.
 
-These examples use the following methods of the :sdk-net-api:`AmazonSQSClient <SQS/TSQSSQSClient>` class
+These examples use the following methods of the :sdk-net-api:`AmazonSQSClient <SQS/TSQSClient>` class
 to enable long polling:
 
 * :sdk-net-api:`CreateQueue <SQS/MSQSCreateQueueCreateQueueRequest>`
