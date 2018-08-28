@@ -22,7 +22,7 @@ You can use the |sdk-net| to send a message to an |SQS| queue.
 
 .. topic:: To send a message to an |SQS| queue
 
-    #. Create and initialize a :sdk-net-api:`SendMessageRequest <SQS/TSQSSendMessageRequest>` instance.
+    #. Create and initialize a :sdk-net-api:`SendMessageRequest <SQS/TSendMessageRequest>` instance.
        Specify the queue name and the message you want to send, as follows.
 
        .. code-block:: csharp
