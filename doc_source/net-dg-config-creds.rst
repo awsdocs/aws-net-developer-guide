@@ -304,7 +304,7 @@ methods.  The :code:`ProfilesLocation` property determines the behavior of the
 Get Credentials from the SDK Credentials File or the Shared Credentials File in the Default Location.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  Create a :code:`CredentialProfileStoreChain` object and an :sdk-net-api:`Amazon.Runtime.AWSCredentials <Runtime/TRuntimeAWSCredentials>`
+  Create a :code:`CredentialProfileStoreChain` object and an :sdk-net-api:`Amazon.Runtime.AWSCredentials <Runtime/TAWSCredentials>`
   object. Call the :code:`TryGetAWSCredentials` method. Provide the profile name and the :code:`AWSCredentials`
   object in which to return the credentials.
 
