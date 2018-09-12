@@ -21,7 +21,7 @@ do
 
     var ss = subs.Subscriptions;
 
-    if (ss.Any())
+    if (ss != null && ss.Any())
     {
       Console.WriteLine("  Subscriptions:");
 
@@ -37,7 +37,7 @@ do
         TopicArn = topic.TopicArn
       }).Attributes;
 
-    if (attrs.Any())
+    if (attrs != null && attrs.Any())
     {
       Console.WriteLine("  Attributes:");
 
