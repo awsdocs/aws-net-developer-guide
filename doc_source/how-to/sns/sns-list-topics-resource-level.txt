@@ -3,7 +3,7 @@
 var sns = new SimpleNotificationService();
 var topics = sns.GetTopics();
 
-if (topics.Any())
+if (topics != null && topics.Any())
 {
   Console.WriteLine("Topics:");
 
@@ -28,7 +28,7 @@ if (topics.Any())
 
 var subs = sns.GetSubscriptions();
 
-if (subs.Any())
+if (subs != null && subs.Any())
 {
   Console.WriteLine("Subscriptions:");
  
@@ -38,7 +38,7 @@ if (subs.Any())
 
     var attrs = sub.Attributes;
 
-    if (attrs.Any())
+    if (attrs != null && attrs.Any())
     {
       Console.WriteLine("    Attributes:");
 
