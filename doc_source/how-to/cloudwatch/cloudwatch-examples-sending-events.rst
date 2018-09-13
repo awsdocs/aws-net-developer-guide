@@ -67,52 +67,53 @@ CWEvents, setting it's trust relationship and role policy.
 
         static void Main()
         {
-            var client = new AmazonIdentityManagementServiceClient();
-            // Create a role and it's trust relationship policy
-            var role = client.CreateRole(new CreateRoleRequest
+            using (var client = new AmazonIdentityManagementServiceClient())
             {
-                RoleName = "CWEvents",
-                AssumeRolePolicyDocument = 
-                @"{""Statement"":[{""Principal"":{""Service"":[""events.amazonaws.com""]}," + 
-                @"""Effect"":""Allow"",""Action"":[""sts:AssumeRole""]}]}"
-            }).Role;
-            // Create a role policy and add it to the role
-            string policy = GenerateRolePolicyDocument();
-            var request = new CreatePolicyRequest
-            {
-                PolicyName = "DemoCWPermissions",
-                PolicyDocument = policy
-            };
-            try
-            {
-                var createPolicyResponse = client.CreatePolicy(request);
+                // Create a role and it's trust relationship policy
+                var role = client.CreateRole(new CreateRoleRequest
+                {
+                    RoleName = "CWEvents",
+                    AssumeRolePolicyDocument = 
+                    @"{""Statement"":[{""Principal"":{""Service"":[""events.amazonaws.com""]}," + 
+                    @"""Effect"":""Allow"",""Action"":[""sts:AssumeRole""]}]}"
+                }).Role;
+                // Create a role policy and add it to the role
+                string policy = GenerateRolePolicyDocument();
+                var request = new CreatePolicyRequest
+                {
+                    PolicyName = "DemoCWPermissions",
+                    PolicyDocument = policy
+                };
+                try
+                {
+                    var createPolicyResponse = client.CreatePolicy(request);
+                }
+                catch (EntityAlreadyExistsException)
+                {
+                    Console.WriteLine
+                    ("Policy 'DemoCWPermissions' already exits.");
+                }
+                var request2 = new AttachRolePolicyRequest()
+                {
+                    PolicyArn = "arn:aws:iam::192484417122:policy/DemoCWPermissions",
+                    RoleName = "CWEvents"
+                };
+                try
+                {
+                    var response = client.AttachRolePolicy(request2);    //managedpolicy
+                    Console.WriteLine("Policy DemoCWPermissions attached to Role TestUser");
+                }
+                catch (NoSuchEntityException)
+                {
+                    Console.WriteLine
+                    ("Policy 'DemoCWPermissions' does not exist");
+                }
+                catch (InvalidInputException)
+                {
+                    Console.WriteLine
+                    ("One of the parameters is incorrect");
+                }
             }
-            catch (EntityAlreadyExistsException)
-            {
-                Console.WriteLine
-                  ("Policy 'DemoCWPermissions' already exits.");
-            }
-            var request2 = new AttachRolePolicyRequest()
-            {
-                PolicyArn = "arn:aws:iam::192484417122:policy/DemoCWPermissions",
-                RoleName = "CWEvents"
-            };
-            try
-            {
-                var response = client.AttachRolePolicy(request2);    //managedpolicy
-                Console.WriteLine("Policy DemoCWPermissions attached to Role TestUser");
-            }
-            catch (NoSuchEntityException)
-            {
-                Console.WriteLine
-                  ("Policy 'DemoCWPermissions' does not exist");
-            }
-            catch (InvalidInputException)
-            {
-                Console.WriteLine
-                  ("One of the parameters is incorrect");
-            }
-
         }
         public static string GenerateRolePolicyDocument()
         {
@@ -190,8 +191,7 @@ returns the ARN of the new or updated rule.
 
 .. code-block:: c#
 
-            AmazonCloudWatchEventsClient client = new AmazonCloudWatchEventsClient();
-
+            
             var putRuleRequest = new PutRuleRequest
             {
                 Name = "DEMO_EVENT",
@@ -200,8 +200,11 @@ returns the ARN of the new or updated rule.
                 State = RuleState.ENABLED
             };
 
-            var putRuleResponse = client.PutRule(putRuleRequest);
-            Console.WriteLine("Successfully set the rule {0}", putRuleResponse.RuleArn);
+            using (var client = new AmazonCloudWatchEventsClient())
+            {
+                var putRuleResponse = client.PutRule(putRuleRequest);
+                Console.WriteLine("Successfully set the rule {0}", putRuleResponse.RuleArn);
+            }
 
 Add a |LAM| Function Target
 ============================
@@ -214,8 +217,7 @@ method of the :code:`AmazonCloudWatchClient` instance.
 
 .. code-block:: c#
 
-            AmazonCloudWatchEventsClient client = new AmazonCloudWatchEventsClient();
-
+            
             var putTargetRequest = new PutTargetsRequest
             {
                 Rule = "DEMO_EVENT",
@@ -224,7 +226,10 @@ method of the :code:`AmazonCloudWatchClient` instance.
                     new Target { Arn = "LAMBDA_FUNCTION_ARN", Id = "myCloudWatchEventsTarget"}
                 }
             };
-            client.PutTargets(putTargetRequest);
+            using (var client = new AmazonCloudWatchEventsClient())
+            {
+                client.PutTargets(putTargetRequest);
+            }
 
 
 Send Events
@@ -238,9 +243,6 @@ the ARNs of any resources affected by the event, and details for the event. Call
 method of the :code:`AmazonCloudWatchClient` instance.
 
 .. code-block:: c#
-
-
-            AmazonCloudWatchEventsClient client = new AmazonCloudWatchEventsClient();
 
             var putEventsRequest = new PutEventsRequest
             {
@@ -258,4 +260,7 @@ method of the :code:`AmazonCloudWatchClient` instance.
                     }
                 }
             };
-            client.PutEvents(putEventsRequest);
+            using (var client = new AmazonCloudWatchEventsClient())
+            {
+                client.PutEvents(putEventsRequest);
+            }

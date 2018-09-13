@@ -68,19 +68,25 @@ method.
 
         public static void DescribeSubscriptionFilters()
         {
-            var client = new AmazonCloudWatchLogsClient();
             var request = new Amazon.CloudWatchLogs.Model.DescribeSubscriptionFiltersRequest()
             {
                 LogGroupName = "GROUP_NAME",
                 Limit = 5
             };
+
+            AmazonCloudWatchLogsClient client = null;
             try
             {
+                client = new AmazonCloudWatchLogsClient();
                 var response = client.DescribeSubscriptionFilters(request);
             }
             catch (Amazon.CloudWatchLogs.Model.ResourceNotFoundException e)
             {
                 Console.WriteLine(e.Message);
+            } 
+            finally 
+            {
+                client?.Dispose();
             }
         }
 
@@ -98,7 +104,6 @@ method.
 
         public static void PutSubscriptionFilters()
         {
-            var client = new AmazonCloudWatchLogsClient();
             var request = new Amazon.CloudWatchLogs.Model.PutSubscriptionFilterRequest()
             {
                 DestinationArn = "LAMBDA_FUNCTION_ARN",
@@ -106,13 +111,20 @@ method.
                 FilterPattern = "ERROR",
                 LogGroupName = "Log_Group"
             };
+
+            AmazonCloudWatchLogsClient client = null;
             try
             {
+                client = var AmazonCloudWatchLogsClient();
                 var response = client.PutSubscriptionFilter(request);
             }
             catch (InvalidParameterException e)
             {
                 Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                client?.Dispose();
             }
         }
 
@@ -129,18 +141,24 @@ method.
 
         public static void DeleteSubscriptionFilter()
         {
-            var client = new AmazonCloudWatchLogsClient();
             var request = new Amazon.CloudWatchLogs.Model.DeleteSubscriptionFilterRequest()
             {
                 LogGroupName = "GROUP_NAME",
                 FilterName = "FILTER"
             };
+
+            AmazonCloudWatchLogsClient client = null;
             try
             {
+                client = new AmazonCloudWatchLogsClient();
                 var response = client.DeleteSubscriptionFilter(request);
             }
             catch (Amazon.CloudWatchLogs.Model.ResourceNotFoundException e)
             {
                 Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                client?.Dispose();
             }
         }

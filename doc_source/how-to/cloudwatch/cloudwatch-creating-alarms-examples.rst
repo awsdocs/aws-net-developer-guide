@@ -68,14 +68,14 @@ method of the ``AmazonCloudWatchClient`` object.
 
 .. code-block:: c#
 
-        using (var cloudWatch = new AmazonCloudWatchClient(RegionEndpoint.USWest2))
+        using (var client = new AmazonCloudWatchClient(RegionEndpoint.USWest2))
         {
             var request = new DescribeAlarmsRequest();
             request.StateValue = "INSUFFICIENT_DATA";
             request.AlarmNames = new List<string> { "Alarm1", "Alarm2" };
             do
             {
-                var response = cloudWatch.DescribeAlarms(request);
+                var response = client.DescribeAlarms(request);
                 foreach(var alarm in response.MetricAlarms)
                 {
                     Console.WriteLine(alarm.AlarmName);
@@ -100,28 +100,30 @@ method of the ``AmazonCloudWatchClient`` object.
 
 .. code-block:: C#
 
-            var client = new AmazonCloudWatchClient(RegionEndpoint.USWest2);
-            client.PutMetricAlarm(
-                new PutMetricAlarmRequest
-                {
-                    AlarmName = "Web_Server_CPU_Utilization",
-                    ComparisonOperator = ComparisonOperator.GreaterThanThreshold,
-                    EvaluationPeriods = 1,
-                    MetricName = "CPUUtilization",
-                    Namespace = "AWS/EC2",
-                    Period = 60,
-                    Statistic = Statistic.Average,
-                    Threshold = 70.0,
-                    ActionsEnabled = true,
-                    AlarmActions = new List<string> { "arn:aws:swf:us-west-2:" + "customerAccount" + ":action/actions/AWS_EC2.InstanceId.Reboot/1.0" },
-                    AlarmDescription = "Alarm when server CPU exceeds 70%",
-                    Dimensions = new List<Dimension>
-                        {
-                            new Dimension { Name = "InstanceId", Value = "INSTANCE_ID" }
-                        },
-                    Unit = StandardUnit.Seconds
-                } 
-            );
+            using (var client = new AmazonCloudWatchClient(RegionEndpoint.USWest2))
+            {
+                client.PutMetricAlarm(
+                    new PutMetricAlarmRequest
+                    {
+                        AlarmName = "Web_Server_CPU_Utilization",
+                        ComparisonOperator = ComparisonOperator.GreaterThanThreshold,
+                        EvaluationPeriods = 1,
+                        MetricName = "CPUUtilization",
+                        Namespace = "AWS/EC2",
+                        Period = 60,
+                        Statistic = Statistic.Average,
+                        Threshold = 70.0,
+                        ActionsEnabled = true,
+                        AlarmActions = new List<string> { "arn:aws:swf:us-west-2:" + "customerAccount" + ":action/actions/AWS_EC2.InstanceId.Reboot/1.0" },
+                        AlarmDescription = "Alarm when server CPU exceeds 70%",
+                        Dimensions = new List<Dimension>
+                            {
+                                new Dimension { Name = "InstanceId", Value = "INSTANCE_ID" }
+                            },
+                        Unit = StandardUnit.Seconds
+                    } 
+                );
+            }
 
 .. _cloudwatch-example-deleting-alarms:
 
@@ -135,9 +137,9 @@ method of the ``AmazonCloudWatchClient`` object.
 
 .. code-block:: c#
 
-            using (var cloudWatch = new AmazonCloudWatchClient(RegionEndpoint.USWest2))
+            using (var client = new AmazonCloudWatchClient(RegionEndpoint.USWest2))
             {
-                var response = cloudWatch.DeleteAlarms(
+                var response = client.DeleteAlarms(
                     new DeleteAlarmsRequest
                     {
                         AlarmNames = new List<string> { "Alarm1", "Alarm2" };

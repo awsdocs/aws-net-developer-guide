@@ -70,9 +70,9 @@ a :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchCloudWatchClient>`
             Name = "UniquePages",
             Value = "URLs"
         };
-        using (var cw = new AmazonCloudWatchClient(RegionEndpoint.USWest2))
+        using (var client = new AmazonCloudWatchClient(RegionEndpoint.USWest2))
         {
-            var listMetricsResponse = cw.ListMetrics(new ListMetricsRequest
+            var listMetricsResponse = client.ListMetrics(new ListMetricsRequest
             {
                 Dimensions = dimensionFilterList,
                 MetricName = "IncomingLogEvents",
@@ -92,9 +92,9 @@ from the :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchCloudWatchC
 
 .. code-block:: c#
 
-        using (var cw = new AmazonCloudWatchClient(RegionEndpoint.USWest2))
+        using (var client = new AmazonCloudWatchClient(RegionEndpoint.USWest2))
         {
-            cw.PutMetricData(new PutMetricDataRequest
+            client.PutMetricData(new PutMetricDataRequest
             {
                 MetricData = new List<MetricDatum>{new MetricDatum
                 {
