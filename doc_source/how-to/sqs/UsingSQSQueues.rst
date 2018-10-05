@@ -24,11 +24,11 @@ that arrive more than once and out of order.
 
 This code example demonstrates how to use queues by using these methods of the :code:`AmazonSQSClient`class:
 
-* :sdk-net-api:`ListQueues <SQS/MSQSSQSListQueuesListQueuesRequest>`: Gets a list of
+* :sdk-net-api:`ListQueues <SQS/MSQSListQueuesListQueuesRequest>`: Gets a list of
   your message queues
-* :sdk-net-api:`GetQueueUrl <SQS/MSQSSQSGetQueueUrlGetQueueUrlRequest>`: Obtains the
+* :sdk-net-api:`GetQueueUrl <SQS/MSQSGetQueueUrlGetQueueUrlRequest>`: Obtains the
   URL for a particular queue
-* :sdk-net-api:`DeleteQueue <SQS/MSQSSQSDeleteQueueDeleteQueueRequest>`: Deletes a queue
+* :sdk-net-api:`DeleteQueue <SQS/MSQSDeleteQueueDeleteQueueRequest>`: Deletes a queue
 
 For more information about |SQS| messages, see
 :sqs-dg:`How Amazon SQS Queues Work <sqs-how-it-works>`
@@ -37,10 +37,10 @@ in the |SQS-dg|.
 List Your Queues
 ================
 
-Create a :sdk-net-api:`ListQueuesRequest <SQS/TSQSListQueuesRequest>` object containing the properties needed to list your queues, which by default
-is an empty object. Call the :sdk-net-api:`ListQueues <SQS/MSQSSQSListQueuesListQueuesRequest>` method
+Create a :sdk-net-api:`ListQueuesRequest <SQS/TListQueuesRequest>` object containing the properties needed to list your queues, which by default
+is an empty object. Call the :sdk-net-api:`ListQueues <SQS/MSQSListQueuesListQueuesRequest>` method
 with the :code:`ListQueuesRequest` as a parameter to retrieve
-the list of queues. The :sdk-net-api:`ListQueuesResponse <SQS/TSQSListQueuesResponse>` returned by the call contains the URLs of all queues.
+the list of queues. The :sdk-net-api:`ListQueuesResponse <SQS/TListQueuesResponse>` returned by the call contains the URLs of all queues.
 
 .. code-block:: c#
 
@@ -56,10 +56,10 @@ the list of queues. The :sdk-net-api:`ListQueuesResponse <SQS/TSQSListQueuesResp
 Get the URL for a Queue
 =======================
 
-Create a :sdk-net-api:`GetQueueUrlRequest <SQS/TSQSGetQueueUrlRequest>` object containing the properties needed to identify your queue, which must
-include the name of the queue whose URL you want. Call the :sdk-net-api:`GetQueueUrl <SQS/MSQSSQSGetQueueUrlGetQueueUrlRequest>`
+Create a :sdk-net-api:`GetQueueUrlRequest <SQS/TGetQueueUrlRequest>` object containing the properties needed to identify your queue, which must
+include the name of the queue whose URL you want. Call the :sdk-net-api:`GetQueueUrl <SQS/MSQSGetQueueUrlGetQueueUrlRequest>`
 method using the :code:`GetQueueUrlRequest` object as a parameter.
-The call returns a :sdk-net-api:`GetQueueUrlResponse <SQS/TSQSGetQueueUrlResponse>` object containing the URL of the specified queue.
+The call returns a :sdk-net-api:`GetQueueUrlResponse <SQS/TGetQueueUrlResponse>` object containing the URL of the specified queue.
 
 .. code-block:: c#
 
@@ -77,8 +77,8 @@ The call returns a :sdk-net-api:`GetQueueUrlResponse <SQS/TSQSGetQueueUrlRespons
 Delete a Queue
 ==============
 
-Create a :sdk-net-api:`DeleteQueueRequest <SQS/TSQSDeleteQueueRequest>` object containing the URL of the queue you want to delete. Call the
-:sdk-net-api:`DeleteQueue <SQS/MSQSSQSDeleteQueueDeleteQueueRequest>` method with the :code:`DeleteQueueRequest`
+Create a :sdk-net-api:`DeleteQueueRequest <SQS/TDeleteQueueRequest>` object containing the URL of the queue you want to delete. Call the
+:sdk-net-api:`DeleteQueue <SQS/MSQSDeleteQueueDeleteQueueRequest>` method with the :code:`DeleteQueueRequest`
 object as the parameter.
 
 .. code-block:: c#

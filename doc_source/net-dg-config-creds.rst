@@ -304,7 +304,7 @@ methods.  The :code:`ProfilesLocation` property determines the behavior of the
 Get Credentials from the SDK Credentials File or the Shared Credentials File in the Default Location.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  Create a :code:`CredentialProfileStoreChain` object and an :sdk-net-api:`Amazon.Runtime.AWSCredentials <Runtime/TRuntimeAWSCredentials>`
+  Create a :code:`CredentialProfileStoreChain` object and an :sdk-net-api:`Amazon.Runtime.AWSCredentials <Runtime/TAWSCredentials>`
   object. Call the :code:`TryGetAWSCredentials` method. Provide the profile name and the :code:`AWSCredentials`
   object in which to return the credentials.
 
@@ -561,7 +561,7 @@ Using Proxy Credentials
 
 If your software communicates with AWS through a proxy, you can specify credentials for the proxy by
 using the :code:`ProxyCredentials` property on the
-:sdk-net-api:`AmazonS3Config <S3/TS3S3Config>`
+:sdk-net-api:`AmazonS3Config <S3/TS3Config>`
 class for the service. For example, for |S3| you could use code
 similar to the following, where {my-username} and {my-password} are the proxy user name and password
 specified in a `NetworkCredential <https://msdn.microsoft.com/en-us/library/system.net.networkcredential.aspx>`_

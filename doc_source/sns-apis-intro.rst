@@ -24,7 +24,7 @@ see |sns|_.
 
 The following example shows how to use the low-level APIs to list accessible topics in |SNS|. This
 example uses the default client constructor which constructs 
-:sdk-net-api:`AmazonSimpleNotificationServiceClient <SNS/MSNSSNSctor>` with the credentials loaded from 
+:sdk-net-api:`AmazonSimpleNotificationServiceClient <SNS/MSNSctor>` with the credentials loaded from 
 the application's default configuration, and if unsuccessful from the Instance Profile service on an 
 EC2 instance.
 

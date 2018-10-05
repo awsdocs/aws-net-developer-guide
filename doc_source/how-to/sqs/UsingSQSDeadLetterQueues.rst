@@ -22,8 +22,8 @@ successfully. You can set aside and isolate these messages in the dead letter qu
 their processing did not succeed. You must individually configure each source queue that sends messages
 to a dead letter queue. Multiple queues can target a single dead letter queue.
 
-In this example, an :sdk-net-api:`AmazonSQSClient <SQS/TSQSSQSClient>` object uses the
-:sdk-net-api:`SetQueueAttributesRequest <SQS/MSQSSQSSetQueueAttributesSetQueueAttributesRequest>`
+In this example, an :sdk-net-api:`AmazonSQSClient <SQS/TSQSClient>` object uses the
+:sdk-net-api:`SetQueueAttributesRequest <SQS/MSQSSetQueueAttributesSetQueueAttributesRequest>`
 method to configure a source queue to use a dead letter queue.
 
 For more information about |SQS| dead letter queues, see
@@ -39,11 +39,11 @@ other queues to route unprocessed messages to the dead letter queue. To do this,
 policy that identifies the queue to use as a dead letter queue and the maximum number of receives by
 individual messages before they are routed to the dead letter queue.
 
-Create an :sdk-net-api:`AmazonSQSClient <SQS/TSQSSQSClient>` object to set the queue attrributes. Create
-a :sdk-net-api:`SetQueueAttributesRequest <SQS/MSQSSQSSetQueueAttributesSetQueueAttributesRequest>` object
+Create an :sdk-net-api:`AmazonSQSClient <SQS/TSQSClient>` object to set the queue attrributes. Create
+a :sdk-net-api:`SetQueueAttributesRequest <SQS/MSQSSetQueueAttributesSetQueueAttributesRequest>` object
 containing the properties needed to update queue attributes, including the :code:`RedrivePolicy` property
 that specifies both the Amazon Resource Name (ARN) of the dead letter queue, and the value of :code:`maxReceiveCount`. Also specify the URL source queue you want to configure. Call the 
-:sdk-net-api:`SetQueueAttributes <SQS/MSQSSQSSetQueueAttributesSetQueueAttributesRequest>` method.
+:sdk-net-api:`SetQueueAttributes <SQS/MSQSSetQueueAttributesSetQueueAttributesRequest>` method.
 
 .. code-block:: c#
 
