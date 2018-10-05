@@ -74,7 +74,7 @@ Allowed Values in appsettings File
 
 The following app configuration values can be set in the :file:`appsettings.Development.json` file. 
 The field names must use the casing shown in the list below. For details on these settings, refer to 
-the :sdk-net-api:`AWS.Runtime.ClientConfg <Runtime/TRuntimeClientConfig>` class.
+the :sdk-net-api:`AWS.Runtime.ClientConfg <Runtime/TClientConfig>` class.
 
 * Region
 * Profile
