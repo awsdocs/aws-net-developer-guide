@@ -38,7 +38,7 @@ Retries
 =======
 
 The |sdk-net| will retry requests that fail due to server-side throttling or dropped connections. You
-can use the :code:`MaxErrorRetry` property of the :sdk-net-api:`ClientConfig <Runtime/TRuntimeClientConfig>` class
+can use the :code:`MaxErrorRetry` property of the :sdk-net-api:`ClientConfig <Runtime/TClientConfig>` class
 to specify the number of retries at the service client level. the |sdk-net| will retry the operation
 the specified number of times before failing and throwing an exception. By default, the
 :code:`MaxErrorRetry` property is set to 4, except for the 
@@ -54,7 +54,7 @@ Timeouts
 
 The |sdk-net| allows you to configure the request timeout and socket read/write timeout values at the
 service client level. These values are specified in the :code:`Timeout` and the
-:code:`ReadWriteTimeout` properties of the :sdk-net-api:`ClientConfig <Runtime/TRuntimeClientConfig>` class,
+:code:`ReadWriteTimeout` properties of the :sdk-net-api:`ClientConfig <Runtime/TClientConfig>` class,
 respectively. These values are passed on as the :code:`Timeout` and :code:`ReadWriteTimeout`
 properties of the `HttpWebRequest
 <https://msdn.microsoft.com/en-us/library/System.Net.HttpWebRequest%28v=vs.110%29.aspx>`_ objects
