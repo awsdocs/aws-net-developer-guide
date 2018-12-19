@@ -20,17 +20,21 @@ Amazon CognitoAuthentication Extension Library Examples
    :keywords: AWS SDK for .NET examples, {Cognito}
 
 
-The CognitoAuthentication extension library simplifies the authentication process of |COG| user pools for .NET Core and Xamarin developers. The library is built on top of the Amazon Cognito Identity Provider API to create and send user authentication API calls. You can get **Amazon.Extensions.CognitoAuthentication** from the NuGet gallery.
+The CognitoAuthentication extension library simplifies the authentication process of |COG| user pools
+for .NET Core and Xamarin developers. The library is built on top of the Amazon Cognito Identity
+Provider API to create and send user authentication API calls. You can get
+**Amazon.Extensions.CognitoAuthentication** from the NuGet gallery.
 
 Using the CognitoAuthentication Extension Library
 =================================================
 
 |COG| has some built-in :code:`AuthFlow` and :code:`ChallengeName` values for a standard authentication flow to validate username and password through the Secure Remote Password (SRP). For more information about authentication flow, see :COG-dg:`Amazon Cognito User Pool Authentication Flow <amazon-cognito-user-pools-authentication-flow>`. 
 
-The folowing examples require these :code:`using` statements:
+The following examples require these :code:`using` statements:
 
 .. literalinclude:: samples/cognito-extensions.cs
    :lines: 1-10
+   :dendent: 8
    :language: csharp
 
 
@@ -40,6 +44,7 @@ Use Basic Authentication
 Create an :code:`AmazonCognitoIdentityProviderClient` :sdk-net-api:`AmazonCognitoIdentityProviderClient <TCognitoIdentityProviderCognitoIdentityProviderClient>` using :sdk-net-api:`AnonymousAWSCredentials <Runtime/TRuntimeAnonymousAWSCredentials>` which do not require signed requests. You do not need to supply a region, the underlying code will call :code:`FallbackRegionFactory.GetRegionEndpoint()` if a region is not provided. Create :code:`CognitoUserPool` and  :code:`CognitoUser` objects. Call the :code:`StartWithSrpAuthAsync` method with an :code:`InitiateSrpAuthRequest` that contains the user password.
 
 .. literalinclude:: samples/cognito-extensions.cs
+   :dedent: 8
    :lines: 79-93
    :language: csharp
 
@@ -51,6 +56,7 @@ Continuing the authentication flow with challenges, such as with NewPasswordRequ
 Do a basic authentication request as before, and :code:`await` an :code:`AuthFlowResponse`. When the response is received loop through the returned :code:`AuthenticationResult` object. If the :code:`ChallengeName` type is :code:`NEW_PASSWORD_REQUIRED`, call the :code:`RespondToNewPasswordRequiredAsync` method.
 
 .. literalinclude:: samples/cognito-extensions.cs
+   :dedent: 8
    :lines: 96-152
    :language: csharp
    
@@ -61,6 +67,7 @@ Use AWS Resources after Authentication
 Once a user is authenticated using the CognitoAuthentication library, the next step is to allow the user  to access the appropriate AWS resources. To do this you must create an identity pool through the |COG| Federated Identities console. By specifying the |COG| user pool you created as a provider, using its poolID and clientID, you can allow your |COG| user pool users to access AWS resources connected to your account. You can also specify different roles to enable both unauthenticated and authenticated users to access different resources. You can change these rules in the IAM console, where you can add or remove permissions in the :guilabel`Action` field of the role's attached policy. Then, using the appropriate identity pool, user pool, and |COG| user information, you can make calls to different AWS resources. The following example  shows a user authenticated with SRP accessing the different |S3| buckets permitted by the associated identity pool's role
 
 .. literalinclude:: samples/cognito-extensions.cs
+   :dedent: 8
    :lines: 154-180
    :language: csharp
    
@@ -77,6 +84,4 @@ In addition to SRP, NewPasswordRequired, and MFA, the CognitoAuthentication exte
   refreshTokenRequest)`
 * AdminNoSRP - Initiate with a call to :code:`StartWithAdminNoSrpAuthAsync(InitiateAdminNoSrpAuthRequest adminAuthRequest)`
 
-Call the appropriate method depending on the flow you want. Then continue prompting the user with challenges as they are presented in the :code:`AuthFlowResponse` objects of each method call. Also call the appropriate response method, such as :code:`RespondToSmsMfaAuthAsync` for MFA challenges and :code:`RespondToCustomAuthAsync` for custom challenges. 
-
-      
+Call the appropriate method depending on the flow you want. Then continue prompting the user with challenges as they are presented in the :code:`AuthFlowResponse` objects of each method call. Also call the appropriate response method, such as :code:`RespondToSmsMfaAuthAsync` for MFA challenges and :code:`RespondToCustomAuthAsync` for custom challenges.
