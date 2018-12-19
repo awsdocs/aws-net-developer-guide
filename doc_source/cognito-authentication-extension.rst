@@ -20,7 +20,7 @@ Amazon CognitoAuthentication Extension Library Examples
    :keywords: AWS SDK for .NET examples, {Cognito}
 
 
-The CognitoAuthentication extension library simplifies the authentication process of |COG| user pools for .NET 4.5, .NET Core, and Xamarin developers. The library is built on top of the Amazon Cognito Identity Provider API to create and send user authentication API calls. You can get  **AWSSDK.Extensions.CognitoAuthentication** from the NuGet gallery.
+The CognitoAuthentication extension library simplifies the authentication process of |COG| user pools for .NET Core and Xamarin developers. The library is built on top of the Amazon Cognito Identity Provider API to create and send user authentication API calls. You can get **Amazon.Extensions.CognitoAuthentication** from the NuGet gallery.
 
 Using the CognitoAuthentication Extension Library
 =================================================
