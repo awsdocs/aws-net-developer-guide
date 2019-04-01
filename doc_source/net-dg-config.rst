@@ -70,3 +70,4 @@ others take effect only after you create a new client object. For more informati
     net-dg-region-selection
     net-dg-config-other
     net-dg-config-ref
+    sdk-metrics
