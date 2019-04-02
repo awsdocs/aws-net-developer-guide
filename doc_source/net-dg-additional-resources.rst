@@ -36,4 +36,15 @@ subscribe to RSS feeds for any of the forums.
 
 If you use the Microsoft Visual Studio IDE, you should check out the |TVS-ug|_.
 
+*Helpful Libraries, Extensions and Tools*
 
+Visit `aws/dotnet on Github <https://github.com/aws/dotnet>`_ for links to libraries, tools, and resources you can use
+to help build .NET applications and services on AWS.
+
+Here are some highlights from the repo:
+
+* `AWS .NET Configuration Extension for Systems Manager <https://github.com/aws/aws-dotnet-extensions-configuration>`_
+* `AWS Extensions .NET Core Setup <https://github.com/aws/aws-sdk-net/tree/master/extensions/src/AWSSDK.Extensions.NETCore.Setup>`_
+* `AWS Logging .NET <https://github.com/aws/aws-logging-dotnet>`_
+* `Amazon Cognito Authentication Extension Library <https://github.com/aws/aws-sdk-net-extensions-cognito>`_
+* `AWS X-Ray SDK for .NET <https://github.com/aws/aws-xray-sdk-dotnet>`_

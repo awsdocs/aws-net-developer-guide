@@ -130,54 +130,54 @@ Create an IAM role that has the appropriate permissions to access |S3|.
     #. Review the role information, and then choose :guilabel:`Create Role`.
 
 
-    .. _net-dg-launch-ec2-instance-with-instance-profile:
+.. _net-dg-launch-ec2-instance-with-instance-profile:
 
-    Launch an EC2 Instance and Specify the |IAM| Role
-    =================================================
+Launch an EC2 Instance and Specify the |IAM| Role
+=================================================
 
-    You can use the |EC2| console or the |sdk-net| to launch an EC2 instance with an |IAM| role.
+You can use the |EC2| console or the |sdk-net| to launch an EC2 instance with an |IAM| role.
 
-    * Using the console: Follow the directions in
-      :ec2-ug:`Launching a Windows Instance <EC2Win_GetStarted.html#EC2Win_LaunchInstance>`
-      in the |EC2-ug-win|.
-      When you reach the :guilabel:`Review Instance Launch` page, choose :guilabel:`Edit instance details`.
-      In :guilabel:`IAM role`, specify the IAM role you created previously. Complete the procedure as
-      directed. You'll need to create or use an existing security group and key pair to connect to the
-      instance.
+* Using the console: Follow the directions in
+  :ec2-ug:`Launching a Windows Instance <EC2Win_GetStarted.html#EC2Win_LaunchInstance>`
+  in the |EC2-ug-win|.
+  When you reach the :guilabel:`Review Instance Launch` page, choose :guilabel:`Edit instance details`.
+  In :guilabel:`IAM role`, specify the IAM role you created previously. Complete the procedure as
+  directed. You'll need to create or use an existing security group and key pair to connect to the
+  instance.
 
-    * Using the |sdk-net|: See :ref:`run-instance`.
+* Using the |sdk-net|: See :ref:`run-instance`.
 
-    An |IAM| user can't launch an instance with an |IAM| role without the permissions granted by the
-    following policy.
+An |IAM| user can't launch an instance with an |IAM| role without the permissions granted by the
+following policy.
 
-    .. code-block:: json
+.. code-block:: json
 
-        {
-          "Version": "2012-10-17",
-          "Statement": [{
-            "Effect": "Allow",
-            "Action": [
-              "iam:PassRole",
-              "iam:ListInstanceProfiles",
-              "ec2:*"
-            ],
-            "Resource": "*"
-          }]
-        }
+    {
+      "Version": "2012-10-17",
+      "Statement": [{
+        "Effect": "Allow",
+        "Action": [
+          "iam:PassRole",
+          "iam:ListInstanceProfiles",
+          "ec2:*"
+        ],
+        "Resource": "*"
+      }]
+    }
 
 
-    .. _net-dg-run-the-program:
+.. _net-dg-run-the-program:
 
-    Run the Sample Program on the EC2 Instance
-    ==========================================
+Run the Sample Program on the EC2 Instance
+==========================================
 
-    To transfer the sample program to your EC2 instance, connect to the instance using the |console| as
-    described in the following procedure.
+To transfer the sample program to your EC2 instance, connect to the instance using the |console| as
+described in the following procedure.
 
-    .. note:: Alternatively, connect using the |TVS| (see
-       :tvs-ug:`Connecting to an Amazon EC2 Instance <managing-ec2.html#connect-ec2>` in the |TVSlong|)
-       and then copy the files from your local drive to the instance. The Remote Desktop session is
-       automatically configured so that your local drives are available to the instance.
+.. note:: Alternatively, connect using the |TVS| (see
+   :tvs-ug:`Connecting to an Amazon EC2 Instance <managing-ec2.html#connect-ec2>` in the |TVSlong|)
+   and then copy the files from your local drive to the instance. The Remote Desktop session is
+   automatically configured so that your local drives are available to the instance.
 
 .. topic:: To run the sample program on the EC2 instance
 

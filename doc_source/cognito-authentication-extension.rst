@@ -28,13 +28,13 @@ Provider API to create and send user authentication API calls. You can get
 Using the CognitoAuthentication Extension Library
 =================================================
 
-|COG| has some built-in :code:`AuthFlow` and :code:`ChallengeName` values for a standard authentication flow to validate username and password through the Secure Remote Password (SRP). For more information about authentication flow, see :COG-dg:`Amazon Cognito User Pool Authentication Flow <amazon-cognito-user-pools-authentication-flow>`. 
+|COG| has some built-in :code:`AuthFlow` and :code:`ChallengeName` values for a standard authentication flow to validate username and password through the Secure Remote Password (SRP). For more information about authentication flow, see :COG-dg:`Amazon Cognito User Pool Authentication Flow <amazon-cognito-user-pools-authentication-flow>`.
 
 The following examples require these :code:`using` statements:
 
 .. literalinclude:: samples/cognito-extensions.cs
    :lines: 1-10
-   :dendent: 8
+   :dedent: 8
    :language: csharp
 
 
@@ -59,7 +59,7 @@ Do a basic authentication request as before, and :code:`await` an :code:`AuthFlo
    :dedent: 8
    :lines: 96-152
    :language: csharp
-   
+
 
 Use AWS Resources after Authentication
 ----------------------------------------
@@ -70,7 +70,7 @@ Once a user is authenticated using the CognitoAuthentication library, the next s
    :dedent: 8
    :lines: 154-180
    :language: csharp
-   
+
 
 More Authentication Options
 ===========================
@@ -78,9 +78,9 @@ More Authentication Options
 In addition to SRP, NewPasswordRequired, and MFA, the CognitoAuthentication extension library offers an easier authentication flow for:
 
 * Custom - Initiate with a call to :code:`StartWithCustomAuthAsync(InitiateCustomAuthRequest customRequest)`
-* RefreshToken - Initiate with a call to :code:`StartWithRefreshTokenAuthAsync(InitiateRefreshTokenAuthRequest 
+* RefreshToken - Initiate with a call to :code:`StartWithRefreshTokenAuthAsync(InitiateRefreshTokenAuthRequest
   refreshTokenRequest)`
-* RefreshTokenSRP - Initiate with a call to :code:`StartWithRefreshTokenAuthAsync(InitiateRefreshTokenAuthRequest  
+* RefreshTokenSRP - Initiate with a call to :code:`StartWithRefreshTokenAuthAsync(InitiateRefreshTokenAuthRequest
   refreshTokenRequest)`
 * AdminNoSRP - Initiate with a call to :code:`StartWithAdminNoSrpAuthAsync(InitiateAdminNoSrpAuthRequest adminAuthRequest)`
 
