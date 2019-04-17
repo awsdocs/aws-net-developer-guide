@@ -177,7 +177,7 @@ Create a Scheduled Rule
 =======================
 
 Create an :sdk-net-api:`AmazonCloudWatchEventsClient <CloudWatchEvents/TCloudWatchEventsClient>`
-instance and a :sdk-net-api:`PutRuleRequest <CloudWatchEvents/TCloudWatchEventsPutRuleRequest>` object
+instance and a :sdk-net-api:`PutRuleRequest <CloudWatchEvents/TPutRuleRequest>` object
 containing the parameters needed to specify the new scheduled rule, which include the following:
 
 * A name for the rule
@@ -185,8 +185,8 @@ containing the parameters needed to specify the new scheduled rule, which includ
 * An expression to schedule triggering of the rule every five minutes
 
 Call the :sdk-net-api:`PutRule <CloudWatchEvents/MCloudWatchEventsPutRulePutRuleRequest>` method
-to create the rule. The :sdk-net-api:`PutRuleResponse <CloudWatchEvents/TCloudWatchEventsPutRuleResponse>`
-returns the ARN of the new or updated rule.
+to create the rule. The :sdk-net-api:`PutRuleResponse <CloudWatchEvents/TPutRuleResponse>`
+object returns the ARN of the new or updated rule.
 
 .. code-block:: c#
 
@@ -207,7 +207,7 @@ Add a |LAM| Function Target
 ============================
 
 Create an :sdk-net-api:`AmazonCloudWatchEventsClient <CloudWatchEvents/TCloudWatchEventsClient>` instance
-and a :sdk-net-api:`PutTargetsRequest <CloudWatchEvents/TCloudWatchEventsPutTargetsRequest>` object containing
+and a :sdk-net-api:`PutTargetsRequest <CloudWatchEvents/TPutTargetsRequest>` object containing
 the parameters needed to specify the rule to which you want to attach the target, including the ARN
 of the |LAM| function you created. Call the :sdk-net-api:`PutTargets <CloudWatchEvents/MCloudWatchEventsPutTargetsPutTargetsRequest>`
 method of the :code:`AmazonCloudWatchClient` instance.
@@ -231,7 +231,7 @@ Send Events
 ===========
 
 Create an :sdk-net-api:`AmazonCloudWatchEventsClient <CloudWatchEvents/TCloudWatchEventsClient>`
-instance and a :sdk-net-api:`PutEventsRequest <CloudWatchEvents/TCloudWatchEventsPutEventsRequest>` object
+instance and a :sdk-net-api:`PutEventsRequest <CloudWatchEvents/TPutEventsRequest>` object
 containing the parameters needed to send events. For each event, include the source of the event,
 the ARNs of any resources affected by the event, and details for the event. Call the
 :sdk-net-api:`PutEvents <CloudWatchEvents/MCloudWatchEventsPutEventsPutEventsRequest>`
