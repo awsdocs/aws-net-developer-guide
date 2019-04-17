@@ -36,11 +36,11 @@ to trigger an event, define one or more targets to respond to an event, and send
 to targets for handling.
 
 The code manages instances using these methods of the
-:sdk-net-api:`AmazonCloudWatchEventsClient <CloudWatchEvents/TCloudWatchEventsCloudWatchEventsClient>` class:
+:sdk-net-api:`AmazonCloudWatchEventsClient <CloudWatchEvents/TCloudWatchEventsClient>` class:
 
-* :sdk-net-api:`PutRule <CloudWatchEvents/MCloudWatchEventsCloudWatchEventsPutRulePutRuleRequest>`
-* :sdk-net-api:`PutTargets <CloudWatchEvents/MCloudWatchEventsCloudWatchEventsPutTargetsPutTargetsRequest>`
-* :sdk-net-api:`PutEvents <CloudWatchEvents/MCloudWatchEventsCloudWatchEventsPutEventsPutEventsRequest>`
+* :sdk-net-api:`PutRule <CloudWatchEvents/MCloudWatchEventsPutRulePutRuleRequest>`
+* :sdk-net-api:`PutTargets <CloudWatchEvents/MCloudWatchEventsPutTargetsPutTargetsRequest>`
+* :sdk-net-api:`PutEvents <CloudWatchEvents/MCloudWatchEventsPutEventsPutEventsRequest>`
 
 For more information about |CWElong|, see :cwe-dg:`Adding Events with PutEvents <AddEventsPutEvents>` in
 the |CWE-ug|.
@@ -176,7 +176,7 @@ CWEvents, setting it's trust relationship and role policy.
 Create a Scheduled Rule
 =======================
 
-Create an :sdk-net-api:`AmazonCloudWatchEventsClient <CloudWatchEvents/TCloudWatchEventsCloudWatchEventsClient>`
+Create an :sdk-net-api:`AmazonCloudWatchEventsClient <CloudWatchEvents/TCloudWatchEventsClient>`
 instance and a :sdk-net-api:`PutRuleRequest <CloudWatchEvents/TCloudWatchEventsPutRuleRequest>` object
 containing the parameters needed to specify the new scheduled rule, which include the following:
 
@@ -184,7 +184,7 @@ containing the parameters needed to specify the new scheduled rule, which includ
 * The ARN of the |IAM| role you created previously
 * An expression to schedule triggering of the rule every five minutes
 
-Call the :sdk-net-api:`PutRule <CloudWatchEvents/MCloudWatchEventsCloudWatchEventsPutRulePutRuleRequest>` method
+Call the :sdk-net-api:`PutRule <CloudWatchEvents/MCloudWatchEventsPutRulePutRuleRequest>` method
 to create the rule. The :sdk-net-api:`PutRuleResponse <CloudWatchEvents/TCloudWatchEventsPutRuleResponse>`
 returns the ARN of the new or updated rule.
 
@@ -206,10 +206,10 @@ returns the ARN of the new or updated rule.
 Add a |LAM| Function Target
 ============================
 
-Create an :sdk-net-api:`AmazonCloudWatchEventsClient <CloudWatchEvents/TCloudWatchEventsCloudWatchEventsClient>` instance
+Create an :sdk-net-api:`AmazonCloudWatchEventsClient <CloudWatchEvents/TCloudWatchEventsClient>` instance
 and a :sdk-net-api:`PutTargetsRequest <CloudWatchEvents/TCloudWatchEventsPutTargetsRequest>` object containing
 the parameters needed to specify the rule to which you want to attach the target, including the ARN
-of the |LAM| function you created. Call the :sdk-net-api:`PutTargets <CloudWatchEvents/MCloudWatchEventsCloudWatchEventsPutTargetsPutTargetsRequest>`
+of the |LAM| function you created. Call the :sdk-net-api:`PutTargets <CloudWatchEvents/MCloudWatchEventsPutTargetsPutTargetsRequest>`
 method of the :code:`AmazonCloudWatchClient` instance.
 
 .. code-block:: c#
@@ -230,11 +230,11 @@ method of the :code:`AmazonCloudWatchClient` instance.
 Send Events
 ===========
 
-Create an :sdk-net-api:`AmazonCloudWatchEventsClient <CloudWatchEvents/TCloudWatchEventsCloudWatchEventsClient>`
+Create an :sdk-net-api:`AmazonCloudWatchEventsClient <CloudWatchEvents/TCloudWatchEventsClient>`
 instance and a :sdk-net-api:`PutEventsRequest <CloudWatchEvents/TCloudWatchEventsPutEventsRequest>` object
 containing the parameters needed to send events. For each event, include the source of the event,
 the ARNs of any resources affected by the event, and details for the event. Call the
-:sdk-net-api:`PutEvents <CloudWatchEvents/MCloudWatchEventsCloudWatchEventsPutEventsPutEventsRequest>`
+:sdk-net-api:`PutEvents <CloudWatchEvents/MCloudWatchEventsPutEventsPutEventsRequest>`
 method of the :code:`AmazonCloudWatchClient` instance.
 
 .. code-block:: c#
