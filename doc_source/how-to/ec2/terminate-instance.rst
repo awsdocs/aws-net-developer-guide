@@ -22,17 +22,17 @@ When you no longer need one or more of your |EC2| instances, you can terminate t
 
 .. topic:: To terminate an EC2 instance
 
-    #. Create and initialize a :sdk-net-api:`TerminateInstancesRequest <EC2/TEC2TerminateInstancesRequest>` object.
+    #. Create and initialize a :sdk-net-api:`TerminateInstancesRequest <EC2/TTerminateInstancesRequest>` object.
 
     #. Set the :code:`TerminateInstancesRequest.InstanceIds` property to a list of one or more instance
        IDs for the instances to terminate.
 
     #. Pass the request object to the
-       :sdk-net-api:`TerminateInstances<EC2/MEC2EC2TerminateInstancesTerminateInstancesRequest>`
+       :sdk-net-api:`TerminateInstances<EC2/MEC2TerminateInstancesTerminateInstancesRequest>`
        method. If the specified instance
-       doesn't exist, an :sdk-net-api:`AmazonEC2Exception <EC2/TEC2EC2Exception>` is thrown.
+       doesn't exist, an :sdk-net-api:`AmazonEC2Exception <EC2/TEC2Exception>` is thrown.
 
-    #. You can use the :sdk-net-api:`TerminateInstancesResponse <EC2/TEC2TerminateInstancesResponse>` object
+    #. You can use the :sdk-net-api:`TerminateInstancesResponse <EC2/TTerminateInstancesResponse>` object
        to list the terminated instances, as follows.
 
     .. code-block:: csharp

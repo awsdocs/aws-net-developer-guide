@@ -32,7 +32,7 @@ and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-platforms>` in 
 
 .. topic:: To launch an EC2 instance in EC2-Classic
 
-    #. Create and initialize a :sdk-net-api:`RunInstancesRequest <EC2/TEC2RunInstancesRequest>` object.
+    #. Create and initialize a :sdk-net-api:`RunInstancesRequest <EC2/TRunInstancesRequest>` object.
        Be sure the AMI, key pair, and security group you specify exist in the region you specified when
        you created the client object.
 
@@ -81,7 +81,7 @@ and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-platforms>` in 
           :ref:`create-security-group`.
 
     #. (Optional) To launch the instance with an :ref:`IAM role <net-dg-roles>`, specify an IAM instance
-       profile in the :sdk-net-api:`RunInstancesRequest <EC2/TEC2RunInstancesRequest>` object.
+       profile in the :sdk-net-api:`RunInstancesRequest <EC2/TRunInstancesRequest>` object.
 
        An IAM user can't launch an instance with an IAM role without the permissions granted by the
        following policy.
@@ -102,7 +102,7 @@ and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-platforms>` in 
            }
 
        For example, the following snippet instantiates and configures an
-       :sdk-net-api:`IamInstanceProfileSpecification <EC2/TEC2IamInstanceProfileSpecification>` object
+       :sdk-net-api:`IamInstanceProfileSpecification <EC2/TIamInstanceProfileSpecification>` object
        for an IAM role named :code:`winapp-instance-role-1`.
 
        .. code-block:: csharp
@@ -110,7 +110,7 @@ and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-platforms>` in 
           var instanceProfile = new IamInstanceProfile();
           instanceProfile.Id  = "winapp-instance-role-1";
 
-       To specify this instance profile in the :sdk-net-api:`RunInstancesRequest <EC2/TEC2RunInstancesRequest>`
+       To specify this instance profile in the :sdk-net-api:`RunInstancesRequest <EC2/TRunInstancesRequest>`
        object, add the following line.
 
        .. code-block:: csharp
@@ -118,14 +118,14 @@ and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-platforms>` in 
           launchRequest.IamInstanceProfile = instanceProfile;
 
     #. Launch the instance by passing the request object to the
-       :sdk-net-api:`RunInstances <EC2/MEC2EC2RunInstancesRunInstancesRequest>` method. Save the
+       :sdk-net-api:`RunInstances <EC2/MEC2RunInstancesRunInstancesRequest>` method. Save the
        ID of the instance because you need it to manage the instance.
 
-       Use the returned :sdk-net-api:`RunInstancesResponse <EC2/TEC2RunInstancesResponse>` object
+       Use the returned :sdk-net-api:`RunInstancesResponse <EC2/TRunInstancesResponse>` object
        to get the instance IDs for the new instances. The :code:`Reservation.Instances` property
-       contains a list of :sdk-net-api:`Instance <EC2/TEC2Instance>` objects, one for each EC2
+       contains a list of :sdk-net-api:`Instance <EC2/TInstance>` objects, one for each EC2
        instance you successfully launched. You can retrieve the ID for each instance from the
-       :code:`InstanceId` property of the :sdk-net-api:`Instance <EC2/TEC2Instance>` object.
+       :code:`InstanceId` property of the :sdk-net-api:`Instance <EC2/TInstance>` object.
 
        .. code-block:: csharp
 
@@ -170,7 +170,7 @@ and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-platforms>` in 
        :code:`AssociatePublicIpAddress`
            Indicates whether to auto-assign a public IP address to an instance in a VPC.
 
-    #. Create and initialize a :sdk-net-api:`RunInstancesRequest <EC2/TEC2RunInstancesRequest>`
+    #. Create and initialize a :sdk-net-api:`RunInstancesRequest <EC2/TRunInstancesRequest>`
        object. Be sure the AMI, key pair, and security group you specify exist in the region you
        specified when you created the client object.
 
@@ -217,7 +217,7 @@ and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-platforms>` in 
            One or more network interfaces.
 
     #. (Optional) To launch the instance with an :ref:`IAM role <net-dg-roles>`, specify an |IAM| instance
-       profile in the :sdk-net-api:`RunInstancesRequest <EC2/TEC2RunInstancesRequest>` object.
+       profile in the :sdk-net-api:`RunInstancesRequest <EC2/TRunInstancesRequest>` object.
 
        An IAM user can't launch an instance with an IAM role without the permissions granted by the
        following policy.
@@ -238,7 +238,7 @@ and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-platforms>` in 
            }
 
        For example, the following snippet instantiates and configures an
-       :sdk-net-api:`IamInstanceProfileSpecification <EC2/TEC2IamInstanceProfileSpecification>` object
+       :sdk-net-api:`IamInstanceProfileSpecification <EC2/TIamInstanceProfileSpecification>` object
        for an IAM role named :code:`winapp-instance-role-1`.
 
        .. code-block:: csharp
@@ -246,7 +246,7 @@ and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-platforms>` in 
           var instanceProfile = new IamInstanceProfileSpecification();
           instanceProfile.Name  = "winapp-instance-role-1";
 
-       To specify this instance profile in the :sdk-net-api:`RunInstancesRequest <EC2/TEC2RunInstancesRequest>`
+       To specify this instance profile in the :sdk-net-api:`RunInstancesRequest <EC2/TRunInstancesRequest>`
        object, add the following line.
 
        .. code-block:: csharp
@@ -254,14 +254,14 @@ and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-platforms>` in 
           launchRequest.IamInstanceProfile = instanceProfile;
 
     #. Launch the instances by passing the request object to the
-       :sdk-net-api:`RunInstances <EC2/MEC2EC2RunInstancesRunInstancesRequest>` method. Save the
+       :sdk-net-api:`RunInstances <EC2/MEC2RunInstancesRunInstancesRequest>` method. Save the
        IDs of the instances because you need them to manage the instances.
 
-       Use the returned :sdk-net-api:`RunInstancesResponse <EC2/TEC2RunInstancesResponse>` object
+       Use the returned :sdk-net-api:`RunInstancesResponse <EC2/TRunInstancesResponse>` object
        to get a list of instance IDs for the new instances. The :code:`Reservation.Instances` property
-       contains a list of :sdk-net-api:`Instance <EC2/TEC2Instance>` objects, one for each EC2
+       contains a list of :sdk-net-api:`Instance <EC2/TInstance>` objects, one for each EC2
        instance you successfully launched. You can retrieve the ID for each instance from the
-       :code:`InstanceId` property of the :sdk-net-api:`Instance <EC2/TEC2Instance>` object'.
+       :code:`InstanceId` property of the :sdk-net-api:`Instance <EC2/TInstance>` object'.
 
        .. code-block:: csharp
 
@@ -284,7 +284,7 @@ Use the following procedure to get the current state of your instance. Initially
 in the :code:`pending` state. You can connect to your instance after it enters the :code:`running`
 state.
 
-#. Create and configure a :sdk-net-api:`DescribeInstancesRequest <EC2/TEC2DescribeInstancesRequest>`
+#. Create and configure a :sdk-net-api:`DescribeInstancesRequest <EC2/TDescribeInstancesRequest>`
    object and assign your instance's instance ID to the :code:`InstanceIds` property. You can also
    use the :code:`Filter` property to limit the request to certain instances, such as instances with a
    particular user-specified tag.
@@ -295,9 +295,9 @@ state.
       instanceRequest.InstanceIds = new List<string>();
       instanceRequest.InstanceIds.Add(instanceId);
 
-#. Call the :sdk-net-api:`DescribeInstances <EC2/MEC2EC2DescribeInstancesDescribeInstancesRequest>`
+#. Call the :sdk-net-api:`DescribeInstances <EC2/MEC2DescribeInstancesDescribeInstancesRequest>`
    method, and pass it the request object from step 1. The method returns a
-   :sdk-net-api:`DescribeInstancesResponse <EC2/TEC2DescribeInstancesResponse>` object that
+   :sdk-net-api:`DescribeInstancesResponse <EC2/TDescribeInstancesResponse>` object that
    contains information about the instance.
 
    .. code-block:: csharp
@@ -329,8 +329,8 @@ of the key pair used to launch the instance. For more information, see
 For Windows instances, use an RDP client. You must ensure the instance's RDP port (3389) is open to
 traffic. You will need the instance's public IP address or public DNS name and the administrator
 password. The administrator password is obtained with the
-:sdk-net-api:`GetPasswordData <EC2/MEC2EC2GetPasswordDataGetPasswordDataRequest>` and
-:sdk-net-api:`GetPasswordDataResult.GetDecryptedPassword <EC2/MEC2GetPasswordDataResponseGetDecryptedPasswordString>`
+:sdk-net-api:`GetPasswordData <EC2/MEC2GetPasswordDataGetPasswordDataRequest>` and
+:sdk-net-api:`GetPasswordDataResult.GetDecryptedPassword <EC2/MGetPasswordDataResponseGetDecryptedPasswordString>`
 methods, which require the private portion of the key pair used to launch the instance. For more
 information, see :ec2-ug-win:`Connecting to Your Windows Instance Using RDP <connecting_to_windows_instance>`in the |EC2-ug-win|. The following example demonstrates how to get the password for a Windows instance.
 

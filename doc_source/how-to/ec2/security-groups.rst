@@ -43,7 +43,7 @@ You can enumerate your security groups and check whether a security group exists
 .. topic:: To enumerate your security groups
 
     Get the complete list of your security groups using
-    :sdk-net-api:`DescribeSecurityGroups <EC2/MEC2EC2DescribeSecurityGroupsDescribeSecurityGroupsRequest>`
+    :sdk-net-api:`DescribeSecurityGroups <EC2/MEC2DescribeSecurityGroupsDescribeSecurityGroupsRequest>`
     with no parameters.
 
     The following example enumerates all of the security groups in the region.
@@ -68,7 +68,7 @@ You can enumerate your security groups and check whether a security group exists
 
 .. topic:: To enumerate your security groups for a particular VPC
 
-    Use :sdk-net-api:`DescribeSecurityGroups <EC2/MEC2EC2DescribeSecurityGroupsDescribeSecurityGroupsRequest>`
+    Use :sdk-net-api:`DescribeSecurityGroups <EC2/MEC2DescribeSecurityGroupsDescribeSecurityGroupsRequest>`
     with a filter.
 
     The following example retrieves only the security groups that belong to the specified
@@ -106,21 +106,21 @@ You can enumerate your security groups and check whether a security group exists
     =======================
 
     If you attempt to create a security group with a name of an existing security group,
-    :sdk-net-api:`CreateSecurityGroup <EC2/MEC2EC2CreateSecurityGroupCreateSecurityGroupRequest>` will throw
+    :sdk-net-api:`CreateSecurityGroup <EC2/MEC2CreateSecurityGroupCreateSecurityGroupRequest>` will throw
     an exception. To avoid this, the following examples search for a security group with the specified
-    name, and return the appropriate :sdk-net-api:`SecurityGroup <EC2/TEC2SecurityGroup>` object if one is found.
+    name, and return the appropriate :sdk-net-api:`SecurityGroup <EC2/TSecurityGroup>` object if one is found.
 
 .. topic:: To create a security group for EC2-Classic
 
-    Create and initialize a :sdk-net-api:`CreateSecurityGroupRequest <EC2/TEC2CreateSecurityGroupRequest>` object.
+    Create and initialize a :sdk-net-api:`CreateSecurityGroupRequest <EC2/TCreateSecurityGroupRequest>` object.
     Assign a name and description to the :code:`GroupName` and :code:`Description` properties,
     respectively.
 
-    The :sdk-net-api:`CreateSecurityGroup <EC2/MEC2EC2CreateSecurityGroupCreateSecurityGroupRequest>` method
-    returns a :sdk-net-api:`CreateSecurityGroupResponse <EC2/TEC2CreateSecurityGroupResponse>` object. You
+    The :sdk-net-api:`CreateSecurityGroup <EC2/MEC2CreateSecurityGroupCreateSecurityGroupRequest>` method
+    returns a :sdk-net-api:`CreateSecurityGroupResponse <EC2/TCreateSecurityGroupResponse>` object. You
     can get the identifier of the new security group from the response and then use
-    :sdk-net-api:`DescribeSecurityGroups <EC2/MEC2EC2DescribeSecurityGroupsDescribeSecurityGroupsRequest>`
-    with the security group identifier to get the :sdk-net-api:`SecurityGroup <EC2/TEC2SecurityGroup>` object
+    :sdk-net-api:`DescribeSecurityGroups <EC2/MEC2DescribeSecurityGroupsDescribeSecurityGroupsRequest>`
+    with the security group identifier to get the :sdk-net-api:`SecurityGroup <EC2/TSecurityGroup>` object
     for the security group.
 
     .. code-block:: csharp
@@ -159,14 +159,14 @@ You can enumerate your security groups and check whether a security group exists
 
 .. topic:: To create a security group for EC2-VPC
 
-    Create and initialize a :sdk-net-api:`CreateSecurityGroupRequest <EC2/TEC2CreateSecurityGroupRequest>`
+    Create and initialize a :sdk-net-api:`CreateSecurityGroupRequest <EC2/TCreateSecurityGroupRequest>`
     object. Assign values to the :code:`GroupName`, :code:`Description`, and :code:`VpcId` properties.
 
-    The :sdk-net-api:`CreateSecurityGroup <EC2/MEC2EC2CreateSecurityGroupCreateSecurityGroupRequest>` method
-    returns a :sdk-net-api:`CreateSecurityGroupResponse <EC2/TEC2CreateSecurityGroupRequest>` object. You
+    The :sdk-net-api:`CreateSecurityGroup <EC2/MEC2CreateSecurityGroupCreateSecurityGroupRequest>` method
+    returns a :sdk-net-api:`CreateSecurityGroupResponse <EC2/TCreateSecurityGroupRequest>` object. You
     can get the identifier of the new security group from the response and then use
-    :sdk-net-api:`DescribeSecurityGroups <EC2/MEC2EC2DescribeSecurityGroupsDescribeSecurityGroupsRequest>`
-    with the security group identifier to get the :sdk-net-api:`SecurityGroup <EC2/TEC2SecurityGroup>`
+    :sdk-net-api:`DescribeSecurityGroups <EC2/MEC2DescribeSecurityGroupsDescribeSecurityGroupsRequest>`
+    with the security group identifier to get the :sdk-net-api:`SecurityGroup <EC2/TSecurityGroup>`
     object for the security group.
 
     .. code-block:: csharp
@@ -226,7 +226,7 @@ You can enumerate your security groups and check whether a security group exists
 
 .. topic:: To add a rule to a security group
 
-    #. Create and initialize an :sdk-net-api:`IpPermission <EC2/TEC2IpPermission>` object.
+    #. Create and initialize an :sdk-net-api:`IpPermission <EC2/TIpPermission>` object.
 
        .. code-block:: csharp
 
@@ -252,7 +252,7 @@ You can enumerate your security groups and check whether a security group exists
           http://checkip.amazonaws.com/ to determine your own IP addcress.
 
     #. Create and initialize an
-       :sdk-net-api:`AuthorizeSecurityGroupIngressRequest  <EC2/TEC2AuthorizeSecurityGroupIngressRequest>` object.
+       :sdk-net-api:`AuthorizeSecurityGroupIngressRequest  <EC2/TAuthorizeSecurityGroupIngressRequest>` object.
 
        .. code-block:: csharp
 
@@ -269,10 +269,10 @@ You can enumerate your security groups and check whether a security group exists
     #. (Optional) You can add additional rules to the :code:`IpPermissions` collection before going to the
        next step.
 
-    #. Pass the :sdk-net-api:`AuthorizeSecurityGroupIngressRequest <EC2/TEC2AuthorizeSecurityGroupIngressRequest>`
-       object to the :sdk-net-api:`AuthorizeSecurityGroupIngress <EC2/MEC2EC2AuthorizeSecurityGroupIngressAuthorizeSecurityGroupIngressRequest>`
-       method, which returns an :sdk-net-api:`AuthorizeSecurityGroupIngressResponse <EC2/TEC2AuthorizeSecurityGroupIngressResponse>`
-       object. If a matching rule already exists, an :sdk-net-api:`AmazonEC2Exception <EC2/TEC2EC2Exception>`
+    #. Pass the :sdk-net-api:`AuthorizeSecurityGroupIngressRequest <EC2/TAuthorizeSecurityGroupIngressRequest>`
+       object to the :sdk-net-api:`AuthorizeSecurityGroupIngress <EC2/MEC2AuthorizeSecurityGroupIngressAuthorizeSecurityGroupIngressRequest>`
+       method, which returns an :sdk-net-api:`AuthorizeSecurityGroupIngressResponse <EC2/TAuthorizeSecurityGroupIngressResponse>`
+       object. If a matching rule already exists, an :sdk-net-api:`AmazonEC2Exception <EC2/TEC2Exception>`
        is thrown.
 
        .. code-block:: csharp

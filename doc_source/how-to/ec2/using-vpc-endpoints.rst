@@ -27,28 +27,28 @@ An endpoint enables you to create a private connection between your VPC and anot
 account. You can specify a policy to attach to the endpoint that will control access to the service
 from your VPC. You can also specify the VPC route tables that use the endpoint.
 
-This example uses the following :sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` methods:
+This example uses the following :sdk-net-api:`AmazonEC2Client <EC2/TEC2Client>` methods:
 
-* :sdk-net-api:`CreateVpcEndpoint <EC2/MEC2EC2CreateVpcEndpointCreateVpcEndpointRequest>`
-* :sdk-net-api:`DescribeVpcEndpoints <EC2/MEC2EC2DescribeVpcEndpointsDescribeVpcEndpointsRequest>`
-* :sdk-net-api:`ModifyVpcEndpoint <EC2/MEC2EC2ModifyVpcEndpointModifyVpcEndpointRequest>`
-* :sdk-net-api:`DeleteVpcEndpoints <EC2/MEC2EC2DeleteVpcEndpointsDeleteVpcEndpointsRequest>`
+* :sdk-net-api:`CreateVpcEndpoint <EC2/MEC2CreateVpcEndpointCreateVpcEndpointRequest>`
+* :sdk-net-api:`DescribeVpcEndpoints <EC2/MEC2DescribeVpcEndpointsDescribeVpcEndpointsRequest>`
+* :sdk-net-api:`ModifyVpcEndpoint <EC2/MEC2ModifyVpcEndpointModifyVpcEndpointRequest>`
+* :sdk-net-api:`DeleteVpcEndpoints <EC2/MEC2DeleteVpcEndpointsDeleteVpcEndpointsRequest>`
 
 Create a VPC Endpoint
 =====================
 
 The following example creates a VPC endpoint for an Amazon Simple Storage Service (S3).
 
-Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` instance. You'll create a new VPC
+Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2Client>` instance. You'll create a new VPC
 so that you can create a VPC endpoint.
 
-Create a :sdk-net-api:`CreateVpcRequest <EC2/TEC2CreateVpcRequest>`
-object specifying an IPv4 CIDR block as its constructor's parameter. Using that :sdk-net-api:`CreateVpcRequest <EC2/TEC2CreateVpcRequest>`
-object, use the :sdk-net-api:`CreateVpc <EC2/MEC2EC2CreateVpcCreateVpcRequest>` method to create a VPC.
-Use that VPC to instantiate a :sdk-net-api:`CreateVpcEndpointRequest <EC2/TEC2CreateVpcEndpointRequest>`
+Create a :sdk-net-api:`CreateVpcRequest <EC2/TCreateVpcRequest>`
+object specifying an IPv4 CIDR block as its constructor's parameter. Using that :sdk-net-api:`CreateVpcRequest <EC2/TCreateVpcRequest>`
+object, use the :sdk-net-api:`CreateVpc <EC2/MEC2CreateVpcCreateVpcRequest>` method to create a VPC.
+Use that VPC to instantiate a :sdk-net-api:`CreateVpcEndpointRequest <EC2/TCreateVpcEndpointRequest>`
 object, specifying the service name for the endpoint. Then, use that request object to call the
-:sdk-net-api:`CreateVpcEndpoint <EC2/MEC2EC2CreateVpcEndpointCreateVpcEndpointRequest>` method and
-create the :sdk-net-api:`VpcEndpoint <EC2/TEC2VpcEndpoint>`.
+:sdk-net-api:`CreateVpcEndpoint <EC2/MEC2CreateVpcEndpointCreateVpcEndpointRequest>` method and
+create the :sdk-net-api:`VpcEndpoint <EC2/TVpcEndpoint>`.
 
 .. code-block:: csharp
 
@@ -69,11 +69,11 @@ create the :sdk-net-api:`VpcEndpoint <EC2/TEC2VpcEndpoint>`.
 Describe a VPC Endpoint
 =======================
 
-Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` instance. Next, create a
-:sdk-net-api:`DescribeVpcEndpointsRequest <EC2/TEC2DescribeVpcEndpointsRequest>` object and limit the
+Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2Client>` instance. Next, create a
+:sdk-net-api:`DescribeVpcEndpointsRequest <EC2/TDescribeVpcEndpointsRequest>` object and limit the
 maximum number of results to return to 5. Use that :code:`DescribeVpcEndpointsRequest` object to call the
-:sdk-net-api:`DescribeVpcEndpoints <EC2/MEC2EC2DescribeVpcEndpointsDescribeVpcEndpointsRequest>` method.
-The :sdk-net-api:`DescribeVpcEndpointsResponse <EC2/TEC2DescribeVpcEndpointsResponse>` that is returned
+:sdk-net-api:`DescribeVpcEndpoints <EC2/MEC2DescribeVpcEndpointsDescribeVpcEndpointsRequest>` method.
+The :sdk-net-api:`DescribeVpcEndpointsResponse <EC2/TDescribeVpcEndpointsResponse>` that is returned
 contains the list of VPC Endpoints.
 
 .. code-block:: csharp
@@ -103,10 +103,10 @@ Modify a VPC Endpoint
 The following example modifies attributes of a specified VPC endpoint. You can modify the policy associated
 with the endpoint, and you can add and remove route tables associated with the endpoint.
 
-Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` instance. Create a :sdk-net-api:`ModifyVpcEndpointRequest <EC2/TEC2ModifyVpcEndpointRequest>`
+Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2Client>` instance. Create a :sdk-net-api:`ModifyVpcEndpointRequest <EC2/TModifyVpcEndpointRequest>`
 object using the ID of the VPC endpoint and the ID of the route table to add to it. Call the
-:sdk-net-api:`ModifyVpcEndpoint <EC2/MEC2EC2ModifyVpcEndpointModifyVpcEndpointRequest>` method using the
-:code:`ModifyVpcEndpointRequest` object. The :sdk-net-api:`ModifyVpcEndpointResponse <EC2/TEC2ModifyVpcEndpointResponse>`
+:sdk-net-api:`ModifyVpcEndpoint <EC2/MEC2ModifyVpcEndpointModifyVpcEndpointRequest>` method using the
+:code:`ModifyVpcEndpointRequest` object. The :sdk-net-api:`ModifyVpcEndpointResponse <EC2/TModifyVpcEndpointResponse>`
 object that is returned contains an HTTP status code indicating whether the modify request succeeded.
 
 .. code-block:: csharp
@@ -131,11 +131,11 @@ Delete a VPC Endpoint
 You can delete one or more specified VPC endpoints. Deleting the endpoint also deletes the endpoint routes
 in the route tables that were associated with the endpoint.
 
-Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` instance. Use the
-:sdk-net-api:`DescribeVpcEndpoints <EC2/MEC2EC2DescribeVpcEndpointsDescribeVpcEndpointsRequest>` method
+Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2Client>` instance. Use the
+:sdk-net-api:`DescribeVpcEndpoints <EC2/MEC2DescribeVpcEndpointsDescribeVpcEndpointsRequest>` method
 to list the VPC endpoints associated with the EC2 client. Use the list of VPC endpoints to create a list
-of VPC endpoint IDs. Use that list to create a :sdk-net-api:`DeleteVpcEndpointsRequest <EC2/TEC2DeleteVpcEndpointsRequest>`
-object to be used by the :sdk-net-api:`DeleteVpcEndpoints <EC2/MEC2EC2DeleteVpcEndpointsDeleteVpcEndpointsRequest>`
+of VPC endpoint IDs. Use that list to create a :sdk-net-api:`DeleteVpcEndpointsRequest <EC2/TDeleteVpcEndpointsRequest>`
+object to be used by the :sdk-net-api:`DeleteVpcEndpoints <EC2/MEC2DeleteVpcEndpointsDeleteVpcEndpointsRequest>`
 method.
 
 .. code-block:: csharp

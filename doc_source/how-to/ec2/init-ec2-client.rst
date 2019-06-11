@@ -20,7 +20,7 @@ Creating an |EC2| Client
 
 
 Create an |EC2| client to manage your EC2 resources, such as instances and security groups. This
-client is represented by an :sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` object, which
+client is represented by an :sdk-net-api:`AmazonEC2Client <EC2/TEC2Client>` object, which
 you can create as follows.
 
 .. code-block:: csharp

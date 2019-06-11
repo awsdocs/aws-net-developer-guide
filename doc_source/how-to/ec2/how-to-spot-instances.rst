@@ -153,12 +153,12 @@ bid will be fulfilled. You can determine the types of available instances and th
 for instances by going to `Amazon EC2 Pricing page <http://aws.amazon.com/ec2/pricing/>`_.
 
 To request a Spot Instance, you need to build your request with the parameters we have specified so
-far. Start by creating a :sdk-net-api:`RequestSpotInstanceRequest <EC2/TEC2RequestSpotInstancesRequest>`
+far. Start by creating a :sdk-net-api:`RequestSpotInstanceRequest <EC2/TRequestSpotInstancesRequest>`
 object. The request object requires the bid price and the number of instances you want to start.
-Additionally, you need to set the :sdk-net-api:`LaunchSpecification <EC2/TEC2LaunchSpecification>` for the
+Additionally, you need to set the :sdk-net-api:`LaunchSpecification <EC2/TLaunchSpecification>` for the
 request, which includes the instance type, AMI ID, and the name of the security group you want to
 use for the Spot Instances. After the request is populated, call the :sdk-net-api:`RequestSpotInstances
-<EC2/MEC2EC2RequestSpotInstancesRequestSpotInstancesRequest>` method to create the Spot Instance
+<EC2/MEC2RequestSpotInstancesRequestSpotInstancesRequest>` method to create the Spot Instance
 request. The following example demonstrates how to request a Spot Instance.
 
 .. code-block:: csharp
@@ -190,7 +190,7 @@ request. The following example demonstrates how to request a Spot Instance.
     }
 
 The Spot request ID is contained in the :code:`SpotInstanceRequestId` member of the
-:sdk-net-api:`SpotInstanceRequest <EC2/TEC2SpotInstanceRequest>` object.
+:sdk-net-api:`SpotInstanceRequest <EC2/TSpotInstanceRequest>` object.
 
 Running this code will launch a new Spot Instance request.
 
@@ -198,7 +198,7 @@ Running this code will launch a new Spot Instance request.
    and terminate any instances you launch to reduce any associated fees.
 
 There are other options you can use to configure your Spot requests. To learn more, see
-:sdk-net-api:`RequestSpotInstances <EC2/MEC2EC2RequestSpotInstancesRequestSpotInstancesRequest>` in the
+:sdk-net-api:`RequestSpotInstances <EC2/MEC2RequestSpotInstancesRequestSpotInstancesRequest>` in the
 |sdk-net|.
 
 
@@ -209,7 +209,7 @@ Determining the State of Your Spot Request
 
 Next, we need to wait until the Spot request reaches the :code:`Active` state before proceeding to
 the last step. To determine the state of your Spot request, we use the 
-:sdk-net-api:`DescribeSpotInstanceRequests <EC2/TEC2DescribeSpotInstanceRequestsRequest>` method to 
+:sdk-net-api:`DescribeSpotInstanceRequests <EC2/TDescribeSpotInstanceRequestsRequest>` method to 
 obtain the state of the Spot request ID we want to monitor.
 
 .. code-block:: csharp
@@ -246,7 +246,7 @@ re-fulfilled. Therefore, it is a best practice to both cancel any active bids an
 running instances.
 
 You use the :sdk-net-api:`CancelSpotInstanceRequests
-<EC2/MEC2EC2CancelSpotInstanceRequestsCancelSpotInstanceRequestsRequest>` method to cancel a Spot
+<EC2/MEC2CancelSpotInstanceRequestsCancelSpotInstanceRequestsRequest>` method to cancel a Spot
 request. The following example demonstrates how to cancel a Spot request.
 
 .. code-block:: csharp
@@ -262,7 +262,7 @@ request. The following example demonstrates how to cancel a Spot request.
       ec2Client.CancelSpotInstanceRequests(cancelRequest);
     }
 
-You use the :sdk-net-api:`TerminateInstances <EC2/MEC2EC2TerminateInstancesTerminateInstancesRequest>` method
+You use the :sdk-net-api:`TerminateInstances <EC2/MEC2TerminateInstancesTerminateInstancesRequest>` method
 to terminate an instance. The following example demonstrates how to obtain the instance identifier
 for an active Spot Instance and terminate the instance.
 

@@ -36,10 +36,10 @@ your instance to enable communication with the Internet.
 In this example, you use the |sdk-net| to manage Elastic IP addresses by using these methods of the
 |EC2| client class:
 
-* :sdk-net-api:`DescribeAddresses <EC2/MEC2EC2DescribeAddressesDescribeAddressesRequest>`
-* :sdk-net-api:`AllocateAddress <EC2/MEC2EC2AllocateAddressAllocateAddressRequest>`
-* :sdk-net-api:`AssociateAddress <EC2/MEC2EC2AssociateAddressAssociateAddressRequest>`
-* :sdk-net-api:`ReleaseAddress <EC2/MEC2EC2ReleaseAddressReleaseAddressRequest>`
+* :sdk-net-api:`DescribeAddresses <EC2/MEC2DescribeAddressesDescribeAddressesRequest>`
+* :sdk-net-api:`AllocateAddress <EC2/MEC2AllocateAddressAllocateAddressRequest>`
+* :sdk-net-api:`AssociateAddress <EC2/MEC2AssociateAddressAssociateAddressRequest>`
+* :sdk-net-api:`ReleaseAddress <EC2/MEC2ReleaseAddressReleaseAddressRequest>`
 
 
 For more information about Elastic IP addresses in |EC2|, see
@@ -48,10 +48,10 @@ For more information about Elastic IP addresses in |EC2|, see
 Describe Elastic IP Addresses
 =============================
 
-Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` object. Next, create a :sdk-net-api:`DescribeAddressesRequest <EC2/TEC2DescribeAddressesRequest>`
+Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2Client>` object. Next, create a :sdk-net-api:`DescribeAddressesRequest <EC2/TDescribeAddressesRequest>`
 object to pass as a parameter, filtering the addresses returned by those in your VPC. To retrieve descriptions
 of all your Elastic IP addresses, omit the filter from the parameters.
-Then call the :sdk-net-api:`DescribeAddresses <EC2/MEC2EC2DescribeAddressesDescribeAddressesRequest>`
+Then call the :sdk-net-api:`DescribeAddresses <EC2/MEC2DescribeAddressesDescribeAddressesRequest>`
 method of the :code:`AmazonEC2Client` object.
 
 .. code-block:: csharp
@@ -89,18 +89,18 @@ method of the :code:`AmazonEC2Client` object.
 Allocate and Associate an Elastic IP Address
 ============================================
 
-Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` object. Next, create an :sdk-net-api:`AllocateAddressRequest <EC2/TEC2AllocateAddressRequest>`
+Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2Client>` object. Next, create an :sdk-net-api:`AllocateAddressRequest <EC2/TAllocateAddressRequest>`
 object for the parameter used to allocate an Elastic IP address, which in this case specifies that the
-domain is a VPC. Call the :sdk-net-api:`AllocateAddress <EC2/MEC2EC2AllocateAddressAllocateAddressRequest>` method of the
+domain is a VPC. Call the :sdk-net-api:`AllocateAddress <EC2/MEC2AllocateAddressAllocateAddressRequest>` method of the
 :code:`AmazonEC2Client` object.
 
-Upon success, the returned :sdk-net-api:`AllocateAddressResponse <EC2/TEC2AllocateAddressResponse>` object
+Upon success, the returned :sdk-net-api:`AllocateAddressResponse <EC2/TAllocateAddressResponse>` object
 has an :code:`AllocationId` property that identifies the allocated Elastic IP address.
 
-Create an :sdk-net-api:`AssociateAddressRequest <EC2/TEC2AssociateAddressRequest>` object for the parameters
+Create an :sdk-net-api:`AssociateAddressRequest <EC2/TAssociateAddressRequest>` object for the parameters
 used to associate an Elastic IP address to an |EC2| instance. Include the :code:`AllocationId` from the
 newly allocated address and the :code:`InstanceId` of the |EC2| instance. Then call the
-:sdk-net-api:`AssociateAddress <EC2/MEC2EC2AssociateAddressAssociateAddressRequest>` method of
+:sdk-net-api:`AssociateAddress <EC2/MEC2AssociateAddressAssociateAddressRequest>` method of
 the :code:`AmazonEC2Client` object.
 
 .. code-block:: csharp
@@ -131,10 +131,10 @@ the :code:`AmazonEC2Client` object.
 Release an Elastic IP Address
 =============================
 
-Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` object. Next, create a :sdk-net-api:`ReleaseAddressRequest <EC2/TEC2ReleaseAddressRequest>`
+Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2Client>` object. Next, create a :sdk-net-api:`ReleaseAddressRequest <EC2/TReleaseAddressRequest>`
 object for the parameters used to release an Elastic IP address, which in this case specifies the
 :code:`AllocationId` for the Elastic IP address. Releasing an Elastic IP address also disassociates it
-from any |EC2| instance. Call the :sdk-net-api:`ReleaseAddress <EC2/MEC2EC2ReleaseAddressReleaseAddressRequest>`
+from any |EC2| instance. Call the :sdk-net-api:`ReleaseAddress <EC2/MEC2ReleaseAddressReleaseAddressRequest>`
 method
 of the |EC2| service object.
 

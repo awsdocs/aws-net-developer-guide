@@ -33,10 +33,10 @@ locations known as Availability Zones. |EC2| provides the ability to place insta
 multiple locations.
 
 You can use the |sdk-net| to retrieve details about regions and Availability Zones by using
-the following methods of the :sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` class:
+the following methods of the :sdk-net-api:`AmazonEC2Client <EC2/TEC2Client>` class:
 
-* :sdk-net-api:`DescribeAvailabilityZones <EC2/MEC2EC2DescribeAvailabilityZonesDescribeAvailabilityZonesRequest>`
-* :sdk-net-api:`DescribeRegions <EC2/MEC2EC2DescribeRegionsDescribeRegionsRequest>`
+* :sdk-net-api:`DescribeAvailabilityZones <EC2/MEC2DescribeAvailabilityZonesDescribeAvailabilityZonesRequest>`
+* :sdk-net-api:`DescribeRegions <EC2/MEC2DescribeRegionsDescribeRegionsRequest>`
 
 For more information about regions and Availability Zones, see
 :ec2-ug-win:`Regions and Availability Zones <using-regions-availability-zones>` in the
@@ -45,9 +45,9 @@ For more information about regions and Availability Zones, see
 Describe Availability Zones
 ===========================
 
-Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` instance and call the
-:sdk-net-api:`DescribeAvailabilityZones <EC2/MEC2EC2DescribeAvailabilityZonesDescribeAvailabilityZonesRequest>`
-method. The :sdk-net-api:`DescribeAvailabilityZonesResponse <EC2/TEC2DescribeAvailabilityZonesResponse>`
+Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2Client>` instance and call the
+:sdk-net-api:`DescribeAvailabilityZones <EC2/MEC2DescribeAvailabilityZonesDescribeAvailabilityZonesRequest>`
+method. The :sdk-net-api:`DescribeAvailabilityZonesResponse <EC2/TDescribeAvailabilityZonesResponse>`
 object that is
 returned contains a list of Availability Zones.
 
@@ -69,9 +69,9 @@ returned contains a list of Availability Zones.
 Describe Regions
 ================
 
-Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` instance and call the
-:sdk-net-api:`DescribeRegions <EC2/MEC2EC2DescribeRegionsDescribeRegionsRequest>` method. The
-:sdk-net-api:`DescribeRegionsResponse <EC2/TEC2DescribeRegionsResponse>` object that is returned
+Create an :sdk-net-api:`AmazonEC2Client <EC2/TEC2Client>` instance and call the
+:sdk-net-api:`DescribeRegions <EC2/MEC2DescribeRegionsDescribeRegionsRequest>` method. The
+:sdk-net-api:`DescribeRegionsResponse <EC2/TDescribeRegionsResponse>` object that is returned
 contains a list of regions.
 
 .. code-block:: csharp

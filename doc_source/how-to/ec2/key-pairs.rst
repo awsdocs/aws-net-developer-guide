@@ -27,11 +27,11 @@ a key pair or use one you've used when launching other instances. For more infor
 :ec2-ug-win:`Amazon EC2 Key Pairs <ec2-key-pairs>` in
 the |EC2-ug-win|.
 This example shows how to create a key pair, describe key pairs and delete a key pair using these
-:sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` methods:
+:sdk-net-api:`AmazonEC2Client <EC2/TEC2Client>` methods:
 
-* :sdk-net-api:`CreateKeyPair <EC2/MEC2EC2CreateKeyPairCreateKeyPairRequest>`
-* :sdk-net-api:`DeleteKeyPair <EC2/MEC2EC2DeleteKeyPairDeleteKeyPairRequest>`
-* :sdk-net-api:`DescribeKeyPairs <EC2/MEC2EC2DescribeKeyPairsDescribeKeyPairsRequest>`
+* :sdk-net-api:`CreateKeyPair <EC2/MEC2CreateKeyPairCreateKeyPairRequest>`
+* :sdk-net-api:`DeleteKeyPair <EC2/MEC2DeleteKeyPairDeleteKeyPairRequest>`
+* :sdk-net-api:`DescribeKeyPairs <EC2/MEC2DescribeKeyPairsDescribeKeyPairsRequest>`
 
 .. _create-save-key-pair:
 
@@ -41,16 +41,16 @@ Create a Key Pair and Save the Private Key
 When you create a new key pair, you must save the private key that is returned. You cannot retrieve
 the private key later.
 
-Create and initialize a :sdk-net-api:`CreateKeyPairRequest <EC2/TEC2CreateKeyPairRequest>` object. Set the
+Create and initialize a :sdk-net-api:`CreateKeyPairRequest <EC2/TCreateKeyPairRequest>` object. Set the
 :code:`KeyName` property to the name of the key pair.
 
-Pass the request object to the :sdk-net-api:`CreateKeyPair <EC2/MEC2EC2CreateKeyPairCreateKeyPairRequest>`
-method, which returns a :sdk-net-api:`CreateKeyPairResponse <EC2/TEC2CreateKeyPairResponse>` object. If a key
-pair with the specified name already exists, an :sdk-net-api:`AmazonEC2Exception <EC2/TEC2EC2Exception>` is
+Pass the request object to the :sdk-net-api:`CreateKeyPair <EC2/MEC2CreateKeyPairCreateKeyPairRequest>`
+method, which returns a :sdk-net-api:`CreateKeyPairResponse <EC2/TCreateKeyPairResponse>` object. If a key
+pair with the specified name already exists, an :sdk-net-api:`AmazonEC2Exception <EC2/TEC2Exception>` is
 thrown.
 
-The response object includes a :sdk-net-api:`CreateKeyPairResponse <EC2/TEC2CreateKeyPairResponse>` object that
-contains the new key's :sdk-net-api:`KeyPair <EC2/TEC2KeyPair>` object. The :sdk-net-api:`KeyPair <EC2/TEC2KeyPair>`
+The response object includes a :sdk-net-api:`CreateKeyPairResponse <EC2/TCreateKeyPairResponse>` object that
+contains the new key's :sdk-net-api:`KeyPair <EC2/TKeyPair>` object. The :sdk-net-api:`KeyPair <EC2/TKeyPair>`
 object's :code:`KeyMaterial` property contains the unencrypted private key for the key pair. Save
 the private key as a :file:`.pem` file in a safe location. You'll need this file when you connect to
 your instance. This example saves the private key in the specified file name.
@@ -100,7 +100,7 @@ Enumerate Your Key Pairs
 
 You can enumerate your key pairs and check whether a key pair exists.
 
-Get the complete list of your key pairs using the :sdk-net-api:`DescribeKeyPairs <EC2/MEC2EC2DescribeKeyPairs>`
+Get the complete list of your key pairs using the :sdk-net-api:`DescribeKeyPairs <EC2/MEC2DescribeKeyPairs>`
 method with no parameters.
 
 .. code-block:: csharp
@@ -121,12 +121,12 @@ method with no parameters.
 Delete Key Pairs
 ================
 
-You can delete a key pair by calling the :sdk-net-api:`DeleteKeyPair <EC2/MEC2EC2DeleteKeyPairDeleteKeyPairRequest>`
+You can delete a key pair by calling the :sdk-net-api:`DeleteKeyPair <EC2/MEC2DeleteKeyPairDeleteKeyPairRequest>`
 from your AmazonEC2Client instance.
 
-Pass a :sdk-net-api:`DeleteKeyPairRequest <EC2/TEC2DeleteKeyPairRequest>` containing the name of the
-key pair to the :sdk-net-api:`DeleteKeyPair <EC2/MEC2EC2DeleteKeyPairDeleteKeyPairRequest>` method of the
-:sdk-net-api:`AmazonEC2Client <EC2/TEC2EC2Client>` object.
+Pass a :sdk-net-api:`DeleteKeyPairRequest <EC2/TDeleteKeyPairRequest>` containing the name of the
+key pair to the :sdk-net-api:`DeleteKeyPair <EC2/MEC2DeleteKeyPairDeleteKeyPairRequest>` method of the
+:sdk-net-api:`AmazonEC2Client <EC2/TEC2Client>` object.
 
 .. code-block:: csharp
 
