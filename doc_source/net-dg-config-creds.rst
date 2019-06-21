@@ -161,7 +161,7 @@ You can also store profiles in a shared credentials file. This file can be used 
 separately from any project files, usually in the user's home folder. *Be aware
 that the profiles in credentials files are stored in plaintext.*
 
-Use can manage the profiles in the shared credentials file in two ways:
+You can manage the profiles in the shared credentials file in two ways:
 
 * You can use a text editor. The file is named
   :file:`credentials`, and the default location is under your user's home folder. For example, if your
