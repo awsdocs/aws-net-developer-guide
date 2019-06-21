@@ -67,7 +67,7 @@ If the name already exists, write the exception message to the console.
                 if (response.HttpStatusCode.ToString() == "OK")
                     Console.WriteLine(request.AccountAlias + " created.");
                 else
-                    Console.WriteLine("HTTpStatusCode returned = " + response.HttpStatusCode.ToString());
+                    Console.WriteLine("HttpStatusCode returned = " + response.HttpStatusCode.ToString());
             }
             catch (Exception e)
             {
@@ -135,7 +135,7 @@ on the console. If the name doesn't exist, write the exception message to the co
                 if (response.HttpStatusCode.ToString() == "OK")
                     Console.WriteLine(request.AccountAlias + " deleted.");
                 else
-                    Console.WriteLine("HTTpStatusCode returned = " + response.HttpStatusCode.ToString());
+                    Console.WriteLine("HttpStatusCode returned = " + response.HttpStatusCode.ToString());
             }
             catch (NoSuchEntityException e)
             {
