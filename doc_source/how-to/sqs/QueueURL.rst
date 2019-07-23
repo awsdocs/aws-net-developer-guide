@@ -14,7 +14,9 @@
 Constructing |SQS| Queue URLs
 #############################
 
-You need a queue URL to send, receive, and delete queue messages. You can get your queue URL using the :sdk-net-api:`GetQueueUrl <SQS/MSQSGetQueueUrlGetQueueUrlRequest>` method. 
+You need a queue URL to send, receive, and delete queue messages. You can get your queue URL using the :sdk-net-api:`GetQueueUrl <SQS/MSQSGetQueueUrlGetQueueUrlRequest>` method.
+
+.. note:: For .NET Core, PCL and Unity this operation is only available in asynchronous form using :sdk-net-api:`GetQueueUrlAsync <SQS/MSQSGetQueueUrlAsyncGetQueueUrlRequestCancellationToken>`.
 
 .. code-block:: csharp
 
