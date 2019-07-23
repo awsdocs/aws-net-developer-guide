@@ -188,30 +188,28 @@ You can manage the profiles in the shared credentials file in two ways:
 
 * You can programmatically manage the credentials file by using the classes in the :sdk-net-api:`Amazon.Runtime.CredentialManagement <Runtime/NRuntimeCredentialManagement>` namespace.
 
-Setting an Alternate Credentials Profile
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Setting an Alternative Credentials Profile
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      The |sdk-net| uses the `default` profile by default, but there are ways to customize
-      which profile is sourced from the credentials file.
+The |sdk-net| uses the `default` profile by default, but you can change
+which profile is used from the credentials file by using the **AWS_Profile** environment variable.
 
-      You can use the AWS Profile environment variable to change the profile loaded by the SDK.
+For example, on |unixes| run the following command to change the profile to `myProfile`.
 
-      For example, on |unixes| you would run the following command to change the profile to `myProfile`.
+.. code-block:: sh
 
-      .. code-block:: sh
+   export AWS_PROFILE="myProfile"
 
-          export AWS_PROFILE="myProfile"
+On Windows use the following command.
 
-      On Windows you would use the following.
+.. code-block:: bat
 
-      .. code-block:: bat
+   set AWS_PROFILE="myProfile"
 
-          set AWS_PROFILE="myProfile"
+Setting the **AWS_PROFILE** environment variable affects credential loading for all officially
+supported AWS SDKs and Tools, including the AWS CLI and the AWS CLI for PowerShell.
 
-      Setting the AWS_PROFILE environment variable affects credential loading for all officially
-      supported AWS SDKs and Tools (including the AWS CLI and the AWS CLI for PowerShell).
-
-      .. note:: The environment variable takes precedence over the system property.
+.. note:: The environment variable takes precedence over the system property.
 
 Create a Profile and Save it to the Shared Credentials File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
