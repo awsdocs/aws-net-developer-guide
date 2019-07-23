@@ -42,7 +42,7 @@ can use the :code:`MaxErrorRetry` property of the :sdk-net-api:`ClientConfig <Ru
 to specify the number of retries at the service client level. the |sdk-net| will retry the operation
 the specified number of times before failing and throwing an exception. By default, the
 :code:`MaxErrorRetry` property is set to 4, except for the 
-:sdk-net-api:`AmazonDynamoDBConfig <DynamoDBv2/TDynamoDBv2DynamoDBConfig>` class, which defaults to 10 
+:sdk-net-api:`AmazonDynamoDBConfig <DynamoDBv2/TDynamoDBConfig>` class, which defaults to 10 
 retries. When a retry occurs, it increases the latency of your request. You should configure your 
 retries based on your application limits for total request latency and error rates.
 
