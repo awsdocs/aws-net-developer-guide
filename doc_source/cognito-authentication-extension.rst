@@ -41,16 +41,7 @@ The following examples require these :code:`using` statements:
 Use Basic Authentication
 ------------------------
 
-Create an
-:sdk-net-api:`CognitoIdentityProviderClient <CognitoIdentityProvider/TCognitoIdentityProviderClient>`
-using
-:sdk-net-api:`AnonymousAWSCredentials <Runtime/TAnonymousAWSCredentials>`,
-which do not require signed requests.
-You do not need to supply a region, the underlying code calls
-:code:`FallbackRegionFactory.GetRegionEndpoint()` if a region is not provided.
-Create :code:`CognitoUserPool` and  :code:`CognitoUser` objects.
-Call the :code:`StartWithSrpAuthAsync` method with an
-:code:`InitiateSrpAuthRequest` that contains the user password.
+Create an :sdk-net-api:`AmazonCognitoIdentityProviderClient <CognitoIdentityProvider/TCognitoIdentityProviderClient>` using :sdk-net-api:`AnonymousAWSCredentials <Runtime/TAnonymousAWSCredentials>`, which do not require signed requests. You do not need to supply a region, the underlying code calls :code:`FallbackRegionFactory.GetRegionEndpoint()` if a region is not provided. Create :code:`CognitoUserPool` and  :code:`CognitoUser` objects. Call the :code:`StartWithSrpAuthAsync` method with an :code:`InitiateSrpAuthRequest` that contains the user password.
 
 .. literalinclude:: samples/cognito-extensions.cs
    :dedent: 8
