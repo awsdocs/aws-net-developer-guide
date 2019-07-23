@@ -19,12 +19,11 @@ Using Subscription Filters in |CWLlong|
    :description: Use this .NET code example to learn how to use subscription filters in Amazon CloudWatch Logs.
    :keywords: AWS SDK for .NET examples, CloudWatch Logs subscription filters
 
+These .NET examples shows you how to:
 
-This .NET example shows you how to:
-
-* List a subscription filter in |CWL|
-* Create or delete a subscription filter in |CWL|
-
+* List existing subscription filters in |CWL|
+* Create a subscription filter in |CWL|
+* Delete a subscription filter in |CWL|
 
 The Scenario
 ============
@@ -82,6 +81,10 @@ method.
             {
                 Console.WriteLine(e.Message);
             }
+            finally 
+            {
+                client?.Dispose();
+            }
         }
 
 Create a Subscription Filter
@@ -114,6 +117,10 @@ method.
             {
                 Console.WriteLine(e.Message);
             }
+            finally 
+            {
+                client?.Dispose();
+            }
         }
 
 Delete a Subscription Filter
@@ -142,5 +149,9 @@ method.
             catch (Amazon.CloudWatchLogs.Model.ResourceNotFoundException e)
             {
                 Console.WriteLine(e.Message);
+            }
+            finally 
+            {
+                client?.Dispose();
             }
         }
