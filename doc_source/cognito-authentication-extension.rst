@@ -42,7 +42,7 @@ Use Basic Authentication
 ------------------------
 
 Create an
-:sdk-net-api:`<CognitoIdentityProvider/TCognitoIdentityProviderClient>`
+:sdk-net-api:`CognitoIdentityProviderClient <CognitoIdentityProvider/TCognitoIdentityProviderClient>`
 using
 :sdk-net-api:`AnonymousAWSCredentials <Runtime/TAnonymousAWSCredentials>`,
 which do not require signed requests.
