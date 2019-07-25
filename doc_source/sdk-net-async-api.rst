@@ -57,9 +57,9 @@ Begin Method Syntax
 ~~~~~~~~~~~~~~~~~~~
 
 In addition to taking a request object parameter, such as 
-:sdk-net-api:`PutItemRequest <DynamoDBv2/TDynamoDBv2PutItemRequest>`, the async :code:`Begin` methods 
+:sdk-net-api:`PutItemRequest <DynamoDBv2/TPutItemRequest>`, the async :code:`Begin` methods 
 take two additional parameters: a callback function and a state object. Instead of returning a 
-:sdk-net-api:`service response object <Runtime/TRuntimeWebServiceResponse>`, the :code:`Begin` methods 
+:sdk-net-api:`service response object <Runtime/TWebServiceResponse>`, the :code:`Begin` methods 
 return a result of type :code:`IAsyncResult`. For the definition of this type, go to the 
 `MSDN documentation <http://msdn.microsoft.com/en-us/library/bkbsbb9x.aspx>`_.
 
