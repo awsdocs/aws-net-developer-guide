@@ -33,14 +33,13 @@ explicitly allowed are denied by default. You can create policies and attach the
 groups of users, roles assumed by users, and resources.
 
 Use the |sdk-net| to create and delete policies and attach and detach role policies
-by using these methods of the :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>`
+by using these methods of the :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>`
 class:
 
-* :sdk-net-api:`CreatePolicy <IAM/MIAMIAMServiceCreatePolicyCreatePolicyRequest>`
-* :sdk-net-api:`GetPolicy <IAM/MIAMIAMServiceGetPolicyGetPolicyRequest>`
-* :sdk-net-api:`ListAttachedRolePolicies <IAM/MIAMIAMServiceListAttachedRolePoliciesListAttachedRolePoliciesRequest>`
-* :sdk-net-api:`AttachRolePolicy <IAM/MIAMIAMServiceAttachRolePolicyAttachRolePolicyRequest>`
-* :sdk-net-api:`DetachRolePolicy <IAM/MIAMIAMServiceDetachRolePolicyDetachRolePolicyRequest>`
+* :sdk-net-api:`CreatePolicy <IAM/MIAMServiceCreatePolicyCreatePolicyRequest>`
+* :sdk-net-api:`GetPolicy <IAM/MIAMServiceGetPolicyGetPolicyRequest>`
+* :sdk-net-api:`AttachRolePolicy <IAM/MIAMServiceAttachRolePolicyAttachRolePolicyRequest>`
+* :sdk-net-api:`DetachRolePolicy <IAM/MIAMServiceDetachRolePolicyDetachRolePolicyRequest>`
 
 For more information about |IAM| users, see :iam-ug:`Overview of Access Management: Permissions and Policies <introduction_access-management.html>`
 in the |IAM-ug|.
@@ -48,12 +47,12 @@ in the |IAM-ug|.
 Create an IAM Policy
 ====================
 
-Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` object. Next,
-create a :sdk-net-api:`CreatePolicy <IAM/MIAMIAMServiceCreatePolicyCreatePolicyRequest>` object
+Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object. Next,
+create a :sdk-net-api:`CreatePolicyRequest <IAM/TCreatePolicyRequest>` object
 containing the parameters needed to create a new policy, which consists of the name you want
 to use for the new policy and a policy document.
 You create the policy document by calling the provided :code:`GenerateRolePolicyDocument` method. Upon
-returning from the :code:`CreatePolicy` method call, the :sdk-net-api:`CreatePolicyResponse <IAM/TIAMCreatePolicyResponse>`
+returning from the :code:`CreatePolicy` method call, the :sdk-net-api:`CreatePolicyResponse <IAM/TCreatePolicyResponse>`
 contains the policy ARN, which is displayed on the console. Please make a note of it so you can use it
 in the following examples.
 
@@ -143,12 +142,12 @@ in the following examples.
 Get an IAM Policy
 =================
 
-Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` object. Next,
-create a :sdk-net-api:`GetPolicyRequest <IAM/TIAMGetPolicyRequest>` object containing the parameter needed
+Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object. Next,
+create a :sdk-net-api:`GetPolicyRequest <IAM/TGetPolicyRequest>` object containing the parameter needed
 to get the policy, the policy ARN, which was returned by the :code:`CreatePolicy` method in the previous
 example.
 
-Call the :sdk-net-api:`GetPolicy <IAM/MIAMIAMServiceGetPolicyGetPolicyRequest>` method.
+Call the :sdk-net-api:`GetPolicy <IAM/MIAMServiceGetPolicyGetPolicyRequest>` method.
 
 .. code-block:: c#
 
@@ -177,8 +176,8 @@ Call the :sdk-net-api:`GetPolicy <IAM/MIAMIAMServiceGetPolicyGetPolicyRequest>` 
 Attach a Managed Role Policy
 ============================
 
-Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` object. Next,
-create an :sdk-net-api:`AttachRolePolicy <IAM/MIAMIAMServiceAttachRolePolicyAttachRolePolicyRequest>` object containing the
+Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object. Next,
+create an :sdk-net-api:`AttachRolePolicy <IAM/TAttachRolePolicyRequest>` object containing the
 parameters needed to attach the policy to the role, the role name, and the Jason policy returned by the
 :code:`GenerateRolePolicyDocument` method. Be sure to use a valid role from the roles associated with your
 AWS account.
@@ -225,8 +224,8 @@ AWS account.
 Detach a Managed Role Policy
 ============================
 
-Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` object. Next,
-create a :sdk-net-api:`DetachRolePolicy <IAM/MIAMIAMServiceDetachRolePolicyDetachRolePolicyRequest>` object containing the
+Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object. Next,
+create a :sdk-net-api:`DetachRolePolicy <IAM/TDetachRolePolicyRequest>` object containing the
 parameters needed to attach the policy to the role, the role name, and the Jason policy returned by the
 :code:`GenerateRolePolicyDocument` method. Be sure to use the role you used to attach the policy in the
 previous example.
