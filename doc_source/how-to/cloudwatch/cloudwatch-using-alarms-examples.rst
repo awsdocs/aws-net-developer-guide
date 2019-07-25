@@ -32,10 +32,11 @@ to be running. You can use the reboot and recover actions to automatically reboo
 
 In this example, .NET is used to define an alarm action in |CW| that triggers
 the reboot of an |EC2| instance. The methods use the |sdk-net| to manage |EC2| instances
-using these methods of the AmazonCloudWatchClient class:
+using these methods of the :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchClient>` class:
 
-* :sdk-net-api:`EnableAlarmActions <CloudWatch/MCloudWatchCloudWatchEnableAlarmActionsEnableAlarmActionsRequest>`
-* :sdk-net-api:`DisableAlarmActions <CloudWatch/MCloudWatchCloudWatchDisableAlarmActionsDisableAlarmActionsRequest>`
+* :sdk-net-api:`PutMetricAlarm <CloudWatch/MCloudWatchPutMetricAlarmPutMetricAlarmRequest>`
+* :sdk-net-api:`EnableAlarmActions <CloudWatch/MCloudWatchEnableAlarmActionsEnableAlarmActionsRequest>`
+* :sdk-net-api:`DisableAlarmActions <CloudWatch/MCloudWatchDisableAlarmActionsDisableAlarmActionsRequest>`
 
 For more information about |CW| alarm actions, see
 :cw-ug:`Create Alarms to Stop, Terminate, Reboot, or Recover an Instance <UsingAlarmActions>`
@@ -52,11 +53,11 @@ To set up and run this example, you must first:
 Create and Enable Actions on an Alarm
 =====================================
 
-#. Create an :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchCloudWatchClient>` instance
-   and a :sdk-net-api:`PutMetricAlarmRequest <CloudWatch/TCloudWatchPutMetricAlarmRequest>`
+#. Create an :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchClient>` instance
+   and a :sdk-net-api:`PutMetricAlarmRequest <CloudWatch/TPutMetricAlarmRequest>`
    object to hold the parameters for creating an alarm, specifying :code:`ActionsEnabled` as true and
    an array of ARNs for the actions the alarm  will trigger. Call the 
-   :sdk-net-api:`PutMetricAlarm <CloudWatch/MCloudWatchCloudWatchPutMetricAlarmPutMetricAlarmRequest>` 
+   :sdk-net-api:`PutMetricAlarm <CloudWatch/MCloudWatchPutMetricAlarmPutMetricAlarmRequest>` 
    method of the :code:`AmazonCloudWatchClient` object, which creates the alarm if it doesn't exist 
    or updates it if the alarm does exist.
 
@@ -86,9 +87,9 @@ Create and Enable Actions on an Alarm
             }
 
 #. When :code:`PutMetricAlarm` completes successfully, create an
-   :sdk-net-api:`EnableAlarmActionsRequest <CloudWatch/TCloudWatchEnableAlarmActionsRequest>`
+   :sdk-net-api:`EnableAlarmActionsRequest <CloudWatch/TEnableAlarmActionsRequest>`
    object containing the name of the |CW| alarm. Call the
-   :sdk-net-api:`EnableAlarmActions <CloudWatch/MCloudWatchCloudWatchEnableAlarmActionsEnableAlarmActionsRequest>`
+   :sdk-net-api:`EnableAlarmActions <CloudWatch/MCloudWatchEnableAlarmActionsEnableAlarmActionsRequest>`
    method to enable the alarm action.
 
     .. code-block:: c#
@@ -99,10 +100,10 @@ Create and Enable Actions on an Alarm
                 });
 
 
-#. Create a :sdk-net-api:`MetricDatum <CloudWatch/TCloudWatchMetricDatum>` object containing
+#. Create a :sdk-net-api:`MetricDatum <CloudWatch/TMetricDatum>` object containing
    the CPUUtilization custom metric. Create a
-   :sdk-net-api:`PutMetricDataRequest <CloudWatch/TCloudWatchPutMetricDataRequest>`
-   object containing the :code:`MetricData` parameter needed to submit a data point for the CPUUtilization metric. Call the :sdk-net-api:`PutMetricData <CloudWatch/MCloudWatchCloudWatchPutMetricDataPutMetricDataRequest>` method.
+   :sdk-net-api:`PutMetricDataRequest <CloudWatch/TPutMetricDataRequest>`
+   object containing the :code:`MetricData` parameter needed to submit a data point for the CPUUtilization metric. Call the :sdk-net-api:`PutMetricData <CloudWatch/MCloudWatchPutMetricDataPutMetricDataRequest>` method.
 
     .. code-block:: c#
 
@@ -117,9 +118,9 @@ Create and Enable Actions on an Alarm
 Disable Actions on an Alarm
 ===========================
 
-Create an :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchCloudWatchClient>` instance and a
-:sdk-net-api:`DisableAlarmActionsRequest <CloudWatch/TCloudWatchDisableAlarmActionsRequest>` object 
-containing the name of the |CW| alarm. Call the :sdk-net-api:`DisableAlarmActions <CloudWatch/MCloudWatchCloudWatchDisableAlarmActionsDisableAlarmActionsRequest>`
+Create an :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchClient>` instance and a
+:sdk-net-api:`DisableAlarmActionsRequest <CloudWatch/TDisableAlarmActionsRequest>` object 
+containing the name of the |CW| alarm. Call the :sdk-net-api:`DisableAlarmActions <CloudWatch/MCloudWatchDisableAlarmActionsDisableAlarmActionsRequest>`
 method to disable the actions for this alarm.
 
     .. code-block:: c#
