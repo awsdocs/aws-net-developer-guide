@@ -26,7 +26,7 @@ differences in support for each platform.
 ==================
 
 This version of the |sdk-net| is compiled against .NET Framework 4.5 and runs in the .NET 4.0
-runtime. AWS service clients support synchronous and asynhronous calling patterns and use the
+runtime. AWS service clients support synchronous and asynchronous calling patterns and use the
 `async and await <http://msdn.microsoft.com/en-us/library/vstudio/hh191443.aspx>`_ keywords
 introduced in `C# 5.0 <https://en.wikipedia.org/wiki/C_Sharp_%28programming_language%29#Versions>`_.
 
