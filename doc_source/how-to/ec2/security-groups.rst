@@ -163,7 +163,7 @@ You can enumerate your security groups and check whether a security group exists
     object. Assign values to the :code:`GroupName`, :code:`Description`, and :code:`VpcId` properties.
 
     The :sdk-net-api:`CreateSecurityGroup <EC2/MEC2CreateSecurityGroupCreateSecurityGroupRequest>` method
-    returns a :sdk-net-api:`CreateSecurityGroupResponse <EC2/TCreateSecurityGroupRequest>` object. You
+    returns a :sdk-net-api:`CreateSecurityGroupResponse <EC2/TCreateSecurityGroupResponse>` object. You
     can get the identifier of the new security group from the response and then use
     :sdk-net-api:`DescribeSecurityGroups <EC2/MEC2DescribeSecurityGroupsDescribeSecurityGroupsRequest>`
     with the security group identifier to get the :sdk-net-api:`SecurityGroup <EC2/TSecurityGroup>`
