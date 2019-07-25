@@ -36,7 +36,7 @@ how to use them, and why you would want to use them.
 Low-Level APIs
 --------------
 
-The the SDK provides low-level APIs for programming with |SQS|. These APIs typically consist of sets
+The SDK provides low-level APIs for programming with |SQS|. These APIs typically consist of sets
 of matching request-and-response objects that correspond to HTTP-based API calls focusing on their
 corresponding service-level constructs.
 
