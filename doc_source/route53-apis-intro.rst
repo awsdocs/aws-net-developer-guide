@@ -165,7 +165,7 @@ The numbers in the following sections are keyed to the comments in the preceding
 
   **To create a hosted zone**
 
-  1. Create a :sdk-net-api:`CreateHostedZoneRequest <Route53/TRoute53CreateHostedZoneRequest>` object 
+  1. Create a :sdk-net-api:`CreateHostedZoneRequest <Route53/TCreateHostedZoneRequest>` object 
      and specify the following request parameters. There are also two optional parameters that 
      aren't used by this example.
 
@@ -180,22 +180,22 @@ The numbers in the following sections are keyed to the comments in the preceding
         the :code:`CallerReference` value.
     
   2. Pass the :classname:`CreateHostedZoneRequest` object to the client object's 
-     :sdk-net-api:`CreateHostedZone <Route53/MRoute53Route53CreateHostedZoneCreateHostedZoneRequest>` 
-     method. The method returns a :sdk-net-api:`CreateHostedZoneResponse <Route53/TRoute53CreateHostedZoneResponse>` 
+     :sdk-net-api:`CreateHostedZone <Route53/MRoute53CreateHostedZoneCreateHostedZoneRequest>` 
+     method. The method returns a :sdk-net-api:`CreateHostedZoneResponse <Route53/TCreateHostedZoneResponse>` 
      object that contains information about the request, including the 
-     :sdk-net-api:`HostedZone.Id <Route53/TRoute53HostedZone>` property that identifies zone.
+     :code:`HostedZone.Id` property that identifies zone.
 
 [3] Create a resource record set change batch
   A hosted zone can have multiple resource record sets. Each set specifies how a subset of the 
   domain's traffic, such as email requests, should be routed. You can update a zone's resource record 
   sets with a single request. The first step is to package all the updates in a 
-  :sdk-net-api:`ChangeBatch <Route53/TRoute53ChangeBatch>` object. This example specifies only one update, 
+  :sdk-net-api:`ChangeBatch <Route53/TChangeBatch>` object. This example specifies only one update, 
   adding a basic resource record set to the zone, but a :code:`ChangeBatch` object can contain updates
   for multiple resource record sets.
 
   **To create a ChangeBatch object**
  
-  1. Create a :sdk-net-api:`ResourceRecordSet <Route53/TRoute53ResourceRecordSet>` object for each 
+  1. Create a :sdk-net-api:`ResourceRecordSet <Route53/TResourceRecordSet>` object for each 
      resource record set you want to update. The group of properties you specify depends on the 
      type of resource record set. For a complete description of the properties used by the different 
      resource record sets, see 
@@ -216,12 +216,12 @@ The numbers in the following sections are keyed to the comments in the preceding
         :r53-dg:`Supported DNS Resource Record Types <ResourceRecordTypes>`.
      
      :code:`ResourceRecords`
-        A list of one or more :sdk-net-api:`ResourceRecord <Route53/TRoute53ResourceRecord>` objects, each of
+        A list of one or more :sdk-net-api:`ResourceRecord <Route53/TResourceRecord>` objects, each of
         which contains a DNS record value that depends on the DNS record type. For an :code:`A`
         record type, the record value is an IPv4 address, which for this example is set to a
         standard example address, :code:`192.0.2.235`.
  
-  2. Create a :sdk-net-api:`Change <Route53/TRoute53Change>` object for each resource record set, and set the following
+  2. Create a :sdk-net-api:`Change <Route53/TChange>` object for each resource record set, and set the following
      properties.
  
      :code:`ResourceRecordSet`
@@ -234,7 +234,7 @@ The numbers in the following sections are keyed to the comments in the preceding
         This example creates a new resource record set in the hosted zone, so :code:`Action` is
         set to :code:`CREATE`.
  
-  3. Create a :sdk-net-api:`ChangeBatch <Route53/TRoute53ChangeBatch>` object and set its :code:`Changes` 
+  3. Create a :sdk-net-api:`ChangeBatch <Route53/TChangeBatch>` object and set its :code:`Changes` 
      property to a list of the :classname:`Change` objects that you created in the previous step.
  
 [4] Update the zone's resource record sets
@@ -243,7 +243,7 @@ The numbers in the following sections are keyed to the comments in the preceding
   
   **To update a hosted zone's resource record sets**
 
-  1. Create a :sdk-net-api:`ChangeResourceRecordSetsRequest <Route53/TRoute53ChangeResourceRecordSetsRequest>` 
+  1. Create a :sdk-net-api:`ChangeResourceRecordSetsRequest <Route53/TChangeResourceRecordSetsRequest>` 
      object with the following property settings.
 
      :code:`HostedZoneId`
@@ -255,9 +255,9 @@ The numbers in the following sections are keyed to the comments in the preceding
          A :classname:`ChangeBatch` object that contains the updates.
 
   2. Pass the :classname:`ChangeResourceRecordSetsRequest` object to the 
-     :sdk-net-api:`ChangeResourceRecordSets <Route53/MRoute53Route53ChangeResourceRecordSetsChangeResourceRecordSetsRequest>` 
+     :sdk-net-api:`ChangeResourceRecordSets <Route53/MRoute53ChangeResourceRecordSetsChangeResourceRecordSetsRequest>` 
      method of the client object. It returns a 
-     :sdk-net-api:`ChangeResourceRecordSetsResponse <Route53/TRoute53ChangeResourceRecordSetsResponse>` 
+     :sdk-net-api:`ChangeResourceRecordSetsResponse <Route53/TChangeResourceRecordSetsResponse>` 
      object, which contains a request ID you can use to monitor the request's progress.
 
 [5] Monitor the update status
@@ -266,10 +266,10 @@ The numbers in the following sections are keyed to the comments in the preceding
   
   **To monitor update status**
 
-  1. Create a :sdk-net-api:`GetChangeRequest <Route53/TRoute53GetChangeRequest>` object and set its 
+  1. Create a :sdk-net-api:`GetChangeRequest <Route53/TGetChangeRequest>` object and set its 
      :code:`Id` property to the request ID that was returned by :methodname:`ChangeResourceRecordSets`.
 
-  2. Use a wait loop to periodically call the :sdk-net-api:`GetChange <Route53/MRoute53Route53GetChangeGetChangeRequest>` 
+  2. Use a wait loop to periodically call the :sdk-net-api:`GetChange <Route53/MRoute53GetChangeGetChangeRequest>` 
      method of the client object. :methodname:`GetChange` returns :code:`PENDING` while the update 
      is in progress and :code:`INSYNC` after the update is complete. You can use the same
      :classname:`GetChangeRequest` object for all of the method calls.
