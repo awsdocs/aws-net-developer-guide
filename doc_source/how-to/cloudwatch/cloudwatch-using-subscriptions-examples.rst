@@ -35,11 +35,11 @@ events are delivered to your AWS resource. This example shows how to list, creat
 subscription filter in |CWL|. The destination for the log events is a |LAM| function.
 
 This example uses the |sdk-net| to manage subscription filters using these methods of the
-:sdk-net-api:`AmazonCloudWatchLogsClient <CloudWatchLogs/TCloudWatchLogsCloudWatchLogsClient>` class:
+:sdk-net-api:`AmazonCloudWatchLogsClient <CloudWatch/TCloudWatchClient>` class:
 
-* :sdk-net-api:`DescribeSubscriptionFilters <CloudWatchLogs/MCloudWatchLogsCloudWatchLogsDescribeSubscriptionFiltersDescribeSubscriptionFiltersRequest>`
-* :sdk-net-api:`PutSubscriptionFilter <CloudWatchLogs/MCloudWatchLogsCloudWatchLogsPutSubscriptionFilterPutSubscriptionFilterRequest>`
-* :sdk-net-api:`DeleteSubscriptionFilter <CloudWatchLogs/MCloudWatchLogsCloudWatchLogsDeleteSubscriptionFilterDeleteSubscriptionFilterRequest>`
+* :sdk-net-api:`DescribeSubscriptionFilters <CloudWatchLogs/MCloudWatchLogsDescribeSubscriptionFiltersDescribeSubscriptionFiltersRequest>`
+* :sdk-net-api:`PutSubscriptionFilter <CloudWatchLogs/MCloudWatchLogsPutSubscriptionFilterPutSubscriptionFilterRequest>`
+* :sdk-net-api:`DeleteSubscriptionFilter <CloudWatchLogs/MCloudWatchLogsDeleteSubscriptionFilterDeleteSubscriptionFilterRequest>`
 
 For more information about |CWL| subscriptions, see
 :cwl-ug:`Real-time Processing of Log Data with Subscriptions <Subscriptions>`
@@ -56,11 +56,11 @@ To set up and run this example, you must first:
 Describe Existing Subscription Filters
 ======================================
 
-Create an :sdk-net-api:`AmazonCloudWatchLogsClient <CloudWatchLogs/TCloudWatchLogsCloudWatchLogsClient>`
-object. Create a :sdk-net-api:`DescribeSubscriptionFiltersRequest <CloudWatchLogs/TCloudWatchLogsDescribeSubscriptionFiltersRequest>`
+Create an :sdk-net-api:`AmazonCloudWatchLogsClient <CloudWatch/TCloudWatchClient>`
+object. Create a :sdk-net-api:`DescribeSubscriptionFiltersRequest <CloudWatchLogs/TDescribeSubscriptionFiltersRequest>`
 object containing the parameters needed to describe your existing filters. Include the name of the
 log group and the maximum number of filters you want described. Call the
-:sdk-net-api:`DescribeSubscriptionFilters <CloudWatchLogs/MCloudWatchLogsCloudWatchLogsDescribeSubscriptionFiltersDescribeSubscriptionFiltersRequest>`
+:sdk-net-api:`DescribeSubscriptionFilters <CloudWatchLogs/MCloudWatchLogsDescribeSubscriptionFiltersDescribeSubscriptionFiltersRequest>`
 method.
 
 .. code-block:: c#
@@ -90,11 +90,11 @@ method.
 Create a Subscription Filter
 ============================
 
-Create an :sdk-net-api:`AmazonCloudWatchLogsClient <CloudWatchLogs/TCloudWatchLogsCloudWatchLogsClient>`
-object. Create a :sdk-net-api:`PutSubscriptionFilterRequest <CloudWatchLogs/TCloudWatchLogsPutSubscriptionFilterRequest>`
+Create an :sdk-net-api:`AmazonCloudWatchLogsClient <CloudWatch/TCloudWatchClient>`
+object. Create a :sdk-net-api:`PutSubscriptionFilterRequest <CloudWatchLogs/TPutSubscriptionFilterRequest>`
 object containing the parameters needed to create a filter, including the ARN of the destination |LAM|
 function, the name of the filter, the string pattern for filtering, and the name of the log group.
-Call the :sdk-net-api:`PutSubscriptionFilter <CloudWatchLogs/MCloudWatchLogsCloudWatchLogsPutSubscriptionFilterPutSubscriptionFilterRequest>`
+Call the :sdk-net-api:`PutSubscriptionFilter <CloudWatchLogs/MCloudWatchLogsPutSubscriptionFilterPutSubscriptionFilterRequest>`
 method.
 
 .. code-block:: c#
@@ -126,10 +126,10 @@ method.
 Delete a Subscription Filter
 ============================
 
-Create an :sdk-net-api:`AmazonCloudWatchLogsClient <CloudWatchLogs/TCloudWatchLogsCloudWatchLogsClient>`
-object. Create a :sdk-net-api:`DeleteSubscriptionFilterRequest <CloudWatchLogs/TCloudWatchLogsDeleteSubscriptionFilterRequest>`
+Create an :sdk-net-api:`AmazonCloudWatchLogsClient <CloudWatch/TCloudWatchClient>`
+object. Create a :sdk-net-api:`DeleteSubscriptionFilterRequest <CloudWatchLogs/TDeleteSubscriptionFilterRequest>`
 object containing the parameters needed to delete a filter, including the names of the filter and the
-log group. Call the :sdk-net-api:`DeleteSubscriptionFilter <CloudWatchLogs/MCloudWatchLogsCloudWatchLogsDeleteSubscriptionFilterDeleteSubscriptionFilterRequest>`
+log group. Call the :sdk-net-api:`DeleteSubscriptionFilter <CloudWatchLogs/MCloudWatchLogsDeleteSubscriptionFilterDeleteSubscriptionFilterRequest>`
 method.
 
 .. code-block:: c#
