@@ -39,7 +39,7 @@ AWS sends you a confirmation email after the sign-up process is complete. At any
 your current account activity and manage your account by going to `http://aws.amazon.com <http://aws.amazon.com>`_
 and clicking :guilabel:`My Account/Console`.
 
-To use the the SDK, you must have a set of valid AWS credentials, which consist of an access key and
+To use the SDK, you must have a set of valid AWS credentials, which consist of an access key and
 a secret key. These keys are used to sign programmatic web service requests and enable AWS to verify
 that the request comes from an authorized source. You can obtain a set of account credentials when
 you create your account. However, we recommend that you do not use these credentials with the SDK.
@@ -49,7 +49,7 @@ temporary credentials.
 
 The preferred approach for handling credentials is to create a profile for each set of credentials
 in the SDK Store. You can create and manage profiles with the |TVSlong|, PowerShell cmdlets, or
-programmatically with the the SDK. These credentials are encrypted and stored separately from any
+programmatically with the SDK. These credentials are encrypted and stored separately from any
 project. You then reference the profile by name in your application, and the credentials are
 inserted at build time. This approach ensures that your credentials are not unintentionally exposed
 with your project on a public site. For more information, see 
@@ -64,7 +64,7 @@ For more information about managing your credentials, see
 Install the .NET Development Environment
 ========================================
 
-To use the the SDK, you must have the following installed.
+To use the SDK, you must have the following installed.
 
 
 Requirements
@@ -74,10 +74,10 @@ Requirements
 
 * (Required) Microsoft Visual Studio 2010 or later
 
-* (Required) The the SDK
+* (Required) The SDK
 
 * (Recommended) |TVSlong|, a plugin that provides a user interface for managing your AWS resources
-  from Visual Studio, and includes the the SDK. For more information, see 
+  from Visual Studio, and includes the SDK. For more information, see 
   :tvs-ug:`Using the AWS Toolkit for Visual Studio <welcome>`.
 
 .. note:: We recommend using Visual Studio Professional 2010 or higher to implement your applications.
@@ -89,7 +89,7 @@ Install the |sdk-net|
 
 The following procedure describes how to install the |TFW|, which contains the |sdk-net|.
 
-**To install the the SDK**
+**To install the SDK**
 
 1. Go to |sdk-net|_. Click the :guilabel:`Download` button
    in the upper right corner of the page. Your browser will prompt you to save the install file.
@@ -97,12 +97,12 @@ The following procedure describes how to install the |TFW|, which contains the |
    .. tip:: The |sdk-net| is also available on `GitHub <https://github.com/aws/aws-sdk-net>`_.
 
 2. To begin the install process, open the saved install file and follow the on-screen
-   instructions. Version 2 of the the SDK can be found in the :file:`past-releases` folder of the the SDK installation directory.
+   instructions. Version 2 of the SDK can be found in the :file:`past-releases` folder of the SDK installation directory.
 
    .. tip:: By default, the |TFW| is installed in the *Program Files* directory, which requires 
       administrator privileges. To install the |TFW| as a non-administrator, specify a different installation directory.
 
-3. (Optional) You can install extensions for the the SDK, which include a session state provider and a
+3. (Optional) You can install extensions for the SDK, which include a session state provider and a
    trace listener. For more information, see :ref:`net-dg-nuget`.
 
 
@@ -125,7 +125,7 @@ AWS Web Project
 
 You can also base your application on one of the standard Visual Studio project templates. Just add
 a reference to the AWS .NET library (:file:`AWSSDK.dll`), which is located in the
-:file:`past-releases` folder of the the SDK installation directory.
+:file:`past-releases` folder of the SDK installation directory.
 
 The following procedure gets you started by creating and running a new AWS Console project for
 Visual Studio 2012; the process is similar for other project types and Visual Studio versions. For
