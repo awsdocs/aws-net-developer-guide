@@ -30,10 +30,10 @@ The Scenario
 Metrics are data about the performance of your systems. You can enable detailed monitoring of some
 resources such as your |EC2| instances or your own application metrics. In this example, you use
 .NET to retrieve a list of published |CW| metrics and publish data points to |CW| metrics using
-these methods of the :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchCloudWatchClient>` class:
+these methods of the :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchClient>` class:
 
-* :sdk-net-api:`ListMetrics <CloudWatch/MCloudWatchCloudWatchListMetricsListMetricsRequest>`
-* :sdk-net-api:`PutMetricData <CloudWatch/MCloudWatchCloudWatchPutMetricDataPutMetricDataRequest>`
+* :sdk-net-api:`ListMetrics <CloudWatch/MCloudWatchListMetricsListMetricsRequest>`
+* :sdk-net-api:`PutMetricData <CloudWatch/MCloudWatchPutMetricDataPutMetricDataRequest>`
 
 For more information about |CW| metrics, see
 :cw-ug:`Using Amazon CloudWatch Metrics <working_with_metrics>` in the |CW-ug|.
@@ -49,10 +49,10 @@ To set up and run this example, you must first:
 List Metrics
 ============
 
-Create a :sdk-net-api:`ListMetricsRequest <CloudWatch/TCloudWatchListMetricsRequest>` object containing
+Create a :sdk-net-api:`ListMetricsRequest <CloudWatch/TListMetricsRequest>` object containing
 the parameters needed to list metrics within the :code:`AWS/Logs` namespace. Call the
-:sdk-net-api:`ListMetrics <CloudWatch/MCloudWatchCloudWatchListMetricsListMetricsRequest>` method from
-a :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchCloudWatchClient>` instance to list the
+:sdk-net-api:`ListMetrics <CloudWatch/MCloudWatchListMetricsListMetricsRequest>` method from
+a :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchClient>` instance to list the
 :code:`IncomingLogEvents` metric.
 
 .. code-block:: c#
@@ -85,10 +85,10 @@ a :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchCloudWatchClient>`
 Submit Custom Metrics
 =====================
 
-Create a :sdk-net-api:`PutMetricDataRequest <CloudWatch/TCloudWatchPutMetricDataRequest>` object
+Create a :sdk-net-api:`PutMetricDataRequest <CloudWatch/TPutMetricDataRequest>` object
 containing the parameters needed to submit a data point for the :code:`PAGES_VISITED` custom metric. Call
-the :sdk-net-api:`PutMetricData <CloudWatch/MCloudWatchCloudWatchPutMetricDataPutMetricDataRequest>` method
-from the :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchCloudWatchClient>` instance.
+the :sdk-net-api:`PutMetricData <CloudWatch/MCloudWatchPutMetricDataPutMetricDataRequest>` method
+from the :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchClient>` instance.
 
 .. code-block:: c#
 
