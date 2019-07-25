@@ -85,7 +85,7 @@ You can manage the profiles in the |sdk-store| in several ways.
 
 * Use the graphical user interface (GUI) in the |TVSlong| to manage profiles. For more information about
   adding credentials to the |sdk-store| by using the GUI, see
-  :tvs-ug:`Specifying Credentials <tkv_setup.html#tkv_setup.creds>` in the |TVSlong|.
+  :tvs-ug:`Providing AWS Credentials <credentials.html>` in the |TVSlong|.
 
 * You can manage your profiles from the command line by using the :code:`Set-AWSCredentials` cmdlet in
   |TWPlong|. For more information, see :twp-ug:`Using AWS Credentials <specifying-your-aws-credentials>`.
