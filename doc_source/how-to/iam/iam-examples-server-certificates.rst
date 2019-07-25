@@ -36,12 +36,12 @@ certificate. To use a certificate that you obtained from an external provider wi
 you must upload the certificate to |IAM| or import it into AWS Certificate Manager.
 
 These examples use the |sdk-net| to send and receive messages by using these methods of the
-:sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` class:
+:sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` class:
 
-* :sdk-net-api:`ListServerCertificates <IAM/MIAMIAMServiceListServerCertificatesListServerCertificatesRequest>`
-* :sdk-net-api:`GetServerCertificate <IAM/MIAMIAMServiceGetServerCertificateGetServerCertificateRequest>`
-* :sdk-net-api:`UpdateServerCertificate <IAM/MIAMIAMServiceUpdateServerCertificateUpdateServerCertificateRequest>`
-* :sdk-net-api:`DeleteServerCertificate <IAM/MIAMIAMServiceDeleteServerCertificateDeleteServerCertificateRequest>`
+* :sdk-net-api:`ListServerCertificates <IAM/MIAMServiceListServerCertificatesListServerCertificatesRequest>`
+* :sdk-net-api:`GetServerCertificate <IAM/MIAMServiceGetServerCertificateGetServerCertificateRequest>`
+* :sdk-net-api:`UpdateServerCertificate <IAM/MIAMServiceUpdateServerCertificateUpdateServerCertificateRequest>`
+* :sdk-net-api:`DeleteServerCertificate <IAM/MIAMServiceDeleteServerCertificateDeleteServerCertificateRequest>`
 
 For more information about server certificates, see
 :iam-ug:`Working with Server Certificates <id_credentials_server-certs>`
@@ -50,10 +50,10 @@ in the |IAM-ug|.
 List Your Server Certificates
 =============================
 
-Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` object.
-Next, create a :sdk-net-api:`ListServerCertificatesRequest <IAM/TIAMListServerCertificatesRequest>` object.
+Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object.
+Next, create a :sdk-net-api:`ListServerCertificatesRequest <IAM/TListServerCertificatesRequest>` object.
 
-There are no required parameters. Call the :sdk-net-api:`ListServerCertificates <IAM/MIAMIAMServiceListServerCertificatesListServerCertificatesRequest>`
+There are no required parameters. Call the :sdk-net-api:`ListServerCertificates <IAM/MIAMServiceListServerCertificatesListServerCertificatesRequest>`
 method of the :code:`AmazonIdentityManagementServiceClient` object.
 
 .. code-block:: c#
@@ -81,9 +81,9 @@ method of the :code:`AmazonIdentityManagementServiceClient` object.
 Get a Server Certificate
 ========================
 
-Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>`
-object. Next, create a :sdk-net-api:`GetServerCertificateRequest <IAM/TIAMGetServerCertificateRequest>`
-object, specifying the :code:`ServerCertificateName`. Call the :sdk-net-api:`GetServerCertificate <IAM/MIAMIAMServiceGetServerCertificateGetServerCertificateRequest>`
+Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>`
+object. Next, create a :sdk-net-api:`GetServerCertificateRequest <IAM/TGetServerCertificateRequest>`
+object, specifying the :code:`ServerCertificateName`. Call the :sdk-net-api:`GetServerCertificate <IAM/MIAMServiceGetServerCertificateGetServerCertificateRequest>`
 method of the :code:`AmazonIdentityManagementServiceClient` object.
 
 .. code-block:: c#
@@ -109,10 +109,10 @@ method of the :code:`AmazonIdentityManagementServiceClient` object.
 Update a Server Certificate
 ===========================
 
-Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>`
-object. Next, create an :sdk-net-api:`UpdateServerCertificateRequest <IAM/TIAMUpdateServerCertificateRequest>`
+Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>`
+object. Next, create an :sdk-net-api:`UpdateServerCertificateRequest <IAM/TUpdateServerCertificateRequest>`
 object, specifying the :code:`ServerCertificateName` and the :code:`NewServerCertificateName`. Call the
-:sdk-net-api:`UpdateServerCertificate <IAM/MIAMIAMServiceUpdateServerCertificateUpdateServerCertificateRequest>`
+:sdk-net-api:`UpdateServerCertificate <IAM/MIAMServiceUpdateServerCertificateUpdateServerCertificateRequest>`
 method of the :code:`AmazonIdentityManagementServiceClient` object.
 
 .. code-block:: c#
@@ -143,9 +143,9 @@ method of the :code:`AmazonIdentityManagementServiceClient` object.
 Delete a Server Certificate
 =============================
 
-Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` object.
-Next, create a :sdk-net-api:`DeleteServerCertificateRequest <IAM/TIAMDeleteServerCertificateRequest>`
-object, specifying the :code:`ServerCertificateName`. Call the :sdk-net-api:`DeleteServerCertificate <IAM/MIAMIAMServiceDeleteServerCertificateDeleteServerCertificateRequest>`
+Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object.
+Next, create a :sdk-net-api:`DeleteServerCertificateRequest <IAM/TDeleteServerCertificateRequest>`
+object, specifying the :code:`ServerCertificateName`. Call the :sdk-net-api:`DeleteServerCertificate <IAM/MIAMServiceDeleteServerCertificateDeleteServerCertificateRequest>`
 method of the :code:`AmazonIdentityManagementServiceClient` object.
 
 .. code-block:: c#
