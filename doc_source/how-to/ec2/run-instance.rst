@@ -261,7 +261,7 @@ and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-platforms>` in 
        to get a list of instance IDs for the new instances. The :code:`Reservation.Instances` property
        contains a list of :sdk-net-api:`Instance <EC2/TInstance>` objects, one for each EC2
        instance you successfully launched. You can retrieve the ID for each instance from the
-       :code:`InstanceId` property of the :sdk-net-api:`Instance <EC2/TInstance>` object'.
+       :code:`InstanceId` property of the :sdk-net-api:`Instance <EC2/TInstance>` object.
 
        .. code-block:: csharp
 
