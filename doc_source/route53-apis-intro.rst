@@ -154,7 +154,7 @@ The numbers in the following sections are keyed to the comments in the preceding
       actions in this case. Attempts to call actions that lack permissions will fail. For more
       information, see :ref:`net-dg-config-creds`.
 
-  The :sdk-net-api:`AmazonRoute53Client <Route53/TRoute53Route53Client>` class supports a set of public methods
+  The :sdk-net-api:`AmazonRoute53Client <Route53/TRoute53Client>` class supports a set of public methods
   that you use to invoke :r53-dg:`Amazon Route 53 actions <Welcome>`. You create the client object
   by instantiating a new instance of the :classname:`AmazonRoute53Client` class. There are
   multiple constructors. 
