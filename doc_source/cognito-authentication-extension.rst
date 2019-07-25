@@ -14,11 +14,9 @@
 Amazon CognitoAuthentication Extension Library Examples
 #######################################################
 
-
 .. meta::
    :description: Use Cognito to create user identities and authenticate identities.
    :keywords: AWS SDK for .NET examples, {Cognito}
-
 
 The CognitoAuthentication extension library simplifies the authentication process of |COG| user pools
 for .NET Core and Xamarin developers. The library is built on top of the Amazon Cognito Identity
@@ -36,7 +34,6 @@ The following examples require these :code:`using` statements:
    :lines: 1-10
    :dedent: 8
    :language: csharp
-
 
 Use Basic Authentication
 ------------------------
@@ -60,7 +57,6 @@ Do a basic authentication request as before, and :code:`await` an :code:`AuthFlo
    :lines: 96-152
    :language: csharp
 
-
 Use AWS Resources after Authentication
 ----------------------------------------
 
@@ -70,7 +66,6 @@ Once a user is authenticated using the CognitoAuthentication library, the next s
    :dedent: 8
    :lines: 154-180
    :language: csharp
-
 
 More Authentication Options
 ===========================
