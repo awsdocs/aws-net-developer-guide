@@ -58,10 +58,6 @@ After you create this file, you are ready to create and initialize your |SQS| cl
    |console| in conjunction with your development, be sure to specify the same region in both your
    code and the console.
 
-   The |sdk-net| uses |cnnorth1-name| as the default region if you do not specify a region in your
-   code. Therefore, when using the |console| in conjunction with your development, be sure to
-   specify that region in both your code and the console.
-
    Go to |regions-and-endpoints|_ for the current list of regions and corresponding endpoints
    for each of the services offered by AWS.
 
