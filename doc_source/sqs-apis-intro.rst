@@ -27,7 +27,7 @@ The following information introduces you to the |SQS| programming models in the 
 Programming Models
 ==================
 
-The the SDK provides two programming models for working with |SQS|. These programming models are
+The SDK provides two programming models for working with |SQS|. These programming models are
 known as the *low-level* and *resource* models. The following information describes these models,
 how to use them, and why you would want to use them.
 
