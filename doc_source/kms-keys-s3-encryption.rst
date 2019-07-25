@@ -14,7 +14,7 @@
 Using |KMS| Keys with the AmazonS3EncryptionClient in the |sdk-net|
 ###################################################################
 
-The :sdk-net-api:`AmazonS3EncryptionClient <S3/TS3EncryptionS3EncryptionClient>` class implements the
+The :sdk-net-api:`AmazonS3EncryptionClient <S3/TS3EncryptionClient>` class implements the
 same interface as the standard :code:`AmazonS3Client`. This means it's easy to switch to the :code:`AmazonS3EncryptionClient`
 class. In fact, your application code won't be aware of the encryption and decryption happening automatically
 in the client.
