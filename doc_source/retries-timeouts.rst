@@ -74,14 +74,14 @@ The following are the exceptions to the default timeout values. These values are
 you explicitly set the timeout values.
 
 * :code:`Timeout` and :code:`ReadWriteTimeout` are set to the maximum values if the method being
-  called uploads a stream, such as :sdk-net-api:`AmazonS3Client.PutObject() <S3/MS3S3PutObjectPutObjectRequest>`, 
-  :sdk-net-api:`AmazonS3Client.UploadPart() <S3/MS3S3UploadPartUploadPartRequest>`, 
-  :sdk-net-api:`AmazonGlacierClient.UploadArchive() <Glacier/MGlacierGlacierUploadArchiveUploadArchiveRequest>`, 
+  called uploads a stream, such as :sdk-net-api:`AmazonS3Client.PutObject() <S3/MS3PutObjectPutObjectRequest>`, 
+  :sdk-net-api:`AmazonS3Client.UploadPart() <S3/MS3UploadPartUploadPartRequest>`, 
+  :sdk-net-api:`AmazonGlacierClient.UploadArchive() <Glacier/MGlacierUploadArchiveUploadArchiveRequest>`, 
   and so on.
 
 * The version of the |sdk-net| that targets the .NET Framework 4.5 sets :code:`Timeout` and
   :code:`ReadWriteTimeout` to the maximum values for all :sdk-net-api:`AmazonS3Client <S3/TS3S3Client>` and
-  :sdk-net-api:`AmazonGlacierClient <Glacier/TGlacierGlacierClient>` objects.
+  :sdk-net-api:`AmazonGlacierClient <Glacier/TGlacierClient>` objects.
 
 * The version of the |sdk-net| that targets the portable class library (PCL) sets :code:`Timeout` to the
   maximum value for all :sdk-net-api:`AmazonS3Client <S3/TS3S3Client>` and 
