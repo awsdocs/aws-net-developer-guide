@@ -34,12 +34,12 @@ The Scenario
 An alarm watches a single metric over a time period you specify. It performs one or more actions
 based on the value of the metric, relative to a given threshold over a number of time periods. The
 following examples show how to describe, create, and delete alarms
-in |CW| using these methods of the ``AmazonCloudWatchClient``
+in |CW| using these methods of the :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchClient>`
 class:
 
-* :sdk-net-api:`DescribeAlarms <CloudWatch/MCloudWatchCloudWatchDescribeAlarmsDescribeAlarmsRequest>`
-* :sdk-net-api:`PutMetricAlarm <CloudWatch/MCloudWatchCloudWatchPutMetricAlarmPutMetricAlarmRequest>`
-* :sdk-net-api:`DeleteAlarms <CloudWatch/MCloudWatchCloudWatchDeleteAlarmsDeleteAlarmsRequest>`
+* :sdk-net-api:`DescribeAlarms <CloudWatch/MCloudWatchDescribeAlarmsDescribeAlarmsRequest>`
+* :sdk-net-api:`PutMetricAlarm <CloudWatch/MCloudWatchPutMetricAlarmPutMetricAlarmRequest>`
+* :sdk-net-api:`DeleteAlarms <CloudWatch/MCloudWatchDeleteAlarmsDeleteAlarmsRequest>`
 
 For more information about |CW| alarms, see
 :cw-ug:`Creating Amazon CloudWatch Alarms <AlarmThatSendsEmail>`
@@ -60,10 +60,10 @@ To set up and run this example, you must first:
 Describing an Alarm
 ===================
 
-Create an :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchCloudWatchClient>` instance and a
-:sdk-net-api:`DescribeAlarmsRequest <CloudWatch/TCloudWatchDescribeAlarmsRequest>` object,
+Create an :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchClient>` instance and a
+:sdk-net-api:`DescribeAlarmsRequest <CloudWatch/TDescribeAlarmsRequest>` object,
 limiting the alarms that are returned to those with a state of INSUFFICIENT_DATA. Then call the
-:sdk-net-api:`DescribeAlarms <CloudWatch/MCloudWatchCloudWatchDescribeAlarmsDescribeAlarmsRequest>`
+:sdk-net-api:`DescribeAlarms <CloudWatch/MCloudWatchDescribeAlarmsDescribeAlarmsRequest>`
 method of the ``AmazonCloudWatchClient`` object.
 
 .. code-block:: c#
@@ -89,13 +89,13 @@ method of the ``AmazonCloudWatchClient`` object.
 Creating an Alarm Based on a Metric
 ===================================
 
-Create an :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchCloudWatchClient>` instance and a
-:sdk-net-api:`PutMetricAlarmRequest <CloudWatch/TCloudWatchPutMetricAlarmRequest>` object for the parameters
+Create an :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchClient>` instance and a
+:sdk-net-api:`PutMetricAlarmRequest <CloudWatch/TPutMetricAlarmRequest>` object for the parameters
 needed to create an alarm that is based on a metric, in this case, the CPU utilization of an |EC2| instance.
 
 The remaining parameters are set to trigger the alarm when the metric exceeds a threshold of 70 percent.
 
-Then call the :sdk-net-api:`PutMetricAlarm <CloudWatch/MCloudWatchCloudWatchPutMetricAlarmPutMetricAlarmRequest>`
+Then call the :sdk-net-api:`PutMetricAlarm <CloudWatch/MCloudWatchPutMetricAlarmPutMetricAlarmRequest>`
 method of the ``AmazonCloudWatchClient`` object.
 
 .. code-block:: C#
@@ -128,9 +128,9 @@ method of the ``AmazonCloudWatchClient`` object.
 Deleting an Alarm
 =================
 
-Create an :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchCloudWatchClient>` instance and
-a :sdk-net-api:`DeleteAlarmsRequest <CloudWatch/TCloudWatchDeleteAlarmsRequest>` object to hold the
-names of the alarms you want to delete. Then call the :sdk-net-api:`DeleteAlarms <CloudWatch/MCloudWatchCloudWatchDeleteAlarmsDeleteAlarmsRequest>`
+Create an :sdk-net-api:`AmazonCloudWatchClient <CloudWatch/TCloudWatchClient>` instance and
+a :sdk-net-api:`DeleteAlarmsRequest <CloudWatch/TDeleteAlarmsRequest>` object to hold the
+names of the alarms you want to delete. Then call the :sdk-net-api:`DeleteAlarms <CloudWatch/MCloudWatchDeleteAlarmsDeleteAlarmsRequest>`
 method of the ``AmazonCloudWatchClient`` object.
 
 .. code-block:: c#
