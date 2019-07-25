@@ -393,12 +393,12 @@ object and use it to initialize :code:`DocService` and :code:`SearchService` ins
 |IoTlong| Endpoints Example
 ---------------------------
 
-To obtain the endpoint for |IoTlong|, create an :sdk-net-api:`AmazonIoTClient <IoT/TIoTIoTClient>` 
-object and call the :sdk-net-api:`DescribeEndPoint <IoT/MIoTIoTDescribeEndpoint>` 
-method. The returned :sdk-net-api:`DescribeEndPointResponse <IoT/TIoTDescribeEndpointResponse>` object 
-contains the :code:`EndpointAddress`. Create an :sdk-net-api:`AmazonIotDataConfig <IotData/TIotDataIotDataConfig>` 
+To obtain the endpoint for |IoTlong|, create an :sdk-net-api:`AmazonIoTClient <IoT/TIoTClient>` 
+object and call the :sdk-net-api:`DescribeEndPoint <IoT/MIoTDescribeEndpointDescribeEndpointRequest`
+method. The returned :sdk-net-api:`DescribeEndPointResponse <IoT/TDescribeEndpointResponse>` object 
+contains the :code:`EndpointAddress`. Create an :sdk-net-api:`AmazonIotDataConfig <IotData/TIotDataConfig>` 
 object, set the :code:`ServiceURL` property, and use the object to instantiate the 
-:sdk-net-api:`AmazonIotDataClient <IotData/TIotDataIotDataClient>` class.
+:sdk-net-api:`AmazonIotDataClient <IotData/TIotDataClient>` class.
 
 .. code-block:: csharp
 
