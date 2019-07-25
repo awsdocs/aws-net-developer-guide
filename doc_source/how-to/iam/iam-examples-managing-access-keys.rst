@@ -35,13 +35,13 @@ When you create an access key, its status is Active by default, which means the 
 key for API calls.
 
 The C# code uses the |sdk-net| to manage |IAM| access keys
-using these methods of the :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` class:
+using these methods of the :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` class:
 
-* :sdk-net-api:`CreateAccessKey <IAM/MIAMIAMServiceCreateAccessKeyCreateAccessKeyRequest>`
-* :sdk-net-api:`ListAccessKeys <IAM/MIAMIAMServiceListAccessKeysListAccessKeysRequest>`
-* :sdk-net-api:`GetAccessKeyLastUsed <IAM/MIAMIAMServiceGetAccessKeyLastUsedGetAccessKeyLastUsedRequest>`
-* :sdk-net-api:`UpdateAccessKey <IAM/MIAMIAMServiceUpdateAccessKeyUpdateAccessKeyRequest>`
-* :sdk-net-api:`DeleteAccessKey <IAM/MIAMIAMServiceDeleteAccessKeyDeleteAccessKeyRequest>`
+* :sdk-net-api:`CreateAccessKey <IAM/MIAMServiceCreateAccessKeyCreateAccessKeyRequest>`
+* :sdk-net-api:`ListAccessKeys <IAM/MIAMServiceListAccessKeysListAccessKeysRequest>`
+* :sdk-net-api:`GetAccessKeyLastUsed <IAM/MIAMServiceGetAccessKeyLastUsedGetAccessKeyLastUsedRequest>`
+* :sdk-net-api:`UpdateAccessKey <IAM/MIAMServiceUpdateAccessKeyUpdateAccessKeyRequest>`
+* :sdk-net-api:`DeleteAccessKey <IAM/MIAMServiceDeleteAccessKeyDeleteAccessKeyRequest>`
 
 For more information about |IAM| access keys, see :iam-ug:`Managing Access Keys for IAM Users <id_credentials_access-keys>` in the |IAM-ug|.
 
@@ -51,10 +51,10 @@ Create Access Keys for a User
 Call the :code:`CreateAccessKey` method to create an access key named :code:`S3UserReadOnlyAccess` for 
 the |IAM| access keys examples. The :code:`CreateAccessKey method first creates a user named 
 :code:`S3UserReadOnlyAccess` with read only access rights by calling the :code:`CreateUser` method. 
-It then creates an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` 
-object and a :sdk-net-api:`CreateAccessKeyRequest <IAM/TIAMCreateAccessKeyRequest>` object containing 
+It then creates an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` 
+object and a :sdk-net-api:`CreateAccessKeyRequest <IAM/TCreateAccessKeyRequest>` object containing 
 the :code:`UserName` parameter needed to create new access keys. It then calls the 
-:sdk-net-api:`CreateAccessKey <IAM/MIAMIAMServiceCreateAccessKeyCreateAccessKeyRequest>`
+:sdk-net-api:`CreateAccessKey <IAM/MIAMServiceCreateAccessKeyCreateAccessKeyRequest>`
 method of the :code:`AmazonIdentityManagementServiceClient` object.
 
 .. code-block:: c#
@@ -116,10 +116,10 @@ method of the :code:`AmazonIdentityManagementServiceClient` object.
 List a User's Access Keys
 =========================
 
-Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` object and 
-a :sdk-net-api:`ListAccessKeysRequest <IAM/TIAMListAccessKeysRequest>` object containing the parameters needed to
+Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object and 
+a :sdk-net-api:`ListAccessKeysRequest <IAM/TListAccessKeysRequest>` object containing the parameters needed to
 retrieve the user's access keys. This includes the |IAM| user's name and, optionally, the maximum number
-of access key pairs you want to list. Call the :sdk-net-api:`ListAccessKeys <IAM/MIAMIAMServiceListAccessKeysListAccessKeysRequest>`
+of access key pairs you want to list. Call the :sdk-net-api:`ListAccessKeys <IAM/MIAMServiceListAccessKeysListAccessKeysRequest>`
 method of the :code:`AmazonIdentityManagementServiceClient` object.
 
 .. code-block:: c#
@@ -149,12 +149,12 @@ method of the :code:`AmazonIdentityManagementServiceClient` object.
 Get the Last Used Date for Access Keys
 ======================================
 
-Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` object and a
+Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object and a
 :sdk-net-api:`ListAccessKeysRequest <IAM/TIAMListAccessKeysRequest>` object containing the :code:`UserName`
 parameter needed to list the access keys. Call the :sdk-net-api:`ListAccessKeys <IAM/MIAMIAMServiceListAccessKeysListAccessKeysRequest>`
 method of the :code:`AmazonIdentityManagementServiceClient` object. Loop through the access keys returned,
-displaying the :code:`AccessKeyId` of each key and using it to create a :sdk-net-api:`GetAccessKeyLastUsedRequest <IAM/TIAMGetAccessKeyLastUsedRequest>`
-object. Call the :sdk-net-api:`GetAccessKeyLastUsed <IAM/MIAMIAMServiceGetAccessKeyLastUsedGetAccessKeyLastUsedRequest>`
+displaying the :code:`AccessKeyId` of each key and using it to create a :sdk-net-api:`GetAccessKeyLastUsedRequest <IAM/TGetAccessKeyLastUsedRequest>`
+object. Call the :sdk-net-api:`GetAccessKeyLastUsed <IAM/MIAMServiceGetAccessKeyLastUsedGetAccessKeyLastUsedRequest>`
 method and display the time that the key was last used on the console.
 
 .. code-block:: c#
@@ -187,15 +187,15 @@ method and display the time that the key was last used on the console.
 Update the Status of an Access Key
 ==================================
 
-Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` object and a
+Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object and a
 :sdk-net-api:`ListAccessKeysRequest <IAM/TIAMListAccessKeysRequest>` object containing the user name to
 list the keys for. The user name in this example is the user created for the other examples. Call
 the :sdk-net-api:`ListAccessKeys <IAM/MIAMIAMServiceListAccessKeysListAccessKeysRequest>` method of the
 :code:`AmazonIdentityManagementServiceClient`. The :sdk-net-api:`ListAccessKeysResponse <IAM/TIAMListAccessKeysResponse>`
 that is returned contains a list of the access keys for that user. Use the first access key in the list.
-Create an :sdk-net-api:`UpdateAccessKeyRequest <IAM/TIAMUpdateAccessKeyRequest>` object, providing 
+Create an :sdk-net-api:`UpdateAccessKeyRequest <IAM/TUpdateAccessKeyRequest>` object, providing 
 the :code:`UserName`, :code:`AccessKeyId`, and :code:`Status` parameters. Call the 
-:sdk-net-api:`UpdateAccessKey <IAM/MIAMIAMServiceUpdateAccessKeyUpdateAccessKeyRequest>`
+:sdk-net-api:`UpdateAccessKey <IAM/MIAMServiceUpdateAccessKeyUpdateAccessKeyRequest>`
 method of the :code:`AmazonIdentityManagementServiceClient` object.
 
 .. code-block:: c#
@@ -224,13 +224,13 @@ method of the :code:`AmazonIdentityManagementServiceClient` object.
 Delete Access Keys
 ==================
 
-Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` object and a
+Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object and a
 :sdk-net-api:`ListAccessKeysRequest <IAM/TIAMListAccessKeysRequest>` object containing the name of the 
 user as a parameter. Call the :sdk-net-api:`ListAccessKeys <IAM/MIAMIAMServiceListAccessKeysListAccessKeysRequest>` 
 method of the :code:`AmazonIdentityManagementServiceClient`. The 
 :sdk-net-api:`ListAccessKeysResponse <IAM/TIAMListAccessKeysResponse>` that is returned contains a list 
 of the access keys for that user. Delete each access key in the list by 
-calling the :sdk-net-api:`DeleteAccessKey <IAM/MIAMIAMServiceDeleteAccessKeyDeleteAccessKeyRequest>` 
+calling the :sdk-net-api:`DeleteAccessKey <IAM/MIAMServiceDeleteAccessKeyDeleteAccessKeyRequest>` 
 method of the :code:`AmazonIdentityManagementServiceClient`.
 
 .. code-block:: c#
