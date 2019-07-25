@@ -18,7 +18,7 @@ The |sdk-net| supports |SQSlong| (|SQS|), which is a messaging queue service tha
 workflows between other components in a system. For more information, see the 
 `SQS Getting Started Guide <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/>`_.
 
-The following information introduces you to the |SQS| programming models in the the SDK.
+The following information introduces you to the |SQS| programming models in the SDK.
 
 
 
