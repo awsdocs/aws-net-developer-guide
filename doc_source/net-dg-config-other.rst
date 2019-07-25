@@ -327,14 +327,14 @@ the endpoints for those services.
 
 The |cs| client is used for accessing the Amazon CloudSearch configuration service. You use the Amazon CloudSearch 
 configuration service to create, configure, and manage search domains. To create a search domain, 
-create a :sdk-net-api:`CreateDomainRequest <CloudSearch/TCloudSearchCreateDomainRequest>` object 
-and provide the :code:`DomainName` property.  Create an :sdk-net-api:`AmazonCloudSearchClient <CloudSearch/TCloudSearchCloudSearchClient>` 
-object by using the request object. Call the :sdk-net-api:`CreateDomain <CloudSearch/MCloudSearchCloudSearchCreateDomainCreateDomainRequest>` 
-method. The :sdk-net-api:`CreateDomainResponse <CloudSearch/TCloudSearchCreateDomainResponse>` object 
+create a :sdk-net-api:`CreateDomainRequest <CloudSearch/CloudSearch/TCreateDomainRequest>` object 
+and provide the :code:`DomainName` property. Create an :sdk-net-api:`AmazonCloudSearchClient <CloudSearch/TCloudSearchClient>`
+object by using the request object. Call the :sdk-net-api:`CreateDomain <CloudSearch/MCloudSearchCreateDomainCreateDomainRequest>` 
+method. The :sdk-net-api:`CreateDomainResponse <CloudSearch/TCreateDomainResponse>` object 
 returned from the call contains a :code:`DomainStatus` property that has both the :code:`DocService` and 
-:code:`SearchService` endpoints. Create an :sdk-net-api:`AmazonCloudSearchDomainConfig <CloudSearchDomain/TCloudSearchDomainCloudSearchDomainConfig>` 
+:code:`SearchService` endpoints. Create an :sdk-net-api:`AmazonCloudSearchDomainConfig <CloudSearchDomain/TCloudSearchDomainConfig>` 
 object and use it to initialize :code:`DocService` and :code:`SearchService` instances of the 
-:sdk-net-api:`AmazonCloudSearchDomainClient <CloudSearchDomain/TCloudSearchDomainCloudSearchDomainClient>` class.
+:sdk-net-api:`AmazonCloudSearchDomainClient <CloudSearchDomain/TCloudSearchDomainClient>` class.
 
 .. code-block:: csharp
 
