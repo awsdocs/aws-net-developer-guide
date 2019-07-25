@@ -34,11 +34,11 @@ instead of your AWS account ID, you can create an alias for your AWS account ID.
 account alias, your sign-in page URL changes to incorporate the alias.
 
 The following examples demonstrate how to manage your AWS account alias by using these methods of the
-:sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` class:
+:sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` class:
 
-* :sdk-net-api:`CreateAccountAlias <IAM/MIAMIAMServiceCreateAccountAliasCreateAccountAliasRequest>`
-* :sdk-net-api:`ListAccountAliases <IAM/MIAMIAMServiceListAccountAliasesListAccountAliasesRequest>`
-* :sdk-net-api:`DeleteAccountAlias <IAM/MIAMIAMServiceDeleteAccountAliasDeleteAccountAliasRequest>`
+* :sdk-net-api:`CreateAccountAlias <IAM/MIAMServiceCreateAccountAliasCreateAccountAliasRequest>`
+* :sdk-net-api:`ListAccountAliases <IAM/MIAMServiceListAccountAliasesListAccountAliasesRequest>`
+* :sdk-net-api:`DeleteAccountAlias <IAM/MIAMServiceDeleteAccountAliasDeleteAccountAliasRequest>`
 
 For more information about |IAM| account aliases, see :iam-ug:`Your AWS Account ID and Its Alias <console_account-alias>`
 in the |IAM-ug|.
@@ -46,10 +46,10 @@ in the |IAM-ug|.
 Create an Account Alias
 =======================
 
-Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` object. Next,
+Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object. Next,
 create a
-:sdk-net-api:`CreateAccountAliasRequest <IAM/TIAMCreateAccountAliasRequest>` object containing the new
-account alias you want to use. Call the :sdk-net-api:`CreateAccountAlias <IAM/MIAMIAMServiceCreateAccountAliasCreateAccountAliasRequest>`
+:sdk-net-api:`CreateAccountAliasRequest <IAM/TCreateAccountAliasRequest>` object containing the new
+account alias you want to use. Call the :sdk-net-api:`CreateAccountAlias <IAM/MIAMServiceCreateAccountAliasCreateAccountAliasRequest>`
 method of the :code:`AmazonIAMClient` object. If the account alias is created, display the new alias on
 the console.
 If the name already exists, write the exception message to the console.
@@ -80,10 +80,10 @@ If the name already exists, write the exception message to the console.
 List Account Aliases
 ====================
 
-Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` object. Next,
+Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object. Next,
 create a
-:sdk-net-api:`ListAccountAliasesRequest <IAM/TIAMListAccountAliasesRequest>` object. Call the
-:sdk-net-api:`ListAccountAliases <IAM/MIAMIAMServiceListAccountAliasesListAccountAliasesRequest>`
+:sdk-net-api:`ListAccountAliasesRequest <IAM/TCreateAccountAliasRequest>` object. Call the
+:sdk-net-api:`ListAccountAliases <IAM/MIAMServiceListAccountAliasesListAccountAliasesRequest>`
 method of the :code:`AmazonIAMClient` object. If there is an account alias, display it on the console.
 
 If there is no account alias, write the exception message to the console.
@@ -116,9 +116,9 @@ If there is no account alias, write the exception message to the console.
 Delete an Account Alias
 =======================
 
-Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` object. Next,
-create a :sdk-net-api:`DeleteAccountAliasRequest <IAM/TIAMDeleteAccountAliasRequest>` object containing the
-account alias you want to delete. Call the :sdk-net-api:`DeleteAccountAlias <IAM/MIAMIAMServiceDeleteAccountAliasDeleteAccountAliasRequest>`
+Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object. Next,
+create a :sdk-net-api:`DeleteAccountAliasRequest <IAM/TDeleteAccountAliasRequest>` object containing the
+account alias you want to delete. Call the :sdk-net-api:`DeleteAccountAlias <IAM/MIAMServiceDeleteAccountAliasDeleteAccountAliasRequest>`
 method of the :code:`AmazonIAMClient` object. If the account alias is deleted, display the delete information
 on the console. If the name doesn't exist, write the exception message to the console.
 
