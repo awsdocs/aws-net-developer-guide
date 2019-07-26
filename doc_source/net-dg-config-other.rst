@@ -327,7 +327,7 @@ the endpoints for those services.
 
 The |cs| client is used for accessing the Amazon CloudSearch configuration service. You use the Amazon CloudSearch 
 configuration service to create, configure, and manage search domains. To create a search domain, 
-create a :sdk-net-api:`CreateDomainRequest <CloudSearch/CloudSearch/TCreateDomainRequest>` object 
+create a :sdk-net-api:`CreateDomainRequest <CloudSearch/TCreateDomainRequest>` object 
 and provide the :code:`DomainName` property. Create an :sdk-net-api:`AmazonCloudSearchClient <CloudSearch/TCloudSearchClient>`
 object by using the request object. Call the :sdk-net-api:`CreateDomain <CloudSearch/MCloudSearchCreateDomainCreateDomainRequest>` 
 method. The :sdk-net-api:`CreateDomainResponse <CloudSearch/TCreateDomainResponse>` object 
