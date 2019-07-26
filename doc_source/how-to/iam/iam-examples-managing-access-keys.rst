@@ -151,7 +151,7 @@ Get the Last Used Date for Access Keys
 
 Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object and a
 :sdk-net-api:`ListAccessKeysRequest <IAM/TListAccessKeysRequest>` object containing the :code:`UserName`
-parameter needed to list the access keys. Call the :sdk-net-api:`ListAccessKeys <IAM/MIAMIAMServiceListAccessKeysListAccessKeysRequest>`
+parameter needed to list the access keys. Call the :sdk-net-api:`ListAccessKeys <IAM/MIAMServiceListAccessKeysListAccessKeysRequest>`
 method of the :code:`AmazonIdentityManagementServiceClient` object. Loop through the access keys returned,
 displaying the :code:`AccessKeyId` of each key and using it to create a :sdk-net-api:`GetAccessKeyLastUsedRequest <IAM/TGetAccessKeyLastUsedRequest>`
 object. Call the :sdk-net-api:`GetAccessKeyLastUsed <IAM/MIAMServiceGetAccessKeyLastUsedGetAccessKeyLastUsedRequest>`
@@ -188,10 +188,10 @@ Update the Status of an Access Key
 ==================================
 
 Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object and a
-:sdk-net-api:`ListAccessKeysRequest <IAM/TIAMListAccessKeysRequest>` object containing the user name to
+:sdk-net-api:`ListAccessKeysRequest <IAM/TListAccessKeysRequest>` object containing the user name to
 list the keys for. The user name in this example is the user created for the other examples. Call
-the :sdk-net-api:`ListAccessKeys <IAM/MIAMIAMServiceListAccessKeysListAccessKeysRequest>` method of the
-:code:`AmazonIdentityManagementServiceClient`. The :sdk-net-api:`ListAccessKeysResponse <IAM/TIAMListAccessKeysResponse>`
+the :sdk-net-api:`ListAccessKeys <IAM/MIAMServiceListAccessKeysListAccessKeysRequest>` method of the
+:code:`AmazonIdentityManagementServiceClient`. The :sdk-net-api:`ListAccessKeysResponse <IAM/TListAccessKeysResponse>`
 that is returned contains a list of the access keys for that user. Use the first access key in the list.
 Create an :sdk-net-api:`UpdateAccessKeyRequest <IAM/TUpdateAccessKeyRequest>` object, providing 
 the :code:`UserName`, :code:`AccessKeyId`, and :code:`Status` parameters. Call the 
