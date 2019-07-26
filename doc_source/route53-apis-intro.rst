@@ -17,8 +17,8 @@ Managing Domain Name System (DNS) Resources Using |R53long|
 The |sdk-net| supports |R53long|, which is a Domain Name System (DNS) web service that provides
 secure and reliable routing to your infrastructure that uses Amazon Web Services (AWS) products,
 such as |EC2long| (|EC2|), |ELB|, or |S3long| (|S3|). You can also use |R53| to route users to your
-infrastructure outside of AWS. This topic describes how to use the |sdk-net| to create an |R53|
-:r53-dg:`hosted zone <AboutHZWorkingWith>` and add a new 
+infrastructure outside of AWS. This topic describes how to use the |sdk-net| to create a |R53|
+:r53-dg:` hosted zone <AboutHZWorkingWith>` and add a new 
 :r53-dg:`resource record set <resource-record-sets-values>` to that zone.
 
 .. note:: This topic assumes you are already familiar with how to use |R53| and have already 
