@@ -84,7 +84,7 @@ you explicitly set the timeout values.
   :sdk-net-api:`AmazonGlacierClient <Glacier/TGlacierClient>` objects.
 
 * The version of the |sdk-net| that targets the portable class library (PCL) sets :code:`Timeout` to the
-  maximum value for all :sdk-net-api:`AmazonS3Client <S3/TS3S3Client>` and 
+  maximum value for all :sdk-net-api:`AmazonS3Client <S3/TS3Client>` and 
   :sdk-net-api:`AmazonGlacierClient <Glacier/TGlacierGlacierClient>` objects.
 
 
@@ -94,7 +94,7 @@ Example
 =======
 
 The following example shows how to specify a maximum of 2 retries, a timeout of 10 seconds, and a
-read/write timeout of 10 seconds for an :sdk-net-api:`AmazonS3Client <S3/TS3S3Client>` object.
+read/write timeout of 10 seconds for an :sdk-net-api:`AmazonS3Client <S3/TS3Client>` object.
 
 .. code-block:: csharp
 
