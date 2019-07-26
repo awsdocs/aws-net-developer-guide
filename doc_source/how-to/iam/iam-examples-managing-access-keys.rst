@@ -150,7 +150,7 @@ Get the Last Used Date for Access Keys
 ======================================
 
 Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object and a
-:sdk-net-api:`ListAccessKeysRequest <IAM/TIAMListAccessKeysRequest>` object containing the :code:`UserName`
+:sdk-net-api:`ListAccessKeysRequest <IAM/TListAccessKeysRequest>` object containing the :code:`UserName`
 parameter needed to list the access keys. Call the :sdk-net-api:`ListAccessKeys <IAM/MIAMIAMServiceListAccessKeysListAccessKeysRequest>`
 method of the :code:`AmazonIdentityManagementServiceClient` object. Loop through the access keys returned,
 displaying the :code:`AccessKeyId` of each key and using it to create a :sdk-net-api:`GetAccessKeyLastUsedRequest <IAM/TGetAccessKeyLastUsedRequest>`
