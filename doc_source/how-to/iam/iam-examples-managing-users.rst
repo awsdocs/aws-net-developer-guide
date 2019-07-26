@@ -24,7 +24,7 @@ This .NET example shows you how to retrieve a list of |IAM| users, create and de
 and update an |IAM| user name.
 
 You can create and manage users in |IAM| using these methods of the
-:sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMIAMServiceClient>` class:
+:sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` class:
 
 * :sdk-net-api:`CreateUser <IAM/MIAMServiceCreateUserCreateUserRequest>`
 * :sdk-net-api:`ListUsers <IAM/MIAMServiceListUsersListUsersRequest>`
