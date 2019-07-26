@@ -80,7 +80,7 @@ you explicitly set the timeout values.
   and so on.
 
 * The version of the |sdk-net| that targets the .NET Framework 4.5 sets :code:`Timeout` and
-  :code:`ReadWriteTimeout` to the maximum values for all :sdk-net-api:`AmazonS3Client <S3/TS3S3Client>` and
+  :code:`ReadWriteTimeout` to the maximum values for all :sdk-net-api:`AmazonS3Client <S3/TS3Client>` and
   :sdk-net-api:`AmazonGlacierClient <Glacier/TGlacierClient>` objects.
 
 * The version of the |sdk-net| that targets the portable class library (PCL) sets :code:`Timeout` to the
