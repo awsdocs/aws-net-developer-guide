@@ -85,7 +85,7 @@ you explicitly set the timeout values.
 
 * The version of the |sdk-net| that targets the portable class library (PCL) sets :code:`Timeout` to the
   maximum value for all :sdk-net-api:`AmazonS3Client <S3/TS3Client>` and 
-  :sdk-net-api:`AmazonGlacierClient <Glacier/TGlacierGlacierClient>` objects.
+  :sdk-net-api:`AmazonGlacierClient <Glacier/TGlacierClient>` objects.
 
 
 .. _retries-timeouts-example:
