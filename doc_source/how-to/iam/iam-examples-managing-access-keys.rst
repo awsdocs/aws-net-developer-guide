@@ -225,10 +225,10 @@ Delete Access Keys
 ==================
 
 Create an :sdk-net-api:`AmazonIdentityManagementServiceClient <IAM/TIAMServiceClient>` object and a
-:sdk-net-api:`ListAccessKeysRequest <IAM/TIAMListAccessKeysRequest>` object containing the name of the 
-user as a parameter. Call the :sdk-net-api:`ListAccessKeys <IAM/MIAMIAMServiceListAccessKeysListAccessKeysRequest>` 
+:sdk-net-api:`ListAccessKeysRequest <IAM/TListAccessKeysRequest>` object containing the name of the 
+user as a parameter. Call the :sdk-net-api:`ListAccessKeys <IAM/MIAMServiceListAccessKeysListAccessKeysRequest>` 
 method of the :code:`AmazonIdentityManagementServiceClient`. The 
-:sdk-net-api:`ListAccessKeysResponse <IAM/TIAMListAccessKeysResponse>` that is returned contains a list 
+:sdk-net-api:`ListAccessKeysResponse <IAM/TListAccessKeysResponse>` that is returned contains a list 
 of the access keys for that user. Delete each access key in the list by 
 calling the :sdk-net-api:`DeleteAccessKey <IAM/MIAMServiceDeleteAccessKeyDeleteAccessKeyRequest>` 
 method of the :code:`AmazonIdentityManagementServiceClient`.
