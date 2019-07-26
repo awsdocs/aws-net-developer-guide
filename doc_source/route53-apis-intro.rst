@@ -249,7 +249,7 @@ The numbers in the following sections are keyed to the comments in the preceding
      :code:`HostedZoneId`
          The hosted zone's ID, which the example sets to the ID that was returned in the
          :classname:`CreateHostedZoneResponse` object. To get the ID of an existing hosted zone,
-         call :sdk-net-api:`ListHostedZones <Route53/MRoute53Route53ListHostedZones>`.
+         call :sdk-net-api:`ListHostedZones <Route53/MRoute53ListHostedZonesListHostedZonesRequest>`.
 
      :code:`ChangeBatch`
          A :classname:`ChangeBatch` object that contains the updates.
