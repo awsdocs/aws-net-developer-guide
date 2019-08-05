@@ -128,6 +128,16 @@ Each profile has the following format:
 A profile can optionally include a session token. For more information, see `Best Practices for 
 Managing AWS Access Keys <aws-access-keys-best-practices.html>`_.
 
+If a federated account information is used to access, the credential file must include the session token. Otherwise the SDK would return invalid session token exception. 
+The example profile format with session token:
+
+.. code-block:: none
+   
+   [{profile_name}]
+   aws_access_key_id = {accessKey} 
+   aws_secret_access_key = {secretKey}
+   aws_session_token = {session token}
+
 .. tip:: If you include a profile named :code:`default`, the |sdk-net| will use that profile by 
    default if it cannot find the specified profile.
 
