@@ -37,7 +37,7 @@ The following code example shows how to set up :code:`CognitoAWSCredentials`, wh
    :lines: 23-32
    :language: csharp
 
-Use AWS as an Unautheticated User
+Use AWS as an Unauthenticated User
 =================================
     
 The following code example shows how you can start using AWS as an unauthenticated user, then authenticate through Facebook and update the credentials to use Facebook credentials. Using this approach, you can grant different capabilities to authenticated users via the authenticated role. For instance, you might have a  phone application that permits users to view content anonymously, but allows them to post if they are logged on with one or more of the configured providers.
