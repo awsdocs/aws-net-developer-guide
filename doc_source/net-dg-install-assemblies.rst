@@ -17,6 +17,9 @@ Install AWSSDK Assemblies
 You can install the AWSSDK assemblies by installing the |sdk-net| or by installing
 the AWS assemblies with NuGet.
 
+.. note:: Avoid installing the :code:`AWSSDK.Core` assembly package (*AWSSDK.Core.dll*) in the Global Assembly Cache (GAC).
+   Doing so will make it more difficult to use different versions of the |sdk-net|.
+
 .. _net-dg-install-net-sdk:
 
 Installing the |sdk-net|
