@@ -1,4 +1,4 @@
-.. Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+.. Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
    This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
    International License (the "License"). You may not use this file except in compliance with the
@@ -14,11 +14,9 @@
 Amazon Cognito Credentials Provider
 ###################################
 
-
 .. meta::
    :description: Use Cognito to create user identities and authenticate identities.
    :keywords: AWS SDK for .NET examples, {Cognito}
-
 
 :code:`Amazon.CognitoIdentity.CognitoAWSCredentials` is a credentials object that uses |COG| and the AWS Security Token Service (|STS|) to retrieve credentials to make AWS calls.
 
@@ -38,7 +36,7 @@ The following code example shows how to set up :code:`CognitoAWSCredentials`, wh
    :language: csharp
 
 Use AWS as an Unauthenticated User
-=================================
+==================================
     
 The following code example shows how you can start using AWS as an unauthenticated user, then authenticate through Facebook and update the credentials to use Facebook credentials. Using this approach, you can grant different capabilities to authenticated users via the authenticated role. For instance, you might have a  phone application that permits users to view content anonymously, but allows them to post if they are logged on with one or more of the configured providers.
 
@@ -51,6 +49,3 @@ The :code:`CognitoAWSCredentials` object provides even more functionality if you
 .. literalinclude:: samples/cognito-extensions.cs
    :lines: 59-76
    :language: csharp
-   
-
-
