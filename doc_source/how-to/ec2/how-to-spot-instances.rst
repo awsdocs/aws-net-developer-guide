@@ -10,12 +10,11 @@
 
 .. _tutorial-spot-instances-net:
 
-#############################
-|ec2-spot-instances| Examples
-#############################
+#################################
+Amazon EC2 Spot Instance Examples
+#################################
 
-This topic describes how to use the |sdk-net| with |ec2-spot-instances|.
-
+This topic describes how to use the |sdk-net| with Amazon EC2 Spot Instances.
 
 .. contents:: **Topics**
     :local:
@@ -26,34 +25,34 @@ This topic describes how to use the |sdk-net| with |ec2-spot-instances|.
 Overview
 ========
 
-|spot-instances| enable you to bid on unused |EC2| capacity and run any instances that you acquire for
+Spot Instances enable you to bid on unused |EC2| capacity and run any instances that you acquire for
 as long as your bid exceeds the current *Spot Price*. |EC2| changes the Spot Price periodically
 based on supply and demand, but will never exceed 90% of the On-Demand Instance price;
-customers whose bids meet or exceed it gain access to the available |spot-instances|.
-Like On-Demand Instances and Reserved Instances, |spot-instances| provide another option
+customers whose bids meet or exceed it gain access to the available Spot Instances.
+Like On-Demand Instances and Reserved Instances, Spot Instances provide another option
 for obtaining more compute capacity.
 
-|spot-instances| can significantly lower your |EC2| costs for applications such as batch processing,
+Spot Instances can significantly lower your |EC2| costs for applications such as batch processing,
 scientific research, image processing, video encoding, data and web crawling, financial analysis,
-and testing. Additionally, |spot-instances| are an excellent option when you need large amounts of
+and testing. Additionally, Spot Instances are an excellent option when you need large amounts of
 computing capacity, but the need for that capacity is not urgent.
 
-To use |spot-instances|, place a |spot-instance| request specifying the maximum price you are willing to
+To use Spot Instances, place a Spot Instance request specifying the maximum price you are willing to
 pay per instance hour; this is your bid. If your bid exceeds the current Spot Price, your request is
 fulfilled and your instances will run until either you choose to terminate them or the Spot Price
-increases above your bid (whichever is sooner). You can terminate a |spot-instance| programmatically,
+increases above your bid (whichever is sooner). You can terminate a Spot Instance programmatically,
 as shown this tutorial, or by using the :console:`AWS Management Console <ec2>` or by using the
 |TVSlong|.
 
-You can also specify the amount you are willing to pay for |spot-instances| as a precentage of the On-Demand Instance price.
+You can also specify the amount you are willing to pay for Spot Instances as a precentage of the On-Demand Instance price.
 If the specified price is exceeded, then the Spot Instance will terminate.
 
-|spot-instances| perform exactly like other |EC2| instances while running, and like other |EC2|
-instances, |spot-instances| can be terminated when you no longer need them. 
+Spot Instances perform exactly like other |EC2| instances while running, and like other |EC2|
+instances, Spot Instances can be terminated when you no longer need them. 
 
 You pay the Spot price that's in effect for the time period your instances are running.
-|spot-instance| prices are set by |EC2| and adjust gradually based on long-term trends in supply and demand for |spot-instance| capacity.
-You can also specify the amount you are willing to pay for a |spot-instance| as a percentage of the On-Demand Instance price.
+Spot Instance prices are set by |EC2| and adjust gradually based on long-term trends in supply and demand for Spot Instance capacity.
+You can also specify the amount you are willing to pay for a Spot Instance as a percentage of the On-Demand Instance price.
 
 This tutorial provides an overview of how to use the .NET programming environment to do the
 following.
@@ -100,9 +99,9 @@ There are several instance types to choose from; go to
 use :code:`t1.micro`. You'll also want to get the ID of a current Windows AMI. For more information, 
 see :ec2-ug-win:`Finding an AMI <finding-an-ami>` in the |EC2-ug-win|.
 
-There are many ways to approach bidding for |spot-instances|. To get a broad overview of the various
+There are many ways to approach bidding for Spot Instances. To get a broad overview of the various
 approaches, you should view the 
-`Bidding for |spot-instances| <http://www.youtube.com/watch?v=WD9N73F3Fao&feature=player_embedded>`_ 
+`Bidding for Spot Instances <http://www.youtube.com/watch?v=WD9N73F3Fao&feature=player_embedded>`_ 
 video. However, to get started, we'll describe three common strategies: bid to ensure cost is less 
 than on-demand pricing; bid based on the value of the resulting computation; bid so as to acquire 
 computing capacity as quickly as possible.
@@ -138,19 +137,19 @@ computing capacity as quickly as possible.
   bid above the highest historical price to greatly improve the likelihood your request will be
   fulfilled quickly and continue computing until it is complete.
 
-After you choose your bid price, you are ready to request a |spot-instance|. For the purposes of this
+After you choose your bid price, you are ready to request a Spot Instance. For the purposes of this
 tutorial, we will set our bid price equal to the On-Demand price ($0.03) to maximize the chances the
 bid will be fulfilled. You can determine the types of available instances and the On-Demand prices
 for instances by going to `Amazon EC2 Pricing page <http://aws.amazon.com/ec2/pricing/>`_.
 
-To request a |spot-instance|, you need to build your request with the parameters we have specified so
+To request a Spot Instance, you need to build your request with the parameters we have specified so
 far. Start by creating a :sdk-net-api:`RequestSpotInstanceRequest <EC2/TRequestSpotInstancesRequest>`
 object. The request object requires the bid price and the number of instances you want to start.
 Additionally, you need to set the :sdk-net-api:`LaunchSpecification <EC2/TLaunchSpecification>` for the
 request, which includes the instance type, AMI ID, and the name of the security group you want to
-use for the |spot-instances|. After the request is populated, call the :sdk-net-api:`RequestSpotInstances
-<EC2/MEC2RequestSpotInstancesRequestSpotInstancesRequest>` method to create the |spot-instance|
-request. The following example demonstrates how to request a |spot-instance|.
+use for the Spot Instances. After the request is populated, call the :sdk-net-api:`RequestSpotInstances
+<EC2/MEC2RequestSpotInstancesRequestSpotInstancesRequest>` method to create the Spot Instance
+request. The following example demonstrates how to request a Spot Instance.
 
 .. code-block:: csharp
 
@@ -183,9 +182,9 @@ request. The following example demonstrates how to request a |spot-instance|.
 The Spot request ID is contained in the :code:`SpotInstanceRequestId` member of the
 :sdk-net-api:`SpotInstanceRequest <EC2/TSpotInstanceRequest>` object.
 
-Running this code will launch a new |spot-instance| request.
+Running this code will launch a new Spot Instance request.
 
-.. note:: You will be charged for any |spot-instances| that are launched, so make sure you cancel any requests
+.. note:: You will be charged for any Spot Instances that are launched, so make sure you cancel any requests
    and terminate any instances you launch to reduce any associated fees.
 
 There are other options you can use to configure your Spot requests. To learn more, see
@@ -253,7 +252,7 @@ request. The following example demonstrates how to cancel a Spot request.
 
 You use the :sdk-net-api:`TerminateInstances <EC2/MEC2TerminateInstancesTerminateInstancesRequest>` method
 to terminate an instance. The following example demonstrates how to obtain the instance identifier
-for an active |spot-instance| and terminate the instance.
+for an active Spot Instance and terminate the instance.
 
 .. code-block:: csharp
 

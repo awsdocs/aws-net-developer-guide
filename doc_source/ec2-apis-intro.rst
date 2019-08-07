@@ -22,15 +22,15 @@ The |sdk-net| supports |EC2|, which is a web service that provides resizable com
 capacity |mdash| literally, servers in Amazon's data centers |mdash| that you use to build and host
 your software systems. The |EC2| APIs are provided by the `AWSSDK.EC2 <http://www.nuget.org/packages/AWSSDK.EC2>`_ assembly.
 
-The :doc:`Amazon EC2 Instances examples <how-to-ec2>` are intended to help you get started
+The :ref:`how-to-ec2` are intended to help you get started
 with |EC2|.
 
-The :doc:`|ec2-spot-instances| examples <how-to-spot-instances>` show you how to use |spot-instances|,
+The :ref:`tutorial-spot-instances-net` show you how to use Spot Instances,
 which enable you to access unused EC2 capacity at up to 90% versus the On-Demand Instance price.
 |EC2| changes the Spot price periodically
-based on supply and demand; customers whose bids meet or exceed it gain access to the available
-|spot-instances|. For more information, see :ec2-ug:`|spot-instances| <using-spot-instances>` in the |EC2-ug|
-and :ec2-ug-win:`|spot-instances| <using-spot-instances>` in the |EC2-ug-win|.
+based on supply and demand; customers whose bids meet or exceed it gain access to the available 
+Spot Instances. For more information, see :ec2-ug:`Spot Instances <using-spot-instances>` in the |EC2-ug|
+and :ec2-ug-win:`Spot Instances <using-spot-instances>` in the |EC2-ug-win|.
 
 .. toctree::
     :titlesonly:
