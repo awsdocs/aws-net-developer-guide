@@ -1,4 +1,4 @@
-.. Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+.. Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
    This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
    International License (the "License"). You may not use this file except in compliance with the
@@ -48,6 +48,62 @@ assemblies for a specific application project. For more information, see :ref:`n
 
 .. note:: We recommend using Visual Studio Professional 2010 or later to implement your applications.
 
+.. _about_tools:
+
+About the |TFW| Tools
+=====================
+
+|sdk-net|
+---------
+
+This document is the developer guide for the |sdk-net|.
+The |sdk-net| makes it easier for Windows developers to build .NET applications that tap in to the
+cost-effective, scalable, and reliable AWS infrastructure services such as |S3long|, |EC2long|,
+|LAMlong|, and more.
+
+The |sdk-net| supports development on any platform that supports the .NET Framework 3.5 or later.
+
+The |sdk-net| targets .NET Standard 1.3. You can use it with .NET Core 1.x or .NET Core 2.0.
+
+AWS Tools for Windows PowerShell and PowerShell Core
+----------------------------------------------------
+
+The |TWPlong| and AWS Tools for PowerShell Core are PowerShell 
+modules that are built on the functionality exposed by the AWS SDK for .NET. The AWS 
+PowerShell Tools enable you to script operations on your AWS resources from the 
+PowerShell command line. Although the cmdlets are implemented using the service clients 
+and methods from the SDK, the cmdlets provide an idiomatic PowerShell experience for 
+specifying parameters and handling results. 
+
+See `AWS Tools for Windows PowerShell <https://aws.amazon.com/powershell>`_ to get started.
+
+|TVSlong|
+---------
+
+The |tvs| is a plugin for the Visual Studio IDE that makes it easier for you to develop, debug, and deploy .NET applications
+that use Amazon Web Services. The |tvs| provides Visual Studio templates for AWS services and deployment
+wizards for web applications and serverless applications. You can use the AWS Explorer to manage |EC2long| instances,
+work with |DDBlong| tables, publish messages to |snslong| queues, and more, all within Visual Studio.
+
+You can quickly deploy an existing web application using |tvs|.
+See `Deploying Web ApplicationsDeploying Web Applications from Visual Studio <https://docs.aws.amazon.com/sdk-for-net/v3/ndg/web-deploy-vs.html>`_.
+
+See `Setting up the AWS Toolkit for Visual Studio <https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/setup.html>`_ to get started.
+
+
+|TTSlong|
+---------
+
+In addition to the tools that the |TFW| installs, you can also install the |TTSlong|.
+
+|TTSlong| (VSTS) adds tasks to easily enable build and release pipelines in VSTS and
+Team Foundation Server (TFS) to work with AWS services. You can work with |S3|, |AEBlong|,
+|CDlong|, |LAMlong|, |CFNlong|, |SQSlong| (|SQS|), and
+|SNSlong| (|SNS|). You can also run commands using the Windows PowerShell
+module and the AWS CLI. 
+
+To get started with |TTSlong|, see  `AWS Tools for Microsoft Visual Studio Team Services <https://aws.amazon.com/vsts/>`_.
+
 .. _guidemap:
 
 How to Use This Guide
@@ -72,6 +128,8 @@ The *AWS SDK for .NET Developer Guide* describes how to implement applications f
 :ref:`net-dg-additional-resources`
     More resources outside of this guide that provide valuable information about AWS and the
     |sdk-net|.
+    If you are unfamiliar with AWS services,
+    see the `Overview of Amazon Web Services <https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html>`_.
 
 A related document, |sdk-net-api|_, provides a detailed description
 of each namespace and class.
