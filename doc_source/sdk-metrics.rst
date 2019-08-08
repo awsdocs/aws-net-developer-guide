@@ -85,7 +85,7 @@ Note: Enabling |SDKM| does not configure your credentials to use an AWS service.
 Option 2: AWS Shared Config File
 --------------------------------
 
-If no |SDKM| configuration is found in the environment variables or the Java system properties,
+If no |SDKM| configuration is found in the environment variables,
 the SDK looks for your default AWS profile field. If :code:`AWS_DEFAULT_PROFILE` is set to
 something other than default, update that profile.
 To enable |SDKM|, add :code:`csm_enabled` to the shared config file located at :file:`~/.aws/config`.
