@@ -70,7 +70,7 @@ added on :code:`IConfiguration`. To construct a service client from these option
 You can also create multiple service clients with incompatible settings using multiple entries in the 
 :file:`appsettings.Development.json` file, as shown in the following examples where the configuration for 
 :code:`service1` includes the :code:`us-west-2` Region
-and the configuration for :code:`service2` includes the special endpoint **URL**.
+and the configuration for :code:`service2` includes the special endpoint *URL*.
 
 .. literalinclude:: how-to/net-core/appsettings-multiple.json
    :language: json
