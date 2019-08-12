@@ -75,6 +75,12 @@ and the configuration for :code:`service2` includes the special endpoint **URL**
 .. literalinclude:: how-to/net-core/appsettings-multiple.json
    :language: json
       
+You can then get the options for a specific service by using the entry in the JSON file.
+For example, to get the settings for :code:`service1`:
+
+.. code:: cs
+   var options = Configuration.GetAWSOptions("service1);
+
 .. _net-core-appsettings-values:
 
 Allowed Values in appsettings File
