@@ -57,7 +57,7 @@ and region configured for the |EC2| instance.
 The configuration below shows an example of the values you can add in the 
 :file:`appsettings.Development.json` file in your project to supply AWS settings. 
 
-.. literalinclude:: how-to/net-core/appsettings-development.json  
+.. literalinclude:: how-to/net-core/appsettings-development.json
    :language: json
    
 To access the AWS options set in the file from code, call the :code:`GetAWSOptions` extension method 
@@ -67,6 +67,14 @@ added on :code:`IConfiguration`. To construct a service client from these option
 .. literalinclude:: how-to/net-core/create-s3-client.cs
    :language: csharp
 
+You can also create multiple service clients with incompatible settings using multiple entries in the 
+:file:`appsettings.Development.json` file, as shown in the following examples where the configuration for 
+:code:`service1` includes the :code:`us-west-2` Region
+and the configuration for :code:`service2` includes the special endpoint **URL**.
+
+.. literalinclude:: how-to/net-core/appsettings-multiple.json
+   :language: json
+      
 .. _net-core-appsettings-values:
 
 Allowed Values in appsettings File
