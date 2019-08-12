@@ -78,8 +78,8 @@ and the configuration for :code:`service2` includes the special endpoint *URL*.
 You can then get the options for a specific service by using the entry in the JSON file.
 For example, to get the settings for :code:`service1`:
 
-.. code:: cs
-   var options = Configuration.GetAWSOptions("service1);
+.. code-block:: csharp
+   var options = Configuration.GetAWSOptions("service1");
 
 .. _net-core-appsettings-values:
 
