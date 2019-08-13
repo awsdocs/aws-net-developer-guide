@@ -99,16 +99,15 @@ You can enumerate your security groups and check whether a security group exists
           }
         }
 
+.. _creating-security-group:
 
-    .. _creating-security-group:
+Create a Security Group
+=======================
 
-    Create a Security Group
-    =======================
-
-    If you attempt to create a security group with a name of an existing security group,
-    :sdk-net-api:`CreateSecurityGroup <EC2/MEC2CreateSecurityGroupCreateSecurityGroupRequest>` will throw
-    an exception. To avoid this, the following examples search for a security group with the specified
-    name, and return the appropriate :sdk-net-api:`SecurityGroup <EC2/TSecurityGroup>` object if one is found.
+If you attempt to create a security group with a name of an existing security group,
+:sdk-net-api:`CreateSecurityGroup <EC2/MEC2CreateSecurityGroupCreateSecurityGroupRequest>` will throw
+an exception. To avoid this, the following examples search for a security group with the specified
+name, and return the appropriate :sdk-net-api:`SecurityGroup <EC2/TSecurityGroup>` object if one is found.
 
 .. topic:: To create a security group for EC2-Classic
 
@@ -206,23 +205,23 @@ You can enumerate your security groups and check whether a security group exists
         }
 
 
-    .. _authorize-ingress:
+.. _authorize-ingress:
 
-    Add Rules to Your Security Group
-    ================================
+Add Rules to Your Security Group
+================================
 
-    Use the following procedure to add a rule to allow inbound traffic on TCP port 3389 (RDP). This
-    enables you to connect to a Windows instance. If you're launching a Linux instance, use TCP port 22
-    (SSH) instead.
+Use the following procedure to add a rule to allow inbound traffic on TCP port 3389 (RDP). This
+enables you to connect to a Windows instance. If you're launching a Linux instance, use TCP port 22
+(SSH) instead.
 
-    .. tip:: You can use a service to get the public IP address of your local computer. For example, we provide
-       the following service: http://checkip.amazonaws.com/. To locate another service that provides
-       your IP address, use the search phrase "what is my IP address". If you are connecting through an
-       ISP or from behind your firewall without a static IP address, you need to find out the range of
-       IP addresses used by client computers.
+.. tip:: You can use a service to get the public IP address of your local computer. For example, we provide
+   the following service: http://checkip.amazonaws.com/. To locate another service that provides
+   your IP address, use the search phrase "what is my IP address". If you are connecting through an
+   ISP or from behind your firewall without a static IP address, you need to find out the range of
+   IP addresses used by client computers.
 
-    The examples in this section follow from the examples in the previous sections. They assume
-    :code:`secGroup` is an existing security group.
+The examples in this section follow from the examples in the previous sections. They assume
+:code:`secGroup` is an existing security group.
 
 .. topic:: To add a rule to a security group
 
