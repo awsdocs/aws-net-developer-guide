@@ -321,13 +321,13 @@ Connect to Your Running Instance
 
 After an instance is running, you can remotely connect to it by using the appropriate remote client.
 
-For Linux instances, use an SSH client. You must ensure that the instance's SSH port (22) is open to
-traffic. You will need the instance's public IP address or public DNS name and the private portion
+For Linux instances, use an SSH client. You must ensure that the instance\'s SSH port (22) is open to
+traffic. You will need the instance\'s public IP address or public DNS name and the private portion
 of the key pair used to launch the instance. For more information, see
 :ec2-ug:`Connecting to Your Linux Instance <AccessingInstances>` in the |EC2-ug|.
 
-For Windows instances, use an RDP client. You must ensure the instance's RDP port (3389) is open to
-traffic. You will need the instance's public IP address or public DNS name and the administrator
+For Windows instances, use an RDP client. You must ensure the instance\'s RDP port (3389) is open to
+traffic. You will need the instance\'s public IP address or public DNS name and the administrator
 password. The administrator password is obtained with the
 :sdk-net-api:`GetPasswordData <EC2/MEC2GetPasswordDataGetPasswordDataRequest>` and
 :sdk-net-api:`GetPasswordDataResult.GetDecryptedPassword <EC2/MGetPasswordDataResponseGetDecryptedPasswordString>`

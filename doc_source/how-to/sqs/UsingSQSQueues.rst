@@ -22,7 +22,7 @@ best-effort ordering, which ensures that messages are generally delivered in the
 You can use standard message queues in many scenarios, as long as your application can process messages
 that arrive more than once and out of order.
 
-This code example demonstrates how to use queues by using these methods of the :code:`AmazonSQSClient`class:
+This code example demonstrates how to use queues by using these methods of the :code:`AmazonSQSClient` class:
 
 * :sdk-net-api:`ListQueues <SQS/MSQSListQueuesListQueuesRequest>`: Gets a list of
   your message queues

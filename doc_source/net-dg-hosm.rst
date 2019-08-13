@@ -1,4 +1,4 @@
-.. Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+.. Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
    This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
    International License (the "License"). You may not use this file except in compliance with the
@@ -187,13 +187,17 @@ described in the following procedure.
 
        #. In the navigation pane, choose :guilabel:`Instances`. Choose the instance, and then choose
          :guilabel:`Connect`.
+                   
        #. In the :guilabel:`Connect To Your Instance` dialog box, choose :guilabel:`Get Password`. (It will
           take a few minutes after the instance is launched before the password is available.)
+          
        #. Choose :guilabel:`Browse` and navigate to the private key file you created when you launched the
           instance. Choose the file, and then choose :guilabel:`Open` to copy the file's contents into the contents box.
+          
        #. Choose :guilabel:`Decrypt Password`. The console displays the default administrator password for the
           instance in the :guilabel:`Connect To Your Instance` dialog box, replacing the link to
           :guilabel:`Get Password` shown earlier with the password.
+                    
        #. Record the default administrator password or copy it to the clipboard. You need this password to
           connect to the instance.
 

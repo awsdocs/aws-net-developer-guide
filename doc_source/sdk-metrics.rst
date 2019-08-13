@@ -9,9 +9,11 @@
    limitations under the License.
 
 .. |language| replace:: .NET
-.. |sdk| replace:: |sdk-net|
+..
+   |sdk| replace:: |sdk-net|
 .. |SDKM| replace:: SDK Metrics
-.. |SDKMlong| replace:: AWS SDK Metrics for Enterprise Support
+..
+   |SDKMlong| replace:: AWS SDK Metrics for Enterprise Support
 
 ###############
 Enabling |SDKM|
