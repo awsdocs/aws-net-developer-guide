@@ -1,4 +1,4 @@
-.. Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+.. Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
    This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
    International License (the "License"). You may not use this file except in compliance with the
@@ -42,6 +42,8 @@ added regions on a per-client basis or globally.
 Per-Client
 ==========
 
+Setting the Region in a client takes precedence over any global setting.
+
 Construct the new region endpoint by using :sdk-net-api:`GetBySystemName <Amazon/MRegionEndpointGetBySystemNameString>`:
 
 .. code-block:: c#
@@ -51,7 +53,6 @@ Construct the new region endpoint by using :sdk-net-api:`GetBySystemName <Amazon
             {
               // Make a request to EC2 using ec2Client
             }
- 
  
 You can also use the :code:`ServiceURL` property of the service client configuration class to specify the 
 region. This technique works even if the region endpoint does not follow the regular region endpoint pattern. 
@@ -72,9 +73,10 @@ region. This technique works even if the region endpoint does not follow the reg
 Globally
 ========
 
-You can set the region globally in three ways.
+There are a number of ways you can specify a Region for all clients.
+The |sdk-net| looks for a Region value in the following order:
 
-You can set the :code-csharp:`AWSConfigs.AWSRegion` property, 
+Set as a :code-csharp:`AWSConfigs.AWSRegion` property, 
   
 .. code-block:: c#
 
@@ -84,7 +86,7 @@ You can set the :code-csharp:`AWSConfigs.AWSRegion` property,
               // Make request to Amazon EC2 using ec2Client
             }
 
-You can set the :code:`AWSRegion` key in the :code:`appSettings` section of the :code:`app.config` 
+Set as a :code:`AWSRegion` key in the :code:`appSettings` section of the :code:`app.config` 
 file.
 
 .. code-block:: c#
@@ -95,7 +97,7 @@ file.
               </appSettings>
             </configuration>
             
-You can set the :code:`region` attribute in the :code:`aws` section as described in 
+Set as a :code:`region` attribute in the :code:`aws` section as described in 
 `AWSRegion <http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-other.html#awsregion>`_.
    
 .. code-block:: c#
@@ -104,5 +106,3 @@ You can set the :code:`region` attribute in the :code:`aws` section as described
 
 To view the current list of all supported regions and endpoints for each AWS service, see |regions-and-endpoints|_ 
 in the |AWS-gr|.
-
-
