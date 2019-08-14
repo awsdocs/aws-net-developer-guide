@@ -27,9 +27,12 @@ with |EC2|.
 
 The :ref:`tutorial-spot-instances-net` show you how to use Spot Instances,
 which enable you to access unused EC2 capacity at up to 90% versus the On-Demand Instance price.
-|EC2| changes the Spot price periodically
-based on supply and demand; customers whose bids meet or exceed it gain access to the available 
-Spot Instances. For more information, see :ec2-ug:`Spot Instances <using-spot-instances>` in the |EC2-ug|
+|EC2| sets Spot Instance prices and adjusts them gradually based on long-term trends in supply and demand for
+Spot Instance capacity.
+You can specify the amount you are willing to pay for a Spot Instance as a percentage of the On-Demand Instance price;
+customers whose bids meet or exceed it gain access to the available Spot Instances.
+
+For more information, see :ec2-ug:`Spot Instances <using-spot-instances>` in the |EC2-ug|
 and :ec2-ug-win:`Spot Instances <using-spot-instances>` in the |EC2-ug-win|.
 
 .. toctree::

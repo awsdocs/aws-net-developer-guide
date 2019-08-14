@@ -1,4 +1,4 @@
-.. Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+.. Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
    This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
    International License (the "License"). You may not use this file except in compliance with the
@@ -14,7 +14,7 @@
 Configuring Your |sdk-net| Application
 ######################################
 
-You can configure your |sdk-net| application to specify AWS credentials, logging options, endpoints,
+You can configure your |sdk-net| application to specify logging options, endpoints,
 or signature version 4 support with |S3|.
 
 The recommended way to configure an application is to use the :code:`<aws>` element in the project's
@@ -59,8 +59,7 @@ element instead. The following example specifies the :ref:`config-setting-awsreg
 
 Programmatically defined parameters override any values that were specified in an :file:`App.config`
 or :file:`Web.config` file. Some programmatically defined parameter values take effect immediately;
-others take effect only after you create a new client object. For more information, see
-:ref:`net-dg-config-creds`.
+others take effect only after you create a new client object.
 
 .. toctree::
     :maxdepth: 1

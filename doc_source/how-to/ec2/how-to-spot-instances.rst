@@ -25,10 +25,10 @@ This topic describes how to use the |sdk-net| with Amazon EC2 Spot Instances.
 Overview
 ========
 
-Spot Instances enable you to bid on unused |EC2| capacity and run any instances that you acquire for
-as long as your bid exceeds the current *Spot Price*. |EC2| changes the Spot Price periodically
+Spot Instances enable you to request unused |EC2| capacity and run any instances that you acquire for
+as long as your request exceeds the current *Spot Price*. |EC2| changes the Spot Price periodically
 based on supply and demand, but will never exceed 90% of the On-Demand Instance price;
-customers whose bids meet or exceed it gain access to the available Spot Instances.
+customers whose requests meet or exceed it gain access to the available Spot Instances.
 Like On-Demand Instances and Reserved Instances, Spot Instances provide another option
 for obtaining more compute capacity.
 
@@ -38,9 +38,9 @@ and testing. Additionally, Spot Instances are an excellent option when you need 
 computing capacity, but the need for that capacity is not urgent.
 
 To use Spot Instances, place a Spot Instance request specifying the maximum price you are willing to
-pay per instance hour; this is your bid. If your bid exceeds the current Spot Price, your request is
+pay per instance hour; this is your request. If your request exceeds the current Spot Price, your request is
 fulfilled and your instances will run until either you choose to terminate them or the Spot Price
-increases above your bid (whichever is sooner). You can terminate a Spot Instance programmatically,
+increases above your request (whichever is sooner). You can terminate a Spot Instance programmatically,
 as shown this tutorial, or by using the :console:`AWS Management Console <ec2>` or by using the
 |TVSlong|.
 
@@ -90,7 +90,7 @@ Submitting Your Spot Request
 ============================
 
 To submit a Spot request, you first need to determine the instance type, the Amazon Machine Image
-(AMI), and the maximum bid price you want to use. You must also include a security group, so that
+(AMI), and the maximum request you want to offer. You must also include a security group, so that
 you can log into the instance if you want to. For more information about creating security groups,
 see :ref:`create-security-group`.
 
@@ -99,11 +99,11 @@ There are several instance types to choose from; go to
 use :code:`t1.micro`. You'll also want to get the ID of a current Windows AMI. For more information, 
 see :ec2-ug-win:`Finding an AMI <finding-an-ami>` in the |EC2-ug-win|.
 
-There are many ways to approach bidding for Spot Instances. To get a broad overview of the various
+There are many ways to approach requesting Spot Instances. To get a broad overview of the various
 approaches, you should view the 
-`Bidding for Spot Instances <http://www.youtube.com/watch?v=WD9N73F3Fao&feature=player_embedded>`_ 
-video. However, to get started, we'll describe three common strategies: bid to ensure cost is less 
-than on-demand pricing; bid based on the value of the resulting computation; bid so as to acquire 
+`Deciding on Your Spot Bidding Strategy <http://www.youtube.com/watch?v=WD9N73F3Fao&feature=player_embedded>`_ 
+video. However, to get started, we'll describe three common strategies: request to ensure that the cost is less 
+than on-demand pricing; request based on the value of the resulting computation; request so as to acquire 
 computing capacity as quickly as possible.
 
 *Reduce Cost Below On-Demand*
@@ -113,13 +113,13 @@ computing capacity as quickly as possible.
   using either the |console| or the |EC2| API. For more information, go to 
   :ec2-ug:`Viewing Spot Price History <using-spot-instances-history>`. After you've analyzed the 
   price history for your desired instance type in a given Availability Zone, you have two 
-  alternative approaches for your bid: 
+  alternative approaches for your request: 
 
-  * You could bid at the upper end of the range of Spot Prices (which are still below the On-Demand
-    price), anticipating that your one-time Spot request would most likely be fulfilled and run
+  * Specify a request at the upper end of the range of Spot Prices, which are still below the On-Demand
+    price, anticipating that your one-time Spot request would most likely be fulfilled and run
     for enough consecutive compute time to complete the job.
 
-  * Or, you could bid at the lower end of the price range, and plan to combine many instances launched
+  * Specify a request at the lower end of the price range, and plan to combine many instances launched
     over time through a persistent request. The instances would run long enough, in aggregate,
     to complete the job at an even lower total cost. (We will explain how to automate this task
     later in this tutorial.)
@@ -127,24 +127,24 @@ computing capacity as quickly as possible.
 *Pay No More than the Value of the Result*
   You have a data processing job to run. You understand the value of the job's results well enough
   to know how much they are worth in terms of computing costs. After you've analyzed the Spot
-  Price history for your instance type, you choose a bid price at which the cost of the computing
-  time is no more than the value of the job's results. You create a persistent bid and allow it to
-  run intermittently as the Spot Price fluctuates at or below your bid.
+  Price history for your instance type, you choose a request at which the cost of the computing
+  time is no more than the value of the job's results. You create a persistent request and allow it to
+  run intermittently as the Spot Price fluctuates at or below your request.
 
 *Acquire Computing Capacity Quickly*
   You have an unanticipated, short-term need for additional capacity that is not available through
   On-Demand Instances. After you've analyzed the Spot Price history for your instance type, you
-  bid above the highest historical price to greatly improve the likelihood your request will be
+  request above the highest historical price to greatly improve the likelihood your request will be
   fulfilled quickly and continue computing until it is complete.
 
-After you choose your bid price, you are ready to request a Spot Instance. For the purposes of this
-tutorial, we will set our bid price equal to the On-Demand price ($0.03) to maximize the chances the
-bid will be fulfilled. You can determine the types of available instances and the On-Demand prices
+After you have performed your analysis, you are ready to request a Spot Instance. In this
+tutorial the request is equal to the On-Demand price ($0.03) to maximize the chances the
+request will be fulfilled. You can determine the types of available instances and the On-Demand prices
 for instances by going to `Amazon EC2 Pricing page <http://aws.amazon.com/ec2/pricing/>`_.
 
 To request a Spot Instance, you need to build your request with the parameters we have specified so
 far. Start by creating a :sdk-net-api:`RequestSpotInstanceRequest <EC2/TRequestSpotInstancesRequest>`
-object. The request object requires the bid price and the number of instances you want to start.
+object. The request object requires the request amount and the number of instances you want to start.
 Additionally, you need to set the :sdk-net-api:`LaunchSpecification <EC2/TLaunchSpecification>` for the
 request, which includes the instance type, AMI ID, and the name of the security group you want to
 use for the Spot Instances. After the request is populated, call the :sdk-net-api:`RequestSpotInstances
@@ -229,8 +229,8 @@ The final step is to clean up your requests and instances. It is important to bo
 outstanding requests and terminate any instances. Just canceling your requests will not terminate
 your instances, which means that you will continue to be charged for them. If you terminate your
 instances, your Spot requests may be canceled, but there are some scenarios, such as if you use
-persistent bids, where terminating your instances is not sufficient to stop your request from being
-re-fulfilled. Therefore, it is a best practice to both cancel any active bids and terminate any
+persistent requests, where terminating your instances is not sufficient to stop your request from being
+re-fulfilled. Therefore, it is a best practice to both cancel any active requests and terminate any
 running instances.
 
 You use the :sdk-net-api:`CancelSpotInstanceRequests
