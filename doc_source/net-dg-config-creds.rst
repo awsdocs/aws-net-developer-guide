@@ -1,4 +1,4 @@
-.. Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+.. Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
    This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
    International License (the "License"). You may not use this file except in compliance with the
@@ -53,7 +53,6 @@ The following topics describe how to manage credentials for an |sdk-net| applica
 of how to securely manage AWS credentials, see
 :aws-gr:`Best Practices for Managing AWS Access Keys <aws-access-keys-best-practices>`.
 
-
 .. _sdk-store:
 
 Using the |sdk-store|
@@ -85,7 +84,7 @@ You can manage the profiles in the |sdk-store| in several ways.
 
 * Use the graphical user interface (GUI) in the |TVSlong| to manage profiles. For more information about
   adding credentials to the |sdk-store| by using the GUI, see
-  `Providing AWS Credentials <https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/credentials.html>` in the |TVSlong|.
+  `Providing AWS Credentials <https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/credentials.html>`_ in the |TVSlong|.
 
 * You can manage your profiles from the command line by using the :code:`Set-AWSCredentials` cmdlet in
   |TWPlong|. For more information, see :twp-ug:`Using AWS Credentials <specifying-your-aws-credentials>`.
@@ -176,10 +175,10 @@ You can manage the profiles in the shared credentials file in two ways:
      aws_access_key_id = {accessKey}
      aws_secret_access_key = {secretKey}
 
-   For more information, see
+  For more information, see
   `Best Practices for Managing AWS Access Keys <http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`_.
 
- .. tip:: If you include a profile named :code:`default`, the |sdk-net| uses that profile by default if it can't find the specified profile.
+  .. tip:: If you include a profile named :code:`default`, the |sdk-net| uses that profile by default if it can't find the specified profile.
 
   You can store the credentials file that contains the profiles in a location you choose, such as
   :file:`C:\\aws_service_credentials\\credentials`. You then explicitly specify the file path in the
