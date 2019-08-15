@@ -438,8 +438,12 @@ the current application.
 |sdk-store| profiles are specific to a particular user on a particular host. You can't copy them
 to other hosts or other users. For this reason, you can't reuse |sdk-store| profiles that are on
 your development machine on other hosts or developer machines. If your application is running on an |EC2|
-instance, use an |IAM| role as described in :ref:`Using IAM Roles for EC2 Instances with the AWS SDK for .NET <net-dg-roles>`.
-Otherwise, store your credentials in a credentials file that your web application has access to on the server.
+instance,
+such as in a production environment,
+use an |IAM| role as described in :ref:`Using IAM Roles for EC2 Instances with the AWS SDK for .NET <net-dg-roles>`.
+Otherwise,
+such as in pre-release testing,
+store your credentials in a credentials file that your web application has access to on the server.
 
 .. _net-dg-config-creds-profile-resolution:
 
