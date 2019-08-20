@@ -1,4 +1,4 @@
-.. Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+.. Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
    This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
    International License (the "License"). You may not use this file except in compliance with the
@@ -15,17 +15,15 @@ Configuring the |sdk-net| with |net-core|
 #########################################
 
 One of the biggest changes in |net-core| is the removal of :code:`ConfigurationManager` and the standard 
-:file:`app.config` and :file:`web.config` files that were used ubiquitously with .NET Framework and 
-ASP.NET applications. For traditional .NET applications, the |sdk-net| uses this configuration 
-system to set things like AWS credentials and region so that you don't have to do this in code.
+:file:`app.config` and :file:`web.config` files that were used with .NET Framework and 
+ASP.NET applications.
 
-The configuration system in |net-core| allows any type of input source from any location. Also, the 
-configuration object isn't a global singleton like the ConfigurationManager in standard .NET 
-applications, so the |sdk-net| doesn't have access to read settings from it.
+Configuration in |net-core| is based on key-value pairs established by configuration providers.
+Configuration providers read configuration data into key-value pairs from a variety of configuration sources,
+including command-line arguments, directory files, environment variables, and settings files.
 
-.. note:: For background on the |net-core| configuration system, read the 
-   `Configuration <https://docs.asp.net/en/latest/fundamentals/configuration.html>`_ topic in the 
-   |net-core| documentation.
+.. note:: For further information, see
+   `Configuration in ASP.NET Core <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.2>`_.
 
 To make it easy to use the |sdk-net| with |net-core|, you can use the 
 :code:`AWSSDK.Extensions.NETCore.Setup` NuGet package. Like many |net-core| libraries, it adds 
@@ -38,8 +36,8 @@ Using AWSSDK.Extensions.NETCore.Setup
 ======================================
 
 When you create an ASP.NET Core MVC application in Visual Studio, the constructor for :file:`Startup.cs` 
-handles configuration by reading in various input sources, using the :code:`ConfigurationBuilder` 
-and setting the :code:`Configuration` property to the built :code:`IConfiguration` object. 
+handles configuration by reading in various input sources from configuration providers,
+such as reading *appsettings.json*.
 
 .. literalinclude:: how-to/net-core/configurationBuilder.cs
    :language: csharp
@@ -54,14 +52,22 @@ read-only during local testing. When you deploy an |EC2| instance that has :code
 set to **Production**, this file is ignored and the |sdk-net| falls back to the IAM credentials 
 and region configured for the |EC2| instance.
 
-The configuration below shows an example of the values you can add in the 
+The following configuration settings show examples of the values you can add in the 
 :file:`appsettings.Development.json` file in your project to supply AWS settings. 
 
 .. literalinclude:: how-to/net-core/appsettings-development.json
    :language: json
-   
+
+To access a setting in an *CSHTML* file,
+use the :code:`Configuration` directive:
+
+.. literalinclude:: how-to/net-core/contact.cshtml
+   :language: html
+
 To access the AWS options set in the file from code, call the :code:`GetAWSOptions` extension method 
-added on :code:`IConfiguration`. To construct a service client from these options, call 
+added on :code:`IConfiguration`.
+
+To construct a service client from these options, call 
 :code:`CreateServiceClient`. The following example code shows how to create an |S3| service client. 
 
 .. literalinclude:: how-to/net-core/create-s3-client.cs

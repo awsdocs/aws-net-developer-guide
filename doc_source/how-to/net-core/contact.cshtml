@@ -1,0 +1,8 @@
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<h1>Contact</h1>
+
+<p>
+    <strong>Support:</strong> <a href='mailto:@Configuration["SupportEmail"]'>@Configuration["SupportEmail"]</a><br />
+</p>
