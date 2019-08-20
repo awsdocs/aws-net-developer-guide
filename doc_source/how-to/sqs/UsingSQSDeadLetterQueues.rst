@@ -39,7 +39,7 @@ other queues to route unprocessed messages to the dead letter queue. To do this,
 policy that identifies the queue to use as a dead letter queue and the maximum number of receives by
 individual messages before they are routed to the dead letter queue.
 
-Create an :sdk-net-api:`AmazonSQSClient <SQS/TSQSClient>` object to set the queue attrributes. Create
+Create an :sdk-net-api:`AmazonSQSClient <SQS/TSQSClient>` object to set the queue attributes. Create
 a :sdk-net-api:`SetQueueAttributesRequest <SQS/MSQSSetQueueAttributesSetQueueAttributesRequest>` object
 containing the properties needed to update queue attributes, including the :code:`RedrivePolicy` property
 that specifies both the Amazon Resource Name (ARN) of the dead letter queue, and the value of :code:`maxReceiveCount`. Also specify the URL source queue you want to configure. Call the 
