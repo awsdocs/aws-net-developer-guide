@@ -22,6 +22,8 @@ Use the following procedure to launch one or more identically configured |EC2| i
 Amazon Machine Image (AMI). After you create your EC2 instances, you can check their status. When
 your EC2 instances are running, you can connect to them.
 
+For information on creating an |EC2| instance, see `:ref:`init-ec2-client`.
+
 .. _launch-instance:
 
 Launch an EC2 Instance in EC2-Classic or in a VPC

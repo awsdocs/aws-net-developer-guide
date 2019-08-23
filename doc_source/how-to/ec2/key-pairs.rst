@@ -18,7 +18,6 @@ Working with |EC2| Key Pairs
    :description: Use this .NET code example to learn how to use key pairs in Amazon EC2.
    :keywords: AWS SDK for .NET examples, EC2 key pairs, cryptography
 
-
 Amazon EC2 uses public–key cryptography to encrypt and decrypt login information. Public–key cryptography
 uses a public key to encrypt data, then the recipient uses the private key to decrypt the data. The
 public and private keys are known as a key pair. You must specify a key pair when you launch an EC2
@@ -32,6 +31,8 @@ This example shows how to create a key pair, describe key pairs and delete a key
 * :sdk-net-api:`CreateKeyPair <EC2/MEC2CreateKeyPairCreateKeyPairRequest>`
 * :sdk-net-api:`DeleteKeyPair <EC2/MEC2DeleteKeyPairDeleteKeyPairRequest>`
 * :sdk-net-api:`DescribeKeyPairs <EC2/MEC2DescribeKeyPairsDescribeKeyPairsRequest>`
+
+For information on creating an |EC2| instance, see `:ref:`init-ec2-client`.
 
 .. _create-save-key-pair:
 

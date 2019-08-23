@@ -18,7 +18,6 @@ Creating a Security Group in |EC2|
    :description: Use this .NET code example to learn how to create Amazon EC2 security groups.
    :keywords: AWS SDK for .NET examples, Amazon EC2 security groups
 
-
 In |EC2|, a security group acts as a virtual firewall that controls the network traffic for one or
 more EC2 instances. By default, |EC2| associates your instances with a security group that allows no
 inbound traffic. You can create a security group that allows your EC2 instances to accept certain
@@ -32,6 +31,8 @@ EC2-Classic and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-pla
 
 Alternatively, you can create a security group using the |EC2| console. For more information, see
 :ec2-ug-win:`Amazon EC2 Security Groups <using-network-security>` in the |EC2-ug-win|.
+
+For information on creating an |EC2| instance, see `:ref:`init-ec2-client`.
 
 .. _enumerate-security-groups:
 
