@@ -151,7 +151,7 @@ use for the Spot Instances. After the request is populated, call the :sdk-net-ap
 <EC2/MEC2RequestSpotInstancesRequestSpotInstancesRequest>` method to create the Spot Instance
 request. The following example demonstrates how to request a Spot Instance.
 
-For information on creating an |EC2| instance, see `:ref:`init-ec2-client`.
+For information on creating an |EC2| instance, see :ref:`init-ec2-client`.
 
 .. code-block:: csharp
 

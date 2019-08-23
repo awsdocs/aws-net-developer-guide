@@ -32,7 +32,7 @@ EC2-Classic and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-pla
 Alternatively, you can create a security group using the |EC2| console. For more information, see
 :ec2-ug-win:`Amazon EC2 Security Groups <using-network-security>` in the |EC2-ug-win|.
 
-For information on creating an |EC2| instance, see `:ref:`init-ec2-client`.
+For information on creating an |EC2| instance, see :ref:`init-ec2-client`.
 
 .. _enumerate-security-groups:
 
