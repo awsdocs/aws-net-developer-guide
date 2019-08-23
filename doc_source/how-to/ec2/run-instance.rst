@@ -32,6 +32,8 @@ Launch an EC2 Instance in EC2-Classic or in a VPC
 You can launch an instance in either EC2-Classic or in a VPC. For more information about EC2-Classic
 and EC2-VPC, see :ec2-ug-win:`Supported Platforms <ec2-supported-platforms>` in the |EC2-ug-win|.
 
+To get a list of your security groups and their :code:`GroupId` properties, see :ref:`enumerate-security-groups`.
+
 .. topic:: To launch an EC2 instance in EC2-Classic
 
     #. Create and initialize a :sdk-net-api:`RunInstancesRequest <EC2/TRunInstancesRequest>` object.
