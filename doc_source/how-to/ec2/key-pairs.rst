@@ -32,7 +32,7 @@ This example shows how to create a key pair, describe key pairs and delete a key
 * :sdk-net-api:`DeleteKeyPair <EC2/MEC2DeleteKeyPairDeleteKeyPairRequest>`
 * :sdk-net-api:`DescribeKeyPairs <EC2/MEC2DescribeKeyPairsDescribeKeyPairsRequest>`
 
-For information on creating an |EC2| instance, see :ref:`init-ec2-client`.
+For information on creating an |EC2| client, see :ref:`init-ec2-client`.
 
 .. _create-save-key-pair:
 

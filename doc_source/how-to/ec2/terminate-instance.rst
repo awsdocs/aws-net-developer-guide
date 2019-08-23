@@ -20,7 +20,7 @@ Terminating an |EC2| Instance
 
 When you no longer need one or more of your |EC2| instances, you can terminate them.
 
-For information on creating an |EC2| instance, see `:ref:`init-ec2-client`.
+For information on creating an |EC2| client, see :ref:`init-ec2-client`.
 
 .. topic:: To terminate an EC2 instance
 
