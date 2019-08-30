@@ -10,289 +10,306 @@
 
 .. _tutorial-spot-instances-net:
 
-#################################
-Amazon EC2 Spot Instance Examples
-#################################
+###############################################################
+Tutorial: Using |sdk-net| to Manage |EC2| Spot Instances
+###############################################################
 
-This topic describes how to use the |sdk-net| with Amazon EC2 Spot Instances.
+You can use the |sdk-net| to manage |EC2| spot instances with C# code. The SDK enables you to use the |EC2| API to create spot instance requests, determine when the request is fulfilled, delete requests, and identify the instances created.
 
-.. contents:: **Topics**
-    :local:
-    :depth: 1
+This tutorial provides code that performs these tasks and a sample application that you can run locally or on AWS. It includes a sample project that you can deploy to |LAMlong|'s .NET Core 2.1 runtime.
 
-.. _tutor-spot-net-overview:
+.. image:: ../../../sample-apps/ec2-spot/images/sample-ec2spot.png
 
-Overview
-========
-
-Spot Instances enable you to request unused |EC2| capacity and run any instances that you acquire for
-as long as your request exceeds the current *Spot Price*. |EC2| changes the Spot Price periodically
-based on supply and demand, but will never exceed 90% of the On-Demand Instance price;
-customers whose requests meet or exceed it gain access to the available Spot Instances.
-Like On-Demand Instances and Reserved Instances, Spot Instances provide another option
-for obtaining more compute capacity.
-
-Spot Instances can significantly lower your |EC2| costs for applications such as batch processing,
-scientific research, image processing, video encoding, data and web crawling, financial analysis,
-and testing. Additionally, Spot Instances are an excellent option when you need large amounts of
-computing capacity, but the need for that capacity is not urgent.
-
-To use Spot Instances, place a Spot Instance request specifying the maximum price you are willing to
-pay per instance hour; this is your request. If your request exceeds the current Spot Price, your request is
-fulfilled and your instances will run until either you choose to terminate them or the Spot Price
-increases above your request (whichever is sooner). You can terminate a Spot Instance programmatically,
-as shown this tutorial, or by using the :console:`AWS Management Console <ec2>` or by using the
-|TVSlong|.
-
-You can also specify the amount you are willing to pay for Spot Instances as a precentage of the On-Demand Instance price.
-If the specified price is exceeded, then the Spot Instance will terminate.
-
-Spot Instances perform exactly like other |EC2| instances while running, and like other |EC2|
-instances, Spot Instances can be terminated when you no longer need them. 
-
-You pay the Spot price that's in effect for the time period your instances are running.
-Spot Instance prices are set by |EC2| and adjust gradually based on long-term trends in supply and demand for Spot Instance capacity.
-You can also specify the amount you are willing to pay for a Spot Instance as a percentage of the On-Demand Instance price.
-
-This tutorial provides an overview of how to use the .NET programming environment to do the
-following.
-
-* Submit a Spot request
-
-* Determine when the Spot request becomes fulfilled
-
-* Cancel the Spot request
-
-* Terminate associated instances
-
-.. _tutor-spot-net-prereq:
+For more information about spot instances usage and best practices, see `Spot Instances <https://alpha-docs-aws.amazon.com/AWSEC2/latest/DeveloperGuide/using-spot-instances.html>`_ in the |EC2| user guide.
 
 Prerequisites
 =============
 
-This tutorial assumes you have signed up for AWS, set up your .NET development environment, and
-installed the |sdk-net|. If you use the Microsoft Visual Studio development environment, we
-recommend you also install the |TVSlong|. For instructions on setting up your environment, see
-:ref:`net-dg-setup`.
+To follow the procedures in this guide, you will need a command line terminal or shell to run commands. Commands are shown in listings preceded by a prompt symbol ($) and the name of the current directory, when appropriate:
 
+.. code-block:: sh
 
-.. _tutor-spot-net-credentials:
+  ~/lambda-project$ this is a command
+  this is output
 
-Setting Up Your Credentials
-===========================
+For long commands, an escape character (\\) is used to split a command over multiple lines.
 
-For information about how to use your AWS credentials with the SDK, see
-:ref:`net-dg-config-creds`.
+On Linux and macOS, use your preferred shell and package manager. On Windows 10, you can `install the Windows Subsystem for Linux <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`_ to get a Windows-integrated version of Ubuntu and Bash.
 
-.. _tutor-spot-net-submit:
+This tutorial uses code from the developer guide's GitHub repository. The repository also contains helper scripts and configuration files that are needed to follow its procedures. Clone the repository at `github.com/awsdocs/aws-net-developer-guide <https://github.com/awsdocs/aws-net-developer-guide>`_.
 
-Submitting Your Spot Request
-============================
+To use the sample code you need the following tools:
 
-To submit a Spot request, you first need to determine the instance type, the Amazon Machine Image
-(AMI), and the maximum request you want to offer. You must also include a security group, so that
-you can log into the instance if you want to. For more information about creating security groups,
-see :ref:`create-security-group`.
+* **AWS CLI** – To deploy the sample application to AWS, install the `AWS CLI <https://alpha-docs-aws.amazon.com/cli/latest/userguide/cli-chap-install.html>`_. The |cli| also provides credentials to the sample code when you run it locally.
 
-There are several instance types to choose from; go to 
-:ec2-ug:`Amazon EC2 Instance Types <instance-types>` for a complete list. For this tutorial, we will 
-use :code:`t1.micro`. You'll also want to get the ID of a current Windows AMI. For more information, 
-see :ec2-ug-win:`Finding an AMI <finding-an-ami>` in the |EC2-ug-win|.
+* **NET Core CLI** – To run and test the code locally, install the `.NET Core SDK 2.1 <https://dotnet.microsoft.com/download/dotnet-core/2.1>`_.
 
-There are many ways to approach requesting Spot Instances. To get a broad overview of the various
-approaches, you should view the 
-`Deciding on Your Spot Bidding Strategy <http://www.youtube.com/watch?v=WD9N73F3Fao&feature=player_embedded>`_ 
-video. However, to get started, we'll describe three common strategies: request to ensure that the cost is less 
-than on-demand pricing; request based on the value of the resulting computation; request so as to acquire 
-computing capacity as quickly as possible.
+* **Lambda .NET Core Global Tool** – To build the deployment package for |LAM|, install the `.NET Core Global Tool <https://dotnet.microsoft.com/download/dotnet-core/2.1>`_ with the .NET Core CLI.
 
-*Reduce Cost Below On-Demand*
-  You have a batch processing job that will take a number of hours or days to run. However, you
-  are flexible with respect to when it starts and ends. You want to see if you can complete it for
-  less than the cost of On-Demand Instances. You examine the Spot Price history for instance types
-  using either the |console| or the |EC2| API. For more information, go to 
-  :ec2-ug:`Viewing Spot Price History <using-spot-instances-history>`. After you've analyzed the 
-  price history for your desired instance type in a given Availability Zone, you have two 
-  alternative approaches for your request: 
+    .. code-block:: sh
 
-  * Specify a request at the upper end of the range of Spot Prices, which are still below the On-Demand
-    price, anticipating that your one-time Spot request would most likely be fulfilled and run
-    for enough consecutive compute time to complete the job.
+      $ dotnet tool install -g Amazon.Lambda.Tools
 
-  * Specify a request at the lower end of the price range, and plan to combine many instances launched
-    over time through a persistent request. The instances would run long enough, in aggregate,
-    to complete the job at an even lower total cost. (We will explain how to automate this task
-    later in this tutorial.)
+The code in this tutorial manages spot requests that launch |EC2| instances. To run the code locally, you need SDK credentials with permission to use the following APIs.
 
-*Pay No More than the Value of the Result*
-  You have a data processing job to run. You understand the value of the job's results well enough
-  to know how much they are worth in terms of computing costs. After you've analyzed the Spot
-  Price history for your instance type, you choose a request at which the cost of the computing
-  time is no more than the value of the job's results. You create a persistent request and allow it to
-  run intermittently as the Spot Price fluctuates at or below your request.
+* :code:`ec2:RequestSpotInstance`
 
-*Acquire Computing Capacity Quickly*
-  You have an unanticipated, short-term need for additional capacity that is not available through
-  On-Demand Instances. After you've analyzed the Spot Price history for your instance type, you
-  request above the highest historical price to greatly improve the likelihood your request will be
-  fulfilled quickly and continue computing until it is complete.
+* :code:`ec2:GetSpotRequestState`
 
-After you have performed your analysis, you are ready to request a Spot Instance. In this
-tutorial the request is equal to the On-Demand price ($0.03) to maximize the chances the
-request will be fulfilled. You can determine the types of available instances and the On-Demand prices
-for instances by going to `Amazon EC2 Pricing page <http://aws.amazon.com/ec2/pricing/>`_.
+* :code:`ec2:CancelSpotRequest`
 
-To request a Spot Instance, you need to build your request with the parameters we have specified so
-far. Start by creating a :sdk-net-api:`RequestSpotInstanceRequest <EC2/TRequestSpotInstancesRequest>`
-object. The request object requires the request amount and the number of instances you want to start.
-Additionally, you need to set the :sdk-net-api:`LaunchSpecification <EC2/TLaunchSpecification>` for the
-request, which includes the instance type, AMI ID, and the name of the security group you want to
-use for the Spot Instances. After the request is populated, call the :sdk-net-api:`RequestSpotInstances
-<EC2/MEC2RequestSpotInstancesRequestSpotInstancesRequest>` method to create the Spot Instance
-request. The following example demonstrates how to request a Spot Instance.
+* :code:`ec2:TerminateInstances`
 
-For information on creating an |EC2| client, see :ref:`init-ec2-client`.
+To run the sample application in AWS, you need permission to use |LAM|, |S3long| and |CFNlong|. See `Permissions <https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.xml>`_ in the |LAM| developer guide for more information.
+
+Review the Code
+===============
+
+Locate the sample project in the guide repository under `sample-apps/ec2-spot <https://github.com/awsdocs/aws-net-developer-guide/tree/master/sample-apps/ec2-spot>`_. This directory contains |LAM| function code, tests, project files, scripts, and an |CFN| template.
+
+The Function class includes a FunctionHandler method that calls other methods to create spot requests, check their status, and clean up. It creates an |EC2| client with the |sdk-net| in a static constructor to allow it to be used throughout the class.
+
+**Function.cs** – `FunctionHandler <https://github.com/awsdocs/aws-net-developer-guide/blob/master/sample-apps/ec2-spot/src/ec2spot/Function.cs#L17>`_
 
 .. code-block:: csharp
 
-    public static SpotInstanceRequest RequestSpotInstance(
-      AmazonEC2Client ec2Client,
-      string amiId,
-      string securityGroupName,
-      InstanceType instanceType,
-      string spotPrice,
-      int instanceCount)
-    {
-      var request = new RequestSpotInstancesRequest();
-    
-      request.SpotPrice = spotPrice;
-      request.InstanceCount = instanceCount;
-    
-      var launchSpecification = new LaunchSpecification();
-      launchSpecification.ImageId = amiId;
-      launchSpecification.InstanceType = instanceType;
-    
-      launchSpecification.SecurityGroups.Add(securityGroupName);
-    
-      request.LaunchSpecification = launchSpecification;
-    
-      var result = ec2Client.RequestSpotInstances(request);
-    
-      return result.SpotInstanceRequests[0];
-    }
+    using Amazon.EC2;
+    ...
+        public class Function
+        {
+            private static AmazonEC2Client ec2Client;
 
-The Spot request ID is contained in the :code:`SpotInstanceRequestId` member of the
-:sdk-net-api:`SpotInstanceRequest <EC2/TSpotInstanceRequest>` object.
+            static Function() {
+              AWSSDKHandler.RegisterXRayForAllServices();
+              ec2Client = new AmazonEC2Client();
+            }
 
-Running this code will launch a new Spot Instance request.
+            public async Task<string> FunctionHandler(Dictionary<string, string> input, ILambdaContext context)
+            {
+              // More AMI IDs: aws.amazon.com/amazon-linux-2/release-notes/
+              // us-east-2  HVM  EBS-Backed  64-bit  Amazon Linux 2
+              string ami = "ami-09d9edae5eb90d556";
+              string sg = "default";
 
-.. note:: You will be charged for any Spot Instances that are launched, so make sure you cancel any requests
-   and terminate any instances you launch to reduce any associated fees.
+              InstanceType type = InstanceType.T3aNano;
+              string price = "0.003";
+              int count = 1;
+              var requestSpotInstances = await RequestSpotInstance(ami, sg, type, price, count);
+              var spotRequestId = requestSpotInstances.SpotInstanceRequests[0].SpotInstanceRequestId;
 
-There are other options you can use to configure your Spot requests. To learn more, see
-:sdk-net-api:`RequestSpotInstances <EC2/MEC2RequestSpotInstancesRequestSpotInstancesRequest>` in the
-|sdk-net|.
+The :sdk-net-api:`RequestSpotInstances <EC2/MEC2RequestSpotInstancesRequestSpotInstancesRequest>` method creates a spot instance request.
 
-.. _tutor-spot-net-request-state:
-
-Determining the State of Your Spot Request
-==========================================
-
-Next, we need to wait until the Spot request reaches the :code:`Active` state before proceeding to
-the last step. To determine the state of your Spot request, we use the 
-:sdk-net-api:`DescribeSpotInstanceRequests <EC2/TDescribeSpotInstanceRequestsRequest>` method to 
-obtain the state of the Spot request ID we want to monitor.
+**Function.cs** – `RequestSpotInstance <https://github.com/awsdocs/aws-net-developer-guide/blob/master/sample-apps/ec2-spot/src/ec2spot/Function.cs#L59>`_
 
 .. code-block:: csharp
 
-    public static SpotInstanceState GetSpotRequestState(
-      AmazonEC2Client ec2Client,
-      string spotRequestId)
+    using Amazon;
+    using Amazon.Util;
+    using Amazon.EC2;
+    using Amazon.EC2.Model;
+    ...
+        public async Task<RequestSpotInstancesResponse> RequestSpotInstance(
+          string amiId,
+          string securityGroupName,
+          InstanceType instanceType,
+          string spotPrice,
+          int instanceCount)
+        {
+          var request = new RequestSpotInstanceRequest();
+
+          var launchSpecification = new LaunchSpecification();
+          launchSpecification.ImageId = amiId;
+          launchSpecification.InstanceType = instanceType;
+          launchSpecification.SecurityGroups.Add(securityGroupName);
+
+          request.SpotPrice = spotPrice;
+          request.InstanceCount = instanceCount;
+          request.LaunchSpecification = launchSpecification;
+
+          RequestSpotInstancesResponse response =  await ec2Client.RequestSpotInstancesAsync(request);
+
+          return response;
+        }
+    ...
+
+Next, you need to wait until the spot request reaches the Active state before proceeding to the last step. To determine the state of your spot request, use the :sdk-net-api:`DescribeSpotInstanceRequests <EC2/TDescribeSpotInstanceRequestsRequest>` method to obtain the state of the spot request ID to monitor.
+
+.. code-block:: csharp
+
+    public async Task<SpotInstanceRequest> GetSpotRequest(string spotRequestId)
     {
-      // Create the describeRequest object with all of the request ids
-      // to monitor (e.g. that we started).
       var request = new DescribeSpotInstanceRequestsRequest();
       request.SpotInstanceRequestIds.Add(spotRequestId);
-    
-      // Retrieve the request we want to monitor.
-      var describeResponse = ec2Client.DescribeSpotInstanceRequests(request);
-    
-      SpotInstanceRequest req = describeResponse.SpotInstanceRequests[0];
-    
-      return req.State;
+
+      var describeResponse = await ec2Client.DescribeSpotInstanceRequestsAsync(request);
+
+      return describeResponse.SpotInstanceRequests[0];
     }
 
-.. _tutor-spot-net-cleaning-up:
-
-Cleaning Up Your Spot Requests and Instances
-============================================
-
-The final step is to clean up your requests and instances. It is important to both cancel any
-outstanding requests and terminate any instances. Just canceling your requests will not terminate
-your instances, which means that you will continue to be charged for them. If you terminate your
-instances, your Spot requests may be canceled, but there are some scenarios, such as if you use
-persistent requests, where terminating your instances is not sufficient to stop your request from being
-re-fulfilled. Therefore, it is a best practice to both cancel any active requests and terminate any
-running instances.
+The final step is to clean up your requests and instances. It is important to both cancel any outstanding requests and terminate any instances. Just canceling your requests will not terminate your instances, which means that you will continue to be charged for them. If you terminate your instances, your Spot requests may be canceled, but there are some scenarios, such as if you use persistent requests, where terminating your instances is not sufficient to stop your request from being re-fulfilled. Therefore, it is a best practice to both cancel any active requests and terminate any running instances.
 
 You use the :sdk-net-api:`CancelSpotInstanceRequests
-<EC2/MEC2CancelSpotInstanceRequestsCancelSpotInstanceRequestsRequest>` method to cancel a Spot
-request. The following example demonstrates how to cancel a Spot request.
+<EC2/MEC2CancelSpotInstanceRequestsCancelSpotInstanceRequestsRequest>` method to cancel a Spot request. The following example demonstrates how to cancel a Spot request.
 
 .. code-block:: csharp
 
-    public static void CancelSpotRequest(
-      AmazonEC2Client ec2Client,
-      string spotRequestId)
+    public async Task CancelSpotRequest(string spotRequestId)
     {
+      Console.WriteLine("Canceling request " + spotRequestId);
       var cancelRequest = new CancelSpotInstanceRequestsRequest();
-    
       cancelRequest.SpotInstanceRequestIds.Add(spotRequestId);
-    
-      ec2Client.CancelSpotInstanceRequests(cancelRequest);
+
+      await ec2Client.CancelSpotInstanceRequestsAsync(cancelRequest);
     }
 
-You use the :sdk-net-api:`TerminateInstances <EC2/MEC2TerminateInstancesTerminateInstancesRequest>` method
-to terminate an instance. The following example demonstrates how to obtain the instance identifier
-for an active Spot Instance and terminate the instance.
+You use the :sdk-net-api:`TerminateInstances <EC2/MEC2TerminateInstancesTerminateInstancesRequest>` method to terminate an instance.
 
 .. code-block:: csharp
 
-    public static void TerminateSpotInstance(
-      AmazonEC2Client ec2Client,
-      string spotRequestId)
+    public async Task TerminateSpotInstance(string instanceId)
     {
-      var describeRequest = new DescribeSpotInstanceRequestsRequest();
-      describeRequest.SpotInstanceRequestIds.Add(spotRequestId);
-    
-      // Retrieve the request we want to monitor.
-      var describeResponse = ec2Client.DescribeSpotInstanceRequests(describeRequest);
-    
-      if (SpotInstanceState.Active == describeResponse.SpotInstanceRequests[0].State)
+      Console.WriteLine("Terminating instance " + instanceId);
+      var terminateRequest = new TerminateInstancesRequest();
+      terminateRequest.InstanceIds = new List<string>() { instanceId };
+      try
       {
-        string instanceId = describeResponse.SpotInstanceRequests[0].InstanceId;
-    
-        var terminateRequest = new TerminateInstancesRequest();
-        terminateRequest.InstanceIds = new List<string>() { instanceId };
-    
-        try
+        var terminateResponse = await ec2Client.TerminateInstancesAsync(terminateRequest);
+      }
+      catch (AmazonEC2Exception ex)
+      {
+        // Check the ErrorCode to see if the instance does not exist.
+        if ("InvalidInstanceID.NotFound" == ex.ErrorCode)
         {
-          var terminateResponse = ec2Client.TerminateInstances(terminateRequest);
+          Console.WriteLine("Instance {0} does not exist.", instanceId);
         }
-        catch (AmazonEC2Exception ex)
+        else
         {
-          // Check the ErrorCode to see if the instance does not exist.
-          if ("InvalidInstanceID.NotFound" == ex.ErrorCode)
-          {
-            Console.WriteLine("Instance {0} does not exist.", instanceId);
-          }
-          else
-          {
-            // The exception was thrown for another reason, so re-throw the exception.
-            throw;
-          }
+          // The exception was thrown for another reason, so re-throw the exception.
+          throw;
         }
       }
     }
 
-For more information about terminating active instances, see :ref:`terminate-instance`.
+Run the Code Locally
+====================
+
+Run the code on your local machine to create a spot instance request. After the request is fulfilled, the code deletes the request and terminates the instance.
+
+.. topic:: To run the application code
+
+    #.  Navigate to the ec2Spot.Tests directory.
+
+        .. code-block:: sh
+
+            $ cd test/ec2Spot.Tests
+
+    #.  Use the .NET CLI to run the project's unit tests.
+
+        .. code-block:: sh
+
+            test/ec2Spot.Tests$ dotnet test
+            Starting test execution, please wait...
+            sir-x5tgs5ij
+            open
+            open
+            open
+            open
+            open
+            active
+            Canceling request sir-x5tgs5ij
+            Terminating instance i-0b3fdff0e12e0897e
+            Complete
+
+            Test Run Successful.
+            Total tests: 1
+                 Passed: 1
+             Total time: 7.6060 Seconds
+
+The unit test invokes the :code:`FunctionHandler` method to create a spot instance request, monitor it, and clean up. It is implemented in `xUnit.net <https://xunit.net/>`_ testing framework.
+
+Deploy the Application
+======================
+
+Run the code in |LAM| as a starting point for creating a serverless application.
+
+.. topic:: To deploy and test the application
+
+    #.  Set your region to us-east-2.
+
+        .. code-block:: sh
+
+            $ export AWS_DEFAULT_REGION=us-east-2
+
+    #.  Create a bucket for deployment artifacts.
+
+        .. code-block:: sh
+
+            $ ./create-bucket.sh
+            make_bucket: lambda-artifacts-63d5cbbf18fa5ecc
+
+    #.  Create a deployment package and deploy the application.
+
+        .. code-block:: sh
+
+            $ ./deploy.sh
+            Amazon Lambda Tools for .NET Core applications (3.3.0)
+            Project Home: https://github.com/aws/aws-extensions-for-dotnet-cli, https://github.com/aws/aws-lambda-dotnet
+
+            Executing publish command
+            ...
+            Created publish archive (ec2spot.zip)
+            Lambda project successfully packaged: ec2spot.zip
+            Uploading to ebd38e401cedd7d676d05d22b76f0209  1305107 / 1305107.0  (100.00%)
+            Successfully packaged artifacts and wrote output template to file out.yaml.
+            Execute the following command to deploy the packaged template
+            aws cloudformation deploy --template-file out.yaml --stack-name <YOUR STACK NAME>
+
+            Waiting for changeset to be created..
+            Waiting for stack create/update to complete
+            Successfully created/updated stack - ec2-spot
+
+    #.  Open the `Application page <https://us-east-2.console.aws.amazon.com/lambda/home?region=us-east-2#/applications/ec2-spot>`_ in the |LAM| console.
+
+        .. image:: ../../../sample-apps/ec2-spot/images/sample-ec2spot-application.png
+
+    #.  Under Resources, choose :guilabel:`function`.
+
+    #.  Choose :guilabel:`Test` and create a test event from the default template.
+
+    #.  Choose :guilabel:`Test` again to invoke the function.
+
+View the logs and trace information to see the spot request ID and sequence of calls to |EC2|.
+
+To view the service map, open the `Service map page <https://console.aws.amazon.com/xray/home#/service-map>`_ in the |xraylong| console.
+
+.. image:: ../../../sample-apps/ec2-spot/images/sample-ec2spot-servicemap.png
+
+Choose a node in the service map and then choose :guilabel:`View traces` to see a list of traces. Choose a trace from the list to see the timeline of calls that the function made to |EC2|.
+
+.. image:: ../../../sample-apps/ec2-spot/images/sample-ec2spot-timeline.png
+
+Clean Up
+========
+
+The code provided in this tutorial is designed to create and delete spot instance requests, and to terminate the instances that they launch. However, if an error occurs, the requests and instances might not be cleaned up automatically. View the spot requests and instances in the |EC2| console.
+
+.. topic:: To confirm that |EC2| resources are cleaned up
+
+    #.  Open the `Spot Requests page <https://console.aws.amazon.com/ec2sp/v1/spot/home>`_ in the |EC2| console.
+
+    #.  Verify that the state of the requests is :guilabel:`Cancelled.`
+
+    #.  Choose the instance ID in the :guilabel:`Capacity` column to view the instance.
+
+    #.  Verify that the state of the instances is :guilabel:`Terminated` or :guilabel:`Shutting down`.
+
+To clean up the sample function and support resources, delete its |CFN| stack and the artifacts bucket that you created.
+
+.. code-block:: sh
+
+    $ ./cleanup.sh
+    Delete deployment artifacts and bucket (lambda-artifacts-63d5cbbf18fa5ecc)?y
+    delete: s3://lambda-artifacts-63d5cbbf18fa5ecc/ebd38e401cedd7d676d05d22b76f0209
+    remove_bucket: lambda-artifacts-63d5cbbf18fa5ecc
+
+The function's log group is not deleted automatically. You can delete it in the `CloudWatch Logs console <https://console.aws.amazon.com/cloudwatch/home#logs:>`_. Traces in |xray| expire after a few weeks and are deleted automatically.
