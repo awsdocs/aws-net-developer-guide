@@ -8,13 +8,6 @@
    either express or implied. See the License for the specific language governing permissions and
    limitations under the License.
 
-.. |language| replace:: .NET
-..
-   |sdk| replace:: |sdk-net|
-.. |SDKM| replace:: SDK Metrics
-..
-   |SDKMlong| replace:: AWS SDK Metrics for Enterprise Support
-
 ###############
 Enabling |SDKM|
 ###############
