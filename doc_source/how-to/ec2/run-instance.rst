@@ -1,4 +1,4 @@
-.. Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+.. Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
    This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
    International License (the "License"). You may not use this file except in compliance with the
@@ -168,7 +168,7 @@ To get a list of your security groups and their :code:`GroupId` properties, see 
        :code:`SubnetId`
            The ID of the subnet where the instance will be launched.
 
-       :code:`GroupIds`
+       :code:`Groups`
            One or more security groups. For more information, see :ref:`create-security-group`.
 
        :code:`AssociatePublicIpAddress`

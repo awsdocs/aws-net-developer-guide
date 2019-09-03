@@ -19,10 +19,6 @@ cost-effective, scalable, and reliable AWS services such as |S3long| (|S3|) and 
 The SDK supports development on any platform that supports the .NET Framework 3.5 or later, and
 you can develop applications with the SDK using Visual Studio 2010 or later.
 
-.. contents:: Topics
-     :local:
-     :depth: 1
-
 What's in the SDK
 =================
 
@@ -42,6 +38,10 @@ includes:
 * The |TWPlong| (see the |TWP-ug|_)
 
 * The |TVSlong| (see the |TVS-ug|_)
+
+To install the |TFW|,
+navigate to the `AWS SDK for .NET <https://aws.amazon.com/sdk-for-net/>`_
+select **Download MSI Installer**, save the MSI file, and run it.
 
 As an alternative to installing the |TFW|, you can use NuGet to download individual AWSSDK service
 assemblies for a specific application project. For more information, see :ref:`net-dg-nuget`.
@@ -90,7 +90,6 @@ See `Deploying Web ApplicationsDeploying Web Applications from Visual Studio <ht
 
 See `Setting up the AWS Toolkit for Visual Studio <https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/setup.html>`_ to get started.
 
-
 |TTSlong|
 ---------
 
@@ -124,6 +123,8 @@ The *AWS SDK for .NET Developer Guide* describes how to implement applications f
 :ref:`tutorials-examples`
     A set of tutorials, walkthroughs, and examples showing how to use the |sdk-net| to create
     applications for particular AWS services.
+    You can browse the |sdk-net| examples in the
+    `AWS Code Sample Catalog <https://docs.aws.amazon.com/code-samples/latest/catalog/code-catalog-dotnet.html>`_.
 
 :ref:`net-dg-additional-resources`
     More resources outside of this guide that provide valuable information about AWS and the
