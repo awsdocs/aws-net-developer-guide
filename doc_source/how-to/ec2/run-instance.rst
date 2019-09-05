@@ -76,11 +76,11 @@ To get a list of your security groups and their :code:`GroupId` properties, see 
           :ec2-faq:`How many instances can I run in Amazon EC2 <#How_many_instances_can_I_run_in_Amazon_EC2>`
           in the |EC2| General FAQ.
 
-        :code:`KeyName`
+       :code:`KeyName`
           The name of the EC2 key pair. If you launch an instance without specifying a key pair, you
           can't connect to it. For more information, see :ref:`create-key-pair`.
 
-        :code:`SecurityGroupIds`
+       :code:`SecurityGroupIds`
           The identifiers of one or more security groups. For more information, see
           :ref:`create-security-group`.
 
