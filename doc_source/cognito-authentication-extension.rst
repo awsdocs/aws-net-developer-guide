@@ -1,4 +1,4 @@
-.. Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+.. Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
    This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
    International License (the "License"). You may not use this file except in compliance with the
@@ -32,7 +32,6 @@ The following examples require these :code:`using` statements:
 
 .. literalinclude:: samples/cognito-extensions.cs
    :lines: 1-10
-   :dedent: 8
    :language: csharp
 
 Use Basic Authentication
