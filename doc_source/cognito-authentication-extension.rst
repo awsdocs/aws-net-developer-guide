@@ -32,6 +32,7 @@ The following examples require these :code:`using` statements:
 
 .. literalinclude:: samples/cognito-extensions.cs
    :lines: 1-10
+   :dedent: 0
    :language: csharp
 
 Use Basic Authentication
