@@ -1,4 +1,4 @@
-.. Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+.. Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
    This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
    International License (the "License"). You may not use this file except in compliance with the
@@ -10,23 +10,27 @@
 
 .. _sns-apis-intro:
 
-##################################################################
-Sending and Receiving Notifications From the Cloud Using |SNSlong| 
-##################################################################
+####################################################
+Sending Notifications From the Cloud Using |SNSlong|
+####################################################
 
 .. meta::
    :description: .NET code examples for Amazon SNS
    :keywords: AWS SDK for .NET examples, SNS
 
 The |sdk-net| supports |SNSlong| (|SNS|), which is a web service that enables applications, end
-users, and devices to instantly send and receive notifications from the cloud. For more information, 
+users, and devices to instantly send notifications from the cloud. For more information, 
 see |sns|_.
 
-The following example shows how to use the low-level APIs to list accessible topics in |SNS|. This
-example uses the default client constructor which constructs 
-:sdk-net-api:`AmazonSimpleNotificationServiceClient <SNS/MSNSctor>` with the credentials loaded from 
-the application's default configuration, and if unsuccessful from the Instance Profile service on an 
-EC2 instance.
+.. _sns-list-example:
+
+Listing Your |SNS| Topics
+=========================
+
+The following example shows how to list your |SNS| topics, the subscriptions to each topic, and the attributes for each topic.
+This example uses the default 
+:sdk-net-api:`AmazonSimpleNotificationServiceClient <SNS/MSNSctor>`,
+which loads credentials from your default configuration.
 
 .. code-block:: csharp
 
@@ -86,6 +90,37 @@ EC2 instance.
 
     } while (!string.IsNullOrEmpty(response.NextToken));
         
+.. _sns-send-message-example:
 
+Sending a Message to an |SNS| Topic
+===================================
 
+The following example shows how to send a message to an |SNS| topic.
+The example takes one argument, the ARN of the |SNS| topic.
 
+.. literalinclude:: sns.dotnet.send_message.txt
+   :language: csharp
+
+See the
+`complete example
+<https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/sns/SnsSendMessage.cs>`_,
+including information on how to build and run the example from the command line,
+on GitHub.
+
+.. _sns-send-sms-example:
+
+Sending an SMS Message to a Phone Number
+========================================
+
+The following example shows how to send an SMS message to a telephone number.
+The example takes one argument, the telephone number,
+which must be in either of the two formats described in the comments.
+
+.. literalinclude:: sns.dotnet.publish.txt 
+   :language: csharp
+
+See the
+`complete example
+<https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/sns/SnsPublish.cs>`_,
+including information on how to build and run the example from the command line,
+on GitHub.

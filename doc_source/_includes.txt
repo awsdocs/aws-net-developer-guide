@@ -6,3 +6,6 @@
 .. |net-core| replace:: .NET Core
 .. |aws-home| replace:: AWS home page
 .. _aws-home: http://portal.aws.amazon.com/gp/aws/developer/registration/index.html
+.. for metrics:
+.. |language| replace:: .NET
+.. |sdk| replace:: |sdk-net|

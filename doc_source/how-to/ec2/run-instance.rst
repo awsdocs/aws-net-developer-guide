@@ -1,4 +1,4 @@
-.. Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+.. Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
    This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
    International License (the "License"). You may not use this file except in compliance with the
@@ -76,11 +76,11 @@ To get a list of your security groups and their :code:`GroupId` properties, see 
           :ec2-faq:`How many instances can I run in Amazon EC2 <#How_many_instances_can_I_run_in_Amazon_EC2>`
           in the |EC2| General FAQ.
 
-        :code:`KeyName`
+       :code:`KeyName`
           The name of the EC2 key pair. If you launch an instance without specifying a key pair, you
           can't connect to it. For more information, see :ref:`create-key-pair`.
 
-        :code:`SecurityGroupIds`
+       :code:`SecurityGroupIds`
           The identifiers of one or more security groups. For more information, see
           :ref:`create-security-group`.
 
@@ -168,7 +168,7 @@ To get a list of your security groups and their :code:`GroupId` properties, see 
        :code:`SubnetId`
            The ID of the subnet where the instance will be launched.
 
-       :code:`GroupIds`
+       :code:`Groups`
            One or more security groups. For more information, see :ref:`create-security-group`.
 
        :code:`AssociatePublicIpAddress`
