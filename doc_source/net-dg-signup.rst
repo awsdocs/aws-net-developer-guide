@@ -68,7 +68,7 @@ Creating an IAM User
         .. important:: There is no way to obtain the secret access key once you close the dialog.
            You can, however, delete its associated access key ID and create a new one.
 
-Next, you :doc:`configure your credentials <netdg-config-creds>` in the AWS shared credentials file or in
+Next, you :doc:`configure your credentials <net-dg-config-creds>` in the AWS shared credentials file or in
 the environment.
 
 The preferred approach for handling credentials is to create a profile for each set of credentials

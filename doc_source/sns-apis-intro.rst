@@ -98,7 +98,7 @@ Sending a Message to an |SNS| Topic
 The following example shows how to send a message to an |SNS| topic.
 The example takes one argument, the ARN of the |SNS| topic.
 
-.. literalinclude:: sns.dotnet.send-message.txt
+.. literalinclude:: sns.dotnet.send_message.txt
    :language: csharp
 
 See the
