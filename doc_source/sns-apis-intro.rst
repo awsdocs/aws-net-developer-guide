@@ -98,8 +98,14 @@ Sending a Message to an |SNS| Topic
 The following example shows how to send a message to an |SNS| topic.
 The example takes one argument, the ARN of the |SNS| topic.
 
-.. literalinclude:: sns.dotnet.send-message.txt 
+.. literalinclude:: sns.dotnet.send-message.txt
    :language: csharp
+
+See the
+`complete example
+<https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/sns/SnsSendMessage.cs>`_,
+including information on how to build and run the example from the command line,
+on GitHub.
 
 .. _sns-send-sms-example:
 
@@ -112,3 +118,9 @@ which must be in either of the two formats described in the comments.
 
 .. literalinclude:: sns.dotnet.publish.txt 
    :language: csharp
+
+See the
+`complete example
+<https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/sns/SnsPublish.cs>`_,
+including information on how to build and run the example from the command line,
+on GitHub.
