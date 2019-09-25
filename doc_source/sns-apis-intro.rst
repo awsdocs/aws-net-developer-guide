@@ -103,7 +103,7 @@ The example takes one argument, the ARN of the |SNS| topic.
 
 See the
 `complete example
-<https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/sns/SnsSendMessage.cs>`_,
+<https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/SNS/SnsSendMessage.cs>`_,
 including information on how to build and run the example from the command line,
 on GitHub.
 
@@ -121,6 +121,6 @@ which must be in either of the two formats described in the comments.
 
 See the
 `complete example
-<https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/sns/SnsPublish.cs>`_,
+<https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/SNS/SnsPublish.cs>`_,
 including information on how to build and run the example from the command line,
 on GitHub.

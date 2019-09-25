@@ -33,6 +33,7 @@ The following code example shows how to set up :code:`CognitoAWSCredentials`, wh
  
 .. literalinclude:: samples/cognito-extensions.cs
    :lines: 23-32
+   :dedent: 12
    :language: csharp
 
 Use AWS as an Unauthenticated User
@@ -42,10 +43,12 @@ The following code example shows how you can start using AWS as an unauthenticat
 
 .. literalinclude:: samples/cognito-extensions.cs
    :lines: 36-55
+   :dedent: 12
    :language: csharp
 
 The :code:`CognitoAWSCredentials` object provides even more functionality if you use it with the :code:`AmazonCognitoSyncClient` that is part of the |sdk-net|. If you're using both :code:`AmazonCognitoSyncClient` and :code:`CognitoAWSCredentials`, you don’t have to specify the :code:`IdentityPoolId` and :code:`IdentityId` properties when making calls with the :code:`AmazonCognitoSyncClient`. These properties are automatically filled in from :code:`CognitoAWSCredentials`. The next code example illustrates this, as well as an event that notifies you whenever the :code:`IdentityId` for :code:`CognitoAWSCredentials` changes. The :code:`IdentityId` can change in some cases, such as when changing from an unauthenticated user to an authenticated one.
 
 .. literalinclude:: samples/cognito-extensions.cs
    :lines: 59-76
+   :dedent: 12
    :language: csharp
