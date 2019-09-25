@@ -100,55 +100,55 @@ method.
 Create a Profile and Save it to the .NET Credentials File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TCredentialProfileOptions>`
-    object and set its :code:`AccessKey` and :code:`SecretKey` properties. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TCredentialProfile>`
-    object. Provide the name of the profile and the :code:`CredentialProfileOptions` object
-    you created. Optionally, set the Region property for the profile. Instantiate a NetSDKCredentialsFile object
-    and call the :sdk-net-api:`RegisterProfile <Runtime/MNetSDKCredentialsFileRegisterProfileCredentialProfile>`
-    method to register the profile.
+Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TCredentialProfileOptions>`
+object and set its :code:`AccessKey` and :code:`SecretKey` properties. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TCredentialProfile>`
+object. Provide the name of the profile and the :code:`CredentialProfileOptions` object
+you created. Optionally, set the Region property for the profile. Instantiate a NetSDKCredentialsFile object
+and call the :sdk-net-api:`RegisterProfile <Runtime/MNetSDKCredentialsFileRegisterProfileCredentialProfile>`
+method to register the profile.
 
-    .. code-block:: csharp
+.. code-block:: csharp
 
-             var options = new CredentialProfileOptions
-            {
-                AccessKey = "access_key",
-                SecretKey = "secret_key"
-            };
-            var profile = new Amazon.Runtime.CredentialManagement.CredentialProfile("basic_profile", options);
-            profile.Region = RegionEndpoint.USWest1;
-            var netSDKFile = new NetSDKCredentialsFile();
-            netSDKFile.RegisterProfile(profile);
+    var options = new CredentialProfileOptions
+    {
+        AccessKey = "access_key",
+        SecretKey = "secret_key"
+    };
+    var profile = new Amazon.Runtime.CredentialManagement.CredentialProfile("basic_profile", options);
+    profile.Region = RegionEndpoint.USWest1;
+    var netSDKFile = new NetSDKCredentialsFile();
+    netSDKFile.RegisterProfile(profile);
 
-    The :methodname:`RegisterProfile` method is used to register a new profile. Your application
-    typically calls this method only once for each profile.
+The :methodname:`RegisterProfile` method is used to register a new profile. Your application
+typically calls this method only once for each profile.
 
 Create a SAMLEndpoint and an Associated Profile and Save it to the .NET Credentials File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SAMLEndpoint <Runtime/TSAMLEndpoint>`
-    object. Provide the name and endpoint URI parameters. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SAMLEndpointManager <Runtime/TSAMLEndpointManager>`
-    object.  Call the :sdk-net-api:`RegisterEndpoint <Runtime/MSAMLEndpointManagerRegisterEndpointSAMLEndpoint>`
-    method to register the endpoint. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TCredentialProfileOptions>`
-    object and set its :code:`EndpointName` and :code:`RoleArn` properties. Create an
-    :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TCredentialProfile>`
-    object and provide the name of the profile and the :code:`CredentialProfileOptions` object you created.
-    Optionally, set the Region property for the profile. Instantiate a NetSDKCredentialsFile object
-    and call the :sdk-net-api:`RegisterProfile <Runtime/MNetSDKCredentialsFileRegisterProfileCredentialProfile>`
-    method to register the profile.
+Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SAMLEndpoint <Runtime/TSAMLEndpoint>`
+object. Provide the name and endpoint URI parameters. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SAMLEndpointManager <Runtime/TSAMLEndpointManager>`
+object.  Call the :sdk-net-api:`RegisterEndpoint <Runtime/MSAMLEndpointManagerRegisterEndpointSAMLEndpoint>`
+method to register the endpoint. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TCredentialProfileOptions>`
+object and set its :code:`EndpointName` and :code:`RoleArn` properties. Create an
+:sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TCredentialProfile>`
+object and provide the name of the profile and the :code:`CredentialProfileOptions` object you created.
+Optionally, set the Region property for the profile. Instantiate a NetSDKCredentialsFile object
+and call the :sdk-net-api:`RegisterProfile <Runtime/MNetSDKCredentialsFileRegisterProfileCredentialProfile>`
+method to register the profile.
 
-    .. code-block:: csharp
+.. code-block:: csharp
 
-            var endpoint = new SAMLEndpoint("endpoint1", new Uri("https://some_saml_endpoint"), SAMLAuthenticationType.Kerberos);
-            var endpointManager = new SAMLEndpointManager();
-            endpointManager.RegisterEndpoint(endpoint);
-            options = new CredentialProfileOptions
-            {
-                EndpointName = "endpoint1",
-                RoleArn = "arn:aws:iam::999999999999:role/some-role"
-            };
-            profile = new CredentialProfile("federated_profile", options);
-            netSDKFile = new NetSDKCredentialsFile();
-            netSDKFile.RegisterProfile(profile);
+    var endpoint = new SAMLEndpoint("endpoint1", new Uri("https://some_saml_endpoint"), SAMLAuthenticationType.Kerberos);
+    var endpointManager = new SAMLEndpointManager();
+    endpointManager.RegisterEndpoint(endpoint);
+    options = new CredentialProfileOptions
+    {
+        EndpointName = "endpoint1",
+        RoleArn = "arn:aws:iam::999999999999:role/some-role"
+    };
+    profile = new CredentialProfile("federated_profile", options);
+    netSDKFile = new NetSDKCredentialsFile();
+    netSDKFile.RegisterProfile(profile);
 
 .. _creds-file:
 
@@ -169,11 +169,11 @@ You can manage the profiles in the shared credentials file in two ways:
 
   The following is an example of a profile in the credentials file.
 
- .. code-block:: none
+  .. code-block:: none
 
-     [{profile_name}]
-     aws_access_key_id = {accessKey}
-     aws_secret_access_key = {secretKey}
+      [{profile_name}]
+      aws_access_key_id = {accessKey}
+      aws_secret_access_key = {secretKey}
 
   For more information, see
   `Best Practices for Managing AWS Access Keys <http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`_.
@@ -197,13 +197,13 @@ For example, on |unixes| run the following command to change the profile to `myP
 
 .. code-block:: sh
 
-   export AWS_PROFILE="myProfile"
+    export AWS_PROFILE="myProfile"
 
 On Windows use the following command.
 
 .. code-block:: bat
 
-   set AWS_PROFILE="myProfile"
+    set AWS_PROFILE="myProfile"
 
 Setting the **AWS_PROFILE** environment variable affects credential loading for all officially
 supported AWS SDKs and Tools, including the AWS CLI and the AWS CLI for PowerShell.
@@ -213,89 +213,89 @@ supported AWS SDKs and Tools, including the AWS CLI and the AWS CLI for PowerShe
 Create a Profile and Save it to the Shared Credentials File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TCredentialProfileOptions>`
-      object and set its :code:`AccessKey` and :code:`SecretKey` properties.
-      Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TCredentialProfile>`
-      object. Provide the name of the profile and the :code:`CredentialProfileOptions` you created.
-      Optionally, set the Region property for the profile. Instantiate an
-      :sdk-net-api:`Amazon.Runtime.CredentialManagement.SharedCredentialsFile <Runtime/TSharedCredentialsFile>`
-      object and call the :sdk-net-api:`RegisterProfile <Runtime/MSharedCredentialsFileRegisterProfileCredentialProfile>`
-      method to register the profile.
+Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TCredentialProfileOptions>`
+object and set its :code:`AccessKey` and :code:`SecretKey` properties.
+Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TCredentialProfile>`
+object. Provide the name of the profile and the :code:`CredentialProfileOptions` you created.
+Optionally, set the Region property for the profile. Instantiate an
+:sdk-net-api:`Amazon.Runtime.CredentialManagement.SharedCredentialsFile <Runtime/TSharedCredentialsFile>`
+object and call the :sdk-net-api:`RegisterProfile <Runtime/MSharedCredentialsFileRegisterProfileCredentialProfile>`
+method to register the profile.
 
-      .. code-block:: csharp
+.. code-block:: csharp
 
-        options = new CredentialProfileOptions
-        {
-            AccessKey = "access_key",
-            SecretKey = "secret_key"
-        };
-        profile = new CredentialProfile("shared_profile", options);
-        profile.Region = RegionEndpoint.USWest1;
-        var sharedFile = new SharedCredentialsFile();
-        sharedFile.RegisterProfile(profile);
+    options = new CredentialProfileOptions
+    {
+        AccessKey = "access_key",
+        SecretKey = "secret_key"
+    };
+    profile = new CredentialProfile("shared_profile", options);
+    profile.Region = RegionEndpoint.USWest1;
+    var sharedFile = new SharedCredentialsFile();
+    sharedFile.RegisterProfile(profile);
 
-      The :methodname:`RegisterProfile` method is used to register a new profile. Your application
-      will normally call this method only once for each profile.
+The :methodname:`RegisterProfile` method is used to register a new profile. Your application
+will normally call this method only once for each profile.
 
 Create a Source Profile and an Associated Assume Role Profile and Save It to the Credentials File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TCredentialProfileOptions>`
-      object for the source profile and set its :code:`AccessKey` and :code:`SecretKey` properties.
-      Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TCredentialProfile>`
-      object. Provide the name of the profile and the :code:`CredentialProfileOptions`
-      you created. Instantiate an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SharedCredentialsFile <Runtime/TSharedCredentialsFile>`
-      object and call the :sdk-net-api:`RegisterProfile <Runtime/MNetSDKCredentialsFileRegisterProfileCredentialProfile>`
-      method to register the profile. Create another :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TCredentialProfileOptions>`
-      object for the assumed role profile and set the :code:`SourceProfile` and :code:`RoleArn` properties
-      for the profile. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TCredentialProfile>`
-      object for the assumed role. Provide the name of the profile and the :code:`CredentialProfileOptions`
-      you created.
+Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TCredentialProfileOptions>`
+object for the source profile and set its :code:`AccessKey` and :code:`SecretKey` properties.
+Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TCredentialProfile>`
+object. Provide the name of the profile and the :code:`CredentialProfileOptions`
+you created. Instantiate an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SharedCredentialsFile <Runtime/TSharedCredentialsFile>`
+object and call the :sdk-net-api:`RegisterProfile <Runtime/MNetSDKCredentialsFileRegisterProfileCredentialProfile>`
+method to register the profile. Create another :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfileOptions <Runtime/TCredentialProfileOptions>`
+object for the assumed role profile and set the :code:`SourceProfile` and :code:`RoleArn` properties
+for the profile. Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.CredentialProfile <Runtime/TCredentialProfile>`
+object for the assumed role. Provide the name of the profile and the :code:`CredentialProfileOptions`
+you created.
 
-      .. code-block:: csharp
+.. code-block:: csharp
 
-        // Create the source profile and save it to the shared credentials file
-        var sourceProfileOptions = new CredentialProfileOptions
-        {
-            AccessKey = "access_key",
-            SecretKey = "secret_key"
-        };
-        var sourceProfile = new CredentialProfile("source_profile", sourceProfileOptions);
-        sharedFile = new SharedCredentialsFile();
-        sharedFile.RegisterProfile(sourceProfile);
+    // Create the source profile and save it to the shared credentials file
+    var sourceProfileOptions = new CredentialProfileOptions
+    {
+        AccessKey = "access_key",
+        SecretKey = "secret_key"
+    };
+    var sourceProfile = new CredentialProfile("source_profile", sourceProfileOptions);
+    sharedFile = new SharedCredentialsFile();
+    sharedFile.RegisterProfile(sourceProfile);
 
-        // Create the assume role profile and save it to the shared credentials file
-        var assumeRoleProfileOptions = new CredentialProfileOptions
-        {
-            SourceProfile = "source_profile",
-            RoleArn = "arn:aws:iam::999999999999:role/some-role"
-        };
-        var assumeRoleProfile = new CredentialProfile("assume_role_profile", assumeRoleProfileOptions);
-        sharedFile.RegisterProfile(assumeRoleProfile);
+    // Create the assume role profile and save it to the shared credentials file
+    var assumeRoleProfileOptions = new CredentialProfileOptions
+    {
+        SourceProfile = "source_profile",
+        RoleArn = "arn:aws:iam::999999999999:role/some-role"
+    };
+    var assumeRoleProfile = new CredentialProfile("assume_role_profile", assumeRoleProfileOptions);
+    sharedFile.RegisterProfile(assumeRoleProfile);
 
 Update an Existing Profile in the Shared Credentials File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SharedCredentialsFile <Runtime/TSharedCredentialsFile>`
-      object. Set the :code:`Region`, :code:`AccessKey` and :code:`SecretKey` properties for the profile.
-      Call the :sdk-net-api:`TryGetProfile <Runtime/MSharedCredentialsFileTryGetProfileStringCredentialProfile>`
-      method. If the profile exists, use an
-      :sdk-net-api:`Amazon.Runtime.CredentialManagement.SharedCredentialsFile <Runtime/TSharedCredentialsFile>`
-      instance to call the :sdk-net-api:`RegisterProfile <Runtime/MNetSDKCredentialsFileRegisterProfileCredentialProfile>`
-      method to register the updated profile.
+Create an :sdk-net-api:`Amazon.Runtime.CredentialManagement.SharedCredentialsFile <Runtime/TSharedCredentialsFile>`
+object. Set the :code:`Region`, :code:`AccessKey` and :code:`SecretKey` properties for the profile.
+Call the :sdk-net-api:`TryGetProfile <Runtime/MSharedCredentialsFileTryGetProfileStringCredentialProfile>`
+method. If the profile exists, use an
+:sdk-net-api:`Amazon.Runtime.CredentialManagement.SharedCredentialsFile <Runtime/TSharedCredentialsFile>`
+instance to call the :sdk-net-api:`RegisterProfile <Runtime/MNetSDKCredentialsFileRegisterProfileCredentialProfile>`
+method to register the updated profile.
 
-      .. code-block:: csharp
+.. code-block:: csharp
 
-            sharedFile = new SharedCredentialsFile();
-            CredentialProfile basicProfile;
-            if (sharedFile.TryGetProfile("basicProfile", out basicProfile))
-            {
-                basicProfile.Region = RegionEndpoint.USEast1;
-                basicProfile.Options.AccessKey = "different_access_key";
-                basicProfile.Options.SecretKey = "different_secret_key";
+    sharedFile = new SharedCredentialsFile();
+    CredentialProfile basicProfile;
+    if (sharedFile.TryGetProfile("basicProfile", out basicProfile))
+    {
+        basicProfile.Region = RegionEndpoint.USEast1;
+        basicProfile.Options.AccessKey = "different_access_key";
+        basicProfile.Options.SecretKey = "different_secret_key";
 
-                sharedFile.RegisterProfile(basicProfile);
-            }
+        sharedFile.RegisterProfile(basicProfile);
+    }
 
 .. _creds-locate:
 
@@ -326,18 +326,18 @@ methods.  The :code:`ProfilesLocation` property determines the behavior of the
 Get Credentials from the SDK Credentials File or the Shared Credentials File in the Default Location.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  Create a :code:`CredentialProfileStoreChain` object and an :sdk-net-api:`Amazon.Runtime.AWSCredentials <Runtime/TAWSCredentials>`
-  object. Call the :code:`TryGetAWSCredentials` method. Provide the profile name and the :code:`AWSCredentials`
-  object in which to return the credentials.
+Create a :code:`CredentialProfileStoreChain` object and an :sdk-net-api:`Amazon.Runtime.AWSCredentials <Runtime/TAWSCredentials>`
+object. Call the :code:`TryGetAWSCredentials` method. Provide the profile name and the :code:`AWSCredentials`
+object in which to return the credentials.
 
-  .. code-block:: csharp
+.. code-block:: csharp
 
-            var chain = new CredentialProfileStoreChain();
-            AWSCredentials awsCredentials;
-            if (chain.TryGetAWSCredentials("basic_profile", out awsCredentials))
-            {
-                // use awsCredentials
-            }
+    var chain = new CredentialProfileStoreChain();
+    AWSCredentials awsCredentials;
+    if (chain.TryGetAWSCredentials("basic_profile", out awsCredentials))
+    {
+        // use awsCredentials
+    }
 
 Get a Profile from the SDK Credentials File or the Shared Credentials File in the Default Location
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -348,12 +348,12 @@ object in which to return the credentials.
 
 .. code-block:: csharp
 
-            var chain = new CredentialProfileStoreChain();
-            CredentialProfile basicProfile;
-            if (chain.TryGetProfile("basic_profile", out basicProfile))
-            {
-                // Use basicProfile
-            }
+    var chain = new CredentialProfileStoreChain();
+    CredentialProfile basicProfile;
+    if (chain.TryGetProfile("basic_profile", out basicProfile))
+    {
+        // Use basicProfile
+    }
 
 Get AWSCredentials from a File in the Shared Credentials File Format at a File Location
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -364,13 +364,13 @@ Create a :code:`CredentialProfileStoreChain` object and provide the path to the 
 
 .. code-block:: csharp
 
-            var chain = new
-                CredentialProfileStoreChain("c:\\Users\\sdkuser\\customCredentialsFile.ini");
-            AWSCredentials awsCredentials;
-            if (chain.TryGetAWSCredentials("basic_profile", out awsCredentials))
-            {
-                // Use awsCredentials
-            }
+    var chain = new
+        CredentialProfileStoreChain("c:\\Users\\sdkuser\\customCredentialsFile.ini");
+    AWSCredentials awsCredentials;
+    if (chain.TryGetAWSCredentials("basic_profile", out awsCredentials))
+    {
+        // Use awsCredentials
+    }
 
 How to Create an AmazonS3Client Using the SharedCredentialsFile Class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -384,27 +384,27 @@ you specify in :code:`App.Config`.
 
 .. code-block:: csharp
 
-        CredentialProfile basicProfile;
-        AWSCredentials awsCredentials;
-        var sharedFile = new SharedCredentialsFile();
-        if (sharedFile.TryGetProfile("basic_profile", out basicProfile) &&
-            AWSCredentialsFactory.TryGetAWSCredentials(basicProfile, sharedFile, out awsCredentials))
+    CredentialProfile basicProfile;
+    AWSCredentials awsCredentials;
+    var sharedFile = new SharedCredentialsFile();
+    if (sharedFile.TryGetProfile("basic_profile", out basicProfile) &&
+        AWSCredentialsFactory.TryGetAWSCredentials(basicProfile, sharedFile, out awsCredentials))
+    {
+        using (var client = new AmazonS3Client(awsCredentials, basicProfile.Region))
         {
-            using (var client = new AmazonS3Client(awsCredentials, basicProfile.Region))
-            {
-                var response = client.ListBuckets();
-            }
+            var response = client.ListBuckets();
         }
+    }
 
 If you want to use the default profile, and have the |sdk-net| automatically use your default
 credentials to create the client object use the following code.
 
 .. code-block:: csharp
 
-        using (var client = new AmazonS3Client(RegionEndpoint.US-West2))
-        {
-            var response = client.ListBuckets();
-        }
+    using (var client = new AmazonS3Client(RegionEndpoint.US-West2))
+    {
+        var response = client.ListBuckets();
+    }
 
 .. _creds-assign:
 
@@ -556,7 +556,6 @@ The SDK Security Token Service assembly (:file:`AWSSDK.SecurityToken.dll`), whic
 runtime, provides the SAML support to obtain AWS credentials. Be sure this assembly is available
 to your application at run time.
 
-
 .. _net-dg-config-creds-assign-role:
 
 Specifying Roles or Temporary Credentials
@@ -578,7 +577,6 @@ credentials, see the following:
 
 Although the title of the second article refers specifically to mobile applications, the article
 contains information that is useful for any AWS application deployed outside of your organization.
-
 
 .. _net-dg-config-creds-proxy:
 
