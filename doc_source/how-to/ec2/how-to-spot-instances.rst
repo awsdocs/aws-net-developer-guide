@@ -14,7 +14,7 @@
 Amazon EC2 Spot Instance Examples
 #################################
 
-This topic describes how to use the |sdk-net| with Amazon EC2 Spot Instances.
+This topic describes how to use the |sdk-net| to create, cancel, and terminate an Amazon EC2 Spot Instance.
 
 .. contents:: **Topics**
     :local:
@@ -153,33 +153,9 @@ request. The following example demonstrates how to request a Spot Instance.
 
 For information on creating an |EC2| client, see :ref:`init-ec2-client`.
 
-.. code-block:: csharp
-
-    public static SpotInstanceRequest RequestSpotInstance(
-      AmazonEC2Client ec2Client,
-      string amiId,
-      string securityGroupName,
-      InstanceType instanceType,
-      string spotPrice,
-      int instanceCount)
-    {
-      var request = new RequestSpotInstancesRequest();
-    
-      request.SpotPrice = spotPrice;
-      request.InstanceCount = instanceCount;
-    
-      var launchSpecification = new LaunchSpecification();
-      launchSpecification.ImageId = amiId;
-      launchSpecification.InstanceType = instanceType;
-    
-      launchSpecification.SecurityGroups.Add(securityGroupName);
-    
-      request.LaunchSpecification = launchSpecification;
-    
-      var result = ec2Client.RequestSpotInstances(request);
-    
-      return result.SpotInstanceRequests[0];
-    }
+.. literalinclude:: ec2.dotnet.spot_instance_request_spot_instance.txt
+   :language: csharp
+   :dedent: 8
 
 The Spot request ID is contained in the :code:`SpotInstanceRequestId` member of the
 :sdk-net-api:`SpotInstanceRequest <EC2/TSpotInstanceRequest>` object.
@@ -203,24 +179,9 @@ the last step. To determine the state of your Spot request, we use the
 :sdk-net-api:`DescribeSpotInstanceRequests <EC2/TDescribeSpotInstanceRequestsRequest>` method to 
 obtain the state of the Spot request ID we want to monitor.
 
-.. code-block:: csharp
-
-    public static SpotInstanceState GetSpotRequestState(
-      AmazonEC2Client ec2Client,
-      string spotRequestId)
-    {
-      // Create the describeRequest object with all of the request ids
-      // to monitor (e.g. that we started).
-      var request = new DescribeSpotInstanceRequestsRequest();
-      request.SpotInstanceRequestIds.Add(spotRequestId);
-    
-      // Retrieve the request we want to monitor.
-      var describeResponse = ec2Client.DescribeSpotInstanceRequests(request);
-    
-      SpotInstanceRequest req = describeResponse.SpotInstanceRequests[0];
-    
-      return req.State;
-    }
+.. literalinclude:: ec2.dotnet.spot_instance_get_spot_request_state.txt
+   :language: csharp
+   :dedent: 8
 
 .. _tutor-spot-net-cleaning-up:
 
@@ -239,60 +200,35 @@ You use the :sdk-net-api:`CancelSpotInstanceRequests
 <EC2/MEC2CancelSpotInstanceRequestsCancelSpotInstanceRequestsRequest>` method to cancel a Spot
 request. The following example demonstrates how to cancel a Spot request.
 
-.. code-block:: csharp
-
-    public static void CancelSpotRequest(
-      AmazonEC2Client ec2Client,
-      string spotRequestId)
-    {
-      var cancelRequest = new CancelSpotInstanceRequestsRequest();
-    
-      cancelRequest.SpotInstanceRequestIds.Add(spotRequestId);
-    
-      ec2Client.CancelSpotInstanceRequests(cancelRequest);
-    }
+.. literalinclude:: ec2.dotnet.spot_instance_cancel_spot_request.txt
+   :language: csharp
+   :dedent: 8
 
 You use the :sdk-net-api:`TerminateInstances <EC2/MEC2TerminateInstancesTerminateInstancesRequest>` method
 to terminate an instance. The following example demonstrates how to obtain the instance identifier
 for an active Spot Instance and terminate the instance.
 
-.. code-block:: csharp
-
-    public static void TerminateSpotInstance(
-      AmazonEC2Client ec2Client,
-      string spotRequestId)
-    {
-      var describeRequest = new DescribeSpotInstanceRequestsRequest();
-      describeRequest.SpotInstanceRequestIds.Add(spotRequestId);
-    
-      // Retrieve the request we want to monitor.
-      var describeResponse = ec2Client.DescribeSpotInstanceRequests(describeRequest);
-    
-      if (SpotInstanceState.Active == describeResponse.SpotInstanceRequests[0].State)
-      {
-        string instanceId = describeResponse.SpotInstanceRequests[0].InstanceId;
-    
-        var terminateRequest = new TerminateInstancesRequest();
-        terminateRequest.InstanceIds = new List<string>() { instanceId };
-    
-        try
-        {
-          var terminateResponse = ec2Client.TerminateInstances(terminateRequest);
-        }
-        catch (AmazonEC2Exception ex)
-        {
-          // Check the ErrorCode to see if the instance does not exist.
-          if ("InvalidInstanceID.NotFound" == ex.ErrorCode)
-          {
-            Console.WriteLine("Instance {0} does not exist.", instanceId);
-          }
-          else
-          {
-            // The exception was thrown for another reason, so re-throw the exception.
-            throw;
-          }
-        }
-      }
-    }
+.. literalinclude:: ec2.dotnet.spot_instance_terminate_spot_request.txt
+   :language: csharp
+   :dedent: 8
 
 For more information about terminating active instances, see :ref:`terminate-instance`.
+
+.. _tutor-spot-net-main:
+
+Putting it all Together
+=======================
+
+The following `main` routine calls these methods in the shown order
+to create, cancel, and terminate a spot instance request.
+As the comment states, it takes one argument, the AMI.
+
+.. literalinclude:: ec2.dotnet.spot_instance_main.txt
+   :language: csharp
+   :dedent: 8
+
+See the
+`complete example
+<https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/ec2/Ec2SpotCRUD.cs>`_,
+including information on how to build and run the example from the command line,
+on GitHub.

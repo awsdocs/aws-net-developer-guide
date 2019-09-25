@@ -25,10 +25,7 @@ workflows between components in a system. For more information, see |SQS|_.
 The following examples demonstrate how to use the |sdk-net| to create and use |SQS| queues.
 
 The sample code is written in C#, but you can use the |sdk-net| with any compatible
-language. The |sdk-net| installs a set of C# project templates. So the simplest way to start this
-project is to open Visual Studio, and then choose :guilabel:`File`, :guilabel:`New Project`,
-:guilabel:`AWS Sample Projects`, :guilabel:`App Services`,
-:guilabel:`AWS SQS Sample`.
+language. The |sdk-net| installs a set of C# project templates.
 
 **Prerequisite Tasks**
 
