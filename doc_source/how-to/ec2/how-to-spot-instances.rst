@@ -142,7 +142,14 @@ tutorial the request is equal to the On-Demand price ($0.03) to maximize the cha
 request will be fulfilled. You can determine the types of available instances and the On-Demand prices
 for instances by going to `Amazon EC2 Pricing page <http://aws.amazon.com/ec2/pricing/>`_.
 
-To request a Spot Instance, you need to build your request with the parameters we have specified so
+First specify the .NET namespaces used in the application.
+
+.. literalinclude:: ec2.dotnet.spot_instance_using.txt
+   :language: csharp
+
+For information on creating an |EC2| client, see :ref:`init-ec2-client`.
+
+Next, to request a Spot Instance, you need to build your request with the parameters we have specified so
 far. Start by creating a :sdk-net-api:`RequestSpotInstanceRequest <EC2/TRequestSpotInstancesRequest>`
 object. The request object requires the request amount and the number of instances you want to start.
 Additionally, you need to set the :sdk-net-api:`LaunchSpecification <EC2/TLaunchSpecification>` for the
@@ -150,8 +157,6 @@ request, which includes the instance type, AMI ID, and the name of the security 
 use for the Spot Instances. After the request is populated, call the :sdk-net-api:`RequestSpotInstances
 <EC2/MEC2RequestSpotInstancesRequestSpotInstancesRequest>` method to create the Spot Instance
 request. The following example demonstrates how to request a Spot Instance.
-
-For information on creating an |EC2| client, see :ref:`init-ec2-client`.
 
 .. literalinclude:: ec2.dotnet.spot_instance_request_spot_instance.txt
    :language: csharp
