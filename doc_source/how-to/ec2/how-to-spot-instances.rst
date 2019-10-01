@@ -144,7 +144,7 @@ for instances by going to `Amazon EC2 Pricing page <http://aws.amazon.com/ec2/pr
 
 First specify the .NET namespaces used in the application.
 
-.. literalinclude:: ec2.dotnet.spot_instance_using.txt
+.. literalinclude:: ../../ec2.dotnet.spot_instance_using.txt
    :language: csharp
 
 For information on creating an |EC2| client, see :ref:`init-ec2-client`.
