@@ -158,7 +158,7 @@ use for the Spot Instances. After the request is populated, call the :sdk-net-ap
 <EC2/MEC2RequestSpotInstancesRequestSpotInstancesRequest>` method to create the Spot Instance
 request. The following example demonstrates how to request a Spot Instance.
 
-.. literalinclude:: ec2.dotnet.spot_instance_request_spot_instance.txt
+.. literalinclude:: ../../ec2.dotnet.spot_instance_request_spot_instance.txt
    :language: csharp
    :dedent: 8
 
@@ -184,7 +184,7 @@ the last step. To determine the state of your Spot request, we use the
 :sdk-net-api:`DescribeSpotInstanceRequests <EC2/TDescribeSpotInstanceRequestsRequest>` method to 
 obtain the state of the Spot request ID we want to monitor.
 
-.. literalinclude:: ec2.dotnet.spot_instance_get_spot_request_state.txt
+.. literalinclude:: ../../ec2.dotnet.spot_instance_get_spot_request_state.txt
    :language: csharp
    :dedent: 8
 
@@ -205,7 +205,7 @@ You use the :sdk-net-api:`CancelSpotInstanceRequests
 <EC2/MEC2CancelSpotInstanceRequestsCancelSpotInstanceRequestsRequest>` method to cancel a Spot
 request. The following example demonstrates how to cancel a Spot request.
 
-.. literalinclude:: ec2.dotnet.spot_instance_cancel_spot_request.txt
+.. literalinclude:: ../../ec2.dotnet.spot_instance_cancel_spot_request.txt
    :language: csharp
    :dedent: 8
 
@@ -213,7 +213,7 @@ You use the :sdk-net-api:`TerminateInstances <EC2/MEC2TerminateInstancesTerminat
 to terminate an instance. The following example demonstrates how to obtain the instance identifier
 for an active Spot Instance and terminate the instance.
 
-.. literalinclude:: ec2.dotnet.spot_instance_terminate_spot_request.txt
+.. literalinclude:: ../../ec2.dotnet.spot_instance_terminate_spot_request.txt
    :language: csharp
    :dedent: 8
 
@@ -228,7 +228,7 @@ The following `main` routine calls these methods in the shown order
 to create, cancel, and terminate a spot instance request.
 As the comment states, it takes one argument, the AMI.
 
-.. literalinclude:: ec2.dotnet.spot_instance_main.txt
+.. literalinclude:: ../../ec2.dotnet.spot_instance_main.txt
    :language: csharp
    :dedent: 8
 
