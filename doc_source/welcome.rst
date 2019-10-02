@@ -10,9 +10,9 @@
 
    .. _welcome:
 
-############
-|sdk-net-dg|
-############
+################################
+AWS SDK for .NET Developer Guide
+################################
 
 The |sdk-net| makes it easier for Windows developers to build .NET applications that tap into the
 cost-effective, scalable, and reliable AWS services such as |S3long| (|S3|) and |EC2long| (|EC2|).
