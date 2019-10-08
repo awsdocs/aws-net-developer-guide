@@ -16,8 +16,9 @@ AWS SDK for .NET Developer Guide
 
 The |sdk-net| makes it easier for Windows developers to build .NET applications that tap into the
 cost-effective, scalable, and reliable AWS services such as |S3long| (|S3|) and |EC2long| (|EC2|).
-The SDK supports development on any platform that supports the .NET Framework 3.5 or later, and
-you can develop applications with the SDK using Visual Studio 2010 or later.
+The |sdk-net| supports 
+.NET framework 3.5, .NET framework 4.5, .NET standard 1.3, .NET Standard 2.0, Portable Class Library, and Xamarin.
+You can develop applications with the SDK using Visual Studio 2010 or later.
 
 What's in the SDK
 =================
@@ -60,10 +61,6 @@ This document is the developer guide for the |sdk-net|.
 The |sdk-net| makes it easier for Windows developers to build .NET applications that tap in to the
 cost-effective, scalable, and reliable AWS infrastructure services such as |S3long|, |EC2long|,
 |LAMlong|, and more.
-
-The |sdk-net| supports development on any platform that supports the .NET Framework 3.5 or later.
-
-The |sdk-net| targets .NET Standard 1.3. You can use it with .NET Core 1.x or .NET Core 2.0.
 
 AWS Tools for Windows PowerShell and PowerShell Core
 ----------------------------------------------------
