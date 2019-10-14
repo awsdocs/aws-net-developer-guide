@@ -20,6 +20,9 @@ The |sdk-net| supports
 .NET Framework 3.5, .NET Framework 4.5, .NET Standard 1.3, .NET Standard 2.0, Portable Class Library, and Xamarin.
 You can develop applications with the SDK using Visual Studio 2010 or later.
 
+Unless explicitly stated otherwise,
+all information within this guide applies to all of the supported targets.
+
 What's in the SDK
 =================
 
