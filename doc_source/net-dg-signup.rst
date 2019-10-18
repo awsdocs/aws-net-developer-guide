@@ -20,6 +20,6 @@ instead of using your root account credentials.
 
 * To create an AWS account, see `How do I create and activate a new Amazon Web Services account? <https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account>`_.
 
-* Avoid using your root user account to access services. For details , see `The AWS Account Root User <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html>`_. This topic also explains how to create keys for the user account so that you can access AWS services.
+* Avoid using your root user account to access services. For details , see `The AWS Account Root User <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html>`_. This topic also explains how to create keys for the user account so that you can access AWS services. AWS SDKs and services use access keys to create credentials for the user, and use those credentials to determine whether the user has permission to access various AWS services.
 
-* To deactivate your AWS account, see `Account Settings <https://console.aws.amazon.com/billing/home#/account>`_, scroll down to **Close Account** and follow the instructions.
+* To close your AWS account, see `Closing an Account <https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/close-account.html>`_.
