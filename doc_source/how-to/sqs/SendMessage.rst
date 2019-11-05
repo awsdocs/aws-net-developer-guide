@@ -1,4 +1,4 @@
-.. Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+.. Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
    This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
    International License (the "License"). You may not use this file except in compliance with the
@@ -18,7 +18,8 @@ You can use the |sdk-net| to send a message to an |SQS| queue.
 
 .. important:: Due to the distributed nature of the queue, |SQS| can't guarantee you will receive
    messages in the precise order they are sent. If you need to preserve the message order,
-   place sequencing information in each message so you can reorder the messages upon receipt.
+   use an |SQS| FIFO queue.
+   For information about FIFO queues, see :sqs-dg:`Amazon SQS FIFO (First-In-First-Out) Queues<FIFO-queues>`.
 
 .. topic:: To send a message to an |SQS| queue
 
