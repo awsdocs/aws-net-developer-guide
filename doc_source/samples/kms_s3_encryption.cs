@@ -20,17 +20,21 @@ namespace S3Sample1
     {
         public static void Main(string[] args)
         {
+            // Set these to the appropriate value:
+            var region = RegionEndpoint.USWest-2;
+            var bucketName = "BUCKET";
+            var objectKey = "KEY";
+            
             string kmsKeyID = null;
-            using (var kmsClient = new AmazonKeyManagementServiceClient())
+            using (var kmsClient = new AmazonKeyManagementServiceClient(region))
             {
                 var response = kmsClient.CreateKey(new CreateKeyRequest());
                 kmsKeyID = response.KeyMetadata.KeyId;
 
-                var keyMetadata = response.KeyMetadata; // An object that contains information about the CMK created by this operation.
-                var bucketName = "<s3bucket>";
-                var objectKey = "key";
-
+                // An object that contains information about the CMK created by this operation.
+                var keyMetadata = response.KeyMetadata;
                 var kmsEncryptionMaterials = new EncryptionMaterials(kmsKeyID);
+                
                 // CryptoStorageMode.ObjectMetadata is required for KMS EncryptionMaterials
                 var config = new AmazonS3CryptoConfiguration()
                 {
@@ -46,6 +50,7 @@ namespace S3Sample1
                         Key = objectKey,
                         ContentBody = "object content"
                     };
+                    
                     s3Client.PutObject(putRequest);
 
                     // get object and decrypt
@@ -67,7 +72,5 @@ namespace S3Sample1
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }
-
     }
-
 }

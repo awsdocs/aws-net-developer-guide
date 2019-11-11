@@ -38,7 +38,11 @@ encrypt with the |sdk-java| and decrypt with the |sdk-net|, and vice versa.
 For more information about client-side encryption with the AmazonS3EncryptionClient class, and how envelope encryption works, see `Client Side Data Encryption with AWS SDK for .NET and Amazon S3 <https://aws.amazon.com/blogs/developer/client-side-data-encryption-with-aws-sdk-for-net-and-amazon-s3/>`_.
 
 The following example demonstrates how to use |KMS| keys with the AmazonS3EncryptionClient class. Your project must reference the latest version of the :code:`AWSSDK.KeyManagementService` Nuget package to use this feature.
+Don't forget to set the :code:`region`, :code:`bucketName`, and :code:`objectKey` variables to appropriate values.
 
 .. literalinclude:: samples/kms_s3_encryption.cs
    :language: csharp
 
+See the `complete example
+<https://github.com/awsdocs/aws-net-developer-guide/tree/master/doc_source/samples/kms_s3_encryption.cs>`_
+on GitHub.
