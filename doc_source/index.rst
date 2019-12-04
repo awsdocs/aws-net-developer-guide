@@ -29,6 +29,7 @@ This documentation is for the current version of the |sdk-net|, **3.0**.
    net-dg-setup
    net-dg-programming-techniques
    tutorials-examples
+   Security <security>
    net-dg-additional-resources
    document-history
 
