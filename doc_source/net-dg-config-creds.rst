@@ -203,7 +203,7 @@ On Windows use the following command.
 
 .. code-block:: bat
 
-    set AWS_PROFILE="myProfile"
+    set AWS_PROFILE=myProfile
 
 Setting the **AWS_PROFILE** environment variable affects credential loading for all officially
 supported AWS SDKs and Tools, including the AWS CLI and the AWS CLI for PowerShell.
