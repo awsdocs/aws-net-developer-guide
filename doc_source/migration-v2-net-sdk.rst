@@ -282,11 +282,11 @@ type). The recommended approach is to use the :code:`aws` element, although usin
 :code:`appSettings` element is still supported.
 
 For example, the following specification configures all clients that don't explicitly set the region
-to point to |region_api_default| through use of the :code:`aws` element.
+to point to us-west-2 through use of the :code:`aws` element.
 
 .. code-block:: csharp
 
-    <configuration> <configSections> <section name="aws" type="Amazon.AWSSection, AWSSDK"/> </configSections> <aws profileName="{profile_name}" region="|region_console_default|"/>
+    <configuration> <configSections> <section name="aws" type="Amazon.AWSSection, AWSSDK"/> </configSections> <aws profileName="{profile_name}" region="us-west-2"/>
     </configuration>
 
 Alternatively, you can use the :code:`appSettings` element.
@@ -294,7 +294,7 @@ Alternatively, you can use the :code:`appSettings` element.
 .. code-block:: csharp
 
      <configuration> <appSettings> <add key="AWSProfileName" value="{profile_name}"/>
-        <add key="AWSRegion" value="|region_console_default|"/>
+        <add key="AWSRegion" value="us-west-2"/>
       </appSettings>
     </configuration>
 

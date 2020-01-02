@@ -24,7 +24,7 @@ For example:
 .. code-block:: csharp
 
     AmazonEC2Config config = new AmazonEC2Config();
-    config.ServiceURL = "https://us-east-1.amazonaws.com";
+    config.ServiceURL = "https://us-west-2.amazonaws.com";
     Amazon.Runtime.AWSCredentials credentials = new Amazon.Runtime.StoredProfileAWSCredentials("profile_name");
     AmazonEC2Client ec2 = new AmazonEC2Client(credentials, config);
 

@@ -174,7 +174,7 @@ The session state provider needs to be able to call the :ddb-dg:`DeleteItem <Del
 :ddb-dg:`DescribeTable <DescribeTable>`, :ddb-dg:`GetItem <GetItem>`, :ddb-dg:`PutItem <PutItem>`, 
 and :ddb-dg:`UpdateItem <UpdateItem>` operations for the table that stores
 the session data. The sample policy below can be used to restrict the IAM user to only the
-operations needed by the provider for an instance of |DDB| running in |region_api_default|:
+operations needed by the provider for an instance of |DDB| running in us-west-2:
 
 .. code-block:: json
 

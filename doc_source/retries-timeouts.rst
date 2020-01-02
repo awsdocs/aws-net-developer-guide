@@ -85,7 +85,9 @@ long timeout values and a high number of retries can cause some SDK operations t
   :sdk-net-api-v2:`AmazonGlacierClient <TGlacierGlacierNET45>` objects.
 
 * The version of the SDK that targets the portable class library (PCL) sets :code:`Timeout` to the
-  maximum value for all :sdk-net-api-v2:`AmazonS3Client <TS3S3NET45>` and :sdk-net-api-v2:`AmazonGlacierClient
+  maximum value for all :sdk-net-api-v2:`AmazonS3Client <TS3S3NET45>` and
+  :sdk-net-api-v2:`AmazonGlacierClient <TGlacierGlacierNET45>` objects.
+
 The following are the exceptions to the default timeout values. These values are overridden when
 you explicitly set the timeout values. :code:`Timeout` and :code:`ReadWriteTimeout` are set to the
 maximum values if the method being called uploads a stream, such as :sdk-net-api-v2:`AmazonS3Client.PutObject()
@@ -101,7 +103,6 @@ and :sdk-net-api-v2:`AmazonGlacierClient <TGlacierGlacierNET45>` objects.
 
 .. _retries-timeouts-example:
 
-  <TGlacierGlacierNET45>` objects.
 
 Example
 =======
