@@ -58,7 +58,7 @@ Timeouts
 
 The SDK allows you to configure the request timeout and socket read/write timeout values at the
 service client level. These values are specified in the :code:`Timeout` and the
-:code:`ReadWriteTimeout` properties of the net-api-v2:`ClientConfig <TRuntimeClientConfigNET45>` class,
+:code:`ReadWriteTimeout` properties of the :sdk-net-api-v2:`ClientConfig <TRuntimeClientConfigNET45>` class,
 respectively. These values are passed on as the :code:`Timeout` and :code:`ReadWriteTimeout`
 properties of the `HttpWebRequest
 <https://msdn.microsoft.com/en-us/library/System.Net.HttpWebRequest%28v=vs.110%29.aspx>`_ objects
