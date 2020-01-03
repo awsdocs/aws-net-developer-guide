@@ -336,7 +336,7 @@ password. The administrator password is obtained with the
 :sdk-net-api:`GetPasswordData <EC2/MEC2GetPasswordDataGetPasswordDataRequest>` and
 :sdk-net-api:`GetPasswordDataResult.GetDecryptedPassword <EC2/MGetPasswordDataResponseGetDecryptedPasswordString>`
 methods, which require the private portion of the key pair used to launch the instance. For more
-information, see :ec2-ug-win:`Connecting to Your Windows Instance Using RDP <connecting_to_windows_instance>`in the |EC2-ug-win|. The following example demonstrates how to get the password for a Windows instance.
+information, see :ec2-ug-win:`Connecting to Your Windows Instance Using RDP <connecting_to_windows_instance>` in the |EC2-ug-win|. The following example demonstrates how to get the password for a Windows instance.
 
 .. code-block:: csharp
 
