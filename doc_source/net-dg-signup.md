@@ -1,0 +1,6 @@
+# Create an AWS Account and Credentials<a name="net-dg-signup"></a>
+
+To use the AWS SDK for \.NET to access AWS services, you need an AWS account and AWS credentials\. To increase the security of your AWS account, we recommend that you use an *IAM user* to provide access credentials instead of using your root account credentials\.
++ To create an AWS account, see [How do I create and activate a new Amazon Web Services account?](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)\.
++ Avoid using your root user account \(the initial account you create\) to access services\. Instead, create an administrative user account, as explained in [Creating Your First IAM Admin User and Group](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html)\. Note that the step for creating a user is toward the bottom of the page\. The topic on creating a user also explains how to create keys for the user account so that you can access AWS services\. AWS SDKs and services use access keys to create credentials for the user, and use those credentials to determine whether the user has permission to access various AWS services\.
++ To close your AWS account, see [Closing an Account](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/close-account.html)\.

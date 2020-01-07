@@ -1,0 +1,3 @@
+# Start a New Project<a name="net-dg-start-new-project"></a>
+
+The Toolkit for Visual Studio includes C\# project templates for a variety of AWS services\. The best way to get started developing an application targeting the AWS services is to use one of the examples in the Toolkit for Visual Studio based on the templates\. For a list of the available examples see [Working with AWS Services](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/working-with-services.html) in the Toolkit for Visual Studio\.
