@@ -1,6 +1,8 @@
 ## User Guide of the AWS SDK for .NET
 
-The open source version of the developer guide for the AWS SDK for .NET. Start with the [Index](doc_source/index.md).
+The open source version of the developer guide for the AWS SDK for .NET.
+
+To view this documentation, start with the [Index](doc_source/index.md).
 
 This repository contains source content for the official [AWS SDK for .NET Developer Guide](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/welcome.html).
 
