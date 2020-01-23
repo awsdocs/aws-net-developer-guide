@@ -28,85 +28,74 @@ For more information about creating an Amazon S3 bucket and uploading an object,
 
 ```
 using System;
-using System.Collections.Specialized;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 using Amazon;
 using Amazon.S3;
 using Amazon.S3.Model;
 
-namespace Aws3Sample
+namespace S3ShowTextItem
 {
-  class S3Sample
-  {
-    public static void Main(string[] args)
+    class S3Sample
     {
-      ReadS3File("bucket-name", "s3-file-name", "output-file-name");
-
-      Console.WriteLine("Press enter to continue");
-      Console.ReadLine();
-    }
-
-    public static void ReadS3File(
-      string bucketName, 
-      string keyName, 
-      string filename)
-    {
-
-      string responseBody = "";
-
-      try
-      {
-        using (var s3Client = new AmazonS3Client())
+        static async Task<GetObjectResponse> MyGetObjectAsync(string region, string bucket, string item)
         {
-          Console.WriteLine("Retrieving (GET) an object");
+            RegionEndpoint reg = RegionEndpoint.GetBySystemName(region);
+            AmazonS3Client s3Client = new AmazonS3Client(reg);
 
-          var request = new GetObjectRequest()
-          {
-            BucketName = bucketName,
-            Key = keyName
-          };
+            Console.WriteLine("Retrieving (GET) an object");
 
-          using (var response = s3Client.GetObject(request))
-          using (var responseStream = response.ResponseStream)
-          using (var reader = new StreamReader(responseStream))
-          {
-            responseBody = reader.ReadToEnd();
-          }
+            GetObjectResponse response = await s3Client.GetObjectAsync(bucket, item, new CancellationToken());
+
+            return response;
         }
 
-        using (var s = new FileStream(filename, FileMode.Create))
-        using (var writer = new StreamWriter(s))
+        public static void Main(string[] args)
         {
-          writer.WriteLine(responseBody);
+            if (args.Length < 4)
+            {
+                Console.WriteLine("You must supply a region, bucket name, text file name, and output file name");
+                return;
+            }
+
+            try
+            {
+                Task<GetObjectResponse> response = MyGetObjectAsync(args[0], args[1], args[2]);
+
+                Stream responseStream = response.Result.ResponseStream;
+                StreamReader reader = new StreamReader(responseStream);
+
+                string responseBody = reader.ReadToEnd();
+
+                using(FileStream s = new FileStream(args[3], FileMode.Create))
+                using(StreamWriter writer = new StreamWriter(s))
+                {
+                    writer.WriteLine(responseBody);
+                }
+            }
+            catch (AmazonS3Exception s3Exception)
+            {
+                Console.WriteLine(s3Exception.Message, s3Exception.InnerException);
+            }
+
+            Console.WriteLine("Press enter to continue");
+            Console.ReadLine();
         }
-      }
-      catch (AmazonS3Exception s3Exception)
-      {
-        Console.WriteLine(s3Exception.Message, s3Exception.InnerException);
-      }
     }
-  }
 }
 ```
 
 **To test the sample code**
 
-1. Open Visual Studio and create an AWS Console project\.
+1. Open Visual Studio and create a **Console App \(\.NET Framework\)** project using \.NET Framework 4\.5 or later\.
 
-1. Add the [AWSSDK\.S3](http://www.nuget.org/packages/AWSSDK.S3) package to your project\.
+1. Add the [AWSSDK\.S3](http://www.nuget.org/packages/AWSSDK.S3) NuGet package to your project\.
 
-1. Replace the code in the `Program.cs` file with the sample code\.
+1. Replace the code in the `Program.cs` file with the sample code shown above\.
 
-1. Replace the following values:  
-** `bucket-name` **  
-The name of your Amazon S3 bucket\.  
-** `s3-file-name` **  
-The path and name of a text file in the bucket\.  
-** `output-file-name` **  
-The path and file name to write the file to\.
-
-1. Compile and run the sample program\. If the program succeeds, it displays the following output and creates a file named `s3Object.txt` on your local drive that contains the text it retrieved from the text file in Amazon S3\.
+1. Compile and run the sample program\. If the program succeeds, it displays the following output and creates a file on your local drive that contains the text it retrieved from the text file in Amazon S3\.
 
    ```
    Retrieving (GET) an object
@@ -160,7 +149,7 @@ An IAM user can’t launch an instance with an IAM role without the permissions 
 To transfer the sample program to your EC2 instance, connect to the instance using the AWS Management Console as described in the following procedure\.
 
 **Note**  
-Alternatively, connect using the Toolkit for Visual Studio \(see [Connecting to an Amazon EC2 Instance](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/managing-ec2.html#connect-ec2.html) in the AWS Toolkit for Visual Studio\) and then copy the files from your local drive to the instance\. The Remote Desktop session is automatically configured so that your local drives are available to the instance\.
+Alternatively, connect using the Toolkit for Visual Studio \(see [Connecting to an Amazon EC2 Instance](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/tkv-ec2-ami.html#connect-ec2) in the AWS Toolkit for Visual Studio\) and then copy the files from your local drive to the instance\. The Remote Desktop session is automatically configured so that your local drives are available to the instance\.
 
 **To run the sample program on the EC2 instance**
 

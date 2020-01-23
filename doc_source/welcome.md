@@ -1,8 +1,8 @@
 # AWS SDK for \.NET Developer Guide<a name="welcome"></a>
 
-The AWS SDK for \.NET makes it easier for Windows developers to build \.NET applications that tap into the cost\-effective, scalable, and reliable AWS services such as Amazon Simple Storage Service \(Amazon S3\) and Amazon Elastic Compute Cloud \(Amazon EC2\)\. The AWS SDK for \.NET supports \.NET Framework 3\.5, \.NET Framework 4\.5, \.NET Standard 1\.3, \.NET Standard 2\.0, Portable Class Library, and Xamarin\. You can develop applications with the SDK using Visual Studio 2010 or later\.
+The AWS SDK for \.NET makes it easier for Windows developers to build \.NET applications that tap into cost\-effective, scalable, and reliable AWS services such as Amazon Simple Storage Service \(Amazon S3\) and Amazon Elastic Compute Cloud \(Amazon EC2\)\. The AWS SDK for \.NET supports \.NET Framework 3\.5, \.NET Framework 4\.5, \.NET Standard 1\.3, \.NET Standard 2\.0, Portable Class Library, and Xamarin\. You can develop applications with the SDK using Visual Studio 2010 or later\.
 
-Unless explicitly stated otherwise, all information within this guide applies to all of the supported targets\.
+Unless explicitly stated otherwise, information within this guide applies to all of the supported targets\.
 
 ## What’s in the SDK<a name="what-s-in-the-sdk"></a>
 
@@ -16,14 +16,14 @@ To simplify installation, AWS provides the AWS Tools for Windows, which is a Win
 + The AWS Tools for Windows PowerShell \(see the [AWS Tools for PowerShell User Guide](https://docs.aws.amazon.com/powershell/latest/userguide/)\)
 + The AWS Toolkit for Visual Studio \(see the [AWS Toolkit for Visual Studio User Guide](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/)\)
 
-To install the AWS Tools for Windows, navigate to the [AWS SDK for \.NET](https://aws.amazon.com/sdk-for-net/) select **Download MSI Installer**, save the MSI file, and run it\.
+To install the AWS Tools for Windows, navigate to the [AWS SDK for \.NET product page](https://aws.amazon.com/sdk-for-net/), select **Download MSI Installer**, save the MSI file, and run it\.
 
 As an alternative to installing the AWS Tools for Windows, you can use NuGet to download individual AWSSDK service assemblies for a specific application project\. For more information, see [Installing AWSSDK Assemblies with NuGet](net-dg-install-assemblies.md#net-dg-nuget)\.
 
 **Note**  
 We recommend using Visual Studio Professional 2010 or later to implement your applications\.
 
-## About the AWS Tools for Windows Tools<a name="about-tools"></a>
+## About the AWS Tools for Windows<a name="about-tools"></a>
 
 ### AWS SDK for \.NET<a name="sdk-net"></a>
 
@@ -55,7 +55,7 @@ To get started with AWS Tools for Microsoft Visual Studio Team Services, see [AW
 
 The *AWS SDK for \.NET Developer Guide* describes how to implement applications for AWS using the AWS SDK for \.NET, and includes the following:
 
-** [Getting Started with the AWS SDK for \.NET](net-dg-setup.md) **  
+** [Setting Up the AWS SDK for \.NET](net-dg-setup.md) **  
 How to install and configure the AWS SDK for \.NET\. If you have not used the AWS SDK for \.NET before or are having trouble with its configuration, you should start here\.
 
 ** [Programming with the AWS SDK for \.NET](net-dg-programming-techniques.md) **  

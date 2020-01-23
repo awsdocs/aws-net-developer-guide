@@ -14,7 +14,7 @@ Visit the AWS forums to ask questions or provide feedback about AWS\. Each docum
 
  *AWS Toolkit for Visual Studio* 
 
-If you use the Microsoft Visual Studio IDE, you should check out the [AWS Toolkit for Visual Studio User Guide](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/)\.
+If you use the Microsoft Visual Studio IDE, you should check out the *[AWS Toolkit for Visual Studio User Guide](https://docs.aws.amazon.com/AWSToolkitVS/latest/UserGuide/)*\.
 
  *Helpful Libraries, Extensions and Tools* 
 

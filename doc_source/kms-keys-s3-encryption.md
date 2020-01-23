@@ -11,82 +11,100 @@ The AWS SDK for \.NET’s `AmazonS3EncryptionClient` supports KMS master keys on
 
 For more information about client\-side encryption with the AmazonS3EncryptionClient class, and how envelope encryption works, see [Client Side Data Encryption with AWS SDK for \.NET and Amazon S3](http://aws.amazon.com/blogs/developer/client-side-data-encryption-with-aws-sdk-for-net-and-amazon-s3/)\.
 
-The following example demonstrates how to use AWS KMS keys with the AmazonS3EncryptionClient class\. Your project must reference the latest version of the `AWSSDK.KeyManagementService` Nuget package to use this feature\. Don’t forget to set the `region`, `bucketName`, and `objectKey` variables to appropriate values\.
+The following example demonstrates how to use AWS KMS keys with the AmazonS3EncryptionClient class\.
+
+In Visual Studio, create a **Console App \(\.NET Framework\)** project using \.NET Framework 4\.5 or later and reference the appropriate versions of the following NuGet packages: **AWSSDK\.S3** and **AWSSDK\.KeyManagementService**\. When you run the application, include the Region code, the name of an existing Amazon S3 bucket, and a name for the new Amazon S3 object\.
 
 ```
 using System;
-using System.Collections.Specialized;
-using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Security.Cryptography;
+using System.Threading.Tasks;
 
 using Amazon;
-using Amazon.S3;
-using Amazon.S3.Model;
-using Amazon.S3.Encryption;
 using Amazon.KeyManagementService;
 using Amazon.KeyManagementService.Model;
+using Amazon.S3.Encryption;
+using Amazon.S3.Model;
 
-namespace S3Sample1
+namespace KmsS3Encryption
 {
     class S3Sample
     {
+        static async Task<CreateKeyResponse> MyCreateKeyAsync(string regionName)
+        {
+            RegionEndpoint region = RegionEndpoint.GetBySystemName(regionName);
+
+            AmazonKeyManagementServiceClient kmsClient = new AmazonKeyManagementServiceClient(region);
+
+            CreateKeyResponse response = await kmsClient.CreateKeyAsync(new CreateKeyRequest());
+
+            return response;
+        }
+
+        static async Task<GetObjectResponse> MyPutObjectAsync(EncryptionMaterials materials, string bucketName, string keyName)
+        {
+            // CryptoStorageMode.ObjectMetadata is required for KMS EncryptionMaterials
+            var config = new AmazonS3CryptoConfiguration()
+            {
+                StorageMode = CryptoStorageMode.ObjectMetadata
+            };
+
+            AmazonS3EncryptionClient s3Client = new AmazonS3EncryptionClient(config, materials);
+
+            // encrypt and put object
+            var putRequest = new PutObjectRequest
+            {
+                BucketName = bucketName,
+                Key = keyName,
+                ContentBody = "object content"
+            };
+
+            await s3Client.PutObjectAsync(putRequest);
+
+            // get object and decrypt
+            var getRequest = new GetObjectRequest
+            {
+                BucketName = bucketName,
+                Key = keyName
+            };
+
+            GetObjectResponse response = await s3Client.GetObjectAsync(getRequest);
+
+            return response;
+        }
         public static void Main(string[] args)
         {
-            string kmsKeyID = null;
-            using (var kmsClient = new AmazonKeyManagementServiceClient())
+            if (args.Length < 3)
             {
-                var response = kmsClient.CreateKey(new CreateKeyRequest());
-                kmsKeyID = response.KeyMetadata.KeyId;
-
-                var keyMetadata = response.KeyMetadata; // An object that contains information about the CMK created by this operation.
-                var bucketName = "<s3bucket>";
-                var objectKey = "key";
-
-                var kmsEncryptionMaterials = new EncryptionMaterials(kmsKeyID);
-                // CryptoStorageMode.ObjectMetadata is required for KMS EncryptionMaterials
-                var config = new AmazonS3CryptoConfiguration()
-                {
-                    StorageMode = CryptoStorageMode.ObjectMetadata
-                };
-
-                using (var s3Client = new AmazonS3EncryptionClient(config, kmsEncryptionMaterials))
-                {
-                    // encrypt and put object
-                    var putRequest = new PutObjectRequest
-                    {
-                        BucketName = bucketName,
-                        Key = objectKey,
-                        ContentBody = "object content"
-                    };
-                    s3Client.PutObject(putRequest);
-
-                    // get object and decrypt
-                    var getRequest = new GetObjectRequest
-                    {
-                        BucketName = bucketName,
-                        Key = objectKey
-                    };
-
-                    using (var getResponse = s3Client.GetObject(getRequest))
-                    using (var stream = getResponse.ResponseStream)
-                    using (var reader = new StreamReader(stream))
-                    {
-                        Console.WriteLine(reader.ReadToEnd());
-                    }
-                }
+                Console.WriteLine("You must supply a Region, bucket name, and item name:");
+                Console.WriteLine("Usage: KmsS3Encryption REGION BUCKET ITEM");
+                return;
             }
+
+            string regionName = args[0];
+            string bucketName = args[1];
+            string itemName = args[2];
+
+            Task<CreateKeyResponse> response = MyCreateKeyAsync(regionName);
+
+            KeyMetadata keyMetadata = response.Result.KeyMetadata;
+            string kmsKeyId = keyMetadata.KeyId;
+
+            // An object that contains information about the CMK created by this operation.
+            EncryptionMaterials kmsEncryptionMaterials = new EncryptionMaterials(kmsKeyId);
+
+            Task<GetObjectResponse> goResponse = MyPutObjectAsync(kmsEncryptionMaterials, bucketName, itemName);
+
+            Stream stream = goResponse.Result.ResponseStream;
+            StreamReader reader = new StreamReader(stream);
+
+            Console.WriteLine(reader.ReadToEnd());
 
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }
-
     }
-
 }
 ```
 
-See the [complete example](https://github.com/awsdocs/aws-net-developer-guide/tree/master/doc_source/samples/kms_s3_encryption.cs) on GitHub\.
+See the [complete example](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/KMS/KmsS3Encryption.cs) on GitHub\.

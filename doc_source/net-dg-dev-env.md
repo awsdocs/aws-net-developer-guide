@@ -10,4 +10,4 @@ We recommend using Visual Studio Professional 2010 or later to implement your ap
 
 The AWS SDK for \.NET is installed with the AWS Toolkit for Visual Studio, a plugin that provides a user interface for managing your AWS resources from Visual Studio, and also includes the AWS Tools for Windows PowerShell\. To install the AWS SDK for \.NET and AWS Toolkit for Visual Studio, see [Setting Up the AWS Toolkit for Visual Studio](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/getting-set-up.html)\.
 
-For more information, see [Using the AWS Toolkit for Visual Studio](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/welcome.html)\.
+For more information, see the *[AWS Toolkit for Visual Studio User Guide](https://docs.aws.amazon.com/AWSToolkitVS/latest/UserGuide/)*\.

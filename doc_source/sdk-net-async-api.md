@@ -62,34 +62,28 @@ In some circumstances, the code that calls the `Begin` method might need to enab
 
 ### Examples<a name="sdk-net-async-examples"></a>
 
-All of the following examples assume the following initialization code\.
+For the complete code example, see [Complete Example](#sdk-net-async-complete-code) below or view it on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/S3/S3Async.cs)\.
+
+All of the following snippets assume the following initialization code\.
 
 ```
-public static void TestPutObjectAsync()
-{
-  // Create a client AmazonS3Client
-  client = new AmazonS3Client();
+        public static void TestPutObjectAsync(string bucket)
+        {
+            // Create a client
+            AmazonS3Client client = new AmazonS3Client();
 
-  PutObjectResponse response;
-  IAsyncResult asyncResult;
+            PutObjectResponse response;
+            IAsyncResult asyncResult;
 
-  //
-  // Create a PutObject request
-  //
-  // You will need to use your own bucket name below in order
-  // to run this sample code.
-  //
-  PutObjectRequest request = new PutObjectRequest
-  {
-    BucketName = "{PUT YOUR OWN EXISTING BUCKET NAME HERE}",
-    Key = "Item",
-    ContentBody = "This is sample content..."
-  };
-
-  //
-  // additional example code
-  //
-}
+            //
+            // Create a PutObject request object using the supplied bucket name.
+            //
+            PutObjectRequest request = new PutObjectRequest
+            {
+                BucketName = bucket,
+                Key = "Item0-Synchronous",
+                ContentBody = "Put S3 object synchronously."
+            };
 ```
 
 #### No Callback Specified<a name="no-callback-specified"></a>
@@ -97,20 +91,22 @@ public static void TestPutObjectAsync()
 The following example code calls `BeginPutObject`, performs some work, and then calls `EndPutObject` to retrieve the service response\. The call to `EndPutObject` is enclosed in a `try` block to catch any exceptions that might have been thrown during the operation\.
 
 ```
-asyncResult = client.BeginPutObject(request, null, null);
-while ( ! asyncResult.IsCompleted ) {
-  //
-  // Do some work here
-  //
-}
-try {
-  response = client.EndPutObject(asyncResult);
-}
-catch (AmazonS3Exception s3Exception) {
-  //
-  // Code to process exception
-  //
-}
+            asyncResult = client.BeginPutObject(request, null, null);
+            while (!asyncResult.IsCompleted)
+            {
+                //
+                // Do some work here
+                //
+            }
+            try
+            {
+                response = client.EndPutObject(asyncResult);
+            }
+            catch (AmazonS3Exception s3Exception)
+            {
+                Console.WriteLine("Caught exception calling EndPutObject:");
+                Console.WriteLine(s3Exception);
+            }
 ```
 
 #### Simple Callback<a name="simple-callback"></a>
@@ -118,16 +114,18 @@ catch (AmazonS3Exception s3Exception) {
 This example assumes the following callback function has been defined\.
 
 ```
-public static void SimpleCallback(IAsyncResult asyncResult)
-{
-  Console.WriteLine("Finished PutObject operation with simple callback");
-}
+        public static void SimpleCallback(IAsyncResult asyncResult)
+        {
+            Console.WriteLine("Finished PutObject operation with simple callback.");
+            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine("asyncResult.IsCompleted: {0}\n\n", asyncResult.IsCompleted.ToString());
+        }
 ```
 
 The following line of code calls `BeginPutObject` and specifies the above callback function\. When the `PutObject` operation is complete, the callback function is called\. The call to `BeginPutObject` specifies `null` for the `state` parameter because the simple callback function does not access the `AsyncState` property of the `asyncResult` parameter\. Neither the calling code or the callback function call `EndPutObject`\. Therefore, the service response is effectively discarded and any exceptions that occur during the operation are ignored\.
 
 ```
-asyncResult = client.BeginPutObject(request, SimpleCallback, null);
+            asyncResult = client.BeginPutObject(request, SimpleCallback, null);
 ```
 
 #### Callback with Client<a name="callback-with-client"></a>
@@ -135,25 +133,30 @@ asyncResult = client.BeginPutObject(request, SimpleCallback, null);
 This example assumes the following callback function has been defined\.
 
 ```
-public static void CallbackWithClient(IAsyncResult asyncResult)
-{
-  try {
-    AmazonS3Client s3Client = (AmazonS3Client) asyncResult.AsyncState;
-    PutObjectResponse response = s3Client.EndPutObject(asyncResult);
-    Console.WriteLine("Finished PutObject operation with client callback");
-  }
-  catch (AmazonS3Exception s3Exception) {
-    //
-    // Code to process exception
-    //
-  }
-}
+        public static void CallbackWithClient(IAsyncResult asyncResult)
+        {
+            try
+            {
+                AmazonS3Client s3Client = (AmazonS3Client)asyncResult.AsyncState;
+                PutObjectResponse response = s3Client.EndPutObject(asyncResult);
+                Console.WriteLine("Finished PutObject operation with client callback. Service Version: {0}", s3Client.Config.ServiceVersion);
+                Console.WriteLine("--------------------------------------------------");
+                Console.WriteLine("Service Response:");
+                Console.WriteLine("-----------------");
+                Console.WriteLine("Request ID: {0}\n\n", response.ResponseMetadata.RequestId);
+            }
+            catch (AmazonS3Exception s3Exception)
+            {
+                Console.WriteLine("Caught exception calling EndPutObject:");
+                Console.WriteLine(s3Exception);
+            }
+        }
 ```
 
 The following line of code calls `BeginPutObject` and specifies the preceding callback function\. When the `PutObject` operation is complete, the callback function is called\. In this example, the call to `BeginPutObject` specifies the Amazon S3 client object for the `state` parameter\. The callback function uses the client to call the `EndPutObject` method to retrieve the server response\. Because any exceptions that occurred during the operation will be received when the callback calls `EndPutObject`, this call is placed within a `try` block\.
 
 ```
-asyncResult = client.BeginPutObject(request, CallbackWithClient, client);
+            asyncResult = client.BeginPutObject(request_client, CallbackWithClient, client);
 ```
 
 #### Callback with State Object<a name="callback-with-state-object"></a>
@@ -161,41 +164,34 @@ asyncResult = client.BeginPutObject(request, CallbackWithClient, client);
 This example assumes the following class and callback function have been defined\.
 
 ```
-class ClientState
-{
-  AmazonS3Client client;
-  DateTime startTime;
-
-  public AmazonS3Client Client
-  {
-    get { return client; }
-    set { client = value; }
-  }
-
-  public DateTime Start
-  {
-    get { return startTime; }
-    set { startTime = value; }
-  }
-}
+    class ClientState
+    {
+        public AmazonS3Client Client { get; set; }
+        public DateTime Start { get; set; }
+    }
 ```
 
 ```
-public static void CallbackWithState(IAsyncResult asyncResult)
-{
-  try {
-    ClientState state = asyncResult.AsyncState as ClientState;
-    AmazonS3Client s3Client = (AmazonS3Client)state.Client;
-    PutObjectResponse response = state.Client.EndPutObject(asyncResult);
-    Console.WriteLine("Finished PutObject. Elapsed time: {0}",
-      (DateTime.Now - state.Start).ToString());
-  }
-  catch (AmazonS3Exception s3Exception) {
-    //
-    // Code to process exception
-    //
-  }
-}
+        public static void CallbackWithState(IAsyncResult asyncResult)
+        {
+            try
+            {
+                ClientState state = asyncResult.AsyncState as ClientState;
+                AmazonS3Client s3Client = (AmazonS3Client)state.Client;
+                PutObjectResponse response = state.Client.EndPutObject(asyncResult);
+                Console.WriteLine("Finished PutObject operation with state callback that started at {0}",
+                    state.Start.ToString());
+                Console.WriteLine("--------------------------------------------------");
+                Console.WriteLine("Service Response:");
+                Console.WriteLine("-----------------");
+                Console.WriteLine("Request ID: {0}\n\n", response.ResponseMetadata.RequestId);
+            }
+            catch (AmazonS3Exception s3Exception)
+            {
+                Console.WriteLine("Caught exception calling EndPutObject:");
+                Console.WriteLine(s3Exception);
+            }
+        }
 ```
 
 The following line of code calls `BeginPutObject` and specifies the above callback function\. When the `PutObject` operation is complete, the callback function is called\. In this example, the call to `BeginPutObject` specifies, for the `state` parameter, an instance of the `ClientState` class defined previously\. This class embeds the Amazon S3 client as well as the time at which `BeginPutObject` is called\. The callback function uses the Amazon S3 client object to call the `EndPutObject` method to retrieve the server response\. The callback also extracts the start time for the operation and uses it to print the time it took for the asynchronous operation to complete\.
@@ -203,165 +199,228 @@ The following line of code calls `BeginPutObject` and specifies the above callba
 As in the previous examples, because exceptions that occur during the operation are received when `EndPutObject` is called, this call is placed within a `try` block\.
 
 ```
-asyncResult = client.BeginPutObject(
-  request, CallbackWithState, new ClientState { Client = client, Start = DateTime.Now } );
+            asyncResult = client.BeginPutObject(request_state, CallbackWithState,
+               new ClientState { Client = client, Start = DateTime.Now });
 ```
 
-### Complete Sample<a name="sdk-net-async-complete-code"></a>
+### Complete Example<a name="sdk-net-async-complete-code"></a>
 
-The following code sample demonstrates the patterns you can use when calling the asynchronous request methods\.
+The following code example demonstrates the patterns you can use when calling the asynchronous request methods\.
 
 ```
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
 using System.Threading;
 
-using Amazon;
-using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.Model;
 
 namespace async_aws_net
 {
-   class ClientState
-   {
-      AmazonS3Client client;
-      DateTime startTime;
+    class ClientState
+    {
+        public AmazonS3Client Client { get; set; }
+        public DateTime Start { get; set; }
+    }
 
-      public AmazonS3Client Client
-      {
-         get { return client; }
-         set { client = value; }
-      }
+    class Program
+    {
+        //
+        // Function Main().
+        // Parse the command line and call the worker function.
+        //
+        public static void Main(string[] args)
+        {
+            if (args.Length != 1)
+            {
+                Console.WriteLine("You must supply the name of an existing Amazon S3 bucket.");
+                return;
+            }
 
-      public DateTime Start
-      {
-         get { return startTime; }
-         set { startTime = value; }
-      }
-   }
+            TestPutObjectAsync(args[0]);
+        }
 
-   class Program
-   {
-      public static void Main(string[] args)
-      {
-         TestPutObjectAsync();
-      }
+        //
+        // Function SimpleCallback().
+        // A very simple callback function.
+        //
+        public static void SimpleCallback(IAsyncResult asyncResult)
+        {
+            Console.WriteLine("Finished PutObject operation with simple callback.");
+            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine("asyncResult.IsCompleted: {0}\n\n", asyncResult.IsCompleted.ToString());
+        }
 
-      public static void SimpleCallback(IAsyncResult asyncResult)
-      {
-         Console.WriteLine("Finished PutObject operation with simple callback");
-         Console.Write("\n\n");
-      }
+        //
+        // Function CallbackWithClient().
+        // A callback function that provides access to a given S3 client.
+        //
+        public static void CallbackWithClient(IAsyncResult asyncResult)
+        {
+            try
+            {
+                AmazonS3Client s3Client = (AmazonS3Client)asyncResult.AsyncState;
+                PutObjectResponse response = s3Client.EndPutObject(asyncResult);
+                Console.WriteLine("Finished PutObject operation with client callback. Service Version: {0}", s3Client.Config.ServiceVersion);
+                Console.WriteLine("--------------------------------------------------");
+                Console.WriteLine("Service Response:");
+                Console.WriteLine("-----------------");
+                Console.WriteLine("Request ID: {0}\n\n", response.ResponseMetadata.RequestId);
+            }
+            catch (AmazonS3Exception s3Exception)
+            {
+                Console.WriteLine("Caught exception calling EndPutObject:");
+                Console.WriteLine(s3Exception);
+            }
+        }
 
-      public static void CallbackWithClient(IAsyncResult asyncResult)
-      {
-         try {
-            AmazonS3Client s3Client = (AmazonS3Client) asyncResult.AsyncState;
-            PutObjectResponse response = s3Client.EndPutObject(asyncResult);
-            Console.WriteLine("Finished PutObject operation with client callback");
+        //
+        // Function CallbackWithState().
+        // A callback function that provides access to a given S3 client as well as state information.
+        //
+        public static void CallbackWithState(IAsyncResult asyncResult)
+        {
+            try
+            {
+                ClientState state = asyncResult.AsyncState as ClientState;
+                AmazonS3Client s3Client = (AmazonS3Client)state.Client;
+                PutObjectResponse response = state.Client.EndPutObject(asyncResult);
+                Console.WriteLine("Finished PutObject operation with state callback that started at {0}",
+                    state.Start.ToString());
+                Console.WriteLine("--------------------------------------------------");
+                Console.WriteLine("Service Response:");
+                Console.WriteLine("-----------------");
+                Console.WriteLine("Request ID: {0}\n\n", response.ResponseMetadata.RequestId);
+            }
+            catch (AmazonS3Exception s3Exception)
+            {
+                Console.WriteLine("Caught exception calling EndPutObject:");
+                Console.WriteLine(s3Exception);
+            }
+        }
+
+        //
+        // Function TestPutObjectAsync().
+        // Test synchronous and asynchronous variations of PutObject().
+        //
+        public static void TestPutObjectAsync(string bucket)
+        {
+            // Create a client
+            AmazonS3Client client = new AmazonS3Client();
+
+            PutObjectResponse response;
+            IAsyncResult asyncResult;
+
+            //
+            // Create a PutObject request object using the supplied bucket name.
+            //
+            PutObjectRequest request = new PutObjectRequest
+            {
+                BucketName = bucket,
+                Key = "Item0-Synchronous",
+                ContentBody = "Put S3 object synchronously."
+            };
+
+            //
+            // Perform a synchronous PutObject operation.
+            //
+            Console.WriteLine("-------------------------------------------------------------------------------");
+            Console.WriteLine("Performing synchronous PutObject operation for {0}.", request.Key);
+            response = client.PutObject(request);
+            Console.WriteLine("Finished PutObject operation for {0}.", request.Key);
             Console.WriteLine("Service Response:");
             Console.WriteLine("-----------------");
-            Console.WriteLine(response);
-            Console.Write("\n\n");
-         }
-         catch (AmazonS3Exception s3Exception) {
-            //
-            // Code to process exception
-            //
-         }
-      }
+            Console.WriteLine("Request ID: {0}", response.ResponseMetadata.RequestId);
+            Console.Write("\n");
 
-      public static void CallbackWithState(IAsyncResult asyncResult)
-      {
-         try {
-            ClientState state = asyncResult.AsyncState as ClientState;
-            AmazonS3Client s3Client = (AmazonS3Client)state.Client;
-            PutObjectResponse response = state.Client.EndPutObject(asyncResult);
-            Console.WriteLine(
-               "Finished PutObject operation with state callback that started at {0}",
-               (DateTime.Now - state.Start).ToString() + state.Start);
+            //
+            // Perform an async PutObject operation and wait for the response.
+            //
+            // (Re-use the existing PutObject request object since it isn't being used for another async request.)
+            //
+            request.Key = "Item1-Async-wait";
+            request.ContentBody = "Put S3 object asynchronously; wait for response.";
+            Console.WriteLine("-------------------------------------------------------------------------------");
+            Console.WriteLine("Performing async PutObject operation and waiting for response (Key: {0}).", request.Key);
+
+            asyncResult = client.BeginPutObject(request, null, null);
+            while (!asyncResult.IsCompleted)
+            {
+                //
+                // Do some work here
+                //
+            }
+            try
+            {
+                response = client.EndPutObject(asyncResult);
+            }
+            catch (AmazonS3Exception s3Exception)
+            {
+                Console.WriteLine("Caught exception calling EndPutObject:");
+                Console.WriteLine(s3Exception);
+            }
+
+            Console.WriteLine("Finished Async PutObject operation for {0}.", request.Key);
             Console.WriteLine("Service Response:");
             Console.WriteLine("-----------------");
-            Console.WriteLine(response);
-            Console.Write("\n\n");
-         }
-         catch (AmazonS3Exception s3Exception) {
+            Console.WriteLine("Request ID: {0}\n", response.ResponseMetadata.RequestId);
+
+            Console.WriteLine("-------------------------------------------------------------------------------");
+            Console.WriteLine("Performing the following async PutObject operations:");
+            Console.WriteLine("\"simple callback\", \"callback with client\", and \"callback with state\"...\n");
+
             //
-            // Code to process exception
+            // Perform an async PutObject operation with a simple callback.
             //
-         }
-      }
+            // (Re-use the existing PutObject request object since it isn't being used for another async request.)
+            //
+            request.Key = "Item2-Async-simple";
+            request.ContentBody = "Put S3 object asynchronously; use simple callback.";
 
-      public static void TestPutObjectAsync()
-      {
-         // Create a client
-         AmazonS3Client client = new AmazonS3Client();
+            Console.WriteLine("PutObject with simple callback (Key: {0}).", request.Key);
+            asyncResult = client.BeginPutObject(request, SimpleCallback, null);
 
-         PutObjectResponse response;
-         IAsyncResult asyncResult;
+            //
+            // Perform an async PutObject operation with a client callback.
+            //
+            // Create a PutObject request object for this call using the supplied bucket name.
+            //
+            PutObjectRequest request_client = new PutObjectRequest
+            {
+                BucketName = bucket,
+                Key = "Item3-Async-client",
+                ContentBody = "Put S3 object asynchronously; use callback with client."
+            };
 
-         //
-         // Create a PutObject request
-         //
-         // You will need to change the BucketName below in order to run this
-         // sample code.
-         //
-         PutObjectRequest request = new PutObjectRequest
-         {
-           BucketName = "PUT-YOUR-OWN-EXISTING-BUCKET-NAME-HERE",
-           Key = "Item",
-           ContentBody = "This is sample content..."
-         };
+            Console.WriteLine("PutObject with client callback (Key: {0}).", request_client.Key);
+            asyncResult = client.BeginPutObject(request_client, CallbackWithClient, client);
 
-         response = client.PutObject(request);
-         Console.WriteLine("Finished PutObject operation for {0}.", request.Key);
-         Console.WriteLine("Service Response:");
-         Console.WriteLine("-----------------");
-         Console.WriteLine("{0}", response);
-         Console.Write("\n\n");
+            //
+            // Perform an async PutObject operation with a state callback.
+            //
+            // Create a PutObject request object for this call using the supplied bucket name.
+            //
+            PutObjectRequest request_state = new PutObjectRequest
+            {
+                BucketName = bucket,
+                Key = "Item3-Async-state",
+                ContentBody = "Put S3 object asynchronously; use callback with state."
+            };
 
-         request.Key = "Item1";
-         asyncResult = client.BeginPutObject(request, null, null);
-         while ( ! asyncResult.IsCompleted ) {
-           //
-           // Do some work here
-           //
-         }
-         try {
-           response = client.EndPutObject(asyncResult);
-         }
-         catch (AmazonS3Exception s3Exception) {
-           //
-           // Code to process exception
-           //
-         }
+            Console.WriteLine("PutObject with state callback (Key: {0}).\n", request_state.Key);
+            asyncResult = client.BeginPutObject(request_state, CallbackWithState,
+               new ClientState { Client = client, Start = DateTime.Now });
 
-         Console.WriteLine("Finished Async PutObject operation for {0}.", request.Key );
-         Console.WriteLine("Service Response:");
-         Console.WriteLine("-----------------");
-         Console.WriteLine(response);
-         Console.Write("\n\n");
-
-         request.Key = "Item2";
-         asyncResult = client.BeginPutObject(request, SimpleCallback, null);
-
-         request.Key = "Item3";
-         asyncResult = client.BeginPutObject(request, CallbackWithClient, client);
-
-         request.Key = "Item4";
-         asyncResult = client.BeginPutObject(request, CallbackWithState,
-            new ClientState { Client = client, Start = DateTime.Now } );
-
-         Thread.Sleep( TimeSpan.FromSeconds(5) );
-      }
-   }
+            //
+            // Finished with async calls. Wait a bit for them to finish.
+            //
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+        }
+    }
 }
 ```
 
+You can also view it on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/S3/S3Async.cs)\.
+
 ### See Also<a name="sdk-net-async-see-also"></a>
-+  [Getting Started with the AWS SDK for \.NET](net-dg-setup.md) 
++  [Setting Up the AWS SDK for \.NET](net-dg-setup.md) 
 +  [Programming with the AWS SDK for \.NET](net-dg-programming-techniques.md) 

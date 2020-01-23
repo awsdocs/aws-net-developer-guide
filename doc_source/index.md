@@ -15,7 +15,7 @@ Amazon's trademarks and trade dress may not be used in
 -----
 ## Contents
 + [AWS SDK for .NET Developer Guide](welcome.md)
-+ [Getting Started with the AWS SDK for .NET](net-dg-setup.md)
++ [Setting Up the AWS SDK for .NET](net-dg-setup.md)
    + [Create an AWS Account and Credentials](net-dg-signup.md)
    + [Install the .NET Development Environment](net-dg-dev-env.md)
    + [Install AWSSDK Assemblies](net-dg-install-assemblies.md)

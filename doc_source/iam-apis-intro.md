@@ -8,7 +8,7 @@ For related API reference information, see [Amazon\.IdentityManagement](https://
 
  **Prerequisites** 
 
-Before you begin, be sure that you have created an AWS account and set up your AWS credentials\. For more information, see [Getting Started with the AWS SDK for \.NET](net-dg-setup.md)\.
+Before you begin, be sure that you have created an AWS account and set up your AWS credentials\. For more information, see [Setting Up the AWS SDK for \.NET](net-dg-setup.md)\.
 
 **Topics**
 + [Managing IAM Account Aliases](iam-examples-account-aliases.md)

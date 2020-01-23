@@ -2,11 +2,11 @@
 
 The AWS SDK for \.NET supports Amazon S3 Glacier, which is a storage service optimized for infrequently used data, or *cold data*\. The service provides durable and extremely low\-cost storage with security features for data archiving and backup\. For more information, see [Amazon S3 Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/)\.
 
-The following information introduces you to the Glacier programming models in the AWS SDK for \.NET\.
+The following information introduces you to the S3 Glacier programming models in the AWS SDK for \.NET\.
 
 ## Programming Models<a name="glacier-apis-intro-models"></a>
 
-The AWS SDK for \.NET provides two programming models for working with Glacier\. The following information describes these models and why and how to use them\.
+The AWS SDK for \.NET provides two programming models for working with S3 Glacier\. The following information describes these models and why and how to use them\.
 
 **Topics**
 + [Low\-Level APIs](#glacier-apis-intro-low-level)
@@ -14,9 +14,9 @@ The AWS SDK for \.NET provides two programming models for working with Glacier\.
 
 ### Low\-Level APIs<a name="glacier-apis-intro-low-level"></a>
 
-The AWS SDK for \.NET provides low\-level APIs for programming with Glacier\. These low\-level APIs map closely to the underlying REST API supported by Glacier\. For each Glacier REST operation, the low\-level APIs provide a corresponding method, a request object for you to provide request information, and a response object for you to process the Glacier response\. The low\-level APIs are the most complete implementation of the underlying Glacier operations\.
+The AWS SDK for \.NET provides low\-level APIs for programming with S3 Glacier\. These low\-level APIs map closely to the underlying REST API supported by S3 Glacier\. For each S3 Glacier REST operation, the low\-level APIs provide a corresponding method, a request object for you to provide request information, and a response object for you to process the S3 Glacier response\. The low\-level APIs are the most complete implementation of the underlying S3 Glacier operations\.
 
-The following example shows how to use the low\-level APIs to list accessible vaults in Glacier:
+The following example shows how to use the low\-level APIs to list accessible vaults in S3 Glacier:
 
 ```
 // using Amazon.Glacier;
@@ -127,7 +127,7 @@ For related API reference information, see [Amazon\.Glacier](https://docs.aws.am
 
 ### High\-Level APIs<a name="glacier-apis-intro-high-level"></a>
 
-The AWS SDK for \.NET provides high\-level APIs for programming with Glacier\. To further simplify application development, these high\-level APIs offer a higher\-level abstraction for some of the operations, including uploading an archive and downloading an archive or vault inventory\.
+The AWS SDK for \.NET provides high\-level APIs for programming with S3 Glacier\. To further simplify application development, these high\-level APIs offer a higher\-level abstraction for some of the operations, including uploading an archive and downloading an archive or vault inventory\.
 
 For examples, see the following topics in the [Amazon S3 Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/):
 +  [Using the AWS SDK for \.NET](https://docs.aws.amazon.com/amazonglacier/latest/dev/using-aws-sdk-for-dot-net.html) 

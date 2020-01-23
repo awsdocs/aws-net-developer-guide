@@ -8,7 +8,7 @@ The sample code is written in C\#, but you can use the AWS SDK for \.NET with an
 
  **Prerequisite Tasks** 
 
-Before you begin, be sure that you have created an AWS account and set up your AWS credentials\. For more information, see [Getting Started with the AWS SDK for \.NET](net-dg-setup.md)\.
+Before you begin, be sure that you have created an AWS account and set up your AWS credentials\. For more information, see [Setting Up the AWS SDK for \.NET](net-dg-setup.md)\.
 
 For related API reference information, see [Amazon\.SQS](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/NSQS.html), [Amazon\.SQS\.Model](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/NSQSModel.html), and [Amazon\.SQS\.Util](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/NSQSUtil.html) in the AWS SDK for \.NET API Reference\.
 
