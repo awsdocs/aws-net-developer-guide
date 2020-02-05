@@ -2,10 +2,10 @@
 
 The AWS SDK for \.NET supports IAM, which is a web service that enables AWS customers to manage users and user permissions in AWS\.
 
-The following example shows how to use the low\-level APIs to list accessible user accounts in IAM\. For each user account, its associated groups, policies, and access key IDs are also listed\.
+The following example shows how to list accessible user accounts in IAM\. For each user account, its associated groups, policies, and access key IDs are also listed\.
 
 ```
-public static void ListUsers()
+public static void ListUsersAndGroups()
 {
   var iamClient = new AmazonIdentityManagementServiceClient();
   var requestUsers = new ListUsersRequest();

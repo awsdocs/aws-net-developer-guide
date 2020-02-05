@@ -1,4 +1,4 @@
-# Migrating Your Code to Version 3 of the AWS SDK for \.NET<a name="migration-v3"></a>
+# Migrating to Version 3 of the AWS SDK for \.NET<a name="migration-v3"></a>
 
 This topic describes changes in version 3 of the AWS SDK for \.NET and how to migrate your code to this version of the SDK\.
 
