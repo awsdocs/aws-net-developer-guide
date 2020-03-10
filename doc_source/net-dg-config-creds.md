@@ -73,7 +73,9 @@ netSDKFile.RegisterProfile(profile);
 
 ## Using a Credentials File<a name="creds-file"></a>
 
-You can also store profiles in a shared credentials file\. This file can be used by the other AWS SDKs, the AWS CLI and AWS Tools for Windows PowerShell\. To reduce the risk of accidentally exposing credentials, store the credentials file separately from any project files, usually in the user’s home folder\. *Be aware that the profiles in credentials files are stored in plaintext\.* 
+You can also store profiles in your *shared AWS credentials file*\. This file can be used by the other AWS SDKs, the AWS CLI and AWS Tools for Windows PowerShell\. To reduce the risk of accidentally exposing credentials, store the credentials file separately from any project files, usually in the user’s home folder\. *Be aware that the profiles in credentials files are stored in plaintext\.* 
+
+ By default, this file is located in the `.aws` directory within your home directory and is named `credentials`\. For more information, see [Where Are Configuration Settings Stored?](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-where) in the *[AWS Command Line Interface User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)*\.
 
 You can manage the profiles in the shared credentials file in two ways:
 + You can use a text editor\. The file is named `credentials`, and the default location is under your user’s home folder\. For example, if your user name is `awsuser`, the credentials file would be `C:\users\awsuser\.aws\credentials`\.
