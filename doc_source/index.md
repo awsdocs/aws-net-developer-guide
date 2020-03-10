@@ -91,5 +91,6 @@ Amazon's trademarks and trade dress may not be used in
    + [Compliance Validation for this AWS Product or Service](compliance-validation.md)
    + [Resilience for this AWS Product or Service](disaster-recovery-resiliency.md)
    + [Infrastructure Security for this AWS Product or Service](infrastructure-security.md)
+   + [Enforcing TLS 1.2 in this AWS Product or Service](enforcing-tls.md)
 + [Additional Resources](net-dg-additional-resources.md)
 + [Document History](document-history.md)
