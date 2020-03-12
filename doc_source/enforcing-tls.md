@@ -90,6 +90,6 @@ You must use Unity 2018\.2 or later, and use the \.NET 4\.x Equivalent scripting
 
 WebAssembly runs in the browser instead of on the server, and uses the browser for handling HTTP traffic\. Therefore, TLS support is determined by browser support\.
 
-Blazor WebAssembly, in preview for ASP\.NET Core 3\.1, is supported only in browsers that support WebAssembly, as described at [https://docs\.microsoft\.com/en\-us/aspnet/core/blazor/supported\-platforms?view=aspnetcore\-3\.1](https://docs.microsoft.com/en-us/aspnet/core/blazor/supported-platforms?view=aspnetcore-3.1)\. Most browsers supported TLS 1\.2 before supporting WebAssembly\. If this is the case for your browser, then if your app runs, it can communicate over TLS 1\.2\.
+Blazor WebAssembly, in preview for ASP\.NET Core 3\.1, is supported only in browsers that support WebAssembly, as described at [https://docs\.microsoft\.com/en\-us/aspnet/core/blazor/supported\-platforms?view=aspnetcore\-3\.1](https://docs.microsoft.com/en-us/aspnet/core/blazor/supported-platforms?view=aspnetcore-3.1)\. All mainstream browsers supported TLS 1\.2 before supporting WebAssembly\. If this is the case for your browser, then if your app runs, it can communicate over TLS 1\.2\.
 
 See your browser's documentation for more information and verification\.

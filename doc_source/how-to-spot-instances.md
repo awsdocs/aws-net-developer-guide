@@ -13,13 +13,15 @@ This topic describes how to use the AWS SDK for \.NET to create, cancel, and ter
 
 ## Overview<a name="tutor-spot-net-overview"></a>
 
-Spot Instances enable you to request unused Amazon EC2 capacity and run any instances that you acquire for as long as your request exceeds the current *Spot Price*\. Amazon EC2 changes the Spot Price periodically based on supply and demand, but will never exceed 90% of the On\-Demand Instance price; customers whose requests meet or exceed it gain access to the available Spot Instances\. Like On\-Demand Instances and Reserved Instances, Spot Instances provide another option for obtaining more compute capacity\.
+Spot Instances enable you to request unused Amazon EC2 capacity and run any instances that you acquire for as long as your request exceeds the current *Spot Price*\. Amazon EC2 changes the Spot Price periodically based on supply and demand, but will never exceed 90% of the On\-Demand Instance price; customers whose requests meet or exceed the Spot Price gain access to the available Spot Instances\. Like On\-Demand Instances and Reserved Instances, Spot Instances provide another option for obtaining more compute capacity\.
 
 Spot Instances can significantly lower your Amazon EC2 costs for applications such as batch processing, scientific research, image processing, video encoding, data and web crawling, financial analysis, and testing\. Additionally, Spot Instances are an excellent option when you need large amounts of computing capacity, but the need for that capacity is not urgent\.
 
-To use Spot Instances, place a Spot Instance request specifying the maximum price you are willing to pay per instance hour; this is your request\. If your request exceeds the current Spot Price, your request is fulfilled and your instances will run until either you choose to terminate them or the Spot Price increases above your request \(whichever is sooner\)\. You can terminate a Spot Instance programmatically, as shown this tutorial, or by using the [AWS Management Console](https://console.aws.amazon.com/ec2/home) or by using the AWS Toolkit for Visual Studio\.
+For more information about Spot Instances, see [https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html) in the *[Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/)*\.
 
-You can also specify the amount you are willing to pay for Spot Instances as a precentage of the On\-Demand Instance price\. If the specified price is exceeded, then the Spot Instance will terminate\.
+To use Spot Instances, place a Spot Instance request specifying the maximum price you are willing to pay per instance hour; this is your request\. If your request exceeds the current Spot Price, your request is fulfilled and your instances will run until either you choose to terminate them or the Spot Price increases above your request \(whichever is sooner\)\. You can terminate a Spot Instance programmatically, as shown in this tutorial, by using the [AWS Management Console](https://console.aws.amazon.com/ec2/home), or by using the [AWS Toolkit for Visual Studio](https://docs.aws.amazon.com/AWSToolkitVS/latest/UserGuide/)\.
+
+You can also specify the amount you are willing to pay for Spot Instances as a percentage of the On\-Demand Instance price\. If the specified price is exceeded, then the Spot Instance will terminate\.
 
 Spot Instances perform exactly like other Amazon EC2 instances while running, and like other Amazon EC2 instances, Spot Instances can be terminated when you no longer need them\.
 
@@ -45,7 +47,10 @@ To submit a Spot request, you first need to determine the instance type, the Ama
 
 There are several instance types to choose from; go to [Amazon EC2 Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) for a complete list\. For this tutorial, we will use `t1.micro`\. You’ll also want to get the ID of a current Windows AMI\. For more information, see [Finding an AMI](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/finding-an-ami.html) in the Amazon EC2 User Guide for Windows Instances\.
 
-There are many ways to approach requesting Spot Instances\. To get a broad overview of the various approaches, you should view the [Deciding on Your Spot Bidding Strategy](http://www.youtube.com/watch?v=WD9N73F3Fao&amp;feature=player_embedded) video\. However, to get started, we’ll describe three common strategies: request to ensure that the cost is less than on\-demand pricing; request based on the value of the resulting computation; request so as to acquire computing capacity as quickly as possible\.
+There are many ways to approach requesting Spot Instances\. To get started, we’ll describe three common strategies:
++ Request to ensure that the cost is less than on\-demand pricing\.
++ Request based on the value of the resulting computation\.
++ Request so as to acquire computing capacity as quickly as possible\.
 
 ** *Reduce Cost Below On\-Demand* **  
 You have a batch processing job that will take a number of hours or days to run\. However, you are flexible with respect to when it starts and ends\. You want to see if you can complete it for less than the cost of On\-Demand Instances\. You examine the Spot Price history for instance types using either the AWS Management Console or the Amazon EC2 API\. For more information, go to [Viewing Spot Price History](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html)\. After you’ve analyzed the price history for your desired instance type in a given Availability Zone, you have two alternative approaches for your request:  
@@ -58,7 +63,7 @@ You have a data processing job to run\. You understand the value of the job’s 
 ** *Acquire Computing Capacity Quickly* **  
 You have an unanticipated, short\-term need for additional capacity that is not available through On\-Demand Instances\. After you’ve analyzed the Spot Price history for your instance type, you request above the highest historical price to greatly improve the likelihood your request will be fulfilled quickly and continue computing until it is complete\.
 
-After you have performed your analysis, you are ready to request a Spot Instance\. In this tutorial the request is equal to the On\-Demand price \($0\.03\) to maximize the chances the request will be fulfilled\. You can determine the types of available instances and the On\-Demand prices for instances by going to [Amazon EC2 Pricing page](https://aws.amazon.com/ec2/pricing/)\.
+After you have performed your analysis, you are ready to request a Spot Instance\. For this tutorial the default maximum spot\-instance price is set to be the same as the On\-Demand price \(which is $0\.003 for this tutorial\)\. Setting the price in this way maximizes the chances that the request will be fulfilled\. You can determine the types of available instances and the On\-Demand prices for instances by going to [Amazon EC2 Pricing page](https://aws.amazon.com/ec2/pricing/)\.
 
 First specify the \.NET namespaces used in the application\.
 
