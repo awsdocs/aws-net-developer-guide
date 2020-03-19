@@ -30,13 +30,11 @@ You can quickly deploy an existing web application by using the Toolkit for Visu
 
 To get started, see [Setting up the AWS Toolkit for Visual Studio](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/setup.html)\.
 
-### Tools for VSTS<a name="ttslong"></a>
+### Toolkit for Azure DevOps<a name="ttslong"></a>
 
-In addition to the tools that the AWS Tools for Windows installs, you can also install the AWS Tools for Microsoft Visual Studio Team Services\.
+The AWS Toolkit for Microsoft Azure DevOps adds tasks to easily enable build and release pipelines in Azure DevOps and Azure DevOps Server to work with AWS services\. You can work with Amazon S3, AWS Elastic Beanstalk, AWS CodeDeploy, Lambda, AWS CloudFormation, Amazon Simple Queue Service \(Amazon SQS\), and Amazon SNS\. You can also run commands using the Windows PowerShell module and the AWS Command Line Interface \(AWS CLI\)\.
 
-The AWS Tools for VSTS add tasks to easily enable build and release pipelines in VSTS and Team Foundation Server \(TFS\) to work with AWS services\. You can work with Amazon S3, AWS Elastic Beanstalk, AWS CodeDeploy, Lambda, AWS CloudFormation, Amazon Simple Queue Service \(Amazon SQS\), and Amazon SNS\. You can also run commands using the Windows PowerShell module and the AWS Command Line Interface \(AWS CLI\)\.
-
-To get started with the AWS Tools for VSTS, see [AWS Tools for Microsoft Visual Studio Team Services](https://aws.amazon.com/vsts/)\.
+To get started with the AWS Toolkit for Azure DevOps, see the *[AWS Toolkit for Microsoft Azure DevOps User Guide](https://docs.aws.amazon.com/vsts/latest/userguide/)*\.
 
 ## Version 3\.5 of the AWS SDK for \.NET<a name="version-3-5-summary"></a>
 
