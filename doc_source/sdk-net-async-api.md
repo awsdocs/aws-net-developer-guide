@@ -1,4 +1,4 @@
-# Amazon Web Services Asynchronous APIs for \.NET<a name="sdk-net-async-api"></a>
+# AWS asynchronous APIs for \.NET<a name="sdk-net-async-api"></a>
 
 ## Asynchronous API for \.NET Framework 4\.5, Windows Store, and Windows Phone 8<a name="async-api-45"></a>
 
@@ -422,5 +422,5 @@ namespace async_aws_net
 You can also view it on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/S3/S3Async.cs)\.
 
 ### See Also<a name="sdk-net-async-see-also"></a>
-+  [Setting Up the AWS SDK for \.NET](net-dg-setup.md) 
++  [Setting up the AWS SDK for \.NET](net-dg-setup.md) 
 +  [Programming with the AWS SDK for \.NET](net-dg-programming-techniques.md) 

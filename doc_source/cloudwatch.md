@@ -6,7 +6,7 @@ The code for these examples is written in C\#, but you can use the AWS SDK for \
 
  **Prerequisite Tasks** 
 
-Before you begin, be sure that you have created an AWS account and set up your AWS credentials\. For more information, see [Setting Up the AWS SDK for \.NET](net-dg-setup.md)\.
+Before you begin, be sure that you have created an AWS account and set up your AWS credentials\. For more information, see [Setting up the AWS SDK for \.NET](net-dg-setup.md)\.
 
 **Topics**
 + [Describing, Creating, and Deleting Alarms in Amazon CloudWatch](cloudwatch-creating-alarms-examples.md)

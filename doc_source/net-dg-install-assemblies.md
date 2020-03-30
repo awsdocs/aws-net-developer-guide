@@ -39,7 +39,7 @@ The NuGet website provides a page for every package available through NuGet\. Th
   From the **Tools** menu, choose **Library Package Manager**, and then click **Package Manager Console**\.
 +  *Visual Studio 2012 and later* 
 
-  From the **Tools** menu, choose **Nuget Package Manager**, and then click **Package Manager Console**\.
+  From the **Tools** menu, choose **NuGet Package Manager**, and then click **Package Manager Console**\.
 
 You can install the AWSSDK assemblies you want from the Package Manager Console by using the ** `Install-Package` ** command\. For example, to install the [AWSSDK\.AutoScaling](http://www.nuget.org/packages/AWSSDK.AutoScaling) assembly, use the following command\.
 

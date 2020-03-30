@@ -14,8 +14,12 @@ Amazon's trademarks and trade dress may not be used in
 
 -----
 ## Contents
-+ [AWS SDK for .NET Developer Guide](welcome.md)
-+ [Setting Up the AWS SDK for .NET](net-dg-setup.md)
++ [What Is the AWS SDK for .NET](welcome.md)
++ [Get started quickly with the AWS SDK for .NET](quick-start.md)
+   + [Simple cross-platform application using the AWS SDK for .NET](quick-start-s3-1-cross.md)
+   + [Simple Windows-based application using the AWS SDK for .NET](quick-start-s3-1-winvs.md)
+   + [Next steps](quick-start-next-steps.md)
++ [Setting up the AWS SDK for .NET](net-dg-setup.md)
    + [Create an AWS Account and Credentials](net-dg-signup.md)
    + [Set Up the .NET Development Environment](net-dg-dev-env.md)
    + [Install AWSSDK Assemblies](net-dg-install-assemblies.md)
@@ -29,7 +33,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Configuring Other Application Parameters](net-dg-config-other.md)
       + [Configuration Files Reference for AWS SDK for .NET](net-dg-config-ref.md)
       + [Enabling SDK Metrics](sdk-metrics.md)
-   + [Amazon Web Services Asynchronous APIs for .NET](sdk-net-async-api.md)
+   + [AWS asynchronous APIs for .NET](sdk-net-async-api.md)
    + [Retries and Timeouts](retries-timeouts.md)
    + [Migrating to Version 3 of the AWS SDK for .NET](migration-v3.md)
    + [Migrating to Version 3.5 of the AWS SDK for .NET](net-dg-v35.md)

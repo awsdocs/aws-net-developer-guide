@@ -3,7 +3,7 @@
 The AWS SDK for \.NET supports Amazon Route 53, which is a Domain Name System \(DNS\) web service that provides secure and reliable routing to your infrastructure that uses Amazon Web Services \(AWS\) products, such as Amazon Elastic Compute Cloud \(Amazon EC2\), Elastic Load Balancing, or Amazon Simple Storage Service \(Amazon S3\)\. You can also use Route 53 to route users to your infrastructure outside of AWS\. This topic describes how to use the AWS SDK for \.NET to create a Route 53 :r53\-dg:` hosted zone <AboutHZWorkingWith>` and add a new [resource record set](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html) to that zone\.
 
 **Note**  
-This topic assumes you are already familiar with how to use Route 53 and have already installed the AWS SDK for \.NET\. For more information about Route 53, see the [Amazon Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html)\. For information about how to install the AWS SDK for \.NET, see [Setting Up the AWS SDK for \.NET](net-dg-setup.md)\.
+This topic assumes you are already familiar with how to use Route 53 and have already installed the AWS SDK for \.NET\. For more information about Route 53, see the [Amazon Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html)\. For information about how to install the AWS SDK for \.NET, see [Setting up the AWS SDK for \.NET](net-dg-setup.md)\.
 
 The basic procedure is as follows\.
 

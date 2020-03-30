@@ -1,6 +1,8 @@
-# Setting Up the AWS SDK for \.NET<a name="net-dg-setup"></a>
+# Setting up the AWS SDK for \.NET<a name="net-dg-setup"></a>
 
-To get the AWS SDK for \.NET set up, complete the following tasks:
+This topic shows you how to fully set up the AWS SDK for \.NET\.
+
+If you're new to \.NET development on AWS or at least new to the AWS SDK for \.NET, check out the [Quick start](quick-start.md) topic first\. It gives you a gentle introduction to the SDK\.
 
 **Topics**
 + [Create an AWS Account and Credentials](net-dg-signup.md)

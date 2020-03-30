@@ -1,10 +1,10 @@
-# AWS SDK for \.NET Developer Guide<a name="welcome"></a>
+# What Is the AWS SDK for \.NET<a name="welcome"></a>
 
-The AWS SDK for \.NET makes it easier for Windows developers to build \.NET applications that tap into cost\-effective, scalable, and reliable AWS services such as Amazon Simple Storage Service \(Amazon S3\) and Amazon Elastic Compute Cloud \(Amazon EC2\)\. The AWS SDK for \.NET supports \.NET Framework 3\.5, \.NET Framework 4\.5, \.NET Standard 1\.3, \.NET Standard 2\.0, Portable Class Library, Xamarin, and Unity\.
+The AWS SDK for \.NET makes it easier to build \.NET applications that tap into cost\-effective, scalable, and reliable AWS services such as Amazon Simple Storage Service \(Amazon S3\) and Amazon Elastic Compute Cloud \(Amazon EC2\)\. The AWS SDK for \.NET supports \.NET Framework 3\.5, \.NET Framework 4\.5, \.NET Standard 1\.3, \.NET Standard 2\.0, Portable Class Library, Xamarin, and Unity\.
 
 Unless explicitly stated otherwise, the information in this guide applies to all of the supported targets\.
 
-For information about installing and configuring the SDK and tools, see [Setting Up the AWS SDK for \.NET](net-dg-setup.md)\.
+\(**Got it\!** I'm ready for a [tutorial](quick-start.md) or to start [setting up](net-dg-setup.md)\.\)
 
 ## AWS Tools Related to the SDK<a name="about-tools"></a>
 
@@ -53,7 +53,10 @@ Depending on your environment and code base, to take advantage of version 3\.5 f
 
 The *AWS SDK for \.NET Developer Guide* describes how to implement applications for AWS using the AWS SDK for \.NET, and includes the following tasks and resources\.
 
-** [Setting Up the AWS SDK for \.NET](net-dg-setup.md) **  
+**[Get started quickly with the AWS SDK for \.NET](quick-start.md)**  
+For someone who is new to \.NET development on AWS, basic tutorials that show you a few common scenarios, as well as a minimal setup to support them\.
+
+** [Setting up the AWS SDK for \.NET](net-dg-setup.md) **  
 How to install and configure the AWS SDK for \.NET\. If you have not used the AWS SDK for \.NET before or are having trouble with its configuration, start here\.
 
 ** [Programming with the AWS SDK for \.NET](net-dg-programming-techniques.md) **  
