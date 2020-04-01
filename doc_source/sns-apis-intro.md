@@ -118,7 +118,7 @@ namespace SnsSendMessage
 }
 ```
 
-See the [complete example](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/SNS/SnsSendMessage.cs), including information on how to build and run the example from the command line, on GitHub\.
+See the [complete example](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/dotnet/example_code_legacy/SNS/SnsSendMessage.cs), including information on how to build and run the example from the command line, on GitHub\.
 
 ## Sending an SMS Message to a Phone Number<a name="sns-send-sms-example"></a>
 
@@ -167,4 +167,4 @@ namespace SnsPublish
 }
 ```
 
-See the [complete example](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/SNS/SnsPublish.cs), including information on how to build and run the example from the command line, on GitHub\.
+See the [complete example](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/dotnet/example_code_legacy/SNS/SnsPublish.cs), including information on how to build and run the example from the command line, on GitHub\.

@@ -107,4 +107,4 @@ namespace KmsS3Encryption
 }
 ```
 
-See the [complete example](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/KMS/KmsS3Encryption.cs) on GitHub\.
+See the [complete example](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/dotnet/example_code_legacy/KMS/KmsS3Encryption.cs) on GitHub\.

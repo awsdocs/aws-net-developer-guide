@@ -395,4 +395,4 @@ The following *main* routine calls these methods in the shown order to create, c
         }
 ```
 
-See the [complete example](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/ec2/Ec2SpotCRUD.cs), including information on how to build and run the example from the command line, on GitHub\.
+See the [complete example](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/dotnet/example_code_legacy/ec2/Ec2SpotCRUD.cs), including information on how to build and run the example from the command line, on GitHub\.

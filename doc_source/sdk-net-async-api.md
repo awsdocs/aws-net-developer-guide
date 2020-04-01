@@ -62,7 +62,7 @@ In some circumstances, the code that calls the `Begin` method might need to enab
 
 ### Examples<a name="sdk-net-async-examples"></a>
 
-For the complete code example, see [Complete Example](#sdk-net-async-complete-code) below or view it on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/S3/S3Async.cs)\.
+For the complete code example, see [Complete Example](#sdk-net-async-complete-code) below or view it on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/dotnet/example_code_legacy/S3/S3Async.cs)\.
 
 All of the following snippets assume the following initialization code\.
 
@@ -419,7 +419,7 @@ namespace async_aws_net
 }
 ```
 
-You can also view it on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/dotnet/example_code/S3/S3Async.cs)\.
+You can also view it on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/dotnet/example_code_legacy/S3/S3Async.cs)\.
 
 ### See Also<a name="sdk-net-async-see-also"></a>
 +  [Setting up the AWS SDK for \.NET](net-dg-setup.md) 
