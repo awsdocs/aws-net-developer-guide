@@ -26,52 +26,38 @@ The NuGet website provides a page for every package available through NuGet\. Th
 
 ### Using NuGet from Solution Explorer<a name="package-install-gui"></a>
 
-1. In **Solution Explorer**, right\-click your project, and then choose **Manage NuGet Packages** from the context menu\.
+1. In **Solution Explorer**, right\-click your project and then choose **Manage NuGet Packages** from the context menu\.
 
-1. In the left pane of the **Manage NuGet Packages** dialog box, choose **Online**\. You can then use the search box in the top\-right corner to search for the package you want to install\.
+1. In the left pane of the **NuGet Package Manager**, choose **Browse**\. You can then use the search box to search for the package you want to install\.
 
-   The following figure shows the **AWSSDK \- Core Runtime** assembly package\. You can see NuGet is aware that this package has a dependency on the `AWSSDK.Core` assembly package; NuGet automatically installs the `AWSSDK.Core` package, if it is not already installed\.  
-![\[AWSSDK Core Runtime package and dependency on :code:`AWSSDK.Core` assembly shown in Manage NuGet Packages dialog\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/nuget-install-vs-dlg.png)
+   The following figure shows installation for the **AWSSDK\.S3** package\. NuGet automatically installs any dependency, which in this case is the `AWSSDK.Core` package\.  
+![\[AWSSDK.S3 package shown in NuGet Packages Manager.\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/nuget-install-vs-dlg.png)
 
 ### Using NuGet from the Package Manager Console<a name="package-install-cmd"></a>
-+  *Visual Studio 2010* 
 
-  From the **Tools** menu, choose **Library Package Manager**, and then click **Package Manager Console**\.
-+  *Visual Studio 2012 and later* 
+From the Visual Studio **Tools** menu, choose **NuGet Package Manager**, **Package Manager Console**\.
 
-  From the **Tools** menu, choose **NuGet Package Manager**, and then click **Package Manager Console**\.
-
-You can install the AWSSDK assemblies you want from the Package Manager Console by using the ** `Install-Package` ** command\. For example, to install the [AWSSDK\.AutoScaling](http://www.nuget.org/packages/AWSSDK.AutoScaling) assembly, use the following command\.
+You can install the AWSSDK assemblies you want from the Package Manager Console by using the ** `Install-Package` ** command\. For example, to install [AWSSDK\.S3](https://www.nuget.org/packages/AWSSDK.S3), use the following command\.
 
 ```
-PM> Install-Package AWSSDK.AutoScaling
+PM> Install-Package AWSSDK.S3
 ```
 
 NuGet also installs any dependencies, such as [AWSSDK\.Core](http://www.nuget.org/packages/AWSSDK.Core)\.
 
-To install an earlier version of a package, use the `-Version` option and specify the package version you want\. For example, to install version 3\.1\.0\.0 of the AWS SDK for \.NET assembly, use the following command line\.
+If you need to install an earlier version of a package, use the `-Version` option and specify the package version you want\. For example:
 
 ```
-PM> Install-Package AWSSDK.Core -Version 3.1.0.0
+PM> Install-Package AWSSDK.S3 -Version 3.3.106.6
 ```
 
-For more information about Package Manager Console commands, see [Package Manager Console Commands \(v1\.3\)](http://nuget.codeplex.com/wikipage?title=Package%20Manager%20Console%20Command%20Reference%20%28v1.3%29)\.
+For more information about Package Manager Console commands, see [PowerShell reference](https://docs.microsoft.com/en-us/nuget/reference/powershell-reference) in Microsoft's [NuGet documentation](https://docs.microsoft.com/en-us/nuget/)\.
 
 ## Installing the AWS SDK for \.NET on Windows<a name="net-dg-install-net-sdk"></a>
 
-The following procedure describes how to install the AWS SDK for \.NET on Windows\.
+The preferred method of installing the AWS SDK for \.NET on Windows is to install AWSSDK NuGet packages as needed\. This is described in the [previous sections of this topic](#net-dg-nuget)\.
+
+You use NuGet to install individual AWSSDK service assemblies and extensions for the SDK\.
 
 **Note**  
-The preferred method of installing the AWS SDK for \.NET is to install AWSSDK NuGet packages as needed\. This is described in the [previous section](#net-dg-nuget)\.
-
-**To install the AWS SDK for \.NET on Windows**
-
-1. Go to [AWS SDK for \.NET](https://aws.amazon.com/sdk-for-net/)\.
-
-1. In the **Downloads** section, choose **Download MSI Installer** to download the installer\.
-
-1. To start installation, run the downloaded installer and follow the on\-screen instructions\.
-**Note**  
-By default, the AWS SDK for \.NET is installed in the Program Files directory, which requires administrator privileges\. To install the AWS SDK for \.NET as a non\-administrator, choose a different installation directory\.
-
-1. \(Optional\) You can use NuGet to install individual AWSSDK service assemblies and extensions for the AWS SDK for \.NET, which include a session state provider and a trace listener\. For more information, see [Installing AWSSDK Assemblies with NuGet](#net-dg-nuget)\.
+If you are required to install an MSI instead of using NuGet, you can find the MSI at [https://sdk\-for\-net\.amazonwebservices\.com/latest/AWSToolsAndSDKForNet\.msi](https://sdk-for-net.amazonwebservices.com/latest/AWSToolsAndSDKForNet.msi)\. By default, the AWS SDK for \.NET is installed in the `Program Files` directory, which requires administrator privileges\. To install the SDK as a non\-administrator, choose a different installation directory\.
