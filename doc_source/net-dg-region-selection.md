@@ -67,7 +67,7 @@ Set as a `AWSRegion` key in the `appSettings` section of the `app.config` file\.
 </configuration>
 ```
 
-Set as a `region` attribute in the `aws` section as described in [AWSRegion](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-other.html#awsregion)\.
+Set as a `region` attribute in the `aws` section as described in [AWSRegion](net-dg-config-other.md#config-setting-awsregion)\.
 
 ```
 <aws region="us-west-2"/>

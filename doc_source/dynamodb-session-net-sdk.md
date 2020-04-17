@@ -53,7 +53,7 @@ If you decide not to create the table beforehand, the session state provider wil
 
    The profile represents the AWS credentials that are used to communicate with DynamoDB to store and retrieve the session state\. If you are using the AWS SDK for \.NET and are specifying a profile in the `appSettings` section of your application’s `Web.config` file, you do not need to specify a profile in the `providers` section; the AWS \.NET client code will discover it at run time\. For more information, see [Configuring Your AWS SDK for \.NET Application](net-dg-config.md)\.
 
-   If the web server is running on an Amazon EC2 instance configured to use IAM roles for EC2 instances, then you do not need to specify any credentials in the `Web.config` file\. In this case, the AWS \.NET client will use the IAM role credentials\. For more information, see [Granting Access Using an IAM Role](net-dg-hosm.md#net-dg-roles) and [Security Considerations](#net-dg-ddb-sess-security)\.
+   If the web server is running on an Amazon EC2 instance configured to use IAM roles for EC2 instances, then you do not need to specify any credentials in the `Web.config` file\. In this case, the AWS \.NET client will use the IAM role credentials\. For more information, see [Granting Access Using an IAM Role](net-dg-hosm.md) and [Security Considerations](#net-dg-ddb-sess-security)\.
 
 ### Web\.config Options<a name="net-dg-dd-config-opts"></a>
 

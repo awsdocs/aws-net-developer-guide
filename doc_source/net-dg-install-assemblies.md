@@ -60,4 +60,4 @@ The preferred method of installing the AWS SDK for \.NET on Windows is to instal
 You use NuGet to install individual AWSSDK service assemblies and extensions for the SDK\.
 
 **Note**  
-If you are required to install an MSI instead of using NuGet, you can find the MSI at [https://sdk\-for\-net\.amazonwebservices\.com/latest/AWSToolsAndSDKForNet\.msi](https://sdk-for-net.amazonwebservices.com/latest/AWSToolsAndSDKForNet.msi)\. By default, the AWS SDK for \.NET is installed in the `Program Files` directory, which requires administrator privileges\. To install the SDK as a non\-administrator, choose a different installation directory\.
+If you are required to install an MSI instead of using NuGet, you can find the ***legacy*** MSI at [https://sdk\-for\-net\.amazonwebservices\.com/latest/AWSToolsAndSDKForNet\.msi](https://sdk-for-net.amazonwebservices.com/latest/AWSToolsAndSDKForNet.msi)\. By default, the AWS SDK for \.NET is installed in the `Program Files` directory, which requires administrator privileges\. To install the SDK as a non\-administrator, choose a different installation directory\.

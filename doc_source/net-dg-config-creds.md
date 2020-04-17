@@ -271,11 +271,11 @@ The AWS SDK for \.NET searches for credentials in the following order and uses t
 
 1.  `BasicAWSCredentials` that are created from the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables, if they’re both non\-empty\.
 
-1. IAM Roles for Tasks for Amazon EC2 Container Service \(Amazon ECS\) tasks\.
+1. [IAM Roles for Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) for Amazon ECS tasks\.
 
 1. EC2 instance metadata\.
 
-SDK Store profiles are specific to a particular user on a particular host\. You can’t copy them to other hosts or other users\. For this reason, you can’t reuse SDK Store profiles that are on your development machine on other hosts or developer machines\. If your application is running on an Amazon EC2 instance, such as in a production environment, use an IAM role as described in [Using IAM Roles for EC2 Instances with the AWS SDK for \.NET](net-dg-hosm.md#net-dg-roles)\. Otherwise, such as in pre\-release testing, store your credentials in a credentials file that your web application has access to on the server\.
+SDK Store profiles are specific to a particular user on a particular host\. You can’t copy them to other hosts or other users\. For this reason, you can’t reuse SDK Store profiles that are on your development machine on other hosts or developer machines\. If your application is running on an Amazon EC2 instance, such as in a production environment, use an IAM role as described in [Using IAM Roles for EC2 Instances with the AWS SDK for \.NET](net-dg-hosm.md)\. Otherwise, such as in pre\-release testing, store your credentials in a credentials file that your web application has access to on the server\.
 
 ### Profile Resolution<a name="net-dg-config-creds-profile-resolution"></a>
 
@@ -350,7 +350,7 @@ The SDK Security Token Service assembly \(`AWSSDK.SecurityToken.dll`\), which is
 
 ### Specifying Roles or Temporary Credentials<a name="net-dg-config-creds-assign-role"></a>
 
-For applications that run on Amazon EC2 instances, the most secure way to manage credentials is to use IAM roles, as described in [Using IAM Roles for EC2 Instances with the AWS SDK for \.NET](net-dg-hosm.md#net-dg-roles)\.
+For applications that run on Amazon EC2 instances, the most secure way to manage credentials is to use IAM roles, as described in [Using IAM Roles for EC2 Instances with the AWS SDK for \.NET](net-dg-hosm.md)\.
 
 For application scenarios in which the software executable is available to users outside your organization, we recommend you design the software to use *temporary security credentials*\. In addition to providing restricted access to AWS resources, these credentials have the benefit of expiring after a specified period of time\. For more information about temporary security credentials, see the following:
 +  [Using Security Tokens to Grant Temporary Access to Your AWS Resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/TokenBasedAuth.html) 

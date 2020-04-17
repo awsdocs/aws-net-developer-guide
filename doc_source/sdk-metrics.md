@@ -16,7 +16,7 @@ To set up SDK Metrics with the AWS SDK for \.NET, follow these instructions:
 
 1. Install and use the latest version of the AWS SDK for \.NET\.
 
-1. Install and configure an CloudWatch agent on an EC2 instance or in your local environment\.
+1. Install and configure a CloudWatch agent on an EC2 instance or in your local environment\.
 
 1. Authorize SDK Metrics to collect and send metrics\.
 

@@ -42,7 +42,7 @@ The name of the EC2 key pair\. If you launch an instance without specifying a ke
 ** `SecurityGroupIds` **  
 The identifiers of one or more security groups\. For more information, see [Creating a Security Group in Amazon EC2](security-groups.md#create-security-group)\.
 
-1. \(Optional\) To launch the instance with an [IAM role](net-dg-hosm.md#net-dg-roles), specify an IAM instance profile in the [RunInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesRequest.html) object\.
+1. \(Optional\) To launch the instance with an [IAM role](net-dg-hosm.md), specify an IAM instance profile in the [RunInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesRequest.html) object\.
 
    An IAM user can’t launch an instance with an IAM role without the permissions granted by the following policy\.
 
@@ -146,7 +146,7 @@ The name of the EC2 key pair\. If you launch an instance without specifying a ke
 ** `NetworkInterfaces` **  
 One or more network interfaces\.
 
-1. \(Optional\) To launch the instance with an [IAM role](net-dg-hosm.md#net-dg-roles), specify an IAM instance profile in the [RunInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesRequest.html) object\.
+1. \(Optional\) To launch the instance with an [IAM role](net-dg-hosm.md), specify an IAM instance profile in the [RunInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesRequest.html) object\.
 
    An IAM user can’t launch an instance with an IAM role without the permissions granted by the following policy\.
 

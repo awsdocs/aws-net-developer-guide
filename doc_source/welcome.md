@@ -2,9 +2,9 @@
 
 The AWS SDK for \.NET makes it easier to build \.NET applications that tap into cost\-effective, scalable, and reliable AWS services such as Amazon Simple Storage Service \(Amazon S3\) and Amazon Elastic Compute Cloud \(Amazon EC2\)\. The AWS SDK for \.NET supports \.NET Framework 3\.5, \.NET Framework 4\.5, \.NET Standard 1\.3, \.NET Standard 2\.0, Portable Class Library, Xamarin, and Unity\.
 
-Unless explicitly stated otherwise, the information in this guide applies to all of the supported targets\.
+Unless stated otherwise, the information in this guide applies to all of the supported targets\.
 
-\(**Got it\!** I'm ready for a [tutorial](quick-start.md) or to start [setting up](net-dg-setup.md)\.\)
+\(**OK, got it\!** I'm ready for a [tutorial](quick-start.md) or to start [setting up](net-dg-setup.md)\.\)
 
 ## AWS Tools Related to the SDK<a name="about-tools"></a>
 
