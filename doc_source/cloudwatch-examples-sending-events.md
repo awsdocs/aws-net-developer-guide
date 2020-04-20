@@ -20,7 +20,7 @@ For more information about Amazon CloudWatch Events, see [Adding Events with Put
 
 To set up and run this example, you must first:
 +  [Get set up to use Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/GettingSetup.html)\.
-+  [Set up and configure](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-setup.html) the AWS SDK for \.NET\.
++ [Set up and configure the AWS SDK for \.NET\.](net-dg-setup.md)
 + Create a Lambda function using the hello\-world blueprint to serve as the target for events\. To learn how, see [Step 1: Create an AWS Lambda function](https://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-create-function.html) in the Amazon CloudWatch Events User Guide\.
 
 ## Create an IAM Role to Run the Examples<a name="create-an-iam-role-to-run-the-examples"></a>

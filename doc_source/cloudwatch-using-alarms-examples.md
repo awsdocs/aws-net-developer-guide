@@ -17,7 +17,7 @@ For more information about CloudWatch alarm actions, see [Create Alarms to Stop,
 
 To set up and run this example, you must first:
 +  [Get set up to use Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/GettingSetup.html)\.
-+  [Set up and configure](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-setup.html) the AWS SDK for \.NET\.
++ [Set up and configure the AWS SDK for \.NET\.](net-dg-setup.md)
 
 ## Create and Enable Actions on an Alarm<a name="create-and-enable-actions-on-an-alarm"></a>
 

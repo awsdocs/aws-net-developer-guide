@@ -18,7 +18,7 @@ For more information about CloudWatch alarms, see [Creating Amazon CloudWatch Al
 
 To set up and run this example, you must first:
 +  [Get set up to use Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/GettingSetup.html)\.
-+  [Set up and configure](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-setup.html) the AWS SDK for \.NET\.
++ [Set up and configure the AWS SDK for \.NET\.](net-dg-setup.md)
 
 ## Describing an Alarm<a name="cloudwatch-example-describing-alarms"></a>
 

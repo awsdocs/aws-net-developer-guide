@@ -1,4 +1,4 @@
-# Managing IAM Aliases<a name="iam-examples-account-aliases"></a>
+# Managing IAM Aliases for your AWS account ID<a name="iam-examples-account-aliases"></a>
 
 These \.NET examples show you how to:
 + Create an account alias for your AWS account ID

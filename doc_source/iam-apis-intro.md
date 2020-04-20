@@ -11,7 +11,7 @@ For related API reference information, see [Amazon\.IdentityManagement](https://
 Before you begin, be sure that you have created an AWS account and set up your AWS credentials\. For more information, see [Setting up the AWS SDK for \.NET](net-dg-setup.md)\.
 
 **Topics**
-+ [Managing IAM Account Aliases](iam-examples-account-aliases.md)
++ [Managing IAM Aliases](iam-examples-account-aliases.md)
 + [Managing IAM Users](iam-examples-managing-users.md)
 + [Managing IAM Access Keys](iam-examples-managing-access-keys.md)
 + [Working with IAM Policies](iam-examples-policies.md)

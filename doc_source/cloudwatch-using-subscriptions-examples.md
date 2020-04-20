@@ -20,7 +20,7 @@ For more information about CloudWatch Logs subscriptions, see [Real\-time Proces
 
 To set up and run this example, you must first:
 +  [Get set up to use Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/GettingSetup.html)\.
-+  [Set up and configure](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-setup.html) the AWS SDK for \.NET\.
++ [Set up and configure the AWS SDK for \.NET\.](net-dg-setup.md)
 
 ## Describe Existing Subscription Filters<a name="describe-existing-subscription-filters"></a>
 

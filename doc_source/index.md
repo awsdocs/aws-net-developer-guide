@@ -59,7 +59,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Amazon EC2 Spot Instance Examples](how-to-spot-instances.md)
    + [Storing Archival Data Using Amazon S3 Glacier](glacier-apis-intro.md)
    + [Managing Users With AWS Identity and Access Management (IAM)](iam-apis-intro.md)
-      + [Managing IAM Account Aliases](iam-examples-account-aliases.md)
+      + [Managing IAM Aliases for your AWS account ID](iam-examples-account-aliases.md)
       + [Managing IAM Users](iam-examples-managing-users.md)
       + [Managing IAM Access Keys](iam-examples-managing-access-keys.md)
       + [Working with IAM Policies](iam-examples-policies.md)
