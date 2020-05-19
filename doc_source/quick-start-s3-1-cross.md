@@ -20,7 +20,7 @@ If you've already completed any of the following steps through other tutorials o
 
 To create an AWS account, see [How do I create and activate a new Amazon Web Services account?](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)\.
 
-### Create AWS credentials<a name="s3-1-cross-setup-creds"></a>
+### Create AWS credentials and a profile<a name="s3-1-cross-setup-creds"></a>
 
 To perform these tutorials, you need to create an IAM user and obtain credentials for that user\. Once you have those credentials, you make them available to the SDK in your development environment\. Here's how\.
 

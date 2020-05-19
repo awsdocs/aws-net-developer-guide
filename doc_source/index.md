@@ -37,6 +37,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Retries and Timeouts](retries-timeouts.md)
    + [Migrating to Version 3 of the AWS SDK for .NET](migration-v3.md)
    + [Migrating to Version 3.5 of the AWS SDK for .NET](net-dg-v35.md)
+   + [Migrating from .NET Standard 1.3](migration-from-net-standard-1-3.md)
 + [Code Examples](tutorials-examples.md)
    + [Listing AWS Resources using AWS CloudFormation](cloudformation-apis-intro.md)
    + [Authenticating Users with Amazon Cognito](cognito-apis-intro.md)

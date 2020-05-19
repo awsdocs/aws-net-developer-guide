@@ -112,7 +112,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 **Note**  
-Background on dependency injection in \.NET Core is available on the \.NET Core [documentation site](https://docs.asp.net/en/latest/fundamentals/dependency-injection.html)\.
+Background on dependency injection in \.NET Core is available on the \.NET Core[documentation site](https://docs.asp.net/en/latest/fundamentals/dependency-injection.html)\.
 
 The `AWSSDK.Extensions.NETCore.Setup` NuGet package adds new extension methods to `IServiceCollection` that you can use to add AWS services to the dependency injection\. The following code shows how to add the AWS options that are read from `IConfiguration` to add Amazon S3 and DynamoDB to our list of services\.
 

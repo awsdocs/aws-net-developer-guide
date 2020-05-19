@@ -4,6 +4,7 @@ The following table describes the important changes since the last release of th
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Migrating from \.NET Standard 1\.3](migration-from-net-standard-1-3.md) | Added information about ending support for \.NET Standard 1\.3 at the end of 2020\. | May 18, 2020 | 
 | [Quick start](quick-start.md) | Added a quick\-start section with basic setup and tutorials to introduce the reader to the AWS SDK for \.NET\. | March 27, 2020 | 
 | [Enforcing TLS 1\.2](enforcing-tls.md) | Added information about how to enforce TLS 1\.2 in the SDK\. | March 10, 2020 | 
 | [Version 3\.5 of the AWS SDK for \.NET](net-dg-v35.md) | \(This is prerelease documentation for a feature in preview release\. It is subject to change\.\) Added information about version 3\.5 of the AWS SDK for \.NET | February 17, 2020 | 
