@@ -1,4 +1,4 @@
-## User Guide of the AWS SDK for .NET
+## [Developer guide](doc_source/index.md) of the AWS SDK for .NET
 
 The open source version of the developer guide for the AWS SDK for .NET.
 
@@ -8,7 +8,7 @@ This repository contains source content for the official [AWS SDK for .NET Devel
 
 The GitHub repository for the AWS SDK for .NET is at https://github.com/aws/aws-sdk-net.
 
-## Recent Updates
+## Recent updates
 
 You can find out when this guide has had major updates and what those updates were by looking in the [Document History](doc_source/document-history.md) topic.
 
@@ -31,7 +31,7 @@ All content in this repository, unless otherwise stated, is Copyright © 2010-20
 
 Except where otherwise noted, this work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/) (the "License"). Use the preceding link for a human-readable summary of the license terms. The full license text is available at: http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode and in the LICENSE file accompanying this repository.
 
-## License Summary
+## License summary
 
 The documentation is made available under the Creative Commons Attribution-ShareAlike 4.0 International License. See the LICENSE file.
 
