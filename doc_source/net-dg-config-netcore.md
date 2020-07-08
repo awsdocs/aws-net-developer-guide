@@ -7,7 +7,7 @@ Configuration in \.NET Core is based on key\-value pairs established by configur
 **Note**  
 For further information, see [Configuration in ASP\.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.2)\.
 
-To make it easy to use the AWS SDK for \.NET with \.NET Core, you can use the `AWSSDK.Extensions.NETCore.Setup` NuGet package\. Like many \.NET Core libraries, it adds extension methods to the `IConfiguration` interface to make getting the AWS configuration seamless\.
+To make it easy to use the AWS SDK for \.NET with \.NET Core, you can use the [AWSSDK\.Extensions\.NETCore\.Setup](https://www.nuget.org/packages/AWSSDK.Extensions.NETCore.Setup/) NuGet package\. Like many \.NET Core libraries, it adds extension methods to the `IConfiguration` interface to make getting the AWS configuration seamless\.
 
 ## Using AWSSDK\.Extensions\.NETCore\.Setup<a name="net-core-configuration-builder"></a>
 
@@ -49,7 +49,7 @@ To access a setting in an *CSHTML* file, use the `Configuration` directive:
 
 To access the AWS options set in the file from code, call the `GetAWSOptions` extension method added on `IConfiguration`\.
 
-To construct a service client from these options, call `CreateServiceClient`\. The following example code shows how to create an Amazon S3 service client\.
+To construct a service client from these options, call `CreateServiceClient`\. The following example code shows how to create an Amazon S3 service client\. \(Be sure to add the [AWSSDK\.S3](https://www.nuget.org/packages/AWSSDK.S3) NuGet package to your project\.\)
 
 ```
 var options = Configuration.GetAWSOptions();
@@ -114,7 +114,7 @@ public void ConfigureServices(IServiceCollection services)
 **Note**  
 Background on dependency injection in \.NET Core is available on the \.NET Core[documentation site](https://docs.asp.net/en/latest/fundamentals/dependency-injection.html)\.
 
-The `AWSSDK.Extensions.NETCore.Setup` NuGet package adds new extension methods to `IServiceCollection` that you can use to add AWS services to the dependency injection\. The following code shows how to add the AWS options that are read from `IConfiguration` to add Amazon S3 and DynamoDB to our list of services\.
+The `AWSSDK.Extensions.NETCore.Setup` NuGet package adds new extension methods to `IServiceCollection` that you can use to add AWS services to the dependency injection\. The following code shows how to add the AWS options that are read from `IConfiguration` to add Amazon S3 and DynamoDB to our list of services\. \(Be sure to add the [AWSSDK\.S3](https://www.nuget.org/packages/AWSSDK.S3) and [AWSSDK\.DynamoDBv2](https://www.nuget.org/packages/AWSSDK.DynamoDBv2) NuGet packages to your project\.\)
 
 ```
 public void ConfigureServices(IServiceCollection services)

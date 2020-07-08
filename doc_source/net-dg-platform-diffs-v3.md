@@ -27,8 +27,8 @@ The AWS SDK for \.NET supports generating Assemblies for Unity\. More informatio
 
 ## More Info<a name="more-info"></a>
 + [Migrating to Version 3 of the AWS SDK for \.NET](migration-v3.md)
-+   
-****    
-[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-platform-diffs-v3.html)
++ 
+****  
+***This is prerelease documentation for a feature in preview release\. It is subject to change\.***
 
   [Migrating to Version 3\.5 of the AWS SDK for \.NET](net-dg-v35.md)

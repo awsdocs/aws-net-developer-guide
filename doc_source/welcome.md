@@ -38,12 +38,8 @@ To get started with the AWS Toolkit for Azure DevOps, see the *[AWS Toolkit for 
 
 ## Version 3\.5 of the AWS SDK for \.NET<a name="version-3-5-summary"></a>
 
-
 ****  
-
-|  | 
-| --- |
-| This is prerelease documentation for a feature in preview release\. It is subject to change\. | 
+***This is prerelease documentation for a feature in preview release\. It is subject to change\.***
 
 Version 3\.5 of the AWS SDK for \.NET further standardizes the \.NET experience by transitioning support for all non\-Framework variations of the SDK to [\.NET Standard 2\.0](https://docs.microsoft.com/en-us/dotnet/standard/net-standard)\.
 
