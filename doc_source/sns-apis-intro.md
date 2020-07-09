@@ -73,6 +73,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Amazon;
 using Amazon.SimpleNotificationService;
 using Amazon.SimpleNotificationService.Model;
 
@@ -128,7 +129,7 @@ The following example shows how to send an SMS message to a telephone number\. T
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Amazon;
 using Amazon.SimpleNotificationService;
 using Amazon.SimpleNotificationService.Model;
 

@@ -13,19 +13,19 @@ This topic describes how to use the AWS SDK for \.NET to create, cancel, and ter
 
 ## Overview<a name="tutor-spot-net-overview"></a>
 
-Spot Instances enable you to request unused Amazon EC2 capacity and run any instances that you acquire for as long as your request exceeds the current *Spot Price*\. Amazon EC2 changes the Spot Price periodically based on supply and demand, but will never exceed 90% of the On\-Demand Instance price; customers whose requests meet or exceed the Spot Price gain access to the available Spot Instances\. Like On\-Demand Instances and Reserved Instances, Spot Instances provide another option for obtaining more compute capacity\.
+Spot Instances enable you to request unused Amazon EC2 capacity for less than the On\-Demand price\. This can significantly lower your EC2 costs for applications that can be interrupted\.
 
-Spot Instances can significantly lower your Amazon EC2 costs for applications such as batch processing, scientific research, image processing, video encoding, data and web crawling, financial analysis, and testing\. Additionally, Spot Instances are an excellent option when you need large amounts of computing capacity, but the need for that capacity is not urgent\.
+The following is a high\-level summary of how Spot Instances are requested and used\.
 
-For more information about Spot Instances, see [https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html) in the *[Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/)*\.
+1. Create a Spot Instance request, specifying the maximum price you are willing to pay\.
 
-To use Spot Instances, place a Spot Instance request specifying the maximum price you are willing to pay per instance hour; this is your request\. If your request exceeds the current Spot Price, your request is fulfilled and your instances will run until either you choose to terminate them or the Spot Price increases above your request \(whichever is sooner\)\. You can terminate a Spot Instance programmatically, as shown in this tutorial, by using the [AWS Management Console](https://console.aws.amazon.com/ec2/home), or by using the [AWS Toolkit for Visual Studio](https://docs.aws.amazon.com/AWSToolkitVS/latest/UserGuide/)\.
+1. When the request is fulfilled, run the instance as you would any other Amazon EC2 instance\.
 
-You can also specify the amount you are willing to pay for Spot Instances as a percentage of the On\-Demand Instance price\. If the specified price is exceeded, then the Spot Instance will terminate\.
+1. Run the instance as long as you want and then terminate it, unless the *Spot Price* changes such that the instance is terminated for you\.
 
-Spot Instances perform exactly like other Amazon EC2 instances while running, and like other Amazon EC2 instances, Spot Instances can be terminated when you no longer need them\.
+1. Clean up the Spot Instance request when you no longer need it so that Spot Instances are no longer created\.
 
-You pay the Spot price that’s in effect for the time period your instances are running\. Spot Instance prices are set by Amazon EC2 and adjust gradually based on long\-term trends in supply and demand for Spot Instance capacity\. You can also specify the amount you are willing to pay for a Spot Instance as a percentage of the On\-Demand Instance price\.
+This has been a very high level overview of Spot Instances\. You can gain a better understanding of Spot Instances by reading about them in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/using-spot-instances.html)\.
 
 This tutorial provides an overview of how to use the \.NET programming environment to do the following\.
 + Submit a Spot request
