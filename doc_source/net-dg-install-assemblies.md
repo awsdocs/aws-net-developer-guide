@@ -8,21 +8,24 @@ The AWSSDK assemblies are available from [NuGet](https://www.nuget.org/profiles/
 
 NuGet always has the most recent versions of the AWSSDK assemblies, and also enables you to install previous versions\. NuGet is aware of dependencies between assemblies and installs all required assemblies automatically\. Assemblies installed with NuGet are stored with your solution instead of in a central location, such as in the Program Files directory\. This enables you to install assembly versions specific to a given application without creating compatibility issues for other applications\. For more information about NuGet, see the [NuGet documentation](http://docs.nuget.org/)\.
 
-NuGet is installed automatically with Visual Studio 2010 or later\. If you are using an earlier version of Visual Studio, you can install NuGet from the [Visual Studio Gallery on MSDN](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)\.
+NuGet is installed automatically with Visual Studio 2010 or later\. If you are using an earlier version of Visual Studio, you can install NuGet from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=NuGetTeam.NuGetPackageManager)\.
 
 ### NuGet AWSSDK Packages<a name="nuget-awssdk-packages"></a>
 
 The NuGet website provides a page for every package available through NuGet\. The page for each package includes a sample command line for installing the package using the Package Manager Console\. Each page also includes a list of the previous versions of the package that are available through NuGet\. For a list of AWSSDK packages available from NuGet, see [AWSSDK Packages](http://www.nuget.org/profiles/awsdotnet)\.
 
+**Warning**  
+The list of NuGet packages might include one called simply "AWSSDK" \(with no appended identifier\)\. Do NOT install this NuGet package; it is legacy and should not be used for new projects\.
+
 ### Using NuGet from the Command Line or Terminal<a name="package-install-nuget"></a>
 
 1. Go to the [NuGet packages for AWS](https://www.nuget.org/profiles/awsdotnet) and determine which NuGet packages you need in your project; for example, **[AWSSDK\.S3](https://www.nuget.org/packages/AWSSDK.S3/)**\.
 
-1. Copy the \.NET CLI command from that package’s webpage; for example:
+1. Copy the \.NET CLI command from that package’s web page; for example:
 
    **`dotnet add package AWSSDK.S3 --version 3.3.110.19`**
 
-1. In your project's directory run that \.NET CLI command\.
+1. In your project's directory run that \.NET CLI command\. NuGet also installs any dependencies, such as [AWSSDK\.Core](http://www.nuget.org/packages/AWSSDK.Core)\.
 
 ### Using NuGet from Solution Explorer<a name="package-install-gui"></a>
 
@@ -30,7 +33,7 @@ The NuGet website provides a page for every package available through NuGet\. Th
 
 1. In the left pane of the **NuGet Package Manager**, choose **Browse**\. You can then use the search box to search for the package you want to install\.
 
-   The following figure shows installation for the **AWSSDK\.S3** package\. NuGet automatically installs any dependency, which in this case is the `AWSSDK.Core` package\.  
+   The following figure shows installation for the **AWSSDK\.S3** package\. NuGet also installs any dependencies, such as [AWSSDK\.Core](http://www.nuget.org/packages/AWSSDK.Core)\.  
 ![\[AWSSDK.S3 package shown in NuGet Packages Manager.\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/nuget-install-vs-dlg.png)
 
 ### Using NuGet from the Package Manager Console<a name="package-install-cmd"></a>
@@ -52,6 +55,21 @@ PM> Install-Package AWSSDK.S3 -Version 3.3.106.6
 ```
 
 For more information about Package Manager Console commands, see [PowerShell reference](https://docs.microsoft.com/en-us/nuget/reference/powershell-reference) in Microsoft's [NuGet documentation](https://docs.microsoft.com/en-us/nuget/)\.
+
+## Download and extract ZIP files<a name="download-zip-files"></a>
+
+The preferred method of installing the AWS SDK for \.NET is to install AWSSDK NuGet packages as needed\. This is described in the [previous sections of this topic](#net-dg-nuget)\.
+
+If you can't or aren't allowed to download and install NuGet packages on a per\-project basis, you can download a ZIP file that contains the AWSSDK assemblies\. If this is the case for you, do the following\.
+
+1. Download one of the following ZIP files:
+   + [aws\-sdk\-netstandard2\.0\.zip](https://sdk-for-net.amazonwebservices.com/latest/v3/aws-sdk-netstandard2.0.zip)
+   + [aws\-sdk\-net45\.zip](https://sdk-for-net.amazonwebservices.com/latest/v3/aws-sdk-net45.zip)
+   + [aws\-sdk\-net35\.zip](https://sdk-for-net.amazonwebservices.com/latest/v3/aws-sdk-net35.zip)
+
+1. Extract the assemblies to a folder on your file system\. Make note of this folder\.
+
+1. When you configure your project, copy the required assemblies from this folder into your project area\. Then add references in your project to the assemblies that you copied\.
 
 ## Installing the AWS SDK for \.NET on Windows<a name="net-dg-install-net-sdk"></a>
 
