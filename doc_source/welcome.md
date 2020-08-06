@@ -1,10 +1,13 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For the latest version, see the [AWS SDK for \.NET Developer Guide for version 3](https://docs.aws.amazon.com/AWSSdkDocsNET/V3/DeveloperGuide/welcome.html)\.
+This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
 
 --------
 
 # AWS SDK for \.NET Developer Guide<a name="welcome"></a>
+
+**Note**  
+This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
 
 The AWS SDK for \.NET makes it easier for Windows developers to build \.NET applications that tap into the cost\-effective, scalable, and reliable AWS services such as Amazon Simple Storage Service \(Amazon S3\) and Amazon Elastic Compute Cloud \(Amazon EC2\)\. The the SDK supports development on any platform that supports the \.NET Framework 3\.5 or later, and you can develop applications with the SDK using Visual Studio 2010 or later\.
 
