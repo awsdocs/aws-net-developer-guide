@@ -15,7 +15,7 @@ Before you begin, be sure you have [set up the AWS SDK for \.NET](net-dg-setup.m
 + [Deploying Applications Using Amazon EC2](ec2-apis-intro.md)
 + [Storing Archival Data Using Amazon S3 Glacier](glacier-apis-intro.md)
 + [Managing users with AWS IAM](iam-apis-intro.md)
-+ [Using AWS KMS Keys with the AmazonS3EncryptionClient in the AWS SDK for \.NET](kms-keys-s3-encryption.md)
++ [Using KMS keys for S3 encryption](kms-keys-s3-encryption.md)
 + [Managing Domain Name System \(DNS\) Resources Using Amazon Route 53](route53-apis-intro.md)
 + [Using Amazon Simple Storage Service Internet Storage](s3-apis-intro.md)
 + [Sending Notifications From the Cloud Using Amazon Simple Notification Service](sns-apis-intro.md)

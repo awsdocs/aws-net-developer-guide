@@ -15,3 +15,4 @@ This AWS product or service follows the [shared responsibility model](https://aw
 + [Resilience](disaster-recovery-resiliency.md)
 + [Infrastructure Security](infrastructure-security.md)
 + [Enforcing TLS 1\.2](enforcing-tls.md)
++ [S3 Encryption Client Migration](s3-encryption-migration.md)

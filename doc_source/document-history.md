@@ -4,6 +4,8 @@ The following table describes the important changes since the last release of th
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [S3 encryption client migration](s3-encryption-migration.md) | Added information about how to migrate your Amazon S3 encryption clients from V1 to V2\. | August 7, 2020 | 
+| [Using KMS keys for S3 encryption](kms-keys-s3-encryption.md) | Updated example to use version 2 of the S3 encryption client\. | August 6, 2020 | 
 | [Migrating from \.NET Standard 1\.3](migration-from-net-standard-1-3.md) | Added information about ending support for \.NET Standard 1\.3 at the end of 2020\. | May 18, 2020 | 
 | [Quick start](quick-start.md) | Added a quick\-start section with basic setup and tutorials to introduce the reader to the AWS SDK for \.NET\. | March 27, 2020 | 
 | [Enforcing TLS 1\.2](enforcing-tls.md) | Added information about how to enforce TLS 1\.2 in the SDK\. | March 10, 2020 | 
