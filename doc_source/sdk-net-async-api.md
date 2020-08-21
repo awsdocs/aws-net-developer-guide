@@ -1,10 +1,18 @@
+--------
+
+This documentation is for version 3\.0 of the AWS SDK for \.NET, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio\.
+
+The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-for\-net/latest/developer\-guide/](../../latest/developer-guide/welcome.html) is mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.
+
+--------
+
 # AWS asynchronous APIs for \.NET<a name="sdk-net-async-api"></a>
 
 ## Asynchronous API for \.NET Framework 4\.5, Windows Store, and Windows Phone 8<a name="async-api-45"></a>
 
 The AWS SDK for \.NET uses the new task\-based asynchronous pattern for \.NET Framework version 4\.5, Windows Store, and Windows Phone 8\. You can use the `async` and `await` keywords to perform and manage asynchronous operations for all AWS products without blocking\.
 
-To learn more about the task\-based asynchronous pattern, see [Task\-based Asynchronous Pattern \(TAP\)](http://msdn.microsoft.com/en-us/library/hh873175(v=vs.110).aspx) on MSDN\.
+To learn more about the task\-based asynchronous pattern, see [Task\-based Asynchronous Pattern \(TAP\)](https://docs.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) on docs\.microsoft\.com\. To see how TAP is used in the AWS SDK for \.NET, for both \.NET Framework 4\.5 projects and \.NET Core projects, see the [latest version of the documentation](../../latest/developer-guide/sdk-net-async-api.html)\.
 
 ## Asynchronous API for \.NET Framework 3\.5<a name="async-api-35"></a>
 
@@ -19,7 +27,7 @@ Calling the `End` method is not required\. Assuming no errors are encountered, t
 
 #### Begin Method Syntax<a name="sdk-net-async-begin-request"></a>
 
-In addition to taking a request object parameter, such as [PutItemRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/DynamoDBv2/TPutItemRequest.html), the async `Begin` methods take two additional parameters: a callback function and a state object\. Instead of returning a [service response object](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/Runtime/TWebServiceResponse.html), the `Begin` methods return a result of type `IAsyncResult`\. For the definition of this type, go to the [MSDN documentation](http://msdn.microsoft.com/en-us/library/bkbsbb9x.aspx)\.
+In addition to taking a request object parameter, such as [PutItemRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/DynamoDBv2/TPutItemRequest.html), the async `Begin` methods take two additional parameters: a callback function and a state object\. Instead of returning a [service response object](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/Runtime/TWebServiceResponse.html), the `Begin` methods return a result of type `IAsyncResult`\. For the definition of this type, go to the [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/api/system.iasyncresult)\.
 
  *Synchronous Method* 
 
@@ -39,7 +47,7 @@ IAsyncResult BeginPutItem(
 
  *AsyncCallback Callback* 
 
-The callback function is called when the asynchronous operation is complete\. When the function is called, it receives a single parameter of type [IAsyncResult](http://msdn.microsoft.com/en-us/library/bkbsbb9x.aspx)\. The callback function has the following signature\.
+The callback function is called when the asynchronous operation is complete\. When the function is called, it receives a single parameter of type [IAsyncResult](https://docs.microsoft.com/en-us/dotnet/api/system.iasyncresult)\. The callback function has the following signature\.
 
 ```
 void Callback(IAsyncResult asyncResult)

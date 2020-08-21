@@ -1,3 +1,11 @@
+--------
+
+This documentation is for version 3\.0 of the AWS SDK for \.NET, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio\.
+
+The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-for\-net/latest/developer\-guide/](../../latest/developer-guide/welcome.html) is mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.
+
+--------
+
 # Storing Archival Data Using Amazon S3 Glacier<a name="glacier-apis-intro"></a>
 
 The AWS SDK for \.NET supports Amazon S3 Glacier, which is a storage service optimized for infrequently used data, or *cold data*\. The service provides durable and extremely low\-cost storage with security features for data archiving and backup\. For more information, see [Amazon S3 Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/)\.

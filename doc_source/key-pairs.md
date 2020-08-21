@@ -1,3 +1,11 @@
+--------
+
+This documentation is for version 3\.0 of the AWS SDK for \.NET, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio\.
+
+The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-for\-net/latest/developer\-guide/](../../latest/developer-guide/welcome.html) is mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.
+
+--------
+
 # Working with Amazon EC2 Key Pairs<a name="key-pairs"></a>
 
 Amazon EC2 uses public–key cryptography to encrypt and decrypt login information\. Public–key cryptography uses a public key to encrypt data, then the recipient uses the private key to decrypt the data\. The public and private keys are known as a key pair\. You must specify a key pair when you launch an EC2 instance and specify the private key of the keypair when you connect to the instance\. You can create a key pair or use one you’ve used when launching other instances\. For more information, see [Amazon EC2 Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-key-pairs.html) in the Amazon EC2 User Guide for Windows Instances\. This example shows how to create a key pair, describe key pairs and delete a key pair using these [AmazonEC2Client](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TEC2Client.html) methods:

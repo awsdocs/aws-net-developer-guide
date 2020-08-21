@@ -1,3 +1,11 @@
+--------
+
+This documentation is for version 3\.0 of the AWS SDK for \.NET, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio\.
+
+The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-for\-net/latest/developer\-guide/](../../latest/developer-guide/welcome.html) is mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.
+
+--------
+
 # Managing ASP\.NET Session State with Amazon DynamoDB<a name="dynamodb-session-net-sdk"></a>
 
 ASP\.NET applications often store session state data in memory\. However, this approach doesn’t scale well\. After the application grows beyond a single web server, the session state must be shared between servers\. A common solution is to set up a dedicated session\-state server with Microsoft SQL Server, but this approach also has drawbacks: you must administer another machine; the session\-state server is a single point of failure; and the session\-state server itself can become a performance bottleneck\.
@@ -9,7 +17,7 @@ Regardless of the solution you choose, be aware that Amazon DynamoDB enforces li
 
 The AWS SDK for \.NET includes `AWS.SessionProvider.dll`, which contains an ASP\.NET session state provider\. It also includes the *AmazonDynamoDBSessionProviderSample* sample, which demonstrates how to use Amazon DynamoDB as a session state provider\.
 
-For more information about using session state with ASP\.NET applications, go to the [MSDN documentation](http://msdn.microsoft.com/en-us/library/ms178581.aspx)\.
+For more information about using session state with ASP\.NET applications, go to the [Microsoft documentation](https://docs.microsoft.com/en-us/previous-versions/ms178581(v=vs.140))\.
 
 ## Create the *ASP\.NET\_SessionState* Table<a name="asdf"></a>
 

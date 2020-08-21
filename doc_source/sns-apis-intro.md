@@ -1,3 +1,11 @@
+--------
+
+This documentation is for version 3\.0 of the AWS SDK for \.NET, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio\.
+
+The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-for\-net/latest/developer\-guide/](../../latest/developer-guide/welcome.html) is mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.
+
+--------
+
 # Sending Notifications From the Cloud Using Amazon Simple Notification Service<a name="sns-apis-intro"></a>
 
 The AWS SDK for \.NET supports Amazon Simple Notification Service \(Amazon SNS\), which is a web service that enables applications, end users, and devices to instantly send notifications from the cloud\. For more information, see [Amazon SNS](https://aws.amazon.com/sns/)\.

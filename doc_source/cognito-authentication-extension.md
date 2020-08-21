@@ -1,3 +1,11 @@
+--------
+
+This documentation is for version 3\.0 of the AWS SDK for \.NET, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio\.
+
+The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-for\-net/latest/developer\-guide/](../../latest/developer-guide/welcome.html) is mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.
+
+--------
+
 # Amazon CognitoAuthentication Extension Library Examples<a name="cognito-authentication-extension"></a>
 
 The CognitoAuthentication extension library simplifies the authentication process of Amazon Cognito user pools for \.NET Core and Xamarin developers\. The library is built on top of the Amazon Cognito Identity Provider API to create and send user authentication API calls\. You can get **Amazon\.Extensions\.CognitoAuthentication** from the NuGet gallery\.

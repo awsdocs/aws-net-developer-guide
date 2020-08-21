@@ -1,3 +1,11 @@
+--------
+
+This documentation is for version 3\.0 of the AWS SDK for \.NET, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio\.
+
+The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-for\-net/latest/developer\-guide/](../../latest/developer-guide/welcome.html) is mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.
+
+--------
+
 # Deploying Applications Using Amazon EC2<a name="ec2-apis-intro"></a>
 
 The AWS SDK for \.NET supports Amazon EC2, which is a web service that provides resizable computing capacity—literally, servers in Amazon’s data centers—that you use to build and host your software systems\. The Amazon EC2 APIs are provided by the [AWSSDK\.EC2](http://www.nuget.org/packages/AWSSDK.EC2) assembly\.

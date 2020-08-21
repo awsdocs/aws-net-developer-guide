@@ -1,3 +1,11 @@
+--------
+
+This documentation is for version 3\.0 of the AWS SDK for \.NET, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio\.
+
+The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-for\-net/latest/developer\-guide/](../../latest/developer-guide/welcome.html) is mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.
+
+--------
+
 # Configuring AWS Credentials<a name="net-dg-config-creds"></a>
 
 You must manage your AWS credentials securely and avoid practices that can unintentionally expose your credentials to the public\. In this topic, we describe how you configure your application’s AWS credentials so that they remain secure\.
@@ -360,7 +368,7 @@ Although the title of the second article refers specifically to mobile applicati
 
 ### Using Proxy Credentials<a name="net-dg-config-creds-proxy"></a>
 
-If your software communicates with AWS through a proxy, you can specify credentials for the proxy by using the `ProxyCredentials` property on the [AmazonS3Config](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/TS3Config.html) class for the service\. For example, for Amazon S3 you could use code similar to the following, where \{my\-username\} and \{my\-password\} are the proxy user name and password specified in a [NetworkCredential](https://msdn.microsoft.com/en-us/library/system.net.networkcredential.aspx) object\.
+If your software communicates with AWS through a proxy, you can specify credentials for the proxy by using the `ProxyCredentials` property on the [AmazonS3Config](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/TS3Config.html) class for the service\. For example, for Amazon S3 you could use code similar to the following, where \{my\-username\} and \{my\-password\} are the proxy user name and password specified in a [NetworkCredential](https://docs.microsoft.com/en-us/dotnet/api/system.net.networkcredential) object\.
 
 ```
 AmazonS3Config config = new AmazonS3Config();

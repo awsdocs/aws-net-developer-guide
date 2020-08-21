@@ -1,3 +1,11 @@
+--------
+
+This documentation is for version 3\.0 of the AWS SDK for \.NET, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio\.
+
+The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-for\-net/latest/developer\-guide/](../../latest/developer-guide/welcome.html) is mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.
+
+--------
+
 # Migrating from \.NET Standard 1\.3<a name="migration-from-net-standard-1-3"></a>
 
 On June 27 2019 Microsoft [ended support](https://devblogs.microsoft.com/dotnet/net-core-1-0-and-1-1-will-reach-end-of-life-on-june-27-2019/) for \.NET Core 1\.0 and \.NET Core 1\.1 versions\. Following this announcement, AWS will end support for \.NET Standard 1\.3 on the AWS SDK for \.NET on December 31, 2020\.
@@ -12,4 +20,4 @@ On December 31, 2020, support for \.NET Standard 1\.3 on the AWS SDK for \.NET w
 + If you're running applications using \.NET Core 1\.0 or \.NET Core 1\.1, migrate your applications to a newer version of \.NET Core by following [Microsoft migration instructions](https://docs.microsoft.com/en-us/dotnet/core/migration/)\. We recommend a minimum of \.NET Core 3\.1\.
 + If you're running business critical applications that cannot be upgraded at this time, you can continue using your current version of AWS SDK for \.NET\.
 
-If you have questions or concerns, [contact AWS Support](.NET Standard 1.3)\.
+If you have questions or concerns, [contact AWS Support](https://console.aws.amazon.com/support)\.

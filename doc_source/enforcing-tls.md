@@ -1,3 +1,11 @@
+--------
+
+This documentation is for version 3\.0 of the AWS SDK for \.NET, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio\.
+
+The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-for\-net/latest/developer\-guide/](../../latest/developer-guide/welcome.html) is mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.
+
+--------
+
 # Enforcing TLS 1\.2 in this AWS Product or Service<a name="enforcing-tls"></a>
 
 To increase security when communicating with AWS services, you should configure this AWS product or service to use TLS 1\.2 or later\.
@@ -90,6 +98,6 @@ You must use Unity 2018\.2 or later, and use the \.NET 4\.x Equivalent scripting
 
 WebAssembly runs in the browser instead of on the server, and uses the browser for handling HTTP traffic\. Therefore, TLS support is determined by browser support\.
 
-Blazor WebAssembly, in preview for ASP\.NET Core 3\.1, is supported only in browsers that support WebAssembly, as described at [https://docs\.microsoft\.com/en\-us/aspnet/core/blazor/supported\-platforms?view=aspnetcore\-3\.1](https://docs.microsoft.com/en-us/aspnet/core/blazor/supported-platforms?view=aspnetcore-3.1)\. All mainstream browsers supported TLS 1\.2 before supporting WebAssembly\. If this is the case for your browser, then if your app runs, it can communicate over TLS 1\.2\.
+Blazor WebAssembly, in preview for ASP\.NET Core 3\.1, is supported only in browsers that support WebAssembly, as described at [https://docs\.microsoft\.com/en\-us/aspnet/core/blazor/supported\-platforms](https://docs.microsoft.com/en-us/aspnet/core/blazor/supported-platforms)\. All mainstream browsers supported TLS 1\.2 before supporting WebAssembly\. If this is the case for your browser, then if your app runs, it can communicate over TLS 1\.2\.
 
 See your browser's documentation for more information and verification\.

@@ -1,3 +1,11 @@
+--------
+
+This documentation is for version 3\.0 of the AWS SDK for \.NET, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio\.
+
+The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-for\-net/latest/developer\-guide/](../../latest/developer-guide/welcome.html) is mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.
+
+--------
+
 # Using Amazon DynamoDB NoSQL Databases<a name="dynamodb-intro"></a>
 
 The AWS SDK for \.NET supports Amazon DynamoDB, which is a fast NoSQL database service offered by AWS\. The SDK provides three programming models for communicating with DynamoDB: the *low\-level* model, the *document* model, and the *object persistence* model\.
@@ -300,5 +308,5 @@ Console.WriteLine("Name = {0}", item.Name);
 +  [DynamoDBEntry](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TDynamoDBv2DocumentModelDynamoDBEntry.html) 
 +  [\.NET: Document Model](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DotNetSDKMidLevel.html) 
 
- **Object persistance model information and examples** 
+ **Object persistence model information and examples** 
 +  [\.NET: Object Persistence Model](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DotNetSDKHighLevel.html) 

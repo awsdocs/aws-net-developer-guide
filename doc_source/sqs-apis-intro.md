@@ -1,3 +1,11 @@
+--------
+
+This documentation is for version 3\.0 of the AWS SDK for \.NET, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio\.
+
+The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-for\-net/latest/developer\-guide/](../../latest/developer-guide/welcome.html) is mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.
+
+--------
+
 # Messaging Using Amazon SQS<a name="sqs-apis-intro"></a>
 
 The AWS SDK for \.NET supports Amazon SQS, which is a message queuing service that handles messages or workflows between components in a system\. For more information, see [Amazon SQS](https://aws.amazon.com/sqs/)\.

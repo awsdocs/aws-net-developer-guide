@@ -1,3 +1,11 @@
+--------
+
+This documentation is for version 3\.0 of the AWS SDK for \.NET, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio\.
+
+The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-for\-net/latest/developer\-guide/](../../latest/developer-guide/welcome.html) is mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.
+
+--------
+
 # Using Amazon SQS Queues<a name="UsingSQSQueues"></a>
 
 Amazon SQS offers *standard* as the default queue type\. A standard queue enables you to have a nearly\-unlimited number of transactions per second\. Standard queues support at\-least\-once message delivery\. However, occasionally more than one copy of a message might be delivered out of order\. Standard queues provide best\-effort ordering, which ensures that messages are generally delivered in the same order as they’re sent\.

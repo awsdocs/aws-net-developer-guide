@@ -1,3 +1,11 @@
+--------
+
+This documentation is for version 3\.0 of the AWS SDK for \.NET, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio\.
+
+The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-for\-net/latest/developer\-guide/](../../latest/developer-guide/welcome.html) is mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.
+
+--------
+
 # Using AWS Key Management Service keys for Amazon S3 encryption in the AWS SDK for \.NET<a name="kms-keys-s3-encryption"></a>
 
 The [AmazonS3EncryptionClientV2](https://aws.github.io/amazon-s3-encryption-client-dotnet/api/Amazon.Extensions.S3.Encryption.AmazonS3EncryptionClientV2.html) class implements the same interface as the standard `AmazonS3Client`\. This means it's easy to switch to the `AmazonS3EncryptionClientV2` class\. In fact, your application code won’t be aware of the encryption and decryption happening automatically in the client\.

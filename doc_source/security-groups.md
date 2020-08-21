@@ -1,3 +1,11 @@
+--------
+
+This documentation is for version 3\.0 of the AWS SDK for \.NET, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio\.
+
+The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-for\-net/latest/developer\-guide/](../../latest/developer-guide/welcome.html) is mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.
+
+--------
+
 # Creating a Security Group in Amazon EC2<a name="security-groups"></a>
 
 In Amazon EC2, a security group acts as a virtual firewall that controls the network traffic for one or more EC2 instances\. By default, Amazon EC2 associates your instances with a security group that allows no inbound traffic\. You can create a security group that allows your EC2 instances to accept certain traffic\. For example, if you need to connect to an EC2 Windows instance, you must configure the security group to allow RDP traffic\. You can create a security group by using the Amazon EC2 console or the AWS SDK for \.NET\.
@@ -12,7 +20,7 @@ For information on creating an Amazon EC2 client, see [Creating an Amazon EC2 Cl
 
 You can enumerate your security groups and check whether a security group exists\.
 
-### To enumerate your security groups<a name="w4aac13c21c15c19c11b5"></a>
+### To enumerate your security groups<a name="w4aac15c21c15c19c11b5"></a>
 
 Get the complete list of your security groups using [DescribeSecurityGroups](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2DescribeSecurityGroupsDescribeSecurityGroupsRequest.html) with no parameters\.
 
@@ -36,7 +44,7 @@ static void EnumerateSecurityGroups(AmazonEC2Client ec2Client)
 }
 ```
 
-### To enumerate your security groups for a particular VPC<a name="w4aac13c21c15c19c11b7"></a>
+### To enumerate your security groups for a particular VPC<a name="w4aac15c21c15c19c11b7"></a>
 
 Use [DescribeSecurityGroups](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2DescribeSecurityGroupsDescribeSecurityGroupsRequest.html) with a filter\.
 
@@ -71,7 +79,7 @@ static void EnumerateVpcSecurityGroups(AmazonEC2Client ec2Client, string vpcID)
 
 If you attempt to create a security group with a name of an existing security group, [CreateSecurityGroup](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2CreateSecurityGroupCreateSecurityGroupRequest.html) will throw an exception\. To avoid this, the following examples search for a security group with the specified name, and return the appropriate [SecurityGroup](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TSecurityGroup.html) object if one is found\.
 
-### To create a security group for EC2\-Classic<a name="w4aac13c21c15c19c13b5"></a>
+### To create a security group for EC2\-Classic<a name="w4aac15c21c15c19c13b5"></a>
 
 Create and initialize a [CreateSecurityGroupRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TCreateSecurityGroupRequest.html) object\. Assign a name and description to the `GroupName` and `Description` properties, respectively\.
 
@@ -111,7 +119,7 @@ static SecurityGroup CreateEc2SecurityGroup(
 }
 ```
 
-### To create a security group for EC2\-VPC<a name="w4aac13c21c15c19c13b7"></a>
+### To create a security group for EC2\-VPC<a name="w4aac15c21c15c19c13b7"></a>
 
 Create and initialize a [CreateSecurityGroupRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TCreateSecurityGroupRequest.html) object\. Assign values to the `GroupName`, `Description`, and `VpcId` properties\.
 
