@@ -1,46 +1,26 @@
-# Configuring Your AWS SDK for \.NET Application<a name="net-dg-config"></a>
+# Setting up your AWS SDK for \.NET project<a name="net-dg-config"></a>
 
-You can configure your AWS SDK for \.NET application to specify logging options, endpoints, or signature version 4 support with Amazon S3\.
+In addition to [setting up your environment](net-dg-setup.md), you need to configure each project that you create\.
 
-The recommended way to configure an application is to use the `<aws>` element in the project’s `App.config` or `Web.config` file\. The following example specifies the [AWSRegion](net-dg-config-other.md#config-setting-awsregion) and [AWSLogging](net-dg-config-other.md#config-setting-awslogging) parameters\.
+**Note**  
+The configuration shown here is centered around \.NET Core and ASP\.NET Core \(although there might be some overlap with \.NET Framework configuration\)\.  
+If you're looking for \.NET Framework configuration, see [version 3](../../v3/developer-guide/net-dg-config.html) of the guide instead\.
 
-```
-<configuration>
-  <configSections>
-    <section name="aws" type="Amazon.AWSSection, AWSSDK.Core"/>
-  </configSections>
-  <aws region="us-west-2">
-    <logging logTo="Log4Net"/>
-  </aws>
-</configuration>
-```
+There are a few essential things your application needs to access AWS services through the AWS SDK for \.NET:
++ An appropriate user account or role
++ Credentials for that user account or to assume that role
++ Specification of the AWS Region
++ AWSSDK packages or assemblies
 
-Another way to configure an application is to edit the `<appSettings>` element in the project’s `App.config` or `Web.config` file\. The following example specifies the [AWSRegion](net-dg-config-other.md#config-setting-awsregion) and [AWSLogging](net-dg-config-other.md#config-setting-awslogging) parameters\.
+Some of the topics in this section provide information about how to configure these essential things\.
 
-```
-<configuration>
-  <appSettings>
-    <add key="AWSRegion" value="us-west-2"/>
-    <add key="AWSLogging" value="log4net"/>
-  </appSettings>
-</configuration>
-```
-
-These settings take effect only after the application has been rebuilt\.
-
-Although you can configure an AWS SDK for \.NET application programmatically by setting property values in the [AWSConfigs](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/Amazon/TAWSConfigs.html) class, we recommend you use the `aws` element instead\. The following example specifies the [AWSRegion](net-dg-config-other.md#config-setting-awsregion) and [AWSLogging](net-dg-config-other.md#config-setting-awslogging) parameters:
-
-```
-AWSConfigs.AWSRegion = "us-west-2";
-AWSConfigs.Logging = LoggingOptions.Log4Net;
-```
-
-Programmatically defined parameters override any values that were specified in an `App.config` or `Web.config` file\. Some programmatically defined parameter values take effect immediately; others take effect only after you create a new client object\.
+Other topics in this section and other sections provide information about more advanced ways that you can configure your project\.
 
 **Topics**
-+ [Configuring the AWS SDK for \.NET with \.NET Core](net-dg-config-netcore.md)
-+ [Configuring AWS Credentials](net-dg-config-creds.md)
-+ [AWS Region Selection](net-dg-region-selection.md)
-+ [Configuring Other Application Parameters](net-dg-config-other.md)
-+ [Configuration Files Reference for AWS SDK for \.NET](net-dg-config-ref.md)
-+ [Enabling SDK Metrics](sdk-metrics.md)
++ [Start a new project](net-dg-start-new-project.md)
++ [Create users and roles](net-dg-users-roles.md)
++ [Configure AWS credentials](net-dg-config-creds.md)
++ [Configure the AWS Region](net-dg-region-selection.md)
++ [Install AWSSDK packages with NuGet](net-dg-install-assemblies.md)
++ [Install AWSSDK assemblies without NuGet](net-dg-install-without-nuget.md)
++ [Advanced configuration](net-dg-advanced-config.md)

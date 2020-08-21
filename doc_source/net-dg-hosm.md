@@ -1,188 +1,250 @@
-# Granting Access Using an IAM Role<a name="net-dg-hosm"></a>
+# Granting access by using an AWS IAM role<a name="net-dg-hosm"></a>
 
-This \.NET example shows you how to:
-+ Create a sample program that retrieves an object from Amazon S3
-+ Create an IAM role
-+ Launch an Amazon EC2 instance and specify the IAM role
-+ Run the sample on the Amazon EC2 instance
+This tutorial shows you how to use the AWS SDK for \.NET to enable IAM roles on Amazon EC2 instances\.
 
-## The Scenario<a name="the-scenario"></a>
+## Overview<a name="hosm-overview"></a>
 
-All requests to AWS must be cryptographically signed by using credentials issued by AWS\. Therefore, you need a strategy to manage credentials for software that runs on Amazon EC2 instances\. You have to distribute, store, and rotate these credentials securely, but also keep them accessible to the software\.
+All requests to AWS must be cryptographically signed by using credentials issued by AWS\. Therefore, you need a strategy to manage credentials for applications that run on Amazon EC2 instances\. You have to distribute, store, and rotate these credentials securely, but also keep them accessible to the applications\.
 
-IAM roles enable you to effectively manage AWS credentials for software running on EC2 instances\. You create an IAM role and configure it with the permissions the software requires\. For more information about the benefits of using IAM roles, see [IAM Roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html) in the Amazon EC2 User Guide for Windows Instances and [Roles \(Delegation and Federation\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html) in the IAM User Guide\.
+With IAM roles, you can effectively manage these credentials\. You create an IAM role and configure it with the permissions that an application requires, and then attach that role to an EC2 instance\. Read more about the benefits of using IAM roles in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/iam-roles-for-amazon-ec2.html)\. Also see the information about [IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html) in the IAM User Guide\.
 
-To use the permissions, the software constructs a client object for the AWS service\. The constructor searches the credentials provider chain for credentials\. For \.NET, the credentials provider chain is as follows:
-+ The `App.config` file
-+ The instance metadata associated with the IAM role for the EC2 instance
+For an application that is built using the AWS SDK for \.NET, when the application constructs a client object for an AWS service, the object searches for credentials from several potential sources\. The order in which it searches is shown in [Credential and profile resolution](creds-assign.md)\.
 
-If the client doesn’t find credentials in `App.config`, it retrieves temporary credentials that have the same permissions as those associated with the IAM role from instance metadata\. The credentials are stored by the constructor on behalf of the application software, and are used to make calls to AWS from that client object\. Although the credentials are temporary and eventually expire, the SDK client periodically refreshes them so that they continue to enable access\. This periodic refresh is completely transparent to the application software\.
+If the client object doesn't find credentials from any other source, it retrieves temporary credentials that have the same permissions as those that have been configured into the IAM role and are in the metadata of the EC2 instance\. These credentials are used to make calls to AWS from the client object\.
 
-The following examples show a sample program that retrieves an object from Amazon S3 using the AWS credentials you configure\. You create an IAM role to provide the AWS credentials\. Finally, you launch an instance with an IAM role that provides the AWS credentials to the sample program running on the instance\.
+## About this tutorial<a name="about-hosm-tutorial"></a>
 
-## Create a Sample that Retrieves an Object from Amazon S3<a name="net-dg-using-hosm-to-retrieve-an-object-from-ec2"></a>
+As you follow this tutorial, you use the AWS SDK for \.NET \(and other tools\) to launch an Amazon EC2 instance with an IAM role attached, and then see an application on the instance using the permissions of the IAM role\.
 
-The following sample code requires a text file in an Amazon S3 bucket that you have access to, and AWS credentials that provide you with access to the Amazon S3 bucket\.
+**Topics**
++ [Overview](#hosm-overview)
++ [About this tutorial](#about-hosm-tutorial)
++ [Create a sample Amazon S3 application](#net-dg-hosm-sample-s3-app)
++ [Create an IAM role](#net-dg-hosm-create-the-role)
++ [Launch an EC2 instance and attach the IAM role](#net-dg-hosm-launch-ec2-instance)
++ [Connect to the EC2 instance](#net-dg-hosm-connect)
++ [Run the sample application on the EC2 instance](#net-dg-hosm-run-the-app)
++ [Clean up](#net-dg-hosm-cleanup)
 
-For more information about creating an Amazon S3 bucket and uploading an object, see the [Amazon S3 Getting Started Guide](https://docs.aws.amazon.com/AmazonS3/latest/gsg/)\. For more information about AWS credentials, see [Configuring AWS Credentials](net-dg-config-creds.md)\.
+## Create a sample Amazon S3 application<a name="net-dg-hosm-sample-s3-app"></a>
+
+This sample application retrieves an object from Amazon S3\. To run the application, you need the following:
++ An Amazon S3 bucket that contains a text file\.
++ AWS credentials on your development machine that allow you to access to the bucket\.
+
+For information about creating an Amazon S3 bucket and uploading an object, see the [Amazon S3 Getting Started Guide](https://docs.aws.amazon.com/AmazonS3/latest/gsg/)\. For information about AWS credentials, see [Configure AWS credentials](net-dg-config-creds.md)\.
+
+Create a \.NET Core project with the following code\. Then test the application on your development machine\.
+
+**Note**  
+On your development machine, the \.NET Core Runtime is installed, which enables you to run the application without publishing it\. When you create an EC2 instance later in this tutorial, you can choose to install the \.NET Core Runtime on the instance\. This gives you a similar experience and a smaller file transfer\.  
+ However, you can also choose not to install the \.NET Core Runtime on the instance\. If you choose this course of action, you must publish the application so that all dependencies are included when you transfer it to the instance\.
+
+### SDK references<a name="w4aac17c21c29c17c13b1"></a>
+
+NuGet packages:
++ [AWSSDK\.S3](https://www.nuget.org/packages/AWSSDK.S3)
+
+Programming elements:
++ Namespace [Amazon\.S3](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/NS3.html)
+
+  Class [AmazonS3Client](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/TS3Client.html)
++ Namespace [Amazon\.S3\.Model](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/NS3Model.html)
+
+  Class [GetObjectResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/TGetObjectResponse.html)
+
+### The code<a name="w4aac17c21c29c17c15b1"></a>
 
 ```
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
-
-using Amazon;
 using Amazon.S3;
 using Amazon.S3.Model;
 
-namespace S3ShowTextItem
+namespace S3GetTextItem
 {
-    class S3Sample
+  // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+  // Class to retrieve a text file from an S3 bucket and write it to a local file
+  class Program
+  {
+    static async Task Main(string[] args)
     {
-        static async Task<GetObjectResponse> MyGetObjectAsync(string region, string bucket, string item)
-        {
-            RegionEndpoint reg = RegionEndpoint.GetBySystemName(region);
-            AmazonS3Client s3Client = new AmazonS3Client(reg);
+      // Parse the command line and show help if necessary
+      var parsedArgs = CommandLine.Parse(args);
+      if(parsedArgs.Count == 0)
+      {
+        PrintHelp();
+        return;
+      }
 
-            Console.WriteLine("Retrieving (GET) an object");
+      // Get the application parameters from the parsed arguments
+      string bucket =
+        CommandLine.GetParameter(parsedArgs, null, "-b", "--bucket-name");
+      string item =
+        CommandLine.GetParameter(parsedArgs, null, "-t", "--text-object");
+      string outFile =
+        CommandLine.GetParameter(parsedArgs, null, "-o", "--output-filename");
+      if(   string.IsNullOrEmpty(bucket)
+         || string.IsNullOrEmpty(item)
+         || string.IsNullOrEmpty(outFile))
+        CommandLine.ErrorExit(
+          "\nOne or more of the required arguments is missing or incorrect." +
+          "\nRun the command with no arguments to see help.");
 
-            GetObjectResponse response = await s3Client.GetObjectAsync(bucket, item, new CancellationToken());
+      // Create the S3 client object and get the file object from the bucket.
+      var response = await GetObject(new AmazonS3Client(), bucket, item);
 
-            return response;
-        }
-
-        public static void Main(string[] args)
-        {
-            if (args.Length < 4)
-            {
-                Console.WriteLine("You must supply a region, bucket name, text file name, and output file name");
-                return;
-            }
-
-            try
-            {
-                Task<GetObjectResponse> response = MyGetObjectAsync(args[0], args[1], args[2]);
-
-                Stream responseStream = response.Result.ResponseStream;
-                StreamReader reader = new StreamReader(responseStream);
-
-                string responseBody = reader.ReadToEnd();
-
-                using(FileStream s = new FileStream(args[3], FileMode.Create))
-                using(StreamWriter writer = new StreamWriter(s))
-                {
-                    writer.WriteLine(responseBody);
-                }
-            }
-            catch (AmazonS3Exception s3Exception)
-            {
-                Console.WriteLine(s3Exception.Message, s3Exception.InnerException);
-            }
-
-            Console.WriteLine("Press enter to continue");
-            Console.ReadLine();
-        }
+      // Write the contents of the file object to the given output file.
+      var reader = new StreamReader(response.ResponseStream);
+      string contents = reader.ReadToEnd();
+      using (var s = new FileStream(outFile, FileMode.Create))
+      using (var writer = new StreamWriter(s))
+        writer.WriteLine(contents);
     }
+
+
+    //
+    // Method to get an object from an S3 bucket.
+    private static async Task<GetObjectResponse> GetObject(
+      IAmazonS3 s3Client, string bucket, string item)
+    {
+        Console.WriteLine($"Retrieving {item} from bucket {bucket}.");
+        return await s3Client.GetObjectAsync(bucket, item);
+    }
+
+
+    //
+    // Command-line help
+    private static void PrintHelp()
+    {
+      Console.WriteLine(
+        "\nUsage: S3GetTextItem -b <bucket-name> -t <text-object> -o <output-filename>" +
+        "\n  -b, --bucket-name: The name of the S3 bucket." +
+        "\n  -t, --text-object: The name of the text object in the bucket." +
+        "\n  -o, --output-filename: The name of the file to write the text to.");
+    }
+  }
+
+
+  // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+  // Class that represents a command line on the console or terminal
+  // (This is the same for all examples. When you have seen it once, you can ignore it)
+  static class CommandLine
+  {
+    // Method to parse a command line of the form: "--param value" or "-p value".
+    // If "param" is found without a matching "value", Dictionary.Value is an empty string.
+    // If "value" is found without a matching "param", Dictionary.Key is "--NoKeyN"
+    //  where "N" represents sequential numbers.
+    public static Dictionary<string,string> Parse(string[] args)
+    {
+      var parsedArgs = new Dictionary<string,string>();
+      int i = 0, n = 0;
+      while(i < args.Length)
+      {
+        // If the first argument in this iteration starts with a dash it's an option.
+        if(args[i].StartsWith("-"))
+        {
+          var key = args[i++];
+          var value = string.Empty;
+
+          // Is there a value that goes with this option?
+          if((i < args.Length) && (!args[i].StartsWith("-"))) value = args[i++];
+          parsedArgs.Add(key, value);
+        }
+
+        // If the first argument in this iteration doesn't start with a dash, it's a value
+        else
+        {
+          parsedArgs.Add("--NoKey" + n.ToString(), args[i++]);
+          n++;
+        }
+      }
+
+      return parsedArgs;
+    }
+
+    //
+    // Method to get a parameter from the parsed command-line arguments
+    public static string GetParameter(
+      Dictionary<string,string> parsedArgs, string def, params string[] keys)
+    {
+      string retval = null;
+      foreach(var key in keys)
+        if(parsedArgs.TryGetValue(key, out retval)) break;
+      return retval ?? def;
+    }
+
+    //
+    // Exit with an error.
+    public static void ErrorExit(string msg, int code=1)
+    {
+      Console.WriteLine("\nError");
+      Console.WriteLine(msg);
+      Environment.Exit(code);
+    }
+  }
+
 }
 ```
 
-**To test the sample code**
+If you want, you can temporarily remove the credentials you use on your development machine to see how the application responds\. \(But be sure to restore the credentials when you're finished\.\)
 
-1. Open Visual Studio and create a **Console App \(\.NET Framework\)** project using \.NET Framework 4\.5 or later\.
-
-1. Add the [AWSSDK\.S3](http://www.nuget.org/packages/AWSSDK.S3) NuGet package to your project\.
-
-1. Replace the code in the `Program.cs` file with the sample code shown above\.
-
-1. Compile and run the sample program\. If the program succeeds, it displays the following output and creates a file on your local drive that contains the text it retrieved from the text file in Amazon S3\.
-
-   ```
-   Retrieving (GET) an object
-   ```
-
-   If the program fails, be sure you’re using credentials that provide you with access to the bucket\.
-
-1. \(Optional\) Transfer the sample program to a running Windows instance on which you haven’t set up credentials\. Run the program and verify that it fails because it can’t locate credentials\.
-
-## Create an IAM Role<a name="net-dg-create-the-role"></a>
+## Create an IAM role<a name="net-dg-hosm-create-the-role"></a>
 
 Create an IAM role that has the appropriate permissions to access Amazon S3\.
 
-**To create the IAM role**
+1. Open the [IAM console](https://console.aws.amazon.com/iam/)\.
 
-1. Open the IAM console\.
+1. In the navigation pane, choose **Roles**, and then choose **Create Role**\.
 
-1. In the navigation pane, choose **Roles**, and then choose **Create New Role**\.
+1. Select **AWS service**, find and choose **EC2**, and choose **Next: Permissions**\.
 
-1. Type a name for the role, and then choose **Next Step**\. Remember this name because you’ll need it when you launch your EC2 instance\.
+1. Under **Attach permissions policies**, find and select **AmazonS3ReadOnlyAccess**\. Review the policy if you want to, and then choose **Next: Tags**\.
 
-1. Under **AWS Service Roles**, choose **Amazon EC2**\. Under **Select Policy Template**, choose **Amazon S3 Read Only Access**\. Review the policy, and then choose **Next Step**\.
+1. Add tags if you want and then choose **Next: Review**\.
 
-1. Review the role information, and then choose **Create Role**\.
+1. Type a name and description for the role, and then choose **Create role**\. Remember this name because you'll need it when you launch your EC2 instance\.
 
-## Launch an EC2 Instance and Specify the IAM Role<a name="net-dg-launch-ec2-instance-with-instance-profile"></a>
+## Launch an EC2 instance and attach the IAM role<a name="net-dg-hosm-launch-ec2-instance"></a>
 
-You can use the Amazon EC2 console or the AWS SDK for \.NET to launch an EC2 instance with an IAM role\.
-+ Using the console: Follow the directions in [Launching a Windows Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2Win_GetStarted.html#EC2Win_LaunchInstance.html) in the Amazon EC2 User Guide for Windows Instances\. When you reach the **Review Instance Launch** page, choose **Edit instance details**\. In **IAM role**, specify the IAM role you created previously\. Complete the procedure as directed\. You’ll need to create or use an existing security group and key pair to connect to the instance\.
-+ Using the AWS SDK for \.NET: See [Launching an Amazon EC2 Instance](run-instance.md)\.
+Launch an EC2 instance with the IAM role you created previously\. You can do so in the following ways\.
++ **Using the EC2 console**
 
-An IAM user can’t launch an instance with an IAM role without the permissions granted by the following policy\.
+  Follow the directions to launch an instance in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launching-instance.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/launching-instance.html)\.
 
-```
-{
-  "Version": "2012-10-17",
-  "Statement": [{
-    "Effect": "Allow",
-    "Action": [
-      "iam:PassRole",
-      "iam:ListInstanceProfiles",
-      "ec2:*"
-    ],
-    "Resource": "*"
-  }]
-}
-```
+  As you go through the wizard you should at least visit the **Configure Instance Details** page so that you can select the **IAM role** you created earlier\.
++ **Using the AWS SDK for \.NET**
 
-## Run the Sample Program on the EC2 Instance<a name="net-dg-run-the-program"></a>
+  For information about this, see [Launching an Amazon EC2 instance](run-instance.md), including the **Additional considerations** near the end of that topic\.
 
-To transfer the sample program to your EC2 instance, connect to the instance using the AWS Management Console as described in the following procedure\.
+To launch an EC2 instance that has an IAM role attached, an IAM user's configuration must include certain permissions\. For more information about the required permissions, see the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#permission-to-pass-iam-roles) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/iam-roles-for-amazon-ec2.html#permission-to-pass-iam-roles)\.
 
-**Note**  
-Alternatively, connect using the Toolkit for Visual Studio \(see [Connecting to an Amazon EC2 Instance](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/tkv-ec2-ami.html#connect-ec2) in the AWS Toolkit for Visual Studio\) and then copy the files from your local drive to the instance\. The Remote Desktop session is automatically configured so that your local drives are available to the instance\.
+## Connect to the EC2 instance<a name="net-dg-hosm-connect"></a>
 
-**To run the sample program on the EC2 instance**
+Connect to the EC2 instance so that you can transfer the sample application to it and then run the application\. You'll need the file that contains the private portion of the key pair you used to launch the instance; that is, the PEM file\.
 
-1. Open the Amazon EC2 console\.
+You can do this by following the connect procedure in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html)\. When you connect, do so in such a way that you can transfer files from your development machine to your instance\.
 
-1. Get the password for your EC2 instance:
+If you're using Visual Studio on Windows, you can also connect to the instance by using the Toolkit for Visual Studio\. For more information, see [Connecting to an Amazon EC2 Instance](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/tkv-ec2-ami.html#connect-ec2) in the AWS Toolkit for Visual Studio User Guide\.
 
-   1. In the navigation pane, choose **Instances**\. Choose the instance, and then choose **Connect**\.
+## Run the sample application on the EC2 instance<a name="net-dg-hosm-run-the-app"></a>
 
-   1. In the **Connect To Your Instance** dialog box, choose **Get Password**\. \(It will take a few minutes after the instance is launched before the password is available\.\)
+1. Copy the application files from your local drive to your instance\.
 
-   1. Choose **Browse** and navigate to the private key file you created when you launched the instance\. Choose the file, and then choose **Open** to copy the file’s contents into the contents box\.
+   Which files you transfer depends on how you built the application and whether your instance has the \.NET Core Runtime installed\. For information about how to transfer files to your instance see the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html#AccessingInstancesWindowsFileTransfer)\.
 
-   1. Choose **Decrypt Password**\. The console displays the default administrator password for the instance in the **Connect To Your Instance** dialog box, replacing the link to **Get Password** shown earlier with the password\.
+1. Start the application and verify that it runs with the same results as on your development machine\.
 
-   1. Record the default administrator password or copy it to the clipboard\. You need this password to connect to the instance\.
+1. Verify that the application uses the credentials provided by the IAM role\.
 
-1. Connect to your EC2 instance:
+   1. Open the [Amazon EC2 console](https://console.aws.amazon.com/ec2/)\.
 
-   1. Choose **Download Remote Desktop File**\. When your browser prompts you, save the `.rdp` file\. When you finish, choose **Close** to close the **Connect To Your Instance** dialog box\.
+   1. Select the instance and detach the IAM role through **Actions**, **Instance Settings**, **Attach/Replace IAM Role**\.
 
-   1. Navigate to your downloads directory, right\-click the `.rdp` file, and then choose **Edit**\. On the **Local Resources** tab, under **Local devices and resources**, choose **More**\. Choose **Drives** to make your local drives available to your instance\. Then choose **OK**\.
+   1. Run the application again and see that it returns an authorization error\.
 
-   1. Choose **Connect** to connect to your instance\. You may get a warning that the publisher of the remote connection is unknown\.
+## Clean up<a name="net-dg-hosm-cleanup"></a>
 
-   1. Sign in to the instance when prompted, using the default **Administrator** account and the default administrator password you recorded or copied previously\.
-
-      Sometimes copying and pasting content can corrupt data\. If you encounter a “Password Failed” error when you sign in, try typing in the password manually\. For more information, see [Connecting to Your Windows Instance Using RDP](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html) and [Troubleshooting Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/troubleshooting-windows-instances.html) in the Amazon EC2 User Guide for Windows Instances\.
-
-1. Copy the program and the AWS assemblies \(`AWSSDK.Core.dll` and `AWSSDK.S3.dll`\) from your local drive to the instance\.
-
-1. Run the program and verify that it succeeds using the credentials provided by the IAM role\.
-
-   ```
-   Retrieving (GET) an object
-   ```
+When you are finished with this tutorial, and if you no longer want the EC2 instance you created, be sure to terminate the instance to avoid unwanted cost\. You can do so in the [Amazon EC2 console](https://console.aws.amazon.com/ec2/) or programmatically, as described in [Terminating an Amazon EC2 instance](terminate-instance.md)\. If you want to, you can also delete other resources that you created for this tutorial\. These might include an IAM role, an EC2 keypair and PEM file, a security group, etc\.

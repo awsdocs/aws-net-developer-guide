@@ -1,13 +1,29 @@
-# Deploying Applications Using Amazon EC2<a name="ec2-apis-intro"></a>
+# Working with Amazon EC2<a name="ec2-apis-intro"></a>
 
-The AWS SDK for \.NET supports Amazon EC2, which is a web service that provides resizable computing capacity—literally, servers in Amazon’s data centers—that you use to build and host your software systems\. The Amazon EC2 APIs are provided by the [AWSSDK\.EC2](http://www.nuget.org/packages/AWSSDK.EC2) assembly\.
+The AWS SDK for \.NET supports [Amazon EC2](https://docs.aws.amazon.com/ec2/), which is a web service that provides resizable computing capacity\. You use this computing capacity to build and host your software systems\.
 
-The [Amazon EC2 Instances Examples](how-to-ec2.md) are intended to help you get started with Amazon EC2\.
+## APIs<a name="w4aac17c19b5"></a>
 
-The [Amazon EC2 Spot Instance Examples](how-to-spot-instances.md) show you how to use Spot Instances, which enable you to access unused EC2 capacity at up to a 90% discount compared to the On\-Demand Instance price\. Amazon EC2 sets Spot Instance prices and adjusts them gradually based on long\-term trends in supply and demand for Spot Instance capacity\. You can specify the amount you are willing to pay for a Spot Instance as a percentage of the On\-Demand Instance price; customers whose requests meet or exceed it gain access to the available Spot Instances\.
+The AWS SDK for \.NET provides APIs for Amazon EC2 clients\. The APIs enable you to work with EC2 features such as security groups and key pairs\. The APIs also enable you to control Amazon EC2 instances\. This section contains a small number of examples that show you the patterns you can follow when working with these APIs\. To view the full set of APIs, see the [AWS SDK for \.NET API Reference](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/) \(and scroll to "Amazon\.EC2"\)\.
 
-For more information, see [Spot Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html) in the Amazon EC2 User Guide for Linux Instances and [Spot Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/using-spot-instances.html) in the Amazon EC2 User Guide for Windows Instances\.
+The Amazon EC2 APIs are provided by the [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2) NuGet package\.
+
+## Prerequisites<a name="w4aac17c19b7"></a>
+
+Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Setting up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.
+
+## About the examples<a name="ec2-apis-intro-about"></a>
+
+The examples in this section show you how to work with Amazon EC2 clients and manage Amazon EC2 instances\.
+
+The [EC2 Spot Instance tutorial](how-to-spot-instances.md) shows you how to request Amazon EC2 Spot Instances\. Spot Instances enable you to access unused EC2 capacity for less than the On\-Demand price\.
 
 **Topics**
-+ [Amazon EC2 Instances Examples](how-to-ec2.md)
-+ [Amazon EC2 Spot Instance Examples](how-to-spot-instances.md)
++ [APIs](#w4aac17c19b5)
++ [Prerequisites](#w4aac17c19b7)
++ [About the examples](#ec2-apis-intro-about)
++ [Security groups](security-groups.md)
++ [Key pairs](key-pairs.md)
++ [Regions and Availability Zones](using-regions-and-availability-zones.md)
++ [EC2 instances](how-to-ec2.md)
++ [Spot Instance tutorial](how-to-spot-instances.md)

@@ -1,30 +1,223 @@
-# Sending an Amazon SQS Message<a name="SendMessage"></a>
+# Sending Amazon SQS messages<a name="SendMessage"></a>
 
-You can use the AWS SDK for \.NET to send a message to an Amazon SQS queue\.
+This example shows you how to use the AWS SDK for \.NET to send messages to an Amazon SQS queue, which you can create [programmatically](CreateQueue.md) or by using the [Amazon SQS console](https://console.aws.amazon.com/sqs)\. The application sends a single message to the queue and then a batch of messages\. The application then waits for user input, which can be additional messages to send to the queue or a request to exit the application\.
 
-**Important**  
-Due to the distributed nature of the queue, Amazon SQS can’t guarantee you will receive messages in the precise order they are sent\. If you need to preserve the message order, use an Amazon SQS FIFO queue\. For information about FIFO queues, see [Amazon SQS FIFO \(First\-In\-First\-Out\) Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html)\.
+This example and the [next example about receiving messages](ReceiveMessage.md) can be used together to see message flow in Amazon SQS\.
 
-**To send a message to an Amazon SQS queue**
+The following sections provide snippets of this example\. The [complete code for the example](#SendMessage-complete-code) is shown after that, and can be built and run as is\.
 
-1. Create and initialize a [SendMessageRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TSendMessageRequest.html) instance\. Specify the queue name and the message you want to send, as follows\.
+**Topics**
++ [Send a message](#SendMessage-send-message)
++ [Send a batch of messages](#SendMessage-send-batch)
++ [Delete all messages from the queue](#SendMessage-purge-messages)
++ [Complete code](#SendMessage-complete-code)
 
-   ```
-   sendMessageRequest.QueueUrl = myQueueURL; sendMessageRequest.MessageBody = "{YOUR_QUEUE_MESSAGE}";
-   ```
+## Send a message<a name="SendMessage-send-message"></a>
 
-   For more information about your queue URL, see [Constructing Amazon SQS Queue URLs](QueueURL.md#sqs-queue-url)\.
+The following snippet sends a message to the queue identified by the given queue URL\.
 
-   Each queue message must be composed of Unicode characters only, and can be up to 64 KB in size\. For more information about queue messages, see [SendMessage](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) in the Amazon Simple Queue Service API Reference\.
+The example [at the end of this topic](#SendMessage-complete-code) shows this snippet in use\.
 
-1. After you create the request, pass it as a parameter to the [SendMessage](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/MSQSSendMessageSendMessageRequest.html) method\. The method returns a [SendMessageResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TSendMessageResponse.html) object, as follows\.
+```
+    //
+    // Method to put a message on a queue
+    // Could be expanded to include message attributes, etc., in a SendMessageRequest
+    private static async Task SendMessage(
+      IAmazonSQS sqsClient, string qUrl, string messageBody)
+    {
+      SendMessageResponse responseSendMsg =
+        await sqsClient.SendMessageAsync(qUrl, messageBody);
+      Console.WriteLine($"Message added to queue\n  {qUrl}");
+      Console.WriteLine($"HttpStatusCode: {responseSendMsg.HttpStatusCode}");
+    }
+```
 
-   ```
-   var sendMessageResponse = sqsClient.SendMessage(sendMessageRequest);
-   ```
+## Send a batch of messages<a name="SendMessage-send-batch"></a>
 
-   The sent message will stay in your queue until the visibility timeout is exceeded, or until it is deleted from the queue\. For more information about visibility timeouts, go to [Visibility Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html)\.
+The following snippet sends a batch of messages to the queue identified by the given queue URL\.
 
-For information about deleting messages from your queue, see [Deleting a Message from an Amazon SQS Queue](DeleteMessage.md#delete-sqs-message)\.
+The example [at the end of this topic](#SendMessage-complete-code) shows this snippet in use\.
 
-For information about receiving messages from your queue, see [Receiving a Message from an Amazon SQS Queue](ReceiveMessage.md#receive-sqs-message)\.
+```
+    //
+    // Method to put a batch of messages on a queue
+    // Could be expanded to include message attributes, etc.,
+    // in the SendMessageBatchRequestEntry objects
+    private static async Task SendMessageBatch(
+      IAmazonSQS sqsClient, string qUrl, List<SendMessageBatchRequestEntry> messages)
+    {
+      Console.WriteLine($"\nSending a batch of messages to queue\n  {qUrl}");
+      SendMessageBatchResponse responseSendBatch =
+        await sqsClient.SendMessageBatchAsync(qUrl, messages);
+      // Could test responseSendBatch.Failed here
+      foreach(SendMessageBatchResultEntry entry in responseSendBatch.Successful)
+        Console.WriteLine($"Message {entry.Id} successfully queued.");
+    }
+```
+
+## Delete all messages from the queue<a name="SendMessage-purge-messages"></a>
+
+The following snippet deletes all messages from the queue identified by the given queue URL\. This is also known as *purging the queue*\.
+
+The example [at the end of this topic](#SendMessage-complete-code) shows this snippet in use\.
+
+```
+    //
+    // Method to delete all messages from the queue
+    private static async Task DeleteAllMessages(IAmazonSQS sqsClient, string qUrl)
+    {
+      Console.WriteLine($"\nPurging messages from queue\n  {qUrl}...");
+      PurgeQueueResponse responsePurge = await sqsClient.PurgeQueueAsync(qUrl);
+      Console.WriteLine($"HttpStatusCode: {responsePurge.HttpStatusCode}");
+    }
+```
+
+## Complete code<a name="SendMessage-complete-code"></a>
+
+This section shows relevant references and the complete code for this example\.
+
+### SDK references<a name="w4aac17c25c25c25b5b1"></a>
+
+NuGet packages:
++ [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
+
+Programming elements:
++ Namespace [Amazon\.SQS](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/NSQS.html)
+
+  Class [AmazonSQSClient](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TSQSClient.html)
++ Namespace [Amazon\.SQS\.Model](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/NSQSModel.html)
+
+  Class [PurgeQueueResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TPurgeQueueResponse.html)
+
+  Class [SendMessageBatchResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TSendMessageBatchResponse.html)
+
+  Class [SendMessageResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TSendMessageResponse.html)
+
+  Class [SendMessageBatchRequestEntry](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TSendMessageBatchRequestEntry.html)
+
+  Class [SendMessageBatchResultEntry](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TSendMessageBatchResultEntry.html)
+
+### The code<a name="w4aac17c25c25c25b7b1"></a>
+
+```
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Amazon.SQS;
+using Amazon.SQS.Model;
+
+namespace SQSSendMessages
+{
+  // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+  // Class to send messages to a queue
+  class Program
+  {
+    // Some example messages to send to the queue
+    private const string JsonMessage = "{\"product\":[{\"name\":\"Product A\",\"price\": \"32\"},{\"name\": \"Product B\",\"price\": \"27\"}]}";
+    private const string XmlMessage = "<products><product name=\"Product A\" price=\"32\" /><product name=\"Product B\" price=\"27\" /></products>";
+    private const string CustomMessage = "||product|Product A|32||product|Product B|27||";
+    private const string TextMessage = "Just a plain text message.";
+
+    static async Task Main(string[] args)
+    {
+      // Do some checks on the command-line
+      if(args.Length == 0)
+      {
+        Console.WriteLine("\nUsage: SQSSendMessages queue_url");
+        Console.WriteLine("   queue_url - The URL of an existing SQS queue.");
+        return;
+      }
+      if(!args[0].StartsWith("https://sqs."))
+      {
+        Console.WriteLine("\nThe command-line argument isn't a queue URL:");
+        Console.WriteLine($"{args[0]}");
+        return;
+      }
+
+      // Create the Amazon SQS client
+      var sqsClient = new AmazonSQSClient();
+
+      // (could verify that the queue exists)
+      // Send some example messages to the given queue
+      // A single message
+      await SendMessage(sqsClient, args[0], JsonMessage);
+
+      // A batch of messages
+      var batchMessages = new List<SendMessageBatchRequestEntry>{
+        new SendMessageBatchRequestEntry("xmlMsg", XmlMessage),
+        new SendMessageBatchRequestEntry("customeMsg", CustomMessage),
+        new SendMessageBatchRequestEntry("textMsg", TextMessage)};
+      await SendMessageBatch(sqsClient, args[0], batchMessages);
+
+      // Let the user send their own messages or quit
+      await InteractWithUser(sqsClient, args[0]);
+
+      // Delete all messages that are still in the queue
+      await DeleteAllMessages(sqsClient, args[0]);
+    }
+
+
+    //
+    // Method to put a message on a queue
+    // Could be expanded to include message attributes, etc., in a SendMessageRequest
+    private static async Task SendMessage(
+      IAmazonSQS sqsClient, string qUrl, string messageBody)
+    {
+      SendMessageResponse responseSendMsg =
+        await sqsClient.SendMessageAsync(qUrl, messageBody);
+      Console.WriteLine($"Message added to queue\n  {qUrl}");
+      Console.WriteLine($"HttpStatusCode: {responseSendMsg.HttpStatusCode}");
+    }
+
+
+    //
+    // Method to put a batch of messages on a queue
+    // Could be expanded to include message attributes, etc.,
+    // in the SendMessageBatchRequestEntry objects
+    private static async Task SendMessageBatch(
+      IAmazonSQS sqsClient, string qUrl, List<SendMessageBatchRequestEntry> messages)
+    {
+      Console.WriteLine($"\nSending a batch of messages to queue\n  {qUrl}");
+      SendMessageBatchResponse responseSendBatch =
+        await sqsClient.SendMessageBatchAsync(qUrl, messages);
+      // Could test responseSendBatch.Failed here
+      foreach(SendMessageBatchResultEntry entry in responseSendBatch.Successful)
+        Console.WriteLine($"Message {entry.Id} successfully queued.");
+    }
+
+
+    //
+    // Method to get input from the user
+    // They can provide messages to put in the queue or exit the application
+    private static async Task InteractWithUser(IAmazonSQS sqsClient, string qUrl)
+    {
+      string response;
+      while (true)
+      {
+        // Get the user's input
+        Console.WriteLine("\nType a message for the queue or \"exit\" to quit:");
+        response = Console.ReadLine();
+        if(response.ToLower() == "exit") break;
+
+        // Put the user's message in the queue
+        await SendMessage(sqsClient, qUrl, response);
+      }
+    }
+
+
+    //
+    // Method to delete all messages from the queue
+    private static async Task DeleteAllMessages(IAmazonSQS sqsClient, string qUrl)
+    {
+      Console.WriteLine($"\nPurging messages from queue\n  {qUrl}...");
+      PurgeQueueResponse responsePurge = await sqsClient.PurgeQueueAsync(qUrl);
+      Console.WriteLine($"HttpStatusCode: {responsePurge.HttpStatusCode}");
+    }
+  }
+}
+```
+
+**Additional considerations**
++ For information about various limitations on messages, including the allowed characters, see [Quotas related to messages](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-quotas.html#quotas-messages) in the [Amazon Simple Queue Service Developer Guide](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/)\.
++ Messages stay in queues until they are deleted or the queue is purged\. When a message has been received by an application, it won't be visible in the queue even though it still exists in the queue\. For more information about visibility timeouts, see [Amazon SQS visibility timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html)\.
++ In additional to the message body, you can also add attributes to messages\. For more information, see [Message metadata](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html)\.

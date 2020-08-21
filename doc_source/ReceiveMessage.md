@@ -1,38 +1,166 @@
-# Receiving a Message from an Amazon SQS Queue<a name="ReceiveMessage"></a>
+# Receiving Amazon SQS messages<a name="ReceiveMessage"></a>
 
-You can use the AWS SDK for \.NET to receive messages from an Amazon SQS queue\.
+This example shows you how to use the AWS SDK for \.NET to receive messages from an Amazon SQS queue, which you can create [programmatically](CreateQueue.md) or by using the [Amazon SQS console](https://console.aws.amazon.com/sqs)\. The application reads a single message from the queue, processes the message \(in this case, displays the message body on the console\), and then deletes the message from the queue\. The application repeats these steps until the user types a key on the keyboard\.
 
-**To receive a message from an Amazon SQS queue**
+This example and the [previous example about sending messages](SendMessage.md) can be used together to see message flow in Amazon SQS\.
 
-1. Create and initialize a [ReceiveMessageRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TReceiveMessageRequest.html) instance\. Specify the queue URL to receive a message from, as follows\.
+The following sections provide snippets of this example\. The [complete code for the example](#ReceiveMessage-complete-code) is shown after that, and can be built and run as is\.
 
-   ```
-   var receiveMessageRequest = new ReceiveMessageRequest();
-   
-   receiveMessageRequest.QueueUrl = myQueueURL;
-   ```
+**Topics**
++ [Receive a message](#ReceiveMessage-receive)
++ [Delete a message](#ReceiveMessage-delete)
++ [Complete code](#ReceiveMessage-complete-code)
 
-   For more information about your queue URL, see [Your Amazon SQS Queue URL](QueueURL.md#sqs-queue-url)\.
+## Receive a message<a name="ReceiveMessage-receive"></a>
 
-1. Pass the request object as a parameter to the [ReceiveMessage](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/MSQSReceiveMessageReceiveMessageRequest.html) method, as follows\.
+The following snippet receives a message from the queue identified by the given queue URL\.
 
-   ```
-   var receiveMessageResponse = sqsClient.ReceiveMessage(receiveMessageRequest);
-   ```
+The example [at the end of this topic](#ReceiveMessage-complete-code) shows this snippet in use\.
 
-   The method returns a [ReceiveMessageResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TReceiveMessageResponse.html) instance, containing the list of messages the queue contains\.
+```
+    //
+    // Method to read a message from the given queue
+    // In this example, it gets one message at a time
+    private static async Task<ReceiveMessageResponse> GetMessage(
+      IAmazonSQS sqsClient, string qUrl, int waitTime=0)
+    {
+      return await sqsClient.ReceiveMessageAsync(new ReceiveMessageRequest{
+        QueueUrl=qUrl,
+        MaxNumberOfMessages=MaxMessages,
+        WaitTimeSeconds=waitTime
+        // (Could also request attributes, set visibility timeout, etc.)
+      });
+    }
+```
 
-1. The `ReceiveMessageResponse.ReceiveMessageResult` property contains a [ReceiveMessageResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TReceiveMessageResponse.html) object, which contains a list of the messages that were received\. Iterate through this list and call the `ProcessMessage` method to process each message\.
+## Delete a message<a name="ReceiveMessage-delete"></a>
 
-   ```
-   foreach (var message in result.Messages)
-   {
-     ProcessMessage(message);  // Go to a method to process messages.
-   }
-   ```
+The following snippet deletes a message from the queue identified by the given queue URL\.
 
-   The `ProcessMessage` method can use the `ReceiptHandle` property to obtain a receipt handle for the message\. You can use this receipt handle to change the message visibility timeout or to delete the message from the queue\. For more information about how to change the visibility timeout for a message, see [ChangeMessageVisibility](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/MSQSChangeMessageVisibilityChangeMessageVisibilityRequest.html)\.
+The example [at the end of this topic](#ReceiveMessage-complete-code) shows this snippet in use\.
 
-For information about sending a message to your queue, see [Sending an Amazon SQS Message](SendMessage.md#send-sqs-message)\.
+```
+    //
+    // Method to delete a message from a queue
+    private static async Task DeleteMessage(
+      IAmazonSQS sqsClient, Message message, string qUrl)
+    {
+      Console.WriteLine($"\nDeleting message {message.MessageId} from queue...");
+      await sqsClient.DeleteMessageAsync(qUrl, message.ReceiptHandle);
+    }
+```
 
-For more information about deleting a message from the queue, see [Deleting a Message from an Amazon SQS Queue](DeleteMessage.md#delete-sqs-message)\.
+## Complete code<a name="ReceiveMessage-complete-code"></a>
+
+This section shows relevant references and the complete code for this example\.
+
+### SDK references<a name="w4aac17c25c27c21b5b1"></a>
+
+NuGet packages:
++ [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
+
+Programming elements:
++ Namespace [Amazon\.SQS](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/NSQS.html)
+
+  Class [AmazonSQSClient](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TSQSClient.html)
++ Namespace [Amazon\.SQS\.Model](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/NSQSModel.html)
+
+  Class [ReceiveMessageRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TReceiveMessageRequest.html)
+
+  Class [ReceiveMessageResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TReceiveMessageResponse.html)
+
+### The code<a name="w4aac17c25c27c21b7b1"></a>
+
+```
+using System;
+using System.Threading.Tasks;
+using Amazon.SQS;
+using Amazon.SQS.Model;
+
+namespace SQSReceiveMessages
+{
+  class Program
+  {
+    private const int MaxMessages = 1;
+    private const int WaitTime = 2;
+    static async Task Main(string[] args)
+    {
+      // Do some checks on the command-line
+      if(args.Length == 0)
+      {
+        Console.WriteLine("\nUsage: SQSReceiveMessages queue_url");
+        Console.WriteLine("   queue_url - The URL of an existing SQS queue.");
+        return;
+      }
+      if(!args[0].StartsWith("https://sqs."))
+      {
+        Console.WriteLine("\nThe command-line argument isn't a queue URL:");
+        Console.WriteLine($"{args[0]}");
+        return;
+      }
+
+      // Create the Amazon SQS client
+      var sqsClient = new AmazonSQSClient();
+
+      // (could verify that the queue exists)
+      // Read messages from the queue and perform appropriate actions
+      Console.WriteLine($"Reading messages from queue\n  {args[0]}");
+      Console.WriteLine("Press any key to stop. (Response might be slightly delayed.)");
+      do
+      {
+        var msg = await GetMessage(sqsClient, args[0], WaitTime);
+        if(msg.Messages.Count != 0)
+        {
+          if(ProcessMessage(msg.Messages[0]))
+            await DeleteMessage(sqsClient, msg.Messages[0], args[0]);
+        }
+      } while(!Console.KeyAvailable);
+    }
+
+
+    //
+    // Method to read a message from the given queue
+    // In this example, it gets one message at a time
+    private static async Task<ReceiveMessageResponse> GetMessage(
+      IAmazonSQS sqsClient, string qUrl, int waitTime=0)
+    {
+      return await sqsClient.ReceiveMessageAsync(new ReceiveMessageRequest{
+        QueueUrl=qUrl,
+        MaxNumberOfMessages=MaxMessages,
+        WaitTimeSeconds=waitTime
+        // (Could also request attributes, set visibility timeout, etc.)
+      });
+    }
+
+
+    //
+    // Method to process a message
+    // In this example, it simply prints the message
+    private static bool ProcessMessage(Message message)
+    {
+      Console.WriteLine($"\nMessage body of {message.MessageId}:");
+      Console.WriteLine($"{message.Body}");
+      return true;
+    }
+
+
+    //
+    // Method to delete a message from a queue
+    private static async Task DeleteMessage(
+      IAmazonSQS sqsClient, Message message, string qUrl)
+    {
+      Console.WriteLine($"\nDeleting message {message.MessageId} from queue...");
+      await sqsClient.DeleteMessageAsync(qUrl, message.ReceiptHandle);
+    }
+  }
+}
+```
+
+**Additional considerations**
++ To specify long polling, this example uses the `WaitTimeSeconds` property for each call to the `ReceiveMessageAsync` method\.
+
+  You can also specify long polling for all messages on a queue by using the `ReceiveMessageWaitTimeSeconds` attribute when [creating](CreateQueue.md) or [updating](UpdateSqsQueue.md) the queue\.
+
+  For information about short polling versus long polling, see [Short and long polling](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-short-and-long-polling.html) in the *Amazon Simple Queue Service Developer Guide*\.
++ During message processing, you can use the receipt handle to change the message visibility timeout\. For information about how to do this, see the `ChangeMessageVisibilityAsync` methods of the [AmazonSQSClient](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TSQSClient.html) class\.
++ Calling the `DeleteMessageAsync` method unconditionally removes the message from the queue, regardless of the visibility timeout setting\.

@@ -1,48 +1,70 @@
-# Terminating an Amazon EC2 Instance<a name="terminate-instance"></a>
+# Terminating an Amazon EC2 instance<a name="terminate-instance"></a>
 
 When you no longer need one or more of your Amazon EC2 instances, you can terminate them\.
 
-For information on creating an Amazon EC2 client, see [Creating an Amazon EC2 Client](init-ec2-client.md)\.
+This example shows you how to use the AWS SDK for \.NET to terminate EC2 instances\. It takes an instance ID as input\.
 
-**To terminate an EC2 instance**
+## SDK references<a name="w4aac17c19c19c11b7b1"></a>
 
-1. Create and initialize a [TerminateInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TTerminateInstancesRequest.html) object\.
+NuGet packages:
++ [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
 
-1. Set the `TerminateInstancesRequest.InstanceIds` property to a list of one or more instance IDs for the instances to terminate\.
+Programming elements:
++ Namespace [Amazon\.EC2](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/NEC2.html)
 
-1. Pass the request object to the [TerminateInstances](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2TerminateInstancesTerminateInstancesRequest.html) method\. If the specified instance doesn’t exist, an [AmazonEC2Exception](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TEC2Exception.html) is thrown\.
+  Class [AmazonEC2Client](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TEC2Client.html)
++ Namespace [Amazon\.EC2\.Model](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/NEC2Model.html)
 
-1. You can use the [TerminateInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TTerminateInstancesResponse.html) object to list the terminated instances, as follows\.
+  Class [TerminateInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TTerminateInstancesRequest.html)
 
-   ```
-   public static void TerminateInstance(
-     AmazonEC2Client ec2Client,
-     string instanceId)
-   {
-     var request = new TerminateInstancesRequest();
-     request.InstanceIds = new List<string>() { instanceId };
-   
-     try
-     {
-       var response = ec2Client.TerminateInstances(request);
-       foreach (InstanceStateChange item in response.TerminatingInstances)
-       {
-         Console.WriteLine("Terminated instance: " + item.InstanceId);
-         Console.WriteLine("Instance state: " + item.CurrentState.Name);
-       }
-     }
-     catch(AmazonEC2Exception ex)
-     {
-       // Check the ErrorCode to see if the instance does not exist.
-       if ("InvalidInstanceID.NotFound" == ex.ErrorCode)
-       {
-         Console.WriteLine("Instance {0} does not exist.", instanceId);
-       }
-       else
-       {
-         // The exception was thrown for another reason, so re-throw the exception.
-         throw;
-       }
-     }
-   }
-   ```
+  Class [TerminateInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TTerminateInstancesResponse.html)
+
+```
+using System;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using Amazon.EC2;
+using Amazon.EC2.Model;
+
+namespace EC2TerminateInstance
+{
+  class Program
+  {
+    static async Task Main(string[] args)
+    {
+      if((args.Length == 1) && (args[0].StartsWith("i-")))
+      {
+        // Terminate the instance
+        var ec2Client = new AmazonEC2Client();
+        await TerminateInstance(ec2Client, args[0]);
+      }
+      else
+      {
+        Console.WriteLine("\nCommand-line argument missing or incorrect.");
+        Console.WriteLine("\nUsage: EC2TerminateInstance instance-ID");
+        Console.WriteLine("  instance-ID - The EC2 instance you want to terminate.");
+        return;
+      }
+    }
+
+    //
+    // Method to terminate an EC2 instance
+    private static async Task TerminateInstance(IAmazonEC2 ec2Client, string instanceID)
+    {
+      var request = new TerminateInstancesRequest{
+        InstanceIds = new List<string>() { instanceID }};
+      TerminateInstancesResponse response =
+        await ec2Client.TerminateInstancesAsync(new TerminateInstancesRequest{
+          InstanceIds = new List<string>() { instanceID }
+        });
+      foreach (InstanceStateChange item in response.TerminatingInstances)
+      {
+        Console.WriteLine("Terminated instance: " + item.InstanceId);
+        Console.WriteLine("Instance state: " + item.CurrentState.Name);
+      }
+    }
+  }
+}
+```
+
+After you run the example, it's a good idea to sign in to the [Amazon EC2 console](https://console.aws.amazon.com/ec2/) to verify that the [EC2 instance](https://console.aws.amazon.com/ec2/v2/home#Instances) has been terminated\.

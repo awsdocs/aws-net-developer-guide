@@ -1,15 +1,6 @@
-# Amazon EC2 Spot Instance Examples<a name="how-to-spot-instances"></a>
+# Amazon EC2 Spot Instance tutorial<a name="how-to-spot-instances"></a>
 
-This topic describes how to use the AWS SDK for \.NET to create, cancel, and terminate an Amazon EC2 Spot Instance\.
-
-**Topics**
-+ [Overview](#tutor-spot-net-overview)
-+ [Prerequisites](#tutor-spot-net-prereq)
-+ [Setting Up Your Credentials](#tutor-spot-net-credentials)
-+ [Submitting Your Spot Request](#tutor-spot-net-submit)
-+ [Determining the State of Your Spot Request](#tutor-spot-net-request-state)
-+ [Cleaning Up Your Spot Requests and Instances](#tutor-spot-net-cleaning-up)
-+ [Putting it all Together](#tutor-spot-net-main)
+This tutorial shows you how to use the AWS SDK for \.NET to manage Amazon EC2 Spot Instances\.
 
 ## Overview<a name="tutor-spot-net-overview"></a>
 
@@ -27,372 +18,390 @@ The following is a high\-level summary of how Spot Instances are requested and u
 
 This has been a very high level overview of Spot Instances\. You can gain a better understanding of Spot Instances by reading about them in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/using-spot-instances.html)\.
 
-This tutorial provides an overview of how to use the \.NET programming environment to do the following\.
-+ Submit a Spot request
-+ Determine when the Spot request becomes fulfilled
-+ Cancel the Spot request
+## About this tutorial<a name="about-spot-instances-tutorial"></a>
+
+As you follow this tutorial, you use the AWS SDK for \.NET to do the following:
++ Create a Spot Instance request
++ Determine when the Spot Instance request has been fulfilled
++ Cancel the Spot Instance request
 + Terminate associated instances
+
+The following sections provide snippets and other information for this example\. The [complete code for the example](#tutor-spot-net-main) is shown after the snippets, and can be built and run as is\.
+
+**Topics**
++ [Overview](#tutor-spot-net-overview)
++ [About this tutorial](#about-spot-instances-tutorial)
++ [Prerequisites](#tutor-spot-net-prereq)
++ [Gather what you need](#tutor-spot-net-gather)
++ [Creating a Spot Instance request](#tutor-spot-net-submit)
++ [Determine the state of your Spot Instance request](#tutor-spot-net-request-state)
++ [Clean up your Spot Instance requests](#tutor-spot-net-clean-up-request)
++ [Clean up your Spot Instances](#tutor-spot-net-clean-up-instance)
++ [Complete code](#tutor-spot-net-main)
 
 ## Prerequisites<a name="tutor-spot-net-prereq"></a>
 
-This tutorial assumes you have signed up for AWS, set up your \.NET development environment, and installed the AWS SDK for \.NET\. If you use the Microsoft Visual Studio development environment, we recommend you also install the AWS Toolkit for Visual Studio\. For instructions on setting up your environment, see [Getting Started with the AWS SDK for \.NET](net-dg-setup.md)\.
+For information about the APIs and prerequisites, see the parent section \([Working with Amazon EC2](ec2-apis-intro.md)\)\.
 
-## Setting Up Your Credentials<a name="tutor-spot-net-credentials"></a>
+## Gather what you need<a name="tutor-spot-net-gather"></a>
 
-For information about how to use your AWS credentials with the SDK, see [Configuring AWS Credentials](net-dg-config-creds.md)\.
+To create a Spot Instance request, you'll need several things\. 
++ The number of instances and their instance type\. There are several instance types to choose from, which you can see in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html)\. The default number for this tutorial is 1\.
++ The Amazon Machine Image \(AMI\) that will be used to create the instance\. See the information about AMIs in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/AMIs.html)\. For example, read about shared AMIs in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html)\.
++ The maximum price that you're willing to pay per instance hour\. You can see the prices for all instance types \(for both On\-Demand Instances and Spot Instances\) on the [Amazon EC2 pricing page](https://aws.amazon.com/ec2/pricing/)\. The default price for this tutorial is explained later\.
++ If you want to connect remotely to an instance, a security group with the appropriate configuration and resources\. This is described in [Working with security groups in Amazon EC2](security-groups.md) and the information about [gathering what you need](run-instance.md#run-instance-gather) and [connecting to an instance](run-instance.md#connect-to-instance) in [Launching an Amazon EC2 instance](run-instance.md)\. For simplicity, this tutorial uses the security group named **default** that all newer AWS accounts have\.
 
-## Submitting Your Spot Request<a name="tutor-spot-net-submit"></a>
+There are many ways to approach requesting Spot Instances\. The following are common strategies:
++ Make requests that are sure to cost less than on\-demand pricing\.
++ Make requests based on the value of the resulting computation\.
++ Make requests so as to acquire computing capacity as quickly as possible\.
 
-To submit a Spot request, you first need to determine the instance type, the Amazon Machine Image \(AMI\), and the maximum request you want to offer\. You must also include a security group, so that you can log into the instance if you want to\. For more information about creating security groups, see [Creating a Security Group in Amazon EC2](security-groups.md#create-security-group)\.
+The following explanations refer to the Spot Price history in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/using-spot-instances-history.html)\.
 
-There are several instance types to choose from; go to [Amazon EC2 Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) for a complete list\. For this tutorial, we will use `t1.micro`\. You’ll also want to get the ID of a current Windows AMI\. For more information, see [Finding an AMI](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/finding-an-ami.html) in the Amazon EC2 User Guide for Windows Instances\.
+### Reduce cost below On\-Demand<a name="reduce-cost"></a>
 
-There are many ways to approach requesting Spot Instances\. To get started, we’ll describe three common strategies:
-+ Request to ensure that the cost is less than on\-demand pricing\.
-+ Request based on the value of the resulting computation\.
-+ Request so as to acquire computing capacity as quickly as possible\.
+You have a batch processing job that will take a number of hours or days to run\. However, you are flexible with respect to when it starts and ends\. You want to see if you can complete it for less than the cost of On\-Demand Instances\.
 
-** *Reduce Cost Below On\-Demand* **  
-You have a batch processing job that will take a number of hours or days to run\. However, you are flexible with respect to when it starts and ends\. You want to see if you can complete it for less than the cost of On\-Demand Instances\. You examine the Spot Price history for instance types using either the AWS Management Console or the Amazon EC2 API\. For more information, go to [Viewing Spot Price History](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html)\. After you’ve analyzed the price history for your desired instance type in a given Availability Zone, you have two alternative approaches for your request:  
-+ Specify a request at the upper end of the range of Spot Prices, which are still below the On\-Demand price, anticipating that your one\-time Spot request would most likely be fulfilled and run for enough consecutive compute time to complete the job\.
-+ Specify a request at the lower end of the price range, and plan to combine many instances launched over time through a persistent request\. The instances would run long enough, in aggregate, to complete the job at an even lower total cost\. \(We will explain how to automate this task later in this tutorial\.\)
+You examine the Spot Price history for instance types by using either the Amazon EC2 console or the Amazon EC2 API\. After you've analyzed the price history for your desired instance type in a given Availability Zone, you have two alternative approaches for your request:
++ Specify a request at the upper end of the range of Spot Prices, which are still below the On\-Demand price, anticipating that your one\-time Spot Instance request would most likely be fulfilled and run for enough consecutive compute time to complete the job\.
++ Specify a request at the lower end of the price range, and plan to combine many instances launched over time through a persistent request\. The instances would run long enough, in aggregate, to complete the job at an even lower total cost\.
 
-** *Pay No More than the Value of the Result* **  
-You have a data processing job to run\. You understand the value of the job’s results well enough to know how much they are worth in terms of computing costs\. After you’ve analyzed the Spot Price history for your instance type, you choose a request at which the cost of the computing time is no more than the value of the job’s results\. You create a persistent request and allow it to run intermittently as the Spot Price fluctuates at or below your request\.
+### Pay no more than the value of the result<a name="value-of-result"></a>
 
-** *Acquire Computing Capacity Quickly* **  
-You have an unanticipated, short\-term need for additional capacity that is not available through On\-Demand Instances\. After you’ve analyzed the Spot Price history for your instance type, you request above the highest historical price to greatly improve the likelihood your request will be fulfilled quickly and continue computing until it is complete\.
+You have a data processing job to run\. You understand the value of the job's results well enough to know how much they're worth in terms of computing costs\.
 
-After you have performed your analysis, you are ready to request a Spot Instance\. For this tutorial the default maximum spot\-instance price is set to be the same as the On\-Demand price \(which is $0\.003 for this tutorial\)\. Setting the price in this way maximizes the chances that the request will be fulfilled\. You can determine the types of available instances and the On\-Demand prices for instances by going to [Amazon EC2 Pricing page](https://aws.amazon.com/ec2/pricing/)\.
+After you've analyzed the Spot Price history for your instance type, you choose a price at which the cost of the computing time is no more than the value of the job's results\. You create a persistent request and allow it to run intermittently as the Spot Price fluctuates at or below your request\.
 
-First specify the \.NET namespaces used in the application\.
+### Acquire computing capacity quickly<a name="acquire-quickly"></a>
+
+You have an unanticipated, short\-term need for additional capacity that's not available through On\-Demand Instances\. After you've analyzed the Spot Price history for your instance type, you choose a price above the highest historical price to greatly improve the likelihood that your request will be fulfilled quickly and continue computing until it's complete\.
+
+After you have gathered what you need and chosen a strategy, you are ready to request a Spot Instance\. For this tutorial the default maximum spot\-instance price is set to be the same as the On\-Demand price \(which is $0\.003 for this tutorial\)\. Setting the price in this way maximizes the chances that the request will be fulfilled\.
+
+## Creating a Spot Instance request<a name="tutor-spot-net-submit"></a>
+
+The following snippet shows you how to create a Spot Instance request with the elements you gathered earlier\.
+
+The example [at the end of this topic](#tutor-spot-net-main) shows this snippet in use\.
+
+```
+    //
+    // Method to create a Spot Instance request
+    private static async Task<SpotInstanceRequest> CreateSpotInstanceRequest(
+      IAmazonEC2 ec2Client, string amiId, string securityGroupName,
+      InstanceType instanceType, string spotPrice, int instanceCount)
+    {
+      var launchSpecification = new LaunchSpecification{
+        ImageId = amiId,
+        InstanceType = instanceType
+      };
+      launchSpecification.SecurityGroups.Add(securityGroupName);
+      var request = new RequestSpotInstancesRequest{
+        SpotPrice = spotPrice,
+        InstanceCount = instanceCount,
+        LaunchSpecification = launchSpecification
+      };
+
+      RequestSpotInstancesResponse result =
+        await ec2Client.RequestSpotInstancesAsync(request);
+      return result.SpotInstanceRequests[0];
+    }
+```
+
+The important value returned from this method is the Spot Instance request ID, which is contained in the `SpotInstanceRequestId` member of the returned [SpotInstanceRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TSpotInstanceRequest.html) object\.
+
+**Note**  
+You will be charged for any Spot Instances that are launched\. To avoid unnecessary costs be sure to [cancel any requests](#tutor-spot-net-clean-up-request) and [terminate any instances](#tutor-spot-net-clean-up-instance)\.
+
+## Determine the state of your Spot Instance request<a name="tutor-spot-net-request-state"></a>
+
+The following snippet shows you how to get information about your Spot Instance request\. You can use that information to make certain decisions in your code, such as whether to continue waiting for a Spot Instance request to be fulfilled\.
+
+The example [at the end of this topic](#tutor-spot-net-main) shows this snippet in use\.
+
+```
+    //
+    // Method to get information about a Spot Instance request, including the status,
+    // instance ID, etc.
+    // It gets the information for a specific request (as opposed to all requests).
+    private static async Task<SpotInstanceRequest> GetSpotInstanceRequestInfo(
+      IAmazonEC2 ec2Client, string requestId)
+    {
+      var describeRequest = new DescribeSpotInstanceRequestsRequest();
+      describeRequest.SpotInstanceRequestIds.Add(requestId);
+
+      DescribeSpotInstanceRequestsResponse describeResponse =
+        await ec2Client.DescribeSpotInstanceRequestsAsync(describeRequest);
+      return describeResponse.SpotInstanceRequests[0];
+    }
+```
+
+The method returns information about the Spot Instance request such as the instance ID, it's state, and the status code\. You can see the status codes for Spot Instance requests in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html#spot-instance-bid-status-understand) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/spot-bid-status.html#spot-instance-bid-status-understand)\.
+
+## Clean up your Spot Instance requests<a name="tutor-spot-net-clean-up-request"></a>
+
+When you no longer need to request Spot Instances, it's important to cancel any outstanding requests to prevent those requests from being re\-fulfilled\. The following snippet shows you how to cancel a Spot Instance request\.
+
+The example [at the end of this topic](#tutor-spot-net-main) shows this snippet in use\.
+
+```
+    //
+    // Method to cancel a Spot Instance request
+    private static async Task CancelSpotInstanceRequest(
+      IAmazonEC2 ec2Client, string requestId)
+    {
+      var cancelRequest = new CancelSpotInstanceRequestsRequest();
+      cancelRequest.SpotInstanceRequestIds.Add(requestId);
+
+      await ec2Client.CancelSpotInstanceRequestsAsync(cancelRequest);
+    }
+```
+
+## Clean up your Spot Instances<a name="tutor-spot-net-clean-up-instance"></a>
+
+To avoid unnecessary costs, it's important that you terminate any instances that were started from Spot Instance requests; simply canceling Spot Instance requests will not terminate your instances, which means that you'll continue to be charged for them\. The following snippet shows you how to terminate an instance after you obtain the instance identifier for an active Spot Instance\.
+
+The example [at the end of this topic](#tutor-spot-net-main) shows this snippet in use\.
+
+```
+    //
+    // Method to terminate a Spot Instance
+    private static async Task TerminateSpotInstance(
+      IAmazonEC2 ec2Client, string requestId)
+    {
+      var describeRequest = new DescribeSpotInstanceRequestsRequest();
+      describeRequest.SpotInstanceRequestIds.Add(requestId);
+
+      // Retrieve the Spot Instance request to check for running instances.
+      DescribeSpotInstanceRequestsResponse describeResponse =
+        await ec2Client.DescribeSpotInstanceRequestsAsync(describeRequest);
+
+      // If there are any running instances, terminate them
+      if(   (describeResponse.SpotInstanceRequests[0].Status.Code
+              == "request-canceled-and-instance-running")
+         || (describeResponse.SpotInstanceRequests[0].State == SpotInstanceState.Active))
+      {
+        TerminateInstancesResponse response =
+          await ec2Client.TerminateInstancesAsync(new TerminateInstancesRequest{
+            InstanceIds = new List<string>(){
+              describeResponse.SpotInstanceRequests[0].InstanceId } });
+        foreach (InstanceStateChange item in response.TerminatingInstances)
+        {
+          Console.WriteLine($"\n  Terminated instance: {item.InstanceId}");
+          Console.WriteLine($"  Instance state: {item.CurrentState.Name}\n");
+        }
+      }
+    }
+```
+
+## Complete code<a name="tutor-spot-net-main"></a>
+
+The following code example calls the methods described earlier to create and cancel a Spot Instance request and terminate a Spot Instance\.
+
+### SDK references<a name="w4aac17c19c21c43b5b1"></a>
+
+NuGet packages:
++ [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
+
+Programming elements:
++ Namespace [Amazon\.EC2](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/NEC2.html)
+
+  Class [AmazonEC2Client](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TEC2Client.html)
+
+  Class [InstanceType](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TInstanceType.html)
++ Namespace [Amazon\.EC2\.Model](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/NEC2Model.html)
+
+  Class [CancelSpotInstanceRequestsRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TCancelSpotInstanceRequestsRequest.html)
+
+  Class [DescribeSpotInstanceRequestsRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TDescribeSpotInstanceRequestsRequest.html)
+
+  Class [DescribeSpotInstanceRequestsResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TDescribeSpotInstanceRequestsResponse.html)
+
+  Class [InstanceStateChange](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TInstanceStateChange.html)
+
+  Class [LaunchSpecification](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TLaunchSpecification.html)
+
+  Class [RequestSpotInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRequestSpotInstancesRequest.html)
+
+  Class [RequestSpotInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRequestSpotInstancesResponse.html)
+
+  Class [SpotInstanceRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TSpotInstanceRequest.html)
+
+  Class [TerminateInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TTerminateInstancesRequest.html)
+
+  Class [TerminateInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TTerminateInstancesResponse.html)
+
+### The code<a name="w4aac17c19c21c43b7b1"></a>
 
 ```
 using System;
-using System.Collections.Generic;
 using System.Threading;
-using Amazon;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 using Amazon.EC2;
 using Amazon.EC2.Model;
-```
 
-For information on creating an Amazon EC2 client, see [Creating an Amazon EC2 Client](init-ec2-client.md)\.
+namespace EC2SpotInstanceRequests
+{
+  class Program
+  {
+    static async Task Main(string[] args)
+    {
+      // Some default values.
+      // These could be made into command-line arguments instead.
+      var instanceType = InstanceType.T1Micro;
+      string securityGroupName = "default";
+      string spotPrice = "0.003";
+      int instanceCount = 1;
 
-Next, to request a Spot Instance, you need to build your request with the parameters we have specified so far\. Start by creating a [RequestSpotInstanceRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRequestSpotInstancesRequest.html) object\. The request object requires the request amount and the number of instances you want to start\. Additionally, you need to set the [LaunchSpecification](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TLaunchSpecification.html) for the request, which includes the instance type, AMI ID, and the name of the security group you want to use for the Spot Instances\. After the request is populated, call the [RequestSpotInstances](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2RequestSpotInstancesRequestSpotInstancesRequest.html) method to create the Spot Instance request\. The following example demonstrates how to request a Spot Instance\.
+      // Parse the command line arguments
+      if((args.Length != 1) || (!args[0].StartsWith("ami-")))
+      {
+        Console.WriteLine("\nUsage: EC2SpotInstanceRequests ami");
+        Console.WriteLine("  ami: the Amazon Machine Image to use for the Spot Instances.");
+        return;
+      }
 
-```
-        /* Creates a spot instance
-         *
-         * Takes six args:
-         *   AmazonEC2Client ec2Client is the EC2 client through which the spot instance request is made
-         *   string amiId is the AMI of the instance to request
-         *   string securityGroupName is the name of the security group of the instance to request
-         *   InstanceType instanceType is the type of the instance to request
-         *   string spotPrice is the price of the instance to request
-         *   int instanceCount is the number of instances to request
-         *
-         * See https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2RequestSpotInstancesRequestSpotInstancesRequest.html
-         */
-        private static SpotInstanceRequest RequestSpotInstance(
-            AmazonEC2Client ec2Client,
-            string amiId,
-            string securityGroupName,
-            InstanceType instanceType,
-            string spotPrice,
-            int instanceCount)
+      // Create the Amazon EC2 client.
+      var ec2Client = new AmazonEC2Client();
+
+      // Create the Spot Instance request and record its ID
+      Console.WriteLine("\nCreating spot instance request...");
+      var req = await CreateSpotInstanceRequest(
+        ec2Client, args[0], securityGroupName, instanceType, spotPrice, instanceCount);
+      string requestId = req.SpotInstanceRequestId;
+
+      // Wait for an EC2 Spot Instance to become active
+      Console.WriteLine(
+        $"Waiting for Spot Instance request with ID {requestId} to become active...");
+      int wait = 1;
+      var start = DateTime.Now;
+      while(true)
+      {
+        Console.Write(".");
+
+        // Get and check the status to see if the request has been fulfilled.
+        var requestInfo = await GetSpotInstanceRequestInfo(ec2Client, requestId);
+        if(requestInfo.Status.Code == "fulfilled")
         {
-            RequestSpotInstancesRequest request = new RequestSpotInstancesRequest
-            {
-                SpotPrice = spotPrice,
-                InstanceCount = instanceCount
-            };
-
-            LaunchSpecification launchSpecification = new LaunchSpecification
-            {
-                ImageId = amiId,
-                InstanceType = instanceType
-            };
-
-            launchSpecification.SecurityGroups.Add(securityGroupName);
-
-            request.LaunchSpecification = launchSpecification;
-
-            var result = ec2Client.RequestSpotInstancesAsync(request);
-
-            return result.Result.SpotInstanceRequests[0];
+          Console.WriteLine($"\nSpot Instance request {requestId} " +
+            $"has been fulfilled by instance {requestInfo.InstanceId}.\n");
+          break;
         }
-```
 
-The Spot request ID is contained in the `SpotInstanceRequestId` member of the [SpotInstanceRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TSpotInstanceRequest.html) object\.
+        // Wait a bit and try again, longer each time (1, 2, 4, ...)
+        Thread.Sleep(wait);
+        wait = wait * 2;
+      }
 
-Running this code will launch a new Spot Instance request\.
+      // Show the user how long it took to fulfill the Spot Instance request.
+      TimeSpan span = DateTime.Now.Subtract(start);
+      Console.WriteLine($"That took {span.TotalMilliseconds} milliseconds");
 
-**Note**  
-You will be charged for any Spot Instances that are launched, so make sure you cancel any requests and terminate any instances you launch to reduce any associated fees\.
+      // Perform actions here as needed.
+      // For this example, simply wait for the user to hit a key.
+      // That gives them a chance to look at the EC2 console to see
+      // the running instance if they want to.
+      Console.WriteLine("Press any key to start the cleanup...");
+      Console.ReadKey(true);
 
-There are other options you can use to configure your Spot requests\. To learn more, see [RequestSpotInstances](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2RequestSpotInstancesRequestSpotInstancesRequest.html) in the AWS SDK for \.NET\.
+      // Cancel the request.
+      // Do this first to make sure that the request can't be re-fulfilled
+      // once the Spot Instance has been terminated.
+      Console.WriteLine("Canceling Spot Instance request...");
+      await CancelSpotInstanceRequest(ec2Client, requestId);
 
-## Determining the State of Your Spot Request<a name="tutor-spot-net-request-state"></a>
+      // Terminate the Spot Instance that's running.
+      Console.WriteLine("Terminating the running Spot Instance...");
+      await TerminateSpotInstance(ec2Client, requestId);
 
-Next, we need to wait until the Spot request reaches the `Active` state before proceeding to the last step\. To determine the state of your Spot request, we use the [DescribeSpotInstanceRequests](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TDescribeSpotInstanceRequestsRequest.html) method to obtain the state of the Spot request ID we want to monitor\.
+      Console.WriteLine("Done. Press any key to exit...");
+      Console.ReadKey(true);
+    }
 
-```
-        /* Gets the state of a spot instance request.
-         * Takes two args:
-         *   AmazonEC2Client ec2Client is the EC2 client through which information about the state of the spot instance is made
-         *   string spotRequestId is the ID of the spot instance
-         *
-         * See https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2DescribeSpotInstanceRequests.html
-         */
-        private static SpotInstanceState GetSpotRequestState(
-            AmazonEC2Client ec2Client,
-            string spotRequestId)
+
+    //
+    // Method to create a Spot Instance request
+    private static async Task<SpotInstanceRequest> CreateSpotInstanceRequest(
+      IAmazonEC2 ec2Client, string amiId, string securityGroupName,
+      InstanceType instanceType, string spotPrice, int instanceCount)
+    {
+      var launchSpecification = new LaunchSpecification{
+        ImageId = amiId,
+        InstanceType = instanceType
+      };
+      launchSpecification.SecurityGroups.Add(securityGroupName);
+      var request = new RequestSpotInstancesRequest{
+        SpotPrice = spotPrice,
+        InstanceCount = instanceCount,
+        LaunchSpecification = launchSpecification
+      };
+
+      RequestSpotInstancesResponse result =
+        await ec2Client.RequestSpotInstancesAsync(request);
+      return result.SpotInstanceRequests[0];
+    }
+
+
+    //
+    // Method to get information about a Spot Instance request, including the status,
+    // instance ID, etc.
+    // It gets the information for a specific request (as opposed to all requests).
+    private static async Task<SpotInstanceRequest> GetSpotInstanceRequestInfo(
+      IAmazonEC2 ec2Client, string requestId)
+    {
+      var describeRequest = new DescribeSpotInstanceRequestsRequest();
+      describeRequest.SpotInstanceRequestIds.Add(requestId);
+
+      DescribeSpotInstanceRequestsResponse describeResponse =
+        await ec2Client.DescribeSpotInstanceRequestsAsync(describeRequest);
+      return describeResponse.SpotInstanceRequests[0];
+    }
+
+
+    //
+    // Method to cancel a Spot Instance request
+    private static async Task CancelSpotInstanceRequest(
+      IAmazonEC2 ec2Client, string requestId)
+    {
+      var cancelRequest = new CancelSpotInstanceRequestsRequest();
+      cancelRequest.SpotInstanceRequestIds.Add(requestId);
+
+      await ec2Client.CancelSpotInstanceRequestsAsync(cancelRequest);
+    }
+
+
+    //
+    // Method to terminate a Spot Instance
+    private static async Task TerminateSpotInstance(
+      IAmazonEC2 ec2Client, string requestId)
+    {
+      var describeRequest = new DescribeSpotInstanceRequestsRequest();
+      describeRequest.SpotInstanceRequestIds.Add(requestId);
+
+      // Retrieve the Spot Instance request to check for running instances.
+      DescribeSpotInstanceRequestsResponse describeResponse =
+        await ec2Client.DescribeSpotInstanceRequestsAsync(describeRequest);
+
+      // If there are any running instances, terminate them
+      if(   (describeResponse.SpotInstanceRequests[0].Status.Code
+              == "request-canceled-and-instance-running")
+         || (describeResponse.SpotInstanceRequests[0].State == SpotInstanceState.Active))
+      {
+        TerminateInstancesResponse response =
+          await ec2Client.TerminateInstancesAsync(new TerminateInstancesRequest{
+            InstanceIds = new List<string>(){
+              describeResponse.SpotInstanceRequests[0].InstanceId } });
+        foreach (InstanceStateChange item in response.TerminatingInstances)
         {
-            // Create the describeRequest object with all of the request ids
-            // to monitor (e.g. that we started).
-            var request = new DescribeSpotInstanceRequestsRequest();
-            request.SpotInstanceRequestIds.Add(spotRequestId);
-
-            // Retrieve the request we want to monitor.
-            var describeResponse = ec2Client.DescribeSpotInstanceRequestsAsync(request);
-
-            SpotInstanceRequest req = describeResponse.Result.SpotInstanceRequests[0];
-
-            return req.State;
+          Console.WriteLine($"\n  Terminated instance: {item.InstanceId}");
+          Console.WriteLine($"  Instance state: {item.CurrentState.Name}\n");
         }
+      }
+    }
+  }
+}
 ```
 
-## Cleaning Up Your Spot Requests and Instances<a name="tutor-spot-net-cleaning-up"></a>
-
-The final step is to clean up your requests and instances\. It is important to both cancel any outstanding requests and terminate any instances\. Just canceling your requests will not terminate your instances, which means that you will continue to be charged for them\. If you terminate your instances, your Spot requests may be canceled, but there are some scenarios, such as if you use persistent requests, where terminating your instances is not sufficient to stop your request from being re\-fulfilled\. Therefore, it is a best practice to both cancel any active requests and terminate any running instances\.
-
-You use the [CancelSpotInstanceRequests](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2CancelSpotInstanceRequestsCancelSpotInstanceRequestsRequest.html) method to cancel a Spot request\. The following example demonstrates how to cancel a Spot request\.
-
-```
-        /* Cancels a spot instance request
-         * Takes two args:
-         *   AmazonEC2Client ec2Client is the EC2 client through which the spot instance is cancelled
-         *   string spotRequestId is the ID of the spot instance
-         *
-         * See https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2CancelSpotInstanceRequestsCancelSpotInstanceRequestsRequest.html
-         */
-        private static void CancelSpotRequest(
-            AmazonEC2Client ec2Client,
-            string spotRequestId)
-        {
-            var cancelRequest = new CancelSpotInstanceRequestsRequest();
-
-            cancelRequest.SpotInstanceRequestIds.Add(spotRequestId);
-
-            ec2Client.CancelSpotInstanceRequestsAsync(cancelRequest);
-        }
-```
-
-You use the [TerminateInstances](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2TerminateInstancesTerminateInstancesRequest.html) method to terminate an instance\. The following example demonstrates how to obtain the instance identifier for an active Spot Instance and terminate the instance\.
-
-```
-        /* Terminates a spot instance request
-         * Takes two args:
-         *   AmazonEC2Client ec2Client is the EC2 client through which the spot instance is terminated
-         *   string spotRequestId is the ID of the spot instance
-         *
-         * See https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2TerminateInstancesTerminateInstancesRequest.html
-         */
-        private static void TerminateSpotInstance(
-            AmazonEC2Client ec2Client,
-            string spotRequestId)
-        {
-            var describeRequest = new DescribeSpotInstanceRequestsRequest();
-            describeRequest.SpotInstanceRequestIds.Add(spotRequestId);
-
-            // Retrieve the request we want to monitor.
-            var describeResponse = ec2Client.DescribeSpotInstanceRequestsAsync(describeRequest);
-
-            if (SpotInstanceState.Active == describeResponse.Result.SpotInstanceRequests[0].State)
-            {
-                string instanceId = describeResponse.Result.SpotInstanceRequests[0].InstanceId;
-
-                var terminateRequest = new TerminateInstancesRequest();
-                terminateRequest.InstanceIds = new List<string>() { instanceId };
-
-                try
-                {
-                    ec2Client.TerminateInstancesAsync(terminateRequest);
-                }
-                catch (AmazonEC2Exception ex)
-                {
-                    // Check the ErrorCode to see if the instance does not exist.
-                    if ("InvalidInstanceID.NotFound" == ex.ErrorCode)
-                    {
-                        Console.WriteLine("Instance {0} does not exist.", instanceId);
-                    }
-                    else
-                    {
-                        // The exception was thrown for another reason, so re-throw the exception.
-                        throw;
-                    }
-                }
-            }
-        }
-```
-
-For more information about terminating active instances, see [Terminating an Amazon EC2 Instance](terminate-instance.md)\.
-
-## Putting it all Together<a name="tutor-spot-net-main"></a>
-
-The following *main* routine calls these methods in the shown order to create, cancel, and terminate a spot instance request\. As the comment states, it takes one argument, the AMI\.
-
-```
-        /* Creates, cancels, and terminates a spot instance request
-         * 
-         *   AmazonEC2Client ec2Client is the EC2 client through which the spot instance is manipulated
-         *   string spotRequestId is the ID of the spot instance
-         *
-         * See https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2TerminateInstancesTerminateInstancesRequest.html
-         */
-
-        // Displays information about the command-line args
-        private static void Usage()
-        {
-            Console.WriteLine("");
-            Console.WriteLine("Usage:");
-            Console.WriteLine("");
-            Console.WriteLine("Ec2SpotCrud.exe AMI [-s SECURITY_GROUP] [-p SPOT_PRICE] [-c INSTANCE_COUNT] [-h]");
-            Console.WriteLine("  where:");
-            Console.WriteLine("  AMI is the AMI to use. No default value. Cannot be an empty string.");
-            Console.WriteLine("  SECURITY_GROUP is the name of a security group. Default is default. Cannot be an empty string.");
-            Console.WriteLine("  SPOT_PRICE is the spot price. Default is 0.003. Must be > 0.001.");
-            Console.WriteLine("  INSTANCE_COUNT is the number of instances. Default is 1. Must be > 0.");
-            Console.WriteLine("  -h displays this message and quits");
-            Console.WriteLine();
-        }
-        
-        /* Creates, cancels, and terminates a spot instance request
-         * See Usage() for information about the command-line args
-         */
-        static void Main(string[] args)
-        {
-            // Values that aren't easy to pass on the command line            
-            RegionEndpoint region = RegionEndpoint.USWest2;
-            InstanceType instanceType = InstanceType.T1Micro;
-            
-            // Default values for optional command-line args
-            string securityGroupName = "default";
-            string spotPrice = "0.003";
-            int instanceCount = 1;
-
-            // Placeholder for the only required command-line arg
-            string amiId = "";
-
-            // Parse command-line args
-            int i = 0;
-            while (i < args.Length)
-            {
-                switch (args[i])
-                {
-                    case "-s":
-                        i++;
-                        securityGroupName = args[i];
-                        if (securityGroupName == "")
-                        {
-                            Console.WriteLine("The security group name cannot be blank");
-                            Usage();
-                            return;
-                        }
-                        break;
-                    case "-p":
-                        i++;
-                        spotPrice = args[i];
-                        double price;
-                        double.TryParse(spotPrice, out price);
-                        if (price < 0.001)
-                        {
-                            Console.WriteLine("The spot price must be > 0.001");
-                            Usage();
-                            return;
-                        }
-                        break;
-                    case "-c":
-                        i++;
-                        int.TryParse(args[i], out instanceCount);
-                        if (instanceCount < 1)
-                        {
-                            Console.WriteLine("The instance count must be > 0");
-                            Usage();
-                            return;
-                        }
-                        break;
-                    case "-h":
-                        Usage();
-                        return;
-                    default:
-                        amiId = args[i];
-                        break;
-                }
-
-                i++;
-            }
-
-            // Make sure we have an AMI
-            if (amiId == "")
-            {
-                Console.WriteLine("You must supply an AMI");
-                Usage();
-                return;
-            }
-
-            AmazonEC2Client ec2Client = new AmazonEC2Client(region: region);
-
-            Console.WriteLine("Creating spot instance request");
-
-            SpotInstanceRequest req = RequestSpotInstance(ec2Client, amiId, securityGroupName, instanceType, spotPrice, instanceCount);
-
-            string id = req.SpotInstanceRequestId;
-
-            // Wait for it to become active
-            Console.WriteLine("Waiting for spot instance request with ID " + id + " to become active");
-
-            int wait = 1;
-            int totalTime = 0;
-
-            while (true)
-            {
-                totalTime += wait;
-                Console.Write(".");
-
-                SpotInstanceState state = GetSpotRequestState(ec2Client, id);
-
-                if (state == SpotInstanceState.Active)
-                {
-                    Console.WriteLine("");
-                    break;
-                }
-
-                // wait a bit and try again
-                Thread.Sleep(wait);
-
-                // wait longer next time
-                // 1, 2, 4, ...
-                wait = wait * 2;
-            }
-
-            // Should be around 1000 (one second)
-            Console.WriteLine("That took " + totalTime + " milliseconds");
-
-            // Cancel the request
-            Console.WriteLine("Canceling spot instance request");
-
-            CancelSpotRequest(ec2Client, id);
-
-            // Clean everything up
-            Console.WriteLine("Terminating spot instance request");
-
-            TerminateSpotInstance(ec2Client, id);
-
-            Console.WriteLine("Done. Press enter to quit");
-
-            Console.ReadLine();
-        }
-```
-
-See the [complete example](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/dotnet/example_code_legacy/ec2/Ec2SpotCRUD.cs), including information on how to build and run the example from the command line, on GitHub\.
+**Additional considerations**
++ After you run the tutorial, it's a good idea to sign in to the [Amazon EC2 console](https://console.aws.amazon.com/ec2/) to verify that the [Spot Instance request](https://console.aws.amazon.com/ec2sp/v1/spot/home) has been canceled and that the [Spot Instance](https://console.aws.amazon.com/ec2/v2/home#Instances) has been terminated\.

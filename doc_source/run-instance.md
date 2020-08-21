@@ -1,259 +1,580 @@
-# Launching an Amazon EC2 Instance<a name="run-instance"></a>
+# Launching an Amazon EC2 instance<a name="run-instance"></a>
 
-Use the following procedure to launch one or more identically configured Amazon EC2 instances from the same Amazon Machine Image \(AMI\)\. After you create your EC2 instances, you can check their status\. When your EC2 instances are running, you can connect to them\.
+This example shows you how to use the AWS SDK for \.NET to launch one or more identically configured Amazon EC2 instances from the same Amazon Machine Image \(AMI\)\. Using [several inputs](#run-instance-gather) that you supply, the application launches an EC2 instance and then monitors the instance until it's out of the "Pending" state\.
 
-For information on creating an Amazon EC2 client, see [Creating an Amazon EC2 Client](init-ec2-client.md)\.
+When your EC2 instance is running, you can connect to it remotely, as described in [\(optional\) Connect to the instance](#connect-to-instance)\.
 
-## Launch an EC2 Instance in EC2\-Classic or in a VPC<a name="launch-instance"></a>
+You can launch an EC2 instance in a VPC or in EC2\-Classic \(if your AWS account supports this\)\. For more information about EC2 in a VPC versus EC2\-Classic, see the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-classic-platform.html)\.
 
-You can launch an instance in either EC2\-Classic or in a VPC\. For more information about EC2\-Classic and EC2\-VPC, see [Supported Platforms](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-supported-platforms.html) in the Amazon EC2 User Guide for Windows Instances\.
+The following sections provide snippets and other information for this example\. The [complete code for the example](#run-instance-complete-code) is shown after the snippets, and can be built and run as is\.
 
-To get a list of your security groups and their `GroupId` properties, see [Enumerate Your Security Groups](security-groups.md#enumerate-security-groups)\.
+**Topics**
++ [Gather what you need](#run-instance-gather)
++ [Launch an instance](#run-instance-launch)
++ [Monitor the instance](#run-instance-monitor)
++ [Complete code](#run-instance-complete-code)
++ [\(optional\) Connect to the instance](#connect-to-instance)
++ [Clean up](#run-instance-cleanup)
 
-**To launch an EC2 instance in EC2\-Classic**
+## Gather what you need<a name="run-instance-gather"></a>
 
-1. Create and initialize a [RunInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesRequest.html) object\. Be sure the AMI, key pair, and security group you specify exist in the region you specified when you created the client object\.
+To launch an EC2 instance, you'll need several things\.
++ A [VPC](https://docs.aws.amazon.com/vpc/latest/userguide/) where the instance will be launched\. If it'll be a Windows instance and you'll be connecting to it through RDP, the VPC will most likely need to have an internet gateway attached to it, as well as an entry for the internet gateway in the route table\. For more information, see [Internet gateways](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html) in the *Amazon VPC User Guide*\.
++ The ID of an existing subnet in the VPC where the instance will be launched\. An easy way to find or create this is to sign in to the [Amazon VPC console](https://console.aws.amazon.com/vpc/home#subnets), but you can also obtain it programmatically by using the [CreateSubnetAsync](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2CreateSubnetAsyncCreateSubnetRequestCancellationToken.html) and [DescribeSubnetsAsync](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2DescribeSubnetsAsyncDescribeSubnetsRequestCancellationToken.html) methods\.
+**Note**  
+If your AWS account supports EC2\-Classic and that's the type of instance you want to launch, this parameter isn't required\. However, if your account doesn't support EC2\-Classic and you don't supply this parameter, the new instance is launched in the default VPC for your account\.
++ The ID of an existing security group that belongs to the VPC where the instance will be launched\. For more information, see [Working with security groups in Amazon EC2](security-groups.md)\.
++ If you want to connect to the new instance, the security group mentioned earlier must have an appropriate inbound rule that allows SSH traffic on port 22 \(Linux instance\) or RDP traffic on port 3389 \(Windows instance\)\. For information about how to do this see [Updating security groups](authorize-ingress.md), including the **Additional considerations** near the end of that topic\.
++ The Amazon Machine Image \(AMI\) that will be used to create the instance\. See the information about AMIs in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/AMIs.html)\. For example, read about shared AMIs in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html)\.
++ The name of an existing EC2 key pair, which is used to connect to the new instance\. For more information, see [Working with Amazon EC2 key pairs](key-pairs.md)\.
++ The name of the PEM file that contains the private key of the EC2 key pair mentioned earlier\. The PEM file is used when you [connect remotely](#connect-to-instance) to the instance\.
 
-   ```
-   string amiID = "ami-e189c8d1";
-   string keyPairName = "my-sample-key";
-   
-   List<string> groups = new List<string>() { mySG.GroupId };
-   var launchRequest = new RunInstancesRequest()
-   {
-     ImageId = amiID,
-     InstanceType = InstanceType.T1Micro,
-     MinCount = 1,
-     MaxCount = 1,
-     KeyName = keyPairName,
-     SecurityGroupIds = groups
-   };
-   ```  
-** `ImageId` **  
-The ID of the AMI\. For a list of public AMIs, see [Amazon Machine Images](https://aws.amazon.com/marketplace/search/results/&amp;searchTerms=AMISAWS?browse=1)\.  
-** `InstanceType` **  
-An instance type that is compatible with the specified AMI\. For more information, see [Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html.html) in the Amazon EC2 User Guide for Windows Instances\.  
-** `MinCount` **  
-The minimum number of EC2 instances to launch\. If this is more instances than Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches no instances\.  
-** `MaxCount` **  
-The maximum number of EC2 instances to launch\. If this is more instances than Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches the largest possible number of instances above `MinCount`\. You can launch between 1 and the maximum number of instances you’re allowed for the instance type\. For more information, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ\.  
-** `KeyName` **  
-The name of the EC2 key pair\. If you launch an instance without specifying a key pair, you can’t connect to it\. For more information, see [Working with Amazon EC2 Key Pairs](key-pairs.md#create-key-pair)\.  
-** `SecurityGroupIds` **  
-The identifiers of one or more security groups\. For more information, see [Creating a Security Group in Amazon EC2](security-groups.md#create-security-group)\.
+## Launch an instance<a name="run-instance-launch"></a>
 
-1. \(Optional\) To launch the instance with an [IAM role](net-dg-hosm.md), specify an IAM instance profile in the [RunInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesRequest.html) object\.
+The following snippet launches an EC2 instance\.
 
-   An IAM user can’t launch an instance with an IAM role without the permissions granted by the following policy\.
-
-   ```
-   {
-     "Version": "2012-10-17",
-      "Statement": [{
-        "Effect": "Allow",
-        "Action": [
-          "iam:PassRole",
-          "iam:ListInstanceProfiles",
-          "ec2:*"
-        ],
-        "Resource": "*"
-      }]
-    }
-   ```
-
-   For example, the following snippet instantiates and configures an [IamInstanceProfileSpecification](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TIamInstanceProfileSpecification.html) object for an IAM role named `winapp-instance-role-1`\.
-
-   ```
-   var instanceProfile = new IamInstanceProfile();
-   instanceProfile.Id  = "winapp-instance-role-1";
-   ```
-
-   To specify this instance profile in the [RunInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesRequest.html) object, add the following line\.
-
-   ```
-   launchRequest.IamInstanceProfile = instanceProfile;
-   ```
-
-1. Launch the instance by passing the request object to the [RunInstances](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2RunInstancesRunInstancesRequest.html) method\. Save the ID of the instance because you need it to manage the instance\.
-
-   Use the returned [RunInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesResponse.html) object to get the instance IDs for the new instances\. The `Reservation.Instances` property contains a list of [Instance](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TInstance.html) objects, one for each EC2 instance you successfully launched\. You can retrieve the ID for each instance from the `InstanceId` property of the [Instance](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TInstance.html) object\.
-
-   ```
-   var launchResponse = ec2Client.RunInstances(launchRequest);
-   var instances = launchResponse.Reservation.Instances;
-   var instanceIds = new List<string>();
-   foreach (Instance item in instances)
-   {
-     instanceIds.Add(item.InstanceId);
-     Console.WriteLine();
-     Console.WriteLine("New instance: " + item.InstanceId);
-     Console.WriteLine("Instance state: " + item.State.Name);
-   }
-   ```
-
-**To launch an EC2 instance in a VPC**
-
-1. Create and initialize an elastic network interface in a subnet of the VPC\.
-
-   ```
-   string subnetID = "subnet-cb663da2";
-   
-   List<string> groups = new List<string>() { mySG.GroupId };
-   var eni = new InstanceNetworkInterfaceSpecification()
-   {
-     DeviceIndex = 0,
-     SubnetId = subnetID,
-     Groups = groups,
-     AssociatePublicIpAddress = true
-   };
-   List<InstanceNetworkInterfaceSpecification> enis = new List<InstanceNetworkInterfaceSpecification>() {eni};
-   ```  
-** `DeviceIndex` **  
-The index of the device on the instance for the network interface attachment\.  
-** `SubnetId` **  
-The ID of the subnet where the instance will be launched\.  
-** `Groups` **  
-One or more security groups\. For more information, see [Creating a Security Group in Amazon EC2](security-groups.md#create-security-group)\.  
-** `AssociatePublicIpAddress` **  
-Indicates whether to auto\-assign a public IP address to an instance in a VPC\.
-
-1. Create and initialize a [RunInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesRequest.html) object\. Be sure the AMI, key pair, and security group you specify exist in the region you specified when you created the client object\.
-
-   ```
-   string amiID = "ami-e189c8d1";
-   string keyPairName = "my-sample-key";
-   
-   var launchRequest = new RunInstancesRequest()
-   {
-     ImageId = amiID,
-     InstanceType = InstanceType.T1Micro,
-     MinCount = 1,
-     MaxCount = 1,
-     KeyName = keyPairName,
-     NetworkInterfaces = enis
-   };
-   ```  
-** `ImageId` **  
-The ID of the AMI\. For a list of public AMIs provided by Amazon, see [Amazon Machine Images](https://aws.amazon.com/marketplace/search/results/&amp;searchTerms=AMISAWS?browse=1)\.  
-** `InstanceType` **  
-An instance type that is compatible with the specified AMI\. For more information, see [Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html) in the Amazon EC2 User Guide for Windows Instances\.  
-** `MinCount` **  
-The minimum number of EC2 instances to launch\. If this is more instances than Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches no instances\.  
-** `MaxCount` **  
-The maximum number of EC2 instances to launch\. If this is more instances than Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches the largest possible number of instances above `MinCount`\. You can launch between 1 and the maximum number of instances you’re allowed for the instance type\. For more information, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ\.  
-** `KeyName` **  
-The name of the EC2 key pair\. If you launch an instance without specifying a key pair, you can’t connect to it\. For more information, see [Working with Amazon EC2 Key Pairs](key-pairs.md#create-key-pair)\.  
-** `NetworkInterfaces` **  
-One or more network interfaces\.
-
-1. \(Optional\) To launch the instance with an [IAM role](net-dg-hosm.md), specify an IAM instance profile in the [RunInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesRequest.html) object\.
-
-   An IAM user can’t launch an instance with an IAM role without the permissions granted by the following policy\.
-
-   ```
-   {
-     "Version": "2012-10-17",
-     "Statement": [{
-       "Effect": "Allow",
-       "Action": [
-         "iam:PassRole",
-         "iam:ListInstanceProfiles",
-         "ec2:*"
-       ],
-       "Resource": "*"
-     }]
-   }
-   ```
-
-   For example, the following snippet instantiates and configures an [IamInstanceProfileSpecification](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TIamInstanceProfileSpecification.html) object for an IAM role named `winapp-instance-role-1`\.
-
-   ```
-   var instanceProfile = new IamInstanceProfileSpecification();
-   instanceProfile.Name  = "winapp-instance-role-1";
-   ```
-
-   To specify this instance profile in the [RunInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesRequest.html) object, add the following line\.
-
-   ```
-   launchRequest.IamInstanceProfile = instanceProfile;
-   ```
-
-1. Launch the instances by passing the request object to the [RunInstances](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2RunInstancesRunInstancesRequest.html) method\. Save the IDs of the instances because you need them to manage the instances\.
-
-   Use the returned [RunInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesResponse.html) object to get a list of instance IDs for the new instances\. The `Reservation.Instances` property contains a list of [Instance](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TInstance.html) objects, one for each EC2 instance you successfully launched\. You can retrieve the ID for each instance from the `InstanceId` property of the [Instance](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TInstance.html) object\.
-
-   ```
-   RunInstancesResponse launchResponse = ec2Client.RunInstances(launchRequest);
-   
-   List<String> instanceIds = new List<string>();
-   foreach (Instance instance in launchResponse.Reservation.Instances)
-   {
-     Console.WriteLine(instance.InstanceId);
-     instanceIds.Add(instance.InstanceId);
-   }
-   ```
-
-## Check the State of Your Instance<a name="check-instance-state"></a>
-
-Use the following procedure to get the current state of your instance\. Initially, your instance is in the `pending` state\. You can connect to your instance after it enters the `running` state\.
-
-1. Create and configure a [DescribeInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TDescribeInstancesRequest.html) object and assign your instance’s instance ID to the `InstanceIds` property\. You can also use the `Filter` property to limit the request to certain instances, such as instances with a particular user\-specified tag\.
-
-   ```
-   var instanceRequest = new DescribeInstancesRequest();
-   instanceRequest.InstanceIds = new List<string>();
-   instanceRequest.InstanceIds.Add(instanceId);
-   ```
-
-1. Call the [DescribeInstances](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2DescribeInstancesDescribeInstancesRequest.html) method, and pass it the request object from step 1\. The method returns a [DescribeInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TDescribeInstancesResponse.html) object that contains information about the instance\.
-
-   ```
-   var response = ec2Client.DescribeInstances(instanceRequest);
-   ```
-
-1. The `DescribeInstancesResponse.Reservations` property contains a list of reservations\. In this case, there is only one reservation\. Each reservation contains a list of `Instance` objects\. Again, in this case, there is only one instance\. You can get the instance’s status from the `State` property\.
-
-   ```
-   Console.WriteLine(response.Reservations[0].Instances[0].State.Name);
-   ```
-
-## Connect to Your Running Instance<a name="connect-to-instance"></a>
-
-After an instance is running, you can remotely connect to it by using the appropriate remote client\.
-
-For Linux instances, use an SSH client\. You must ensure that the instance’s SSH port \(22\) is open to traffic\. You will need the instance’s public IP address or public DNS name and the private portion of the key pair used to launch the instance\. For more information, see [Connecting to Your Linux Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html) in the Amazon EC2 User Guide for Linux Instances\.
-
-For Windows instances, use an RDP client\. You must ensure the instance’s RDP port \(3389\) is open to traffic\. You will need the instance’s public IP address or public DNS name and the administrator password\. The administrator password is obtained with the [GetPasswordData](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2GetPasswordDataGetPasswordDataRequest.html) and [GetPasswordDataResult\.GetDecryptedPassword](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MGetPasswordDataResponseGetDecryptedPasswordString.html) methods, which require the private portion of the key pair used to launch the instance\. For more information, see [Connecting to Your Windows Instance Using RDP](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html) in the Amazon EC2 User Guide for Windows Instances\. The following example demonstrates how to get the password for a Windows instance\.
+The example [near the end of this topic](#run-instance-complete-code) shows this snippet in use\.
 
 ```
-public static string GetWindowsPassword(
-  AmazonEC2Client ec2Client,
-  string instanceId,
-  FileInfo privateKeyFile)
-{
-  string password = "";
-
-  var request = new GetPasswordDataRequest();
-  request.InstanceId = instanceId;
-
-  var response = ec2Client.GetPasswordData(request);
-  if (null != response.PasswordData)
-  {
-    using (StreamReader sr = new StreamReader(privateKeyFile.FullName))
+    //
+    // Method to launch the instances
+    // Returns a list with the launched instance IDs
+    private static async Task<List<string>> LaunchInstances(
+      IAmazonEC2 ec2Client, RunInstancesRequest requestLaunch)
     {
-      string privateKeyData = sr.ReadToEnd();
-      password = response.GetDecryptedPassword(privateKeyData);
+      var instanceIds = new List<string>();
+      RunInstancesResponse responseLaunch =
+        await ec2Client.RunInstancesAsync(requestLaunch);
+
+      Console.WriteLine("\nNew instances have been created.");
+      foreach (Instance item in responseLaunch.Reservation.Instances)
+      {
+        instanceIds.Add(item.InstanceId);
+        Console.WriteLine($"  New instance: {item.InstanceId}");
+      }
+
+      return instanceIds;
+    }
+```
+
+## Monitor the instance<a name="run-instance-monitor"></a>
+
+The following snippet monitors the instance until it's out of the "Pending" state\.
+
+The example [near the end of this topic](#run-instance-complete-code) shows this snippet in use\.
+
+See the [InstanceState](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TInstanceState.html) class for the valid values of the `Instance.State.Code` property\.
+
+```
+    //
+    // Method to wait until the instances are running (or at least not pending)
+    private static async Task CheckState(IAmazonEC2 ec2Client, List<string> instanceIds)
+    {
+      Console.WriteLine(
+        "\nWaiting for the instances to start." +
+        "\nPress any key to stop waiting. (Response might be slightly delayed.)");
+
+      int numberRunning;
+      DescribeInstancesResponse responseDescribe;
+      var requestDescribe = new DescribeInstancesRequest{
+        InstanceIds = instanceIds};
+
+      // Check every couple of seconds
+      int wait = 2000;
+      while(true)
+      {
+        // Get and check the status for each of the instances to see if it's past pending.
+        // Once all instances are past pending, break out.
+        // (For this example, we are assuming that there is only one reservation.)
+        Console.Write(".");
+        numberRunning = 0;
+        responseDescribe = await ec2Client.DescribeInstancesAsync(requestDescribe);
+        foreach(Instance i in responseDescribe.Reservations[0].Instances)
+        {
+          // Check the lower byte of State.Code property
+          // Code == 0 is the pending state
+          if((i.State.Code & 255) > 0) numberRunning++;
+        }
+        if(numberRunning == responseDescribe.Reservations[0].Instances.Count)
+          break;
+
+        // Wait a bit and try again (unless the user wants to stop waiting)
+        Thread.Sleep(wait);
+        if(Console.KeyAvailable)
+          break;
+      }
+
+      Console.WriteLine("\nNo more instances are pending.");
+      foreach(Instance i in responseDescribe.Reservations[0].Instances)
+      {
+        Console.WriteLine($"For {i.InstanceId}:");
+        Console.WriteLine($"  VPC ID: {i.VpcId}");
+        Console.WriteLine($"  Instance state: {i.State.Name}");
+        Console.WriteLine($"  Public IP address: {i.PublicIpAddress}");
+        Console.WriteLine($"  Public DNS name: {i.PublicDnsName}");
+        Console.WriteLine($"  Key pair name: {i.KeyName}");
+      }
+    }
+```
+
+## Complete code<a name="run-instance-complete-code"></a>
+
+This section shows relevant references and the complete code for this example\.
+
+### SDK references<a name="w4aac17c19c19b9c27b5b1"></a>
+
+NuGet packages:
++ [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
+
+Programming elements:
++ Namespace [Amazon\.EC2](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/NEC2.html)
+
+  Class [AmazonEC2Client](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TEC2Client.html)
+
+  Class [InstanceType](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TInstanceType.html)
++ Namespace [Amazon\.EC2\.Model](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/NEC2Model.html)
+
+  Class [DescribeInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TDescribeInstancesRequest.html)
+
+  Class [DescribeInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TDescribeInstancesResponse.html)
+
+  Class [Instance](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TInstance.html)
+
+  Class [InstanceNetworkInterfaceSpecification](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TInstanceNetworkInterfaceSpecification.html)
+
+  Class [RunInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesRequest.html)
+
+  Class [RunInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesResponse.html)
+
+### The code<a name="w4aac17c19c19b9c27b7b1"></a>
+
+```
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using Amazon.EC2;
+using Amazon.EC2.Model;
+
+namespace EC2LaunchInstance
+{
+  // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+  // Class to launch an EC2 instance
+  class Program
+  {
+    static async Task Main(string[] args)
+    {
+      // Parse the command line and show help if necessary
+      var parsedArgs = CommandLine.Parse(args);
+      if(parsedArgs.Count == 0)
+      {
+        PrintHelp();
+        return;
+      }
+
+      // Get the application parameters from the parsed arguments
+      string groupID =
+        CommandLine.GetParameter(parsedArgs, null, "-g", "--group-id");
+      string ami =
+        CommandLine.GetParameter(parsedArgs, null, "-a", "--ami-id");
+      string keyPairName =
+        CommandLine.GetParameter(parsedArgs, null, "-k", "--keypair-name");
+      string subnetID =
+        CommandLine.GetParameter(parsedArgs, null, "-s", "--subnet-id");
+      if(   (string.IsNullOrEmpty(groupID) || !groupID.StartsWith("sg-"))
+         || (string.IsNullOrEmpty(ami) || !ami.StartsWith("ami-"))
+         || (string.IsNullOrEmpty(keyPairName))
+         || (!string.IsNullOrEmpty(subnetID) && !subnetID.StartsWith("subnet-")))
+        CommandLine.ErrorExit(
+          "\nOne or more of the required arguments is missing or incorrect." +
+          "\nRun the command with no arguments to see help.");
+
+      // Create an EC2 client
+      var ec2Client = new AmazonEC2Client();
+
+      // Create an object with the necessary properties
+      RunInstancesRequest request = GetRequestData(groupID, ami, keyPairName, subnetID);
+
+      // Launch the instances and wait for them to start running
+      var instanceIds = await LaunchInstances(ec2Client, request);
+      await CheckState(ec2Client, instanceIds);
+    }
+
+
+    //
+    // Method to put together the properties needed to launch the instance.
+    private static RunInstancesRequest GetRequestData(
+      string groupID, string ami, string keyPairName, string subnetID)
+    {
+      // Common properties
+      var groupIDs = new List<string>() { groupID };
+      var request = new RunInstancesRequest()
+      {
+        // The first three of these would be additional command-line arguments or similar.
+        InstanceType = InstanceType.T1Micro,
+        MinCount = 1,
+        MaxCount = 1,
+        ImageId = ami,
+        KeyName = keyPairName
+      };
+
+      // Properties specifically for EC2 in a VPC.
+      if(!string.IsNullOrEmpty(subnetID))
+      {
+        request.NetworkInterfaces =
+          new List<InstanceNetworkInterfaceSpecification>() {
+            new InstanceNetworkInterfaceSpecification() {
+              DeviceIndex = 0,
+              SubnetId = subnetID,
+              Groups = groupIDs,
+              AssociatePublicIpAddress = true
+            }
+          };
+      }
+
+      // Properties specifically for EC2-Classic
+      else
+      {
+        request.SecurityGroupIds = groupIDs;
+      }
+      return request;
+    }
+
+
+    //
+    // Method to launch the instances
+    // Returns a list with the launched instance IDs
+    private static async Task<List<string>> LaunchInstances(
+      IAmazonEC2 ec2Client, RunInstancesRequest requestLaunch)
+    {
+      var instanceIds = new List<string>();
+      RunInstancesResponse responseLaunch =
+        await ec2Client.RunInstancesAsync(requestLaunch);
+
+      Console.WriteLine("\nNew instances have been created.");
+      foreach (Instance item in responseLaunch.Reservation.Instances)
+      {
+        instanceIds.Add(item.InstanceId);
+        Console.WriteLine($"  New instance: {item.InstanceId}");
+      }
+
+      return instanceIds;
+    }
+
+
+    //
+    // Method to wait until the instances are running (or at least not pending)
+    private static async Task CheckState(IAmazonEC2 ec2Client, List<string> instanceIds)
+    {
+      Console.WriteLine(
+        "\nWaiting for the instances to start." +
+        "\nPress any key to stop waiting. (Response might be slightly delayed.)");
+
+      int numberRunning;
+      DescribeInstancesResponse responseDescribe;
+      var requestDescribe = new DescribeInstancesRequest{
+        InstanceIds = instanceIds};
+
+      // Check every couple of seconds
+      int wait = 2000;
+      while(true)
+      {
+        // Get and check the status for each of the instances to see if it's past pending.
+        // Once all instances are past pending, break out.
+        // (For this example, we are assuming that there is only one reservation.)
+        Console.Write(".");
+        numberRunning = 0;
+        responseDescribe = await ec2Client.DescribeInstancesAsync(requestDescribe);
+        foreach(Instance i in responseDescribe.Reservations[0].Instances)
+        {
+          // Check the lower byte of State.Code property
+          // Code == 0 is the pending state
+          if((i.State.Code & 255) > 0) numberRunning++;
+        }
+        if(numberRunning == responseDescribe.Reservations[0].Instances.Count)
+          break;
+
+        // Wait a bit and try again (unless the user wants to stop waiting)
+        Thread.Sleep(wait);
+        if(Console.KeyAvailable)
+          break;
+      }
+
+      Console.WriteLine("\nNo more instances are pending.");
+      foreach(Instance i in responseDescribe.Reservations[0].Instances)
+      {
+        Console.WriteLine($"For {i.InstanceId}:");
+        Console.WriteLine($"  VPC ID: {i.VpcId}");
+        Console.WriteLine($"  Instance state: {i.State.Name}");
+        Console.WriteLine($"  Public IP address: {i.PublicIpAddress}");
+        Console.WriteLine($"  Public DNS name: {i.PublicDnsName}");
+        Console.WriteLine($"  Key pair name: {i.KeyName}");
+      }
+    }
+
+
+    //
+    // Command-line help
+    private static void PrintHelp()
+    {
+      Console.WriteLine(
+        "\nUsage: EC2LaunchInstance -g <group-id> -a <ami-id> -k <keypair-name> [-s <subnet-id>]" +
+        "\n  -g, --group-id: The ID of the security group." +
+        "\n  -a, --ami-id: The ID of an Amazon Machine Image." +
+        "\n  -k, --keypair-name - The name of a key pair." +
+        "\n  -s, --subnet-id: The ID of a subnet. Required only for EC2 in a VPC.");
     }
   }
-  else
+
+
+  // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+  // Class that represents a command line on the console or terminal.
+  // (This is the same for all examples. When you have seen it once, you can ignore it.)
+  static class CommandLine
   {
-    Console.WriteLine("The password is not available. The password for " +
-      "instance {0} is either not ready, or it is not a Windows instance.",
-      instanceId);
+    // Method to parse a command line of the form: "--param value" or "-p value".
+    // If "param" is found without a matching "value", Dictionary.Value is an empty string.
+    // If "value" is found without a matching "param", Dictionary.Key is "--NoKeyN"
+    //  where "N" represents sequential numbers.
+    public static Dictionary<string,string> Parse(string[] args)
+    {
+      var parsedArgs = new Dictionary<string,string>();
+      int i = 0, n = 0;
+      while(i < args.Length)
+      {
+        // If the first argument in this iteration starts with a dash it's an option.
+        if(args[i].StartsWith("-"))
+        {
+          var key = args[i++];
+          var value = string.Empty;
+
+          // Is there a value that goes with this option?
+          if((i < args.Length) && (!args[i].StartsWith("-"))) value = args[i++];
+          parsedArgs.Add(key, value);
+        }
+
+        // If the first argument in this iteration doesn't start with a dash, it's a value
+        else
+        {
+          parsedArgs.Add("--NoKey" + n.ToString(), args[i++]);
+          n++;
+        }
+      }
+
+      return parsedArgs;
+    }
+
+    //
+    // Method to get a parameter from the parsed command-line arguments
+    public static string GetParameter(
+      Dictionary<string,string> parsedArgs, string def, params string[] keys)
+    {
+      string retval = null;
+      foreach(var key in keys)
+        if(parsedArgs.TryGetValue(key, out retval)) break;
+      return retval ?? def;
+    }
+
+    //
+    // Exit with an error.
+    public static void ErrorExit(string msg, int code=1)
+    {
+      Console.WriteLine("\nError");
+      Console.WriteLine(msg);
+      Environment.Exit(code);
+    }
   }
 
-  return password;
 }
 ```
 
-When you no longer need your EC2 instance, see [Terminating an Amazon EC2 Instance](terminate-instance.md)\.
+**Additional considerations**
++ When checking the state of an EC2 instance, you can add a filter to the `Filter` property of the [DescribeInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TDescribeInstancesRequest.html) object\. Using this technique, you can limit the request to certain instances; for example, instances with a particular user\-specified tag\.
++ For brevity, some properties were given typical values\. Any or all of these properties can instead be determined programmatically or by user input\.
++ The values you can use for the `MinCount` and `MaxCount` properties of the [RunInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesRequest.html) object are determined by the target Availability Zone and the maximum number of instances you’re allowed for the instance type\. For more information, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ\.
++ If you want to use a different instance type than this example, there are several instance types to choose from, which you can see in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html)\.
++ You can also attach an [IAM role](net-dg-hosm.md) to an instance when you launch it\. To do so, create an [IamInstanceProfileSpecification](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TIamInstanceProfileSpecification.html) object whose `Name` property is set to the name of an IAM role\. Then add that object to the `IamInstanceProfile` property of the [RunInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesRequest.html) object\.
+**Note**  
+To launch an EC2 instance that has an IAM role attached, an IAM user's configuration must include certain permissions\. For more information about the required permissions, see the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#permission-to-pass-iam-roles) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/iam-roles-for-amazon-ec2.html#permission-to-pass-iam-roles)\.
+
+## \(optional\) Connect to the instance<a name="connect-to-instance"></a>
+
+After an instance is running, you can connect to it remotely by using the appropriate remote client\. For both Linux and Windows instances, you need the instance's public IP address or public DNS name\. You also need the following\.
+
+**For Linux instances**
+
+You can use an SSH client to connect to your Linux instance\. Make sure that the security group you used when you launched the instance allows SSH traffic on port 22, as described in [Updating security groups](authorize-ingress.md)\.
+
+You also need the private portion of the key pair you used to launch the instance; that is, the PEM file\.
+
+For more information, see [Connect to your Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html) in the Amazon EC2 User Guide for Linux Instances\.
+
+**For Windows instances**
+
+You can use an RDP client to connect to your instance\. Make sure that the security group you used when you launched the instance allows RDP traffic on port 3389, as described in [Updating security groups](authorize-ingress.md)\.
+
+You also need the Administrator password\. You can obtain this by using the following example code, which requires the instance ID and the private portion of the key pair used to launch the instance; that is, the PEM file\.
+
+For more information, see [Connecting to your Windows instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html) in the Amazon EC2 User Guide for Windows Instances\.
+
+**Warning**  
+This example code returns the plaintext Administrator password for your instance\.
+
+### SDK references<a name="w4aac17c19c19b9c29c23b1"></a>
+
+NuGet packages:
++ [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
+
+Programming elements:
++ Namespace [Amazon\.EC2](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/NEC2.html)
+
+  Class [AmazonEC2Client](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TEC2Client.html)
++ Namespace [Amazon\.EC2\.Model](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/NEC2Model.html)
+
+  Class [GetPasswordDataRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TGetPasswordDataRequest.html)
+
+  Class [GetPasswordDataResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TGetPasswordDataResponse.html)
+
+### The code<a name="w4aac17c19c19b9c29c25b1"></a>
+
+```
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
+using Amazon.EC2;
+using Amazon.EC2.Model;
+
+namespace EC2GetWindowsPassword
+{
+  // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+  // Class to get the Administrator password of a Windows EC2 instance
+  class Program
+  {
+    static async Task Main(string[] args)
+    {
+      // Parse the command line and show help if necessary
+      var parsedArgs = CommandLine.Parse(args);
+      if(parsedArgs.Count == 0)
+      {
+        PrintHelp();
+        return;
+      }
+
+      // Get the application parameters from the parsed arguments
+      string instanceID =
+        CommandLine.GetParameter(parsedArgs, null, "-i", "--instance-id");
+      string pemFileName =
+        CommandLine.GetParameter(parsedArgs, null, "-p", "--pem-filename");
+      if(   (string.IsNullOrEmpty(instanceID) || !instanceID.StartsWith("i-"))
+         || (string.IsNullOrEmpty(pemFileName) || !pemFileName.EndsWith(".pem")))
+        CommandLine.ErrorExit(
+          "\nOne or more of the required arguments is missing or incorrect." +
+          "\nRun the command with no arguments to see help.");
+
+      // Create the EC2 client
+      var ec2Client = new AmazonEC2Client();
+
+      // Get and display the password
+      string password = await GetPassword(ec2Client, instanceID, pemFileName);
+      Console.WriteLine($"\nPassword: {password}");
+    }
+
+
+    //
+    // Method to get the administrator password of a Windows EC2 instance
+    private static async Task<string> GetPassword(
+      IAmazonEC2 ec2Client, string instanceID, string pemFilename)
+    {
+      string password = string.Empty;
+      GetPasswordDataResponse response =
+        await ec2Client.GetPasswordDataAsync(new GetPasswordDataRequest{
+          InstanceId = instanceID});
+      if(response.PasswordData != null)
+      {
+        password = response.GetDecryptedPassword(File.ReadAllText(pemFilename));
+      }
+      else
+      {
+        Console.WriteLine($"\nThe password is not available for instance {instanceID}.");
+        Console.WriteLine($"If this is a Windows instance, the password might not be ready.");
+      }
+      return password;
+    }
+
+
+    //
+    // Command-line help
+    private static void PrintHelp()
+    {
+      Console.WriteLine(
+        "\nUsage: EC2CreateKeyPair -i <instance-id> -p pem-filename" +
+        "\n  -i, --instance-id: The name of the EC2 instance." +
+        "\n  -p, --pem-filename: The name of the PEM file with the private key.");
+    }
+  }
+
+  // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+  // Class that represents a command line on the console or terminal.
+  // (This is the same for all examples. When you have seen it once, you can ignore it.)
+  static class CommandLine
+  {
+    // Method to parse a command line of the form: "--param value" or "-p value".
+    // If "param" is found without a matching "value", Dictionary.Value is an empty string.
+    // If "value" is found without a matching "param", Dictionary.Key is "--NoKeyN"
+    //  where "N" represents sequential numbers.
+    public static Dictionary<string,string> Parse(string[] args)
+    {
+      var parsedArgs = new Dictionary<string,string>();
+      int i = 0, n = 0;
+      while(i < args.Length)
+      {
+        // If the first argument in this iteration starts with a dash it's an option.
+        if(args[i].StartsWith("-"))
+        {
+          var key = args[i++];
+          var value = string.Empty;
+
+          // Is there a value that goes with this option?
+          if((i < args.Length) && (!args[i].StartsWith("-"))) value = args[i++];
+          parsedArgs.Add(key, value);
+        }
+
+        // If the first argument in this iteration doesn't start with a dash, it's a value
+        else
+        {
+          parsedArgs.Add("--NoKey" + n.ToString(), args[i++]);
+          n++;
+        }
+      }
+
+      return parsedArgs;
+    }
+
+    //
+    // Method to get a parameter from the parsed command-line arguments
+    public static string GetParameter(
+      Dictionary<string,string> parsedArgs, string def, params string[] keys)
+    {
+      string retval = null;
+      foreach(var key in keys)
+        if(parsedArgs.TryGetValue(key, out retval)) break;
+      return retval ?? def;
+    }
+
+    //
+    // Exit with an error.
+    public static void ErrorExit(string msg, int code=1)
+    {
+      Console.WriteLine("\nError");
+      Console.WriteLine(msg);
+      Environment.Exit(code);
+    }
+  }
+
+}
+```
+
+## Clean up<a name="run-instance-cleanup"></a>
+
+When you no longer need your EC2 instance, be sure to terminate it, as described in [Terminating an Amazon EC2 instance](terminate-instance.md)\.

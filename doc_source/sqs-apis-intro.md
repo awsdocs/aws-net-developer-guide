@@ -1,25 +1,30 @@
-# Messaging Using Amazon SQS<a name="sqs-apis-intro"></a>
+# Messaging using Amazon SQS<a name="sqs-apis-intro"></a>
 
-The AWS SDK for \.NET supports Amazon SQS, which is a message queuing service that handles messages or workflows between components in a system\. For more information, see [Amazon SQS](https://aws.amazon.com/sqs/)\.
+The AWS SDK for \.NET supports [Amazon Simple Queue Service \(Amazon SQS\)](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/), which is a message queuing service that handles messages or workflows between components in a system\.
 
-The following examples demonstrate how to use the AWS SDK for \.NET to create and use Amazon SQS queues\.
+Amazon SQS queues provide a mechanism that enables you to send, store, and receive messages between software components such as microservices, distributed systems, and serverless applications\. This enables you to decouple such components and frees you from the need to design and operate your own messaging system\. For information about how queues and messages work in Amazon SQS, see [Amazon SQS tutorials](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-tutorials.html) and [How Amazon SQS works](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/SQSConcepts.html) in the [Amazon Simple Queue Service Developer Guide](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/)\.
 
-The sample code is written in C\#, but you can use the AWS SDK for \.NET with any compatible language\. The AWS SDK for \.NET installs a set of C\# project templates\.
+**Important**  
+Due to the distributed nature of queues, Amazon SQS can't guarantee that you'll receive messages in the precise order they're sent\. If you need to preserve message order, use an [Amazon SQS FIFO queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html)\.
 
- **Prerequisite Tasks** 
+## APIs<a name="w4aac17c25c11"></a>
 
-Before you begin, be sure that you have created an AWS account and set up your AWS credentials\. For more information, see [Setting up the AWS SDK for \.NET](net-dg-setup.md)\.
+The AWS SDK for \.NET provides APIs for Amazon SQS clients\. The APIs enable you to work with Amazon SQS features such as queues and messages\. This section contains a small number of examples that show you the patterns you can follow when working with these APIs\. To view the full set of APIs, see the [AWS SDK for \.NET API Reference](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/) \(and scroll to "Amazon\.SQS"\)\.
 
-For related API reference information, see [Amazon\.SQS](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/NSQS.html), [Amazon\.SQS\.Model](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/NSQSModel.html), and [Amazon\.SQS\.Util](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/NSQSUtil.html) in the AWS SDK for \.NET API Reference\.
+The Amazon SQS APIs are provided by the [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS) NuGet package\.
+
+## Prerequisites<a name="w4aac17c25c13"></a>
+
+Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Setting up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.
+
+## Topics<a name="w4aac17c25c15"></a>
 
 **Topics**
-+ [Creating an Amazon SQS Client](InitSQSClient.md)
-+ [Creating an Amazon SQS Queue](CreateQueue.md)
-+ [Constructing Amazon SQS Queue URLs](QueueURL.md)
-+ [Sending an Amazon SQS Message](SendMessage.md)
-+ [Sending an Amazon SQS Message Batch](SendMessageBatch.md)
-+ [Receiving a Message from an Amazon SQS Queue](ReceiveMessage.md)
-+ [Deleting a Message from an Amazon SQS Queue](DeleteMessage.md)
-+ [Enabling Long Polling in Amazon SQS](EnableLongPolling.md)
-+ [Using Amazon SQS Queues](UsingSQSQueues.md)
-+ [Using Amazon SQS Dead Letter Queues](UsingSQSDeadLetterQueues.md)
++ [APIs](#w4aac17c25c11)
++ [Prerequisites](#w4aac17c25c13)
++ [Topics](#w4aac17c25c15)
++ [Creating queues](CreateQueue.md)
++ [Updating queues](UpdateSqsQueue.md)
++ [Deleting queues](DeleteSqsQueue.md)
++ [Sending messages](SendMessage.md)
++ [Receiving messages](ReceiveMessage.md)

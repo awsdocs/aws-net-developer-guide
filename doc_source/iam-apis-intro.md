@@ -1,20 +1,34 @@
-# Managing Users With AWS Identity and Access Management \(IAM\)<a name="iam-apis-intro"></a>
+# Accessing IAM with the AWS SDK for \.NET<a name="iam-apis-intro"></a>
 
-The AWS SDK for \.NET supports IAM, which is a web service that enables AWS customers to manage users and user permissions in AWS\.
+The AWS SDK for \.NET supports [AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/), which is a web service that enables AWS customers to manage users and user permissions in AWS\.
 
-The sample code is written in C\#, but you can use the AWS SDK for \.NET with any compatible language\. When you install the AWS Toolkit for Visual Studio a set of C\# project templates are installed\. So the simplest way to start this project is to open Visual Studio, and then choose **File**, **New Project**, **AWS Sample Projects**, **Deployment and Management**, **AWS Identity and Access Management User**\.
+An AWS Identity and Access Management \(IAM\) *user* is an entity that you create in AWS\. The entity represents a person or application that interacts with AWS\. For more information about IAM users, see [IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) and [IAM and STS Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html) in the IAM User Guide\.
 
-For related API reference information, see [Amazon\.IdentityManagement](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/IAM/NIAM.html) and [Amazon\.IdentityManagement\.Model](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/IAM/NIAMModel.html)\.
+You grant permissions to a user by creating a IAM *policy*\. The policy contains a *policy document* that lists the actions that a user can perform and the resources those actions can affect\. For more information about IAM policies, see [Policies and Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html) in the *IAM User Guide*\.
 
- **Prerequisites** 
+## APIs<a name="w4aac17c21c11"></a>
 
-Before you begin, be sure that you have created an AWS account and set up your AWS credentials\. For more information, see [Setting up the AWS SDK for \.NET](net-dg-setup.md)\.
+The AWS SDK for \.NET provides APIs for IAM clients\. The APIs enable you to work with IAM features such as users, roles, and access keys\.
+
+This section contains a small number of examples that show you the patterns you can follow when working with these APIs\. To view the full set of APIs, see the [AWS SDK for \.NET API Reference](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/) \(and scroll to "Amazon\.IdentityManagement"\)\.
+
+This section also contains [an example](net-dg-hosm.md) that shows you how to attach an IAM role to Amazon EC2 instances to make managing credentials easier\.
+
+The AWS IAM APIs are provided by the [AWSSDK\.IdentityManagement](https://www.nuget.org/packages/AWSSDK.IdentityManagement) NuGet package\.
+
+## Prerequisites<a name="w4aac17c21c13"></a>
+
+Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Setting up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.
+
+## Topics<a name="w4aac17c21c15"></a>
 
 **Topics**
-+ [Managing IAM Aliases](iam-examples-account-aliases.md)
-+ [Managing IAM Users](iam-examples-managing-users.md)
-+ [Managing IAM Access Keys](iam-examples-managing-access-keys.md)
-+ [Working with IAM Policies](iam-examples-policies.md)
-+ [Working with IAM Server Certificates](iam-examples-server-certificates.md)
-+ [List IAM Account Information](iam-examples-list-user-info.md)
-+ [Granting Access Using an IAM Role](net-dg-hosm.md)
++ [APIs](#w4aac17c21c11)
++ [Prerequisites](#w4aac17c21c13)
++ [Topics](#w4aac17c21c15)
++ [Creating users](iam-users-create.md)
++ [Deleting users](iam-users-delete.md)
++ [Creating managed policies from JSON](iam-policies-create-json.md)
++ [Creating managed policies programmatically](iam-policies-create-prog.md)
++ [Displaying policy documents](iam-policies-display.md)
++ [Granting access with a role](net-dg-hosm.md)

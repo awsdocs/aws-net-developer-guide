@@ -1,38 +1,21 @@
-# Listing AWS Resources using AWS CloudFormation<a name="cloudformation-apis-intro"></a>
+# Accessing AWS CloudFormation with the AWS SDK for \.NET<a name="cloudformation-apis-intro"></a>
 
-The AWS SDK for \.NET supports AWS CloudFormation, which creates and provisions AWS infrastructure deployments predictably and repeatedly\. For more information, see [AWS CloudFormation Getting Started Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/GettingStartedGuide/)\.
+The AWS SDK for \.NET supports [AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/), which creates and provisions AWS infrastructure deployments predictably and repeatedly\.
 
-The following example shows how to use the low\-level APIs to list accessible resources in AWS CloudFormation\.
+## APIs<a name="w4aac17c17b5"></a>
 
-```
-// using Amazon.CloudFormation;
-// using Amazon.CloudFormation.Model;
+The AWS SDK for \.NET provides APIs for AWS CloudFormation clients\. The APIs enable you to work with AWS CloudFormation features such as templates and stacks\. This section contains a small number of examples that show you the patterns you can follow when working with these APIs\. To view the full set of APIs, see the [AWS SDK for \.NET API Reference](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/) \(and scroll to "Amazon\.CloudFormation"\)\.
 
-var client = new AmazonCloudFormationClient();
-var request = new DescribeStacksRequest();
-var response = client.DescribeStacks(request);
+The AWS CloudFormation APIs are provided by the [AWSSDK\.CloudFormation](https://www.nuget.org/packages/AWSSDK.CloudFormation/) package\.
 
-foreach (var stack in response.Stacks)
-{
-  Console.WriteLine("Stack: {0}", stack.StackName);
-  Console.WriteLine("  Status: {0}", stack.StackStatus);
-  Console.WriteLine("  Created: {0}", stack.CreationTime);
+## Prerequisites<a name="w4aac17c17b7"></a>
 
-  var ps = stack.Parameters;
+Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Setting up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.
 
-  if (ps.Any())
-  {
-    Console.WriteLine("  Parameters:");
+## Topics<a name="w4aac17c17b9"></a>
 
-    foreach (var p in ps)
-    {
-      Console.WriteLine("    {0} = {1}", 
-        p.ParameterKey, p.ParameterValue);
-    }
-
-  }
-  
-}
-```
-
-For related API reference information, see [Amazon\.CloudFormation](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/CloudFormation/NCloudFormation.html) and [Amazon\.CloudFormation\.Model](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/CloudFormation/NCloudFormation.html) in the [AWS SDK for \.NET API Reference](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/)\.
+**Topics**
++ [APIs](#w4aac17c17b5)
++ [Prerequisites](#w4aac17c17b7)
++ [Topics](#w4aac17c17b9)
++ [Listing AWS resources](cfn-list-resources.md)
