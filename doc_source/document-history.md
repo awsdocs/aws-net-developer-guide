@@ -4,7 +4,8 @@ The following table describes the important changes since the last release of th
 
 | Change | Description | Date | 
 | --- |--- |--- |
-| [Version 3\.5 of the AWS SDK for \.NET](net-dg-v35.md) | Version 3\.5 of the AWS SDK for \.NET has been released\. | August 21, 2020 | 
+| [Version 3\.5 of the AWS SDK for \.NET](net-dg-v35.md) | Version 3\.5 of the AWS SDK for \.NET has been released\. | August 25, 2020 | 
+| [Paginators](paginators.md) | Added paginators to many service clients, which make pagination of API results more convenient\. | August 24, 2020 | 
 | [Retries and timeouts](retries-timeouts.md) | Added information about retry modes\. | August 20, 2020 | 
 | [S3 encryption client migration](s3-encryption-migration.md) | Added information about how to migrate your Amazon S3 encryption clients from V1 to V2\. | August 7, 2020 | 
 | [Using KMS keys for S3 encryption](kms-keys-s3-encryption.md) | Updated example to use version 2 of the S3 encryption client\. | August 6, 2020 | 

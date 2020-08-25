@@ -9,4 +9,5 @@ For information about developing software for specific AWS services, see [Workin
 **Topics**
 + [Asynchronous APIs](sdk-net-async-api.md)
 + [Retries and timeouts](retries-timeouts.md)
++ [Paginators](paginators.md)
 + [Enabling SDK Metrics](sdk-metrics.md)
