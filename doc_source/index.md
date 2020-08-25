@@ -1,4 +1,4 @@
-# AWS SDK for .NET Developer Guide
+# AWS SDK for .NET (version 3) Developer Guide
 
 -----
 *****Copyright &copy; 2020 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
@@ -36,6 +36,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Enabling SDK Metrics](sdk-metrics.md)
    + [AWS asynchronous APIs for .NET](sdk-net-async-api.md)
    + [Retries and timeouts](retries-timeouts.md)
+   + [Paginators](paginators.md)
    + [Migrating to Version 3 of the AWS SDK for .NET](migration-v3.md)
    + [Migrating to Version 3.5 of the AWS SDK for .NET](net-dg-v35.md)
    + [Migrating from .NET Standard 1.3](migration-from-net-standard-1-3.md)
