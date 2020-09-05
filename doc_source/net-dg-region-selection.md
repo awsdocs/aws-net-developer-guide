@@ -45,7 +45,7 @@ var ec2ClientConfig = new AmazonEC2Config
     ServiceURL = "https://ec2.us-west-new.amazonaws.com"
 };
 
-using (var ec2Client = new AmazonEC2Client(newRegion))
+using (var ec2Client = new AmazonEC2Client(ec2ClientConfig))
 {
   // Make a request to EC2 using ec2Client
 }

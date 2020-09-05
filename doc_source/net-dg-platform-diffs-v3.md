@@ -31,7 +31,7 @@ The AWS SDK for \.NET also contains a Portable Class Library implementation\. Th
 
 ## Unity Support<a name="unity-support"></a>
 
-The AWS SDK for \.NET supports generating Assemblies for Unity\. More information can be found in the [Unity README](https://github.com/aws/aws-sdk-net/blob/master/Unity.README.md)\.
+The AWS SDK for \.NET supports generating Assemblies for Unity\. More information can be found in the [Unity README](https://github.com/aws/aws-sdk-unity-net)\.
 
 ## More Info<a name="more-info"></a>
 + [Migrating to Version 3 of the AWS SDK for \.NET](migration-v3.md)
