@@ -8,6 +8,8 @@ The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-
 
 # Simple Windows\-based application using the AWS SDK for \.NET<a name="quick-start-s3-1-winvs"></a>
 
+\(Go to the [latest developer guide](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/quick-start-s3-1-winvs.html)\.\)
+
 This tutorial uses the AWS SDK for \.NET on Windows with Visual Studio and \.NET Core\. The tutorial shows you how to use the SDK to list the [Amazon S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/gsg/) that you own and optionally create a bucket\.
 
 ## Steps<a name="s3-1-winvs-steps"></a>

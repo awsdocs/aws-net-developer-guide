@@ -8,6 +8,8 @@ The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-
 
 # Get started quickly with the AWS SDK for \.NET<a name="quick-start"></a>
 
+\(Go to the [latest developer guide](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/quick-start.html)\.\)
+
 This section includes basic setup steps and tutorials for developers who are new to the AWS SDK for \.NET\.
 
 For more advanced information, see [Setting up](net-dg-setup.md) and [Code examples for the AWS SDK for \.NET](tutorials-examples.md) instead\.
