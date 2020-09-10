@@ -1,3 +1,11 @@
+--------
+
+**Take the survey\!**
+
+Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
+
+--------
+
 # Enumerating security groups<a name="enumerate-security-groups"></a>
 
 This example shows you how to use the AWS SDK for \.NET to enumerate security groups\. If you supply an [Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/userguide/) ID, the application enumerates the security groups for that particular VPC\. Otherwise, the application simply displays a list of all available security groups\.
@@ -54,7 +62,7 @@ The example [at the end of this topic](#enum-sec-groups-complete-code) shows thi
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w4aac17c19c13c13c15b5b1"></a>
+### SDK references<a name="w4aac19c19c13c13c15b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -73,7 +81,7 @@ Programming elements:
 
   Class [SecurityGroup](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TSecurityGroup.html)
 
-### The Code<a name="w4aac17c19c13c13c15b7b1"></a>
+### The Code<a name="w4aac19c19c13c13c15b7b1"></a>
 
 ```
 using System;

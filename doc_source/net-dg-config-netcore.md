@@ -1,3 +1,11 @@
+--------
+
+**Take the survey\!**
+
+Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
+
+--------
+
 # Using AWSSDK\.Extensions\.NETCore\.Setup and the IConfiguration interface<a name="net-dg-config-netcore"></a>
 
 \(This topic was formerly titled, "Configuring the AWS SDK for \.NET with \.NET Core"\)

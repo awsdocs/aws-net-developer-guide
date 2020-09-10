@@ -1,3 +1,11 @@
+--------
+
+**Take the survey\!**
+
+Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
+
+--------
+
 # Deleting Amazon SQS queues<a name="DeleteSqsQueue"></a>
 
 This example shows you how to use the AWS SDK for \.NET to delete an Amazon SQS queue\. The application deletes the queue, waits for up to a given amount of time for the queue to be gone, and then shows a list of the remaining queues\.
@@ -87,7 +95,7 @@ The example [at the end of this topic](#DeleteSqsQueue-complete-code) shows this
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w4aac17c25c23c25b5b1"></a>
+### SDK references<a name="w4aac19c25c23c25b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
@@ -100,7 +108,7 @@ Programming elements:
 
   Class [ListQueuesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TListQueuesResponse.html)
 
-### The code<a name="w4aac17c25c23c25b7b1"></a>
+### The code<a name="w4aac19c25c23c25b7b1"></a>
 
 ```
 using System;

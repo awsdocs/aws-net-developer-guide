@@ -1,3 +1,11 @@
+--------
+
+**Take the survey\!**
+
+Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
+
+--------
+
 # Platforms supported by the AWS SDK for \.NET<a name="net-dg-supported-platforms"></a>
 
 The AWS SDK for \.NET provides distinct groups of assemblies for developers to target different platforms\. However, not all SDK functionality is the same on each of these platforms\. This topic describes the differences in support for each platform\.

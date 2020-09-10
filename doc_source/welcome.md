@@ -1,3 +1,11 @@
+--------
+
+**Take the survey\!**
+
+Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
+
+--------
+
 # What is the AWS SDK for \.NET<a name="welcome"></a>
 
 The AWS SDK for \.NET makes it easier to build \.NET applications that tap into cost\-effective, scalable, and reliable AWS services such as Amazon Simple Storage Service \(Amazon S3\) and Amazon Elastic Compute Cloud \(Amazon EC2\)\. The SDK simplifies the use of AWS services by providing a set of libraries that are consistent and familiar for \.NET developers\.
@@ -24,6 +32,6 @@ The AWS SDK for \.NET helps you realize several compelling use cases, including 
 + Perform efficient Amazon S3 transfers by sending SQL statements to [Amazon S3 Select](https://docs.aws.amazon.com/AmazonS3/latest/dev/selecting-content-from-objects.html)\.
 + Create and launch [Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Instances.html) instances, and configure and request Amazon EC2 [spot instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)\.
 
-## Additional topics in this section<a name="w4aab5c17"></a>
+## Additional topics in this section<a name="w4aab7c17"></a>
 + [AWS tools related to the AWS SDK for \.NET](related-tools.md)
 + [Additional resources](net-dg-additional-resources.md)

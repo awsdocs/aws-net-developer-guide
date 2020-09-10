@@ -1,3 +1,11 @@
+--------
+
+**Take the survey\!**
+
+Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
+
+--------
+
 # Install AWSSDK assemblies without NuGet<a name="net-dg-install-without-nuget"></a>
 
 This topic describes how you can use the AWSSDK assemblies that you obtained and stored locally \(or on premises\) as described in [Obtaining AWSSDK assemblies](net-dg-obtain-assemblies.md)\. This is **not** the recommended method for handling SDK references, but is required in some environments\.

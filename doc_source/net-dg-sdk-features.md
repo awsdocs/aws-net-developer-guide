@@ -1,3 +1,11 @@
+--------
+
+**Take the survey\!**
+
+Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
+
+--------
+
 # Features of the AWS SDK for \.NET<a name="net-dg-sdk-features"></a>
 
 This section provides information about features of the AWS SDK for \.NET that you might need to consider when creating your applications\.

@@ -1,3 +1,11 @@
+--------
+
+**Take the survey\!**
+
+Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
+
+--------
+
 # Deleting key pairs<a name="delete-key-pairs"></a>
 
 This example shows you how to use the AWS SDK for \.NET to delete a key pair\. The application takes the name of a key pair\. It deletes the key pair and then displays all available key pairs\. If you provide no command\-line arguments, the application simply displays all available key pairs\.
@@ -48,7 +56,7 @@ The example [at the end of this topic](#delete-key-pairs-complete-code) shows th
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w4aac17c19c15c13c19b5b1"></a>
+### SDK references<a name="w4aac19c19c15c13c19b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -65,7 +73,7 @@ Programming elements:
 
   Class [KeyPairInfo](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TKeyPairInfo.html)
 
-### The code<a name="w4aac17c19c15c13c19b7b1"></a>
+### The code<a name="w4aac19c19c15c13c19b7b1"></a>
 
 ```
 using System;

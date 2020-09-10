@@ -1,3 +1,11 @@
+--------
+
+**Take the survey\!**
+
+Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
+
+--------
+
 # Creating IAM managed policies programmatically<a name="iam-policies-create-prog"></a>
 
 This example shows you how to use the AWS SDK for \.NET to create an [IAM managed policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) programmatically\. The application constructs a policy document by using action and statement classes, creates an IAM client object, and then creates the policy\.
@@ -86,7 +94,7 @@ The example [at the end of this topic](#iam-policies-create-prog-complete-code) 
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w4aac17c21c25c19b5b1"></a>
+### SDK references<a name="w4aac19c21c25c19b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.IdentityManagement](https://www.nuget.org/packages/AWSSDK.IdentityManagement)
@@ -110,7 +118,7 @@ Programming elements:
 
   Class [Statement](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/Auth/TStatement.html)
 
-### The code<a name="w4aac17c21c25c19b7b1"></a>
+### The code<a name="w4aac19c21c25c19b7b1"></a>
 
 ```
 using System;

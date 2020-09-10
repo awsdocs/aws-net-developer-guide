@@ -1,3 +1,11 @@
+--------
+
+**Take the survey\!**
+
+Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
+
+--------
+
 # Credential and profile resolution<a name="creds-assign"></a>
 
 The AWS SDK for \.NET searches for credentials in a certain order and uses the first available set for the current application\.

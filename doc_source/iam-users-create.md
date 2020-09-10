@@ -1,3 +1,11 @@
+--------
+
+**Take the survey\!**
+
+Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
+
+--------
+
 # Creating and listing users for your AWS account<a name="iam-users-create"></a>
 
 This example shows you how to use the AWS SDK for \.NET to create a new IAM user\. With the information you supply to the application, it creates a user, attaches the given managed policy, obtains credentials for the user, and then displays a list of all the users in your AWS account\.
@@ -110,7 +118,7 @@ The example [at the end of this topic](#iam-users-create-complete-code) shows th
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w4aac17c21c19c23b5b1"></a>
+### SDK references<a name="w4aac19c21c19c23b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.IdentityManagement](https://www.nuget.org/packages/AWSSDK.IdentityManagement)
@@ -149,7 +157,7 @@ Programming elements:
 
   Class [ListUsersResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/IAM/TListUsersResponse.html)
 
-### The code<a name="w4aac17c21c19c23b7b1"></a>
+### The code<a name="w4aac19c21c19c23b7b1"></a>
 
 ```
 using System;

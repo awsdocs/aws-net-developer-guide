@@ -1,3 +1,11 @@
+--------
+
+**Take the survey\!**
+
+Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
+
+--------
+
 # Deleting IAM users<a name="iam-users-delete"></a>
 
 This example shows you how use the AWS SDK for \.NET to delete an IAM user\. It first removes resources such as access keys, attached policies, etc\., and then deletes the user\.
@@ -90,7 +98,7 @@ The example [at the end of this topic](#iam-users-delete-complete-code) shows th
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w4aac17c21c21c19b5b1"></a>
+### SDK references<a name="w4aac19c21c21c19b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.IdentityManagement](https://www.nuget.org/packages/AWSSDK.IdentityManagement)
@@ -119,7 +127,7 @@ Programming elements:
 
   Class [ListAttachedUserPoliciesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/IAM/TListAttachedUserPoliciesResponse.html)
 
-### The code<a name="w4aac17c21c21c19b7b1"></a>
+### The code<a name="w4aac19c21c21c19b7b1"></a>
 
 ```
 using System;

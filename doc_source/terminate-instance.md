@@ -1,10 +1,18 @@
+--------
+
+**Take the survey\!**
+
+Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
+
+--------
+
 # Terminating an Amazon EC2 instance<a name="terminate-instance"></a>
 
 When you no longer need one or more of your Amazon EC2 instances, you can terminate them\.
 
 This example shows you how to use the AWS SDK for \.NET to terminate EC2 instances\. It takes an instance ID as input\.
 
-## SDK references<a name="w4aac17c19c19c11b7b1"></a>
+## SDK references<a name="w4aac19c19c19c11b7b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)

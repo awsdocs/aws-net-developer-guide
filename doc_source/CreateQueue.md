@@ -1,3 +1,11 @@
+--------
+
+**Take the survey\!**
+
+Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
+
+--------
+
 # Creating Amazon SQS queues<a name="CreateQueue"></a>
 
 This example shows you how to use the AWS SDK for \.NET to create an Amazon SQS queue\. The application creates a [dead\-letter queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html) if you don't supply the ARN for one\. It then creates a standard message queue, which includes a dead\-letter queue \(the one you supplied or the one that was created\)\.
@@ -105,7 +113,7 @@ The example [at the end of this topic](#CreateQueue-complete-code) shows this sn
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w4aac17c25c19c25b5b1"></a>
+### SDK references<a name="w4aac19c25c19c25b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
@@ -126,7 +134,7 @@ Programming elements:
 
   Class [ListQueuesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TListQueuesResponse.html)
 
-### The code<a name="w4aac17c25c19c25b7b1"></a>
+### The code<a name="w4aac19c25c19c25b7b1"></a>
 
 ```
 using System;

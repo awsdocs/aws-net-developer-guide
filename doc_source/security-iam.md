@@ -1,3 +1,11 @@
+--------
+
+**Take the survey\!**
+
+Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
+
+--------
+
 # Identity and Access Management for this AWS Product or Service<a name="security-iam"></a>
 
 AWS Identity and Access Management \(IAM\) is an Amazon Web Services \(AWS\) service that helps an administrator securely control access to AWS resources\. IAM administrators control who can be *authenticated* \(signed in\) and *authorized* \(have permissions\) to use resources in AWS services\. IAM is an AWS service that you can use with no additional charge\.

@@ -1,3 +1,11 @@
+--------
+
+**Take the survey\!**
+
+Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
+
+--------
+
 # Sending Amazon SQS messages<a name="SendMessage"></a>
 
 This example shows you how to use the AWS SDK for \.NET to send messages to an Amazon SQS queue, which you can create [programmatically](CreateQueue.md) or by using the [Amazon SQS console](https://console.aws.amazon.com/sqs)\. The application sends a single message to the queue and then a batch of messages\. The application then waits for user input, which can be additional messages to send to the queue or a request to exit the application\.
@@ -76,7 +84,7 @@ The example [at the end of this topic](#SendMessage-complete-code) shows this sn
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w4aac17c25c25c25b5b1"></a>
+### SDK references<a name="w4aac19c25c25c25b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
@@ -97,7 +105,7 @@ Programming elements:
 
   Class [SendMessageBatchResultEntry](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TSendMessageBatchResultEntry.html)
 
-### The code<a name="w4aac17c25c25c25b7b1"></a>
+### The code<a name="w4aac19c25c25c25b7b1"></a>
 
 ```
 using System;
