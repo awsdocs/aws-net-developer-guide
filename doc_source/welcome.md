@@ -18,7 +18,7 @@ The AWS SDK for \.NET makes it easier to build \.NET applications that tap into 
 
 **Note**  
 This documentation is for version 3\.5 and later of the AWS SDK for \.NET\. It's mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.  
-Documentation for version 3\.0 of the SDK, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio, can be found at [https://docs\.aws\.amazon\.com/sdk\-for\-net/v3/developer\-guide/](../../v3/developer-guide/welcome.html)\.  
+Documentation for version 3\.0 of the SDK, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio, can be found at [https://docs\.aws\.amazon\.com/sdk\-for\-net/v3/developer\-guide/](../../v3/developer-guide/welcome.html)  
 For information about migrating, see [Migrating your project](net-dg-migrating.md)\.
 
 ## Common use cases<a name="common-use-cases"></a>
