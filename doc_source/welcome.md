@@ -21,6 +21,10 @@ This documentation is for version 3\.5 and later of the AWS SDK for \.NET\. It's
 Documentation for version 3\.0 of the SDK, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio, can be found at [https://docs\.aws\.amazon\.com/sdk\-for\-net/v3/developer\-guide/](../../v3/developer-guide/welcome.html)  
 For information about migrating, see [Migrating your project](net-dg-migrating.md)\.
 
+## Maintenance and support<a name="maintenance-and-support"></a>
+
+For information about how this AWS product is being maintained and supported, see [Maintenance and Support](https://docs.aws.amazon.com/credref/latest/refdocs/support-maint.html) in the [AWS SDKs and Tools Shared Configuration and Credentials Reference Guide](https://docs.aws.amazon.com/credref/latest/refdocs/overview.html)\.
+
 ## Common use cases<a name="common-use-cases"></a>
 
 The AWS SDK for \.NET helps you realize several compelling use cases, including the following:
@@ -32,6 +36,6 @@ The AWS SDK for \.NET helps you realize several compelling use cases, including 
 + Perform efficient Amazon S3 transfers by sending SQL statements to [Amazon S3 Select](https://docs.aws.amazon.com/AmazonS3/latest/dev/selecting-content-from-objects.html)\.
 + Create and launch [Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Instances.html) instances, and configure and request Amazon EC2 [spot instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)\.
 
-## Additional topics in this section<a name="w4aab7c17"></a>
+## Additional topics in this section<a name="w4aab7c21"></a>
 + [AWS tools related to the AWS SDK for \.NET](related-tools.md)
 + [Additional resources](net-dg-additional-resources.md)
