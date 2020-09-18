@@ -14,6 +14,10 @@ Unless stated otherwise, the information in this guide applies to all of the sup
 
 \(**Got it\!** I'm ready for a [tutorial](quick-start.md) or to start [setting up](net-dg-setup.md)\.\)
 
+## Maintenance and support<a name="maintenance-and-support"></a>
+
+For information about how this AWS product is being maintained and supported, see [Maintenance and Support](https://docs.aws.amazon.com/credref/latest/refdocs/support-maint.html) in the [AWS SDKs and Tools Shared Configuration and Credentials Reference Guide](https://docs.aws.amazon.com/credref/latest/refdocs/overview.html)\.
+
 ## AWS Tools Related to the SDK<a name="about-tools"></a>
 
 ### Tools for Windows PowerShell and Tools for PowerShell Core<a name="aws-tools-for-windows-powershell-and-powershell-core"></a>
