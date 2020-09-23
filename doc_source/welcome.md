@@ -21,9 +21,9 @@ This documentation is for version 3\.5 and later of the AWS SDK for \.NET\. It's
 Documentation for version 3\.0 of the SDK, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio, can be found at [https://docs\.aws\.amazon\.com/sdk\-for\-net/v3/developer\-guide/](../../v3/developer-guide/welcome.html)  
 For information about migrating, see [Migrating your project](net-dg-migrating.md)\.
 
-## Maintenance and support<a name="maintenance-and-support"></a>
+## Maintenance and support for SDK major versions<a name="sdks-major-versions-maintenance-support"></a>
 
-For information about maintenance and support for SDK major versions and their underlying dependencies see the following in the [AWS SDKs and Tools Shared Configuration and Credentials Reference Guide](https://docs.aws.amazon.com/credref/latest/refdocs/overview.html):
+For information about maintenance and support for SDK major versions and their underlying dependencies, see the following in the [AWS SDKs and Tools Shared Configuration and Credentials Reference Guide](https://docs.aws.amazon.com/credref/latest/refdocs/overview.html):
 + [AWS SDKs and Tools Maintenance Policy](https://docs.aws.amazon.com/credref/latest/refdocs/maint-policy.html)
 + [AWS SDKs and Tools Version Support Matrix](https://docs.aws.amazon.com/credref/latest/refdocs/version-support-matrix.html)
 
