@@ -14,9 +14,9 @@ Unless stated otherwise, the information in this guide applies to all of the sup
 
 \(**Got it\!** I'm ready for a [tutorial](quick-start.md) or to start [setting up](net-dg-setup.md)\.\)
 
-## Maintenance and support<a name="maintenance-and-support"></a>
+## Maintenance and support for SDK major versions<a name="sdks-major-versions-maintenance-support"></a>
 
-For information about maintenance and support for SDK major versions and their underlying dependencies see the following in the [AWS SDKs and Tools Shared Configuration and Credentials Reference Guide](https://docs.aws.amazon.com/credref/latest/refdocs/overview.html):
+For information about maintenance and support for SDK major versions and their underlying dependencies, see the following in the [AWS SDKs and Tools Shared Configuration and Credentials Reference Guide](https://docs.aws.amazon.com/credref/latest/refdocs/overview.html):
 + [AWS SDKs and Tools Maintenance Policy](https://docs.aws.amazon.com/credref/latest/refdocs/maint-policy.html)
 + [AWS SDKs and Tools Version Support Matrix](https://docs.aws.amazon.com/credref/latest/refdocs/version-support-matrix.html)
 
