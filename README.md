@@ -1,4 +1,4 @@
-## User Guide for the AWS SDK for .NET (version 2)
+## (version 2) Developer guide for the AWS SDK for .NET (version 2)
 
 This is the open source version of the developer guide for the AWS SDK for .NET, version 2.
 
