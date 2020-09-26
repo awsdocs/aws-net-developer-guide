@@ -1,12 +1,12 @@
-## (version 3) [Developer guide](doc_source/index.md) of the AWS SDK for .NET (version 3)
+## (version 3) [Developer guide](doc_source/index.md) for the AWS SDK for .NET (version 3)
 
-This is the open source version of the developer guide for the AWS SDK for .NET version 3.
+This is the open source version of the developer guide for the AWS SDK for .NET, version 3.
 
 **NOTE**: This branch is for version 3 of the SDK. The latest content is in [the default branch]( https://github.com/awsdocs/aws-net-developer-guide).
 
 To view this documentation, start with the [Index](doc_source/index.md).
 
-This repository contains source content for the official [AWS SDK for .NET Developer Guide (version 3)](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/welcome.html).
+This repository contains open source version of the official [AWS SDK for .NET Developer Guide (version 3)](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/welcome.html).
 
 The GitHub repository for the AWS SDK for .NET is at https://github.com/aws/aws-sdk-net.
 
@@ -29,7 +29,7 @@ To contribute your own documentation fixes or updates, please use standard GitHu
 
 ## Copyright and license
 
-All content in this repository, unless otherwise stated, is Copyright © 2010-2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.
+All content in this repository, unless otherwise stated, is Copyright Amazon.com, Inc. or its affiliates. All rights reserved.
 
 Except where otherwise noted, this work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/) (the "License"). Use the preceding link for a human-readable summary of the license terms. The full license text is available at: http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode and in the LICENSE file accompanying this repository.
 
