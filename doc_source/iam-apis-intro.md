@@ -37,6 +37,5 @@ Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. 
 + [Creating users](iam-users-create.md)
 + [Deleting users](iam-users-delete.md)
 + [Creating managed policies from JSON](iam-policies-create-json.md)
-+ [Creating managed policies programmatically](iam-policies-create-prog.md)
 + [Displaying policy documents](iam-policies-display.md)
 + [Granting access with a role](net-dg-hosm.md)

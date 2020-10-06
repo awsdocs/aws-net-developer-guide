@@ -11,7 +11,7 @@ Help us improve the AWS SDK for \.NET and its documentation by sharing your expe
 This example shows you how to use the AWS SDK for \.NET to create an [IAM managed policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) from a given policy document in JSON\. The application creates an IAM client object, reads the policy document from a file, and then creates the policy\.
 
 **Note**  
-To contrast this example with the one that [programmatically creates the policy document](iam-policies-create-prog.md), you can use the JSON definition shown in the [additional considerations](iam-policies-create-prog.md#iam-policies-create-prog-additional) of that example\.
+For an example policy document in JSON, see the [additional considerations](#iam-policies-create-json-additional) at the end of this topic\.
 
 The following sections provide snippets of this example\. The [complete code for the example](#iam-policies-create-json-complete-code) is shown after that, and can be built and run as is\.
 
@@ -191,4 +191,33 @@ namespace IamCreatePolicyFromJson
 ```
 
 ## Additional considerations<a name="iam-policies-create-json-additional"></a>
++ The following is an example policy document that you can copy into a JSON file and use as input for this application:
+
+  ```
+  {
+    "Version" : "2012-10-17",
+    "Id"  : "DotnetTutorialPolicy",
+    "Statement" : [
+      {
+        "Sid" : "DotnetTutorialPolicyS3",
+        "Effect" : "Allow",
+        "Action" : [
+          "s3:Get*",
+          "s3:List*"
+        ],
+        "Resource" : "*"
+      },
+      {
+        "Sid" : "DotnetTutorialPolicyPolly",
+        "Effect": "Allow",
+        "Action": [
+          "polly:DescribeVoices",
+          "polly:SynthesizeSpeech"
+        ],
+        "Resource": "*"
+      }
+    ]
+  }
+  ```
 + You can verify that the policy was created by looking in the [IAM console](https://console.aws.amazon.com/iam/home#/policies)\. In the **Filter policies** drop\-down list, select **Customer managed**\. Delete the policy when you no longer need it\.
++  For more information about policy creation, see [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html) and the [IAM JSON policy reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html) in the [IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/)

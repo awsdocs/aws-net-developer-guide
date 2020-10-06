@@ -79,7 +79,7 @@ The example [at the end of this topic](#iam-policies-display-complete-code) show
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w4aac19c21c27c19b5b1"></a>
+### SDK references<a name="w4aac19c21c25c19b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.IdentityManagement](https://www.nuget.org/packages/AWSSDK.IdentityManagement)
@@ -100,7 +100,7 @@ Programming elements:
 
   Class [PolicyVersion](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/IAM/TPolicyVersion.html)
 
-### The code<a name="w4aac19c21c27c19b7b1"></a>
+### The code<a name="w4aac19c21c25c19b7b1"></a>
 
 ```
 using System;

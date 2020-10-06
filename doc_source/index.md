@@ -67,7 +67,6 @@ Amazon's trademarks and trade dress may not be used in
       + [Creating and listing users for your AWS account](iam-users-create.md)
       + [Deleting IAM users](iam-users-delete.md)
       + [Creating IAM managed policies from JSON](iam-policies-create-json.md)
-      + [Creating IAM managed policies programmatically](iam-policies-create-prog.md)
       + [Display the policy document of an IAM managed policy](iam-policies-display.md)
       + [Granting access by using an AWS IAM role](net-dg-hosm.md)
    + [Using Amazon Simple Storage Service Internet storage](s3-apis-intro.md)
