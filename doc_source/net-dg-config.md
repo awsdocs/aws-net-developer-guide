@@ -1,11 +1,3 @@
---------
-
-**Take the survey\!**
-
-Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
-
---------
-
 # Setting up your AWS SDK for \.NET project<a name="net-dg-config"></a>
 
 In addition to [setting up your environment](net-dg-setup.md), you need to configure each project that you create\.

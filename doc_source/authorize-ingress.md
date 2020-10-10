@@ -1,11 +1,3 @@
---------
-
-**Take the survey\!**
-
-Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
-
---------
-
 # Updating security groups<a name="authorize-ingress"></a>
 
 This example shows you how to use the AWS SDK for \.NET to add a rule to a security group\. In particular, the example adds a rule to allow inbound traffic on a given TCP port, which can be used, for example, for remote connections to an EC2 instance\. The application takes the ID of an existing security group, an IP address \(or address range\) in CIDR format, and optionally a TCP port number\. It then adds an inbound rule to the given security group\.
@@ -54,7 +46,7 @@ The example [at the end of this topic](#authorize-ingress-complete-code) shows t
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w4aac19c19c13c17c17b5b1"></a>
+### SDK references<a name="w4aac17c19c13c17c17b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -73,7 +65,7 @@ Programming elements:
 
   Class [IpRange](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TIpRange.html)
 
-### The code<a name="w4aac19c19c13c17c17b7b1"></a>
+### The code<a name="w4aac17c19c13c17c17b7b1"></a>
 
 ```
 using System;

@@ -1,11 +1,3 @@
---------
-
-**Take the survey\!**
-
-Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
-
---------
-
 # Seeing your Amazon EC2 Regions and Availability Zones<a name="using-regions-and-availability-zones"></a>
 
 Amazon EC2 is hosted in multiple locations worldwide\. These locations are composed of Regions and Availability Zones\. Each Region is a separate geographic area that has multiple, isolated locations known as Availability Zones\.
@@ -14,7 +6,7 @@ Read more about Regions and Availability Zones in the [EC2 user guide for Linux]
 
 This example shows you how to use the AWS SDK for \.NET to get details about the AWS Regions and Availability Zones related to an EC2 client\. The application displays lists of the Regions and Availability Zones available to an EC2 client\.
 
-## SDK references<a name="w4aac19c19c17b9b1"></a>
+## SDK references<a name="w4aac17c19c17b9b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)

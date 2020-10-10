@@ -1,11 +1,3 @@
---------
-
-**Take the survey\!**
-
-Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
-
---------
-
 # Start a new project<a name="net-dg-start-new-project"></a>
 
 There are several techniques you can use to start a new project to access AWS services\. The following are some of those techniques:

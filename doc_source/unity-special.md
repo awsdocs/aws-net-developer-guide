@@ -1,11 +1,3 @@
---------
-
-**Take the survey\!**
-
-Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
-
---------
-
 # Special considerations for Unity support<a name="unity-special"></a>
 
 When using the AWS SDK for \.NET and [\.NET Standard 2\.0](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) for your Unity application, your application must reference the AWS SDK for \.NET assemblies \(DLL files\) directly rather than using NuGet\. Given this requirement, the following are important actions you will need to perform\.

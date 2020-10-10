@@ -1,11 +1,3 @@
---------
-
-**Take the survey\!**
-
-Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
-
---------
-
 # Enforcing TLS 1\.2 in this AWS Product or Service<a name="enforcing-tls"></a>
 
 To increase security when communicating with AWS services, you should configure this AWS product or service to use TLS 1\.2 or later\.

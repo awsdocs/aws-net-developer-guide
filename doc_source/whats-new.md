@@ -1,11 +1,3 @@
---------
-
-**Take the survey\!**
-
-Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
-
---------
-
 # What's new in the AWS SDK for \.NET<a name="whats-new"></a>
 
 See the product page at [https://aws\.amazon\.com/sdk\-for\-net/](https://aws.amazon.com/sdk-for-net/) for high\-level information about new developments related to the AWS SDK for \.NET\.

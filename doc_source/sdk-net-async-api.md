@@ -1,11 +1,3 @@
---------
-
-**Take the survey\!**
-
-Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
-
---------
-
 # AWS asynchronous APIs for \.NET<a name="sdk-net-async-api"></a>
 
 The AWS SDK for \.NET uses the *Task\-based Asynchronous Pattern \(TAP\)* for its asynchronous implementation\. To learn more about the TAP, see [Task\-based Asynchronous Pattern \(TAP\)](https://docs.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) on docs\.microsoft\.com\.

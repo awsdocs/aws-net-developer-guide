@@ -1,11 +1,3 @@
---------
-
-**Take the survey\!**
-
-Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
-
---------
-
 # Configure AWS credentials<a name="net-dg-config-creds"></a>
 
 After you [create an AWS account](net-dg-signup.md) and [create the required user accounts](net-dg-users-roles.md), you can manage credentials for those user accounts\. You need these credentials to perform many of the tasks and examples in this guide\.

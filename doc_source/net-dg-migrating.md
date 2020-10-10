@@ -1,11 +1,3 @@
---------
-
-**Take the survey\!**
-
-Help us improve the AWS SDK for \.NET and its documentation by sharing your experience\. [Click here to take a quick survey\.](https://amazonmr.au1.qualtrics.com/jfe/form/SV_2nThyxw3YlloC7H)
-
---------
-
 # Migrating your project for the AWS SDK for \.NET<a name="net-dg-migrating"></a>
 
 This section provides information about migration tasks that might apply to you, and instructions about how to perform those tasks\.
