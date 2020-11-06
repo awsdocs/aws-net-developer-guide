@@ -18,7 +18,7 @@ If you need to close your AWS account, see [Closing an account](https://docs.aws
 
 [Install and configure your toolchain](net-dg-dev-env.md)
 
-## Additional information<a name="w4aab9c13c11"></a>
+## Additional information<a name="w8aab9c13c11"></a>
 
 For additional information about how to handle certificates and security, see [IAM best practices and use cases](https://docs.aws.amazon.com/IAM/latest/UserGuide/IAMBestPracticesAndUseCases.html) in the [IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/)\.
 

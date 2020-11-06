@@ -2,7 +2,7 @@
 
 The AWS SDK for \.NET supports [Amazon S3](https://aws.amazon.com/s3/), which is storage for the Internet\. It is designed to make web\-scale computing easier for developers\.
 
-## APIs<a name="w4aac17c23b5"></a>
+## APIs<a name="w8aac17c23b5"></a>
 
 The AWS SDK for \.NET provides APIs for Amazon S3 clients\. The APIs enable you to work with Amazon S3 resources such as buckets and items\. To view the full set of APIs for Amazon S3, see the following:
 + [AWS SDK for \.NET API Reference](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/) \(and scroll to "Amazon\.S3"\)\.
@@ -12,7 +12,7 @@ The Amazon S3 APIs are provided by the following NuGet packages:
 + [AWSSDK\.S3](https://www.nuget.org/packages/AWSSDK.S3)
 + [Amazon\.Extensions\.S3\.Encryption](https://www.nuget.org/packages/Amazon.Extensions.S3.Encryption)
 
-## Prerequisites<a name="w4aac17c23b7"></a>
+## Prerequisites<a name="w8aac17c23b7"></a>
 
 Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Setting up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.
 

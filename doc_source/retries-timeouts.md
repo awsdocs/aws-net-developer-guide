@@ -9,7 +9,7 @@ To determine which values to use for retries and timeouts, consider the followin
 
 ## Retries<a name="retries"></a>
 
-### Overview<a name="w4aac13c15c11b5"></a>
+### Overview<a name="w8aac13c15c11b5"></a>
 
 The AWS SDK for \.NET can retry requests that fail due to server\-side throttling or dropped connections\. There are two properties of service configuration classes that you can use to specify the retry behavior of a service client\. Service configuration classes inherit these properties from the abstract [Amazon\.Runtime\.ClientConfig](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/Runtime/TClientConfig.html) class of the [AWS SDK for \.NET API Reference](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/):
 + `RetryMode` specifies one of three retry modes, which are defined in the [Amazon\.Runtime\.RequestRetryMode](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/Runtime/TRequestRetryMode.html) enumeration\.
@@ -27,7 +27,7 @@ Detailed descriptions for these properties can be found in the abstract [Amazon\
 | Standard | 10 | 2 | 
 | Adaptive \(experimental\) | 10 | 2 | 
 
-### Behavior<a name="w4aac13c15c11b9"></a>
+### Behavior<a name="w8aac13c15c11b9"></a>
 
 **When your application starts**
 

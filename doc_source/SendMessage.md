@@ -76,7 +76,7 @@ The example [at the end of this topic](#SendMessage-complete-code) shows this sn
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w4aac17c25c25c25b5b1"></a>
+### SDK references<a name="w8aac17c25c25c25b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
@@ -97,7 +97,7 @@ Programming elements:
 
   Class [SendMessageBatchResultEntry](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TSendMessageBatchResultEntry.html)
 
-### The code<a name="w4aac17c25c25c25b7b1"></a>
+### The code<a name="w8aac17c25c25c25b7b1"></a>
 
 ```
 using System;

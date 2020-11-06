@@ -10,7 +10,7 @@ You can create an AWS service client that goes to a [particular Region](#per-cli
 
 You can specify the Region for any of the AWS service clients in your application\. Setting the Region in this way takes precedence over any global setting for that particular service client\.
 
-### Existing Region<a name="w4aac11c25c11b5"></a>
+### Existing Region<a name="w8aac11c25c11b5"></a>
 
 This example shows you how to instantiate an [Amazon EC2 client](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TEC2Client.html) in an existing Region\. It uses defined [RegionEndpoint](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/Amazon/TRegionEndpoint.html) fields\.
 
@@ -21,7 +21,7 @@ using (AmazonEC2Client ec2Client = new AmazonEC2Client(RegionEndpoint.USWest2))
 }
 ```
 
-### New Region using RegionEndpoint class<a name="w4aac11c25c11b7"></a>
+### New Region using RegionEndpoint class<a name="w8aac11c25c11b7"></a>
 
 This example shows you how to construct a new Region endpoint by using [RegionEndpoint\.GetBySystemName](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/Amazon/MRegionEndpointGetBySystemNameString.html)\.
 
@@ -33,7 +33,7 @@ using (var ec2Client = new AmazonEC2Client(newRegion))
 }
 ```
 
-### New Region using the service client configuration class<a name="w4aac11c25c11b9"></a>
+### New Region using the service client configuration class<a name="w8aac11c25c11b9"></a>
 
 This example shows you how to use the `ServiceURL` property of the service client configuration class to specify the Region; in this case, using the [AmazonEC2Config](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TEC2Config.html) class\.
 
@@ -58,11 +58,11 @@ There are several ways you can specify a Region for all of the AWS service clien
 
 The AWS SDK for \.NET looks for a Region value in the following order\.
 
-### Profiles<a name="w4aac11c25c15b7"></a>
+### Profiles<a name="w8aac11c25c15b7"></a>
 
 Set in a profile that your application or the SDK has loaded\. For more information, see [Credential and profile resolution](creds-assign.md)\.
 
-### Environment variables<a name="w4aac11c25c15b9"></a>
+### Environment variables<a name="w8aac11c25c15b9"></a>
 
 Set in the `AWS_REGION` environment variable\.
 
@@ -81,7 +81,7 @@ set AWS_REGION=us-west-2
 **Note**  
 If you set this environment variable for the whole system \(using `export` or `setx`\), it affects all SDKs and toolkits, not just the AWS SDK for \.NET\.
 
-### AWSConfigs class<a name="w4aac11c25c15c11"></a>
+### AWSConfigs class<a name="w8aac11c25c15c11"></a>
 
 Set as an [AWSConfigs\.AWSRegion](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/Amazon/TAWSConfigs.html) property\.
 
