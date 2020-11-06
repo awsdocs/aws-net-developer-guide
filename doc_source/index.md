@@ -93,7 +93,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Programming AWS OpsWorks to Work with Stacks and Applications](opsworks-apis-intro.md)
    + [Programming Support for Additional AWS Services](other-apis-intro.md)
 + [Security for this AWS Product or Service](security.md)
-   + [Data Protection in this AWS Product or Service](data-protection.md)
+   + [Data Protection in this AWS product or service](data-protection.md)
    + [Identity and Access Management for this AWS Product or Service](security-iam.md)
    + [Compliance Validation for this AWS Product or Service](compliance-validation.md)
    + [Resilience for this AWS Product or Service](disaster-recovery-resiliency.md)
