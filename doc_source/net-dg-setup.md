@@ -17,4 +17,4 @@ If you're new to \.NET development on AWS or at least new to the AWS SDK for \.N
 + [Install and configure your toolchain](net-dg-dev-env.md)
 + [Install AWSSDK Assemblies](net-dg-install-assemblies.md)
 + [Start a new project](net-dg-start-new-project.md)
-+ [Platforms Supported by the AWS SDK for \.NET](net-dg-platform-diffs-v3.md)
++ [Supported platforms](net-dg-platform-diffs-v3.md)

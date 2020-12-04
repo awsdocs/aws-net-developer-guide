@@ -25,7 +25,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Install and configure your toolchain](net-dg-dev-env.md)
    + [Install AWSSDK Assemblies](net-dg-install-assemblies.md)
    + [Start a new project](net-dg-start-new-project.md)
-   + [Platforms Supported by the AWS SDK for .NET](net-dg-platform-diffs-v3.md)
+   + [Platforms supported by the AWS SDK for .NET](net-dg-platform-diffs-v3.md)
 + [Programming with the AWS SDK for .NET](net-dg-programming-techniques.md)
    + [Configuring Your AWS SDK for .NET Application](net-dg-config.md)
       + [Configuring the AWS SDK for .NET with .NET Core](net-dg-config-netcore.md)

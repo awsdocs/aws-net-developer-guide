@@ -6,7 +6,7 @@ The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-
 
 --------
 
-# Platforms Supported by the AWS SDK for \.NET<a name="net-dg-platform-diffs-v3"></a>
+# Platforms supported by the AWS SDK for \.NET<a name="net-dg-platform-diffs-v3"></a>
 
 The AWS SDK for \.NET provides distinct groups of assemblies for developers to target different platforms\. However, not all SDK functionality is the same on each of these platforms\. This topic describes the differences in support for each platform\.<a name="net-dg-platform-diff-netfx35"></a>
 
@@ -27,12 +27,15 @@ The AWS SDK for \.NET is not Federal Information Processing Standard \(FIPS\) co
 
 ## Portable Class Library<a name="portable-class-library"></a>
 
-The AWS SDK for \.NET also contains a Portable Class Library implementation\. The Portable Class Library implementation can target multiple platforms,including Universal Windows Platform \(UWP\), and Xamarin on iOS and Android\. See the AWS Mobile SDK for \.NET and Xamarin for more details\. AWS service clients only support asynchronous calling patterns\.
+The AWS SDK for \.NET also contains a Portable Class Library implementation\. The Portable Class Library implementation can target multiple platforms, including Universal Windows Platform \(UWP\), and Xamarin on iOS and Android\. See the AWS Mobile SDK for \.NET and Xamarin for more details\. AWS service clients only support asynchronous calling patterns\.
 
-## Unity Support<a name="unity-support"></a>
+## Unity support<a name="unity-support"></a>
 
 The AWS SDK for \.NET supports generating Assemblies for Unity\. More information can be found in the [Unity README](https://github.com/aws/aws-sdk-unity-net)\.
 
-## More Info<a name="more-info"></a>
+**Note**  
+The reference given above is for ***legacy*** Unity support\. Starting with version 3\.5 of the AWS SDK for \.NET, projects using Unity 2018\.1 or later should target the \.NET Standard 2\.0 release of the SDK\. You can find additional information in the latest developer guide: [Unity support](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/unity-special.html) and [Migrating your Unity application](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-v35.html#net-dg-v35-changes-unity)\.
+
+## More info<a name="more-info"></a>
 + [Migrating to Version 3 of the AWS SDK for \.NET](migration-v3.md)
 + [Migrating to Version 3\.5 of the AWS SDK for \.NET](net-dg-v35.md)
