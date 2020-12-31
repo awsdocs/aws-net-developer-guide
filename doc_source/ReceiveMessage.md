@@ -8,6 +8,10 @@ The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-
 
 # Receiving a Message from an Amazon SQS Queue<a name="ReceiveMessage"></a>
 
+The following content is for version 3 of the AWS SDK for \.NET\. For Amazon SQS content related to version 3\.5 and later of the SDK, see [the latest developer guide](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/ReceiveMessage.html)\.
+
+## V3 content<a name="w8aac15c35c29b5b1"></a>
+
 You can use the AWS SDK for \.NET to receive messages from an Amazon SQS queue\.
 
 **To receive a message from an Amazon SQS queue**
@@ -33,7 +37,7 @@ You can use the AWS SDK for \.NET to receive messages from an Amazon SQS queue\.
 1. The `ReceiveMessageResponse.ReceiveMessageResult` property contains a [ReceiveMessageResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TReceiveMessageResponse.html) object, which contains a list of the messages that were received\. Iterate through this list and call the `ProcessMessage` method to process each message\.
 
    ```
-   foreach (var message in result.Messages)
+   foreach (var message in receiveMessageResponse.Messages)
    {
      ProcessMessage(message);  // Go to a method to process messages.
    }
