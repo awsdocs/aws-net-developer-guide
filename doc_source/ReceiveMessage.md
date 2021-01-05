@@ -1,16 +1,22 @@
 --------
 
-This documentation is for version 3\.0 of the AWS SDK for \.NET, which is mostly centered around \.NET Framework and ASP\.NET 4\.*x*, Windows, and Visual Studio\.
+This content focuses on **\.NET Framework** and **ASP\.NET 4\.x**\. It covers Windows and Visual Studio\.
 
-The latest version of the documentation at [https://docs\.aws\.amazon\.com/sdk\-for\-net/latest/developer\-guide/](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/welcome.html) is mostly centered around \.NET Core and ASP\.NET Core\. In addition to Windows and Visual Studio, it gives equal consideration to cross\-platform development\.
+Looking for **\.NET Core** or **ASP\.NET Core**? Go to *[version 3\.5 or later](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/welcome.html)*\. It covers cross\-platform development in addition to Windows and Visual Studio\.
 
 --------
 
 # Receiving a Message from an Amazon SQS Queue<a name="ReceiveMessage"></a>
 
-The following content is for version 3 of the AWS SDK for \.NET\. For Amazon SQS content related to version 3\.5 and later of the SDK, see [the latest developer guide](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/ReceiveMessage.html)\.
+The content in this topic is for **version 3\.0** of the AWS SDK for \.NET\.
 
-## V3 content<a name="w8aac15c35c29b5b1"></a>
+For content related to **version 3\.5 or later** \(and \.NET Core\), see the [latest developer guide](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/ReceiveMessage.html) instead\.
+
+## Latest content \- \.NET Core and ASP\.NET Core<a name="w8aac15c35c29b7b1"></a>
+
+[Latest developer guide](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/ReceiveMessage.html)\.
+
+## V3 content \- \.NET Framework and ASP\.NET 4\.x<a name="w8aac15c35c29b9b1"></a>
 
 You can use the AWS SDK for \.NET to receive messages from an Amazon SQS queue\.
 
