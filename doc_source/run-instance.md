@@ -4,7 +4,7 @@ This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current co
 
 --------
 
-# Launch an EC2 Instance Using the the SDK<a name="run-instance"></a>
+# Launch an EC2 Instance Using the SDK<a name="run-instance"></a>
 
 Use the following procedure to launch one or more identically configured EC2 instances from the same Amazon Machine Image \(AMI\)\. After you create your EC2 instances, you can check their status\. After your EC2 instances are running, you can connect to them\.
 
