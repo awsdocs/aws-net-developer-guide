@@ -13,7 +13,7 @@ If you're looking for \.NET Framework information, see [version 3](../../v3/deve
 **Note**  
 That topic is in the [Special considerations](special-considerations.md) section because it isn't the preferred method for specifying credentials\.
 
-1. A credentials profile with the name specified by a value in [AWSConfigs\.AWSProfileName](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/Amazon/TAWSConfigs.html)\.
+1. A credentials profile with the name specified by a value in [AWSConfigs\.AWSProfileName](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/Amazon/TAWSConfigs.html#properties)\.
 
 1. A credentials profile with the name specified by the `AWS_PROFILE` environment variable\.
 

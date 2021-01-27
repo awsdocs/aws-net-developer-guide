@@ -54,6 +54,8 @@ Use appropriate security measures to keep these credentials safe and rotated\.
    aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
    ```
 
+   
+
 The preceding procedure is the simplest of several possibilities for authentication and authorization\. For complete information, see [Configure AWS credentials](net-dg-config-creds.md)\.
 
 ### Install other tools<a name="s3-1-winvs-setup-tools"></a>
