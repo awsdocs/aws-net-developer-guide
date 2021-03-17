@@ -4,6 +4,7 @@ The following table describes the important changes since the last release of th
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [AWS \.NET deployment tool \(preview\)](deployment-tool.md) | Added preview information about the AWS \.NET deployment tool, which you can use to deploy an application from the \.NET CLI\. | March 15, 2021 | 
 | [Version 3\.5 of the AWS SDK for \.NET](net-dg-v35.md) | Version 3\.5 of the AWS SDK for \.NET has been released\. | August 25, 2020 | 
 | [Paginators](paginators.md) | Added paginators to many service clients, which make pagination of API results more convenient\. | August 24, 2020 | 
 | [Retries and timeouts](retries-timeouts.md) | Added information about retry modes\. | August 20, 2020 | 
