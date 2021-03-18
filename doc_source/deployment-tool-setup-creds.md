@@ -17,8 +17,8 @@ The credentials that you use to run the deployment tool must have permissions fo
 | Task | Permissions for services | 
 | --- |--- |
 | Display a list of AWS CloudFormation stacks \(list\-deployments\) | CloudFormation | 
-| Deploy and redeploy to Elastic Beanstalk \(deploy\) | CloudFormation Elastic Beanstalk | 
-| Deploy and redeploy to Amazon ECS \(deploy\) | CloudFormation Elastic Beanstalk Elastic Container Registry | 
+| Deploy and redeploy to Elastic Beanstalk \(deploy\) | CloudFormation, Elastic Beanstalk | 
+| Deploy and redeploy to Amazon ECS \(deploy\) | CloudFormation, Elastic Beanstalk, Elastic Container Registry | 
 
 The deployment tool automatically uses the `[default]` profile from your [shared AWS config and credentials files](creds-file.md) if that profile exists\. You can change this behavior by specifying a profile for the tool to use, either system\-wide or in a particular context\.
 
