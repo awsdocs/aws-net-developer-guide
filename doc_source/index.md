@@ -47,6 +47,7 @@ Amazon's trademarks and trade dress may not be used in
    + [What's new in the AWS SDK for .NET](whats-new.md)
    + [Platforms supported by the AWS SDK for .NET](net-dg-supported-platforms.md)
    + [Migrating to version 3.5 of the AWS SDK for .NET](net-dg-v35.md)
+   + [Migrating to version 3.7 of the AWS SDK for .NET](net-dg-v37.md)
    + [Migrating from .NET Standard 1.3](migration-from-net-standard-1-3.md)
 + [Working with AWS services in the AWS SDK for .NET](tutorials-examples.md)
    + [Accessing AWS CloudFormation with the AWS SDK for .NET](cloudformation-apis-intro.md)

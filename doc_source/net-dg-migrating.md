@@ -6,4 +6,5 @@ This section provides information about migration tasks that might apply to you,
 + [What's new](whats-new.md)
 + [Supported platforms](net-dg-supported-platforms.md)
 + [Migrating to version 3\.5](net-dg-v35.md)
++ [Migrating to version 3\.7](net-dg-v37.md)
 + [Migrating from \.NET Standard 1\.3](migration-from-net-standard-1-3.md)
