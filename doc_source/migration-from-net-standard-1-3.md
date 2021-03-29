@@ -8,11 +8,11 @@ Looking for **\.NET Core** or **ASP\.NET Core**? Go to *[version 3\.5 or later](
 
 # Migrating from \.NET Standard 1\.3<a name="migration-from-net-standard-1-3"></a>
 
-On June 27 2019 Microsoft [ended support](https://devblogs.microsoft.com/dotnet/net-core-1-0-and-1-1-will-reach-end-of-life-on-june-27-2019/) for \.NET Core 1\.0 and \.NET Core 1\.1 versions\. Following this announcement, AWS will end support for \.NET Standard 1\.3 on the AWS SDK for \.NET on December 31, 2020\.
+On June 27 2019 Microsoft [ended support](https://devblogs.microsoft.com/dotnet/net-core-1-0-and-1-1-will-reach-end-of-life-on-june-27-2019/) for \.NET Core 1\.0 and \.NET Core 1\.1 versions\. Following this announcement, AWS ended support for \.NET Standard 1\.3 on the AWS SDK for \.NET on December 31, 2020\.
 
-AWS will continue to provide service updates and security fixes on the AWS SDK for \.NET targeting \.NET Standard 1\.3 until October 1, 2020\. After this date, the \.NET Standard 1\.3 target will go into Maintenance mode, which means that no new updates will be released; AWS will apply critical bug fixes and security patches only\.
+AWS continued to provide service updates and security fixes on the AWS SDK for \.NET targeting \.NET Standard 1\.3 until October 1, 2020\. After that date, the \.NET Standard 1\.3 target went into Maintenance mode, which meant that no new updates were released; AWS applied critical bug fixes and security patches only\.
 
-On December 31, 2020, support for \.NET Standard 1\.3 on the AWS SDK for \.NET will come to its end of life\. After this date no bug fixes or security patches will be applied\. Artifacts built with that target will still remain available for download on NuGet\.
+On December 31, 2020, support for \.NET Standard 1\.3 on the AWS SDK for \.NET came to its end of life\. After that date no bug fixes or security patches were applied\. Artifacts built with that target remain available for download on NuGet\.
 
 **What you need to do**
 + If you're running applications using \.NET Framework, you're not affected\.
