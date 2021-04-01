@@ -1,10 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Amazon DynamoDB Programming with Expressions by Using the AWS SDK for \.NET<a name="dynamodb-expressions"></a>
+
+## Version 2 content \(see announcement above\)<a name="w3aac13c11b9b3b1"></a>
 
 The following code examples demonstrate how to use the the SDK to program DynamoDB with expressions\. *Expressions* denote the attributes that you want to read from an item in a DynamoDB table\. You also use expressions when writing an item, to indicate any conditions that must be met \(also known as a *conditional update*\) and to indicate how the attributes are to be updated\. Some update examples are replacing the attribute with a new value, or adding new data to a list or a map\. For more information see [Reading and Writing Items Using Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.html)\.
 
@@ -19,7 +23,7 @@ The following code examples demonstrate how to use the the SDK to program Dynamo
 + [Delete an Item by Using Expressions](#dynamodb-expressions-delete-item)
 + [Additional Resources](#dynamodb-expressions-resources)
 
-## Sample Data<a name="dynamodb-expressions-sample-data"></a>
+### Sample Data<a name="dynamodb-expressions-sample-data"></a>
 
 The code examples in this topic rely on the following two example items in a DynamoDB table named `ProductCatalog`\. These items describe information about product entries in a fictitious bicycle store catalog\. These items are based on the example that is provided in [Case Study: A ProductCatalog Item](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.CaseStudy.html)\. The data type descriptors such as `BOOL`, `L`, `M`, `N`, `NS`, `S`, and `SS` correspond to those in the [JSON Data Format](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html)\.
 
@@ -196,7 +200,7 @@ The code examples in this topic rely on the following two example items in a Dyn
 }
 ```
 
-## Get a Single Item by Using Expressions and the Item’s Primary Key<a name="dynamodb-expressions-get-item"></a>
+### Get a Single Item by Using Expressions and the Item’s Primary Key<a name="dynamodb-expressions-get-item"></a>
 
 The following example features the `Amazon.DynamoDBv2.AmazonDynamoDBClient.GetItem` method and a set of expressions to get and then print the item that has an `Id` of `205`\. Only the following attributes of the item are returned: `Id`, `Title`, `Description`, `Color`, `RelatedItems`, `Pictures`, and `ProductReviews`\.
 
@@ -227,7 +231,7 @@ PrintItem(response.Item);
 
 In the preceding example, the `ProjectionExpression` property specifies the attributes to be returned\. The `ExpressionAttributeNames` property specifies the placeholder `#pr` to represent the `ProductReviews` attribute and the placeholder `#ri` to represent the `RelatedItems` attribute\. The call to `PrintItem` refers to a custom function as described in [Print an Item](#dynamodb-expressions-print-item)\.
 
-## Get Multiple Items by Using Expressions and the Table’s Primary Key<a name="dynamodb-expressions-query"></a>
+### Get Multiple Items by Using Expressions and the Table’s Primary Key<a name="dynamodb-expressions-query"></a>
 
 The following example features the `Amazon.DynamoDBv2.AmazonDynamoDBClient.Query` method and a set of expressions to get and then print the item that has an `Id` of `301`, but only if the value of `Price` is greater than `150`\. Only the following attributes of the item are returned: `Id`, `Title`, and all of the `ThreeStar` attributes in `ProductReviews`\.
 
@@ -276,7 +280,7 @@ foreach (var item in response.Items)
 
 In the preceding example, the `ProjectionExpression` property specifies the attributes to be returned\. The `ExpressionAttributeNames` property specifies the placeholder `#pr` to represent the `ProductReviews` attribute and the placeholder `#p` to represent the `Price` attribute\. `#pr.ThreeStar` specifies to return only the `ThreeStar` attribute\. The `ExpressionAttributeValues` property specifies the placeholder `:val` to represent the value `150`\. The `FilterExpression` property specifies that `#p` \(`Price`\) must be greater than `:val` \(`150`\)\. The call to `PrintItem` refers to a custom function as described in [Print an Item](#dynamodb-expressions-print-item)\.
 
-## Get Multiple Items by Using Expressions and Other Item Attributes<a name="dynamodb-expressions-scan"></a>
+### Get Multiple Items by Using Expressions and Other Item Attributes<a name="dynamodb-expressions-scan"></a>
 
 The following example features the `Amazon.DynamoDBv2.AmazonDynamoDBClient.Scan` method and a set of expressions to get and then print all items that have a `ProductCategory` of `Bike`\. Only the following attributes of the item are returned: `Id`, `Title`, and all of the attributes in `ProductReviews`\.
 
@@ -313,7 +317,7 @@ foreach (var item in response.Items)
 
 In the preceding example, the `ProjectionExpression` property specifies the attributes to be returned\. The `ExpressionAttributeNames` property specifies the placeholder `#pr` to represent the `ProductReviews` attribute and the placeholder `#pc` to represent the `ProductCategory` attribute\. The `ExpressionAttributeValues` property specifies the placeholder `:catg` to represent the value `Bike`\. The `FilterExpression` property specifies that `#pc` \(`ProductCategory`\) must be equal to `:catg` \(`Bike`\)\. The call to `PrintItem` refers to a custom function as described in [Print an Item](#dynamodb-expressions-print-item)\.
 
-## Print an Item<a name="dynamodb-expressions-print-item"></a>
+### Print an Item<a name="dynamodb-expressions-print-item"></a>
 
 The following example shows how to print an item’s attributes and values\. This example is used in the preceding examples that show how to [Get a Single Item by Using Expressions and the Item’s Primary Key](#dynamodb-expressions-get-item), [Get Multiple Items by Using Expressions and the Table’s Primary Key](#dynamodb-expressions-query), and [Get Multiple Items by Using Expressions and Other Item Attributes](#dynamodb-expressions-scan)\.
 
@@ -397,7 +401,7 @@ public static void PrintValue(AttributeValue value)
 
 In the preceding example, each attribute value has several data\-type\-specific properties that can be evaluated to determine the correct format to print the attribute\. These properties include properties such as `B`, `BOOL`, `BS`, `L`, `M`, `N`, `NS`, `NULL`, `S`, and `SS`, which correspond to those in the [JSON Data Format](DataFormat.html)\. For properties such as `B`, `N`, `NULL`, and `S`, if the corresponding property is not `null`, then the attribute is of the corresponding non\-`null` data type\. For properties such as `BS`, `L`, `M`, `NS`, and `SS`, if `Count` is greater than zero, then the attribute is of the corresponding non\-zero\-value data type\. If all of the attribute’s data\-type\-specific properties are either `null` or the `Count` equals zero, then the attribute corresponds to the `BOOL` data type\.
 
-## Create or Replace an Item by Using Expressions<a name="dynamodb-expressions-put-item"></a>
+### Create or Replace an Item by Using Expressions<a name="dynamodb-expressions-put-item"></a>
 
 The following example features the `Amazon.DynamoDBv2.AmazonDynamoDBClient.PutItem` method and a set of expressions to update the item that has a `Title` of `18-Bicycle 301`\. If the item doesn’t already exist, a new item is added\.
 
@@ -469,7 +473,7 @@ public static Dictionary<string, AttributeValue> CreateItemData()
 
 In the preceding example, an example item with sample data is returned to the caller\. A series of attributes and corresponding values are constructed, using data types such as `BOOL`, `L`, `M`, `N`, `NS`, `S`, and `SS`, which correspond to those in the [JSON Data Format](DataFormat.html)\.
 
-## Update an Item by Using Expressions<a name="dynamodb-expressions-update-item"></a>
+### Update an Item by Using Expressions<a name="dynamodb-expressions-update-item"></a>
 
 The following example features the `Amazon.DynamoDBv2.AmazonDynamoDBClient.UpdateItem` method and a set of expressions to change the `Title` to `18" Girl's Bike` for the item with `Id` of `301`\.
 
@@ -500,7 +504,7 @@ client.UpdateItem(request);
 
 In the preceding example, the `ExpressionAttributeNames` property specifies the placeholder `#title` to represent the `Title` attribute\. The `ExpressionAttributeValues` property specifies the placeholder `:newproduct` to represent the value `18" Girl's Bike`\. The `UpdateExpression` property specifies to change `#title` \(`Title`\) to `:newproduct` \(`18" Girl's Bike`\)\.
 
-## Delete an Item by Using Expressions<a name="dynamodb-expressions-delete-item"></a>
+### Delete an Item by Using Expressions<a name="dynamodb-expressions-delete-item"></a>
 
 The following example features the `Amazon.DynamoDBv2.AmazonDynamoDBClient.DeleteItem` method and a set of expressions to delete the item with `Id` of `301`, but only if the item’s `Title` is `18-Bicycle 301`\.
 
@@ -531,7 +535,7 @@ client.DeleteItem(request);
 
 In the preceding example, the `ExpressionAttributeNames` property specifies the placeholder `#title` to represent the `Title` attribute\. The `ExpressionAttributeValues` property specifies the placeholder `:product` to represent the value `18-Bicycle 301`\. The `ConditionExpression` property specifies that `#title` \(`Title`\) must equal `:product` \(`18-Bicycle 301`\)\.
 
-## Additional Resources<a name="dynamodb-expressions-resources"></a>
+### Additional Resources<a name="dynamodb-expressions-resources"></a>
 
 For additonal information and code examples, see:
 +  [DynamoDB Series \- Expressions](http://blogs.aws.amazon.com/net/post/TxZQM7VA9AUZ9L/DynamoDB-Series-Expressions) 

@@ -1,13 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # AWS SDK for \.NET Developer Guide<a name="welcome"></a>
 
-**Note**  
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+## Version 2 content \(see announcement above\)<a name="w3aab7b3b1"></a>
 
 The AWS SDK for \.NET makes it easier for Windows developers to build \.NET applications that tap into the cost\-effective, scalable, and reliable AWS services such as Amazon Simple Storage Service \(Amazon S3\) and Amazon Elastic Compute Cloud \(Amazon EC2\)\. The the SDK supports development on any platform that supports the \.NET Framework 3\.5 or later, and you can develop applications with the SDK using Visual Studio 2010 or later\.
 
@@ -26,7 +27,7 @@ As an alternative to installing the AWS Tools for Windows, you can use NuGet to 
 **Note**  
 We recommend using Visual Studio Professional 2010 or higher to implement your applications\. It is possible to use Visual Studio Express to implement applications with the the SDK, including installing the Toolkit for Visual Studio\. However, the installation includes only the AWS project templates and the Standalone Deployment Tool\. In particular, Toolkit for Visual Studio on Visual Studio Express does not support AWS Explorer\.
 
-## How to Use This Guide<a name="guidemap"></a>
+### How to Use This Guide<a name="guidemap"></a>
 
 The *AWS SDK for \.NET Developer Guide* describes how to implement applications for AWS using the the SDK, and includes the following:
 
@@ -45,13 +46,13 @@ Additional resources outside of this guide that provide more information about A
 **Note**  
 A related document, [AWS SDK for \.NET API Reference](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/), provides a detailed description of each namespace and class\.
 
-## Supported Services and Revision History<a name="supported-services"></a>
+### Supported Services and Revision History<a name="supported-services"></a>
 
 The AWS SDK for \.NET supports most AWS infrastructure products, and we regularly release updates to the the SDK to support new services and new service features\. To see what changed with a given release, see the [the SDK README file](https://github.com/aws/aws-sdk-net/blob/master/README.md)\.
 
 To see what changed in a given release, see the [the SDK change log](https://github.com/aws/aws-sdk-net/blob/master/SDK.CHANGELOG.md)\.
 
-## About Amazon Web Services<a name="about-aws"></a>
+### About Amazon Web Services<a name="about-aws"></a>
 
 Amazon Web Services \(AWS\) is a collection of digital infrastructure services that developers can leverage when developing their applications\. The services include computing, storage, database, and application synchronization \(messaging and queuing\)\.
 

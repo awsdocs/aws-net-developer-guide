@@ -1,10 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Configuration Files Reference for AWS SDK for \.NET<a name="net-dg-config-ref"></a>
+
+## Version 2 content \(see announcement above\)<a name="w3aac11b7c13b3b1"></a>
 
 You can use a \.NET project’s `App.config` or `Web.config` file to specify certain AWS settings such as AWS credentials, logging options, AWS service endopoints, and AWS regions, as well as certain settings for AWS services such as Amazon DynamoDB, Amazon EC2, and Amazon S3\. The following information describes how to properly format an `App.config` or `Web.config` file to specify these types of settings\.
 
@@ -24,7 +28,7 @@ In general, we recommend that instead of using `AWSConfigs` class properties in 
 + [Allowed Elements](#net-dg-config-ref-elements)
 + [Elements Reference](#net-dg-config-ref-elements-ref)
 
-## Declaring an AWS Settings Section<a name="net-dg-config-ref-declaring"></a>
+### Declaring an AWS Settings Section<a name="net-dg-config-ref-declaring"></a>
 
 You specify AWS settings in an `App.config` or `Web.config` file from within the `<aws>` element\. Before you can begin using the `<aws>` element, you must create a `<section>` element \(which is a child element of the `<configSections>` element\) and set its `name` attribute to `aws` and its `type` attribute to `Amazon.AWSSection, AWSSDK`, as shown in the following example:
 
@@ -46,7 +50,7 @@ Note that the Visual Studio Editor does *not* provide automatic code completion 
 
 To assist you in creating a correctly\-formatted version of the `<aws>` element, call the `Amazon.AWSConfigs.GenerateConfigTemplate` method\. This outputs a canonical version of the `<aws>` element as a pretty\-printed string, which you can adapt to your needs\. The following sections describe the `<aws>` element’s attributes and child elements\.
 
-## Allowed Elements<a name="net-dg-config-ref-elements"></a>
+### Allowed Elements<a name="net-dg-config-ref-elements"></a>
 
 The following is a list of the logical relationships among the allowed elements in an AWS settings section\. You can generate the latest version of this list by calling the `Amazon.AWSConfigs.GenerateConfigTemplate` method, which outputs a canonical version of the `<aws>` element as a string that you can adapt to your needs\.
 
@@ -95,7 +99,7 @@ The following is a list of the logical relationships among the allowed elements 
 ...
 ```
 
-## Elements Reference<a name="net-dg-config-ref-elements-ref"></a>
+### Elements Reference<a name="net-dg-config-ref-elements-ref"></a>
 
 The following is a list of the elements that are allowed in an AWS settings section\. For each element, its allowed attributes and parent\-child elements are listed\.
 
@@ -111,7 +115,7 @@ The following is a list of the elements that are allowed in an AWS settings sect
 + [proxy](#net-dg-config-ref-elements-proxy)
 + [s3](#net-dg-config-ref-elements-s3)
 
-### alias<a name="net-dg-config-ref-elements-alias"></a>
+#### alias<a name="net-dg-config-ref-elements-alias"></a>
 
 The `<alias>` element represents a single item in a collection of one or more from\-table to to\-table mappings that specifies a different table than one that is configured for a type\. \(This element maps to an instance of the `Amazon.Util.TableAlias` class from the `Amazon.AWSConfigs.DynamoDBConfig.Context.TableAliases` property in the AWS SDK for \.NET\.\) Remapping is done before applying a table name prefix\. This element can include the following attributes:
 
@@ -135,7 +139,7 @@ The following is an example of the `<alias>` element in use:
 ...
 ```
 
-### aws<a name="net-dg-config-ref-elements-aws"></a>
+#### aws<a name="net-dg-config-ref-elements-aws"></a>
 
 The `<aws>` element represents the top\-most element in an AWS settings section\. This element can include the following attributes:
 
@@ -174,7 +178,7 @@ The following is an example of the <aws> element in use:
 ...
 ```
 
-### dynamoDB<a name="net-dg-config-ref-elements-dynamodb"></a>
+#### dynamoDB<a name="net-dg-config-ref-elements-dynamodb"></a>
 
 The <dynamoDB> element represents a collection of settings for Amazon DynamoDB\. This element can include the conversionSchema attribute, which represents the version to use for converting between \.NET and DynamoDB objects\. Allowed values include V1 and V2\. \(This attribute maps to the Amazon\.DynamoDBv2\.DynamoDBEntryConversion class in the AWS SDK for \.NET\.\) For more information, see [DynamoDB Series \- Conversion Schemas](http://blogs.aws.amazon.com/net/post/Tx2TCOGWG7ARUH5/DynamoDB-Series-Conversion-Schemas)\.
 
@@ -193,7 +197,7 @@ The following is an example of the `<dynamoDB>` element in use:
 ...
 ```
 
-### dynamoDBContext<a name="net-dg-config-ref-elements-dynamodbcontext"></a>
+#### dynamoDBContext<a name="net-dg-config-ref-elements-dynamodbcontext"></a>
 
 The <dynamoDBContext> element represents a collection of Amazon DynamoDB context\-specific settings\. This element can include the tableNamePrefix attribute, which represents the default table name prefix that the DynamoDB context will use if it is not manually configured\. \(This attribute maps to the `Amazon.Util.DynamoDBContextConfig.TableNamePrefix` property from the `Amazon.AWSConfigs.DynamoDBConfig.Context.TableNamePrefix` property in the AWS SDK for \.NET\.\) For more information, see [Enhancements to the DynamoDB SDK](http://blogs.aws.amazon.com/net/post/Tx2C4MHH2H0SA5W/Enhancements-to-the-DynamoDB-SDK)\.
 
@@ -214,7 +218,7 @@ The following is an example of the `<dynamoDBContext>` element in use:
 ...
 ```
 
-### ec2<a name="net-dg-config-ref-elements-ec2"></a>
+#### ec2<a name="net-dg-config-ref-elements-ec2"></a>
 
 The `<ec2>` element represents a collection of Amazon EC2 settings\. This element can include the useSignatureVersion4 attribute, which specifies whether Signature Version 4 signing will be used for all requests \(true\) or whether Signature Version 4 signing will not be used for all requests \(false, the default\)\. \(This attribute maps to the `Amazon.Util.EC2Config.UseSignatureVersion4` property from the `Amazon.AWSConfigs.EC2Config.UseSignatureVersion4` property in the AWS SDK for \.NET\.\)
 
@@ -231,7 +235,7 @@ The following is an example of the `<ec2>` element in use:
 ...
 ```
 
-### logging<a name="net-dg-config-ref-elements-logging"></a>
+#### logging<a name="net-dg-config-ref-elements-logging"></a>
 
 The `<logging>` element represents a collection of settings for response logging and performance metrics logging\. This element can include the following attributes:
 
@@ -284,7 +288,7 @@ The following is an example of the `<logging>` element in use:
 ...
 ```
 
-### map<a name="net-dg-config-ref-elements-map"></a>
+#### map<a name="net-dg-config-ref-elements-map"></a>
 
 The `<map>` element represents a single item in a collection of type\-to\-table mappings from \.NET types to DynamoDB tables\. \(This element maps to an instance of the Amazon\.Util\.TypeMapping class from the `Amazon.AWSConfigs.DynamoDBConfig.Context.TypeMappings` property in the AWS SDK for \.NET\.\) For more information, see [Enhancements to the DynamoDB SDK](http://blogs.aws.amazon.com/net/post/Tx2C4MHH2H0SA5W/Enhancements-to-the-DynamoDB-SDK)\. This element can include the following attributes:
 
@@ -310,7 +314,7 @@ The following is an example of the `<map>` element in use:
 ...
 ```
 
-### property<a name="net-dg-config-ref-elements-property"></a>
+#### property<a name="net-dg-config-ref-elements-property"></a>
 
 The `<property>` element represents a DynamoDB property\. \(This element maps to an instance of the Amazon\.Util\.PropertyConfig class from the Amazon\.Util\.TypeMapping\.AddProperty method in the AWS SDK for \.NET\.\) For more information, see [Enhancements to the DynamoDB SDK](http://blogs.aws.amazon.com/net/post/Tx2C4MHH2H0SA5W/Enhancements-to-the-DynamoDB-SDK) and [DynamoDB Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DeclarativeTagsList.html)\. This element can include the following attributes:
 
@@ -343,7 +347,7 @@ The following is an example of the `<property>` element in use:
 ...
 ```
 
-### proxy<a name="net-dg-config-ref-elements-proxy"></a>
+#### proxy<a name="net-dg-config-ref-elements-proxy"></a>
 
 The `<proxy>` element represents settings for configuring a proxy for the the SDK to use\. This element can include the following attributes:
 
@@ -375,7 +379,7 @@ The following is an example of the `<proxy>` element in use:
 ...
 ```
 
-### s3<a name="net-dg-config-ref-elements-s3"></a>
+#### s3<a name="net-dg-config-ref-elements-s3"></a>
 
 The `<s3>` element represents a collection of Amazon S3 settings\. This element can include the `useSignatureVersion4` attribute, which specifies whether Signature Version 4 signing will be used for all requests \(true\) or whether Signature Version 4 signing will not be used for all requests \(false, the default\)\. \(This attribute maps to the `Amazon.AWSConfigs.S3Config.UseSignatureVersion4` property in the AWS SDK for \.NET\.\)
 

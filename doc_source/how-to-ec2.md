@@ -1,10 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Tutorial: Creating Amazon EC2 Instances with the AWS SDK for \.NET<a name="how-to-ec2"></a>
+
+## Version 2 content \(see announcement above\)<a name="w3aac13c13b7b5b1"></a>
 
 You can access the features of Amazon EC2 using the [AWS SDK for \.NET](https://aws.amazon.com/sdk-for-net/)\. For example, you can create, start, and terminate EC2 instances\.
 
@@ -14,7 +18,7 @@ The sample code in this tutorial is written in C\#, but you can use the AWS SDK 
 
 Before you begin, be sure that you have created an AWS account and that you have set up your AWS credentials\. For more information, see [Getting Started with the AWS SDK for \.NET](net-dg-setup.md)\.
 
-## Tasks<a name="tasks"></a>
+### Tasks<a name="tasks"></a>
 
 The following tasks demonstrate how to manage EC2 instances using the AWS SDK for \.NET\.
 +  [Create an Amazon EC2 Client Using the the SDK](#init-ec2-client) 
@@ -23,7 +27,7 @@ The following tasks demonstrate how to manage EC2 instances using the AWS SDK fo
 +  [Launch an EC2 Instance Using the the SDK](run-instance.md) 
 +  [Terminate an EC2 Instance Using the the SDK](terminate-instance.md) 
 
-## Create an Amazon EC2 Client Using the the SDK<a name="init-ec2-client"></a>
+### Create an Amazon EC2 Client Using the the SDK<a name="init-ec2-client"></a>
 
 Create an *Amazon EC2 client* to manage your EC2 resources, such as instances and security groups\. This client is represented by an [AmazonEC2Client](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TEC2EC2NET45.html) object, which you can create as follows:
 
@@ -33,7 +37,7 @@ var ec2Client = new AmazonEC2Client();
 
 The permissions for the client object are determined by the policy that is attached to the profile that you specified in the `App.config` file\. By default, we use the region specified in `App.config`\. To use a different region, pass the appropriate [RegionEndpoint](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TRegionEndpointNET45.html) value to the constructor\. For more information, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region) in the Amazon Web Services General Reference\.
 
-## Create a Security Group Using the the SDK<a name="create-security-group"></a>
+### Create a Security Group Using the the SDK<a name="create-security-group"></a>
 
 Create a *security group*, which acts as a virtual firewall that controls the network traffic for one or more EC2 instances\. By default, Amazon EC2 associates your instances with a security group that allows no inbound traffic\. You can create a security group that allows your EC2 instances to accept certain traffic\. For example, if you need to connect to an EC2 Windows instance, you must configure the security group to allow RDP traffic\. You can create a security group using the Amazon EC2 console or the the SDK\.
 
@@ -41,16 +45,11 @@ You create a security group for use in either EC2\-Classic or EC2\-VPC\. For mor
 
 Alternatively, you can create a security group using the Amazon EC2 console\. For more information, see [Amazon EC2 Security Groups](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/using-network-security.html) in the Amazon EC2 User Guide for Windows Instances\.
 
-**Topics**
-+ [Enumerating Your Security Groups](#enumerate-security-groups)
-+ [Creating a Security Group](#creating-security-group)
-+ [Adding Rules to Your Security Group](#authorize-ingress)
-
-### Enumerating Your Security Groups<a name="enumerate-security-groups"></a>
+#### Enumerating Your Security Groups<a name="enumerate-security-groups"></a>
 
 You can enumerate your security groups and check whether a particular security group exists\.
 
-#### To enumerate your security groups for EC2\-Classic<a name="to-enumerate-your-security-groups-for-ec2-classic"></a>
+##### To enumerate your security groups for EC2\-Classic<a name="to-enumerate-your-security-groups-for-ec2-classic"></a>
 
 Get the complete list of your security groups using [DescribeSecurityGroups](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/MEC2EC2DescribeSecurityGroupsNET45.html) with no parameters\. The following example checks each security group to see whether its name is `my-sample-sg`\.
 
@@ -71,7 +70,7 @@ foreach (SecurityGroup item in mySGs)
 }
 ```
 
-#### To enumerate your security groups for a VPC<a name="to-enumerate-your-security-groups-for-a-vpc"></a>
+##### To enumerate your security groups for a VPC<a name="to-enumerate-your-security-groups-for-a-vpc"></a>
 
 To enumerate the security groups for a particular VPC, use [DescribeSecurityGroups](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/MEC2EC2DescribeSecurityGroupsNET45.html) with a filter\. The following example checks each security group for a security group with the name `my-sample-sg-vpc`\.
 
@@ -99,11 +98,11 @@ foreach (SecurityGroup item in mySGs)
 }
 ```
 
-### Creating a Security Group<a name="creating-security-group"></a>
+#### Creating a Security Group<a name="creating-security-group"></a>
 
 The examples in this section follow from the examples in the previous section\. If the security group doesn’t already exist, create it\. Note that if you were to specify the same name as an existing security group, `CreateSecurityGroup` throws an exception\.
 
-#### To create a security group for EC2\-Classic<a name="to-create-a-security-group-for-ec2-classic"></a>
+##### To create a security group for EC2\-Classic<a name="to-create-a-security-group-for-ec2-classic"></a>
 
 Create and initialize a [CreateSecurityGroupRequest](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TEC2CreateSecurityGroupRequestNET45.html) object\. Assign a name and description to the [GroupName](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/PEC2CreateSecurityGroupRequestGroupNameNET45.html) and [Description](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/PEC2CreateSecurityGroupRequestDescriptionNET45.html) properties, respectively\.
 
@@ -128,7 +127,7 @@ if (mySG == null)
 }
 ```
 
-#### To create a security group for EC2\-VPC<a name="to-create-a-security-group-for-ec2-vpc"></a>
+##### To create a security group for EC2\-VPC<a name="to-create-a-security-group-for-ec2-vpc"></a>
 
 Create and initialize a [CreateSecurityGroupRequest](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TEC2CreateSecurityGroupRequestNET45.html) object\. Assign values to the [GroupName](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/PEC2CreateSecurityGroupRequestGroupNameNET45.html), [Description](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/PEC2CreateSecurityGroupRequestDescriptionNET45.html), and [VpcId](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/PEC2CreateSecurityGroupRequestVpcIdNET45.html) properties\.
 
@@ -154,7 +153,7 @@ if (mySG == null)
 }
 ```
 
-### Adding Rules to Your Security Group<a name="authorize-ingress"></a>
+#### Adding Rules to Your Security Group<a name="authorize-ingress"></a>
 
 Use the following procedure to add a rule to allow inbound traffic on TCP port 3389 \(RDP\)\. This enables you to connect to a Windows instance\. If you’re launching a Linux instance, use TCP port 22 \(SSH\) instead\.
 
@@ -163,7 +162,7 @@ You can get the public IP address of your local computer using a service\. For e
 
 The examples in this section follow from the examples in the previous sections\. They assume that `mySG` is an existing security group\.
 
-#### To add a rule to a security group<a name="to-add-a-rule-to-a-security-group"></a>
+##### To add a rule to a security group<a name="to-add-a-rule-to-a-security-group"></a>
 
 1. Create and initialize an [IpPermission](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TEC2IpPermissionNET45.html) object\.
 
@@ -207,11 +206,11 @@ The `IpPermission` object from step 1\.
    Console.WriteLine("New RDP rule for: " + ipRange);
    ```
 
-## Create a Key Pair Using the the SDK<a name="create-key-pair"></a>
+### Create a Key Pair Using the the SDK<a name="create-key-pair"></a>
 
 You must specify a key pair when you launch an EC2 instance and specify the private key of the key pair when you connect to the instance\. You can create a key pair or use an existing key pair that you’ve used when launching other instances\. For more information, see [Amazon EC2 Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-key-pairs.html) in the Amazon EC2 User Guide for Windows Instances\.
 
-### Enumerating Your Key Pairs<a name="enumerate-key-pairs"></a>
+#### Enumerating Your Key Pairs<a name="enumerate-key-pairs"></a>
 
 You can enumerate your key pairs and check whether a particular key pair exists\.
 
@@ -237,7 +236,7 @@ foreach (KeyPairInfo item in myKeyPairs)
 }
 ```
 
-### Creating a Key Pair and Saving the Private Key<a name="create-save-key-pair"></a>
+#### Creating a Key Pair and Saving the Private Key<a name="create-save-key-pair"></a>
 
 The example in this section follows from the example in the previous section\. If the key pair doesn’t already exist, create it\. Be sure to save the private key now, because you can’t retrieve it later\.
 
@@ -270,3 +269,7 @@ if (myKeyPair == null)
 ```
 
 **Topics**
+
+**Topics**
++ [Launch an EC2 Instance Using the the SDK](run-instance.md)
++ [Terminate an EC2 Instance Using the the SDK](terminate-instance.md)

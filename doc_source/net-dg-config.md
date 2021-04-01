@@ -1,10 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Configuring Your AWS SDK for \.NET Application<a name="net-dg-config"></a>
+
+## Version 2 content \(see announcement above\)<a name="w3aac11b7b3b1"></a>
 
 You can configure your AWS SDK for \.NET application to specify AWS credentials, logging options, endpoints, or signature version 4 support with Amazon S3\.
 

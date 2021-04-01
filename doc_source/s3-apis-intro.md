@@ -1,10 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Amazon Simple Storage Service Programming with the AWS SDK for \.NET<a name="s3-apis-intro"></a>
+
+## Version 2 content \(see announcement above\)<a name="w3aac13c21b3b1"></a>
 
 The AWS SDK for \.NET supports Amazon Simple Storage Service \(Amazon S3\), which is storage for the Internet\. It is designed to make web\-scale computing easier for developers\. For more information, see [Amazon Simple Storage Service](https://aws.amazon.com/s3/)\.
 

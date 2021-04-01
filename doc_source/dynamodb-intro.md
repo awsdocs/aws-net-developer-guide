@@ -1,23 +1,20 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Amazon DynamoDB Programming with the AWS SDK for \.NET<a name="dynamodb-intro"></a>
 
+## Version 2 content \(see announcement above\)<a name="w3aac13c11b5b1"></a>
+
 The AWS SDK for \.NET supports Amazon DynamoDB, which is a fast NoSQL database service offered by AWS\.
 
 The following information introduces you to the DynamoDB programming models and their APIs\. There are also links to additional DynamoDB programming resources within the the AWS SDK for \.NET\.
 
-**Topics**
-+ [Programming Models](#dynamodb-intro-apis)
-+ [Additional Resources](#dynamodb-intro-more-info)
-+ [Amazon DynamoDB Programming with Expressions by Using the AWS SDK for \.NET](dynamodb-expressions.md)
-+ [JSON Support in Amazon DynamoDB with the AWS SDK for \.NET](dynamodb-json.md)
-+ [Managing ASP\.NET Session State with Amazon DynamoDB](dynamodb-session-net-sdk.md)
-
-## Programming Models<a name="dynamodb-intro-apis"></a>
+### Programming Models<a name="dynamodb-intro-apis"></a>
 
 The the SDK provides three different programming models for communicating with DynamoDB\. These programming models include the *low\-level* model, the *document* model, and the *object persistence* model\. The following information describes these models, how to use them, and when you might want to use them\.
 
@@ -26,7 +23,7 @@ The the SDK provides three different programming models for communicating with D
 + [Document](#dynamodb-intro-apis-document)
 + [Object Persistence](#dynamodb-intro-apis-object-persistence)
 
-### Low\-Level<a name="dynamodb-intro-apis-low-level"></a>
+#### Low\-Level<a name="dynamodb-intro-apis-low-level"></a>
 
 The low\-level programming model wraps direct calls to the DynamoDB service\. You access this model through the [Amazon\.DynamoDBv2](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/NDynamoDBv2NET45.html) namespace\.
 
@@ -168,7 +165,7 @@ For more information and examples, see:
 +  [Working with Local Secondary Indexes Using the AWS SDK for \.NET Low\-Level API](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LSILowLevelDotNet.html) 
 +  [Working with Global Secondary Indexes Using the AWS SDK for \.NET Low\-Level API](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSILowLevelDotNet.html) 
 
-### Document<a name="dynamodb-intro-apis-document"></a>
+#### Document<a name="dynamodb-intro-apis-document"></a>
 
 The document programming model provides an easier way to work with data in DynamoDB\. This model is specifically intended for accessing tables and items in tables\. You access this model through the [Amazon\.DynamoDBv2\.DocumentModel](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/NDynamoDBv2DocumentModel.html) namespace\.
 
@@ -226,7 +223,7 @@ For more information about data type conversions with DynamoDB, see [DynamoDB Da
 
 For more information and examples about the DynamoDB document model, see [\.NET: Document Model](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DotNetSDKMidLevel.html)\.
 
-### Object Persistence<a name="dynamodb-intro-apis-object-persistence"></a>
+#### Object Persistence<a name="dynamodb-intro-apis-object-persistence"></a>
 
 The object persistence programming model is specifically designed for storing, loading, and querying \.NET objects in DynamoDB\. You access this model through the [Amazon\.DynamoDBv2\.DataModel](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/NDynamoDBv2DataModel.html) namespace\.
 
@@ -289,7 +286,7 @@ In the preceding example, the item is retrieved through the `DynamoDBContext` cl
 
 For more information and examples, see [\.NET: Object Persistence Model](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DotNetSDKHighLevel.html)\.
 
-## Additional Resources<a name="dynamodb-intro-more-info"></a>
+### Additional Resources<a name="dynamodb-intro-more-info"></a>
 
 For additional information and examples of programming DynamoDB with the the SDK, see:
 +  [DynamoDB APIs](http://blogs.aws.amazon.com/net/post/Tx17SQHVEMW8MXC/DynamoDB-APIs) 
@@ -301,3 +298,8 @@ For additional information and examples of programming DynamoDB with the the SDK
 +  [Amazon DynamoDB Programming with Expressions by Using the AWS SDK for \.NET](dynamodb-expressions.md) 
 +  [JSON Support in Amazon DynamoDB with the AWS SDK for \.NET](dynamodb-json.md) 
 +  [Managing ASP\.NET Session State with Amazon DynamoDB](dynamodb-session-net-sdk.md#net-dg-dynamodb-session) 
+
+**Topics**
++ [Amazon DynamoDB Programming with Expressions by Using the AWS SDK for \.NET](dynamodb-expressions.md)
++ [JSON Support in Amazon DynamoDB with the AWS SDK for \.NET](dynamodb-json.md)
++ [Managing ASP\.NET Session State with Amazon DynamoDB](dynamodb-session-net-sdk.md)

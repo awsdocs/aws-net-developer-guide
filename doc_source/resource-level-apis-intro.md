@@ -1,10 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Programming with the AWS Resource APIs for \.NET<a name="resource-level-apis-intro"></a>
+
+## Version 2 content \(see announcement above\)<a name="w3aac13b7b3b1"></a>
 
 The AWS SDK for \.NET provides the AWS Resource APIs for \.NET\. These resource APIs provide a resource\-level programming model that enables you to write code to work more directly with resources that are managed by AWS services\. A resource is a logical object that is exposed by an AWS service’s APIs\. For example, AWS Identity and Access Management \(IAM\) exposes users and groups as resources that can be programmatically accessed more directly by these resource APIs than by other means\.
 
@@ -74,7 +78,7 @@ There are a few limitations to note when using the resource APIs as compared to 
 
 The following information describes how to download and reference the resource APIs\. Links to code examples and related programming concepts for supported AWS services are also provided\.
 
-## Download and Reference the AWS Resource APIs for \.NET<a name="resource-level-apis-intro-setup"></a>
+### Download and Reference the AWS Resource APIs for \.NET<a name="resource-level-apis-intro-setup"></a>
 
 1. If you have an existing project in Visual Studio that you want to use the resource APIs with, and that project is already referencing the AWS \.NET library file \(`AWSSDK.dll`\), you must remove this reference\. This reference is set by default if you have the AWS Toolkit for Visual Studio installed and you have created a project based upon one of the AWS project templates \(for example, the Visual C\# AWS Console Project template\)\. Or, you may have previously set a reference to the library explicitly, which the the SDK typically installs to `drive:\Program Files (x86)\AWS SDK for .NET\bin`\. To remove the reference for example in **Solution Explorer** in Visual Studio, in the **References** folder, right\-click **AWSSDK** and then click **Remove**\.
 
@@ -102,7 +106,7 @@ The following information describes how to download and reference the resource A
 **Note**  
 If you distribute a project that has a copy of the resource APIs library file included, and then the resource library APIs change, the only way for your project to include the new changes is to redistribute your project with an updated resource APIs library file copied locally\.
 
-## Code Examples for Resource APIs<a name="resource-level-apis-intro-examples"></a>
+### Code Examples for Resource APIs<a name="resource-level-apis-intro-examples"></a>
 
 The following links provide code examples for AWS services that support resource\-level APIs in the the SDK\.
 +  [CloudFormation](cloudformation-apis-intro.md#cloudformation-apis-intro-resource-level) 

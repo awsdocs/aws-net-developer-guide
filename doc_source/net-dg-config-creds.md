@@ -1,10 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Configuring AWS Credentials<a name="net-dg-config-creds"></a>
+
+## Version 2 content \(see announcement above\)<a name="w3aac11b7b7b3b1"></a>
 
 This topic describes how to configure your application’s AWS credentials\. It assumes you have created an AWS account and have access to your credentials, as described in [Create an AWS Account and Credentials](net-dg-setup.md#net-dg-signup)\. It is important to manage your credentials securely and avoid practices that could unintentionally expose your credentials publicly\. In particular:
 + Don’t use your account’s root credentials to access your AWS resources\. These credentials provide unrestricted account access and are difficult to revoke\.
@@ -23,7 +27,7 @@ The following topics describe how to manage credentials for an AWS SDK for \.NET
 + [Using a Credentials File](#creds-file)
 + [Using Credentials in an Application](#creds-assign)
 
-## Using the SDK Store<a name="sdk-store"></a>
+### Using the SDK Store<a name="sdk-store"></a>
 
 During development of your AWS SDK for \.NET application, you should add a profile to the SDK Store for each set of credentials you want to use in your application\. This will prevent the accidental exposure of your AWS credentials while developing your application\. The SDK Store provides the following benefits:
 + The SDK Store can contain multiple profiles from any number of accounts\.
@@ -45,7 +49,7 @@ There are several ways to manage the profiles in the SDK Store\.
 
   The `RegisterProfile` method is used to register a new profile\. Your application will normally call this method only once for each profile\.
 
-## Using a Credentials File<a name="creds-file"></a>
+### Using a Credentials File<a name="creds-file"></a>
 
 You can also store profiles in a credentials file, which can be used by the other AWS SDKs, the AWS CLI, and Tools for Windows PowerShell\. To reduce the risk of accidentally exposing credentials, the credentials file should be stored separately from any project files, usually in the user’s home folder\. Be aware that the profiles in a credentials files are stored in plaintext\.
 
@@ -75,7 +79,7 @@ If you include a profile named `default`, the AWS SDK for \.NET will use that pr
 
 You can store profiles in a credentials file in a location you choose, such as `C:\aws_service_credentials\credentials`\. You then explicitly specify the file path in the `profilesLocation` attribute in your project’s `App.config` or `Web.config` file\. For more information, see [Specifying a Profile](#net-dg-config-creds-assign-profile)\.
 
-## Using Credentials in an Application<a name="creds-assign"></a>
+### Using Credentials in an Application<a name="creds-assign"></a>
 
 The AWS SDK for \.NET searches for credentials in the following order and uses the first available set for the current application\.
 
@@ -99,7 +103,7 @@ The AWS SDK for \.NET searches for credentials in the following order and uses t
 
 SDK Store profiles are specific to a particular user on a particular host\. They cannot be copied to other hosts or other users\. For this reason, SDK Store profiles cannot be used in production applications\. If your application is running on an Amazon EC2 instance, you should use an IAM role as described in [Using IAM Roles for EC2 Instances with the AWS SDK for \.NET](net-dg-hosm.md#net-dg-roles)\. Otherwise, you should store your credentials in a credentials file on the server your web application has access to\.
 
-### Specifying a Profile<a name="net-dg-config-creds-assign-profile"></a>
+#### Specifying a Profile<a name="net-dg-config-creds-assign-profile"></a>
 
 Profiles are the preferred way to use credentials in an AWS SDK for \.NET application\. You don’t have to specify where the profile is stored; you only reference the profile by name\. The AWS SDK for \.NET retrieves the corresponding credentials, as described in the previous section\.
 
@@ -163,7 +167,7 @@ var s3Client = new AmazonS3Client(credentials, RegionEndpoint.USWest2);
 **Note**  
 If you want to use the default profile, omit the `AWSCredentials` object, and the AWS SDK for \.NET will automatically use your default credentials to create the client object\.
 
-### Specifying Roles or Temporary Credentials<a name="net-dg-config-creds-assign-role"></a>
+#### Specifying Roles or Temporary Credentials<a name="net-dg-config-creds-assign-role"></a>
 
 For applications that run on Amazon EC2 instances, the most secure way to manage credentials is to use IAM roles, as described in [Using IAM Roles for EC2 Instances with the AWS SDK for \.NET](net-dg-hosm.md#net-dg-roles)\.
 
@@ -173,7 +177,7 @@ For application scenarios in which the software executable will be available to 
 
 Although the title of the second article refers specifically to mobile applications, the article contains information that is useful for any AWS application deployed outside of your organization\.
 
-### Using Proxy Credentials<a name="net-dg-config-creds-proxy"></a>
+#### Using Proxy Credentials<a name="net-dg-config-creds-proxy"></a>
 
 If your software communicates with AWS through a proxy, you can specify credentials for the proxy using the `ProxyCredentials` property on the [ClientConfig](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TRuntimeClientConfigNET45.html) class for the service\. For example, for Amazon S3, you could use code similar to the following, where \{my\-username\} and \{my\-password\} are the proxy user name and password specified in a [NetworkCredential](http://msdn.microsoft.com/en-us/library/system.net.networkcredential.aspx) object\.
 

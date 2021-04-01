@@ -1,10 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Install AWS Assemblies with NuGet<a name="net-dg-nuget"></a>
+
+## Version 2 content \(see announcement above\)<a name="w3aac11c17b3b1"></a>
 
  [NuGet](http://nuget.org/) is a package management system for the \.NET platform\. With NuGet, you can add the [AWSSDK assembly](http://nuget.org/packages/AWSSDK) and the [TraceListener](http://www.nuget.org/packages/AWS.TraceListener) and [SessionProvider](http://www.nuget.org/packages/AWS.SessionProvider) extensions to your application without first installing the SDK\.
 
@@ -17,13 +21,13 @@ For more information about NuGet, go to the [NuGet documentation](http://docs.nu
 + [NuGet from Solution Explorer](#net-dg-nuget-soln-use)
 + [NuGet Package Manager Console](#net-dg-nuget-pkg-manager)
 
-## Installation<a name="net-dg-nuget-install"></a>
+### Installation<a name="net-dg-nuget-install"></a>
 
 To use NuGet, install it from the [Visual Studio Gallery on MSDN](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)\. If you are using Visual Studio 2010 or later, NuGet is installed automatically\.
 
 You can use NuGet either from **Solution Explorer** or from the **Package Manager Console**\.
 
-## NuGet from Solution Explorer<a name="net-dg-nuget-soln-use"></a>
+### NuGet from Solution Explorer<a name="net-dg-nuget-soln-use"></a>
 
 To use NuGet from Solution Explorer, right\-click on your project and select **Manage NuGet Packages…** from the context menu\.
 
@@ -31,7 +35,7 @@ From the **Manage NuGet Packages** dialog box, select **Online** in the left pan
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v2/developer-guide/images/nuget-install-vs-dlg.png)
 
-## NuGet Package Manager Console<a name="net-dg-nuget-pkg-manager"></a>
+### NuGet Package Manager Console<a name="net-dg-nuget-pkg-manager"></a>
 
 To use NuGet from the Package Manager Console within Visual Studio:
 + Visual Studio 2010 – From the **Tools** menu, select **Library Package Manager**, and click **Package Manager Console**\.

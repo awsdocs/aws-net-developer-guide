@@ -1,20 +1,24 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Amazon S3 Glacier Programming with the AWS SDK for \.NET<a name="glacier-apis-intro"></a>
 
+## Version 2 content \(see announcement above\)<a name="w3aac13c15b3b1"></a>
+
 The AWS SDK for \.NET supports Amazon S3 Glacier, which is a storage service optimized for infrequently used data, or “cold data\.” The service provides durable and extremely low\-cost storage with security features for data archiving and backup\. For more information, see [S3 Glacier](https://aws.amazon.com/glacier)\.
 
 The following information introduces you to the S3 Glacier programming models in the the SDK\.
 
-## Programming Models<a name="glacier-apis-intro-models"></a>
+### Programming Models<a name="glacier-apis-intro-models"></a>
 
 The the SDK provides three programming models for working with S3 Glacier\. These programming models are known as the *low\-level*, *high\-level*, and *resource* models\. The following information describes these models, why you would want to use them, and how to use them\.
 
-### Low\-Level APIs<a name="glacier-apis-intro-low-level"></a>
+#### Low\-Level APIs<a name="glacier-apis-intro-low-level"></a>
 
 The the SDK provides low\-level APIs for programming with S3 Glacier\. These low\-level APIs map closely the underlying REST API supported by S3 Glacier\. For each S3 Glacier REST operation, the low\-level APIs provide a corresponding method, a request object for you to provide request information, and a response object for you to process the S3 Glacier response\. The low\-level APIs are the most complete implementation of the underlying S3 Glacier operations\.
 
@@ -127,7 +131,7 @@ For additional examples, see:
 
 For related API reference information, see `Amazon.Glacier` and `Amazon.Glacier.Model` in the [AWS SDK for \.NET API Reference](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/)\.
 
-### High\-Level APIs<a name="glacier-apis-intro-high-level"></a>
+#### High\-Level APIs<a name="glacier-apis-intro-high-level"></a>
 
 The the SDK provides high\-level APIs for programming with S3 Glacier\. To further simplify application development, these high\-level APIs offer a higher\-level abstraction for some of the operations, including uploading an archive and downloading an archive or vault inventory\.
 
@@ -145,7 +149,7 @@ For examples, see:
 
 For related API reference information, see [Amazon\.Glacier\.Transfer](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/NGlacierTransfer.html) in the AWS SDK for \.NET API Reference\.
 
-### Resource APIs<a name="glacier-apis-intro-resource-level"></a>
+#### Resource APIs<a name="glacier-apis-intro-resource-level"></a>
 
 The the SDK provides the AWS Resource APIs for \.NET for programming with S3 Glacier\. These resource APIs provide a resource\-level programming model that enables you to write code to work more directly with S3 Glacier resources as compared to their low\-level and high\-level API counterparts\. \(For more information about the AWS Resource APIs for \.NET, including how to download and reference these resource APIs, see [Programming with the AWS Resource APIs for \.NET](resource-level-apis-intro.md)\.\)
 

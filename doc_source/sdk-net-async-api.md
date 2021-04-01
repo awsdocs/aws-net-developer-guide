@@ -1,33 +1,37 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Amazon Web Services Asynchronous APIs for \.NET<a name="sdk-net-async-api"></a>
 
+## Version 2 content \(see announcement above\)<a name="w3aac11b9b3b1"></a>
+
 **Topics**
 + [Asynchronous API for \.NET 4\.5, Windows Store, and Windows Phone 8](#async-api-45)
 + [Asynchronous API for \.NET 3\.5](#async-api-35)
 
-## Asynchronous API for \.NET 4\.5, Windows Store, and Windows Phone 8<a name="async-api-45"></a>
+### Asynchronous API for \.NET 4\.5, Windows Store, and Windows Phone 8<a name="async-api-45"></a>
 
 The AWS SDK for \.NET uses the new task\-based asynchronous pattern for \.NET 4\.5, Windows Store, and Windows Phone 8\. You can use the `async` and `await` keywords to perform and manage asynchronous operations for all AWS products without blocking\.
 
 To learn more about the task\-based asynchronous pattern, see [Task\-based Asynchronous Pattern \(TAP\)](http://msdn.microsoft.com/en-us/library/hh873175(v=vs.110).aspx) on MSDN\.
 
-## Asynchronous API for \.NET 3\.5<a name="async-api-35"></a>
+### Asynchronous API for \.NET 3\.5<a name="async-api-35"></a>
 
 The AWS SDK for \.NET supports asynchronous \(async\) versions of most of the method calls exposed by the \.NET client classes\. The async methods enable you to call AWS services without having your code block on the response from the service\. For example, you could make a request to write data to Amazon S3 or DynamoDB and then have your code continue to do other work while AWS processes the requests\.
 
-### Syntax of Async Request Methods<a name="sdk-net-async-request-syntax"></a>
+#### Syntax of Async Request Methods<a name="sdk-net-async-request-syntax"></a>
 
 There are two phases to making an asynchronous request to an AWS service\. The first is to call the `Begin` method for the request\. This method initiates the asynchronous operation\. Then, after some period of time, you would call the corresponding `End` method\. This method retrieves the response from the service and also provides an opportunity to handle exceptions that might have occurred during the operation\.
 
 **Note**  
 It is not required that you call the `End` method\. Assuming that no errors are encountered, the asynchronous operation will complete whether or not you call `End`\.
 
-#### Begin Method Syntax<a name="sdk-net-async-begin-request"></a>
+##### Begin Method Syntax<a name="sdk-net-async-begin-request"></a>
 
 In addition to taking a request object parameter, such as [PutItemRequest](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TDynamoDBv2PutItemRequestNET35.html), the async `Begin` methods take two additional parameters: a callback function, and a state object\. Instead of returning a [service response object](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TRuntimeWebServiceResponseNET35.html), the `Begin` methods return a result of type `IAsyncResult`\. For the definition of this type, go to the [MSDN documentation](http://msdn.microsoft.com/en-us/library/bkbsbb9x.aspx)\.
 
@@ -58,14 +62,14 @@ void Callback(IAsyncResult asyncResult)
 
 The third parameter, `state`, is a user\-defined object that is made available to the callback function as the `AsyncState` property of the `asyncResult` parameter, that is, `asyncResult.AsyncState`\.
 
-### Calling Patterns<a name="calling-patterns"></a>
+#### Calling Patterns<a name="calling-patterns"></a>
 + Passing a callback function and a state object\.
 + Passing a callback function, but passing null for the state object\.
 + Passing null for both the callback function and the state object\.
 
 This topic provides an example of each of these patterns\.
 
-#### Examples<a name="examples"></a>
+##### Examples<a name="examples"></a>
 
 All of the following examples assume the following initialization code\.
 
@@ -93,11 +97,11 @@ public static void TestPutObjectAsync() {
 }
 ```
 
-#### Using IAsyncResult\.AsyncWaitHandle<a name="sdk-net-async-waithandle"></a>
+##### Using IAsyncResult\.AsyncWaitHandle<a name="sdk-net-async-waithandle"></a>
 
 In some circumstances, the code that calls the `Begin` method might need to enable another method that it calls to wait on the completion of the asynchronous operation\. In these situations, it can pass the method the `WaitHandle` returned by the `IAsyncResult.AsyncWaitHandle` property of the `IAsyncResult` return value\. The method can then wait for the asynchronous operation to complete by calling `WaitOne` on this `WaitHandle`\.
 
-#### No Callback Specified<a name="sdk-net-async-examples"></a>
+##### No Callback Specified<a name="sdk-net-async-examples"></a>
 
 The following example code calls `BeginPutObject`, performs some work, then calls `EndPutObject` to retrieve the service response\. The call to `EndPutObject` is enclosed in a `try` block to catch any exceptions that might have been thrown during the operation\.
 
@@ -118,7 +122,7 @@ catch (AmazonS3Exception s3Exception) {
 }
 ```
 
-#### Simple Callback<a name="simple-callback"></a>
+##### Simple Callback<a name="simple-callback"></a>
 
 This example assumes that the following callback function has been defined\.
 
@@ -135,7 +139,7 @@ The following line of code calls `BeginPutObject` and specifies the above callba
 asyncResult = client.BeginPutObject(request, SimpleCallback, null);
 ```
 
-#### Callback with Client<a name="callback-with-client"></a>
+##### Callback with Client<a name="callback-with-client"></a>
 
 This example assumes that the following callback function has been defined\.
 
@@ -161,7 +165,7 @@ The following line of code calls `BeginPutObject` and specifies the preceding ca
 asyncResult = client.BeginPutObject(request, CallbackWithClient, client);
 ```
 
-#### Callback with State Object<a name="callback-with-state-object"></a>
+##### Callback with State Object<a name="callback-with-state-object"></a>
 
 This example assumes that the following class and callback function have been defined\.
 
@@ -212,7 +216,7 @@ asyncResult = client.BeginPutObject(
   request, CallbackWithState, new ClientState { Client = client, Start = DateTime.Now } );
 ```
 
-### Complete Sample<a name="sdk-net-async-complete-code"></a>
+#### Complete Sample<a name="sdk-net-async-complete-code"></a>
 
 The following code sample demonstrates the various patterns that you can use when calling the asynchronous request methods\.
 
@@ -367,6 +371,6 @@ namespace async_aws_net
 }
 ```
 
-### See Also<a name="sdk-net-async-see-also"></a>
+#### See Also<a name="sdk-net-async-see-also"></a>
 +  [Getting Started with the AWS SDK for \.NET](net-dg-setup.md) 
 +  [Programming with the AWS SDK for \.NET](net-dg-programming-techniques.md) 

@@ -1,10 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
-# Launch an EC2 Instance Using the SDK<a name="run-instance"></a>
+# Launch an EC2 Instance Using the the SDK<a name="run-instance"></a>
+
+## Version 2 content \(see announcement above\)<a name="w3aac13c13b7b9b3b1"></a>
 
 Use the following procedure to launch one or more identically configured EC2 instances from the same Amazon Machine Image \(AMI\)\. After you create your EC2 instances, you can check their status\. After your EC2 instances are running, you can connect to them\.
 
@@ -13,7 +17,7 @@ Use the following procedure to launch one or more identically configured EC2 ins
 + [Checking the State of Your Instance](#check-instance-state)
 + [Connecting to Your Running Instance](#connect-to-instance)
 
-## Launching an EC2 Instance<a name="launch-instance"></a>
+### Launching an EC2 Instance<a name="launch-instance"></a>
 
 You launch an instance in either EC2\-Classic or in a VPC\. For more information about EC2\-Classic and EC2\-VPC, see [Supported Platforms](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-supported-platforms.html) in the Amazon EC2 User Guide for Windows Instances\.
 
@@ -202,7 +206,7 @@ One or more network interfaces\.
    }
    ```
 
-## Checking the State of Your Instance<a name="check-instance-state"></a>
+### Checking the State of Your Instance<a name="check-instance-state"></a>
 
 Use the following procedure to get the current state of your instance\. Initially, your instance is in the `pending` state\. You can connect to your instance after it enters the `running` state\.
 
@@ -228,7 +232,7 @@ Use the following procedure to get the current state of your instance\. Initiall
    Console.WriteLine(response.Reservations[0].Instances[0].State.Name);
    ```
 
-## Connecting to Your Running Instance<a name="connect-to-instance"></a>
+### Connecting to Your Running Instance<a name="connect-to-instance"></a>
 
 After an instance is running, you can remotely connect to it using an RDP client on your computer\. Before connecting to your instance, you must ensure that the instance’s RDP port is open to traffic\. To connect, you need the instance ID and the private key for instance’s key pair\. For more information, see [Connecting to Your Windows Instance Using RDP](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html) in the Amazon EC2 User Guide for Windows Instances\.
 

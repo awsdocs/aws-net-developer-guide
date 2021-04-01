@@ -1,12 +1,16 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Tutorial: Amazon EC2 Spot Instances<a name="getting-started-spot-instances-net"></a>
 
-## Overview<a name="tutor-spot-net-overview"></a>
+## Version 2 content \(see announcement above\)<a name="w3aac13c13b9b3b1"></a>
+
+### Overview<a name="tutor-spot-net-overview"></a>
 
 Spot Instances enable you to bid on unused Amazon EC2 capacity and run any instances that you acquire for as long as your bid exceeds the current *Spot Price*\. Amazon EC2 changes the Spot Price periodically based on supply and demand, and customers whose bids meet or exceed it gain access to the available Spot Instances\. Like On\-Demand Instances and Reserved Instances, Spot Instances provide another option for obtaining more compute capacity\.
 
@@ -28,17 +32,17 @@ This tutorial provides an overview of how to use the \.NET programming environme
 + Cancel the Spot Request
 + Terminate associated instances
 
-## Prerequisites<a name="tutor-spot-net-prereq"></a>
+### Prerequisites<a name="tutor-spot-net-prereq"></a>
 
 This tutorial assumes that you have signed up for AWS, set up your \.NET development environment, and installed the AWS SDK for \.NET\. If you use the Microsoft Visual Studio development environment, we recommend that you also install the AWS Toolkit for Visual Studio\. For instructions on setting up your environment, see [Getting Started with the AWS SDK for \.NET](net-dg-setup.md)\.
 
-## Step 1: Setting Up Your Credentials<a name="tutor-spot-net-credentials"></a>
+### Step 1: Setting Up Your Credentials<a name="tutor-spot-net-credentials"></a>
 
 To begin using this code sample, you need to populate the `App.config` file with your AWS credentials, which identify you to Amazon Web Services\. You specify your credentials in the files `appSettings` element\. The preferred way to handle credentials is to create a profile in the SDK Store, which encrypts your credentials and stores them separately from any project\. You can then specify the profile by name in the `App.config` file, and the credentials are automatically incorporated into the application\. For more information, see [Configuring Your AWS SDK for \.NET Application](net-dg-config.md)\.
 
 Now that you have configured your settings, you can get started using the code in the example\.
 
-## Step 2: Setting Up a Security Group<a name="tutor-spot-net-sg"></a>
+### Step 2: Setting Up a Security Group<a name="tutor-spot-net-sg"></a>
 
 A *security group* acts as a firewall that controls the traffic allowed in and out of a group of instances\. By default, an instance is started without any security group, which means that all incoming IP traffic, on any TCP port will be denied\. So, before submitting your Spot Request, you will set up a security group that allows the necessary network traffic\. For the purposes of this tutorial, we will create a new security group called “GettingStarted” that allows connection using the Windows Remote Desktop Protocol \(RDP\) from the IP address of the local computer, that is, the computer where you are running the application\.
 
@@ -111,7 +115,7 @@ try {
 
 You can also create the security group using the AWS Toolkit for Visual Studio\. Go to the [AWS Toolkit for Visual Studio User Guide](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/) for more information\.
 
-## Step 3: Submitting Your Spot Request<a name="tutor-spot-net-submit"></a>
+### Step 3: Submitting Your Spot Request<a name="tutor-spot-net-submit"></a>
 
 To submit a Spot Request, you first need to determine the instance type, the Amazon Machine Image \(AMI\), and the maximum bid price you want to use\. You must also include the security group we configured previously, so that you can log into the instance if you want to\.
 
@@ -152,7 +156,7 @@ Running this code will launch a new Spot Instance Request\.
 **Note**  
 You will be charged for any Spot Instances that are actually launched, so make sure that you cancel any requests and terminate any instances you launch to reduce any associated fees\.
 
-## Step 4: Determining the State of Your Spot Request<a name="tutor-spot-net-request-state"></a>
+### Step 4: Determining the State of Your Spot Request<a name="tutor-spot-net-request-state"></a>
 
 Next, we want to create code to wait until the Spot Request reaches the “active” state before proceeding to the last step\. To determine the state of our Spot Request, we poll the [describeSpotInstanceRequests](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TEC2DescribeSpotInstanceRequestsRequestNET45.html) method for the state of the Spot Request ID we want to monitor\.
 
@@ -233,7 +237,7 @@ do
 
 If you just ran the code up to this point, your Spot Instance Request would complete—or possibly fail with an error\. For the purposes of this tutorial, we’ll add some code that cleans up the requests after all of them have transitioned out of the open state\.
 
-## Step 5: Cleaning up Your Spot Requests and Instances<a name="tutor-spot-net-cleaning-up"></a>
+### Step 5: Cleaning up Your Spot Requests and Instances<a name="tutor-spot-net-cleaning-up"></a>
 
 The final step is to clean up our requests and instances\. It is important to both cancel any outstanding requests *and* terminate any instances\. Just canceling your requests will not terminate your instances, which means that you will continue to pay for them\. If you terminate your instances, your Spot Requests may be canceled, but there are some scenarios—such as if you use persistent bids—where terminating your instances is not sufficient to stop your request from being re\-fulfilled\. Therefore, it is a best practice to both cancel any active bids and terminate any running instances\.
 
@@ -287,6 +291,6 @@ if (instanceIds.Count > 0)
 }
 ```
 
-## Conclusion<a name="tutor-spot-php-conclusion"></a>
+### Conclusion<a name="tutor-spot-php-conclusion"></a>
 
 Congratulations\! You have just completed the getting started tutorial for developing Spot Instance software with the AWS SDK for \.NET\.

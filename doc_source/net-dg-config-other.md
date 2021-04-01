@@ -1,10 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Configuring Other Application Parameters<a name="net-dg-config-other"></a>
+
+## Version 2 content \(see announcement above\)<a name="w3aac11b7c11b3b1"></a>
 
 In addition to [configuring credentials](net-dg-config-creds.md), you can configure a number of other application parameters:
 
@@ -21,7 +25,7 @@ These parameters can be configured in the application’s `App.config` or `Web.c
 
 For more information about use of the `<aws>` element as described later in this topic, see [Configuration Files Reference for AWS SDK for \.NET](net-dg-config-ref.md)\.
 
-## **AWSEndpointDefinition**<a name="config-setting-awsendpointdefinition"></a>
+### **AWSEndpointDefinition**<a name="config-setting-awsendpointdefinition"></a>
 
 Configures whether the SDK should use a custom configuration file that defines the regions and endpoints\. To set the endpoint definition file in the `.config` file, we recommend setting the `endpointDefinition` attribute value in the `<aws>` element\.
 
@@ -43,7 +47,7 @@ AWSConfigs.EndpointDefinition = @"c:\config\endpoints.xml";
 
 If no file name is provided, then a custom configuration file will not be used\. Changes to this setting take effect only for new AWS client instances\.
 
-## **AWSLogging**<a name="config-setting-awslogging"></a>
+### **AWSLogging**<a name="config-setting-awslogging"></a>
 
 Configures how the SDK should log events, if at all\. For example, the recommended approach is to use the `<logging>` element, which is a child element of the `<aws>` element:
 
@@ -90,7 +94,7 @@ AWSConfigs.Logging = LoggingOptions.Log4Net | LoggingOptions.SystemDiagnostics;
 
 Changes to this setting take effect only for new AWS client instances\.
 
-## **AWSLogMetrics**<a name="config-setting-awslogmetrics"></a>
+### **AWSLogMetrics**<a name="config-setting-awslogmetrics"></a>
 
 Specifies whether or not the SDK should log performance metrics\. To set the metrics logging configuration in the `.config` file, set the `logMetrics` attribute value in the `<logging>` element, which is a child element of the `<aws>` element:
 
@@ -114,7 +118,7 @@ AWSConfigs.LogMetrics = true;
 
 This setting configures the default `LogMetrics` property for all clients/configs\. Changes to this setting take effect only for new AWS client instances\.
 
-## **AWSRegion**<a name="config-setting-awsregion"></a>
+### **AWSRegion**<a name="config-setting-awsregion"></a>
 
 Configures the default AWS region for clients that have not explicitly specified a region\. To set the region in the `.config` file, the recommended approach is to set the `region` attribute value in the `aws` element:
 
@@ -136,7 +140,7 @@ AWSConfigs.AWSRegion = "us-west-2";
 
 For more information about creating an AWS client for a specific region, see [AWS Region Selection](net-dg-region-selection.md)\. Changes to this setting take effect only for new AWS client instances\.
 
-## **AWSResponseLogging**<a name="config-setting-awsresponselogging"></a>
+### **AWSResponseLogging**<a name="config-setting-awsresponselogging"></a>
 
 Configures when the SDK should log service responses\.
 
@@ -173,7 +177,7 @@ AWSConfigs.ResponseLogging = ResponseLoggingOption.OnError;
 
 Changes to this setting take effect immediately\.
 
-## **AWS\.DynamoDBContext\.TableNamePrefix**<a name="config-setting-aws-dynamodbcontext-tablenameprefix"></a>
+### **AWS\.DynamoDBContext\.TableNamePrefix**<a name="config-setting-aws-dynamodbcontext-tablenameprefix"></a>
 
 Configures the default `TableNamePrefix` the `DynamoDBContext` will use if not manually configured\. To set the table name prefix in the `.config` file, the recommended approach is to set the `tableNamePrefix` attribute value in the `<dynamoDBContext>` element, which is a child element of the `<dynamoDB>` element, which itself is a child element of the `<aws>` element:
 
@@ -193,7 +197,7 @@ AWSConfigs.DynamoDBContextTableNamePrefix = "Test-";
 
 Changes to this setting will take effect only in newly constructed instances of `DynamoDBContextConfig` and `DynamoDBContext`\.
 
-## **AWS\.S3\.UseSignatureVersion4**<a name="config-setting-aws-s3-usesignatureversion4"></a>
+### **AWS\.S3\.UseSignatureVersion4**<a name="config-setting-aws-s3-usesignatureversion4"></a>
 
 Configures whether or not the Amazon S3 client should use signature version 4 signing with requests\. To set signature version 4 signing for Amazon S3 in the `.config` file, the recommended approach is to set the `useSignatureVersion4` attribute of the `<s3>` element, which is a child element of the `<aws>` element:
 

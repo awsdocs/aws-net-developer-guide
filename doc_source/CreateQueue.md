@@ -1,10 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Create an Amazon SQS Queue<a name="CreateQueue"></a>
+
+## Version 2 content \(see announcement above\)<a name="w3aac13c25b7b9b3b1"></a>
 
 You can use the AWS SDK for \.NET to programmatically create an Amazon SQS queue\. Creating an Amazon SQS Queue is an administrative task\. You can create a queue by using the [AWS Management Console](https://console.aws.amazon.com/sqs/home) instead of creating a queue programmatically\.
 

@@ -1,10 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Tutorial: Grant Access Using an IAM Role and the AWS SDK for \.NET<a name="net-dg-hosm"></a>
+
+## Version 2 content \(see announcement above\)<a name="w3aac13c17b9b3b1"></a>
 
 All requests to AWS must be cryptographically signed using credentials issued by AWS\. Therefore, you need a strategy for managing credentials for software that runs on Amazon EC2 instances\. You must distribute, store, and rotate these credentials in a way that keeps them secure but also accessible to the software\.
 
@@ -24,7 +28,7 @@ The following walkthrough uses a sample program that retrieves an object from Am
 + [Launch an EC2 Instance and Specify the IAM Role](#net-dg-launch-ec2-instance-with-instance-profile)
 + [Run the Sample Program on the EC2 Instance](#net-dg-run-the-program)
 
-## Create a Sample that Retrieves an Object from Amazon S3<a name="net-dg-using-hosm-to-retrieve-an-object-from-ec2"></a>
+### Create a Sample that Retrieves an Object from Amazon S3<a name="net-dg-using-hosm-to-retrieve-an-object-from-ec2"></a>
 
 The following sample code retrieves an object from Amazon S3\. It requires a text file in an Amazon S3 bucket that you have access to\. For more information about creating an Amazon S3 bucket and uploading an object, see the [Amazon S3 Getting Started Guide](https://docs.aws.amazon.com/AmazonS3/latest/gsg/)\. It also requires AWS credentials that provide you with access to the Amazon S3 bucket\. For more information, see [Configuring AWS Credentials](net-dg-config-creds.md)\.
 
@@ -110,7 +114,7 @@ namespace s3.amazon.com.docsamples.retrieveobject
 
 1. \(Optional\) Transfer the sample program to a running Windows instance on which you haven’t set up credentials\. Run the program and verify that it fails because it can’t locate credentials\.
 
-## Create an IAM Role<a name="net-dg-create-the-role"></a>
+### Create an IAM Role<a name="net-dg-create-the-role"></a>
 
 Create an IAM role that has the appropriate permissions to access Amazon S3\.
 
@@ -126,7 +130,7 @@ Create an IAM role that has the appropriate permissions to access Amazon S3\.
 
 1. Review the role information and then click **Create Role**\.
 
-## Launch an EC2 Instance and Specify the IAM Role<a name="net-dg-launch-ec2-instance-with-instance-profile"></a>
+### Launch an EC2 Instance and Specify the IAM Role<a name="net-dg-launch-ec2-instance-with-instance-profile"></a>
 
 You can launch an EC2 instance with an IAM role using the Amazon EC2 console or the the SDK\.
 + To launch an EC2 instance using the console, follow the directions in [Launching a Windows Instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2Win_GetStarted.html) in the Amazon EC2 User Guide for Windows Instances\. When you reach the **Review Instance Launch** page, click **Edit instance details**\. In **IAM role**, specify the IAM role that you created previously\. Complete the procedure as directed\. Notice that you’ll need to create or use an existing security group and key pair in order to connect to the instance\.
@@ -149,7 +153,7 @@ Note that an IAM user can’t launch an instance with an IAM role without the pe
 }
 ```
 
-## Run the Sample Program on the EC2 Instance<a name="net-dg-run-the-program"></a>
+### Run the Sample Program on the EC2 Instance<a name="net-dg-run-the-program"></a>
 
 To transfer the sample program to your EC2 instance, connect to the instance using the AWS Management Console as described in the following procedure\.
 

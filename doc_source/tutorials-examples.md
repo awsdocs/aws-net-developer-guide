@@ -1,17 +1,20 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Programming AWS Services with the AWS SDK for \.NET<a name="tutorials-examples"></a>
 
-**Note**  
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+## Version 2 content \(see announcement above\)<a name="w3aac13b3b1"></a>
 
 The following concepts, tutorials, and examples demonstrate how to use the AWS SDK for \.NET to work with individual Amazon Web Services\.
 
 Before you begin, be sure that you have [set up the AWS SDK for \.NET](net-dg-setup.md) and that you have reviewed the material in the [Programming with the AWS SDK for \.NET](net-dg-programming-techniques.md)\.
+
+## <a name="w3aac13b5"></a>
 
 **Topics**
 + [Programming with the AWS Resource APIs for \.NET](resource-level-apis-intro.md)

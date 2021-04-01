@@ -1,10 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Managing ASP\.NET Session State with Amazon DynamoDB<a name="dynamodb-session-net-sdk"></a>
+
+## Version 2 content \(see announcement above\)<a name="w3aac13c11c13b3b1"></a>
 
 ASP\.NET applications often store session\-state data in memory\. However, this approach doesn’t scale well\. After the application grows beyond a single web server, the session state must be shared between servers\. A common solution is to set up a dedicated session\-state server with Microsoft SQL Server\. But this approach also has drawbacks: you must administer another machine, the session\-state server is a single point of failure, and the session\-state server itself can become a performance bottleneck\.
 
@@ -17,7 +21,7 @@ The AWS SDK for \.NET includes `AWS.SessionProvider.dll`, which contains an ASP\
 
 For more information about using Session State with ASP\.NET applications, go to the [MSDN documentation](http://msdn.microsoft.com/en-us/library/ms178581.aspx)\.
 
-## Create the *ASP\.NET\_SessionState* Table<a name="asdf"></a>
+### Create the *ASP\.NET\_SessionState* Table<a name="asdf"></a>
 
 When your application starts, it looks for an Amazon DynamoDB table named, by default, `ASP.NET_SessionState`\. We recommend you create this table before you run your application for the first time\.
 
@@ -36,7 +40,7 @@ The `ASP.NET_SessionState` table is ready for use when its status changes from `
 **Note**  
 If you decide not to create the table beforehand, the session state provider will create the table during its initialization\. See the `web.config` options below for a list of attributes that act as configuration parameters for the session state table\. If the provider creates the table, it will use these parameters\.
 
-## Configure the Session State Provider<a name="net-dg-ddb-config-sess-provider"></a>
+### Configure the Session State Provider<a name="net-dg-ddb-config-sess-provider"></a>
 
  **To configure an ASP\.NET application to use DynamoDB as the session state server** 
 
@@ -64,7 +68,7 @@ If you decide not to create the table beforehand, the session state provider wil
 
    If the web server is running on an Amazon EC2 instance that is configured to use IAM roles for EC2 instances, then you do not need to specify any credentials in the `web.config` file\. In this case, the AWS \.NET client will use the IAM roles’ credentials\. For more information, see [Tutorial: Grant Access Using an IAM Role and the AWS SDK for \.NET](net-dg-hosm.md#net-dg-roles) and [Security Considerations](#net-dg-ddb-sess-security)\.
 
-### Web\.config Options<a name="net-dg-dd-config-opts"></a>
+#### Web\.config Options<a name="net-dg-dd-config-opts"></a>
 
 You can use the following configuration attributes in the `providers` section of your `web.config` file:
 
@@ -95,7 +99,7 @@ Optional `int` attribute\. The write capacity units to use if the provider creat
 ** *CreateIfNotExist* **  
 Optional `boolean` attribute\. The `CreateIfNotExist` attribute controls whether the provider will auto\-create the table if it doesn’t exist\. The default is true\. If this flag is set to false and the table doesn’t exist, an exception will be thrown\.
 
-## Security Considerations<a name="net-dg-ddb-sess-security"></a>
+### Security Considerations<a name="net-dg-ddb-sess-security"></a>
 
 After the DynamoDB table is created and the application is configured, sessions can be used as with any other session provider\.
 

@@ -1,13 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Getting Started with the AWS SDK for \.NET<a name="net-dg-setup"></a>
 
-**Note**  
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+## Version 2 content \(see announcement above\)<a name="w3aab9b3b1"></a>
 
 To get started with the AWS SDK for \.NET, complete the following tasks:
 
@@ -17,7 +18,7 @@ To get started with the AWS SDK for \.NET, complete the following tasks:
 + [Install the AWS SDK for \.NET](#net-dg-install-net-sdk)
 + [Start a New Project](#net-dg-start-new-project)
 
-## Create an AWS Account and Credentials<a name="net-dg-signup"></a>
+### Create an AWS Account and Credentials<a name="net-dg-signup"></a>
 
 To access AWS, you need an AWS account\.
 
@@ -35,11 +36,11 @@ The preferred approach for handling credentials is to create a profile for each 
 
 For more information about managing your credentials, see [Best Practices for Managing AWS Access Keys](https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html)\.
 
-## Install the \.NET Development Environment<a name="net-dg-dev-env"></a>
+### Install the \.NET Development Environment<a name="net-dg-dev-env"></a>
 
 To use the SDK, you must have the following installed\.
 
-### Requirements<a name="requirements"></a>
+#### Requirements<a name="requirements"></a>
 + \(Required\) Microsoft \.NET Framework 3\.5 or later
 + \(Required\) Microsoft Visual Studio 2010 or later
 + \(Required\) The SDK
@@ -48,7 +49,7 @@ To use the SDK, you must have the following installed\.
 **Note**  
 We recommend using Visual Studio Professional 2010 or higher to implement your applications\.
 
-## Install the AWS SDK for \.NET<a name="net-dg-install-net-sdk"></a>
+### Install the AWS SDK for \.NET<a name="net-dg-install-net-sdk"></a>
 
 The following procedure describes how to install the AWS Tools for Windows, which contains the AWS SDK for \.NET\.
 
@@ -64,7 +65,7 @@ By default, the AWS Tools for Windows is installed in the *Program Files* direct
 
 1. \(Optional\) You can install extensions for the SDK, which include a session state provider and a trace listener\. For more information, see [Install AWS Assemblies with NuGet](net-dg-nuget.md)\.
 
-## Start a New Project<a name="net-dg-start-new-project"></a>
+### Start a New Project<a name="net-dg-start-new-project"></a>
 
 If you have installed the Toolkit for Visual Studio on Visual Studio Professional, it includes C\# project templates for a variety of AWS services, including the following basic templates:
 

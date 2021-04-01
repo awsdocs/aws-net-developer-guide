@@ -1,10 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # AWS Region Selection<a name="net-dg-region-selection"></a>
+
+## Version 2 content \(see announcement above\)<a name="w3aac11b7b9b3b1"></a>
 
 AWS regions allow you to access AWS services that reside physically in a specific geographic region\. This can be useful both for redundancy and to keep your data and applications running close to where you and your users will access them\. To select a particular region, configure the AWS client object with an endpoint that corresponds to that region\.
 

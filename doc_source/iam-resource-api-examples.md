@@ -1,10 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # AWS Identity and Access Management Code Examples with the AWS Resource APIs for \.NET<a name="iam-resource-api-examples"></a>
+
+## Version 2 content \(see announcement above\)<a name="w3aac13c17b7b3b1"></a>
 
 The following code examples demonstrate how to program with IAM by using the AWS Resource APIs for \.NET\.
 
@@ -26,7 +30,7 @@ The AWS Resource APIs for \.NET are currently provided as a preview\. This means
 + [Create an Instance Profile](#iam-resource-api-examples-create-instance-profile)
 + [Attach an Instance Profile to a Role](#iam-resource-api-examples-attach-instance-profile)
 
-## Get User Account Information<a name="iam-resource-api-examples-get-user"></a>
+### Get User Account Information<a name="iam-resource-api-examples-get-user"></a>
 
 The following example displays information about an existing user account, including its associated groups, policies, and access key IDs:
 
@@ -102,7 +106,7 @@ foreach (var user in users)
 }
 ```
 
-## Get Group Information<a name="iam-resource-api-examples-get-group"></a>
+### Get Group Information<a name="iam-resource-api-examples-get-group"></a>
 
 The following example displays information about an existing group, including its associated policies and user accounts:
 
@@ -164,7 +168,7 @@ foreach (var group in groups)
 }
 ```
 
-## Get Role Information<a name="iam-resource-api-examples-get-role"></a>
+### Get Role Information<a name="iam-resource-api-examples-get-role"></a>
 
 The following example displays information about an existing role, including its associated policies and instance profiles:
 
@@ -226,7 +230,7 @@ foreach (var role in roles)
 }
 ```
 
-## Create a User Account<a name="iam-resource-api-examples-create-user"></a>
+### Create a User Account<a name="iam-resource-api-examples-create-user"></a>
 
 The following example creates a new user account and then displays some information about it:
 
@@ -249,7 +253,7 @@ catch (EntityAlreadyExistsException)
 }
 ```
 
-## Create a Group<a name="iam-resource-api-examples-create-group"></a>
+### Create a Group<a name="iam-resource-api-examples-create-group"></a>
 
 The following example creates a new group and then confirms whether the group was successfully created:
 
@@ -271,7 +275,7 @@ catch (EntityAlreadyExistsException)
 }
 ```
 
-## Create a Role<a name="iam-resource-api-examples-create-role"></a>
+### Create a Role<a name="iam-resource-api-examples-create-role"></a>
 
 The following example creates a new role and then confirms whether the group was successfully created\.
 
@@ -360,7 +364,7 @@ public static string GenerateAssumeRolePolicy()
 }
 ```
 
-## Add a User Account to a Group<a name="iam-resource-api-examples-add-user-to-group"></a>
+### Add a User Account to a Group<a name="iam-resource-api-examples-add-user-to-group"></a>
 
 The following example adds an existing user account to an existing group and then displays a list of the group’s associated user accounts:
 
@@ -391,9 +395,9 @@ catch (NoSuchEntityException)
 }
 ```
 
-## Add a Policy to a User Account, Group, or Role<a name="iam-resource-api-examples-add-policy"></a>
+### Add a Policy to a User Account, Group, or Role<a name="iam-resource-api-examples-add-policy"></a>
 
-### Add a Policy to a User Account<a name="iam-resource-api-examples-add-policy-user"></a>
+#### Add a Policy to a User Account<a name="iam-resource-api-examples-add-policy-user"></a>
 
 The following example creates a new policy, adds the new policy to an existing user account, and then displays a list of the user account’s associated policies:
 
@@ -481,7 +485,7 @@ public static string GenerateUserPolicyDocument()
 }
 ```
 
-### Add a Policy to a Group<a name="iam-resource-api-examples-add-policy-group"></a>
+#### Add a Policy to a Group<a name="iam-resource-api-examples-add-policy-group"></a>
 
 The following example creates a new policy, adds the new policy to an existing group, and then displays a list of the group’s associated policies:
 
@@ -569,7 +573,7 @@ public static string GenerateGroupPolicyDocument()
 }
 ```
 
-### Add a Policy to a Role<a name="iam-resource-api-examples-add-policy-role"></a>
+#### Add a Policy to a Role<a name="iam-resource-api-examples-add-policy-role"></a>
 
 The following example creates a new policy and then adds the new policy to an existing role\.
 
@@ -662,7 +666,7 @@ public static string GenerateRolePolicyDocument()
 }
 ```
 
-## Create an Access Key for a User Account<a name="iam-resource-api-examples-create-access-key"></a>
+### Create an Access Key for a User Account<a name="iam-resource-api-examples-create-access-key"></a>
 
 The following example creates an access key for a user account and then displays the access key’s ID and secret access key:
 
@@ -692,7 +696,7 @@ catch (LimitExceededException)
 }
 ```
 
-## Create a Login Profile for a User Account<a name="iam-resource-api-examples-create-login-profile"></a>
+### Create a Login Profile for a User Account<a name="iam-resource-api-examples-create-login-profile"></a>
 
 The following example creates a login profile for a user account\.
 
@@ -720,7 +724,7 @@ catch (NoSuchEntityException)
 }
 ```
 
-## Create an Instance Profile<a name="iam-resource-api-examples-create-instance-profile"></a>
+### Create an Instance Profile<a name="iam-resource-api-examples-create-instance-profile"></a>
 
 The following example creates an instance profile\.
 
@@ -747,7 +751,7 @@ catch (EntityAlreadyExistsException)
 }
 ```
 
-## Attach an Instance Profile to a Role<a name="iam-resource-api-examples-attach-instance-profile"></a>
+### Attach an Instance Profile to a Role<a name="iam-resource-api-examples-attach-instance-profile"></a>
 
 The following example attaches an instance profile to a role\.
 

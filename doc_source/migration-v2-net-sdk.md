@@ -1,10 +1,14 @@
 --------
 
-This documentation is for version 2\.0 of the AWS SDK for \.NET\. For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.
+End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+
+ This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
 # Migrating Your Code to the Version 2 of the AWS SDK for \.NET<a name="migration-v2-net-sdk"></a>
+
+## Version 2 content \(see announcement above\)<a name="w3aac11c13b3b1"></a>
 
 This guide describes changes in the version 2 of the SDK, and how you can migrate your code to this version of the SDK\.
 
@@ -13,13 +17,13 @@ This guide describes changes in the version 2 of the SDK, and how you can migrat
 + [What’s New](#net-dg-migrate-v2-new)
 + [What’s Different](#net-dg-migrate-v2-diff)
 
-## Introduction<a name="net-dg-migrate-v2-intro"></a>
+### Introduction<a name="net-dg-migrate-v2-intro"></a>
 
 The AWS SDK for \.NET was released in November 2009 and was originally designed for \.NET Framework 2\.0\. Since then, \.NET has improved with \.NET 4\.0 and \.NET 4\.5\. Since \.NET 2\.0, \.NET has also added new target platforms: WinRT and Windows Phone 8\.
 
 AWS SDK for \.NET version 2 has been updated to take advantage of the new features of the \.NET platform and to target WinRT and Windows Phone 8\.
 
-## What’s New<a name="net-dg-migrate-v2-new"></a>
+### What’s New<a name="net-dg-migrate-v2-new"></a>
 + Support for `Task`\-based asynchronous API
 + Support for Windows Store apps
 + Support for Windows Phone 8
@@ -27,9 +31,9 @@ AWS SDK for \.NET version 2 has been updated to take advantage of the new featur
 + Collapsed `Response` and `Result` classes
 + Updated names for classes and properties to follow \.NET conventions
 
-## What’s Different<a name="net-dg-migrate-v2-diff"></a>
+### What’s Different<a name="net-dg-migrate-v2-diff"></a>
 
-### Architecture<a name="net-dg-migrate-v2-arch"></a>
+#### Architecture<a name="net-dg-migrate-v2-arch"></a>
 
 The AWS SDK for \.NET uses a common runtime library to make AWS service requests\. In version 1 of the SDK, this “common” runtime was added *after the initial release*, and several of the older AWS services did not use it\. As a result, there was a higher degree of variability among services in the functionality provided by the AWS SDK for \.NET version 1\.
 
@@ -42,7 +46,7 @@ However, separate runtimes are provided for \.NET 3\.5 and \.NET 4\.5:
 The WinRT and Windows Phone 8 versions of the SDK reuse the runtime for \.NET 4\.5, with the exception that they support *asynchronous methods* only\. Windows Phone 8 doesn’t natively support `System.Net.Http.HttpClient`, so the SDK depends on Microsoft’s portable class implementation of `HttpClient`, which is hosted on *NuGet* at the following URL:
 +  [http://nuget\.org/packages/Microsoft\.Net\.Http/2\.1\.10](http://nuget.org/packages/Microsoft.Net.Http/2.1.10) 
 
-### Removal of the “With” Methods<a name="net-dg-migrate-v2-rm-with"></a>
+#### Removal of the “With” Methods<a name="net-dg-migrate-v2-rm-with"></a>
 
 The “With” methods have been removed from version 2 of the SDK for the following reasons:
 + In \.NET 3\.0, *constructor initializers* were added, making the “With” methods redundant\.
@@ -67,11 +71,11 @@ TransferUtilityUploadRequest uploadRequest = new TransferUtilityUploadRequest() 
 };
 ```
 
-### Removal of SecureString<a name="net-dg-migrate-v2-secure-string"></a>
+#### Removal of SecureString<a name="net-dg-migrate-v2-secure-string"></a>
 
 The use of `System.Security.SecureString` was removed in version 2 of the SDK because it is not available on the WinRT and Windows Phone 8 platforms\.
 
-### Breaking Changes<a name="net-dg-migrate-v2-breaking"></a>
+#### Breaking Changes<a name="net-dg-migrate-v2-breaking"></a>
 
 Many classes and properties were changed to either meet \.NET naming conventions or more closely follow service documentation\. Amazon Simple Storage Service \(Amazon S3\) and Amazon Elastic Compute Cloud \(Amazon EC2\) were the most affected by this because they are the oldest services in the SDK and were moved to the new common runtime\. Below are the most visible changes\.
 + All client interfaces have been renamed to follow the \.NET convention of starting with the letter “I”\. For example, the `AmazonEC2` class is now [IAmazonEC2](TEC2IEC2NET45.html)\.
@@ -79,11 +83,11 @@ Many classes and properties were changed to either meet \.NET naming conventions
 +  `AWSClientFactory.CreateAmazonSNSClient` has been renamed [CreateAmazonSimpleNotificationServiceClient](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/MAWSClientFactoryCreateSNSClientNET45.html)\.
 +  `AWSClientFactory.CreateAmazonIdentityManagementClient` has been renamed [CreateAmazonIdentityManagementServiceClient](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/MAWSClientFactoryCreateIdentityManagementServiceClientNET45.html)\.
 
-#### Amazon DynamoDB<a name="net-dg-migrate-v2-ddb"></a>
+##### Amazon DynamoDB<a name="net-dg-migrate-v2-ddb"></a>
 + The `amazon.dynamodb` namespace has been removed; only the [amazon\.dynamodbv2](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/NDynamoDBv2NET45.html) namespace remains\.
 + Service\-response collections that were set to null in version 1 are now set to an empty collection\. For example, [QueryResult\.LastEvaluatedKey](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/PDynamoDBv2QueryResultLastEvaluatedKeyNET45.html) and [ScanResponse\.LastEvaluatedKey](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/PDynamoDBv2ScanResultLastEvaluatedKeyNET45.html) will be set to *empty* collections when there are no more items to query/scan\. If your code depends on `LastEvaluatedKey` to be `null`, it now has to check the collection’s `Count` field to avoid a possible infinite loop\.
 
-#### Amazon EC2<a name="net-dg-migrate-v2-ec2"></a>
+##### Amazon EC2<a name="net-dg-migrate-v2-ec2"></a>
 +  `Amazon.EC2.Model.RunningInstance` has been renamed [Instance](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TEC2InstanceNET45.html)\.
 
   Additionally, the `GroupName` and `GroupId` properties of `RunningInstance` have been combined into the [SecurityGroups](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/PEC2InstanceSecurityGroupsNET45.html) property, which takes a [GroupIdentifier](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TEC2GroupIdentifierNET45.html) object, in `Instance`\.
@@ -96,10 +100,10 @@ Many classes and properties were changed to either meet \.NET naming conventions
 
   As a result, many of the exception properties have changed; the `XML` property is no longer provided, for example\.
 
-#### Amazon Redshift<a name="net-dg-migrate-v2-redshift"></a>
+##### Amazon Redshift<a name="net-dg-migrate-v2-redshift"></a>
 + The `ClusterVersion.Name` property has been renamed [ClusterVersion\.Version](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/PRedshiftClusterVersionVersionNET45.html)\.
 
-#### Amazon S3<a name="net-dg-migrate-v2-s3"></a>
+##### Amazon S3<a name="net-dg-migrate-v2-s3"></a>
 +  `AmazonS3Config.CommunicationProtocol` was removed to be consistent with other services where [ServiceURL](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/PRuntimeClientConfigServiceURLNET45.html) contains the protocol\.
 + The `PutACLRequest.ACL` property has been renamed [AccessControlList](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/PS3PutACLRequestAccessControlListNET45.html) to make it consistent with [GetACLResponse](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TS3GetACLResponseNET45.html)\.
 +  `GetNotificationConfigurationRequest`/`Response` and `SetNotificationConfigurationRequest`/`Response` have been renamed [GetBucketNotificationRequest](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TS3GetBucketNotificationRequestNET45.html)/ [Response](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TS3GetBucketNotificationResponseNET45.html) and [PutBucketNotificationRequest](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TS3PutBucketNotificationRequestNET45.html)/ [Response](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TS3PutBucketNotificationResponseNET45.html), respectively\.
@@ -110,10 +114,10 @@ Many classes and properties were changed to either meet \.NET naming conventions
 + Only responses that return a `Stream` like [GetObjectResponse](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TS3GetObjectResponseNET45.html) are `IDisposable`\. In version 1, all responses were `IDisposable`\.
 + The `BucketName` property has been removed from [Amazon\.S3\.Model\.S3Object](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/TS3S3ObjectNET45.html)\.
 
-#### Amazon Simple Workflow Service<a name="net-dg-migrate-v2-swf"></a>
+##### Amazon Simple Workflow Service<a name="net-dg-migrate-v2-swf"></a>
 + The `DomainInfos.Name` property has been renamed [DomainInfos\.Infos](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/PSimpleWorkflowDomainInfosInfosNET45.html)\.
 
-### Configuring the AWS Region<a name="net-dg-migrate-v2-config-region"></a>
+#### Configuring the AWS Region<a name="net-dg-migrate-v2-config-region"></a>
 
 Regions can be set in the `App.config` or `Web.config` files \(depending on your project type\)\. The recommended approach is to use the `aws` element, although using the `appSettings` element is still supported\.
 
@@ -133,7 +137,7 @@ Alternatively, you can use the `appSettings` element\.
 </configuration>
 ```
 
-### Response and Result Classes<a name="net-dg-migrate-v2-response-result"></a>
+#### Response and Result Classes<a name="net-dg-migrate-v2-response-result"></a>
 
 To simplify your code, the `Response` and `Result` classes that are returned when creating a service object have been collapsed\. For example, the code to get an Amazon SQS queue URL previously looked like this:
 
