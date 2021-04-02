@@ -70,7 +70,7 @@ You'll perform this tutorial on Windows using Visual Studio and \.NET Core\. For
 
 ## Create the project<a name="s3-1-winvs-create-project"></a>
 
-1. Open Visual Studio and create a new project that uses the C\# version of the **Console App \(\.NET Core\)** template\. Name the project `S3CreateAndList`\.
+1. Open Visual Studio and create a new project that uses the C\# version of the **Console Application** template \("\.\.\.for creating a command\-line application that can run on \.NET Core\.\.\."\)\. Name the project `S3CreateAndList`\.
 
 1. With the newly created project loaded, choose **Tools**, **NuGet Package Manager**, **Manage NuGet Packages for Solution**\.
 

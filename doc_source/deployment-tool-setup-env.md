@@ -18,7 +18,7 @@ node --version
 ```
 
 **Note**  
-If the AWS CDK isn't installed on your machine or if the AWS CDK that's installed is earlier than the required minimum version \(1\.89\.0\), the deployment tool will install a temporary and "private" copy of the CDK that will be used only by the tool, leaving the global configuration of your machine untouched\.
+If the AWS CDK isn't installed on your machine or if the AWS CDK that's installed is earlier than the required minimum version \(1\.95\.2\), the deployment tool will install a temporary and "private" copy of the CDK that will be used only by the tool, leaving the global configuration of your machine untouched\.
 
 ## \.NET Core and \.NET<a name="deployment-tool-setup-env-dotnet"></a>
 
