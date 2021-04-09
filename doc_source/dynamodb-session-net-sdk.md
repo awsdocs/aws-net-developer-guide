@@ -10,7 +10,7 @@ Looking for **\.NET Core** or **ASP\.NET Core**? Go to *[version 3\.5 or later](
 
 ASP\.NET applications often store session state data in memory\. However, this approach doesn’t scale well\. After the application grows beyond a single web server, the session state must be shared between servers\. A common solution is to set up a dedicated session\-state server with Microsoft SQL Server, but this approach also has drawbacks: you must administer another machine; the session\-state server is a single point of failure; and the session\-state server itself can become a performance bottleneck\.
 
- [DynamoDB](https://aws.amazon.com/dynamodb/), a NoSQL database store from Amazon Web Services \(AWS\), provides an effective solution for sharing session state across web servers without incurring any of these drawbacks\.
+ [DynamoDB](https://aws.amazon.com/dynamodb/), a NoSQL database store from AWS, provides an effective solution for sharing session state across web servers without incurring any of these drawbacks\.
 
 **Note**  
 Regardless of the solution you choose, be aware that Amazon DynamoDB enforces limits on the size of an item\. None of the records you store in DynamoDB can exceed this limit\. For more information, see [Limits in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html) in the Amazon DynamoDB Developer Guide\.

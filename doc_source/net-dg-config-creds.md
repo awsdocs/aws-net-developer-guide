@@ -8,7 +8,7 @@ Looking for **\.NET Core** or **ASP\.NET Core**? Go to *[version 3\.5 or later](
 
 # Configuring AWS Credentials<a name="net-dg-config-creds"></a>
 
-You must manage your AWS credentials securely and avoid practices that can unintentionally expose your credentials to the public\. In this topic, we describe how you configure your application’s AWS credentials so that they remain secure\.
+You must manage your AWS credentials securely and avoid practices that can unintentionally expose your credentials to the public\. In this topic, we describe how you configure your application's AWS credentials so that they remain secure\.
 + Don’t use your account’s root credentials to access your AWS resources\. These credentials provide unrestricted account access and are difficult to revoke\.
 + Don’t put literal access keys in your application, including the project’s `App.config` or `Web.config` file\. If you do, you create a risk of accidentally exposing your credentials if, for example, you upload the project to a public repository\.
 

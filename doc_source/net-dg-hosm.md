@@ -125,7 +125,7 @@ Create an IAM role that has the appropriate permissions to access Amazon S3\.
 
 1. Type a name for the role, and then choose **Next Step**\. Remember this name because you’ll need it when you launch your EC2 instance\.
 
-1. Under **AWS Service Roles**, choose **Amazon EC2**\. Under **Select Policy Template**, choose **Amazon S3 Read Only Access**\. Review the policy, and then choose **Next Step**\.
+1. Under **Service Roles**, choose **Amazon EC2**\. Under **Select Policy Template**, choose **Amazon S3 Read Only Access**\. Review the policy, and then choose **Next Step**\.
 
 1. Review the role information, and then choose **Create Role**\.
 

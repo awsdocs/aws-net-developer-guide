@@ -8,7 +8,7 @@ Looking for **\.NET Core** or **ASP\.NET Core**? Go to *[version 3\.5 or later](
 
 # Install AWSSDK Assemblies<a name="net-dg-install-assemblies"></a>
 
-The AWSSDK assemblies are available from [NuGet](https://www.nuget.org/profiles/awsdotnet) or through a Windows installation package\. The AWS SDK for \.NET is also available from the [aws/aws\-sdk\-net](https://github.com/aws/aws-sdk-net) repository on GitHub\. Finally, you can find information about many things AWS \.NET in the [aws/dotnet](https://github.com/aws/dotnet) repository on GitHub\.
+The AWSSDK assemblies are available from [NuGet](https://www.nuget.org/profiles/awsdotnet) or through a Windows installation package\. The AWS SDK for \.NET is also available from the [aws/aws\-sdk\-net](https://github.com/aws/aws-sdk-net) repository on GitHub\. Finally, you can find information about many AWS things related to \.NET in the [aws/dotnet](https://github.com/aws/dotnet) repository on GitHub\.
 
 ## Installing AWSSDK packages with NuGet<a name="net-dg-nuget"></a>
 

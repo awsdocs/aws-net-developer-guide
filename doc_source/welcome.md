@@ -24,7 +24,7 @@ For information about maintenance and support for SDK major versions and their u
 
 ### Tools for Windows PowerShell and Tools for PowerShell Core<a name="aws-tools-for-windows-powershell-and-powershell-core"></a>
 
-The AWS Tools for Windows PowerShell and AWS Tools for PowerShell Core are PowerShell modules that are built on the functionality exposed by the AWS SDK for \.NET\. The AWS PowerShell Tools enable you to script operations on your AWS resources from the PowerShell prompt\. Although the cmdlets are implemented using the service clients and methods from the SDK, the cmdlets provide an idiomatic PowerShell experience for specifying parameters and handling results\.
+The AWS Tools for Windows PowerShell and AWS Tools for PowerShell Core are PowerShell modules that are built on the functionality exposed by the AWS SDK for \.NET\. The AWS PowerShell tools enable you to script operations on your AWS resources from the PowerShell prompt\. Although the cmdlets are implemented using the service clients and methods from the SDK, the cmdlets provide an idiomatic PowerShell experience for specifying parameters and handling results\.
 
 To get started, see [AWS Tools for Windows PowerShell](https://aws.amazon.com/powershell)\.
 
