@@ -15,7 +15,7 @@ Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. 
 **Topics**
 + [AWS CloudFormation](cloudformation-apis-intro.md)
 + [Amazon EC2](ec2-apis-intro.md)
-+ [AWS IAM](iam-apis-intro.md)
++ [IAM](iam-apis-intro.md)
 + [Amazon S3](s3-apis-intro.md)
 + [Amazon SQS](sqs-apis-intro.md)
 + [AWS OpsWorks](opsworks-apis-intro.md)

@@ -27,7 +27,7 @@ That topic is in the [Special considerations](special-considerations.md) section
 
 1. Amazon EC2 instance metadata\.
 
-If your application is running on an Amazon EC2 instance, such as in a production environment, use an IAM role as described in [Granting access by using an AWS IAM role](net-dg-hosm.md)\. Otherwise, such as in prerelease testing, store your credentials in a file that uses the AWS credentials file format that your web application has access to on the server\.
+If your application is running on an Amazon EC2 instance, such as in a production environment, use an IAM role as described in [Granting access by using an IAM role](net-dg-hosm.md)\. Otherwise, such as in prerelease testing, store your credentials in a file that uses the AWS credentials file format that your web application has access to on the server\.
 
 ## Profile resolution<a name="net-dg-config-creds-profile-resolution"></a>
 
@@ -55,7 +55,7 @@ The *AWS Security Token Service* assembly \([AWSSDK\.SecurityToken](https://www.
 
 ## Specifying roles or temporary credentials<a name="net-dg-config-creds-assign-role"></a>
 
-For applications that run on Amazon EC2 instances, the most secure way to manage credentials is to use IAM roles, as described in [Granting access by using an AWS IAM role](net-dg-hosm.md)\.
+For applications that run on Amazon EC2 instances, the most secure way to manage credentials is to use IAM roles, as described in [Granting access by using an IAM role](net-dg-hosm.md)\.
 
 For application scenarios in which the software executable is available to users outside your organization, we recommend that you design the software to use *temporary security credentials*\. In addition to providing restricted access to AWS resources, these credentials have the benefit of expiring after a specified period of time\. For more information about temporary security credentials, see the following:
 +  [Temporary security credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/TokenBasedAuth.html) 

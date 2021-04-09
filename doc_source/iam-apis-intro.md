@@ -1,4 +1,4 @@
-# Accessing IAM with the AWS SDK for \.NET<a name="iam-apis-intro"></a>
+# Accessing AWS Identity and Access Management \(IAM\) with the AWS SDK for \.NET<a name="iam-apis-intro"></a>
 
 The AWS SDK for \.NET supports [AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/), which is a web service that enables AWS customers to manage users and user permissions in AWS\.
 
@@ -14,7 +14,7 @@ This section contains a small number of examples that show you the patterns you 
 
 This section also contains [an example](net-dg-hosm.md) that shows you how to attach an IAM role to Amazon EC2 instances to make managing credentials easier\.
 
-The AWS IAM APIs are provided by the [AWSSDK\.IdentityManagement](https://www.nuget.org/packages/AWSSDK.IdentityManagement) NuGet package\.
+The IAM APIs are provided by the [AWSSDK\.IdentityManagement](https://www.nuget.org/packages/AWSSDK.IdentityManagement) NuGet package\.
 
 ## Prerequisites<a name="w8aac17c21c13"></a>
 

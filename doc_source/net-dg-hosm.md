@@ -1,4 +1,4 @@
-# Granting access by using an AWS IAM role<a name="net-dg-hosm"></a>
+# Granting access by using an IAM role<a name="net-dg-hosm"></a>
 
 This tutorial shows you how to use the AWS SDK for \.NET to enable IAM roles on Amazon EC2 instances\.
 

@@ -4,7 +4,7 @@ Amazon EC2 is hosted in multiple locations worldwide\. These locations are compo
 
 Read more about Regions and Availability Zones in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2Win_Infrastructure.html#EC2Win_Regions)\.
 
-This example shows you how to use the AWS SDK for \.NET to get details about the AWS Regions and Availability Zones related to an EC2 client\. The application displays lists of the Regions and Availability Zones available to an EC2 client\.
+This example shows you how to use the AWS SDK for \.NET to get details about the Regions and Availability Zones related to an EC2 client\. The application displays lists of the Regions and Availability Zones available to an EC2 client\.
 
 ## SDK references<a name="w8aac17c19c17b9b1"></a>
 

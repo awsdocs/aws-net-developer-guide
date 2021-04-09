@@ -22,7 +22,7 @@ This version of the AWS SDK for \.NET is compiled against \.NET Framework 4\.5 a
 
 ## Portable Class Library and Xamarin<a name="portable-class-library"></a>
 
-The AWS SDK for \.NET also contains a Portable Class Library implementation\. The Portable Class Library implementation can target multiple platforms, including Universal Windows Platform \(UWP\) and Xamarin on iOS and Android\. See the [AWS Mobile SDK for \.NET and Xamarin](https://docs.aws.amazon.com/mobile/sdkforxamarin/developerguide/Welcome.html) for more details\. AWS service clients only support asynchronous calling patterns\.
+The AWS SDK for \.NET also contains a Portable Class Library implementation\. The Portable Class Library implementation can target multiple platforms, including Universal Windows Platform \(UWP\) and Xamarin on iOS and Android\. See the [Mobile SDK for \.NET and Xamarin](https://docs.aws.amazon.com/mobile/sdkforxamarin/developerguide/Welcome.html) for more details\. AWS service clients only support asynchronous calling patterns\.
 
 ## Unity support<a name="unity-support"></a>
 
