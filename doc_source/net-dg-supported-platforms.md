@@ -18,7 +18,10 @@ This version of the AWS SDK for \.NET is compiled against \.NET Framework 4\.5 a
 
 ## \.NET Framework 3\.5<a name="net-dg-platform-diff-winrt"></a>
 
-\(***Legacy***: Support for \.NET Framework 3\.5 is legacy\. For full information on \.NET Framework 3\.5 support, see [version 3](../../v3/developer-guide/welcome.html) of the AWS SDK for \.NET Developer Guide\.\)
+This version of the AWS SDK for \.NET is compiled against \.NET Framework 3\.5, and runs in either the \.NET 2\.0 or \.NET 4\.0 runtime\. AWS service clients support synchronous and asynchronous calling patterns and use the older Begin and End pattern\.
+
+**Note**  
+The AWS SDK for \.NET is not Federal Information Processing Standard \(FIPS\) compliant when used by applications built against version 2\.0 of the CLR\. For details on how you can substitute a FIPS compliant implementation in that environment, refer to [CryptoConfig](https://docs.microsoft.com/en-us/archive/blogs/shawnfa/cryptoconfig) on the Microsoft blog and the [CLR Security](https://github.com/MicrosoftArchive/clrsecurity/) team's HMACSHA256 class \( HMACSHA256Cng \) in Security\.Cryptography\.dll\.
 
 ## Portable Class Library and Xamarin<a name="portable-class-library"></a>
 
