@@ -2,7 +2,7 @@
 
 This content focuses on **\.NET Framework** and **ASP\.NET 4\.x**\. It covers Windows and Visual Studio\.
 
-Looking for **\.NET Core** or **ASP\.NET Core**? Go to *[version 3\.5 or later](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/welcome.html)*\. It covers cross\-platform development in addition to Windows and Visual Studio\.
+Working with **\.NET Core** or **ASP\.NET Core**? Go to the content for *[version 3\.5 or later](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/welcome.html)* of the AWS SDK for \.NET\. It covers cross\-platform development in addition to Windows and Visual Studio\.
 
 --------
 
@@ -20,10 +20,10 @@ This version of the AWS SDK for \.NET is compiled against \.NET Framework 4\.5 a
 
 ## \.NET Framework 3\.5<a name="net-dg-platform-diff-winrt"></a>
 
-This version of the AWS SDK for \.NET is compiled against \.NET Framework 3\.5, and runs either the \.NET 2\.0 or \.NET 4\.0 runtime\. AWS service clients support synchronous and asynchronous calling patterns and use the older Begin and End pattern\.
+This version of the AWS SDK for \.NET is compiled against \.NET Framework 3\.5, and runs in either the \.NET 2\.0 or \.NET 4\.0 runtime\. AWS service clients support synchronous and asynchronous calling patterns and use the older Begin and End pattern\.
 
 **Note**  
-The AWS SDK for \.NET is not Federal Information Processing Standard \(FIPS\) compliant when used by applications built against version 2\.0 of the CLR\. For details on how you can substitute a FIPS compliant implementation in that environment, refer to [CryptoConfig](https://docs.microsoft.com/en-us/archive/blogs/shawnfa/cryptoconfig) on the Microsoft blog and the [CLR Security](http://clrsecurity.codeplex.com/) team’s HMACSHA256 class \( HMACSHA256Cng \) in Security\.Cryptography\.dll\.
+The AWS SDK for \.NET is not Federal Information Processing Standard \(FIPS\) compliant when used by applications built against version 2\.0 of the CLR\. For details on how you can substitute a FIPS compliant implementation in that environment, refer to [CryptoConfig](https://docs.microsoft.com/en-us/archive/blogs/shawnfa/cryptoconfig) on the Microsoft blog and the [CLR Security](https://github.com/MicrosoftArchive/clrsecurity/) team's HMACSHA256 class \( HMACSHA256Cng \) in Security\.Cryptography\.dll\.
 
 ## Portable Class Library<a name="portable-class-library"></a>
 
