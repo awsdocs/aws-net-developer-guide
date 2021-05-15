@@ -6,9 +6,9 @@ One way to provide credentials for your applications is to create profiles in th
 
 ## General information<a name="creds-file-general-info"></a>
 
-By default, the shared AWS credentials file is located in the `.aws` directory within your home directory and is named `credentials`; that is, `~/.aws/credentials` \(Linux or macOS\) or `%USERPROFILE%\.aws\credentials` \(Windows\)\. For information about alternative locations, see [Location of the shared files](https://docs.aws.amazon.com/credref/latest/refdocs/file-location.html) in the [AWS SDKs and Tools Shared Configuration and Credentials Reference Guide](https://docs.aws.amazon.com/credref/latest/refdocs/overview.html)\. Also see [Accessing credentials and profiles in an application](creds-locate.md)\.
+By default, the shared AWS credentials file is located in the `.aws` directory within your home directory and is named `credentials`; that is, `~/.aws/credentials` \(Linux or macOS\) or `%USERPROFILE%\.aws\credentials` \(Windows\)\. For information about alternative locations, see [Location of the shared files](https://docs.aws.amazon.com/sdkref/latest/guide/file-location.html) in the *[AWS SDKs and Tools Reference Guide](https://docs.aws.amazon.com/sdkref/latest/guide/overview.html)*\. Also see [Accessing credentials and profiles in an application](creds-locate.md)\.
 
-The shared AWS credentials file is a plaintext file and follows a certain format\. For information about the format of AWS credentials files, see [Format of the credentials file](https://docs.aws.amazon.com/credref/latest/refdocs/file-format.html#file-format-creds) in the *SDKs and Tools Shared Configuration and Credentials Reference Guide*\.
+The shared AWS credentials file is a plaintext file and follows a certain format\. For information about the format of AWS credentials files, see [Format of the credentials file](https://docs.aws.amazon.com/sdkref/latest/guide/file-format.html#file-format-creds) in the *AWS SDKs and Tools Reference Guide*\.
 
 You can manage the profiles in the shared AWS credentials file in several ways\.
 + Use any text editor to create and update the shared AWS credentials file\.
