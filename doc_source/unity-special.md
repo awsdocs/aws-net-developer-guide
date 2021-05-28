@@ -19,6 +19,6 @@ When using the AWS SDK for \.NET and [\.NET Standard 2\.0](https://docs.microsof
   ```
 
 **Note**  
-To read interesting background information related to this requirement, see the article at [https://aws\.amazon\.com/blogs/developer/referencing\-the\-aws\-sdk\-for\-net\-standard\-2\-0\-from\-unity\-xamarin\-or\-uwp/](https://aws.amazon.com/blogs/developer/referencing-the-aws-sdk-for-net-standard-2-0-from-unity-xamarin-or-uwp/)\.
+To read interesting background information related to this requirement, see the article at [http://aws\.amazon\.com/blogs/developer/referencing\-the\-aws\-sdk\-for\-net\-standard\-2\-0\-from\-unity\-xamarin\-or\-uwp/](http://aws.amazon.com/blogs/developer/referencing-the-aws-sdk-for-net-standard-2-0-from-unity-xamarin-or-uwp/)\.
 
 In addition to these special considerations, see [What's changed for version 3\.5](net-dg-v35.md#net-dg-v35-changes) for information about migrating your Unity application to version 3\.5 of the AWS SDK for \.NET\.

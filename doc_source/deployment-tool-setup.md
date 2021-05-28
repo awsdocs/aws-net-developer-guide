@@ -23,7 +23,7 @@ The following instructions show you how to install, update, and uninstall the de
 
 1. Check the version: `dotnet aws --version`
 
-1. \(Optional\) Check to see if a later version of the tool is available at [https://www\.nuget\.org/packages/aws\.deploy\.cli/](https://www.nuget.org/packages/aws.deploy.cli/)\.
+1. \(Optional\) Check to see if a later version of the tool is available on the [NuGet page for the deployment tool](https://www.nuget.org/packages/aws.deploy.cli/)\.
 
 1. Update the tool: `dotnet tool update -g aws.deploy.cl`i
 

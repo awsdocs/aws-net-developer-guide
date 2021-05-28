@@ -83,7 +83,7 @@ var options = Configuration.GetAWSOptions("service1");
 
 ### Allowed values in appsettings file<a name="net-core-appsettings-values"></a>
 
-The following app configuration values can be set in the `appsettings.Development.json` file\. The field names must use the casing shown\. For details on these settings, see the [AWS\.Runtime\.ClientConfig](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/Runtime/TClientConfig.html) class\.
+The following app configuration values can be set in the `appsettings.Development.json` file\. The field names must use the casing shown\. For details on these settings, see the `[AWS\.Runtime\.ClientConfig](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/Runtime/TClientConfig.html)` class\.
 + Region
 + Profile
 + ProfilesLocation
