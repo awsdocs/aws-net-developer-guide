@@ -44,7 +44,7 @@ If you decide not to create the table beforehand, the session state provider wil
 
 1. Add references to both `AWSSDK.dll` and `AWS.SessionProvider.dll` to your Visual Studio ASP\.NET project\. These assemblies are available by installing the [AWS SDK for \.NET](net-dg-install-assemblies.md#net-dg-install-net-sdk)\. You can also install them by using [NuGet](net-dg-install-assemblies.md#net-dg-nuget)\.
 
-   In earlier versions of the SDK, the functionality for the session state provider was contained in `AWS.Extension.dll`\. To improve usability, the functionality was moved to `AWS.SessionProvider.dll`\. For more information, see the blog post [AWS\.Extension Renaming](http://blogs.aws.amazon.com/net/post/Tx27RWMCNAVWZN9/AWS-Extensions-renaming)\.
+   In earlier versions of the SDK, the functionality for the session state provider was contained in `AWS.Extension.dll`\. To improve usability, the functionality was moved to `AWS.SessionProvider.dll`\. For more information, see the blog post [`AWS.Extension` renaming](http://aws.amazon.com/blogs/developer/aws-extensions-renaming/)\.
 
 1. Edit your application’s `Web.config` file\. In the `system.web` element, replace the existing `sessionState` element with the following XML fragment:
 

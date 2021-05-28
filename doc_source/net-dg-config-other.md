@@ -9,13 +9,13 @@ Working with **\.NET Core** or **ASP\.NET Core**? Go to the content for *[versio
 # Configuring Other Application Parameters<a name="net-dg-config-other"></a>
 
 In addition to [configuring credentials](net-dg-config-creds.md), you can configure a number of other application parameters:
-+  [AWSLogging](#config-setting-awslogging) 
-+  [AWSLogMetrics](#config-setting-awslogmetrics) 
-+  [AWSRegion](#config-setting-awsregion) 
-+  [AWSResponseLogging](#config-setting-awsresponselogging) 
-+  [AWS\.DynamoDBContext\.TableNamePrefix](#config-setting-aws-dynamodbcontext-tablenameprefix) 
-+  [AWS\.S3\.UseSignatureVersion4](#config-setting-aws-s3-usesignatureversion4) 
-+  [AWSEndpointDefinition](#config-setting-awsendpointdefinition) 
++  `AWSLogging` 
++  `AWSLogMetrics` 
++  `AWSRegion` 
++  `AWSResponseLogging` 
++  `AWS\.DynamoDBContext\.TableNamePrefix` 
++  `AWS\.S3\.UseSignatureVersion4` 
++  `AWSEndpointDefinition` 
 +  [AWS Service\-Generated Endpoints](#config-setting-service-generated-awsendpointdefinition) 
 
 These parameters can be configured in the application’s `App.config` or `Web.config` file\. Although you can also configure these with the AWS SDK for \.NET API, we recommend you use the application’s `.config` file\. Both approaches are described here\.
@@ -150,7 +150,7 @@ AWSConfigs.ResponseLogging = ResponseLoggingOption.OnError;
 
 Changes to this setting take effect immediately\.
 
-## AWS\.DynamoDBContext\.TableNamePrefix<a name="config-setting-aws-dynamodbcontext-tablenameprefix"></a>
+## `AWS.DynamoDBContext.TableNamePrefix`<a name="config-setting-aws-dynamodbcontext-tablenameprefix"></a>
 
 Configures the default `TableNamePrefix` the `DynamoDBContext` will use if not manually configured\.
 
@@ -174,7 +174,7 @@ AWSConfigs.DynamoDBContextTableNamePrefix = "Test-";
 
 Changes to this setting will take effect only in newly constructed instances of `DynamoDBContextConfig` and `DynamoDBContext`\.
 
-## AWS\.S3\.UseSignatureVersion4<a name="config-setting-aws-s3-usesignatureversion4"></a>
+## `AWS.S3.UseSignatureVersion4`<a name="config-setting-aws-s3-usesignatureversion4"></a>
 
 Configures whether or not the Amazon S3 client should use signature version 4 signing with requests\.
 
@@ -186,7 +186,7 @@ To set signature version 4 signing for Amazon S3 in the `.config` file, the reco
 </aws>
 ```
 
-Alternatively, set the *AWS\.S3\.UseSignatureVersion4* key to *true* in the `<appSettings>` section:
+Alternatively, set the `AWS.S3.UseSignatureVersion4` key to `true` in the `<appSettings>` section:
 
 ```
 <add key="AWS.S3.UseSignatureVersion4" value="true"/>
@@ -222,7 +222,7 @@ Alternatively, to set the endpoint definition file with the AWS SDK for \.NET AP
 AWSConfigs.EndpointDefinition = @"c:\config\endpoints.json";
 ```
 
-If no file name is provided, then a custom configuration file will not be used\. Changes to this setting take effect only for new AWS client instances\. The endpoint\.json file is available from [https://github\.com/aws/aws\-sdk\-net/blob/master/sdk/src/Core/endpoints\.json](https://github.com/aws/aws-sdk-net/blob/master/sdk/src/Core/endpoints.json)\.
+If no file name is provided, then a custom configuration file will not be used\. Changes to this setting take effect only for new AWS client instances\. The endpoint\.json file is available from [https://github.com/aws/aws-sdk-net/blob/master/sdk/src/Core/endpoints.json](https://github.com/aws/aws-sdk-net/blob/master/sdk/src/Core/endpoints.json)\.
 
 ## AWS Service\-Generated Endpoints<a name="config-setting-service-generated-awsendpointdefinition"></a>
 
