@@ -1,8 +1,8 @@
 --------
 
-End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+End of support announcement: [http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/](http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
 
- This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
+This documentation is for version 2\.0 of the AWS SDK for \.NET\.** For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
@@ -53,7 +53,7 @@ The name of the EC2 key pair\. If you launch an instance without specifying a ke
 ** `SecurityGroupIds` **  
 The identifiers of one or more security groups\. For more information, see [Create a Security Group Using the the SDK](how-to-ec2.md#create-security-group)\.
 
-1. \(Optional\) To launch the instance with an [IAM role](net-dg-hosm.md#net-dg-roles), specify an IAM instance profile in the `RunInstancesRequest` object\.
+1. \(Optional\) To launch the instance with an [IAM role](net-dg-hosm.md), specify an IAM instance profile in the `RunInstancesRequest` object\.
 
    Note that an IAM user can’t launch an instance with an IAM role without the permissions granted by the following policy\.
 
@@ -158,7 +158,7 @@ The name of the EC2 key pair\. If you launch an instance without specifying a ke
 ** `NetworkInterfaces` **  
 One or more network interfaces\.
 
-1. \(Optional\) To launch the instance with an [IAM role](net-dg-hosm.md#net-dg-roles), specify an [IAM instance profile](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/PEC2RunInstancesRequestIamInstanceProfileNET45.html) in the `RunInstancesRequest` object\.
+1. \(Optional\) To launch the instance with an [IAM role](net-dg-hosm.md), specify an [IAM instance profile](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/PEC2RunInstancesRequestIamInstanceProfileNET45.html) in the `RunInstancesRequest` object\.
 
    Note that an IAM user can’t launch an instance with an IAM role without the permissions granted by the following policy\.
 

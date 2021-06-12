@@ -1,8 +1,8 @@
 --------
 
-End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+End of support announcement: [http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/](http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
 
- This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
+This documentation is for version 2\.0 of the AWS SDK for \.NET\.** For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
@@ -12,7 +12,7 @@ End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcin
 
 ASP\.NET applications often store session\-state data in memory\. However, this approach doesn’t scale well\. After the application grows beyond a single web server, the session state must be shared between servers\. A common solution is to set up a dedicated session\-state server with Microsoft SQL Server\. But this approach also has drawbacks: you must administer another machine, the session\-state server is a single point of failure, and the session\-state server itself can become a performance bottleneck\.
 
- [Amazon DynamoDB](https://aws.amazon.com/dynamodb/), a NoSQL database store from Amazon Web Services \(AWS\), provides an effective solution for sharing session state across web servers without incurring any of these drawbacks\.
+ [Amazon DynamoDB](https://aws.amazon.com/dynamodb/), a NoSQL database store from AWS, provides an effective solution for sharing session state across web servers without incurring any of these drawbacks\.
 
 **Note**  
 Regardless of the solution you choose, be aware that Amazon DynamoDB enforces limits on the size of an item\. None of the records you store in DynamoDB can exceed this limit\. For more information, see [Limits in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html) in the Amazon DynamoDB Developer Guide\.
@@ -46,7 +46,7 @@ If you decide not to create the table beforehand, the session state provider wil
 
 1. Add references to both `AWSSDK.dll` and `AWS.SessionProvider.dll` to your Visual Studio ASP\.NET project\. These assemblies are available by installing the [AWS SDK for \.NET](net-dg-setup.md#net-dg-install-net-sdk)\. You can also install them by using [NuGet](net-dg-nuget.md)\.
 
-   In earlier versions of the SDK, the functionality for the session state provider was contained in `AWS.Extension.dll`\. To improve usability, the functionality was moved to `AWS.SessionProvider.dll`\. For more information, see the blog post [AWS\.Extension Renaming](http://blogs.aws.amazon.com/net/post/Tx27RWMCNAVWZN9/AWS-Extensions-renaming)\.
+   In earlier versions of the SDK, the functionality for the session state provider was contained in `AWS.Extension.dll`\. To improve usability, the functionality was moved to `AWS.SessionProvider.dll`\. For more information, see the blog post [http://blogs.aws.amazon.com/net/post/Tx27RWMCNAVWZN9/AWS-Extensions-renaming](http://blogs.aws.amazon.com/net/post/Tx27RWMCNAVWZN9/AWS-Extensions-renaming)\.
 
 1. Edit your application’s *Web\.config* file\. In the `system.web` element, replace the existing `sessionState` element with the following XML fragment:
 
@@ -66,7 +66,7 @@ If you decide not to create the table beforehand, the session state provider wil
 
    The profile represents the AWS credentials used to communicate with DynamoDB to store and retrieve the session state\. If you are using the AWS SDK for \.NET and are specifying a profile in the `appSettings` section of your application’s `Web.config` file, you do not need to specify a profile in the `providers` section; the AWS \.NET client code will discover it at run time\. For more information, see [Configuring Your AWS SDK for \.NET Application](net-dg-config.md)\.
 
-   If the web server is running on an Amazon EC2 instance that is configured to use IAM roles for EC2 instances, then you do not need to specify any credentials in the `web.config` file\. In this case, the AWS \.NET client will use the IAM roles’ credentials\. For more information, see [Tutorial: Grant Access Using an IAM Role and the AWS SDK for \.NET](net-dg-hosm.md#net-dg-roles) and [Security Considerations](#net-dg-ddb-sess-security)\.
+   If the web server is running on an Amazon EC2 instance that is configured to use IAM roles for EC2 instances, then you do not need to specify any credentials in the `web.config` file\. In this case, the AWS \.NET client will use the IAM roles’ credentials\. For more information, see [Tutorial: Grant Access Using an IAM Role and the AWS SDK for \.NET](net-dg-hosm.md) and [Security Considerations](#net-dg-ddb-sess-security)\.
 
 #### Web\.config Options<a name="net-dg-dd-config-opts"></a>
 
@@ -103,7 +103,7 @@ Optional `boolean` attribute\. The `CreateIfNotExist` attribute controls whether
 
 After the DynamoDB table is created and the application is configured, sessions can be used as with any other session provider\.
 
-As a security best practice, we recommend you run your applications with the credentials of an [IAM](https://aws.amazon.com/iam/) user\. You can use either the [AWS Management Console](https://console.aws.amazon.com/iam/home) or the [AWS Toolkit for Visual Studio](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/AWS Toolkit for Visual Studio.html) to create IAM users and define access policies\.
+As a security best practice, we recommend you run your applications with the credentials of an [IAM](https://aws.amazon.com/iam/) user\. You can use either the [AWS Management Console](https://console.aws.amazon.com/iam/home) or the [AWS Toolkit for Visual Studio](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide) to create IAM users and define access policies\.
 
 The session state provider needs to be able to call the [DeleteItem](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DeleteItem.html), [DescribeTable](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DescribeTable.html), [GetItem](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GetItem.html), [PutItem](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/PutItem.html), and [UpdateItem](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/UpdateItem.html) operations for the table that stores the session data\. The sample policy below can be used to restrict the IAM user to only the operations needed by the provider for an instance of DynamoDB running in us\-west\-2:
 

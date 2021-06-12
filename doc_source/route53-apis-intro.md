@@ -1,19 +1,19 @@
 --------
 
-End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+End of support announcement: [http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/](http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
 
- This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
+This documentation is for version 2\.0 of the AWS SDK for \.NET\.** For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
-# Amazon Route 53 Programming with the AWS SDK for \.NET<a name="route53-apis-intro"></a>
+# Amazon Route 53 Programming with the AWS SDK for \.NET<a name="route53-apis-intro"></a>
 
 ## Version 2 content \(see announcement above\)<a name="w3aac13c19b3b1"></a>
 
-The AWS SDK for \.NET supports Amazon Route 53, which is a Domain Name System \(DNS\) web service that provides secure and reliable routing to your infrastructure that uses Amazon Web Services \(AWS\) products, such as Amazon Elastic Compute Cloud \(Amazon EC2\), Elastic Load Balancing, or Amazon Simple Storage Service \(Amazon S3\)\. You can also use Route 53 to route users to your infrastructure outside of AWS\. This topic describes how to use the AWS SDK for \.NET to create an Route 53[hosted zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/AboutHZWorkingWith.html) and add a new [resource record set](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html) to that zone\.
+The AWS SDK for \.NET supports Amazon Route 53, which is a Domain Name System \(DNS\) web service that provides secure and reliable routing to your infrastructure that uses AWS products, such as Amazon Elastic Compute Cloud \(Amazon EC2\), Elastic Load Balancing, or Amazon Simple Storage Service \(Amazon S3\)\. You can also use Route 53 to route users to your infrastructure outside of AWS\. This topic describes how to use the AWS SDK for \.NET to create an Route 53[hosted zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/AboutHZWorkingWith.html) and add a new [resource record set](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html) to that zone\.
 
 **Note**  
-This topic assumes that you are already familiar with how to use Route 53 and have already installed the AWS SDK for \.NET\. For more information on Route 53, see the [Amazon Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html)\. For information on how to install the AWS SDK for \.NET, see [Getting Started with the AWS SDK for \.NET](net-dg-setup.md)\.
+This topic assumes that you are already familiar with how to use Route 53 and have already installed the AWS SDK for \.NET\. For more information on Route 53, see the [Amazon Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html)\. For information on how to install the AWS SDK for \.NET, see [Getting Started with the AWS SDK for \.NET](net-dg-setup.md)\.
 
 The basic procedure is as follows\.
 
@@ -128,7 +128,7 @@ The [AmazonRoute53Client](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/T
 **An AWS region**  
 When you call a client method, the underlying HTTP request is sent to this endpoint\.  
 **A credentials profile**  
-The profile must grant permissions for the actions that you intend to use—the Route 53 actions in this case\. Attempts to call actions that lack permissions will fail\. For more information, see [Configuring AWS Credentials](net-dg-config-creds.md)\.
+The profile must grant permissions for the actions that you intend to use—the Route 53 actions in this case\. Attempts to call actions that lack permissions will fail\. For more information, see [Configuring AWS Credentials](net-dg-config-creds.md)\.
 The example uses the default constructor to create the object, which implicitly specifies the application’s default profile and region\. Other constructors allow you to override either or both default values\.
 
 **\[2\] Create a hosted zone**  

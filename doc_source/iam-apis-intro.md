@@ -1,8 +1,8 @@
 --------
 
-End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+End of support announcement: [http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/](http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
 
- This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
+This documentation is for version 2\.0 of the AWS SDK for \.NET\.** For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
@@ -10,7 +10,7 @@ End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcin
 
 ## Version 2 content \(see announcement above\)<a name="w3aac13c17b3b1"></a>
 
-The AWS SDK for \.NET supports AWS Identity and Access Management \(IAM\), which is a web service that enables Amazon Web Services \(AWS\) customers to manage users and user permissions in AWS\.
+The AWS SDK for \.NET supports AWS Identity and Access Management \(IAM\), which is a web service that enables Amazon Web Services customers to manage users and user permissions in AWS\.
 
 The following information introduces you to the IAM programming models in the the SDK\. There are also links to additional IAM programming resources within the the SDK\.
 
@@ -76,7 +76,7 @@ foreach (var user in responseUsers.Users)
 }
 ```
 
-For additional examples, see [Tutorial: Grant Access Using an IAM Role and the AWS SDK for \.NET](net-dg-hosm.md#net-dg-roles)\.
+For additional examples, see [Tutorial: Grant Access Using an IAM Role and the AWS SDK for \.NET](net-dg-hosm.md)\.
 
 For related API reference information, see [Amazon\.IdentityManagement](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/NIAMNET45.html) and [Amazon\.IdentityManagement\.Model](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/NIAMNET45.html)\.
 

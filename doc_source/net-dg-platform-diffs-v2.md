@@ -1,8 +1,8 @@
 --------
 
-End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+End of support announcement: [http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/](http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
 
- This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
+This documentation is for version 2\.0 of the AWS SDK for \.NET\.** For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
@@ -17,7 +17,7 @@ The AWS SDK for \.NET provides four distinct assemblies for developers to target
 This version of the the SDK is the one most similar to version 1\. This version, compiled against \.NET Framework 3\.5, supports the same set of services as version 1\. It also uses the same [pattern for making asynchronous calls](sdk-net-async-api.md)\.
 
 **Note**  
-This version contains a number of changes that may break code that was designed for version 1\. For more information, see the [Migration Guide](migration-v2-net-sdk.md#net-dg-migration-guide-v2)\.
+This version contains a number of changes that may break code that was designed for version 1\. For more information, see the [Migration Guide](migration-v2-net-sdk.md)\.
 
 ### AWS SDK for \.NET Framework 4\.5<a name="net-dg-platform-diff-netfx45"></a>
 

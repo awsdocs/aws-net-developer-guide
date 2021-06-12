@@ -1,7 +1,7 @@
-# AWS SDK for .NET Developer Guide
+# AWS SDK for .NET (version 2) Developer Guide
 
 -----
-*****Copyright &copy;  Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -43,7 +43,7 @@ Amazon's trademarks and trade dress may not be used in
    + [AWS Identity and Access Management Programming with the AWS SDK for .NET](iam-apis-intro.md)
       + [AWS Identity and Access Management Code Examples with the AWS Resource APIs for .NET](iam-resource-api-examples.md)
       + [Tutorial: Grant Access Using an IAM Role and the AWS SDK for .NET](net-dg-hosm.md)
-   + [Amazon Route 53 Programming with the AWS SDK for .NET](route53-apis-intro.md)
+   + [Amazon Route 53 Programming with the AWS SDK for .NET](route53-apis-intro.md)
    + [Amazon Simple Storage Service Programming with the AWS SDK for .NET](s3-apis-intro.md)
    + [Amazon Simple Notification Service Programming with the AWS SDK for .NET](sns-apis-intro.md)
    + [Amazon Simple Queue Service Programming with the AWS SDK for .NET](sqs-apis-intro.md)

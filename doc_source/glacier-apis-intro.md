@@ -1,8 +1,8 @@
 --------
 
-End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+End of support announcement: [http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/](http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
 
- This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
+This documentation is for version 2\.0 of the AWS SDK for \.NET\.** For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
@@ -147,7 +147,7 @@ For examples, see:
 +  [Delete an Archive from a Vault](https://docs.aws.amazon.com/amazonglacier/latest/dev/getting-started-delete-archive-dotnet.html.html) 
 +  [Deleting an Archive](https://docs.aws.amazon.com/amazonglacier/latest/dev/deleting-an-archive-using-dot-net.html#delete-archive-using-dot-net-high-level.html) 
 
-For related API reference information, see [Amazon\.Glacier\.Transfer](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/NGlacierTransfer.html) in the AWS SDK for \.NET API Reference\.
+For related API reference information, see [Amazon\.Glacier\.Transfer](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/NGlacierTransfer.html) in the AWS SDK for \.NET API reference\.
 
 #### Resource APIs<a name="glacier-apis-intro-resource-level"></a>
 

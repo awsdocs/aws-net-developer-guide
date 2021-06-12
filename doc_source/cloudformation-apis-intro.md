@@ -1,8 +1,8 @@
 --------
 
-End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+End of support announcement: [http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/](http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
 
- This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
+This documentation is for version 2\.0 of the AWS SDK for \.NET\.** For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
@@ -55,7 +55,7 @@ foreach (var stack in response.Stacks)
 }
 ```
 
-For related API reference information, see `Amazon.CloudFormation` and `Amazon.CloudFormation.Model` in the [sdk\-net\-api\-v2](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/)\.
+For related API reference information, see `Amazon.CloudFormation` and `Amazon.CloudFormation.Model` in the [AWS SDK for \.NET API reference](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/)\.
 
 #### Resource APIs<a name="cloudformation-apis-intro-resource-level"></a>
 

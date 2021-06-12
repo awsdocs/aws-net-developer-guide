@@ -1,8 +1,8 @@
 --------
 
-End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+End of support announcement: [http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/](http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
 
- This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
+This documentation is for version 2\.0 of the AWS SDK for \.NET\.** For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
@@ -23,7 +23,7 @@ Before you begin, be sure that you have [set up the AWS SDK for \.NET](net-dg-se
 + [Amazon Elastic Compute Cloud Programming with the AWS SDK for \.NET](ec2-apis-intro.md)
 + [Amazon S3 Glacier Programming with the AWS SDK for \.NET](glacier-apis-intro.md)
 + [AWS Identity and Access Management Programming with the AWS SDK for \.NET](iam-apis-intro.md)
-+ [Amazon Route 53 Programming with the AWS SDK for \.NET](route53-apis-intro.md)
++ [Amazon Route 53 Programming with the AWS SDK for \.NET](route53-apis-intro.md)
 + [Amazon Simple Storage Service Programming with the AWS SDK for \.NET](s3-apis-intro.md)
 + [Amazon Simple Notification Service Programming with the AWS SDK for \.NET](sns-apis-intro.md)
 + [Amazon Simple Queue Service Programming with the AWS SDK for \.NET](sqs-apis-intro.md)

@@ -1,8 +1,8 @@
 --------
 
-End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+End of support announcement: [http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/](http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
 
- This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
+This documentation is for version 2\.0 of the AWS SDK for \.NET\.** For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
@@ -53,6 +53,6 @@ To install an earlier version of a package, use the `-Version` option and specif
 PM> Install-Package AWSSDK -Version 1.5.1.0
 ```
 
-The NuGet website provides a page for every package that is available through NuGet such as the [AWSSDK](http://nuget.org/packages/AWSSDK) and [AWS\.Extensions](http://nuget.org/packages/AWS.Extensions) assemblies\. The page for each package includes a sample command line for installing the package using the console\. Each page also includes a list of the previous versions of the package that are available through NuGet\.
+The NuGet website provides a page for every package that is available through NuGet such as the [AWSSDK](http://nuget.org/packages/AWSSDK) and [http://nuget.org/packages/AWS.Extensions](http://nuget.org/packages/AWS.Extensions) assemblies\. The page for each package includes a sample command line for installing the package using the console\. Each page also includes a list of the previous versions of the package that are available through NuGet\.
 
 For more information on Package Manager Console commands, see [Package Manager Console Commands \(v1\.3\)](http://nuget.codeplex.com/wikipage?title=Package%20Manager%20Console%20Command%20Reference%20%28v1.3%29)\.

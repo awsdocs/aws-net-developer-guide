@@ -1,8 +1,8 @@
 --------
 
-End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+End of support announcement: [http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/](http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
 
- This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
+This documentation is for version 2\.0 of the AWS SDK for \.NET\.** For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
@@ -24,15 +24,15 @@ To access AWS, you need an AWS account\.
 
  **To sign up for an AWS account** 
 
-1. Open [http://aws\.amazon\.com/](https://aws.amazon.com/), and then choose **Create an AWS Account**\.
+1. Open [https://aws.amazon.com/](https://aws.amazon.com/), and then choose **Create an AWS Account**\.
 
 1. Follow the instructions\. Part of the sign\-up procedure involves receiving a phone call and entering a PIN using the phone keypad\.
 
-AWS sends you a confirmation email after the sign\-up process is complete\. At any time, you can view your current account activity and manage your account by going to [http://aws\.amazon\.com](http://aws.amazon.com) and clicking **My Account/Console**\.
+AWS sends you a confirmation email after the sign\-up process is complete\. At any time, you can view your current account activity and manage your account by going to [https://aws.amazon.com/](https://aws.amazon.com/) and clicking **My Account/Console**\.
 
 To use the SDK, you must have a set of valid AWS credentials, which consist of an access key and a secret key\. These keys are used to sign programmatic web service requests and enable AWS to verify that the request comes from an authorized source\. You can obtain a set of account credentials when you create your account\. However, we recommend that you do not use these credentials with the SDK\. Instead, [create one or more IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_SettingUpUser.html), and use those credentials\. For applications that run on EC2 instances, you can use [IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html) to provide temporary credentials\.
 
-The preferred approach for handling credentials is to create a profile for each set of credentials in the SDK Store\. You can create and manage profiles with the AWS Toolkit for Visual Studio, PowerShell cmdlets, or programmatically with the SDK\. These credentials are encrypted and stored separately from any project\. You then reference the profile by name in your application, and the credentials are inserted at build time\. This approach ensures that your credentials are not unintentionally exposed with your project on a public site\. For more information, see [Setting Up the AWS Toolkit for Visual Studio](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/tkv_setup.html) and [Configuring AWS Credentials](net-dg-config-creds.md)\.
+The preferred approach for handling credentials is to create a profile for each set of credentials in the SDK Store\. You can create and manage profiles with the AWS Toolkit for Visual Studio, PowerShell cmdlets, or programmatically with the SDK\. These credentials are encrypted and stored separately from any project\. You then reference the profile by name in your application, and the credentials are inserted at build time\. This approach ensures that your credentials are not unintentionally exposed with your project on a public site\. For more information, see [Setting Up the AWS Toolkit for Visual Studio](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/getting-set-up.html) and [Configuring AWS Credentials](net-dg-config-creds.md)\.
 
 For more information about managing your credentials, see [Best Practices for Managing AWS Access Keys](https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html)\.
 
@@ -44,7 +44,7 @@ To use the SDK, you must have the following installed\.
 + \(Required\) Microsoft \.NET Framework 3\.5 or later
 + \(Required\) Microsoft Visual Studio 2010 or later
 + \(Required\) The SDK
-+ \(Recommended\) AWS Toolkit for Visual Studio, a plugin that provides a user interface for managing your AWS resources from Visual Studio, and includes the SDK\. For more information, see [Using the AWS Toolkit for Visual Studio](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/welcome.html)\.
++ \(Recommended\) AWS Toolkit for Visual Studio, a plugin that provides a user interface for managing your AWS resources from Visual Studio, and includes the SDK\. For more information, see [AWS Toolkit for Visual Studio](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/welcome.html)\.
 
 **Note**  
 We recommend using Visual Studio Professional 2010 or higher to implement your applications\.

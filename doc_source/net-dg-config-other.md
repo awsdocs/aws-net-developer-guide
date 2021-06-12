@@ -1,8 +1,8 @@
 --------
 
-End of support announcement: [https://aws\.amazon\.com/blogs/developer/announcing\-the\-end\-of\-support\-for\-the\-aws\-sdk\-for\-net\-version\-2/](https://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
+End of support announcement: [http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/](http://aws.amazon.com/blogs/developer/announcing-the-end-of-support-for-the-aws-sdk-for-net-version-2/)\.
 
- This documentation is for version 2\.0 of the AWS SDK for \.NET\. **For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide) of the AWS SDK for \.NET developer guide instead\.**
+This documentation is for version 2\.0 of the AWS SDK for \.NET\.** For current content, see the [latest version](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/) of the AWS SDK for \.NET developer guide instead\.**
 
 --------
 
@@ -18,8 +18,8 @@ In addition to [configuring credentials](net-dg-config-creds.md), you can config
 + [**AWSLogMetrics**](#config-setting-awslogmetrics)
 + [**AWSRegion**](#config-setting-awsregion)
 + [**AWSResponseLogging**](#config-setting-awsresponselogging)
-+ [**AWS\.DynamoDBContext\.TableNamePrefix**](#config-setting-aws-dynamodbcontext-tablenameprefix)
-+ [**AWS\.S3\.UseSignatureVersion4**](#config-setting-aws-s3-usesignatureversion4)
++ [`AWS.DynamoDBContext.TableNamePrefix`](#config-setting-aws-dynamodbcontext-tablenameprefix)
++ [`AWS.S3.UseSignatureVersion4`](#config-setting-aws-s3-usesignatureversion4)
 
 These parameters can be configured in the application’s `App.config` or `Web.config` file\. Although you can also configure these with the AWS SDK for \.NET API, we recommend you use the application’s `.config` file\. Both approaches are described here\.
 
@@ -177,7 +177,7 @@ AWSConfigs.ResponseLogging = ResponseLoggingOption.OnError;
 
 Changes to this setting take effect immediately\.
 
-### **AWS\.DynamoDBContext\.TableNamePrefix**<a name="config-setting-aws-dynamodbcontext-tablenameprefix"></a>
+### `AWS.DynamoDBContext.TableNamePrefix`<a name="config-setting-aws-dynamodbcontext-tablenameprefix"></a>
 
 Configures the default `TableNamePrefix` the `DynamoDBContext` will use if not manually configured\. To set the table name prefix in the `.config` file, the recommended approach is to set the `tableNamePrefix` attribute value in the `<dynamoDBContext>` element, which is a child element of the `<dynamoDB>` element, which itself is a child element of the `<aws>` element:
 
@@ -197,7 +197,7 @@ AWSConfigs.DynamoDBContextTableNamePrefix = "Test-";
 
 Changes to this setting will take effect only in newly constructed instances of `DynamoDBContextConfig` and `DynamoDBContext`\.
 
-### **AWS\.S3\.UseSignatureVersion4**<a name="config-setting-aws-s3-usesignatureversion4"></a>
+### `AWS.S3.UseSignatureVersion4`<a name="config-setting-aws-s3-usesignatureversion4"></a>
 
 Configures whether or not the Amazon S3 client should use signature version 4 signing with requests\. To set signature version 4 signing for Amazon S3 in the `.config` file, the recommended approach is to set the `useSignatureVersion4` attribute of the `<s3>` element, which is a child element of the `<aws>` element:
 
@@ -207,7 +207,7 @@ Configures whether or not the Amazon S3 client should use signature version 4 si
 </aws>
 ```
 
-Alternatively, set the *AWS\.S3\.UseSignatureVersion4* key to *true* in the `<appSettings>` section:
+Alternatively, set the `AWS.S3.UseSignatureVersion4` key to `true` in the `<appSettings>` section:
 
 ```
 <add key="AWS.S3.UseSignatureVersion4" value="true"/>
