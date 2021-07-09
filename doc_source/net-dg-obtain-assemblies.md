@@ -1,3 +1,11 @@
+--------
+
+Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+
+--------
+
 # Obtaining assemblies for the AWS SDK for \.NET<a name="net-dg-obtain-assemblies"></a>
 
 This topic describes how you can obtain the AWSSDK assemblies and store them locally \(or on premises\) for use in your projects\. This is **not** the recommended method for handling SDK references, but is required in some environments\.

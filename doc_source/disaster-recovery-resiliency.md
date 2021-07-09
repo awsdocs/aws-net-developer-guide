@@ -1,3 +1,11 @@
+--------
+
+Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+
+--------
+
 # Resilience for this AWS Product or Service<a name="disaster-recovery-resiliency"></a>
 
 The Amazon Web Services \(AWS\) global infrastructure is built around AWS Regions and Availability Zones\.

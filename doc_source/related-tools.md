@@ -1,3 +1,11 @@
+--------
+
+Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+
+--------
+
 # AWS tools related to the AWS SDK for \.NET<a name="related-tools"></a>
 
 ## Tools for Windows PowerShell and Tools for PowerShell Core<a name="aws-tools-for-windows-powershell-and-powershell-core"></a>
@@ -14,7 +22,7 @@ With the toolkit, you can do such things as the following:
 + Create serverless applications that contain AWS Lambda functions, and then deploy the applications to an AWS CloudFormation stack\.
 + Work with Amazon EventBridge schemas\.
 + Use IntelliSense when working with Amazon ECS task\-definition files\.
-+ Visualize an AWS Cloud Development Kit \(AWS CDK\) application\.
++ Visualize an AWS Cloud Development Kit \(CDK\) application\.
 
 ## Toolkit for Visual Studio<a name="tvslong"></a>
 

@@ -1,3 +1,11 @@
+--------
+
+Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+
+--------
+
 # Install AWSSDK packages with NuGet<a name="net-dg-install-assemblies"></a>
 
 [NuGet](https://www.nuget.org/) is a package management system for the \.NET platform\. With NuGet, you can install the [AWSSDK packages](https://www.nuget.org/profiles/awsdotnet), as well as several other extensions, to your project\. For additional information, see the [aws/dotnet](https://github.com/aws/dotnet) repository on the GitHub website\.

@@ -1,3 +1,11 @@
+--------
+
+Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+
+--------
+
 # Create an AWS account<a name="net-dg-signup"></a>
 
 To use the AWS SDK for \.NET to access AWS services, you need an AWS account and AWS credentials\.
@@ -18,7 +26,7 @@ If you need to close your AWS account, see [Closing an account](https://docs.aws
 
 [Install and configure your toolchain](net-dg-dev-env.md)
 
-## Additional information<a name="w8aab9c13c11"></a>
+## Additional information<a name="w8aac11c13c11"></a>
 
 For additional information about how to handle certificates and security, see [IAM best practices and use cases](https://docs.aws.amazon.com/IAM/latest/UserGuide/IAMBestPracticesAndUseCases.html) in the [IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/)\.
 

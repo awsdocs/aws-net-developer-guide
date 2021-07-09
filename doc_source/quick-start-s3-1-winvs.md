@@ -1,3 +1,11 @@
+--------
+
+Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+
+--------
+
 # Simple Windows\-based application using the AWS SDK for \.NET<a name="quick-start-s3-1-winvs"></a>
 
 This tutorial uses the AWS SDK for \.NET on Windows with Visual Studio and \.NET Core\. The tutorial shows you how to use the SDK to list the [Amazon S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/gsg/) that you own and optionally create a bucket\.
@@ -70,7 +78,9 @@ You'll perform this tutorial on Windows using Visual Studio and \.NET Core\. For
 
 ## Create the project<a name="s3-1-winvs-create-project"></a>
 
-1. Open Visual Studio and create a new project that uses the C\# version of the **Console Application** template \("\.\.\.for creating a command\-line application that can run on \.NET Core\.\.\."\)\. Name the project `S3CreateAndList`\.
+1. Open Visual Studio and create a new project that uses the C\# version of the **Console Application** template; that is, with description: "\.\.\.for creating a command\-line application that can run on \.NET Core\.\.\."\. Name the project `S3CreateAndList`\.
+**Note**  
+Don't choose the \.NET Framework version of the console app template, or, if you do, be sure to use \.NET Framework 4\.5 or later\.
 
 1. With the newly created project loaded, choose **Tools**, **NuGet Package Manager**, **Manage NuGet Packages for Solution**\.
 
@@ -194,6 +204,10 @@ You'll perform this tutorial on Windows using Visual Studio and \.NET Core\. For
    ```
 
 1. Build the application\.
+**Note**  
+If you're using an older version of Visual Studio, you might get a build error similar to the following:  
+"Feature 'async main' is not available in C\# 7\.0\. Please use language version 7\.1 or greater\."  
+If you get this error, set up your project to use a later version of the language\. This is typically done in the project properties, **Build**, **Advanced**\.
 
 ## Run the application<a name="s3-1-winvs-run"></a>
 

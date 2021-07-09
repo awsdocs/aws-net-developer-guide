@@ -1,3 +1,11 @@
+--------
+
+Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+
+--------
+
 # Amazon EC2 Spot Instance tutorial<a name="how-to-spot-instances"></a>
 
 This tutorial shows you how to use the AWS SDK for \.NET to manage Amazon EC2 Spot Instances\.
@@ -198,7 +206,7 @@ The example [at the end of this topic](#tutor-spot-net-main) shows this snippet 
 
 The following code example calls the methods described earlier to create and cancel a Spot Instance request and terminate a Spot Instance\.
 
-### SDK references<a name="w8aac17c19c21c43b5b1"></a>
+### SDK references<a name="w8aac19c19c21c43b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -231,7 +239,7 @@ Programming elements:
 
   Class [TerminateInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TTerminateInstancesResponse.html)
 
-### The code<a name="w8aac17c19c21c43b7b1"></a>
+### The code<a name="w8aac19c19c21c43b7b1"></a>
 
 ```
 using System;
