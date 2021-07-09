@@ -4,14 +4,20 @@ This content focuses on **\.NET Framework** and **ASP\.NET 4\.x**\. It covers Wi
 
 Working with **\.NET Core** or **ASP\.NET Core**? Go to the content for *[version 3\.5 or later](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/welcome.html)* of the AWS SDK for \.NET\. It covers cross\-platform development in addition to Windows and Visual Studio\.
 
+## <a name="w8aab3b5"></a>
+
+Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+
 --------
 
-# Managing Domain Name System \(DNS\) Resources Using Amazon Route 53<a name="route53-apis-intro"></a>
+# Managing Domain Name System \(DNS\) Resources Using Amazon Route 53<a name="route53-apis-intro"></a>
 
-The AWS SDK for \.NET supports Amazon Route 53, which is a Domain Name System \(DNS\) web service that provides secure and reliable routing to your infrastructure that uses AWS products, such as Amazon Elastic Compute Cloud \(Amazon EC2\), Elastic Load Balancing, or Amazon Simple Storage Service \(Amazon S3\)\. You can also use Route 53 to route users to your infrastructure outside of AWS\. This topic describes how to use the AWS SDK for \.NET to create a Route 53 :r53\-dg:` hosted zone <AboutHZWorkingWith>` and add a new [resource record set](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html) to that zone\.
+The AWS SDK for \.NET supports Amazon Route 53, which is a Domain Name System \(DNS\) web service that provides secure and reliable routing to your infrastructure that uses AWS products, such as Amazon Elastic Compute Cloud \(Amazon EC2\), Elastic Load Balancing, or Amazon Simple Storage Service \(Amazon S3\)\. You can also use Route 53 to route users to your infrastructure outside of AWS\. This topic describes how to use the AWS SDK for \.NET to create a Route 53 :r53\-dg:` hosted zone <AboutHZWorkingWith>` and add a new [resource record set](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html) to that zone\.
 
 **Note**  
-This topic assumes you are already familiar with how to use Route 53 and have already installed the AWS SDK for \.NET\. For more information about Route 53, see the [Amazon Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html)\. For information about how to install the AWS SDK for \.NET, see [Setting up the AWS SDK for \.NET](net-dg-setup.md)\.
+This topic assumes you are already familiar with how to use Route 53 and have already installed the AWS SDK for \.NET\. For more information about Route 53, see the [Amazon Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html)\. For information about how to install the AWS SDK for \.NET, see [Setting up the AWS SDK for \.NET](net-dg-setup.md)\.
 
 The basic procedure is as follows\.
 
@@ -126,7 +132,7 @@ The object must have the following information:
 **An AWS region**  
 When you call a client method, the underlying HTTP request is sent to this endpoint\.  
 **A credentials profile**  
-The profile must grant permissions for the actions you intend to use—the Route 53 actions in this case\. Attempts to call actions that lack permissions will fail\. For more information, see [Configuring AWS Credentials](net-dg-config-creds.md)\.
+The profile must grant permissions for the actions you intend to use—the Route 53 actions in this case\. Attempts to call actions that lack permissions will fail\. For more information, see [Configuring AWS Credentials](net-dg-config-creds.md)\.
 The [AmazonRoute53Client](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/Route53/TRoute53Client.html) class supports a set of public methods that you use to invoke [Amazon Route 53 actions](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html)\. You create the client object by instantiating a new instance of the `AmazonRoute53Client` class\. There are multiple constructors\.
 
 **\[2\] Create a hosted zone**  

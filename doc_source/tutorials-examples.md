@@ -4,6 +4,12 @@ This content focuses on **\.NET Framework** and **ASP\.NET 4\.x**\. It covers Wi
 
 Working with **\.NET Core** or **ASP\.NET Core**? Go to the content for *[version 3\.5 or later](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/welcome.html)* of the AWS SDK for \.NET\. It covers cross\-platform development in addition to Windows and Visual Studio\.
 
+## <a name="w8aab3b5"></a>
+
+Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+
 --------
 
 # Code examples for the AWS SDK for \.NET<a name="tutorials-examples"></a>
@@ -24,7 +30,7 @@ Before you begin, be sure you have [set up the AWS SDK for \.NET](net-dg-setup.m
 + [Storing Archival Data Using Amazon S3 Glacier](glacier-apis-intro.md)
 + [Managing users with IAM](iam-apis-intro.md)
 + [Using KMS keys for S3 encryption](kms-keys-s3-encryption.md)
-+ [Managing Domain Name System \(DNS\) Resources Using Amazon Route 53](route53-apis-intro.md)
++ [Managing Domain Name System \(DNS\) Resources Using Amazon Route 53](route53-apis-intro.md)
 + [Using Amazon Simple Storage Service Internet Storage](s3-apis-intro.md)
 + [Sending Notifications From the Cloud Using Amazon Simple Notification Service](sns-apis-intro.md)
 + [Messaging Using Amazon SQS](sqs-apis-intro.md)

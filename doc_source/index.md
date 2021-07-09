@@ -70,7 +70,7 @@ Amazon's trademarks and trade dress may not be used in
       + [List IAM Account Information](iam-examples-list-user-info.md)
       + [Granting Access Using an IAM Role](net-dg-hosm.md)
    + [Using AWS Key Management Service keys for Amazon S3 encryption in the AWS SDK for .NET](kms-keys-s3-encryption.md)
-   + [Managing Domain Name System (DNS) Resources Using Amazon Route 53](route53-apis-intro.md)
+   + [Managing Domain Name System (DNS) Resources Using Amazon Route 53](route53-apis-intro.md)
    + [Using Amazon Simple Storage Service Internet Storage](s3-apis-intro.md)
    + [Sending Notifications From the Cloud Using Amazon Simple Notification Service](sns-apis-intro.md)
    + [Messaging Using Amazon SQS](sqs-apis-intro.md)
