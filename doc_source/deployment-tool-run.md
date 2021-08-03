@@ -33,13 +33,13 @@ To get help on a specific command, use `--help` in the context of that command\.
 dotnet aws deploy --help
 ```
 
-## Most common sequences of commands<a name="deployment-tool-run-common"></a>
+## Some common commands<a name="deployment-tool-run-common"></a>
 
 To deploy or redeploy an application:
 
 ```
 cd <dotnet_core_app_directory>
-dotnet aws deploy [--profile <profile_name>] [--region <region_code>]
+dotnet aws deploy [--profile <profile_name>] [--region <region_code>] [--apply <configuration_file>] [-s|--silent]
 ```
 
 To show a list of the CloudFormation stacks that you've created by using the tool:

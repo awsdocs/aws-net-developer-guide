@@ -92,6 +92,7 @@ Amazon's trademarks and trade dress may not be used in
          + [Deploying a webapp to Amazon ECS](deployment-tool-deploy-ecs.md)
       + [Redeploying your application after changes](deployment-tool-redeploy.md)
       + [Deployment settings available through the deployment tool](deployment-tool-settings.md)
+      + [Working with configuration files](deployment-tool-config-file.md)
 + [Security for this AWS Product or Service](security.md)
    + [Data Protection in this AWS product or service](data-protection.md)
    + [Identity and Access Management for this AWS Product or Service](security-iam.md)

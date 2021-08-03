@@ -19,14 +19,15 @@ The following sections show you how to set up your environment to run the deploy
 
 ## Node\.js<a name="deployment-tool-setup-node"></a>
 
-The deployment tool requires the AWS CDK, and the AWS CDK requires [Node\.js](https://nodejs.org/en/download/), version 10\.13\.0 or later \(excluding versions 13\.0\.0 through 13\.6\.0\)\. To see which version of Node\.js you have installed, run the following command at the command prompt or in a terminal:
+The deployment tool requires the [AWS Cloud Development Kit \(CDK\)](https://docs.aws.amazon.com/cdk/latest/guide/), and the AWS CDK requires [Node\.js](https://nodejs.org/en/download/) version 10\.13\.0 or later \(excluding versions 13\.0\.0 through 13\.6\.0\)\. To see which version of Node\.js you have installed, run the following command at the command prompt or in a terminal:
 
 ```
 node --version
 ```
 
 **Note**  
-If the AWS CDK isn't installed on your machine or if the AWS CDK that's installed is earlier than the required minimum version \(1\.95\.2\), the deployment tool will install a temporary and "private" copy of the CDK that will be used only by the tool, leaving the global configuration of your machine untouched\.
+If the AWS CDK isn't installed on your machine or if the AWS CDK that's installed is earlier than the required minimum version \(1\.95\.2\), the deployment tool will install a temporary and "private" copy of the CDK that will be used only by the tool, leaving the global configuration of your machine untouched\.  
+If instead you want to install the AWS CDK, see [Install the AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html#getting_started_install) in the [AWS Cloud Development Kit \(CDK\) Developer Guide](https://docs.aws.amazon.com/cdk/latest/guide/)
 
 ## \.NET Core and \.NET<a name="deployment-tool-setup-env-dotnet"></a>
 
