@@ -16,7 +16,7 @@ If you're new to the AWS SDK for \.NET, you might want to check out the [Quick s
 The examples in this section are *asynchronous* and work with \.NET Core and ASP\.NET Core, and also \.NET Framework 4\.5 or later \(although \.NET Core is preferred\)\.  
 If you're looking for *synchronous* \.NET Framework examples, see [version 3](../../v3/developer-guide/tutorials-examples.html) of the guide instead\.
 
-You can find more code examples in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/dotnet) and the [awslabs repository](https://github.com/awslabs/aws-sdk-net-samples) on GitHub\.
+You can find more code examples in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/dotnetv3) and the [awslabs repository](https://github.com/awslabs/aws-sdk-net-samples) on GitHub\.
 
 Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Setting up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.
 
