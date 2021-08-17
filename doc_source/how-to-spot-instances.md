@@ -2,7 +2,7 @@
 
 Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
 
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
 
 --------
 
@@ -46,6 +46,7 @@ The following sections provide snippets and other information for this example\.
 + [Clean up your Spot Instance requests](#tutor-spot-net-clean-up-request)
 + [Clean up your Spot Instances](#tutor-spot-net-clean-up-instance)
 + [Complete code](#tutor-spot-net-main)
++ [Additional considerations](#tutor-spot-net-additional)
 
 ## Prerequisites<a name="tutor-spot-net-prereq"></a>
 
@@ -206,7 +207,7 @@ The example [at the end of this topic](#tutor-spot-net-main) shows this snippet 
 
 The following code example calls the methods described earlier to create and cancel a Spot Instance request and terminate a Spot Instance\.
 
-### SDK references<a name="w8aac19c19c21c43b5b1"></a>
+### SDK references<a name="w8aac19c21c21c43b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -239,7 +240,7 @@ Programming elements:
 
   Class [TerminateInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TTerminateInstancesResponse.html)
 
-### The code<a name="w8aac19c19c21c43b7b1"></a>
+### The code<a name="w8aac19c21c21c43b7b1"></a>
 
 ```
 using System;
@@ -411,5 +412,5 @@ namespace EC2SpotInstanceRequests
 }
 ```
 
-**Additional considerations**
+## Additional considerations<a name="tutor-spot-net-additional"></a>
 + After you run the tutorial, it's a good idea to sign in to the [Amazon EC2 console](https://console.aws.amazon.com/ec2/) to verify that the [Spot Instance request](https://console.aws.amazon.com/ec2sp/v1/spot/home) has been canceled and that the [Spot Instance](https://console.aws.amazon.com/ec2/v2/home#Instances) has been terminated\.

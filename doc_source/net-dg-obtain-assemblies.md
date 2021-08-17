@@ -2,7 +2,7 @@
 
 Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
 
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
 
 --------
 
@@ -19,9 +19,10 @@ If you can't or aren't allowed to download and install NuGet packages on a per\-
 
 \(Remember that this isn't the [recommended method](net-dg-install-assemblies.md) for handling references to the AWS SDK for \.NET\.\)
 
-1. Download the following ZIP file: [aws\-sdk\-netstandard2\.0\.zip](https://sdk-for-net.amazonwebservices.com/latest/v3/aws-sdk-netstandard2.0.zip)
-**Note**  
-If you require AWSSDK assemblies for \.NET Framework instead of \.NET Core, see [Download and extract ZIP files](../../v3/developer-guide/net-dg-install-assemblies.html#download-zip-files) in the version 3 developer guide\.
+1. Download one of the following ZIP files:
+   + [aws\-sdk\-netstandard2\.0\.zip](https://sdk-for-net.amazonwebservices.com/latest/v3/aws-sdk-netstandard2.0.zip)
+   + [aws\-sdk\-net45\.zip](https://sdk-for-net.amazonwebservices.com/latest/v3/aws-sdk-net45.zip)
+   + [aws\-sdk\-net35\.zip](https://sdk-for-net.amazonwebservices.com/latest/v3/aws-sdk-net35.zip)
 
 1. Extract the assemblies to some "download" folder on your file system; it doesn't matter where\. Make note of this folder\.
 

@@ -2,7 +2,7 @@
 
 Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
 
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
 
 --------
 
@@ -22,9 +22,11 @@ Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. 
 
 **Topics**
 + [AWS CloudFormation](cloudformation-apis-intro.md)
++ [DynamoDB](dynamodb-intro.md)
 + [Amazon EC2](ec2-apis-intro.md)
 + [IAM](iam-apis-intro.md)
 + [Amazon S3](s3-apis-intro.md)
++ [Amazon SNS](sns-apis-intro.md)
 + [Amazon SQS](sqs-apis-intro.md)
 + [AWS OpsWorks](opsworks-apis-intro.md)
 + [Other services and configuration](other-apis-intro.md)

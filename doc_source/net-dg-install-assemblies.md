@@ -2,7 +2,7 @@
 
 Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
 
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
 
 --------
 
@@ -42,7 +42,7 @@ If you want only the latest version of a NuGet package, you can exclude version 
 1. In the left pane of the **NuGet Package Manager**, choose **Browse**\. You can then use the search box to search for the package you want to install\.
 
    The following figure shows installation of the **AWSSDK\.S3** package\. NuGet also installs any dependencies, such as [AWSSDK\.Core](http://www.nuget.org/packages/AWSSDK.Core)\.  
-![\[AWSSDK.S3 package shown in NuGet Packages Manager.\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/nuget-install-vs-dlg.png)
+![\[AWSSDK.S3 package shown in NuGet Packages Manager.\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/nuget-install-vs-dlg.png)
 
 ## Using NuGet from the Package Manager Console<a name="package-install-cmd"></a>
 

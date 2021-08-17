@@ -2,7 +2,7 @@
 
 Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
 
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
 
 --------
 
@@ -22,7 +22,7 @@ There are several techniques you can use to start a new project to access AWS se
 + The AWS Toolkit for Visual Studio includes C\# project templates for a variety of AWS services\. After you [install the toolkit](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/setup.html) in Visual Studio, you can access the templates while creating a new project\.
 
   To see this, go to [Working with AWS services](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/working-with-services.html) in the [AWS Toolkit for Visual Studio User Guide](https://docs.aws.amazon.com/AWSToolkitVS/latest/UserGuide/)\. Several of the examples in that section create new projects\.
-+ If you develop with Visual Studio on Windows but without the AWS Toolkit for Visual Studio, use your typical techniques for creating a new project, but be sure to choose a \.NET Core template\.
++ If you develop with Visual Studio on Windows but without the AWS Toolkit for Visual Studio, use your typical techniques for creating a new project\.
 
   To see an example, open Visual Studio and choose **File**, **New**, **Project**\. Search for "\.net core" and choose the C\# version of the **Console App \(\.NET Core\)** or **WPF App \(\.NET Core\)** template\. An empty project is created to which you can add code and NuGet packages\.
 

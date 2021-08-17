@@ -2,7 +2,7 @@
 
 Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
 
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
 
 --------
 
@@ -19,6 +19,7 @@ The following sections provide snippets of this example\. The [complete code for
 + [Create the queue](#CreateQueue-create-queue)
 + [Get a queue's ARN](#CreateQueue-get-arn)
 + [Complete code](#CreateQueue-complete-code)
++ [Additional considerations](#CreateQueue-additional)
 
 ## Show existing queues<a name="CreateQueue-show-queues"></a>
 
@@ -113,7 +114,7 @@ The example [at the end of this topic](#CreateQueue-complete-code) shows this sn
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w8aac19c25c19c25b5b1"></a>
+### SDK references<a name="w8aac19c29c19c25b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
@@ -134,7 +135,7 @@ Programming elements:
 
   Class [ListQueuesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TListQueuesResponse.html)
 
-### The code<a name="w8aac19c25c19c25b7b1"></a>
+### The code<a name="w8aac19c29c19c25b7b1"></a>
 
 ```
 using System;
@@ -176,15 +177,15 @@ namespace SQSCreateQueue
         return;
       }
 
-      // Get the application parameters from the parsed arguments
+      // Get the application arguments from the parsed list
       string queueName =
-        CommandLine.GetParameter(parsedArgs, null, "-q", "--queue-name");
+        CommandLine.GetArgument(parsedArgs, null, "-q", "--queue-name");
       string deadLetterQueueUrl =
-        CommandLine.GetParameter(parsedArgs, null, "-d", "--dead-letter-queue");
+        CommandLine.GetArgument(parsedArgs, null, "-d", "--dead-letter-queue");
       string maxReceiveCount =
-        CommandLine.GetParameter(parsedArgs, MaxReceiveCount, "-m", "--max-receive-count");
+        CommandLine.GetArgument(parsedArgs, MaxReceiveCount, "-m", "--max-receive-count");
       string receiveWaitTime =
-        CommandLine.GetParameter(parsedArgs, ReceiveMessageWaitTime, "-w", "--wait-time");
+        CommandLine.GetArgument(parsedArgs, ReceiveMessageWaitTime, "-w", "--wait-time");
 
       if(string.IsNullOrEmpty(queueName))
         CommandLine.ErrorExit(
@@ -297,11 +298,20 @@ namespace SQSCreateQueue
   // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
   // Class that represents a command line on the console or terminal.
   // (This is the same for all examples. When you have seen it once, you can ignore it.)
-  public static class CommandLine
+  static class CommandLine
   {
-    // Method to parse a command line of the form: "--param value" or "-p value".
-    // If "param" is found without a matching "value", Dictionary.Value is an empty string.
-    // If "value" is found without a matching "param", Dictionary.Key is "--NoKeyN"
+    //
+    // Method to parse a command line of the form: "--key value" or "-k value".
+    //
+    // Parameters:
+    // - args: The command-line arguments passed into the application by the system.
+    //
+    // Returns:
+    // A Dictionary with string Keys and Values.
+    //
+    // If a key is found without a matching value, Dictionary.Value is set to the key
+    //  (including the dashes).
+    // If a value is found without a matching key, Dictionary.Key is set to "--NoKeyN",
     //  where "N" represents sequential numbers.
     public static Dictionary<string,string> Parse(string[] args)
     {
@@ -313,9 +323,9 @@ namespace SQSCreateQueue
         if(args[i].StartsWith("-"))
         {
           var key = args[i++];
-          var value = string.Empty;
+          var value = key;
 
-          // Is there a value that goes with this option?
+          // Check to see if there's a value that goes with this option?
           if((i < args.Length) && (!args[i].StartsWith("-"))) value = args[i++];
           parsedArgs.Add(key, value);
         }
@@ -332,18 +342,23 @@ namespace SQSCreateQueue
     }
 
     //
-    // Method to get a parameter from the parsed command-line arguments
-    public static string GetParameter(
-      Dictionary<string,string> parsedArgs, string def, params string[] keys)
+    // Method to get an argument from the parsed command-line arguments
+    //
+    // Parameters:
+    // - parsedArgs: The Dictionary object returned from the Parse() method (shown above).
+    // - defaultValue: The default string to return if the specified key isn't in parsedArgs.
+    // - keys: An array of keys to look for in parsedArgs.
+    public static string GetArgument(
+      Dictionary<string,string> parsedArgs, string defaultReturn, params string[] keys)
     {
       string retval = null;
       foreach(var key in keys)
         if(parsedArgs.TryGetValue(key, out retval)) break;
-      return retval ?? def;
+      return retval ?? defaultReturn;
     }
 
     //
-    // Exit with an error.
+    // Method to exit the application with an error.
     public static void ErrorExit(string msg, int code=1)
     {
       Console.WriteLine("\nError");
@@ -355,7 +370,7 @@ namespace SQSCreateQueue
 }
 ```
 
-**Additional considerations**
+## Additional considerations<a name="CreateQueue-additional"></a>
 + Your queue name must be composed of alphanumeric characters, hyphens, and underscores\.
 + Queue names and queue URLs are case\-sensitive
 + If you need the queue URL but only have the queue name, use one of the `AmazonSQSClient.GetQueueUrlAsync` methods\.

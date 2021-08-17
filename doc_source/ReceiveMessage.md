@@ -2,7 +2,7 @@
 
 Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
 
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
 
 --------
 
@@ -18,6 +18,7 @@ The following sections provide snippets of this example\. The [complete code for
 + [Receive a message](#ReceiveMessage-receive)
 + [Delete a message](#ReceiveMessage-delete)
 + [Complete code](#ReceiveMessage-complete-code)
++ [Additional considerations](#ReceiveMessage-additional)
 
 ## Receive a message<a name="ReceiveMessage-receive"></a>
 
@@ -62,7 +63,7 @@ The example [at the end of this topic](#ReceiveMessage-complete-code) shows this
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w8aac19c25c27c21b5b1"></a>
+### SDK references<a name="w8aac19c29c27c21b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
@@ -77,7 +78,7 @@ Programming elements:
 
   Class [ReceiveMessageResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TReceiveMessageResponse.html)
 
-### The code<a name="w8aac19c25c27c21b7b1"></a>
+### The code<a name="w8aac19c29c27c21b7b1"></a>
 
 ```
 using System;
@@ -164,7 +165,7 @@ namespace SQSReceiveMessages
 }
 ```
 
-**Additional considerations**
+## Additional considerations<a name="ReceiveMessage-additional"></a>
 + To specify long polling, this example uses the `WaitTimeSeconds` property for each call to the `ReceiveMessageAsync` method\.
 
   You can also specify long polling for all messages on a queue by using the `ReceiveMessageWaitTimeSeconds` attribute when [creating](CreateQueue.md) or [updating](UpdateSqsQueue.md) the queue\.

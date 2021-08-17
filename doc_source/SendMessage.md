@@ -2,7 +2,7 @@
 
 Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
 
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
 
 --------
 
@@ -19,6 +19,7 @@ The following sections provide snippets of this example\. The [complete code for
 + [Send a batch of messages](#SendMessage-send-batch)
 + [Delete all messages from the queue](#SendMessage-purge-messages)
 + [Complete code](#SendMessage-complete-code)
++ [Additional considerations](#SendMessage-additional)
 
 ## Send a message<a name="SendMessage-send-message"></a>
 
@@ -84,7 +85,7 @@ The example [at the end of this topic](#SendMessage-complete-code) shows this sn
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w8aac19c25c25c25b5b1"></a>
+### SDK references<a name="w8aac19c29c25c25b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
@@ -105,7 +106,7 @@ Programming elements:
 
   Class [SendMessageBatchResultEntry](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TSendMessageBatchResultEntry.html)
 
-### The code<a name="w8aac19c25c25c25b7b1"></a>
+### The code<a name="w8aac19c29c25c25b7b1"></a>
 
 ```
 using System;
@@ -225,7 +226,7 @@ namespace SQSSendMessages
 }
 ```
 
-**Additional considerations**
+## Additional considerations<a name="SendMessage-additional"></a>
 + For information about various limitations on messages, including the allowed characters, see [Quotas related to messages](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-quotas.html#quotas-messages) in the [Amazon Simple Queue Service Developer Guide](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/)\.
 + Messages stay in queues until they are deleted or the queue is purged\. When a message has been received by an application, it won't be visible in the queue even though it still exists in the queue\. For more information about visibility timeouts, see [Amazon SQS visibility timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html)\.
 + In additional to the message body, you can also add attributes to messages\. For more information, see [Message metadata](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html)\.

@@ -2,7 +2,7 @@
 
 Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
 
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
 
 --------
 
@@ -19,6 +19,7 @@ The following sections provide snippets of this example\. The [complete code for
 + [Validate attribute name](#UpdateSqsQueue-validate-attribute)
 + [Update queue attribute](#UpdateSqsQueue-update-attribute)
 + [Complete code](#UpdateSqsQueue-complete-code)
++ [Additional considerations](#UpdateSqsQueue-additional)
 
 ## Show queue attributes<a name="UpdateSqsQueue-show-attributes"></a>
 
@@ -83,7 +84,7 @@ The example [at the end of this topic](#UpdateSqsQueue-complete-code) shows this
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w8aac19c25c21c25b5b1"></a>
+### SDK references<a name="w8aac19c29c21c25b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
@@ -98,7 +99,7 @@ Programming elements:
 
   Class [GetQueueAttributesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TGetQueueAttributesResponse.html)
 
-### The code<a name="w8aac19c25c21c25b7b1"></a>
+### The code<a name="w8aac19c29c21c25b7b1"></a>
 
 ```
 using System;
@@ -129,10 +130,10 @@ namespace SQSUpdateQueue
         CommandLine.ErrorExit("\nThe number of command-line arguments is incorrect." +
           "\nRun the command with no arguments to see help.");
 
-      // Get the application parameters from the parsed arguments
-      var qUrl = CommandLine.GetParameter(parsedArgs, null, "-q");
-      var attribute = CommandLine.GetParameter(parsedArgs, null, "-a");
-      var value = CommandLine.GetParameter(parsedArgs, null, "-v", "--value");
+      // Get the application arguments from the parsed list
+      var qUrl = CommandLine.GetArgument(parsedArgs, null, "-q");
+      var attribute = CommandLine.GetArgument(parsedArgs, null, "-a");
+      var value = CommandLine.GetArgument(parsedArgs, null, "-v", "--value");
 
       if(string.IsNullOrEmpty(qUrl))
         CommandLine.ErrorExit("\nYou must supply at least a queue URL." +
@@ -218,9 +219,18 @@ namespace SQSUpdateQueue
   // (This is the same for all examples. When you have seen it once, you can ignore it.)
   static class CommandLine
   {
-    // Method to parse a command line of the form: "--param value" or "-p value".
-    // If "param" is found without a matching "value", Dictionary.Value is an empty string.
-    // If "value" is found without a matching "param", Dictionary.Key is "--NoKeyN"
+    //
+    // Method to parse a command line of the form: "--key value" or "-k value".
+    //
+    // Parameters:
+    // - args: The command-line arguments passed into the application by the system.
+    //
+    // Returns:
+    // A Dictionary with string Keys and Values.
+    //
+    // If a key is found without a matching value, Dictionary.Value is set to the key
+    //  (including the dashes).
+    // If a value is found without a matching key, Dictionary.Key is set to "--NoKeyN",
     //  where "N" represents sequential numbers.
     public static Dictionary<string,string> Parse(string[] args)
     {
@@ -232,9 +242,9 @@ namespace SQSUpdateQueue
         if(args[i].StartsWith("-"))
         {
           var key = args[i++];
-          var value = string.Empty;
+          var value = key;
 
-          // Is there a value that goes with this option?
+          // Check to see if there's a value that goes with this option?
           if((i < args.Length) && (!args[i].StartsWith("-"))) value = args[i++];
           parsedArgs.Add(key, value);
         }
@@ -251,18 +261,23 @@ namespace SQSUpdateQueue
     }
 
     //
-    // Method to get a parameter from the parsed command-line arguments
-    public static string GetParameter(
-      Dictionary<string,string> parsedArgs, string def, params string[] keys)
+    // Method to get an argument from the parsed command-line arguments
+    //
+    // Parameters:
+    // - parsedArgs: The Dictionary object returned from the Parse() method (shown above).
+    // - defaultValue: The default string to return if the specified key isn't in parsedArgs.
+    // - keys: An array of keys to look for in parsedArgs.
+    public static string GetArgument(
+      Dictionary<string,string> parsedArgs, string defaultReturn, params string[] keys)
     {
       string retval = null;
       foreach(var key in keys)
         if(parsedArgs.TryGetValue(key, out retval)) break;
-      return retval ?? def;
+      return retval ?? defaultReturn;
     }
 
     //
-    // Exit with an error.
+    // Method to exit the application with an error.
     public static void ErrorExit(string msg, int code=1)
     {
       Console.WriteLine("\nError");
@@ -274,7 +289,7 @@ namespace SQSUpdateQueue
 }
 ```
 
-**Additional considerations**
+## Additional considerations<a name="UpdateSqsQueue-additional"></a>
 + To update the `RedrivePolicy` attribute, you must quote the entire value and escape the quotes for the key/value pairs, as appropriate for you operating system\.
 
   On Windows, for example, the value is constructed in a manner similar to the following:

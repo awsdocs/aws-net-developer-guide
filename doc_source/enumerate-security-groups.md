@@ -2,7 +2,7 @@
 
 Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
 
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
 
 --------
 
@@ -15,6 +15,7 @@ The following sections provide snippets of this example\. The [complete code for
 **Topics**
 + [Enumerate security groups](#enum-sec-groups-enum)
 + [Complete code](#enum-sec-groups-complete-code)
++ [Additional considerations](#enum-sec-groups-additional)
 
 ## Enumerate security groups<a name="enum-sec-groups-enum"></a>
 
@@ -62,7 +63,7 @@ The example [at the end of this topic](#enum-sec-groups-complete-code) shows thi
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w8aac19c19c13c13c15b5b1"></a>
+### SDK references<a name="w8aac19c21c13c13c15b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -81,7 +82,7 @@ Programming elements:
 
   Class [SecurityGroup](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TSecurityGroup.html)
 
-### The Code<a name="w8aac19c19c13c13c15b7b1"></a>
+### The Code<a name="w8aac19c21c13c13c15b7b1"></a>
 
 ```
 using System;
@@ -162,7 +163,7 @@ namespace EC2EnumerateSecGroups
 }
 ```
 
-**Additional considerations**
+## Additional considerations<a name="enum-sec-groups-additional"></a>
 + Notice for the VPC case that the filter is constructed with the `Name` part of the name\-value pair set to "vpc\-id"\. This name comes from the description for the `Filters` property of the [DescribeSecurityGroupsRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TDescribeSecurityGroupsRequest.html) class\.
 + To get the complete list of your security groups, you can also use [ DescribeSecurityGroupsAsync with no parameters](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/MEC2DescribeSecurityGroupsAsyncCancellationToken.html)\.
 + You can verify the results by checking the list of security groups in the [Amazon EC2 console](https://console.aws.amazon.com/ec2/v2/home#SecurityGroups)\.

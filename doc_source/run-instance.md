@@ -2,7 +2,7 @@
 
 Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
 
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
 
 --------
 
@@ -21,6 +21,7 @@ The following sections provide snippets and other information for this example\.
 + [Launch an instance](#run-instance-launch)
 + [Monitor the instance](#run-instance-monitor)
 + [Complete code](#run-instance-complete-code)
++ [Additional considerations](#run-instance-additional)
 + [\(optional\) Connect to the instance](#connect-to-instance)
 + [Clean up](#run-instance-cleanup)
 
@@ -32,7 +33,7 @@ To launch an EC2 instance, you'll need several things\.
 **Note**  
 If your AWS account supports EC2\-Classic and that's the type of instance you want to launch, this parameter isn't required\. However, if your account doesn't support EC2\-Classic and you don't supply this parameter, the new instance is launched in the default VPC for your account\.
 + The ID of an existing security group that belongs to the VPC where the instance will be launched\. For more information, see [Working with security groups in Amazon EC2](security-groups.md)\.
-+ If you want to connect to the new instance, the security group mentioned earlier must have an appropriate inbound rule that allows SSH traffic on port 22 \(Linux instance\) or RDP traffic on port 3389 \(Windows instance\)\. For information about how to do this see [Updating security groups](authorize-ingress.md), including the **Additional considerations** near the end of that topic\.
++ If you want to connect to the new instance, the security group mentioned earlier must have an appropriate inbound rule that allows SSH traffic on port 22 \(Linux instance\) or RDP traffic on port 3389 \(Windows instance\)\. For information about how to do this see [Updating security groups](authorize-ingress.md), including the [Additional considerations](authorize-ingress.md#authorize-ingress-additional) near the end of that topic\.
 + The Amazon Machine Image \(AMI\) that will be used to create the instance\. See the information about AMIs in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/AMIs.html)\. For example, read about shared AMIs in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/sharing-amis.html)\.
 + The name of an existing EC2 key pair, which is used to connect to the new instance\. For more information, see [Working with Amazon EC2 key pairs](key-pairs.md)\.
 + The name of the PEM file that contains the private key of the EC2 key pair mentioned earlier\. The PEM file is used when you [connect remotely](#connect-to-instance) to the instance\.
@@ -129,7 +130,7 @@ See the [InstanceState](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/E
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w8aac19c19c19b9c27b5b1"></a>
+### SDK references<a name="w8aac19c21c19b9c27b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -154,7 +155,7 @@ Programming elements:
 
   Class [RunInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesResponse.html)
 
-### The code<a name="w8aac19c19c19b9c27b7b1"></a>
+### The code<a name="w8aac19c21c19b9c27b7b1"></a>
 
 ```
 using System;
@@ -180,15 +181,15 @@ namespace EC2LaunchInstance
         return;
       }
 
-      // Get the application parameters from the parsed arguments
+      // Get the application arguments from the parsed list
       string groupID =
-        CommandLine.GetParameter(parsedArgs, null, "-g", "--group-id");
+        CommandLine.GetArgument(parsedArgs, null, "-g", "--group-id");
       string ami =
-        CommandLine.GetParameter(parsedArgs, null, "-a", "--ami-id");
+        CommandLine.GetArgument(parsedArgs, null, "-a", "--ami-id");
       string keyPairName =
-        CommandLine.GetParameter(parsedArgs, null, "-k", "--keypair-name");
+        CommandLine.GetArgument(parsedArgs, null, "-k", "--keypair-name");
       string subnetID =
-        CommandLine.GetParameter(parsedArgs, null, "-s", "--subnet-id");
+        CommandLine.GetArgument(parsedArgs, null, "-s", "--subnet-id");
       if(   (string.IsNullOrEmpty(groupID) || !groupID.StartsWith("sg-"))
          || (string.IsNullOrEmpty(ami) || !ami.StartsWith("ami-"))
          || (string.IsNullOrEmpty(keyPairName))
@@ -340,9 +341,18 @@ namespace EC2LaunchInstance
   // (This is the same for all examples. When you have seen it once, you can ignore it.)
   static class CommandLine
   {
-    // Method to parse a command line of the form: "--param value" or "-p value".
-    // If "param" is found without a matching "value", Dictionary.Value is an empty string.
-    // If "value" is found without a matching "param", Dictionary.Key is "--NoKeyN"
+    //
+    // Method to parse a command line of the form: "--key value" or "-k value".
+    //
+    // Parameters:
+    // - args: The command-line arguments passed into the application by the system.
+    //
+    // Returns:
+    // A Dictionary with string Keys and Values.
+    //
+    // If a key is found without a matching value, Dictionary.Value is set to the key
+    //  (including the dashes).
+    // If a value is found without a matching key, Dictionary.Key is set to "--NoKeyN",
     //  where "N" represents sequential numbers.
     public static Dictionary<string,string> Parse(string[] args)
     {
@@ -354,9 +364,9 @@ namespace EC2LaunchInstance
         if(args[i].StartsWith("-"))
         {
           var key = args[i++];
-          var value = string.Empty;
+          var value = key;
 
-          // Is there a value that goes with this option?
+          // Check to see if there's a value that goes with this option?
           if((i < args.Length) && (!args[i].StartsWith("-"))) value = args[i++];
           parsedArgs.Add(key, value);
         }
@@ -373,18 +383,23 @@ namespace EC2LaunchInstance
     }
 
     //
-    // Method to get a parameter from the parsed command-line arguments
-    public static string GetParameter(
-      Dictionary<string,string> parsedArgs, string def, params string[] keys)
+    // Method to get an argument from the parsed command-line arguments
+    //
+    // Parameters:
+    // - parsedArgs: The Dictionary object returned from the Parse() method (shown above).
+    // - defaultValue: The default string to return if the specified key isn't in parsedArgs.
+    // - keys: An array of keys to look for in parsedArgs.
+    public static string GetArgument(
+      Dictionary<string,string> parsedArgs, string defaultReturn, params string[] keys)
     {
       string retval = null;
       foreach(var key in keys)
         if(parsedArgs.TryGetValue(key, out retval)) break;
-      return retval ?? def;
+      return retval ?? defaultReturn;
     }
 
     //
-    // Exit with an error.
+    // Method to exit the application with an error.
     public static void ErrorExit(string msg, int code=1)
     {
       Console.WriteLine("\nError");
@@ -396,7 +411,7 @@ namespace EC2LaunchInstance
 }
 ```
 
-**Additional considerations**
+## Additional considerations<a name="run-instance-additional"></a>
 + When checking the state of an EC2 instance, you can add a filter to the `Filter` property of the [DescribeInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TDescribeInstancesRequest.html) object\. Using this technique, you can limit the request to certain instances; for example, instances with a particular user\-specified tag\.
 + For brevity, some properties were given typical values\. Any or all of these properties can instead be determined programmatically or by user input\.
 + The values you can use for the `MinCount` and `MaxCount` properties of the [RunInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesRequest.html) object are determined by the target Availability Zone and the maximum number of instances you’re allowed for the instance type\. For more information, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ\.
@@ -428,7 +443,7 @@ For more information, see [Connecting to your Windows instance](https://docs.aws
 **Warning**  
 This example code returns the plaintext Administrator password for your instance\.
 
-### SDK references<a name="w8aac19c19c19b9c29c23b1"></a>
+### SDK references<a name="w8aac19c21c19b9c35c23b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -443,7 +458,7 @@ Programming elements:
 
   Class [GetPasswordDataResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TGetPasswordDataResponse.html)
 
-### The code<a name="w8aac19c19c19b9c29c25b1"></a>
+### The code<a name="w8aac19c21c19b9c35c25b1"></a>
 
 ```
 using System;
@@ -469,11 +484,11 @@ namespace EC2GetWindowsPassword
         return;
       }
 
-      // Get the application parameters from the parsed arguments
+      // Get the application arguments from the parsed list
       string instanceID =
-        CommandLine.GetParameter(parsedArgs, null, "-i", "--instance-id");
+        CommandLine.GetArgument(parsedArgs, null, "-i", "--instance-id");
       string pemFileName =
-        CommandLine.GetParameter(parsedArgs, null, "-p", "--pem-filename");
+        CommandLine.GetArgument(parsedArgs, null, "-p", "--pem-filename");
       if(   (string.IsNullOrEmpty(instanceID) || !instanceID.StartsWith("i-"))
          || (string.IsNullOrEmpty(pemFileName) || !pemFileName.EndsWith(".pem")))
         CommandLine.ErrorExit(
@@ -516,7 +531,7 @@ namespace EC2GetWindowsPassword
     private static void PrintHelp()
     {
       Console.WriteLine(
-        "\nUsage: EC2CreateKeyPair -i <instance-id> -p pem-filename" +
+        "\nUsage: EC2GetWindowsPassword -i <instance-id> -p pem-filename" +
         "\n  -i, --instance-id: The name of the EC2 instance." +
         "\n  -p, --pem-filename: The name of the PEM file with the private key.");
     }
@@ -527,9 +542,18 @@ namespace EC2GetWindowsPassword
   // (This is the same for all examples. When you have seen it once, you can ignore it.)
   static class CommandLine
   {
-    // Method to parse a command line of the form: "--param value" or "-p value".
-    // If "param" is found without a matching "value", Dictionary.Value is an empty string.
-    // If "value" is found without a matching "param", Dictionary.Key is "--NoKeyN"
+    //
+    // Method to parse a command line of the form: "--key value" or "-k value".
+    //
+    // Parameters:
+    // - args: The command-line arguments passed into the application by the system.
+    //
+    // Returns:
+    // A Dictionary with string Keys and Values.
+    //
+    // If a key is found without a matching value, Dictionary.Value is set to the key
+    //  (including the dashes).
+    // If a value is found without a matching key, Dictionary.Key is set to "--NoKeyN",
     //  where "N" represents sequential numbers.
     public static Dictionary<string,string> Parse(string[] args)
     {
@@ -541,9 +565,9 @@ namespace EC2GetWindowsPassword
         if(args[i].StartsWith("-"))
         {
           var key = args[i++];
-          var value = string.Empty;
+          var value = key;
 
-          // Is there a value that goes with this option?
+          // Check to see if there's a value that goes with this option?
           if((i < args.Length) && (!args[i].StartsWith("-"))) value = args[i++];
           parsedArgs.Add(key, value);
         }
@@ -560,18 +584,23 @@ namespace EC2GetWindowsPassword
     }
 
     //
-    // Method to get a parameter from the parsed command-line arguments
-    public static string GetParameter(
-      Dictionary<string,string> parsedArgs, string def, params string[] keys)
+    // Method to get an argument from the parsed command-line arguments
+    //
+    // Parameters:
+    // - parsedArgs: The Dictionary object returned from the Parse() method (shown above).
+    // - defaultValue: The default string to return if the specified key isn't in parsedArgs.
+    // - keys: An array of keys to look for in parsedArgs.
+    public static string GetArgument(
+      Dictionary<string,string> parsedArgs, string defaultReturn, params string[] keys)
     {
       string retval = null;
       foreach(var key in keys)
         if(parsedArgs.TryGetValue(key, out retval)) break;
-      return retval ?? def;
+      return retval ?? defaultReturn;
     }
 
     //
-    // Exit with an error.
+    // Method to exit the application with an error.
     public static void ErrorExit(string msg, int code=1)
     {
       Console.WriteLine("\nError");

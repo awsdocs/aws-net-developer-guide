@@ -2,7 +2,7 @@
 
 Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
 
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
 
 --------
 
@@ -48,7 +48,7 @@ Create a \.NET Core project with the following code\. Then test the application 
 On your development machine, the \.NET Core Runtime is installed, which enables you to run the application without publishing it\. When you create an EC2 instance later in this tutorial, you can choose to install the \.NET Core Runtime on the instance\. This gives you a similar experience and a smaller file transfer\.  
  However, you can also choose not to install the \.NET Core Runtime on the instance\. If you choose this course of action, you must publish the application so that all dependencies are included when you transfer it to the instance\.
 
-### SDK references<a name="w8aac19c21c27c17c13b1"></a>
+### SDK references<a name="w8aac19c23c27c17c13b1"></a>
 
 NuGet packages:
 + [AWSSDK\.S3](https://www.nuget.org/packages/AWSSDK.S3)
@@ -61,7 +61,7 @@ Programming elements:
 
   Class [GetObjectResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/TGetObjectResponse.html)
 
-### The code<a name="w8aac19c21c27c17c15b1"></a>
+### The code<a name="w8aac19c23c27c17c15b1"></a>
 
 ```
 using System;
@@ -87,13 +87,13 @@ namespace S3GetTextItem
         return;
       }
 
-      // Get the application parameters from the parsed arguments
+      // Get the application arguments from the parsed list
       string bucket =
-        CommandLine.GetParameter(parsedArgs, null, "-b", "--bucket-name");
+        CommandLine.GetArgument(parsedArgs, null, "-b", "--bucket-name");
       string item =
-        CommandLine.GetParameter(parsedArgs, null, "-t", "--text-object");
+        CommandLine.GetArgument(parsedArgs, null, "-t", "--text-object");
       string outFile =
-        CommandLine.GetParameter(parsedArgs, null, "-o", "--output-filename");
+        CommandLine.GetArgument(parsedArgs, null, "-o", "--output-filename");
       if(   string.IsNullOrEmpty(bucket)
          || string.IsNullOrEmpty(item)
          || string.IsNullOrEmpty(outFile))
@@ -137,13 +137,22 @@ namespace S3GetTextItem
 
 
   // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-  // Class that represents a command line on the console or terminal
-  // (This is the same for all examples. When you have seen it once, you can ignore it)
+  // Class that represents a command line on the console or terminal.
+  // (This is the same for all examples. When you have seen it once, you can ignore it.)
   static class CommandLine
   {
-    // Method to parse a command line of the form: "--param value" or "-p value".
-    // If "param" is found without a matching "value", Dictionary.Value is an empty string.
-    // If "value" is found without a matching "param", Dictionary.Key is "--NoKeyN"
+    //
+    // Method to parse a command line of the form: "--key value" or "-k value".
+    //
+    // Parameters:
+    // - args: The command-line arguments passed into the application by the system.
+    //
+    // Returns:
+    // A Dictionary with string Keys and Values.
+    //
+    // If a key is found without a matching value, Dictionary.Value is set to the key
+    //  (including the dashes).
+    // If a value is found without a matching key, Dictionary.Key is set to "--NoKeyN",
     //  where "N" represents sequential numbers.
     public static Dictionary<string,string> Parse(string[] args)
     {
@@ -155,9 +164,9 @@ namespace S3GetTextItem
         if(args[i].StartsWith("-"))
         {
           var key = args[i++];
-          var value = string.Empty;
+          var value = key;
 
-          // Is there a value that goes with this option?
+          // Check to see if there's a value that goes with this option?
           if((i < args.Length) && (!args[i].StartsWith("-"))) value = args[i++];
           parsedArgs.Add(key, value);
         }
@@ -174,18 +183,23 @@ namespace S3GetTextItem
     }
 
     //
-    // Method to get a parameter from the parsed command-line arguments
-    public static string GetParameter(
-      Dictionary<string,string> parsedArgs, string def, params string[] keys)
+    // Method to get an argument from the parsed command-line arguments
+    //
+    // Parameters:
+    // - parsedArgs: The Dictionary object returned from the Parse() method (shown above).
+    // - defaultValue: The default string to return if the specified key isn't in parsedArgs.
+    // - keys: An array of keys to look for in parsedArgs.
+    public static string GetArgument(
+      Dictionary<string,string> parsedArgs, string defaultReturn, params string[] keys)
     {
       string retval = null;
       foreach(var key in keys)
         if(parsedArgs.TryGetValue(key, out retval)) break;
-      return retval ?? def;
+      return retval ?? defaultReturn;
     }
 
     //
-    // Exit with an error.
+    // Method to exit the application with an error.
     public static void ErrorExit(string msg, int code=1)
     {
       Console.WriteLine("\nError");
@@ -225,7 +239,7 @@ Launch an EC2 instance with the IAM role you created previously\. You can do so 
   As you go through the wizard you should at least visit the **Configure Instance Details** page so that you can select the **IAM role** you created earlier\.
 + **Using the AWS SDK for \.NET**
 
-  For information about this, see [Launching an Amazon EC2 instance](run-instance.md), including the **Additional considerations** near the end of that topic\.
+  For information about this, see [Launching an Amazon EC2 instance](run-instance.md), including the [Additional considerations](run-instance.md#run-instance-additional) near the end of that topic\.
 
 To launch an EC2 instance that has an IAM role attached, an IAM user's configuration must include certain permissions\. For more information about the required permissions, see the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#permission-to-pass-iam-roles) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/iam-roles-for-amazon-ec2.html#permission-to-pass-iam-roles)\.
 
