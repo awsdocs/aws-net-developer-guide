@@ -1,40 +1,10 @@
-## (version 3) [Developer guide](doc_source/index.md) for the AWS SDK for .NET (version 3)
+## (Retired branch for the developer guide for the AWS SDK for .NET (version 3.3 and earlier))
 
-This is the open source version of the developer guide for the AWS SDK for .NET, version 3.
+This branch used to hold the open source version of the developer guide for the AWS SDK for .NET, version 3.3 an earlier.
 
-**NOTE**: This branch is for version 3 of the SDK. The latest content is in [the default branch]( https://github.com/awsdocs/aws-net-developer-guide).
+The content in this branch has been replaced by the content in [the default branch](https://github.com/awsdocs/aws-net-developer-guide), which contains the complete content for version 3 of the AWS SDK for .NET.
 
-To view this documentation, start with the [Index](doc_source/index.md).
+To view the open source version of the developer guide for the AWS SDK for .NET, go to [the default branch](https://github.com/awsdocs/aws-net-developer-guide).
 
-This repository contains open source version of the official [AWS SDK for .NET Developer Guide (version 3)](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/welcome.html).
+This branch will eventually be deleted; please update your links.
 
-The GitHub repository for the AWS SDK for .NET is at https://github.com/aws/aws-sdk-net.
-
-## Recent updates
-
-You can find out when this guide has had major updates and what those updates were by looking in the [Document History](doc_source/document-history.md) topic.
-
-## Reporting issues
-
-You can use the Issues section of this repository to report problems in the documentation. When submitting an issue, please indicate:
-
-  * What page the issue occurs on; a URL or filename is best.
-  * What the issue is, using as much detail as you can provide.
-    * The issue might be simple. For example: "The page has a typo; the word 'complie' in the third paragraph should be 'compile'."
-    * The issue might be more complex. If so, please describe it with enough detail so that it's clear to the AWS documentation team what the problem is.
-
-## Contributing fixes and updates
-
-To contribute your own documentation fixes or updates, please use standard GitHub procedures for [forking a repository](https://help.github.com/articles/fork-a-repo/) and [submitting a pull request](https://help.github.com/articles/using-pull-requests/).
-
-## Copyright and license
-
-All content in this repository, unless otherwise stated, is Copyright Amazon.com, Inc. or its affiliates. All rights reserved.
-
-Except where otherwise noted, this work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/) (the "License"). Use the preceding link for a human-readable summary of the license terms. The full license text is available at: http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode and in the LICENSE file accompanying this repository.
-
-## License summary
-
-The documentation is made available under the Creative Commons Attribution-ShareAlike 4.0 International License. See the LICENSE file.
-
-The sample code within this documentation is made available under the MIT-0 license. See the LICENSE-SAMPLECODE file.
