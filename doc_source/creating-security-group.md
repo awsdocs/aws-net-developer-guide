@@ -1,11 +1,3 @@
---------
-
-Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
-
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
-
---------
-
 # Creating security groups<a name="creating-security-group"></a>
 
 This example shows you how to use the AWS SDK for \.NET to create a security group\. You can provide the ID of an existing VPC to create a security group for EC2 in a VPC\. If you don't supply such an ID, the new security group will be for EC2\-Classic if your AWS account supports this\.
@@ -100,7 +92,7 @@ The example [at the end of this topic](#create-sec-groups-complete-code) shows t
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w8aac19c21c13c15c21b5b1"></a>
+### SDK references<a name="w8aac17c21c13c15c21b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -123,7 +115,7 @@ Programming elements:
 
   Class [SecurityGroup](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TSecurityGroup.html)
 
-### The code<a name="w8aac19c21c13c15c21b7b1"></a>
+### The code<a name="w8aac17c21c13c15c21b7b1"></a>
 
 ```
 using System;

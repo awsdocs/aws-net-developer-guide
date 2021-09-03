@@ -1,11 +1,3 @@
---------
-
-Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
-
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
-
---------
-
 # Paginators<a name="paginators"></a>
 
 Some AWS services collect and store a large amount of data, which you can retrieve by using the API calls of the AWS SDK for \.NET\. If the amount of data you want to retrieve becomes too large for a single API call, you can break the results into more manageable pieces through the use of *pagination*\. 
@@ -77,7 +69,7 @@ You might also need the [Microsoft\.Bcl\.AsyncInterfaces](https://www.nuget.org/
 
 This section shows relevant references and the complete code for this example\.
 
-#### SDK references<a name="w8aac15c17c23c19b5b1"></a>
+#### SDK references<a name="w8aac13c17c23c19b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.CloudWatch](https://www.nuget.org/packages/AWSSDK.CloudWatch)
@@ -94,7 +86,7 @@ Programming elements:
 
   Class [LogGroup](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/CloudWatchLogs/TLogGroup.html)
 
-#### Full code<a name="w8aac15c17c23c19b7b1"></a>
+#### Full code<a name="w8aac13c17c23c19b7b1"></a>
 
 ```
 using System;

@@ -1,11 +1,3 @@
---------
-
-Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
-
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
-
---------
-
 # Using AWS KMS keys for Amazon S3 encryption in the AWS SDK for \.NET<a name="kms-keys-s3-encryption"></a>
 
 This example shows you how to use AWS Key Management Service keys to encrypt Amazon S3 objects\. The application creates a customer master key \(CMK\) and uses it to create an [AmazonS3EncryptionClientV2](https://aws.github.io/amazon-s3-encryption-client-dotnet/api/Amazon.Extensions.S3.Encryption.AmazonS3EncryptionClientV2.html) object for client\-side encryption\. The application uses that client to create an encrypted object from a given text file in an existing Amazon S3 bucket\. It then decrypts the object and displays its contents\.
@@ -75,7 +67,7 @@ The example [at the end of this topic](#kms-s3-complete-code) shows this snippet
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w8aac19c25c13c15b5b1"></a>
+### SDK references<a name="w8aac17c25c13c15b5b1"></a>
 
 NuGet packages:
 + [Amazon\.Extensions\.S3\.Encryption](https://www.nuget.org/packages/Amazon.Extensions.S3.Encryption)
@@ -109,7 +101,7 @@ Programming elements:
 
   Class [CreateKeyResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/KeyManagementService/TCreateKeyResponse.html)
 
-### The code<a name="w8aac19c25c13c15b7b1"></a>
+### The code<a name="w8aac17c25c13c15b7b1"></a>
 
 ```
 using System;

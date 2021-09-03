@@ -1,11 +1,3 @@
---------
-
-Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
-
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
-
---------
-
 # Updating Amazon SQS queues<a name="UpdateSqsQueue"></a>
 
 This example shows you how to use the AWS SDK for \.NET to update an Amazon SQS queue\. After some checks, the application updates the given attribute with the given value, and then shows all attributes for the queue\.
@@ -84,7 +76,7 @@ The example [at the end of this topic](#UpdateSqsQueue-complete-code) shows this
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w8aac19c29c21c25b5b1"></a>
+### SDK references<a name="w8aac17c29c21c25b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
@@ -99,7 +91,7 @@ Programming elements:
 
   Class [GetQueueAttributesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TGetQueueAttributesResponse.html)
 
-### The code<a name="w8aac19c29c21c25b7b1"></a>
+### The code<a name="w8aac17c29c21c25b7b1"></a>
 
 ```
 using System;

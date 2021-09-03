@@ -1,16 +1,8 @@
---------
-
-Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
-
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
-
---------
-
 # Listing AWS resources using AWS CloudFormation<a name="cfn-list-resources"></a>
 
 This example shows you how to use the AWS SDK for \.NET to list the resources in AWS CloudFormation stacks\. The example uses the low\-level API\. The application takes no arguments, but simply gathers information for all stacks that are accessible to the user's credentials and then displays information about those stacks\.
 
-## SDK references<a name="w8aac19c17c13b5b1"></a>
+## SDK references<a name="w8aac17c17c13b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.CloudFormation](https://www.nuget.org/packages/AWSSDK.CloudFormation/)

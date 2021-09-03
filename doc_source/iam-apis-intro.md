@@ -1,11 +1,3 @@
---------
-
-Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
-
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
-
---------
-
 # Accessing AWS Identity and Access Management \(IAM\) with the AWS SDK for \.NET<a name="iam-apis-intro"></a>
 
 The AWS SDK for \.NET supports [AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/), which is a web service that enables AWS customers to manage users and user permissions in AWS\.
@@ -14,7 +6,7 @@ An AWS Identity and Access Management \(IAM\) *user* is an entity that you creat
 
 You grant permissions to a user by creating a IAM *policy*\. The policy contains a *policy document* that lists the actions that a user can perform and the resources those actions can affect\. For more information about IAM policies, see [Policies and Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html) in the *IAM User Guide*\.
 
-## APIs<a name="w8aac19c23c11"></a>
+## APIs<a name="w8aac17c23c11"></a>
 
 The AWS SDK for \.NET provides APIs for IAM clients\. The APIs enable you to work with IAM features such as users, roles, and access keys\.
 
@@ -24,16 +16,16 @@ This section also contains [an example](net-dg-hosm.md) that shows you how to at
 
 The IAM APIs are provided by the [AWSSDK\.IdentityManagement](https://www.nuget.org/packages/AWSSDK.IdentityManagement) NuGet package\.
 
-## Prerequisites<a name="w8aac19c23c13"></a>
+## Prerequisites<a name="w8aac17c23c13"></a>
 
 Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Setting up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.
 
-## Topics<a name="w8aac19c23c15"></a>
+## Topics<a name="w8aac17c23c15"></a>
 
 **Topics**
-+ [APIs](#w8aac19c23c11)
-+ [Prerequisites](#w8aac19c23c13)
-+ [Topics](#w8aac19c23c15)
++ [APIs](#w8aac17c23c11)
++ [Prerequisites](#w8aac17c23c13)
++ [Topics](#w8aac17c23c15)
 + [Creating users](iam-users-create.md)
 + [Deleting users](iam-users-delete.md)
 + [Creating managed policies from JSON](iam-policies-create-json.md)

@@ -1,17 +1,9 @@
---------
-
-Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
-
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
-
---------
-
 # Configuring Other Application Parameters<a name="net-dg-config-other"></a>
 
 **Note**  
 The information in this topic is specific to projects based on \.NET Framework\. The `App.config` and `Web.config` files are not present by default in projects based on \.NET Core\.
 
-## Open to view \.NET Framework content<a name="w8aac13c31b9b5b1"></a>
+## Open to view \.NET Framework content<a name="w8aac11c31b9b5b1"></a>
 
 In addition to [configuring credentials](net-dg-config-creds.md), you can configure a number of other application parameters:
 +  `AWSLogging` 

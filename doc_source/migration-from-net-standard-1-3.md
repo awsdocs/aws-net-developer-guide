@@ -1,11 +1,3 @@
---------
-
-Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
-
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
-
---------
-
 # Migrating from \.NET Standard 1\.3<a name="migration-from-net-standard-1-3"></a>
 
 On June 27 2019 Microsoft [ended support](https://devblogs.microsoft.com/dotnet/net-core-1-0-and-1-1-will-reach-end-of-life-on-june-27-2019/) for \.NET Core 1\.0 and \.NET Core 1\.1 versions\. Following this announcement, AWS ended support for \.NET Standard 1\.3 on the AWS SDK for \.NET on December 31, 2020\.

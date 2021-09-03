@@ -1,17 +1,10 @@
---------
-
-Hello AWS \.NET community\! Please share your experience and help us improve the AWS SDK for \.NET and its learning resources by [taking a survey](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)\. This survey takes approximately 10 minute to complete\.
-
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SurveyButton.png) ](https://amazonmr.au1.qualtrics.com/jfe/form/SV_bqfQLfZ5nhFUiV0)
-
---------
-
 # Document history<a name="document-history"></a>
 
 The following table describes the important changes since the last release of the *AWS SDK for \.NET Developer Guide*\. For notification about updates to this documentation, you can subscribe to an [RSS feed](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/amazon-aws-sdk-for-net-dev-guide-doc-history.rss)\.
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [AWS SDK for \.NET version 3 guide consolidation](#document-history) | The two AWS SDK for \.NET version 3 developer guides, "V3" and "latest", have been consolidated into one guide under the "v3" URL\. | August 18, 2021 | 
 | [Working with configuration files](deployment-tool-config-file.md) | Added information about JSON configuration files for the AWS \.NET deployment tool\. | July 26, 2021 | 
 | [Migrating from \.NET Standard 1\.3](migration-from-net-standard-1-3.md) | Support for \.NET Standard 1\.3 on the AWS SDK for \.NET has come to its end of life\. | March 25, 2021 | 
 | [AWS \.NET deployment tool \(preview\)](deployment-tool.md) | Added preview information about the AWS \.NET deployment tool, which you can use to deploy an application from the \.NET CLI\. | March 15, 2021 | 
