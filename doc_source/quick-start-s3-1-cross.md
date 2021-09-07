@@ -91,8 +91,8 @@ You'll perform this tutorial using cross\-platform tools such as the \.NET comma
    **Linux or macOS**
 
    ```
-   AWS_PROFILE='dotnet-tutorials'
-   AWS_REGION='us-west-2'
+   export AWS_PROFILE='dotnet-tutorials'
+   export AWS_REGION='us-west-2'
    ```
 
    **Windows**

@@ -69,7 +69,7 @@ Set in the `AWS_REGION` environment variable\.
 On Linux or macOS:
 
 ```
-AWS_REGION='us-west-2'
+export AWS_REGION='us-west-2'
 ```
 
 On Windows:
