@@ -1,4 +1,4 @@
-# AWS SDK for .NET (version 2) Developer Guide
+# AWS SDK for .NET (version 2, deprecated) Developer Guide
 
 -----
 *****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
