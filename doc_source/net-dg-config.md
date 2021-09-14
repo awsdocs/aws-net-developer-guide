@@ -2,10 +2,6 @@
 
 In addition to [setting up your environment](net-dg-setup.md), you need to configure each project that you create\.
 
-**Note**  
-The configuration shown here is centered around \.NET Core and ASP\.NET Core \(although there might be some overlap with \.NET Framework configuration\)\.  
-If you're looking for \.NET Framework configuration, see [version 3](../../v3/developer-guide/net-dg-config.html) of the guide instead\.
-
 There are a few essential things your application needs to access AWS services through the AWS SDK for \.NET:
 + An appropriate user account or role
 + Credentials for that user account or to assume that role

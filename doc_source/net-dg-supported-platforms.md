@@ -12,8 +12,6 @@ Non\-Framework variations of the AWS SDK for \.NET comply with [\.NET Standard 2
 
 ## \.NET Framework 4\.5<a name="net-dg-platform-diff-netfx45"></a>
 
-\(For full information on \.NET Framework 4\.5 support, see [version 3](../../v3/developer-guide/welcome.html) of the AWS SDK for \.NET Developer Guide\.\)
-
 This version of the AWS SDK for \.NET is compiled against \.NET Framework 4\.5 and runs in the \.NET 4\.0 runtime\. AWS service clients support synchronous and asynchronous calling patterns and use the [async and await](https://docs.microsoft.com/en-us/previous-versions/hh191443(v=vs.140)) keywords introduced in [C\# 5\.0](https://en.wikipedia.org/wiki/C_Sharp_%28programming_language%29#Versions)\.
 
 ## \.NET Framework 3\.5<a name="net-dg-platform-diff-winrt"></a>

@@ -2,11 +2,6 @@
 
 The AWS SDK for \.NET searches for credentials in a certain order and uses the first available set for the current application\.
 
-**Note**  
-The information in this topic regarding profile and credential precedence is centered around \.NET Core and ASP\.NET Core, and is different from similar information for \.NET Framework\.  
-In addition, information about specifying profiles using \.NET Framework mechanisms such as `App.config` and `Web.config` doesn't apply to \.NET Core and so isn't present\.  
-If you're looking for \.NET Framework information, see [version 3](../../v3/developer-guide/net-dg-config-creds.html#creds-assign) of the guide instead\.
-
 **Credential search order**
 
 1. Credentials that are explicitly set on the AWS service client, as described in [Accessing credentials and profiles in an application](creds-locate.md)\.

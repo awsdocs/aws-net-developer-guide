@@ -4,10 +4,6 @@ The AWS SDK for \.NET uses the *Task\-based Asynchronous Pattern \(TAP\)* for it
 
 This topic gives you an overview of how to use TAP in your calls to AWS service clients\.
 
-**Note**  
-The information in this topic is centered around \.NET Core and ASP\.NET Core\. If you're maintaining \.NET Framework 4\.5 code, the information in this topic also applies to the SDK's implementation of \.NET Framework 4\.5, which also uses TAP\.  
-If you're looking for legacy information about how the AWS SDK for \.NET implemented asynchronous operations for \.NET Framework 3\.5, see [version 3](../../v3/developer-guide/sdk-net-async-api.html) of the guide instead\.
-
 The asynchronous methods in the AWS SDK for \.NET API are operations based on the `Task` class or the `Task<TResult>` class\. See docs\.microsoft\.com for information about these classes: [Task class](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task), [Task<TResult> class](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\.
 
 When these API methods are called in your code, they must be called within a function that is declared with the `async` keyword, as shown in the following example\.
