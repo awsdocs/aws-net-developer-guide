@@ -1,3 +1,13 @@
+--------
+
+Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.CLI/) for a simplified deployment experience\! Read our [blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) and submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\!
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/BannerButton.png) ](https://github.com/aws/aws-dotnet-deploy/)
+
+For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
+
+--------
+
 # Creating and displaying key pairs<a name="create-save-key-pair"></a>
 
 This example shows you how to use the AWS SDK for \.NET to create a key pair\. The application takes the name for the new key pair and the name of a PEM file \(with a "\.pem" extension\)\. It creates the keypair, writes the private key to the PEM file, and then displays all available key pairs\. If you provide no command\-line arguments, the application simply displays all available key pairs\.
@@ -60,7 +70,7 @@ The example [at the end of this topic](#create-save-key-pair-complete-code) show
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w8aac17c19c15c11c19b5b1"></a>
+### SDK references<a name="w8aac19c19c15c11c19b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -79,7 +89,7 @@ Programming elements:
 
   Class [KeyPairInfo](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TKeyPairInfo.html)
 
-### The code<a name="w8aac17c19c15c11c19b7b1"></a>
+### The code<a name="w8aac19c19c15c11c19b7b1"></a>
 
 ```
 using System;

@@ -1,3 +1,13 @@
+--------
+
+Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.CLI/) for a simplified deployment experience\! Read our [blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) and submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\!
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/BannerButton.png) ](https://github.com/aws/aws-dotnet-deploy/)
+
+For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
+
+--------
+
 # Paginators<a name="paginators"></a>
 
 Some AWS services collect and store a large amount of data, which you can retrieve by using the API calls of the AWS SDK for \.NET\. If the amount of data you want to retrieve becomes too large for a single API call, you can break the results into more manageable pieces through the use of *pagination*\. 
@@ -69,7 +79,7 @@ You might also need the [Microsoft\.Bcl\.AsyncInterfaces](https://www.nuget.org/
 
 This section shows relevant references and the complete code for this example\.
 
-#### SDK references<a name="w8aac13c17c23c19b5b1"></a>
+#### SDK references<a name="w8aac15c17c23c19b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.CloudWatch](https://www.nuget.org/packages/AWSSDK.CloudWatch)
@@ -86,7 +96,7 @@ Programming elements:
 
   Class [LogGroup](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/CloudWatchLogs/TLogGroup.html)
 
-#### Full code<a name="w8aac13c17c23c19b7b1"></a>
+#### Full code<a name="w8aac15c17c23c19b7b1"></a>
 
 ```
 using System;

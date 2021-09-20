@@ -1,3 +1,13 @@
+--------
+
+Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.CLI/) for a simplified deployment experience\! Read our [blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) and submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\!
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/BannerButton.png) ](https://github.com/aws/aws-dotnet-deploy/)
+
+For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
+
+--------
+
 # Enumerating security groups<a name="enumerate-security-groups"></a>
 
 This example shows you how to use the AWS SDK for \.NET to enumerate security groups\. If you supply an [Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/userguide/) ID, the application enumerates the security groups for that particular VPC\. Otherwise, the application simply displays a list of all available security groups\.
@@ -55,7 +65,7 @@ The example [at the end of this topic](#enum-sec-groups-complete-code) shows thi
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w8aac17c19c13c13c15b5b1"></a>
+### SDK references<a name="w8aac19c19c13c13c15b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -74,7 +84,7 @@ Programming elements:
 
   Class [SecurityGroup](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TSecurityGroup.html)
 
-### The Code<a name="w8aac17c19c13c13c15b7b1"></a>
+### The Code<a name="w8aac19c19c13c13c15b7b1"></a>
 
 ```
 using System;

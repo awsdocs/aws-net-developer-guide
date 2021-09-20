@@ -1,3 +1,13 @@
+--------
+
+Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.CLI/) for a simplified deployment experience\! Read our [blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) and submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\!
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/BannerButton.png) ](https://github.com/aws/aws-dotnet-deploy/)
+
+For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
+
+--------
+
 # Creating security groups<a name="creating-security-group"></a>
 
 This example shows you how to use the AWS SDK for \.NET to create a security group\. You can provide the ID of an existing VPC to create a security group for EC2 in a VPC\. If you don't supply such an ID, the new security group will be for EC2\-Classic if your AWS account supports this\.
@@ -92,7 +102,7 @@ The example [at the end of this topic](#create-sec-groups-complete-code) shows t
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w8aac17c19c13c15c21b5b1"></a>
+### SDK references<a name="w8aac19c19c13c15c21b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -115,7 +125,7 @@ Programming elements:
 
   Class [SecurityGroup](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TSecurityGroup.html)
 
-### The code<a name="w8aac17c19c13c15c21b7b1"></a>
+### The code<a name="w8aac19c19c13c15c21b7b1"></a>
 
 ```
 using System;

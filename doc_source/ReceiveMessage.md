@@ -1,3 +1,13 @@
+--------
+
+Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.CLI/) for a simplified deployment experience\! Read our [blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) and submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\!
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/BannerButton.png) ](https://github.com/aws/aws-dotnet-deploy/)
+
+For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
+
+--------
+
 # Receiving Amazon SQS messages<a name="ReceiveMessage"></a>
 
 This example shows you how to use the AWS SDK for \.NET to receive messages from an Amazon SQS queue, which you can create [programmatically](CreateQueue.md) or by using the [Amazon SQS console](https://console.aws.amazon.com/sqs)\. The application reads a single message from the queue, processes the message \(in this case, displays the message body on the console\), and then deletes the message from the queue\. The application repeats these steps until the user types a key on the keyboard\.
@@ -55,7 +65,7 @@ The example [at the end of this topic](#ReceiveMessage-complete-code) shows this
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w8aac17c27c27c21b5b1"></a>
+### SDK references<a name="w8aac19c27c27c21b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
@@ -70,7 +80,7 @@ Programming elements:
 
   Class [ReceiveMessageResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TReceiveMessageResponse.html)
 
-### The code<a name="w8aac17c27c27c21b7b1"></a>
+### The code<a name="w8aac19c27c27c21b7b1"></a>
 
 ```
 using System;

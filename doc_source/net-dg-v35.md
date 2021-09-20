@@ -1,3 +1,13 @@
+--------
+
+Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.CLI/) for a simplified deployment experience\! Read our [blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) and submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\!
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/BannerButton.png) ](https://github.com/aws/aws-dotnet-deploy/)
+
+For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
+
+--------
+
 # Migrating to version 3\.5 of the AWS SDK for \.NET<a name="net-dg-v35"></a>
 
 Version 3\.5 of the AWS SDK for \.NET further standardizes the \.NET experience by transitioning support for all non\-Framework variations of the SDK to [\.NET Standard 2\.0](https://docs.microsoft.com/en-us/dotnet/standard/net-standard)\. Depending on your environment and code base, to take advantage of version 3\.5 features, you might need to perform certain migration work\.

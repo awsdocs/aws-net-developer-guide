@@ -1,3 +1,13 @@
+--------
+
+Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.CLI/) for a simplified deployment experience\! Read our [blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) and submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\!
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/BannerButton.png) ](https://github.com/aws/aws-dotnet-deploy/)
+
+For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
+
+--------
+
 # Updating security groups<a name="authorize-ingress"></a>
 
 This example shows you how to use the AWS SDK for \.NET to add a rule to a security group\. In particular, the example adds a rule to allow inbound traffic on a given TCP port, which can be used, for example, for remote connections to an EC2 instance\. The application takes the ID of an existing security group, an IP address \(or address range\) in CIDR format, and optionally a TCP port number\. It then adds an inbound rule to the given security group\.
@@ -47,7 +57,7 @@ The example [at the end of this topic](#authorize-ingress-complete-code) shows t
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w8aac17c19c13c17c17b5b1"></a>
+### SDK references<a name="w8aac19c19c13c17c17b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -66,7 +76,7 @@ Programming elements:
 
   Class [IpRange](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TIpRange.html)
 
-### The code<a name="w8aac17c19c13c17c17b7b1"></a>
+### The code<a name="w8aac19c19c13c17c17b7b1"></a>
 
 ```
 using System;

@@ -1,3 +1,13 @@
+--------
+
+Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.CLI/) for a simplified deployment experience\! Read our [blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) and submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\!
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/BannerButton.png) ](https://github.com/aws/aws-dotnet-deploy/)
+
+For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
+
+--------
+
 # Display the policy document of an IAM managed policy<a name="iam-policies-display"></a>
 
 This example shows you how to use the AWS SDK for \.NET to display a policy document\. The application creates an IAM client object, finds the default version of the given IAM managed policy, and then displays the policy document in JSON\.
@@ -71,7 +81,7 @@ The example [at the end of this topic](#iam-policies-display-complete-code) show
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w8aac17c21c25c19b5b1"></a>
+### SDK references<a name="w8aac19c21c25c19b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.IdentityManagement](https://www.nuget.org/packages/AWSSDK.IdentityManagement)
@@ -92,7 +102,7 @@ Programming elements:
 
   Class [PolicyVersion](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/IAM/TPolicyVersion.html)
 
-### The code<a name="w8aac17c21c25c19b7b1"></a>
+### The code<a name="w8aac19c21c25c19b7b1"></a>
 
 ```
 using System;

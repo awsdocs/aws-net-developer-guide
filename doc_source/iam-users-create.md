@@ -1,3 +1,13 @@
+--------
+
+Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.CLI/) for a simplified deployment experience\! Read our [blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) and submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\!
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/BannerButton.png) ](https://github.com/aws/aws-dotnet-deploy/)
+
+For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
+
+--------
+
 # Creating and listing users for your AWS account<a name="iam-users-create"></a>
 
 This example shows you how to use the AWS SDK for \.NET to create a new IAM user\. With the information you supply to the application, it creates a user, attaches the given managed policy, obtains credentials for the user, and then displays a list of all the users in your AWS account\.
@@ -110,7 +120,7 @@ The example [at the end of this topic](#iam-users-create-complete-code) shows th
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w8aac17c21c19c23b5b1"></a>
+### SDK references<a name="w8aac19c21c19c23b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.IdentityManagement](https://www.nuget.org/packages/AWSSDK.IdentityManagement)
@@ -149,7 +159,7 @@ Programming elements:
 
   Class [ListUsersResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/IAM/TListUsersResponse.html)
 
-### The code<a name="w8aac17c21c19c23b7b1"></a>
+### The code<a name="w8aac19c21c19c23b7b1"></a>
 
 ```
 using System;

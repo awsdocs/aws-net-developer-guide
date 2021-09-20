@@ -1,3 +1,13 @@
+--------
+
+Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.CLI/) for a simplified deployment experience\! Read our [blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) and submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\!
+
+ [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/BannerButton.png) ](https://github.com/aws/aws-dotnet-deploy/)
+
+For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
+
+--------
+
 # Amazon EC2 Spot Instance tutorial<a name="how-to-spot-instances"></a>
 
 This tutorial shows you how to use the AWS SDK for \.NET to manage Amazon EC2 Spot Instances\.
@@ -199,7 +209,7 @@ The example [at the end of this topic](#tutor-spot-net-main) shows this snippet 
 
 The following code example calls the methods described earlier to create and cancel a Spot Instance request and terminate a Spot Instance\.
 
-### SDK references<a name="w8aac17c19c21c43b5b1"></a>
+### SDK references<a name="w8aac19c19c21c43b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -232,7 +242,7 @@ Programming elements:
 
   Class [TerminateInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TTerminateInstancesResponse.html)
 
-### The code<a name="w8aac17c19c21c43b7b1"></a>
+### The code<a name="w8aac19c19c21c43b7b1"></a>
 
 ```
 using System;
