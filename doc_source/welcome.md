@@ -10,7 +10,7 @@ For additional information, see the section for the [deployment tool](https://do
 
 # What is the AWS SDK for \.NET<a name="welcome"></a>
 
-The AWS SDK for \.NET makes it easier to build \.NET applications that tap into cost\-effective, scalable, and reliable AWS services such as Amazon Simple Storage Service \(Amazon S3\) and Amazon Elastic Compute Cloud \(Amazon EC2\)\. The SDK simplifies the use of AWS services by providing a set of libraries that are consistent and familiar for \.NET developers\.
+The AWS SDK for \.NET makes it easier to build \.NET applications that tap into cost\-effective, scalable, and reliable AWS services such as Amazon Simple Storage Service \(Amazon S3\) and Amazon Elastic Compute Cloud \(Amazon EC2\)\. The SDK simplifies the use of AWS services by providing a set of libraries that are consistent and familiar for \.NET developers\.\.
 
 ![\[Overview of the AWS SDK for .NET\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/overview.png)
 
