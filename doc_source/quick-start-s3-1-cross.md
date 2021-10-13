@@ -224,7 +224,7 @@ You'll perform this tutorial using cross\-platform tools such as the \.NET comma
 
 1. Examine the output to see the number of Amazon S3 buckets that you own, if any, and their names\.
 
-1. Choose a name for a new Amazon S3 bucket\. Use "dotnet\-quickstart\-s3\-1\-cross\-" as a base and add something unique to it, such as a GUID or your name\. Be sure to follow the rules for bucket names, as described in [Rules for bucket naming](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules) in the [Amazon Simple Storage Service Developer Guide](https://docs.aws.amazon.com/AmazonS3/latest/dev/)\.
+1. Choose a name for a new Amazon S3 bucket\. Use "dotnet\-quickstart\-s3\-1\-cross\-" as a base and add something unique to it, such as a GUID or your name\. Be sure to follow the rules for bucket names, as described in [Rules for bucket naming](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules) in the [Amazon Simple Storage Service User Guide](https://docs.aws.amazon.com/AmazonS3/latest/dev/)\.
 
 1. Run the following command, replacing *BUCKET\-NAME* with the name of the bucket that you chose\.
 

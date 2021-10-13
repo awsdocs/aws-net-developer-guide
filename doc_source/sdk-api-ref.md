@@ -8,13 +8,8 @@ For additional information, see the section for the [deployment tool](https://do
 
 --------
 
-# Get started quickly with the AWS SDK for \.NET<a name="quick-start"></a>
+# API reference for the AWS SDK for \.NET<a name="sdk-api-ref"></a>
 
-This section includes basic setup steps and tutorials for developers who are new to the AWS SDK for \.NET\.
+The AWS SDK for \.NET provides an API that you can use to access AWS services\. To see what classes and methods are available in the API, see the [AWS SDK for \.NET API Reference](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/)\.
 
-For more advanced information, see the following sections: [Setting up your environment](net-dg-setup.md), [Setting up your project](net-dg-config.md), and [Working with AWS services](tutorials-examples.md)
-
-**Topics**
-+ [Simple cross\-platform app](quick-start-s3-1-cross.md)
-+ [Simple Windows\-based app](quick-start-s3-1-winvs.md)
-+ [Next steps](quick-start-next-steps.md)
+In addition to the general reference given above, each of the examples under the [Working with AWS services](tutorials-examples.md) section contains references to the specific methods and classes that are used in that example\.

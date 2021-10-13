@@ -114,4 +114,5 @@ Amazon's trademarks and trade dress may not be used in
    + [Accessing credentials and profiles in an application](creds-locate.md)
    + [Special considerations for Unity support](unity-special.md)
    + [Special considerations for Xamarin support](xamarin-special.md)
++ [API reference for the AWS SDK for .NET](sdk-api-ref.md)
 + [Document history](document-history.md)
