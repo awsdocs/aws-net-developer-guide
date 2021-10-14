@@ -312,5 +312,5 @@ var ioTdocServiceConfig = new AmazonIotDataConfig
 using (var dataClient = new AmazonIotDataClient(ioTdocServiceConfig))
 {
     Console.WriteLine("AWS IoTData client instantiated using the endpoint from the IotClient");
-}nstantiated using the endpoint from the IoT client");
+}
 ```
