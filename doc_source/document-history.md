@@ -14,6 +14,7 @@ The following table describes the important changes since the last release of th
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [AWS \.NET deployment tool](deployment-tool.md) | Added a reference to the AWS Toolkit for Visual Studio, which provides deployment functionality that is similar to the AWS \.NET deployment tool\. | October 26, 2021 | 
 | [AWS SDK for \.NET version 3 guide consolidation](#document-history) | The two AWS SDK for \.NET version 3 developer guides, "V3" and "latest", have been consolidated into one guide under the "v3" URL\. | August 18, 2021 | 
 | [Working with configuration files](deployment-tool-config-file.md) | Added information about JSON configuration files for the AWS \.NET deployment tool\. | July 26, 2021 | 
 | [Migrating from \.NET Standard 1\.3](migration-from-net-standard-1-3.md) | Support for \.NET Standard 1\.3 on the AWS SDK for \.NET has come to its end of life\. | March 25, 2021 | 

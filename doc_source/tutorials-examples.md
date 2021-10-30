@@ -20,6 +20,7 @@ Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. 
 
 **Topics**
 + [AWS CloudFormation](cloudformation-apis-intro.md)
++ [Amazon Cognito](cognito-apis-intro.md)
 + [DynamoDB](dynamodb-intro.md)
 + [Amazon EC2](ec2-apis-intro.md)
 + [IAM](iam-apis-intro.md)
