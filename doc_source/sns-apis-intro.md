@@ -2,7 +2,7 @@
 
 Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.CLI/) for a simplified deployment experience\! Read our [blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) and submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\!
 
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/BannerButton.png) ](https://github.com/aws/aws-dotnet-deploy/)
+ [https://github.com/aws/aws-dotnet-deploy/](https://github.com/aws/aws-dotnet-deploy/)
 
 For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
 
@@ -132,7 +132,7 @@ namespace SnsSendMessage
 }
 ```
 
-See the [complete example](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/dotnet/example_code_legacy/SNS/SnsSendMessage.cs), including information on how to build and run the example from the command line, on GitHub\.
+See the [complete example](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/.dotnet/example_code_legacy/SNS/SnsSendMessage.cs), including information on how to build and run the example from the command line, on GitHub\.
 
 ## Sending an SMS Message to a Phone Number<a name="sns-send-sms-example"></a>
 
@@ -181,4 +181,4 @@ namespace SnsPublish
 }
 ```
 
-See the [complete example](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/dotnet/example_code_legacy/SNS/SnsPublish.cs), including information on how to build and run the example from the command line, on GitHub\.
+See the [complete example](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/.dotnet/example_code_legacy/SNS/SnsPublish.cs), including information on how to build and run the example from the command line, on GitHub\.

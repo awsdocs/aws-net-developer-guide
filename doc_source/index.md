@@ -43,7 +43,6 @@ Amazon's trademarks and trade dress may not be used in
    + [AWS asynchronous APIs for .NET](sdk-net-async-api.md)
    + [Retries and timeouts](retries-timeouts.md)
    + [Paginators](paginators.md)
-   + [Enabling SDK Metrics](sdk-metrics.md)
    + [Additional tools](sdk-features-additional-tools.md)
 + [Migrating your project for the AWS SDK for .NET](net-dg-migrating.md)
    + [What's new in the AWS SDK for .NET](whats-new.md)

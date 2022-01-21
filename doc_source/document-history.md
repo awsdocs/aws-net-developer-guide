@@ -2,7 +2,7 @@
 
 Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.CLI/) for a simplified deployment experience\! Read our [blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) and submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\!
 
- [ ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/BannerButton.png) ](https://github.com/aws/aws-dotnet-deploy/)
+ [https://github.com/aws/aws-dotnet-deploy/](https://github.com/aws/aws-dotnet-deploy/)
 
 For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
 
@@ -14,6 +14,7 @@ The following table describes the important changes since the last release of th
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Enabling SDK Metrics](#document-history) | Removed information about enabling SDK metrics, which has been deprecated\. | January 20, 2022 | 
 | [AWS \.NET deployment tool](deployment-tool.md) | Added a reference to the AWS Toolkit for Visual Studio, which provides deployment functionality that is similar to the AWS \.NET deployment tool\. | October 26, 2021 | 
 | [AWS SDK for \.NET version 3 guide consolidation](#document-history) | The two AWS SDK for \.NET version 3 developer guides, "V3" and "latest", have been consolidated into one guide under the "v3" URL\. | August 18, 2021 | 
 | [Working with configuration files](deployment-tool-config-file.md) | Added information about JSON configuration files for the AWS \.NET deployment tool\. | July 26, 2021 | 
