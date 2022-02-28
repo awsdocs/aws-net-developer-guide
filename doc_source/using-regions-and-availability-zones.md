@@ -16,7 +16,7 @@ Read more about Regions and Availability Zones in the [EC2 user guide for Linux]
 
 This example shows you how to use the AWS SDK for \.NET to get details about the Regions and Availability Zones related to an EC2 client\. The application displays lists of the Regions and Availability Zones available to an EC2 client\.
 
-## SDK references<a name="w8aac19c21c17b9b1"></a>
+## SDK references<a name="w97aac19c15c19c17b9b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)

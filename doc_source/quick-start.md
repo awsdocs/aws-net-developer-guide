@@ -8,11 +8,11 @@ For additional information, see the section for the [deployment tool](https://do
 
 --------
 
-# Get started quickly with the AWS SDK for \.NET<a name="quick-start"></a>
+# A quick tour of the AWS SDK for \.NET<a name="quick-start"></a>
 
 This section includes basic setup steps and tutorials for developers who are new to the AWS SDK for \.NET\.
 
-For more advanced information, see the following sections: [Setting up your environment](net-dg-setup.md), [Setting up your project](net-dg-config.md), and [Working with AWS services](tutorials-examples.md)
+For more advanced information, see the following sections: [Setting up your environment](net-dg-setup.md), [Setting up your project](net-dg-config.md), and [Code examples with guidance](tutorials-examples.md)
 
 **Topics**
 + [Simple cross\-platform app](quick-start-s3-1-cross.md)

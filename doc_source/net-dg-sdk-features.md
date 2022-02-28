@@ -14,7 +14,7 @@ This section provides information about features of the AWS SDK for \.NET that y
 
 Be sure you have [set up your project](net-dg-config.md) first\.
 
-For information about developing software for specific AWS services, see [Working with AWS services in the AWS SDK for \.NET](tutorials-examples.md)\.
+For information about developing software for specific AWS services, see [Code examples with guidance for the AWS SDK for \.NET](tutorials-examples.md)\.
 
 **Topics**
 + [Asynchronous APIs](sdk-net-async-api.md)

@@ -11,7 +11,7 @@ For additional information, see the section for the [deployment tool](https://do
 # Start a new project<a name="net-dg-start-new-project"></a>
 
 There are several techniques you can use to start a new project to access AWS services\. The following are some of those techniques:
-+ If you're new to \.NET development on AWS or at least new to the AWS SDK for \.NET, you can see complete examples in [Quick start](quick-start.md)\. It gives you an introduction to the SDK\.
++ If you're new to \.NET development on AWS or at least new to the AWS SDK for \.NET, you can see complete examples in [Quick tour](quick-start.md)\. It gives you an introduction to the SDK\.
 + You can start a basic project by using the \.NET CLI\. To see an example of this, open a command prompt or terminal, create a folder or directory and navigate to it, and then enter the following\.
 
   ```
@@ -30,4 +30,4 @@ There are several techniques you can use to start a new project to access AWS se
 
 After you create your project, perform additional appropriate tasks for [setting up your project](net-dg-config.md)\.
 
-You can find some examples of how to work with AWS services in [Working with AWS services](tutorials-examples.md)\.
+You can find some examples of how to work with AWS services in [Code examples with guidance](tutorials-examples.md)\.

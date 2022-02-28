@@ -12,7 +12,7 @@ For additional information, see the section for the [deployment tool](https://do
 
 This section shows you how to set up the global features and configuration for the AWS SDK for \.NET\.
 
-If you're new to \.NET development on AWS or at least new to the AWS SDK for \.NET, check out the [Quick start](quick-start.md) topic first\. It gives you an introduction to the SDK\.
+If you're new to \.NET development on AWS or at least new to the AWS SDK for \.NET, check out the [Quick tour](quick-start.md) topic first\. It gives you an introduction to the SDK\.
 
 When you are finished with these topics, you can move on to [Setting up your project](net-dg-config.md)\.
 

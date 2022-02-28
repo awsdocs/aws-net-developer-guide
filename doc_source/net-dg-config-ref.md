@@ -13,7 +13,7 @@ For additional information, see the section for the [deployment tool](https://do
 **Note**  
 The information in this topic is specific to projects based on \.NET Framework\. The `App.config` and `Web.config` files are not present by default in projects based on \.NET Core\.
 
-## Open to view \.NET Framework content<a name="w8aac13c29c11b5b1"></a>
+## Open to view \.NET Framework content<a name="w97aac13c29c11b5b1"></a>
 
 You can use a \.NET project's `App.config` or `Web.config` file to specify AWS settings, such as AWS credentials, logging options, AWS service endpoints, and AWS regions, as well as some settings for AWS services, such as Amazon DynamoDB, Amazon EC2, and Amazon S3\. The following information describes how to properly format an `App.config` or `Web.config` file to specify these types of settings\.
 

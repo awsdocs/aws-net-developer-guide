@@ -8,11 +8,12 @@ For additional information, see the section for the [deployment tool](https://do
 
 --------
 
-# Additional tools to use with the AWS SDK for \.NET<a name="net-dg-additional-tools"></a>
+# Build a publish and subscription application that translates messages<a name="cross_SnsPublishSubscription_csharp_topic"></a>
 
-This section provides information about additional tools that are available alongside the AWS SDK for \.NET\. You use these tools to help with developing, deploying, and maintaining your applications\.
+**AWS SDK for \.NET**  
+ Shows how to use the Amazon Simple Notification Service \.NET API to create a web application that has subscription and publish functionality\. In addition, this example application also translates messages\.   
+ For complete source code and instructions on how to set up and run, see the full example on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/cross-service/SubscribePublishTranslate)\.   
 
-You use these tools along with [setting up your environment](net-dg-setup.md), [setting up your project](net-dg-config.md), and creating applications to work with AWS services, examples of which are given in [Code examples with guidance](tutorials-examples.md)\.
-
-**Topics**
-+ [Deployment tool](deployment-tool.md)
+**Services used in this example**
++ Amazon SNS
++ Amazon Translate

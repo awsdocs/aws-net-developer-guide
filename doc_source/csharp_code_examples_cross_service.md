@@ -8,11 +8,9 @@ For additional information, see the section for the [deployment tool](https://do
 
 --------
 
-# Additional tools to use with the AWS SDK for \.NET<a name="net-dg-additional-tools"></a>
+# Cross\-service examples using AWS SDK for \.NET<a name="csharp_code_examples_cross_service"></a>
 
-This section provides information about additional tools that are available alongside the AWS SDK for \.NET\. You use these tools to help with developing, deploying, and maintaining your applications\.
-
-You use these tools along with [setting up your environment](net-dg-setup.md), [setting up your project](net-dg-config.md), and creating applications to work with AWS services, examples of which are given in [Code examples with guidance](tutorials-examples.md)\.
+The following sample applications use the AWS SDK for \.NET to work across multiple AWS services\.
 
 **Topics**
-+ [Deployment tool](deployment-tool.md)
++ [Building an Amazon SNS application](cross_SnsPublishSubscription_csharp_topic.md)
