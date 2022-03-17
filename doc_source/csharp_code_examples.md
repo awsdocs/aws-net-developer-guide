@@ -8,7 +8,7 @@ For additional information, see the section for the [deployment tool](https://do
 
 --------
 
-# AWS SDK for \.NET code examples<a name="csharp_code_examples"></a>
+# Additional code examples for the AWS SDK for \.NET<a name="csharp_code_examples"></a>
 
 The code examples in this topic show you how to use the AWS SDK for \.NET with AWS\.
 

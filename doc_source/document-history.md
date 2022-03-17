@@ -14,6 +14,7 @@ The following table describes the important changes since the last release of th
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Enforcing a minimum TLS version](enforcing-tls.md) | Added information about TLS 1\.3\. | March 16, 2022 | 
 | [Working with AWS services](working-with-aws-services.md) | Included lists of the code examples that are available on GitHub\. | February 28, 2022 | 
 | [Enabling SDK Metrics](#document-history) | Removed information about enabling SDK metrics, which has been deprecated\. | January 20, 2022 | 
 | [AWS \.NET deployment tool](deployment-tool.md) | Added a reference to the AWS Toolkit for Visual Studio, which provides deployment functionality that is similar to the AWS \.NET deployment tool\. | October 26, 2021 | 

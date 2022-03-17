@@ -8,9 +8,9 @@ For additional information, see the section for the [deployment tool](https://do
 
 --------
 
-# Enforcing TLS 1\.2 in this AWS Product or Service<a name="enforcing-tls"></a>
+# Enforcing a minimum TLS version in the AWS SDK for \.NET<a name="enforcing-tls"></a>
 
-To increase security when communicating with AWS services, you should configure this AWS product or service to use TLS 1\.2 or later\.
+To increase security when communicating with AWS services, you should configure the AWS SDK for \.NET to use TLS 1\.2 or later\.
 
 The AWS SDK for \.NET uses the underlying \.NET runtime to determine which security protocol to use\. By default, current versions of \.NET use the latest configured protocol that the operating system supports\. Your application can override this SDK behavior, but it's *not recommended* to do so\.
 
@@ -24,17 +24,17 @@ See the following for information specific to each operating system\.
 
 **Windows**
 
-Modern distributions of Windows have TLS 1\.2 support [enabled by default](https://docs.microsoft.com/en-us/windows/win32/secauthn/protocols-in-tls-ssl--schannel-ssp-)\. If you're running on Windows 7 SP1 or Windows Server 2008 R2 SP1, you need to ensure that TLS 1\.2 support is enabled in the registry, as described at [https://docs\.microsoft\.com/en\-us/windows\-server/security/tls/tls\-registry\-settings\#tls\-12](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings#tls-12)\. If you're running an earlier distribution, you must upgrade your operating system\.
+Modern distributions of Windows have TLS 1\.2 support [enabled by default](https://docs.microsoft.com/en-us/windows/win32/secauthn/protocols-in-tls-ssl--schannel-ssp-)\. If you're running on Windows 7 SP1 or Windows Server 2008 R2 SP1, you need to ensure that TLS 1\.2 support is enabled in the registry, as described at [https://docs\.microsoft\.com/en\-us/windows\-server/security/tls/tls\-registry\-settings\#tls\-12](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings#tls-12)\. If you're running an earlier distribution, you must upgrade your operating system\. For information about TLS 1\.3 support in Windows, check the latest Microsoft documentation for the minimum required client or server versions\.
 
 **macOS**
 
 If you're running \.NET Core 2\.1 or later, TLS 1\.2 is enabled by default\. TLS 1\.2 is supported by [OS X Mavericks v10\.9 or later](https://support.apple.com/en-us/HT202854)\. \.NET Core version 2\.1 and later require newer versions of macOS, as described at [https://docs\.microsoft\.com/en\-us/dotnet/core/install/dependencies?tabs=netcore21&pivots=os\-macos](https://docs.microsoft.com/en-us/dotnet/core/install/dependencies?tabs=netcore21&pivots=os-macos)\.
 
-If you're using \.NET Core 1\.0, \.NET Core [uses OpenSSL on macOS](https://github.com/dotnet/announcements/issues/21), a dependency that must be installed separately\. OpenSSL added support for TLS 1\.2 in [version 1\.0\.1](https://www.openssl.org/news/changelog.html#x35) \(03/14/2012\)\.
+If you're using \.NET Core 1\.0, \.NET Core [uses OpenSSL on macOS](https://github.com/dotnet/announcements/issues/21), a dependency that must be installed separately\. OpenSSL added support for TLS 1\.2 in version 1\.0\.1, and added support for TLS 1\.3 in version 1\.1\.1\.
 
 **Linux**
 
-\.NET Core on Linux requires OpenSSL, which comes bundled with many Linux distributions\. But it can also be installed separately\. OpenSSL added support for TLS 1\.2 in [version 1\.0\.1](https://www.openssl.org/news/changelog.html#x35) \(03/14/2012\)\. If you're using a modern version of \.NET Core \(2\.1 or later\) and have installed a package manager, it's likely that a more modern version of OpenSSL was installed for you\.
+\.NET Core on Linux requires OpenSSL, which comes bundled with many Linux distributions\. But it can also be installed separately\. OpenSSL added support for TLS 1\.2 in version 1\.0\.1, and added support for TLS 1\.3 in version 1\.1\.1\. If you're using a modern version of \.NET Core \(2\.1 or later\) and have installed a package manager, it's likely that a more modern version of OpenSSL was installed for you\.
 
 To be sure, you can run **`openssl version`** in a terminal and verify that the version is later than 1\.0\.1\.
 
