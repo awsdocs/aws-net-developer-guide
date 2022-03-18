@@ -19,9 +19,9 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w97aac19c18b9c13c13)
++ [Actions](#w99aac21c18b9c13c13)
 
-## Actions<a name="w97aac19c18b9c13c13"></a>
+## Actions<a name="w99aac21c18b9c13c13"></a>
 
 ### Associate an AWS KMS key to log group<a name="cloudwatch-logs_AssociateKmsKey_csharp_topic"></a>
 

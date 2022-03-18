@@ -98,7 +98,7 @@ The example [at the end of this topic](#DeleteSqsQueue-complete-code) shows this
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w97aac19c15c27c23c25b5b1"></a>
+### SDK references<a name="w99aac21c15c27c23c25b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
@@ -111,7 +111,7 @@ Programming elements:
 
   Class [ListQueuesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TListQueuesResponse.html)
 
-### The code<a name="w97aac19c15c27c23c25b7b1"></a>
+### The code<a name="w99aac21c15c27c23c25b7b1"></a>
 
 ```
 using System;

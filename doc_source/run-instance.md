@@ -132,7 +132,7 @@ See the [InstanceState](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/E
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w97aac19c15c19c19b9c27b5b1"></a>
+### SDK references<a name="w99aac21c15c19c19b9c27b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -157,7 +157,7 @@ Programming elements:
 
   Class [RunInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesResponse.html)
 
-### The code<a name="w97aac19c15c19c19b9c27b7b1"></a>
+### The code<a name="w99aac21c15c19c19b9c27b7b1"></a>
 
 ```
 using System;
@@ -445,7 +445,7 @@ For more information, see [Connecting to your Windows instance](https://docs.aws
 **Warning**  
 This example code returns the plaintext Administrator password for your instance\.
 
-### SDK references<a name="w97aac19c15c19c19b9c35c23b1"></a>
+### SDK references<a name="w99aac21c15c19c19b9c35c23b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -460,7 +460,7 @@ Programming elements:
 
   Class [GetPasswordDataResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TGetPasswordDataResponse.html)
 
-### The code<a name="w97aac19c15c19c19b9c35c25b1"></a>
+### The code<a name="w99aac21c15c19c19b9c35c25b1"></a>
 
 ```
 using System;

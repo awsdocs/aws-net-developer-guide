@@ -14,7 +14,7 @@ When you no longer need one or more of your Amazon EC2 instances, you can termin
 
 This example shows you how to use the AWS SDK for \.NET to terminate EC2 instances\. It takes an instance ID as input\.
 
-## SDK references<a name="w97aac19c15c19c19c11b7b1"></a>
+## SDK references<a name="w99aac21c15c19c19c11b7b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)

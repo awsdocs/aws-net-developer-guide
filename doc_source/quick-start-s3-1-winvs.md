@@ -90,7 +90,7 @@ Don't choose the \.NET Framework version of the console app template, or, if you
 
    This process installs the **AWSSDK\.S3** NuGet package from the [NuGet package manager](https://www.nuget.org/profiles/awsdotnet)\. Because we know exactly what NuGet packages we need for this tutorial, we can perform this step now\. It's also common that the required packages become known during development\. When this happens, follow a similar process to install them at that time\.
 
-1. If you intend to run the application from the command prompt, open a command prompt now and navigate to the folder that will contain the build output\. This is typically something like `S3CreateAndList\S3CreateAndList\bin\Debug\netcoreapp3.1`, but will depend on our environment\.
+1. If you intend to run the application from the command prompt, open a command prompt now and navigate to the folder that will contain the build output\. This is typically something like `S3CreateAndList\S3CreateAndList\bin\Debug\net6.0`, but will depend on your environment\.
 
 1. Add the following temporary environment variables to the environment\.
 
@@ -101,7 +101,7 @@ Don't choose the \.NET Framework version of the console app template, or, if you
    set AWS_REGION=us-west-2
    ```
 
-   Or, if you intend to run the application in the IDE, choose **Project**, **S3CreateAndList Properties**, **Debug** and set them there\.
+   Or, if you intend to run the application in the IDE, go to **Debug**, **S3CreateAndList Debug Properties** and set them there\. \(In older versions of Visual Studio go to **Project**, **S3CreateAndList Properties**, **Debug**\.\)
 
 ## Create the code<a name="s3-1-winvs-code"></a>
 

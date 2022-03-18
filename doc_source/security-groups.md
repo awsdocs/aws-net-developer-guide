@@ -16,6 +16,9 @@ Read more about security groups in the [EC2 user guide for Linux](https://docs.a
 
 When using the AWS SDK for \.NET, you can create a security group for use in EC2 in a VPC or EC2\-Classic\. For more information about EC2 in a VPC versus EC2\-Classic, see the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-classic-platform.html)\.
 
+**Warning**  
+We are retiring EC2\-Classic on August 15, 2022\. We recommend that you migrate from EC2\-Classic to a VPC\. For more information, see **Migrate from EC2\-Classic to a VPC** in the the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/vpc-migrate.html)\. Also see the blog post [EC2\-Classic Networking is Retiring – Here's How to Prepare](http://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/)\.
+
 For information about the APIs and prerequisites, see the parent section \([Working with Amazon EC2](ec2-apis-intro.md)\)\.
 
 **Topics**
