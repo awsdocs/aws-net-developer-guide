@@ -12,7 +12,7 @@ For additional information, see the section for the [deployment tool](https://do
 
 This example shows you how to use the AWS SDK for \.NET to list the resources in AWS CloudFormation stacks\. The example uses the low\-level API\. The application takes no arguments, but simply gathers information for all stacks that are accessible to the user's credentials and then displays information about those stacks\.
 
-## SDK references<a name="w99aac21c15c13c13b5b1"></a>
+## SDK references<a name="w99aac23c15c13c13b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.CloudFormation](https://www.nuget.org/packages/AWSSDK.CloudFormation/)

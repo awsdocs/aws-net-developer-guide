@@ -19,9 +19,9 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w99aac21c18b9c25c13)
++ [Actions](#w99aac23c18b9c25c13)
 
-## Actions<a name="w99aac21c18b9c25c13"></a>
+## Actions<a name="w99aac23c18b9c25c13"></a>
 
 ### Authorize a bucket to send messages to a queue<a name="sqs_AuthorizeS3ToSendMessage_csharp_topic"></a>
 

@@ -86,7 +86,7 @@ The example [at the end of this topic](#UpdateSqsQueue-complete-code) shows this
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w99aac21c15c27c21c25b5b1"></a>
+### SDK references<a name="w99aac23c15c27c21c25b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
@@ -101,7 +101,7 @@ Programming elements:
 
   Class [GetQueueAttributesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TGetQueueAttributesResponse.html)
 
-### The code<a name="w99aac21c15c27c21c25b7b1"></a>
+### The code<a name="w99aac23c15c27c21c25b7b1"></a>
 
 ```
 using System;

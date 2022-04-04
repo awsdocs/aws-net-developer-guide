@@ -120,7 +120,7 @@ The example [at the end of this topic](#iam-users-create-complete-code) shows th
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w99aac21c15c21c19c23b5b1"></a>
+### SDK references<a name="w99aac23c15c21c19c23b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.IdentityManagement](https://www.nuget.org/packages/AWSSDK.IdentityManagement)
@@ -159,7 +159,7 @@ Programming elements:
 
   Class [ListUsersResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/IAM/TListUsersResponse.html)
 
-### The code<a name="w99aac21c15c21c19c23b7b1"></a>
+### The code<a name="w99aac23c15c21c19c23b7b1"></a>
 
 ```
 using System;
