@@ -118,6 +118,8 @@ Amazon's trademarks and trade dress may not be used in
          + [Amazon SQS examples using AWS SDK for .NET](csharp_sqs_code_examples.md)
       + [Cross-service examples using AWS SDK for .NET](csharp_code_examples_cross_service.md)
          + [Build a publish and subscription application that translates messages](cross_SnsPublishSubscription_csharp_topic.md)
+         + [Create a dynamic web application to track DynamoDB data](cross_DynamoDBDataTracker_csharp_topic.md)
+         + [Detect objects in images with Amazon Rekognition using an AWS SDK](cross_RekognitionPhotoAnalyzer_csharp_topic.md)
    + [Programming AWS OpsWorks to Work with stacks and applications](opsworks-apis-intro.md)
    + [Support for other AWS services and configuration](other-apis-intro.md)
 + [Security for this AWS Product or Service](security.md)

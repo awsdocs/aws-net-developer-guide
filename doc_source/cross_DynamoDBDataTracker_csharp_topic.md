@@ -8,11 +8,12 @@ For additional information, see the section for the [deployment tool](https://do
 
 --------
 
-# Cross\-service examples using AWS SDK for \.NET<a name="csharp_code_examples_cross_service"></a>
+# Create a dynamic web application to track DynamoDB data<a name="cross_DynamoDBDataTracker_csharp_topic"></a>
 
-The following sample applications use the AWS SDK for \.NET to work across multiple AWS services\.
+**AWS SDK for \.NET**  
+ Shows how to use the Amazon DynamoDB \.NET API to create a dynamic web application that tracks DynamoDB work data\.   
+ For complete source code and instructions on how to set up and run, see the full example on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/cross-service/DynamodbWebApp)\.   
 
-**Topics**
-+ [Building an Amazon SNS application](cross_SnsPublishSubscription_csharp_topic.md)
-+ [Create a web application to track DynamoDB data](cross_DynamoDBDataTracker_csharp_topic.md)
-+ [Detect objects in images](cross_RekognitionPhotoAnalyzer_csharp_topic.md)
+**Services used in this example**
++ DynamoDB
++ Amazon SES
