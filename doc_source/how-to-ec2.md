@@ -10,7 +10,7 @@ For additional information, see the section for the [deployment tool](https://do
 
 # Working with Amazon EC2 instances<a name="how-to-ec2"></a>
 
-You can use the AWS SDK for \.NET to control Amazon EC2 instances with operations such as create, start, and terminate\. The topics in this section provide some examples of how to do this\. Read more about EC2 instances in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Instances.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Instances.html)
+You can use the AWS SDK for \.NET to control Amazon EC2 instances with operations such as create, start, and terminate\. The topics in this section provide some examples of how to do this\. Read more about EC2 instances in the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Instances.html) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Instances.html)
 
 For information about the APIs and prerequisites, see the parent section \([Working with Amazon EC2](ec2-apis-intro.md)\)\.
 

@@ -16,7 +16,7 @@ This tutorial shows you how to use the AWS SDK for \.NET to enable IAM roles on 
 
 All requests to AWS must be cryptographically signed by using credentials issued by AWS\. Therefore, you need a strategy to manage credentials for applications that run on Amazon EC2 instances\. You have to distribute, store, and rotate these credentials securely, but also keep them accessible to the applications\.
 
-With IAM roles, you can effectively manage these credentials\. You create an IAM role and configure it with the permissions that an application requires, and then attach that role to an EC2 instance\. Read more about the benefits of using IAM roles in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/iam-roles-for-amazon-ec2.html)\. Also see the information about [IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html) in the IAM User Guide\.
+With IAM roles, you can effectively manage these credentials\. You create an IAM role and configure it with the permissions that an application requires, and then attach that role to an EC2 instance\. Read more about the benefits of using IAM roles in the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/iam-roles-for-amazon-ec2.html)\. Also see the information about [IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html) in the IAM User Guide\.
 
 For an application that is built using the AWS SDK for \.NET, when the application constructs a client object for an AWS service, the object searches for credentials from several potential sources\. The order in which it searches is shown in [Credential and profile resolution](creds-assign.md)\.
 
@@ -50,7 +50,7 @@ Create a \.NET Core project with the following code\. Then test the application 
 On your development machine, the \.NET Core Runtime is installed, which enables you to run the application without publishing it\. When you create an EC2 instance later in this tutorial, you can choose to install the \.NET Core Runtime on the instance\. This gives you a similar experience and a smaller file transfer\.  
  However, you can also choose not to install the \.NET Core Runtime on the instance\. If you choose this course of action, you must publish the application so that all dependencies are included when you transfer it to the instance\.
 
-### SDK references<a name="w99aac23c15c21c27c17c13b1"></a>
+### SDK references<a name="w131aac23c15c21c27c17c13b1"></a>
 
 NuGet packages:
 + [AWSSDK\.S3](https://www.nuget.org/packages/AWSSDK.S3)
@@ -63,7 +63,7 @@ Programming elements:
 
   Class [GetObjectResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/TGetObjectResponse.html)
 
-### The code<a name="w99aac23c15c21c27c17c15b1"></a>
+### The code<a name="w131aac23c15c21c27c17c15b1"></a>
 
 ```
 using System;
@@ -236,20 +236,20 @@ Create an IAM role that has the appropriate permissions to access Amazon S3\.
 Launch an EC2 instance with the IAM role you created previously\. You can do so in the following ways\.
 + **Using the EC2 console**
 
-  Follow the directions to launch an instance in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launching-instance.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/launching-instance.html)\.
+  Follow the directions to launch an instance in the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launching-instance.html) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/launching-instance.html)\.
 
   As you go through the wizard you should at least visit the **Configure Instance Details** page so that you can select the **IAM role** you created earlier\.
 + **Using the AWS SDK for \.NET**
 
   For information about this, see [Launching an Amazon EC2 instance](run-instance.md), including the [Additional considerations](run-instance.md#run-instance-additional) near the end of that topic\.
 
-To launch an EC2 instance that has an IAM role attached, an IAM user's configuration must include certain permissions\. For more information about the required permissions, see the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#permission-to-pass-iam-roles) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/iam-roles-for-amazon-ec2.html#permission-to-pass-iam-roles)\.
+To launch an EC2 instance that has an IAM role attached, an IAM user's configuration must include certain permissions\. For more information about the required permissions, see the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#permission-to-pass-iam-roles) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/iam-roles-for-amazon-ec2.html#permission-to-pass-iam-roles)\.
 
 ## Connect to the EC2 instance<a name="net-dg-hosm-connect"></a>
 
 Connect to the EC2 instance so that you can transfer the sample application to it and then run the application\. You'll need the file that contains the private portion of the key pair you used to launch the instance; that is, the PEM file\.
 
-You can do this by following the connect procedure in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html)\. When you connect, do so in such a way that you can transfer files from your development machine to your instance\.
+You can do this by following the connect procedure in the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html)\. When you connect, do so in such a way that you can transfer files from your development machine to your instance\.
 
 If you're using Visual Studio on Windows, you can also connect to the instance by using the Toolkit for Visual Studio\. For more information, see [Connecting to an Amazon EC2 Instance](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/tkv-ec2-ami.html#connect-ec2) in the AWS Toolkit for Visual Studio User Guide\.
 
@@ -257,7 +257,7 @@ If you're using Visual Studio on Windows, you can also connect to the instance b
 
 1. Copy the application files from your local drive to your instance\.
 
-   Which files you transfer depends on how you built the application and whether your instance has the \.NET Core Runtime installed\. For information about how to transfer files to your instance see the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html#AccessingInstancesWindowsFileTransfer)\.
+   Which files you transfer depends on how you built the application and whether your instance has the \.NET Core Runtime installed\. For information about how to transfer files to your instance see the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html#AccessingInstancesWindowsFileTransfer)\.
 
 1. Start the application and verify that it runs with the same results as on your development machine\.
 

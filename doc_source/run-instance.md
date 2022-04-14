@@ -14,7 +14,10 @@ This example shows you how to use the AWS SDK for \.NET to launch one or more id
 
 When your EC2 instance is running, you can connect to it remotely, as described in [\(optional\) Connect to the instance](#connect-to-instance)\.
 
-You can launch an EC2 instance in a VPC or in EC2\-Classic \(if your AWS account supports this\)\. For more information about EC2 in a VPC versus EC2\-Classic, see the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-classic-platform.html)\.
+You can launch an EC2 instance in a VPC or in EC2\-Classic \(if your AWS account supports this\)\. For more information about EC2 in a VPC versus EC2\-Classic, see the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-classic-platform.html)\.
+
+**Warning**  
+We are retiring EC2\-Classic on August 15, 2022\. We recommend that you migrate from EC2\-Classic to a VPC\. For more information, see **Migrate from EC2\-Classic to a VPC** in the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/vpc-migrate.html)\. Also see the blog post [EC2\-Classic Networking is Retiring – Here's How to Prepare](http://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/)\.
 
 The following sections provide snippets and other information for this example\. The [complete code for the example](#run-instance-complete-code) is shown after the snippets, and can be built and run as is\.
 
@@ -36,7 +39,7 @@ To launch an EC2 instance, you'll need several things\.
 If your AWS account supports EC2\-Classic and that's the type of instance you want to launch, this parameter isn't required\. However, if your account doesn't support EC2\-Classic and you don't supply this parameter, the new instance is launched in the default VPC for your account\.
 + The ID of an existing security group that belongs to the VPC where the instance will be launched\. For more information, see [Working with security groups in Amazon EC2](security-groups.md)\.
 + If you want to connect to the new instance, the security group mentioned earlier must have an appropriate inbound rule that allows SSH traffic on port 22 \(Linux instance\) or RDP traffic on port 3389 \(Windows instance\)\. For information about how to do this see [Updating security groups](authorize-ingress.md), including the [Additional considerations](authorize-ingress.md#authorize-ingress-additional) near the end of that topic\.
-+ The Amazon Machine Image \(AMI\) that will be used to create the instance\. See the information about AMIs in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/AMIs.html)\. For example, read about shared AMIs in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/sharing-amis.html)\.
++ The Amazon Machine Image \(AMI\) that will be used to create the instance\. See the information about AMIs in the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/AMIs.html)\. For example, read about shared AMIs in the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/sharing-amis.html)\.
 + The name of an existing EC2 key pair, which is used to connect to the new instance\. For more information, see [Working with Amazon EC2 key pairs](key-pairs.md)\.
 + The name of the PEM file that contains the private key of the EC2 key pair mentioned earlier\. The PEM file is used when you [connect remotely](#connect-to-instance) to the instance\.
 
@@ -132,7 +135,7 @@ See the [InstanceState](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/E
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w99aac23c15c19c19b9c27b5b1"></a>
+### SDK references<a name="w131aac23c15c19c19b9c29b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -157,7 +160,7 @@ Programming elements:
 
   Class [RunInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesResponse.html)
 
-### The code<a name="w99aac23c15c19c19b9c27b7b1"></a>
+### The code<a name="w131aac23c15c19c19b9c29b7b1"></a>
 
 ```
 using System;
@@ -417,10 +420,10 @@ namespace EC2LaunchInstance
 + When checking the state of an EC2 instance, you can add a filter to the `Filter` property of the [DescribeInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TDescribeInstancesRequest.html) object\. Using this technique, you can limit the request to certain instances; for example, instances with a particular user\-specified tag\.
 + For brevity, some properties were given typical values\. Any or all of these properties can instead be determined programmatically or by user input\.
 + The values you can use for the `MinCount` and `MaxCount` properties of the [RunInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesRequest.html) object are determined by the target Availability Zone and the maximum number of instances you’re allowed for the instance type\. For more information, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ\.
-+ If you want to use a different instance type than this example, there are several instance types to choose from, which you can see in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html)\.
++ If you want to use a different instance type than this example, there are several instance types to choose from, which you can see in the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html)\.
 + You can also attach an [IAM role](net-dg-hosm.md) to an instance when you launch it\. To do so, create an [IamInstanceProfileSpecification](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TIamInstanceProfileSpecification.html) object whose `Name` property is set to the name of an IAM role\. Then add that object to the `IamInstanceProfile` property of the [RunInstancesRequest](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesRequest.html) object\.
 **Note**  
-To launch an EC2 instance that has an IAM role attached, an IAM user's configuration must include certain permissions\. For more information about the required permissions, see the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#permission-to-pass-iam-roles) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/iam-roles-for-amazon-ec2.html#permission-to-pass-iam-roles)\.
+To launch an EC2 instance that has an IAM role attached, an IAM user's configuration must include certain permissions\. For more information about the required permissions, see the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#permission-to-pass-iam-roles) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/iam-roles-for-amazon-ec2.html#permission-to-pass-iam-roles)\.
 
 ## \(optional\) Connect to the instance<a name="connect-to-instance"></a>
 
@@ -445,7 +448,7 @@ For more information, see [Connecting to your Windows instance](https://docs.aws
 **Warning**  
 This example code returns the plaintext Administrator password for your instance\.
 
-### SDK references<a name="w99aac23c15c19c19b9c35c23b1"></a>
+### SDK references<a name="w131aac23c15c19c19b9c37c23b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -460,7 +463,7 @@ Programming elements:
 
   Class [GetPasswordDataResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TGetPasswordDataResponse.html)
 
-### The code<a name="w99aac23c15c19c19b9c35c25b1"></a>
+### The code<a name="w131aac23c15c19c19b9c37c25b1"></a>
 
 ```
 using System;

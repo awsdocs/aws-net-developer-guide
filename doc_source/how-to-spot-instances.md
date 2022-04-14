@@ -26,7 +26,7 @@ The following is a high\-level summary of how Spot Instances are requested and u
 
 1. Clean up the Spot Instance request when you no longer need it so that Spot Instances are no longer created\.
 
-This has been a very high level overview of Spot Instances\. You can gain a better understanding of Spot Instances by reading about them in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/using-spot-instances.html)\.
+This has been a very high level overview of Spot Instances\. You can gain a better understanding of Spot Instances by reading about them in the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/using-spot-instances.html)\.
 
 ## About this tutorial<a name="about-spot-instances-tutorial"></a>
 
@@ -57,8 +57,8 @@ For information about the APIs and prerequisites, see the parent section \([Work
 ## Gather what you need<a name="tutor-spot-net-gather"></a>
 
 To create a Spot Instance request, you'll need several things\. 
-+ The number of instances and their instance type\. There are several instance types to choose from, which you can see in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html)\. The default number for this tutorial is 1\.
-+ The Amazon Machine Image \(AMI\) that will be used to create the instance\. See the information about AMIs in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/AMIs.html)\. For example, read about shared AMIs in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/sharing-amis.html)\.
++ The number of instances and their instance type\. There are several instance types to choose from, which you can see in the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html)\. The default number for this tutorial is 1\.
++ The Amazon Machine Image \(AMI\) that will be used to create the instance\. See the information about AMIs in the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/AMIs.html)\. For example, read about shared AMIs in the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/sharing-amis.html)\.
 + The maximum price that you're willing to pay per instance hour\. You can see the prices for all instance types \(for both On\-Demand Instances and Spot Instances\) on the [Amazon EC2 pricing page](https://aws.amazon.com/ec2/pricing/)\. The default price for this tutorial is explained later\.
 + If you want to connect remotely to an instance, a security group with the appropriate configuration and resources\. This is described in [Working with security groups in Amazon EC2](security-groups.md) and the information about [gathering what you need](run-instance.md#run-instance-gather) and [connecting to an instance](run-instance.md#connect-to-instance) in [Launching an Amazon EC2 instance](run-instance.md)\. For simplicity, this tutorial uses the security group named **default** that all newer AWS accounts have\.
 
@@ -67,7 +67,7 @@ There are many ways to approach requesting Spot Instances\. The following are co
 + Make requests based on the value of the resulting computation\.
 + Make requests so as to acquire computing capacity as quickly as possible\.
 
-The following explanations refer to the Spot Price history in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/using-spot-instances-history.html)\.
+The following explanations refer to the Spot Price history in the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/using-spot-instances-history.html)\.
 
 ### Reduce cost below On\-Demand<a name="reduce-cost"></a>
 
@@ -147,7 +147,7 @@ The example [at the end of this topic](#tutor-spot-net-main) shows this snippet 
     }
 ```
 
-The method returns information about the Spot Instance request such as the instance ID, it's state, and the status code\. You can see the status codes for Spot Instance requests in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html#spot-instance-bid-status-understand) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/spot-bid-status.html#spot-instance-bid-status-understand)\.
+The method returns information about the Spot Instance request such as the instance ID, it's state, and the status code\. You can see the status codes for Spot Instance requests in the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html#spot-instance-bid-status-understand) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/spot-bid-status.html#spot-instance-bid-status-understand)\.
 
 ## Clean up your Spot Instance requests<a name="tutor-spot-net-clean-up-request"></a>
 
@@ -209,7 +209,7 @@ The example [at the end of this topic](#tutor-spot-net-main) shows this snippet 
 
 The following code example calls the methods described earlier to create and cancel a Spot Instance request and terminate a Spot Instance\.
 
-### SDK references<a name="w99aac23c15c19c21c43b5b1"></a>
+### SDK references<a name="w131aac23c15c19c21c43b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -242,7 +242,7 @@ Programming elements:
 
   Class [TerminateInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TTerminateInstancesResponse.html)
 
-### The code<a name="w99aac23c15c19c21c43b7b1"></a>
+### The code<a name="w131aac23c15c19c21c43b7b1"></a>
 
 ```
 using System;

@@ -16,6 +16,7 @@ Amazon's trademarks and trade dress may not be used in
 ## Contents
 + [What is the AWS SDK for .NET](welcome.md)
    + [AWS tools related to the AWS SDK for .NET](related-tools.md)
+   + [AWS SDKs and Tools Reference Guide](sdks-and-tools-ref.md)
    + [Additional resources](net-dg-additional-resources.md)
 + [A quick tour of the AWS SDK for .NET](quick-start.md)
    + [Simple cross-platform application using the AWS SDK for .NET](quick-start-s3-1-cross.md)
@@ -111,6 +112,7 @@ Amazon's trademarks and trade dress may not be used in
          + [CloudWatch examples using AWS SDK for .NET](csharp_cloudwatch_code_examples.md)
          + [CloudWatch Logs examples using AWS SDK for .NET](csharp_cloudwatch-logs_code_examples.md)
          + [Amazon Comprehend examples using AWS SDK for .NET](csharp_comprehend_code_examples.md)
+         + [IAM examples using AWS SDK for .NET](csharp_iam_code_examples.md)
          + [AWS KMS examples using AWS SDK for .NET](csharp_kms_code_examples.md)
          + [Amazon Rekognition examples using AWS SDK for .NET](csharp_rekognition_code_examples.md)
          + [Amazon S3 examples using AWS SDK for .NET](csharp_s3_code_examples.md)

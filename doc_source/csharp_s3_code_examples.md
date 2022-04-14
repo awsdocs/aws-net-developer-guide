@@ -19,10 +19,10 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w99aac23c18b9c21c13)
-+ [Scenarios](#w99aac23c18b9c21c15)
++ [Actions](#w131aac23c18b9c23c13)
++ [Scenarios](#w131aac23c18b9c23c15)
 
-## Actions<a name="w99aac23c18b9c21c13"></a>
+## Actions<a name="w131aac23c18b9c23c13"></a>
 
 ### Copy an object from one bucket to another<a name="s3_CopyObject_csharp_topic"></a>
 
@@ -348,7 +348,7 @@ The following code example shows how to upload an object to an Amazon S3 bucket\
 +  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
 +  For API details, see [PutObject](https://docs.aws.amazon.com/goto/DotNetSDKV3/s3-2006-03-01/PutObject) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w99aac23c18b9c21c15"></a>
+## Scenarios<a name="w131aac23c18b9c23c15"></a>
 
 ### Getting started with buckets and objects<a name="s3_Scenario_GettingStarted_csharp_topic"></a>
 

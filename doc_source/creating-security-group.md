@@ -12,7 +12,7 @@ For additional information, see the section for the [deployment tool](https://do
 
 This example shows you how to use the AWS SDK for \.NET to create a security group\. You can provide the ID of an existing VPC to create a security group for EC2 in a VPC\. If you don't supply such an ID, the new security group will be for EC2\-Classic if your AWS account supports this\.
 
-If you don't supply a VPC ID and your AWS account doesn't support EC2\-Classic, the new security group will belong to the default VPC of your account\. For more information, see the references for EC2 in a VPC versus EC2\-Classic the parent section \([Working with security groups in Amazon EC2](security-groups.md)\)\.
+If you don't supply a VPC ID and your AWS account doesn't support EC2\-Classic, the new security group will belong to the default VPC of your account\. For more information, see the references for EC2 in a VPC versus EC2\-Classic in the parent section \([Working with security groups in Amazon EC2](security-groups.md)\)\.
 
 The following sections provide snippets of this example\. The [complete code for the example](#create-sec-groups-complete-code) is shown after that, and can be built and run as is\.
 
@@ -102,7 +102,7 @@ The example [at the end of this topic](#create-sec-groups-complete-code) shows t
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w99aac23c15c19c13c17c21b5b1"></a>
+### SDK references<a name="w131aac23c15c19c13c17c21b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -125,7 +125,7 @@ Programming elements:
 
   Class [SecurityGroup](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TSecurityGroup.html)
 
-### The code<a name="w99aac23c15c19c13c17c21b7b1"></a>
+### The code<a name="w131aac23c15c19c13c17c21b7b1"></a>
 
 ```
 using System;

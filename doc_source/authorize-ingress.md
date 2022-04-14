@@ -57,7 +57,7 @@ The example [at the end of this topic](#authorize-ingress-complete-code) shows t
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w99aac23c15c19c13c19c17b5b1"></a>
+### SDK references<a name="w131aac23c15c19c13c19c17b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -76,7 +76,7 @@ Programming elements:
 
   Class [IpRange](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TIpRange.html)
 
-### The code<a name="w99aac23c15c19c13c19c17b7b1"></a>
+### The code<a name="w131aac23c15c19c13c19c17b7b1"></a>
 
 ```
 using System;
@@ -237,7 +237,7 @@ namespace EC2AddRuleForRDP
 + If you don't supply a port number, the application defaults to port 3389\. This is the port for Windows RDP, which enables you to connect to an EC2 instance running Windows\. If you're launching an EC2 instance running Linux, you can use TCP port 22 \(SSH\) instead\.
 + Notice that the example sets `IpProtocol` to "tcp"\. The values for `IpProtocol` can be found in the description for the `IpProtocol` property of the [IpPermission](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TIpPermission.html) class\.
 + You might want the IP address of your local computer when you use this example\. The following are some of the ways in which you can obtain the address\.
-  + If your local computer \(from which you will connect to your EC2 instance\) has a static public IP address, you can use a service to get that address\. One such service is [http://checkip\.amazonaws\.com/](http://checkip.amazonaws.com/)\. Read more about authorizing inbound traffic in the [EC2 user guide for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/authorizing-access-to-an-instance.html) or the [EC2 user guide for Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/authorizing-access-to-an-instance.html)\.
+  + If your local computer \(from which you will connect to your EC2 instance\) has a static public IP address, you can use a service to get that address\. One such service is [http://checkip\.amazonaws\.com/](http://checkip.amazonaws.com/)\. Read more about authorizing inbound traffic in the [Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/authorizing-access-to-an-instance.html) or the [Amazon EC2 User Guide for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/authorizing-access-to-an-instance.html)\.
   + Another way to obtain the IP address of your local computer is to use the [Amazon EC2 console](https://console.aws.amazon.com/ec2/v2/home#SecurityGroups)\.
 
     Select one of your security groups, select the **Inbound rules** tab, and choose **Edit inbound rules**\. In an inbound rule, open the drop\-down menu in the **Source** column and choose **My IP** to see the IP address of your local computer in CIDR format\. Be sure to **Cancel** the operation\.

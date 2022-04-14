@@ -14,6 +14,7 @@ The following table describes the important changes since the last release of th
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Retiring EC2\-Classic](#document-history) | Added notes about retiring EC2\-Classic\. | April 13, 2022 | 
 | [Single sign\-on with the AWS SDK for \.NET](sso.md) | Added information about single sign\-on \(SSO\) when using the AWS SDK for \.NET\. | March 17, 2022 | 
 | [Enforcing a minimum TLS version](enforcing-tls.md) | Added information about TLS 1\.3\. | March 16, 2022 | 
 | [Working with AWS services](working-with-aws-services.md) | Included lists of the code examples that are available on GitHub\. | February 28, 2022 | 

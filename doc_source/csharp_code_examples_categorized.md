@@ -20,6 +20,7 @@ The following code examples show how to perform actions and implement common sce
 + [CloudWatch](csharp_cloudwatch_code_examples.md)
 + [CloudWatch Logs](csharp_cloudwatch-logs_code_examples.md)
 + [Amazon Comprehend](csharp_comprehend_code_examples.md)
++ [IAM](csharp_iam_code_examples.md)
 + [AWS KMS](csharp_kms_code_examples.md)
 + [Amazon Rekognition](csharp_rekognition_code_examples.md)
 + [Amazon S3](csharp_s3_code_examples.md)
