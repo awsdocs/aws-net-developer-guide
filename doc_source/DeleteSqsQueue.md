@@ -1,13 +1,3 @@
---------
-
-Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.Tools) for a simplified deployment experience\!
-
- [https://github.com/aws/aws-dotnet-deploy/](https://github.com/aws/aws-dotnet-deploy/)
-
-Read our [original blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) as well as the [update post](https://aws.amazon.com/blogs/developer/update-new-net-deployment-experience/) and the [post on deployment projects](https://aws.amazon.com/blogs/developer/dotnet-deployment-projects/)\. Submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\! For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
-
---------
-
 # Deleting Amazon SQS queues<a name="DeleteSqsQueue"></a>
 
 This example shows you how to use the AWS SDK for \.NET to delete an Amazon SQS queue\. The application deletes the queue, waits for up to a given amount of time for the queue to be gone, and then shows a list of the remaining queues\.
@@ -98,7 +88,7 @@ The example [at the end of this topic](#DeleteSqsQueue-complete-code) shows this
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w131aac23c15c27c23c25b5b1"></a>
+### SDK references<a name="w150aac21c15c27c23c25b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
@@ -111,7 +101,7 @@ Programming elements:
 
   Class [ListQueuesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TListQueuesResponse.html)
 
-### The code<a name="w131aac23c15c27c23c25b7b1"></a>
+### The code<a name="w150aac21c15c27c23c25b7b1"></a>
 
 ```
 using System;

@@ -1,13 +1,3 @@
---------
-
-Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.Tools) for a simplified deployment experience\!
-
- [https://github.com/aws/aws-dotnet-deploy/](https://github.com/aws/aws-dotnet-deploy/)
-
-Read our [original blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) as well as the [update post](https://aws.amazon.com/blogs/developer/update-new-net-deployment-experience/) and the [post on deployment projects](https://aws.amazon.com/blogs/developer/dotnet-deployment-projects/)\. Submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\! For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
-
---------
-
 # Granting access by using an IAM role<a name="net-dg-hosm"></a>
 
 This tutorial shows you how to use the AWS SDK for \.NET to enable IAM roles on Amazon EC2 instances\.
@@ -50,7 +40,7 @@ Create a \.NET Core project with the following code\. Then test the application 
 On your development machine, the \.NET Core Runtime is installed, which enables you to run the application without publishing it\. When you create an EC2 instance later in this tutorial, you can choose to install the \.NET Core Runtime on the instance\. This gives you a similar experience and a smaller file transfer\.  
  However, you can also choose not to install the \.NET Core Runtime on the instance\. If you choose this course of action, you must publish the application so that all dependencies are included when you transfer it to the instance\.
 
-### SDK references<a name="w131aac23c15c21c27c17c13b1"></a>
+### SDK references<a name="w150aac21c15c21c27c17c13b1"></a>
 
 NuGet packages:
 + [AWSSDK\.S3](https://www.nuget.org/packages/AWSSDK.S3)
@@ -63,7 +53,7 @@ Programming elements:
 
   Class [GetObjectResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/TGetObjectResponse.html)
 
-### The code<a name="w131aac23c15c21c27c17c15b1"></a>
+### The code<a name="w150aac21c15c21c27c17c15b1"></a>
 
 ```
 using System;

@@ -1,20 +1,10 @@
---------
-
-Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.Tools) for a simplified deployment experience\!
-
- [https://github.com/aws/aws-dotnet-deploy/](https://github.com/aws/aws-dotnet-deploy/)
-
-Read our [original blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) as well as the [update post](https://aws.amazon.com/blogs/developer/update-new-net-deployment-experience/) and the [post on deployment projects](https://aws.amazon.com/blogs/developer/dotnet-deployment-projects/)\. Submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\! For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
-
---------
-
 # Single sign\-on \(SSO\) with the AWS SDK for \.NET<a name="sso"></a>
 
 AWS Single Sign\-On \(AWS SSO\) is a cloud\-based single sign\-on service that makes it easy to centrally manage SSO access to all of your AWS accounts and cloud applications\. For full details, see the [AWS Single Sign\-On User Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/)\.
 
 If you're unfamiliar with how an SDK interacts with AWS SSO, see the following information\.
 
-## High\-level pattern of interaction<a name="w131aac17b7b7b1"></a>
+## High\-level pattern of interaction<a name="w150aac15b7b7b1"></a>
 
 At a high level, SDKs interact with AWS SSO in a manner similar to the following pattern:
 

@@ -1,13 +1,3 @@
---------
-
-Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.Tools) for a simplified deployment experience\!
-
- [https://github.com/aws/aws-dotnet-deploy/](https://github.com/aws/aws-dotnet-deploy/)
-
-Read our [original blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) as well as the [update post](https://aws.amazon.com/blogs/developer/update-new-net-deployment-experience/) and the [post on deployment projects](https://aws.amazon.com/blogs/developer/dotnet-deployment-projects/)\. Submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\! For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
-
---------
-
 # Sending Amazon SQS messages<a name="SendMessage"></a>
 
 This example shows you how to use the AWS SDK for \.NET to send messages to an Amazon SQS queue, which you can create [programmatically](CreateQueue.md) or by using the [Amazon SQS console](https://console.aws.amazon.com/sqs)\. The application sends a single message to the queue and then a batch of messages\. The application then waits for user input, which can be additional messages to send to the queue or a request to exit the application\.
@@ -87,7 +77,7 @@ The example [at the end of this topic](#SendMessage-complete-code) shows this sn
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w131aac23c15c27c25c25b5b1"></a>
+### SDK references<a name="w150aac21c15c27c25c25b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
@@ -108,7 +98,7 @@ Programming elements:
 
   Class [SendMessageBatchResultEntry](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TSendMessageBatchResultEntry.html)
 
-### The code<a name="w131aac23c15c27c25c25b7b1"></a>
+### The code<a name="w150aac21c15c27c25c25b7b1"></a>
 
 ```
 using System;

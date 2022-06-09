@@ -1,13 +1,3 @@
---------
-
-Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.Tools) for a simplified deployment experience\!
-
- [https://github.com/aws/aws-dotnet-deploy/](https://github.com/aws/aws-dotnet-deploy/)
-
-Read our [original blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) as well as the [update post](https://aws.amazon.com/blogs/developer/update-new-net-deployment-experience/) and the [post on deployment projects](https://aws.amazon.com/blogs/developer/dotnet-deployment-projects/)\. Submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\! For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
-
---------
-
 # Amazon SQS examples using AWS SDK for \.NET<a name="csharp_sqs_code_examples"></a>
 
 The following code examples show you how to perform actions and implement common scenarios by using the AWS SDK for \.NET with Amazon SQS\.
@@ -19,9 +9,9 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w131aac23c18b9c27c13)
++ [Actions](#w150aac21c18b9c29c13)
 
-## Actions<a name="w131aac23c18b9c27c13"></a>
+## Actions<a name="w150aac21c18b9c29c13"></a>
 
 ### Authorize a bucket to send messages to a queue<a name="sqs_AuthorizeS3ToSendMessage_csharp_topic"></a>
 

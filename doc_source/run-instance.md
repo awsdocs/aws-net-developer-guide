@@ -1,13 +1,3 @@
---------
-
-Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.Tools) for a simplified deployment experience\!
-
- [https://github.com/aws/aws-dotnet-deploy/](https://github.com/aws/aws-dotnet-deploy/)
-
-Read our [original blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) as well as the [update post](https://aws.amazon.com/blogs/developer/update-new-net-deployment-experience/) and the [post on deployment projects](https://aws.amazon.com/blogs/developer/dotnet-deployment-projects/)\. Submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\! For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
-
---------
-
 # Launching an Amazon EC2 instance<a name="run-instance"></a>
 
 This example shows you how to use the AWS SDK for \.NET to launch one or more identically configured Amazon EC2 instances from the same Amazon Machine Image \(AMI\)\. Using [several inputs](#run-instance-gather) that you supply, the application launches an EC2 instance and then monitors the instance until it's out of the "Pending" state\.
@@ -135,7 +125,7 @@ See the [InstanceState](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/E
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w131aac23c15c19c19b9c29b5b1"></a>
+### SDK references<a name="w150aac21c15c19c19b9c29b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -160,7 +150,7 @@ Programming elements:
 
   Class [RunInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TRunInstancesResponse.html)
 
-### The code<a name="w131aac23c15c19c19b9c29b7b1"></a>
+### The code<a name="w150aac21c15c19c19b9c29b7b1"></a>
 
 ```
 using System;
@@ -448,7 +438,7 @@ For more information, see [Connecting to your Windows instance](https://docs.aws
 **Warning**  
 This example code returns the plaintext Administrator password for your instance\.
 
-### SDK references<a name="w131aac23c15c19c19b9c37c23b1"></a>
+### SDK references<a name="w150aac21c15c19c19b9c37c23b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -463,7 +453,7 @@ Programming elements:
 
   Class [GetPasswordDataResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TGetPasswordDataResponse.html)
 
-### The code<a name="w131aac23c15c19c19b9c37c25b1"></a>
+### The code<a name="w150aac21c15c19c19b9c37c25b1"></a>
 
 ```
 using System;

@@ -1,13 +1,3 @@
---------
-
-Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.Tools) for a simplified deployment experience\!
-
- [https://github.com/aws/aws-dotnet-deploy/](https://github.com/aws/aws-dotnet-deploy/)
-
-Read our [original blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) as well as the [update post](https://aws.amazon.com/blogs/developer/update-new-net-deployment-experience/) and the [post on deployment projects](https://aws.amazon.com/blogs/developer/dotnet-deployment-projects/)\. Submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\! For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
-
---------
-
 # Deleting IAM users<a name="iam-users-delete"></a>
 
 This example shows you how use the AWS SDK for \.NET to delete an IAM user\. It first removes resources such as access keys, attached policies, etc\., and then deletes the user\.
@@ -100,7 +90,7 @@ The example [at the end of this topic](#iam-users-delete-complete-code) shows th
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w131aac23c15c21c21c19b5b1"></a>
+### SDK references<a name="w150aac21c15c21c21c19b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.IdentityManagement](https://www.nuget.org/packages/AWSSDK.IdentityManagement)
@@ -129,7 +119,7 @@ Programming elements:
 
   Class [ListAttachedUserPoliciesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/IAM/TListAttachedUserPoliciesResponse.html)
 
-### The code<a name="w131aac23c15c21c21c19b7b1"></a>
+### The code<a name="w150aac21c15c21c21c19b7b1"></a>
 
 ```
 using System;

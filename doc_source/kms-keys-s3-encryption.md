@@ -1,13 +1,3 @@
---------
-
-Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.Tools) for a simplified deployment experience\!
-
- [https://github.com/aws/aws-dotnet-deploy/](https://github.com/aws/aws-dotnet-deploy/)
-
-Read our [original blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) as well as the [update post](https://aws.amazon.com/blogs/developer/update-new-net-deployment-experience/) and the [post on deployment projects](https://aws.amazon.com/blogs/developer/dotnet-deployment-projects/)\. Submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\! For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
-
---------
-
 # Using AWS KMS keys for Amazon S3 encryption in the AWS SDK for \.NET<a name="kms-keys-s3-encryption"></a>
 
 This example shows you how to use AWS Key Management Service keys to encrypt Amazon S3 objects\. The application creates a customer master key \(CMK\) and uses it to create an [AmazonS3EncryptionClientV2](https://aws.github.io/amazon-s3-encryption-client-dotnet/api/Amazon.Extensions.S3.Encryption.AmazonS3EncryptionClientV2.html) object for client\-side encryption\. The application uses that client to create an encrypted object from a given text file in an existing Amazon S3 bucket\. It then decrypts the object and displays its contents\.
@@ -77,7 +67,7 @@ The example [at the end of this topic](#kms-s3-complete-code) shows this snippet
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w131aac23c15c23c13c15b5b1"></a>
+### SDK references<a name="w150aac21c15c23c13c15b5b1"></a>
 
 NuGet packages:
 + [Amazon\.Extensions\.S3\.Encryption](https://www.nuget.org/packages/Amazon.Extensions.S3.Encryption)
@@ -111,7 +101,7 @@ Programming elements:
 
   Class [CreateKeyResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/KeyManagementService/TCreateKeyResponse.html)
 
-### The code<a name="w131aac23c15c23c13c15b7b1"></a>
+### The code<a name="w150aac21c15c23c13c15b7b1"></a>
 
 ```
 using System;

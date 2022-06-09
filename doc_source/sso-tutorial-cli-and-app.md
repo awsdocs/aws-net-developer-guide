@@ -1,13 +1,3 @@
---------
-
-Do you want to deploy your \.NET applications to AWS in just a few simple clicks? Try our new [\.NET CLI tooling](https://www.nuget.org/packages/AWS.Deploy.Tools) for a simplified deployment experience\!
-
- [https://github.com/aws/aws-dotnet-deploy/](https://github.com/aws/aws-dotnet-deploy/)
-
-Read our [original blog post](https://aws.amazon.com/blogs/developer/reimagining-the-aws-net-deployment-experience/) as well as the [update post](https://aws.amazon.com/blogs/developer/update-new-net-deployment-experience/) and the [post on deployment projects](https://aws.amazon.com/blogs/developer/dotnet-deployment-projects/)\. Submit your feedback on [GitHub](https://github.com/aws/aws-dotnet-deploy)\! For additional information, see the section for the [deployment tool](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/deployment-tool.html) in this guide\.
-
---------
-
 # Tutorial for AWS SSO using the AWS CLI and \.NET applications<a name="sso-tutorial-cli-and-app"></a>
 
 This tutorial shows you how to enable AWS Single Sign\-On for a basic \.NET application and a test SSO user\. It uses the AWS CLI to generate a temporary SSO token instead of [generating it programmatically](sso-tutorial-app-only.md)\.
@@ -29,27 +19,27 @@ This section shows you how to set up various AWS services for this tutorial\.
 
 To perform this setup, first sign in to the test AWS account as an administrator\. Then, do the following:
 
-### Amazon S3<a name="w131aac17b7c33c15b3b5"></a>
+### Amazon S3<a name="w150aac15b7c33c15b3b5"></a>
 
 Go to the [Amazon S3 console](https://console.aws.amazon.com/s3/home) and add some innocuous buckets\. Later in this tutorial, the SSO user will retrieve a list of these buckets\.
 
-### AWS IAM<a name="w131aac17b7c33c15b3b7"></a>
+### AWS IAM<a name="w150aac15b7c33c15b3b7"></a>
 
 Go to the [IAM console](https://console.aws.amazon.com/iam/home#/users) and add a few IAM users\. If you give the IAM users permissions, limit the permissions to a few innocuous read\-only permissions\. Later in this tutorial, the SSO user will retrieve a list of these IAM users\.
 
-### AWS Organizations<a name="w131aac17b7c33c15b3b9"></a>
+### AWS Organizations<a name="w150aac15b7c33c15b3b9"></a>
 
 Go to the [AWS Organizations console](https://console.aws.amazon.com/organizations/) and enable Organizations\. For more information, see [Creating an organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_create.html) in the [AWS Organizations User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/)\.
 
 This action adds the test AWS account to the organization as the *management account*\. If you have additional test accounts, you can invite them to join the organization, but doing so isn't necessary for this tutorial\.
 
-### AWS SSO<a name="w131aac17b7c33c15b3c11"></a>
+### AWS SSO<a name="w150aac15b7c33c15b3c11"></a>
 
 Go to the [AWS Single Sign\-On console](https://console.aws.amazon.com/singlesignon/) and enable AWS SSO\. Perform email verification if necessary\. For more information, see [Enable AWS SSO](https://docs.aws.amazon.com/singlesignon/latest/userguide/step1.html) in the [AWS Single Sign\-On User Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/)\.
 
 Then, perform the following configuration\.
 
-#### Configure AWS SSO<a name="w131aac17b7c33c15b3c11b7b1"></a>
+#### Configure AWS SSO<a name="w150aac15b7c33c15b3c11b7b1"></a>
 
 1. Go to the **Settings** page\. Look for the **"User portal URL"** and record the value for later use in the `sso_start_url` setting\.
 
