@@ -21,7 +21,7 @@ The SDK reference documentation gives you the ability to browse and search acros
 
  **AWS re:Post \(formerly AWS forums\)** 
 
-Visit [AWS re:Post](https://repost.aws/), specifically the [topic for the AWS SDK for \.NET](https://repost.aws/topics/TAC3sZCeiYRViBUbM29z_2ZQ/net-on-aws), to ask questions or provide feedback about AWS\. Each documentation page has a **Try AWS re:Post** button at the bottom of the page that takes you to the associated re:Post topic\. AWS engineers monitor the topics and respond to questions, feedback, and issues\.
+Visit [AWS re:Post](https://repost.aws/), specifically the [topic for the AWS SDK for \.NET](https://repost.aws/topics/TAC3sZCeiYRViBUbM29z_2ZQ/net-on-aws), to ask questions or provide feedback about AWS\. Each documentation page has a **Try AWS re:Post** link at the bottom of the page that takes you to the associated re:Post topic\. AWS engineers monitor the topics and respond to questions, feedback, and issues\.
 
 If you're signed in to re:Post, you can also follow a topic\. To follow the topic for the AWS SDK for \.NET, go to the [**All Topics** page](https://repost.aws/topics), find "\.NET on AWS", and select the **Follow** button\.
 
