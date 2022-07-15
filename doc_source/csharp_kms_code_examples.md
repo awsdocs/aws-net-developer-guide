@@ -9,15 +9,16 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w150aac21c18b9c21c13)
++ [Actions](#w155aac21c18b9c21c13)
 
-## Actions<a name="w150aac21c18b9c21c13"></a>
+## Actions<a name="w155aac21c18b9c21c13"></a>
 
 ### Create a grant for a key<a name="kms_CreateGrant_csharp_topic"></a>
 
 The following code example shows how to create a grant for a KMS key\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
 This examples grants a user permission to use a key for encryption and decryption\.  
 
 ```
@@ -55,7 +56,6 @@ This examples grants a user permission to use a key for encryption and decryptio
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
 +  For API details, see [CreateGrant](https://docs.aws.amazon.com/goto/DotNetSDKV3/kms-2014-11-01/CreateGrant) in *AWS SDK for \.NET API Reference*\. 
 
 ### Create a key<a name="kms_CreateKey_csharp_topic"></a>
@@ -63,6 +63,7 @@ This examples grants a user permission to use a key for encryption and decryptio
 The following code example shows how to create an AWS KMS key\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
   
 
 ```
@@ -102,7 +103,6 @@ The following code example shows how to create an AWS KMS key\.
 
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
 +  For API details, see [CreateKey](https://docs.aws.amazon.com/goto/DotNetSDKV3/kms-2014-11-01/CreateKey) in *AWS SDK for \.NET API Reference*\. 
 
 ### Create an alias for a key<a name="kms_CreateAlias_csharp_topic"></a>
@@ -110,6 +110,7 @@ The following code example shows how to create an AWS KMS key\.
 The following code example shows how to create an alias for a KMS key key\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
   
 
 ```
@@ -152,7 +153,6 @@ The following code example shows how to create an alias for a KMS key key\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
 +  For API details, see [CreateAlias](https://docs.aws.amazon.com/goto/DotNetSDKV3/kms-2014-11-01/CreateAlias) in *AWS SDK for \.NET API Reference*\. 
 
 ### Describe a key<a name="kms_DescribeKey_csharp_topic"></a>
@@ -160,6 +160,7 @@ The following code example shows how to create an alias for a KMS key key\.
 The following code example shows how to describe a KMS key\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
   
 
 ```
@@ -189,7 +190,6 @@ The following code example shows how to describe a KMS key\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
 +  For API details, see [DescribeKey](https://docs.aws.amazon.com/goto/DotNetSDKV3/kms-2014-11-01/DescribeKey) in *AWS SDK for \.NET API Reference*\. 
 
 ### Disable a key<a name="kms_DisableKey_csharp_topic"></a>
@@ -197,6 +197,7 @@ The following code example shows how to describe a KMS key\.
 The following code example shows how to disable a KMS key\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
   
 
 ```
@@ -235,7 +236,6 @@ The following code example shows how to disable a KMS key\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
 +  For API details, see [DisableKey](https://docs.aws.amazon.com/goto/DotNetSDKV3/kms-2014-11-01/DisableKey) in *AWS SDK for \.NET API Reference*\. 
 
 ### Enable a key<a name="kms_EnableKey_csharp_topic"></a>
@@ -243,6 +243,7 @@ The following code example shows how to disable a KMS key\.
 The following code example shows how to enable a KMS key\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
   
 
 ```
@@ -280,7 +281,6 @@ The following code example shows how to enable a KMS key\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
 +  For API details, see [EnableKey](https://docs.aws.amazon.com/goto/DotNetSDKV3/kms-2014-11-01/EnableKey) in *AWS SDK for \.NET API Reference*\. 
 
 ### List aliases for a key<a name="kms_ListAliases_csharp_topic"></a>
@@ -288,6 +288,7 @@ The following code example shows how to enable a KMS key\.
 The following code example shows how to list aliases for a KMS key\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
   
 
 ```
@@ -319,7 +320,6 @@ The following code example shows how to list aliases for a KMS key\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
 +  For API details, see [ListAliases](https://docs.aws.amazon.com/goto/DotNetSDKV3/kms-2014-11-01/ListAliases) in *AWS SDK for \.NET API Reference*\. 
 
 ### List grants for a key<a name="kms_ListGrants_csharp_topic"></a>
@@ -327,6 +327,7 @@ The following code example shows how to list aliases for a KMS key\.
 The following code example shows how to list grants for a KMS key\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
   
 
 ```
@@ -365,7 +366,6 @@ The following code example shows how to list grants for a KMS key\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
 +  For API details, see [ListGrants](https://docs.aws.amazon.com/goto/DotNetSDKV3/kms-2014-11-01/ListGrants) in *AWS SDK for \.NET API Reference*\. 
 
 ### List keys<a name="kms_ListKeys_csharp_topic"></a>
@@ -373,6 +373,7 @@ The following code example shows how to list grants for a KMS key\.
 The following code example shows how to list KMS keys\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
   
 
 ```
@@ -406,5 +407,4 @@ The following code example shows how to list KMS keys\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
 +  For API details, see [ListKeys](https://docs.aws.amazon.com/goto/DotNetSDKV3/kms-2014-11-01/ListKeys) in *AWS SDK for \.NET API Reference*\. 

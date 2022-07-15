@@ -9,15 +9,16 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w150aac21c18b9c11c13)
++ [Actions](#w155aac21c18b9c11c13)
 
-## Actions<a name="w150aac21c18b9c11c13"></a>
+## Actions<a name="w155aac21c18b9c11c13"></a>
 
 ### Delete alarms<a name="cloudwatch_DeleteAlarms_csharp_topic"></a>
 
 The following code example shows how to delete Amazon CloudWatch alarms\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatch#code-examples)\. 
   
 
 ```
@@ -89,7 +90,6 @@ The following code example shows how to delete Amazon CloudWatch alarms\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatch#code-examples)\. 
 +  For API details, see [DeleteAlarms](https://docs.aws.amazon.com/goto/DotNetSDKV3/monitoring-2010-08-01/DeleteAlarms) in *AWS SDK for \.NET API Reference*\. 
 
 ### Describe alarm history<a name="cloudwatch_DescribeAlarmHistory_csharp_topic"></a>
@@ -97,6 +97,7 @@ The following code example shows how to delete Amazon CloudWatch alarms\.
 The following code example shows how to describe Amazon CloudWatch alarm history\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatch#code-examples)\. 
 Get a list of CloudWatch alarms, then retrieve the history for each alarm\.  
 
 ```
@@ -164,7 +165,6 @@ Get a list of CloudWatch alarms, then retrieve the history for each alarm\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatch#code-examples)\. 
 +  For API details, see [DescribeAlarmHistory](https://docs.aws.amazon.com/goto/DotNetSDKV3/monitoring-2010-08-01/DescribeAlarmHistory) in *AWS SDK for \.NET API Reference*\. 
 
 ### Disable alarm actions<a name="cloudwatch_DisableAlarmActions_csharp_topic"></a>
@@ -172,6 +172,7 @@ Get a list of CloudWatch alarms, then retrieve the history for each alarm\.
 The following code example shows how to disable Amazon CloudWatch alarm actions\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatch#code-examples)\. 
   
 
 ```
@@ -231,7 +232,6 @@ The following code example shows how to disable Amazon CloudWatch alarm actions\
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatch#code-examples)\. 
 +  For API details, see [DisableAlarmActions](https://docs.aws.amazon.com/goto/DotNetSDKV3/monitoring-2010-08-01/DisableAlarmActions) in *AWS SDK for \.NET API Reference*\. 
 
 ### Enable alarm actions<a name="cloudwatch_EnableAlarmActions_csharp_topic"></a>
@@ -239,6 +239,7 @@ The following code example shows how to disable Amazon CloudWatch alarm actions\
 The following code example shows how to enable Amazon CloudWatch alarm actions\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatch#code-examples)\. 
   
 
 ```
@@ -296,7 +297,6 @@ The following code example shows how to enable Amazon CloudWatch alarm actions\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatch#code-examples)\. 
 +  For API details, see [EnableAlarmActions](https://docs.aws.amazon.com/goto/DotNetSDKV3/monitoring-2010-08-01/EnableAlarmActions) in *AWS SDK for \.NET API Reference*\. 
 
 ### Get dashboard details<a name="cloudwatch_GetDashboard_csharp_topic"></a>
@@ -304,6 +304,7 @@ The following code example shows how to enable Amazon CloudWatch alarm actions\.
 The following code example shows how to get Amazon CloudWatch dashboard details\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatch#code-examples)\. 
   
 
 ```
@@ -351,7 +352,6 @@ The following code example shows how to get Amazon CloudWatch dashboard details\
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatch#code-examples)\. 
 +  For API details, see [GetDashboard](https://docs.aws.amazon.com/goto/DotNetSDKV3/monitoring-2010-08-01/GetDashboard) in *AWS SDK for \.NET API Reference*\. 
 
 ### List dashboards<a name="cloudwatch_ListDashboards_csharp_topic"></a>
@@ -359,6 +359,7 @@ The following code example shows how to get Amazon CloudWatch dashboard details\
 The following code example shows how to list Amazon CloudWatch dashboards\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatch#code-examples)\. 
   
 
 ```
@@ -416,7 +417,6 @@ The following code example shows how to list Amazon CloudWatch dashboards\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatch#code-examples)\. 
 +  For API details, see [ListDashboards](https://docs.aws.amazon.com/goto/DotNetSDKV3/monitoring-2010-08-01/ListDashboards) in *AWS SDK for \.NET API Reference*\. 
 
 ### List metrics<a name="cloudwatch_ListMetrics_csharp_topic"></a>
@@ -424,6 +424,7 @@ The following code example shows how to list Amazon CloudWatch dashboards\.
 The following code example shows how to list Amazon CloudWatch metrics\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatch#code-examples)\. 
   
 
 ```
@@ -508,5 +509,4 @@ The following code example shows how to list Amazon CloudWatch metrics\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatch#code-examples)\. 
 +  For API details, see [ListMetrics](https://docs.aws.amazon.com/goto/DotNetSDKV3/monitoring-2010-08-01/ListMetrics) in *AWS SDK for \.NET API Reference*\. 

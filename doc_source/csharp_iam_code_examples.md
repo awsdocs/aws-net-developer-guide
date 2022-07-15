@@ -9,16 +9,17 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w150aac21c18b9c19c13)
-+ [Scenarios](#w150aac21c18b9c19c15)
++ [Actions](#w155aac21c18b9c19c13)
++ [Scenarios](#w155aac21c18b9c19c15)
 
-## Actions<a name="w150aac21c18b9c19c13"></a>
+## Actions<a name="w155aac21c18b9c19c13"></a>
 
 ### Attach a policy to a role<a name="iam_AttachRolePolicy_csharp_topic"></a>
 
 The following code example shows how to attach an IAM policy to a role\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -51,7 +52,6 @@ The following code example shows how to attach an IAM policy to a role\.
             }
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [AttachRolePolicy](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/AttachRolePolicy) in *AWS SDK for \.NET API Reference*\. 
 
 ### Create a policy<a name="iam_CreatePolicy_csharp_topic"></a>
@@ -59,6 +59,7 @@ The following code example shows how to attach an IAM policy to a role\.
 The following code example shows how to create an IAM policy\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -85,7 +86,6 @@ The following code example shows how to create an IAM policy\.
             return response.Policy;
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [CreatePolicy](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/CreatePolicy) in *AWS SDK for \.NET API Reference*\. 
 
 ### Create a role<a name="iam_CreateRole_csharp_topic"></a>
@@ -93,6 +93,7 @@ The following code example shows how to create an IAM policy\.
 The following code example shows how to create an IAM role\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -119,7 +120,6 @@ The following code example shows how to create an IAM role\.
             return response.Role;
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [CreateRole](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/CreateRole) in *AWS SDK for \.NET API Reference*\. 
 
 ### Create a user<a name="iam_CreateUser_csharp_topic"></a>
@@ -127,6 +127,7 @@ The following code example shows how to create an IAM role\.
 The following code example shows how to create an IAM user\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -151,7 +152,6 @@ The following code example shows how to create an IAM user\.
             return response.User;
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [CreateUser](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/CreateUser) in *AWS SDK for \.NET API Reference*\. 
 
 ### Create an access key<a name="iam_CreateAccessKey_csharp_topic"></a>
@@ -159,6 +159,7 @@ The following code example shows how to create an IAM user\.
 The following code example shows how to create an IAM access key\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -187,7 +188,6 @@ The following code example shows how to create an IAM access key\.
             return response.AccessKey;
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [CreateAccessKey](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/CreateAccessKey) in *AWS SDK for \.NET API Reference*\. 
 
 ### Delete a role policy<a name="iam_DeleteRolePolicy_csharp_topic"></a>
@@ -195,6 +195,7 @@ The following code example shows how to create an IAM access key\.
 The following code example shows how to delete an IAM role policy\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -229,7 +230,6 @@ The following code example shows how to delete an IAM role policy\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [DeleteRolePolicy](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/DeleteRolePolicy) in *AWS SDK for \.NET API Reference*\. 
 
 ### Delete a user<a name="iam_DeleteUser_csharp_topic"></a>
@@ -237,6 +237,7 @@ The following code example shows how to delete an IAM role policy\.
 The following code example shows how to delete an IAM user\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -285,7 +286,6 @@ The following code example shows how to delete an IAM user\.
 
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [DeleteUser](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/DeleteUser) in *AWS SDK for \.NET API Reference*\. 
 
 ### Delete an access key<a name="iam_DeleteAccessKey_csharp_topic"></a>
@@ -293,6 +293,7 @@ The following code example shows how to delete an IAM user\.
 The following code example shows how to delete an IAM access key\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -341,7 +342,6 @@ The following code example shows how to delete an IAM access key\.
 
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [DeleteAccessKey](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/DeleteAccessKey) in *AWS SDK for \.NET API Reference*\. 
 
 ### Detach a policy from a role<a name="iam_DetachRolePolicy_csharp_topic"></a>
@@ -349,6 +349,7 @@ The following code example shows how to delete an IAM access key\.
 The following code example shows how to detach an IAM policy from a role\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -397,7 +398,6 @@ The following code example shows how to detach an IAM policy from a role\.
 
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [DetachRolePolicy](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/DetachRolePolicy) in *AWS SDK for \.NET API Reference*\. 
 
 ### Get a policy<a name="iam_GetPolicy_csharp_topic"></a>
@@ -405,6 +405,7 @@ The following code example shows how to detach an IAM policy from a role\.
 The following code example shows how to get an IAM policy\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -423,7 +424,6 @@ var response = await client.GetPolicyAsync(request);
 Console.Write($"{response.Policy.PolicyName} was created on ");
 Console.WriteLine($"{response.Policy.CreateDate}");
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [GetPolicy](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/GetPolicy) in *AWS SDK for \.NET API Reference*\. 
 
 ### Get a role<a name="iam_GetRole_csharp_topic"></a>
@@ -431,6 +431,7 @@ Console.WriteLine($"{response.Policy.CreateDate}");
 The following code example shows how to get an IAM role\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -452,7 +453,6 @@ if (response.Role is not null)
     Console.WriteLine($"Created: {response.Role.CreateDate} Last used on: { response.Role.RoleLastUsed}");
 }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [GetRole](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/GetRole) in *AWS SDK for \.NET API Reference*\. 
 
 ### Get the account password policy<a name="iam_GetAccountPasswordPolicy_csharp_topic"></a>
@@ -460,6 +460,7 @@ if (response.Role is not null)
 The following code example shows how to get the IAM account password policy\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -481,7 +482,6 @@ catch (NoSuchEntityException ex)
     Console.WriteLine($"Error: {ex.Message}");
 }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [GetAccountPasswordPolicy](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/GetAccountPasswordPolicy) in *AWS SDK for \.NET API Reference*\. 
 
 ### List SAML providers<a name="iam_ListSAMLProviders_csharp_topic"></a>
@@ -489,6 +489,7 @@ catch (NoSuchEntityException ex)
 The following code example shows how to list SAML providers for IAM\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -505,7 +506,6 @@ response.SAMLProviderList.ForEach(samlProvider =>
     Console.WriteLine($"{samlProvider.Arn} created on: {samlProvider.CreateDate}");
 });
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [ListSAMLProviders](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/ListSAMLProviders) in *AWS SDK for \.NET API Reference*\. 
 
 ### List groups<a name="iam_ListGroups_csharp_topic"></a>
@@ -513,6 +513,7 @@ response.SAMLProviderList.ForEach(samlProvider =>
 The following code example shows how to list IAM groups\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -543,7 +544,6 @@ do
     }
 } while (response.IsTruncated);
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [ListGroups](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/ListGroups) in *AWS SDK for \.NET API Reference*\. 
 
 ### List inline policies for a role<a name="iam_ListRolePolicies_csharp_topic"></a>
@@ -551,6 +551,7 @@ do
 The following code example shows how to list inline policies for an IAM role\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -586,7 +587,6 @@ do
     }
 } while (response.IsTruncated);
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [ListRolePolicies](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/ListRolePolicies) in *AWS SDK for \.NET API Reference*\. 
 
 ### List policies<a name="iam_ListPolicies_csharp_topic"></a>
@@ -594,6 +594,7 @@ do
 The following code example shows how to list IAM policies\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -627,7 +628,6 @@ do
     }
 } while (response.IsTruncated);
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [ListPolicies](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/ListPolicies) in *AWS SDK for \.NET API Reference*\. 
 
 ### List policies attached to a role<a name="iam_ListAttachedRolePolicies_csharp_topic"></a>
@@ -635,6 +635,7 @@ do
 The following code example shows how to list policies attached to an IAM role\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -666,7 +667,6 @@ do
 
 } while (response.IsTruncated);
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [ListAttachedRolePolicies](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/ListAttachedRolePolicies) in *AWS SDK for \.NET API Reference*\. 
 
 ### List roles<a name="iam_ListRoles_csharp_topic"></a>
@@ -674,6 +674,7 @@ do
 The following code example shows how to list IAM roles\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -710,7 +711,6 @@ do
     }
 } while (response.IsTruncated);
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [ListRoles](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/ListRoles) in *AWS SDK for \.NET API Reference*\. 
 
 ### List users<a name="iam_ListUsers_csharp_topic"></a>
@@ -718,6 +718,7 @@ do
 The following code example shows how to list IAM users\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
   
 
 ```
@@ -744,10 +745,9 @@ do
     response = await client.ListUsersAsync(request);
 } while (response.IsTruncated);
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
 +  For API details, see [ListUsers](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/ListUsers) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w150aac21c18b9c19c15"></a>
+## Scenarios<a name="w155aac21c18b9c19c15"></a>
 
 ### Create a user and assume a role<a name="iam_Scenario_CreateUserAssumeRole_csharp_topic"></a>
 
@@ -759,6 +759,7 @@ The following code example shows how to:
 + Delete the policy, role, and user\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM/IAM_Basics_Scenario#code-examples)\. 
   
 
 ```
@@ -1162,7 +1163,6 @@ The following code example shows how to:
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM/IAM_Basics_Scenario#code-examples)\. 
 + For API details, see the following topics in *AWS SDK for \.NET API Reference*\.
   + [AttachRolePolicy](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/AttachRolePolicy)
   + [CreateAccessKey](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/CreateAccessKey)

@@ -9,15 +9,16 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w150aac21c18b9c15c13)
++ [Actions](#w155aac21c18b9c15c13)
 
-## Actions<a name="w150aac21c18b9c15c13"></a>
+## Actions<a name="w155aac21c18b9c15c13"></a>
 
 ### Detect entities in a document<a name="comprehend_DetectEntities_csharp_topic"></a>
 
 The following code example shows how to detect entities in a document with Amazon Comprehend\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Comprehend/#code-examples)\. 
   
 
 ```
@@ -60,7 +61,6 @@ The following code example shows how to detect entities in a document with Amazo
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Comprehend/#code-examples)\. 
 +  For API details, see [DetectEntities](https://docs.aws.amazon.com/goto/DotNetSDKV3/comprehend-2017-11-27/DetectEntities) in *AWS SDK for \.NET API Reference*\. 
 
 ### Detect key phrases in a document<a name="comprehend_DetectKeyPhrases_csharp_topic"></a>
@@ -68,6 +68,7 @@ The following code example shows how to detect entities in a document with Amazo
 The following code example shows how to detect key phrases in a document with Amazon Comprehend\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Comprehend/#code-examples)\. 
   
 
 ```
@@ -110,7 +111,6 @@ The following code example shows how to detect key phrases in a document with Am
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Comprehend/#code-examples)\. 
 +  For API details, see [DetectKeyPhrases](https://docs.aws.amazon.com/goto/DotNetSDKV3/comprehend-2017-11-27/DetectKeyPhrases) in *AWS SDK for \.NET API Reference*\. 
 
 ### Detect personally identifiable information in a document<a name="comprehend_DetectPiiEntities_csharp_topic"></a>
@@ -118,6 +118,7 @@ The following code example shows how to detect key phrases in a document with Am
 The following code example shows how to detect personally identifiable information \(PII\) in a document with Amazon Comprehend\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Comprehend/#code-examples)\. 
   
 
 ```
@@ -164,7 +165,6 @@ The following code example shows how to detect personally identifiable informati
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Comprehend/#code-examples)\. 
 +  For API details, see [DetectPiiEntities](https://docs.aws.amazon.com/goto/DotNetSDKV3/comprehend-2017-11-27/DetectPiiEntities) in *AWS SDK for \.NET API Reference*\. 
 
 ### Detect syntactical elements of a document<a name="comprehend_DetectSyntax_csharp_topic"></a>
@@ -172,6 +172,7 @@ The following code example shows how to detect personally identifiable informati
 The following code example shows how to detect syntactial elements of a document with Amazon Comprehend\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Comprehend/#code-examples)\. 
   
 
 ```
@@ -214,7 +215,6 @@ The following code example shows how to detect syntactial elements of a document
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Comprehend/#code-examples)\. 
 +  For API details, see [DetectSyntax](https://docs.aws.amazon.com/goto/DotNetSDKV3/comprehend-2017-11-27/DetectSyntax) in *AWS SDK for \.NET API Reference*\. 
 
 ### Detect the dominant language in a document<a name="comprehend_DetectDominantLanguage_csharp_topic"></a>
@@ -222,6 +222,7 @@ The following code example shows how to detect syntactial elements of a document
 The following code example shows how to detect the dominant language in a document with Amazon Comprehend\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Comprehend/#code-examples)\. 
   
 
 ```
@@ -263,7 +264,6 @@ The following code example shows how to detect the dominant language in a docume
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Comprehend/#code-examples)\. 
 +  For API details, see [DetectDominantLanguage](https://docs.aws.amazon.com/goto/DotNetSDKV3/comprehend-2017-11-27/DetectDominantLanguage) in *AWS SDK for \.NET API Reference*\. 
 
 ### Detect the sentiment of a document<a name="comprehend_DetectSentiment_csharp_topic"></a>
@@ -271,6 +271,7 @@ The following code example shows how to detect the dominant language in a docume
 The following code example shows how to detect the sentiment of a document with Amazon Comprehend\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Comprehend/#code-examples)\. 
   
 
 ```
@@ -309,7 +310,6 @@ The following code example shows how to detect the sentiment of a document with 
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Comprehend/#code-examples)\. 
 +  For API details, see [DetectSentiment](https://docs.aws.amazon.com/goto/DotNetSDKV3/comprehend-2017-11-27/DetectSentiment) in *AWS SDK for \.NET API Reference*\. 
 
 ### Start a topic modeling job<a name="comprehend_StartTopicsDetectionJob_csharp_topic"></a>
@@ -317,6 +317,7 @@ The following code example shows how to detect the sentiment of a document with 
 The following code example shows how to start an Amazon Comprehend topic modeling job\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Comprehend/#code-examples)\. 
   
 
 ```
@@ -397,5 +398,4 @@ The following code example shows how to start an Amazon Comprehend topic modelin
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Comprehend/#code-examples)\. 
 +  For API details, see [StartTopicsDetectionJob](https://docs.aws.amazon.com/goto/DotNetSDKV3/comprehend-2017-11-27/StartTopicsDetectionJob) in *AWS SDK for \.NET API Reference*\. 

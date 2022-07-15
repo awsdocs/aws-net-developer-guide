@@ -4,7 +4,7 @@ AWS Single Sign\-On \(AWS SSO\) is a cloud\-based single sign\-on service that m
 
 If you're unfamiliar with how an SDK interacts with AWS SSO, see the following information\.
 
-## High\-level pattern of interaction<a name="w150aac15b7b7b1"></a>
+## High\-level pattern of interaction<a name="w155aac15b7b7b1"></a>
 
 At a high level, SDKs interact with AWS SSO in a manner similar to the following pattern:
 

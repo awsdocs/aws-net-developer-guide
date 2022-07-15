@@ -9,18 +9,41 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w150aac21c18b9c27c13)
++ [Actions](#w155aac21c18b9c27c13)
 
-## Actions<a name="w150aac21c18b9c27c13"></a>
+## Actions<a name="w155aac21c18b9c27c13"></a>
 
 ### Check whether a phone number is opted out<a name="sns_CheckIfPhoneNumberIsOptedOut_csharp_topic"></a>
 
 The following code example shows how to check whether a phone number is opted out of receiving Amazon SNS messages\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.SimpleNotificationService;
+    using Amazon.SimpleNotificationService.Model;
+
+    /// <summary>
+    /// This example shows how to use the Amazon Simple Notification Service
+    /// (Amazon SNS) to check whether a phone number has been opted out. The
+    /// example was created using the AWS SDK for .NET version 3.7 and
+    /// .NET Core 5.0.
+    /// </summary>
+    public class IsPhoneNumOptedOut
+    {
+        public static async Task Main()
+        {
+            string phoneNumber = "+15551112222";
+
+            IAmazonSimpleNotificationService client = new AmazonSimpleNotificationServiceClient();
+
+            await CheckIfOptedOutAsync(client, phoneNumber);
+        }
+
         /// <summary>
         /// Checks to see if the supplied phone number has been opted out.
         /// </summary>
@@ -50,8 +73,8 @@ The following code example shows how to check whether a phone number is opted ou
                 Console.WriteLine($"{ex.Message}");
             }
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
 +  For API details, see [CheckIfPhoneNumberIsOptedOut](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/CheckIfPhoneNumberIsOptedOut) in *AWS SDK for \.NET API Reference*\. 
 
 ### Create a topic<a name="sns_CreateTopic_csharp_topic"></a>
@@ -59,9 +82,32 @@ The following code example shows how to check whether a phone number is opted ou
 The following code example shows how to create an Amazon SNS topic\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.SimpleNotificationService;
+    using Amazon.SimpleNotificationService.Model;
+
+    /// <summary>
+    /// This example shows how to use Amazon Simple Notification Service
+    /// (Amazon SNS) to add a new Amazon SNS topic. The example was created
+    /// using the AWS SDK for .NET version 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class CreateSNSTopic
+    {
+        public static async Task Main()
+        {
+            string topicName = "ExampleSNSTopic";
+
+            IAmazonSimpleNotificationService client = new AmazonSimpleNotificationServiceClient();
+
+            var topicArn = await CreateSNSTopicAsync(client, topicName);
+            Console.WriteLine($"New topic ARN: {topicArn}");
+        }
+
         /// <summary>
         /// Creates a new SNS topic using the supplied topic name.
         /// </summary>
@@ -80,8 +126,9 @@ The following code example shows how to create an Amazon SNS topic\.
 
             return response.TopicArn;
         }
+
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
 +  For API details, see [CreateTopic](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/CreateTopic) in *AWS SDK for \.NET API Reference*\. 
 
 ### Delete a topic<a name="sns_DeleteTopic_csharp_topic"></a>
@@ -89,9 +136,14 @@ The following code example shows how to create an Amazon SNS topic\.
 The following code example shows how to delete an Amazon SNS topic and all subscriptions to that topic\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.SimpleNotificationService;
+
     /// <summary>
     /// This example deletes an existing Amazon Simple Notification Service
     /// (Amazon SNS) topic. The example was created using the AWS SDK for .NET
@@ -108,7 +160,6 @@ The following code example shows how to delete an Amazon SNS topic and all subsc
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
 +  For API details, see [DeleteTopic](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/DeleteTopic) in *AWS SDK for \.NET API Reference*\. 
 
 ### Get the properties of a topic<a name="sns_GetTopicAttributes_csharp_topic"></a>
@@ -116,9 +167,16 @@ The following code example shows how to delete an Amazon SNS topic and all subsc
 The following code example shows how to get the properties of an Amazon SNS topic\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Amazon.SimpleNotificationService;
+    using Amazon.SimpleNotificationService.Model;
+
     /// <summary>
     /// This example shows how to retrieve the attributes of an Amazon Simple
     /// Notification Service (Amazon SNS) topic. The example was written using
@@ -167,7 +225,6 @@ The following code example shows how to get the properties of an Amazon SNS topi
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
 +  For API details, see [GetTopicAttributes](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/GetTopicAttributes) in *AWS SDK for \.NET API Reference*\. 
 
 ### List the subscribers of a topic<a name="sns_ListSubscriptions_csharp_topic"></a>
@@ -175,9 +232,16 @@ The following code example shows how to get the properties of an Amazon SNS topi
 The following code example shows how to retrieve the list of subscribers of an Amazon SNS topic\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Amazon.SimpleNotificationService;
+    using Amazon.SimpleNotificationService.Model;
+
     /// <summary>
     /// This example will retrieve a list of the existing Amazon Simple
     /// Notification Service (Amazon SNS) subscriptions. The example was
@@ -226,7 +290,6 @@ The following code example shows how to retrieve the list of subscribers of an A
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
 +  For API details, see [ListSubscriptions](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/ListSubscriptions) in *AWS SDK for \.NET API Reference*\. 
 
 ### List topics<a name="sns_ListTopics_csharp_topic"></a>
@@ -234,9 +297,23 @@ The following code example shows how to retrieve the list of subscribers of an A
 The following code example shows how to list Amazon SNS topics\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Amazon.SimpleNotificationService;
+    using Amazon.SimpleNotificationService.Model;
+
+    /// <summary>
+    /// An example to list the Amazon Simple Notification Service (Amazon SNS)
+    /// topics for the default user account. The code was written using the
+    /// AWS SDK for .NET 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class ListSNSTopics
+    {
         public static async Task Main()
         {
             IAmazonSimpleNotificationService client = new AmazonSimpleNotificationServiceClient();
@@ -277,8 +354,8 @@ The following code example shows how to list Amazon SNS topics\.
                 Console.WriteLine($"{topic.TopicArn}");
             }
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
 +  For API details, see [ListTopics](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/ListTopics) in *AWS SDK for \.NET API Reference*\. 
 
 ### Publish to a topic<a name="sns_Publish_csharp_topic"></a>
@@ -286,5 +363,5 @@ The following code example shows how to list Amazon SNS topics\.
 The following code example shows how to publish messages to an Amazon SNS topic\.
 
 **AWS SDK for \.NET**  
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS/SNSMessageExample/#code-examples)\. 
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS/SNSMessageExample/#code-examples)\. 
 +  For API details, see [Publish](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/Publish) in *AWS SDK for \.NET API Reference*\. 

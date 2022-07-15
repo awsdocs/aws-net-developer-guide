@@ -55,7 +55,7 @@ The example [at the end of this topic](#ReceiveMessage-complete-code) shows this
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w150aac21c15c27c27c21b5b1"></a>
+### SDK references<a name="w155aac21c15c27c27c21b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.SQS](https://www.nuget.org/packages/AWSSDK.SQS)
@@ -70,7 +70,7 @@ Programming elements:
 
   Class [ReceiveMessageResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SQS/TReceiveMessageResponse.html)
 
-### The code<a name="w150aac21c15c27c27c21b7b1"></a>
+### The code<a name="w155aac21c15c27c27c21b7b1"></a>
 
 ```
 using System;

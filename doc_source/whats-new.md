@@ -4,14 +4,9 @@ See the product page at [https://aws\.amazon\.com/sdk\-for\-net/](https://aws.am
 
 The following is what's new in the AWS SDK for \.NET\.
 
-**2021\-03\-17: Developer Preview of the AWS \.NET deployment tool**
+**2022\-07\-13: The AWS Deploy Tool has been released**
 
-
-|  | 
-| --- |
-| This is prerelease documentation for a service in preview release\. It is subject to change\. | 
-
-The AWS \.NET deployment tool, which is an opinionated deployment tool for the \.NET CLI, is available for Developer Preview\. You can use the deployment tool to deploy cloud\-native \.NET applications from the \.NET CLI in just a few steps\.
+The AWS Deploy Tool has been released\. This tool is an interactive tooling for the \.NET CLI and the AWS Toolkit for Visual Studio that helps deploy \.NET applications with minimum AWS knowledge, and with the fewest clicks or commands\. For more information, see [Deploying applications to AWS](deploying.md)\.
 
 **2020\-08\-24: Version 3\.5 of the SDK has been released**
 + Standardized the \.NET experience by transitioning support for all non\-Framework variations of the SDK to \.NET Standard 2\.0\. See [Migrating to version 3\.5](net-dg-v35.md) for more information\.

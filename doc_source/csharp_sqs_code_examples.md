@@ -9,15 +9,16 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w150aac21c18b9c29c13)
++ [Actions](#w155aac21c18b9c29c13)
 
-## Actions<a name="w150aac21c18b9c29c13"></a>
+## Actions<a name="w155aac21c18b9c29c13"></a>
 
 ### Authorize a bucket to send messages to a queue<a name="sqs_AuthorizeS3ToSendMessage_csharp_topic"></a>
 
 The following code example shows how to authorize an Amazon S3 bucket to send messages to an Amazon SQS queue\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SQS#code-examples)\. 
   
 
 ```
@@ -52,13 +53,13 @@ The following code example shows how to authorize an Amazon S3 bucket to send me
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SQS#code-examples)\. 
 
 ### Create a queue<a name="sqs_CreateQueue_csharp_topic"></a>
 
 The following code example shows how to create an Amazon SQS queue\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SQS#code-examples)\. 
   
 
 ```
@@ -220,7 +221,6 @@ Create an Amazon SQS queue and send a message to it\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SQS#code-examples)\. 
 +  For API details, see [CreateQueue](https://docs.aws.amazon.com/goto/DotNetSDKV3/sqs-2012-11-05/CreateQueue) in *AWS SDK for \.NET API Reference*\. 
 
 ### Delete a message from a queue<a name="sqs_DeleteMessage_csharp_topic"></a>
@@ -228,6 +228,7 @@ Create an Amazon SQS queue and send a message to it\.
 The following code example shows how to delete a message from an Amazon SQS queue\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SQS#code-examples)\. 
   
 
 ```
@@ -365,7 +366,6 @@ Receive a message from an Amazon SQS queue and then delete the message\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SQS#code-examples)\. 
 +  For API details, see [DeleteMessage](https://docs.aws.amazon.com/goto/DotNetSDKV3/sqs-2012-11-05/DeleteMessage) in *AWS SDK for \.NET API Reference*\. 
 
 ### Delete a queue<a name="sqs_DeleteQueue_csharp_topic"></a>
@@ -373,6 +373,7 @@ Receive a message from an Amazon SQS queue and then delete the message\.
 The following code example shows how to delete an Amazon SQS queue\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SQS#code-examples)\. 
   
 
 ```
@@ -408,7 +409,6 @@ The following code example shows how to delete an Amazon SQS queue\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SQS#code-examples)\. 
 +  For API details, see [DeleteQueue](https://docs.aws.amazon.com/goto/DotNetSDKV3/sqs-2012-11-05/DeleteQueue) in *AWS SDK for \.NET API Reference*\. 
 
 ### Get attributes for a queue<a name="sqs_GetQueueAttributes_csharp_topic"></a>
@@ -416,6 +416,7 @@ The following code example shows how to delete an Amazon SQS queue\.
 The following code example shows how to get attributes for an Amazon SQS queue\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SQS#code-examples)\. 
   
 
 ```
@@ -482,7 +483,6 @@ The following code example shows how to get attributes for an Amazon SQS queue\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SQS#code-examples)\. 
 +  For API details, see [GetQueueAttributes](https://docs.aws.amazon.com/goto/DotNetSDKV3/sqs-2012-11-05/GetQueueAttributes) in *AWS SDK for \.NET API Reference*\. 
 
 ### Get the URL of a queue<a name="sqs_GetQueueUrl_csharp_topic"></a>
@@ -490,6 +490,7 @@ The following code example shows how to get attributes for an Amazon SQS queue\.
 The following code example shows how to get the URL of an Amazon SQS queue\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SQS#code-examples)\. 
   
 
 ```
@@ -531,7 +532,6 @@ The following code example shows how to get the URL of an Amazon SQS queue\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SQS#code-examples)\. 
 +  For API details, see [GetQueueUrl](https://docs.aws.amazon.com/goto/DotNetSDKV3/sqs-2012-11-05/GetQueueUrl) in *AWS SDK for \.NET API Reference*\. 
 
 ### Receive messages from a queue<a name="sqs_ReceiveMessage_csharp_topic"></a>
@@ -539,6 +539,7 @@ The following code example shows how to get the URL of an Amazon SQS queue\.
 The following code example shows how to receive messages from an Amazon SQS queue\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SQS#code-examples)\. 
   
 
 ```
@@ -678,7 +679,6 @@ Receive a message from an Amazon SQS queue, and then delete the message\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SQS#code-examples)\. 
 +  For API details, see [ReceiveMessage](https://docs.aws.amazon.com/goto/DotNetSDKV3/sqs-2012-11-05/ReceiveMessage) in *AWS SDK for \.NET API Reference*\. 
 
 ### Send a message to a queue<a name="sqs_SendMessage_csharp_topic"></a>
@@ -686,6 +686,7 @@ Receive a message from an Amazon SQS queue, and then delete the message\.
 The following code example shows how to send a message to an Amazon SQS queue\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SQS#code-examples)\. 
   
 
 ```
@@ -825,5 +826,4 @@ Create an Amazon SQS queue and send a message to it\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SQS#code-examples)\. 
 +  For API details, see [SendMessage](https://docs.aws.amazon.com/goto/DotNetSDKV3/sqs-2012-11-05/SendMessage) in *AWS SDK for \.NET API Reference*\. 

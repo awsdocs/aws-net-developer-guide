@@ -9,9 +9,9 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w150aac21c18b9c23c13)
++ [Actions](#w155aac21c18b9c23c13)
 
-## Actions<a name="w150aac21c18b9c23c13"></a>
+## Actions<a name="w155aac21c18b9c23c13"></a>
 
 ### Compare faces in an image against a reference image<a name="rekognition_CompareFaces_csharp_topic"></a>
 
@@ -20,9 +20,22 @@ The following code example shows how to compare faces in an image against a refe
 For more information, see [Comparing faces in images](https://docs.aws.amazon.com/rekognition/latest/dg/faces-comparefaces.html)\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
   
 
 ```
+    using System;
+    using System.IO;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Uses the Amazon Rekognition Service to compare faces in two images.
+    /// The example uses the AWS SDK for .NET 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class CompareFaces
+    {
         public static async Task Main()
         {
             float similarityThreshold = 70F;
@@ -83,8 +96,8 @@ For more information, see [Comparing faces in images](https://docs.aws.amazon.co
 
             Console.WriteLine($"Found {compareFacesResponse.UnmatchedFaces.Count} face(s) that did not match.");
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
 +  For API details, see [CompareFaces](https://docs.aws.amazon.com/goto/DotNetSDKV3/rekognition-2016-06-27/CompareFaces) in *AWS SDK for \.NET API Reference*\. 
 
 ### Create a collection<a name="rekognition_CreateCollection_csharp_topic"></a>
@@ -94,9 +107,22 @@ The following code example shows how to create an Amazon Rekognition collection\
 For more information, see [Creating a collection](https://docs.aws.amazon.com/rekognition/latest/dg/create-collection-procedure.html)\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Uses Amazon Rekognition to create a collection to which you can add
+    /// faces using the IndexFaces operation. The example was created using
+    /// the AWS SDK for .NET 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class CreateCollection
+    {
         public static async Task Main()
         {
             var rekognitionClient = new AmazonRekognitionClient();
@@ -113,8 +139,8 @@ For more information, see [Creating a collection](https://docs.aws.amazon.com/re
             Console.WriteLine($"CollectionArn : {createCollectionResponse.CollectionArn}");
             Console.WriteLine($"Status code : {createCollectionResponse.StatusCode}");
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
 +  For API details, see [CreateCollection](https://docs.aws.amazon.com/goto/DotNetSDKV3/rekognition-2016-06-27/CreateCollection) in *AWS SDK for \.NET API Reference*\. 
 
 ### Delete a collection<a name="rekognition_DeleteCollection_csharp_topic"></a>
@@ -124,9 +150,22 @@ The following code example shows how to delete an Amazon Rekognition collection\
 For more information, see [Deleting a collection](https://docs.aws.amazon.com/rekognition/latest/dg/delete-collection-procedure.html)\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Uses the Amazon Rekognition Service to delete an existing collection.
+    /// The example was created using the AWS SDK for .NET version 3.7 and
+    /// .NET Core 5.0.
+    /// </summary>
+    public class DeleteCollection
+    {
         public static async Task Main()
         {
             var rekognitionClient = new AmazonRekognitionClient();
@@ -142,8 +181,8 @@ For more information, see [Deleting a collection](https://docs.aws.amazon.com/re
             var deleteCollectionResponse = await rekognitionClient.DeleteCollectionAsync(deleteCollectionRequest);
             Console.WriteLine($"{collectionId}: {deleteCollectionResponse.StatusCode}");
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
 +  For API details, see [DeleteCollection](https://docs.aws.amazon.com/goto/DotNetSDKV3/rekognition-2016-06-27/DeleteCollection) in *AWS SDK for \.NET API Reference*\. 
 
 ### Delete faces from a collection<a name="rekognition_DeleteFaces_csharp_topic"></a>
@@ -153,9 +192,23 @@ The following code example shows how to delete faces from an Amazon Rekognition 
 For more information, see [Deleting faces from a collection](https://docs.aws.amazon.com/rekognition/latest/dg/delete-faces-procedure.html)\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Uses the Amazon Rekognition Service to delete one or more faces from
+    /// a Rekognition collection. This example was created using the AWS SDK
+    /// for .NET version 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class DeleteFaces
+    {
         public static async Task Main()
         {
             string collectionId = "MyCollection";
@@ -175,8 +228,9 @@ For more information, see [Deleting faces from a collection](https://docs.aws.am
                 Console.WriteLine($"FaceID: {face}");
             });
         }
+
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
 +  For API details, see [DeleteFaces](https://docs.aws.amazon.com/goto/DotNetSDKV3/rekognition-2016-06-27/DeleteFaces) in *AWS SDK for \.NET API Reference*\. 
 
 ### Describe a collection<a name="rekognition_DescribeCollection_csharp_topic"></a>
@@ -186,9 +240,22 @@ The following code example shows how to describe an Amazon Rekognition collectio
 For more information, see [Describing a collection](https://docs.aws.amazon.com/rekognition/latest/dg/describe-collection-procedure.html)\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Uses the Amazon Rekognition Service to describe the contents of a
+    /// collection. The example was created using the AWS SDK for .NET version
+    /// 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class DescribeCollection
+    {
         public static async Task Main()
         {
             var rekognitionClient = new AmazonRekognitionClient();
@@ -207,8 +274,8 @@ For more information, see [Describing a collection](https://docs.aws.amazon.com/
             Console.WriteLine($"Face model version: {describeCollectionResponse.FaceModelVersion}");
             Console.WriteLine($"Created: {describeCollectionResponse.CreationTimestamp}");
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
 +  For API details, see [DescribeCollection](https://docs.aws.amazon.com/goto/DotNetSDKV3/rekognition-2016-06-27/DescribeCollection) in *AWS SDK for \.NET API Reference*\. 
 
 ### Detect faces in an image<a name="rekognition_DetectFaces_csharp_topic"></a>
@@ -218,9 +285,23 @@ The following code example shows how to detect faces in an image with Amazon Rek
 For more information, see [Detecting faces in an image](https://docs.aws.amazon.com/rekognition/latest/dg/faces-detect-images.html)\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Uses the Amazon Rekognition Service to detect faces within an image
+    /// stored in an Amazon Simple Storage Service (Amazon S3) bucket. This
+    /// example uses the AWS SDK for .NET version 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class DetectFaces
+    {
         public static async Task Main()
         {
             string photo = "input.jpg";
@@ -268,10 +349,26 @@ For more information, see [Detecting faces in an image](https://docs.aws.amazon.
                 Console.WriteLine(ex.Message);
             }
         }
+    }
 ```
 Display bounding box information for all faces in an image\.  
 
 ```
+    using System;
+    using System.Collections.Generic;
+    using System.Drawing;
+    using System.IO;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Uses the Amazon Rekognition Service to display the details of the
+    /// bounding boxes around the faces detected in an image. This example was
+    /// created using the AWS SDK for .NET version 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class ImageOrientationBoundingBox
+    {
         public static async Task Main()
         {
             string photo = @"D:\Development\AWS-Examples\Rekognition\target.jpg"; // "photo.jpg";
@@ -384,8 +481,8 @@ Display bounding box information for all faces in an image\.
             Console.WriteLine($"Face Width: {imageWidth * box.Width}");
             Console.WriteLine($"Face Height: {imageHeight * box.Height}");
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
 +  For API details, see [DetectFaces](https://docs.aws.amazon.com/goto/DotNetSDKV3/rekognition-2016-06-27/DetectFaces) in *AWS SDK for \.NET API Reference*\. 
 
 ### Detect labels in an image<a name="rekognition_DetectLabels_csharp_topic"></a>
@@ -395,9 +492,22 @@ The following code example shows how to detect labels in an image with Amazon Re
 For more information, see [Detecting labels in an image](https://docs.aws.amazon.com/rekognition/latest/dg/labels-detect-labels-image.html)\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Uses the Amazon Rekognition Service to detect labels within an image
+    /// stored in an Amazon Simple Storage Service (Amazon S3) bucket. This
+    /// example was created using the AWS SDK for .NET and .NET Core 5.0.
+    /// </summary>
+    public class DetectLabels
+    {
         public static async Task Main()
         {
             string photo = "del_river_02092020_01.jpg"; // "input.jpg";
@@ -433,10 +543,24 @@ For more information, see [Detecting labels in an image](https://docs.aws.amazon
                 Console.WriteLine(ex.Message);
             }
         }
+    }
 ```
 Detect labels in an image file stored on your computer\.  
 
 ```
+    using System;
+    using System.IO;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Uses the Amazon Rekognition Service to detect labels within an image
+    /// stored locally. This example was created using the AWS SDK for .NET
+    /// and .NET Core 5.0.
+    /// </summary>
+    public class DetectLabelsLocalFile
+    {
         public static async Task Main()
         {
             string photo = "input.jpg";
@@ -479,8 +603,8 @@ Detect labels in an image file stored on your computer\.
                 Console.WriteLine(ex.Message);
             }
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
 +  For API details, see [DetectLabels](https://docs.aws.amazon.com/goto/DotNetSDKV3/rekognition-2016-06-27/DetectLabels) in *AWS SDK for \.NET API Reference*\. 
 
 ### Detect moderation labels in an image<a name="rekognition_DetectModerationLabels_csharp_topic"></a>
@@ -490,9 +614,22 @@ The following code example shows how to detect moderation labels in an image wit
 For more information, see [Detecting inappropriate images](https://docs.aws.amazon.com/rekognition/latest/dg/procedure-moderate-images.html)\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Uses the Amazon Rekognition Service to detect unsafe content in a
+    /// JPEG or PNG format image. This example was created using the AWS SDK
+    /// for .NET version 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class DetectModerationLabels
+    {
         public static async Task Main(string[] args)
         {
             string photo = "input.jpg";
@@ -529,8 +666,8 @@ For more information, see [Detecting inappropriate images](https://docs.aws.amaz
                 Console.WriteLine(ex.Message);
             }
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
 +  For API details, see [DetectModerationLabels](https://docs.aws.amazon.com/goto/DotNetSDKV3/rekognition-2016-06-27/DetectModerationLabels) in *AWS SDK for \.NET API Reference*\. 
 
 ### Detect text in an image<a name="rekognition_DetectText_csharp_topic"></a>
@@ -540,9 +677,22 @@ The following code example shows how to detect text in an image with Amazon Reko
 For more information, see [Detecting text in an image](https://docs.aws.amazon.com/rekognition/latest/dg/text-detecting-text-procedure.html)\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Uses the Amazon Rekognition Service to detect text in an image. The
+    /// example was created using the AWS SDK for .NET version 3.7 and .NET
+    /// Core 5.0.
+    /// </summary>
+    public class DetectText
+    {
         public static async Task Main()
         {
             string photo = "Dad_photographer.jpg"; // "input.jpg";
@@ -580,8 +730,8 @@ For more information, see [Detecting text in an image](https://docs.aws.amazon.c
                 Console.WriteLine(e.Message);
             }
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
 +  For API details, see [DetectText](https://docs.aws.amazon.com/goto/DotNetSDKV3/rekognition-2016-06-27/DetectText) in *AWS SDK for \.NET API Reference*\. 
 
 ### Get information about celebrities<a name="rekognition_GetCelebrityInfo_csharp_topic"></a>
@@ -589,9 +739,22 @@ For more information, see [Detecting text in an image](https://docs.aws.amazon.c
 The following code example shows how to get information about celebrities using Amazon Rekognition\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Shows how to use Amazon Rekognition to retrieve information about the
+    /// celebrity identified by the supplied celebrity Id. This example was
+    /// created using the AWS SDK for .NET version 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class CelebrityInfo
+    {
         public static async Task Main()
         {
             string celebId = "nnnnnnnn";
@@ -615,8 +778,8 @@ The following code example shows how to get information about celebrities using 
                 Console.WriteLine(url);
             });
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
 +  For API details, see [GetCelebrityInfo](https://docs.aws.amazon.com/goto/DotNetSDKV3/rekognition-2016-06-27/GetCelebrityInfo) in *AWS SDK for \.NET API Reference*\. 
 
 ### Index faces to a collection<a name="rekognition_IndexFaces_csharp_topic"></a>
@@ -626,9 +789,24 @@ The following code example shows how to index faces in an image and add them to 
 For more information, see [Adding faces to a collection](https://docs.aws.amazon.com/rekognition/latest/dg/add-faces-to-collection-procedure.html)\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Uses the Amazon Rekognition Service to detect faces in an image
+    /// that has been uploaded to an Amazon Simple Storage Service (Amazon S3)
+    /// bucket and then adds the information to a collection. The example was
+    /// created using the AWS SDK for .NET and .NET Core 5.0.
+    /// </summary>
+    public class AddFaces
+    {
         public static async Task Main()
         {
             string collectionId = "MyCollection2";
@@ -662,8 +840,8 @@ For more information, see [Adding faces to a collection](https://docs.aws.amazon
                 Console.WriteLine($"Face detected: Faceid is {faceRecord.Face.FaceId}");
             }
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
 +  For API details, see [IndexFaces](https://docs.aws.amazon.com/goto/DotNetSDKV3/rekognition-2016-06-27/IndexFaces) in *AWS SDK for \.NET API Reference*\. 
 
 ### List collections<a name="rekognition_ListCollections_csharp_topic"></a>
@@ -673,9 +851,22 @@ The following code example shows how to list Amazon Rekognition collections\.
 For more information, see [Listing collections](https://docs.aws.amazon.com/rekognition/latest/dg/list-collection-procedure.html)\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Uses the Amazpon Rekognition Service to list the collection IDs in the
+    /// default user account. This example was crated using the AWS SDK for
+    /// .NET version 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class ListCollections
+    {
         public static async Task Main()
         {
             var rekognitionClient = new AmazonRekognitionClient();
@@ -706,8 +897,8 @@ For more information, see [Listing collections](https://docs.aws.amazon.com/reko
             }
             while (listCollectionsResponse.NextToken is not null);
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
 +  For API details, see [ListCollections](https://docs.aws.amazon.com/goto/DotNetSDKV3/rekognition-2016-06-27/ListCollections) in *AWS SDK for \.NET API Reference*\. 
 
 ### List faces in a collection<a name="rekognition_ListFaces_csharp_topic"></a>
@@ -717,9 +908,22 @@ The following code example shows how to list faces in an Amazon Rekognition coll
 For more information, see [Listing faces in a collection](https://docs.aws.amazon.com/rekognition/latest/dg/list-faces-in-collection-procedure.html)\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Uses the Amazon Rekognition Service to retrieve the list of faces
+    /// stored in a collection. The example was created using AWS SDK for
+    /// .NET version 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class ListFaces
+    {
         public static async Task Main()
         {
             string collectionId = "MyCollection2";
@@ -747,8 +951,8 @@ For more information, see [Listing faces in a collection](https://docs.aws.amazo
             }
             while (!string.IsNullOrEmpty(listFacesResponse.NextToken));
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
 +  For API details, see [ListFaces](https://docs.aws.amazon.com/goto/DotNetSDKV3/rekognition-2016-06-27/ListFaces) in *AWS SDK for \.NET API Reference*\. 
 
 ### Recognize celebrities in an image<a name="rekognition_RecognizeCelebrities_csharp_topic"></a>
@@ -758,9 +962,23 @@ The following code example shows how to recognize celebrities in an image with A
 For more information, see [Recognizing celebrities in an image](https://docs.aws.amazon.com/rekognition/latest/dg/celebrities-procedure-image.html)\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
   
 
 ```
+    using System;
+    using System.IO;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Shows how to use Amazon Rekognition to identify celebrities in a photo.
+    /// This example was created using the AWS SDK for .NET version 3.7 and
+    /// .NET Core 5.0.
+    /// </summary>
+    public class CelebritiesInImage
+    {
         public static async Task Main(string[] args)
         {
             string photo = "moviestars.jpg";
@@ -806,8 +1024,8 @@ For more information, see [Recognizing celebrities in an image](https://docs.aws
 
             Console.WriteLine($"{recognizeCelebritiesResponse.UnrecognizedFaces.Count} face(s) were unrecognized.");
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
 +  For API details, see [RecognizeCelebrities](https://docs.aws.amazon.com/goto/DotNetSDKV3/rekognition-2016-06-27/RecognizeCelebrities) in *AWS SDK for \.NET API Reference*\. 
 
 ### Search for faces in a collection<a name="rekognition_SearchFaces_csharp_topic"></a>
@@ -817,9 +1035,22 @@ The following code example shows how to search for faces in an Amazon Rekognitio
 For more information, see [Searching for a face \(face ID\)](https://docs.aws.amazon.com/rekognition/latest/dg/search-face-with-id-procedure.html)\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Uses the Amazon Rekognition Service to find faces in an image that
+    /// match the face Id provided in the method request. This example was
+    /// created using the AWS SDK for .NET version 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class SearchFacesMatchingId
+    {
         public static async Task Main()
         {
             string collectionId = "MyCollection";
@@ -846,8 +1077,8 @@ For more information, see [Searching for a face \(face ID\)](https://docs.aws.am
                 Console.WriteLine($"FaceId: {face.Face.FaceId} Similarity: {face.Similarity}");
             });
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
 +  For API details, see [SearchFaces](https://docs.aws.amazon.com/goto/DotNetSDKV3/rekognition-2016-06-27/SearchFaces) in *AWS SDK for \.NET API Reference*\. 
 
 ### Search for faces in a collection compared to a reference image<a name="rekognition_SearchFacesByImage_csharp_topic"></a>
@@ -857,9 +1088,22 @@ The following code example shows how to search for faces in an Amazon Rekognitio
 For more information, see [Searching for a face \(image\)](https://docs.aws.amazon.com/rekognition/latest/dg/search-face-with-image-procedure.html)\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.Rekognition;
+    using Amazon.Rekognition.Model;
+
+    /// <summary>
+    /// Uses the Amazon Rekognition Service to search for images matching those
+    /// in a collection. The example was created using the AWS SDK for .NET
+    /// version 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class SearchFacesMatchingImage
+    {
         public static async Task Main()
         {
             string collectionId = "MyCollection";
@@ -894,6 +1138,6 @@ For more information, see [Searching for a face \(image\)](https://docs.aws.amaz
                 Console.WriteLine($"FaceId: {face.Face.FaceId}, Similarity: {face.Similarity}");
             });
         }
+    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Rekognition/#code-examples)\. 
 +  For API details, see [SearchFacesByImage](https://docs.aws.amazon.com/goto/DotNetSDKV3/rekognition-2016-06-27/SearchFacesByImage) in *AWS SDK for \.NET API Reference*\. 

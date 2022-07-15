@@ -9,16 +9,17 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w150aac21c18b9c17c13)
-+ [Scenarios](#w150aac21c18b9c17c15)
++ [Actions](#w155aac21c18b9c17c13)
++ [Scenarios](#w155aac21c18b9c17c15)
 
-## Actions<a name="w150aac21c18b9c17c13"></a>
+## Actions<a name="w155aac21c18b9c17c13"></a>
 
 ### Create a table<a name="dynamodb_CreateTable_csharp_topic"></a>
 
 The following code example shows how to create a DynamoDB table\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
   
 
 ```
@@ -93,7 +94,6 @@ The following code example shows how to create a DynamoDB table\.
             return status == TableStatus.ACTIVE;
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
 +  For API details, see [CreateTable](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/CreateTable) in *AWS SDK for \.NET API Reference*\. 
 
 ### Delete a table<a name="dynamodb_DeleteTable_csharp_topic"></a>
@@ -101,6 +101,7 @@ The following code example shows how to create a DynamoDB table\.
 The following code example shows how to delete a DynamoDB table\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
   
 
 ```
@@ -124,7 +125,6 @@ The following code example shows how to delete a DynamoDB table\.
             }
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
 +  For API details, see [DeleteTable](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/DeleteTable) in *AWS SDK for \.NET API Reference*\. 
 
 ### Delete an item from a table<a name="dynamodb_DeleteItem_csharp_topic"></a>
@@ -132,6 +132,7 @@ The following code example shows how to delete a DynamoDB table\.
 The following code example shows how to delete an item from a DynamoDB table\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
   
 
 ```
@@ -166,7 +167,6 @@ The following code example shows how to delete an item from a DynamoDB table\.
             return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
 +  For API details, see [DeleteItem](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/DeleteItem) in *AWS SDK for \.NET API Reference*\. 
 
 ### Get a batch of items<a name="dynamodb_BatchGetItem_csharp_topic"></a>
@@ -174,6 +174,7 @@ The following code example shows how to delete an item from a DynamoDB table\.
 The following code example shows how to get a batch of DynamoDB items\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
   
 
 ```
@@ -204,7 +205,6 @@ The following code example shows how to get a batch of DynamoDB items\.
             return response.Item;
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
 +  For API details, see [BatchGetItem](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/BatchGetItem) in *AWS SDK for \.NET API Reference*\. 
 
 ### Put an item in a table<a name="dynamodb_PutItem_csharp_topic"></a>
@@ -212,6 +212,7 @@ The following code example shows how to get a batch of DynamoDB items\.
 The following code example shows how to put an item in a DynamoDB table\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
   
 
 ```
@@ -241,7 +242,6 @@ The following code example shows how to put an item in a DynamoDB table\.
             return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
 +  For API details, see [PutItem](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/PutItem) in *AWS SDK for \.NET API Reference*\. 
 
 ### Query a table<a name="dynamodb_Query_csharp_topic"></a>
@@ -249,6 +249,7 @@ The following code example shows how to put an item in a DynamoDB table\.
 The following code example shows how to query a DynamoDB table\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
   
 
 ```
@@ -301,14 +302,446 @@ The following code example shows how to query a DynamoDB table\.
             return moviesFound;
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
 +  For API details, see [Query](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/Query) in *AWS SDK for \.NET API Reference*\. 
+
+### Run a PartiQL statement<a name="dynamodb_ExecuteStatement_csharp_topic"></a>
+
+The following code example shows how to run a PartiQL statement on a DynamoDB table\.
+
+**AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+Use an INSERT statement to add an item\.  
+
+```
+        /// <summary>
+        /// Inserts a single movie into the movies table.
+        /// </summary>
+        /// <param name="tableName">The name of the table.</param>
+        /// <param name="movieTitle">The title of the movie to insert.</param>
+        /// <param name="year">The year that the movie was released.</param>
+        /// <returns>A Boolean value that indicates the success or failure of
+        /// the INSERT operation.</returns>
+        public static async Task<bool> InsertSingleMovie(string tableName, string movieTitle, int year)
+        {
+            string insertBatch = $"INSERT INTO {tableName} VALUE {{'title': ?, 'year': ?}}";
+
+            var response = await Client.ExecuteStatementAsync(new ExecuteStatementRequest
+            {
+                Statement = insertBatch,
+                Parameters = new List<AttributeValue>
+                {
+                    new AttributeValue { S = movieTitle },
+                    new AttributeValue { N = year.ToString() },
+                },
+            });
+
+            return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+        }
+```
+Use a SELECT statement to get an item\.  
+
+```
+        /// <summary>
+        /// Uses a PartiQL SELECT statement to retrieve a single movie from the
+        /// movie database.
+        /// </summary>
+        /// <param name="tableName">The name of the movie table.</param>
+        /// <param name="movieTitle">The title of the movie to retrieve.</param>
+        /// <returns>A list of movie data. If no movie matches the supplied
+        /// title, the list is empty.</returns>
+        public static async Task<List<Dictionary<string, AttributeValue>>> GetSingleMovie(string tableName, string movieTitle)
+        {
+            string selectSingle = $"SELECT * FROM {tableName} WHERE title = ?";
+            var parameters = new List<AttributeValue>
+            {
+                new AttributeValue { S = movieTitle },
+            };
+
+            var response = await Client.ExecuteStatementAsync(new ExecuteStatementRequest
+            {
+                Statement = selectSingle,
+                Parameters = parameters,
+            });
+
+            return response.Items;
+        }
+```
+Use a SELECT statement to get a list of items\.  
+
+```
+        /// <summary>
+        /// Retrieve multiple movies by year using a SELECT statement.
+        /// </summary>
+        /// <param name="tableName">The name of the movie table.</param>
+        /// <param name="year">The year the movies were released.</param>
+        /// <returns></returns>
+        public static async Task<List<Dictionary<string, AttributeValue>>> GetMovies(string tableName, int year)
+        {
+            string selectSingle = $"SELECT * FROM {tableName} WHERE year = ?";
+            var parameters = new List<AttributeValue>
+            {
+                new AttributeValue { N = year.ToString() },
+            };
+
+            var response = await Client.ExecuteStatementAsync(new ExecuteStatementRequest
+            {
+                Statement = selectSingle,
+                Parameters = parameters,
+            });
+
+            return response.Items;
+        }
+```
+Use an UPDATE statement to update an item\.  
+
+```
+        /// <summary>
+        /// Updates a single movie in the table, adding information for the
+        /// producer.
+        /// </summary>
+        /// <param name="tableName">the name of the table.</param>
+        /// <param name="producer">The name of the producer.</param>
+        /// <param name="movieTitle">The movie title.</param>
+        /// <param name="year">The year the movie was released.</param>
+        /// <returns>A Boolean value that indicates the success of the
+        /// UPDATE operation.</returns>
+        public static async Task<bool> UpdateSingleMovie(string tableName, string producer, string movieTitle, int year)
+        {
+            string insertSingle = $"UPDATE {tableName} SET Producer=? WHERE title = ? AND year = ?";
+
+            var response = await Client.ExecuteStatementAsync(new ExecuteStatementRequest
+            {
+                Statement = insertSingle,
+                Parameters = new List<AttributeValue>
+                {
+                    new AttributeValue { S = producer },
+                    new AttributeValue { S = movieTitle },
+                    new AttributeValue { N = year.ToString() },
+                },
+            });
+
+            return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+        }
+```
+Use a DELETE statement to delete a single movie\.  
+
+```
+        /// <summary>
+        /// Deletes a single movie from the table.
+        /// </summary>
+        /// <param name="tableName">The name of the table.</param>
+        /// <param name="movieTitle">The title of the movie to delete.</param>
+        /// <param name="year">The year that the movie was released.</param>
+        /// <returns>A Boolean value that indicates the success of the
+        /// DELETE operation.</returns>
+        public static async Task<bool> DeleteSingleMovie(string tableName, string movieTitle, int year)
+        {
+            var deleteSingle = $"DELETE FROM {tableName} WHERE title = ? AND year = ?";
+
+            var response = await Client.ExecuteStatementAsync(new ExecuteStatementRequest
+            {
+                Statement = deleteSingle,
+                Parameters = new List<AttributeValue>
+                {
+                    new AttributeValue { S = movieTitle },
+                    new AttributeValue { N = year.ToString() },
+                },
+            });
+
+            return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+        }
+```
++  For API details, see [ExecuteStatement](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/ExecuteStatement) in *AWS SDK for \.NET API Reference*\. 
+
+### Run batches of PartiQL statements<a name="dynamodb_BatchExecuteStatement_csharp_topic"></a>
+
+The following code example shows how to run batches of PartiQL statements on a DynamoDB table\.
+
+**AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+Use batches of INSERT statements to add items\.  
+
+```
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="title1"></param>
+        /// <param name="title2"></param>
+        /// <param name="year1"></param>
+        /// <param name="year2"></param>
+        /// <returns></returns>
+        public static async Task<bool> GetBatch(
+            string tableName,
+            string title1,
+            string title2,
+            int year1,
+            int year2)
+        {
+            var getBatch = $"SELECT FROM {tableName} WHERE title = ? AND year = ?";
+            var statements = new List<BatchStatementRequest>
+            {
+                new BatchStatementRequest
+                {
+                    Statement = getBatch,
+                    Parameters = new List<AttributeValue>
+                    {
+                        new AttributeValue { S = title1 },
+                        new AttributeValue { N = year1.ToString() },
+                    },
+                },
+
+                new BatchStatementRequest
+                {
+                    Statement = getBatch,
+                    Parameters = new List<AttributeValue>
+                    {
+                        new AttributeValue { S = title2 },
+                        new AttributeValue { N = year2.ToString() },
+                    },
+                }
+            };
+
+            var response = await Client.BatchExecuteStatementAsync(new BatchExecuteStatementRequest
+            {
+                Statements = statements,
+            });
+
+            if (response.Responses.Count > 0)
+            {
+                response.Responses.ForEach(r =>
+                {
+                    Console.WriteLine($"{r.Item["title"]}\t{r.Item["year"]}");
+                });
+                return true;
+            }
+            else
+            {
+                Console.WriteLine($"Couldn't find either {title1} or {title2}.");
+                return false;
+            }
+
+        }
+```
+Use batches of SELECT statements to get items\.  
+
+```
+        /// <summary>
+        /// Inserts movies imported from a JSON file into the movie table by
+        /// using an Amazon DynamoDB PartiQL INSERT statement.
+        /// </summary>
+        /// <param name="tableName">The name of the table into which the movie
+        /// information will be inserted.</param>
+        /// <param name="movieFileName">The name of the JSON file that contains
+        /// movie information.</param>
+        /// <returns>A Boolean value that indicates the success or failure of
+        /// the insert operation.</returns>
+        public static async Task<bool> InsertMovies(string tableName, string movieFileName)
+        {
+            // Get the list of movies from the JSON file.
+            var movies = ImportMovies(movieFileName);
+
+            var success = false;
+
+            if (movies is not null)
+            {
+                // Insert the movies in a batch using PartiQL. Because the
+                // batch can contain a maximum of 25 items, insert 25 movies
+                // at a time.
+                string insertBatch = $"INSERT INTO {tableName} VALUE {{'title': ?, 'year': ?}}";
+                var statements = new List<BatchStatementRequest>();
+
+                try
+                {
+                    for (var indexOffset = 0; indexOffset < 250; indexOffset += 25)
+                    {
+                        for (var i = indexOffset; i < indexOffset + 25; i++)
+                        {
+                            statements.Add(new BatchStatementRequest
+                            {
+                                Statement = insertBatch,
+                                Parameters = new List<AttributeValue>
+                                {
+                                    new AttributeValue { S = movies[i].Title },
+                                    new AttributeValue { N = movies[i].Year.ToString() },
+                                },
+                            });
+                        }
+
+                        var response = await Client.BatchExecuteStatementAsync(new BatchExecuteStatementRequest
+                        {
+                            Statements = statements,
+                        });
+
+                        // Wait between batches for movies to be successfully added.
+                        System.Threading.Thread.Sleep(3000);
+
+                        success = response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+
+                        // Clear the list of statements for the next batch.
+                        statements.Clear();
+                    }
+                }
+                catch (AmazonDynamoDBException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return success;
+        }
+
+        /// <summary>
+        /// Loads the contents of a JSON file into a list of movies to be
+        /// added to the DynamoDB table.
+        /// </summary>
+        /// <param name="movieFileName">The full path to the JSON file.</param>
+        /// <returns>A generic list of movie objects.</returns>
+        public static List<Movie> ImportMovies(string movieFileName)
+        {
+            if (!File.Exists(movieFileName))
+            {
+                return null;
+            }
+
+            using var sr = new StreamReader(movieFileName);
+            string json = sr.ReadToEnd();
+            var allMovies = JsonConvert.DeserializeObject<List<Movie>>(json);
+
+            if (allMovies is not null)
+            {
+                // Return the first 250 entries.
+                return allMovies.GetRange(0, 250);
+            }
+            else
+            {
+                return null;
+            }
+        }
+```
+Use batches of UPDATE statements to update items\.  
+
+```
+        /// <summary>
+        /// Updates information for multiple movies.
+        /// </summary>
+        /// <param name="tableName">The name of the table containing the
+        /// movies to be updated.</param>
+        /// <param name="producer1">The producer name for the first movie
+        /// to update.</param>
+        /// <param name="title1">The title of the first movie.</param>
+        /// <param name="year1">The year that the first movie was released.</param>
+        /// <param name="producer2">The producer name for the second
+        /// movie to update.</param>
+        /// <param name="title2">The title of the second movie.</param>
+        /// <param name="year2">The year that the second movie was released.</param>
+        /// <returns>A Boolean value that indicates the success of the update.</returns>
+        public static async Task<bool> UpdateBatch(
+            string tableName,
+            string producer1,
+            string title1,
+            int year1,
+            string producer2,
+            string title2,
+            int year2)
+        {
+
+            string updateBatch = $"UPDATE {tableName} SET Producer=? WHERE title = ? AND year = ?";
+            var statements = new List<BatchStatementRequest>
+            {
+                new BatchStatementRequest
+                {
+                    Statement = updateBatch,
+                    Parameters = new List<AttributeValue>
+                    {
+                        new AttributeValue { S = producer1 },
+                        new AttributeValue { S = title1 },
+                        new AttributeValue { N = year1.ToString() },
+                    },
+                },
+
+                new BatchStatementRequest
+                {
+                    Statement = updateBatch,
+                    Parameters = new List<AttributeValue>
+                    {
+                        new AttributeValue { S = producer2 },
+                        new AttributeValue { S = title2 },
+                        new AttributeValue { N = year2.ToString() },
+                    },
+                }
+            };
+
+            var response = await Client.BatchExecuteStatementAsync(new BatchExecuteStatementRequest
+            {
+                Statements = statements,
+            });
+
+            return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+        }
+```
+Use batches of DELETE statements to delete items\.  
+
+```
+        /// <summary>
+        /// Deletes multiple movies using a PartiQL BatchExecuteAsync
+        /// statement.
+        /// </summary>
+        /// <param name="tableName">The name of the table containing the
+        /// moves that will be deleted.</param>
+        /// <param name="title1">The title of the first movie.</param>
+        /// <param name="year1">The year the first movie was released.</param>
+        /// <param name="title2">The title of the second movie.</param>
+        /// <param name="year2">The year the second movie was released.</param>
+        /// <returns>A Boolean value indicating the success of the operation.</returns>
+        public static async Task<bool> DeleteBatch(
+            string tableName,
+            string title1,
+            int year1,
+            string title2,
+            int year2)
+        {
+
+            string updateBatch = $"DELETE FROM {tableName} WHERE title = ? AND year = ?";
+            var statements = new List<BatchStatementRequest>
+            {
+                new BatchStatementRequest
+                {
+                    Statement = updateBatch,
+                    Parameters = new List<AttributeValue>
+                    {
+                        new AttributeValue { S = title1 },
+                        new AttributeValue { N = year1.ToString() },
+                    },
+                },
+
+                new BatchStatementRequest
+                {
+                    Statement = updateBatch,
+                    Parameters = new List<AttributeValue>
+                    {
+                        new AttributeValue { S = title2 },
+                        new AttributeValue { N = year2.ToString() },
+                    },
+                }
+            };
+
+            var response = await Client.BatchExecuteStatementAsync(new BatchExecuteStatementRequest
+            {
+                Statements = statements,
+            });
+
+            return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+        }
+```
++  For API details, see [BatchExecuteStatement](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/BatchExecuteStatement) in *AWS SDK for \.NET API Reference*\. 
 
 ### Scan a table<a name="dynamodb_Scan_csharp_topic"></a>
 
 The following code example shows how to scan a DynamoDB table\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
   
 
 ```
@@ -348,7 +781,6 @@ The following code example shows how to scan a DynamoDB table\.
             return foundCount;
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
 +  For API details, see [Scan](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/Scan) in *AWS SDK for \.NET API Reference*\. 
 
 ### Update an item in a table<a name="dynamodb_UpdateItem_csharp_topic"></a>
@@ -356,6 +788,7 @@ The following code example shows how to scan a DynamoDB table\.
 The following code example shows how to update an item in a DynamoDB table\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
   
 
 ```
@@ -407,7 +840,6 @@ The following code example shows how to update an item in a DynamoDB table\.
             return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
 +  For API details, see [UpdateItem](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/UpdateItem) in *AWS SDK for \.NET API Reference*\. 
 
 ### Write a batch of items<a name="dynamodb_BatchWriteItem_csharp_topic"></a>
@@ -415,6 +847,7 @@ The following code example shows how to update an item in a DynamoDB table\.
 The following code example shows how to write a batch of DynamoDB items\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
 Writes a batch of items to the movie table\.  
 
 ```
@@ -469,10 +902,9 @@ Writes a batch of items to the movie table\.
             return movies.Count;
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
 +  For API details, see [BatchWriteItem](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/BatchWriteItem) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w150aac21c18b9c17c15"></a>
+## Scenarios<a name="w155aac21c18b9c17c15"></a>
 
 ### Get started using tables, items, and queries<a name="dynamodb_Scenario_GettingStartedMovies_csharp_topic"></a>
 
@@ -486,6 +918,7 @@ The following code example shows how to:
 + Delete the table\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
   
 
 ```
@@ -1089,7 +1522,6 @@ Deletes the movie table\.
             }
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
 + For API details, see the following topics in *AWS SDK for \.NET API Reference*\.
   + [BatchWriteItem](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/BatchWriteItem)
   + [CreateTable](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/CreateTable)
@@ -1101,3 +1533,797 @@ Deletes the movie table\.
   + [Query](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/Query)
   + [Scan](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/Scan)
   + [UpdateItem](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/UpdateItem)
+
+### Query a table by using batches of PartiQL statements<a name="dynamodb_Scenario_PartiQLBatch_csharp_topic"></a>
+
+The following code example shows how to query a DynamoDB table by using batches of PartiQL statements\.
+
+**AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+  
+
+```
+// Before you run this example, download 'movies.json' from
+// https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.Js.02.html,
+// and put it in the same folder as the example.
+
+// Separator for the console display.
+var SepBar = new string('-', 80);
+const string tableName = "movie_table";
+const string movieFileName = "moviedata.json";
+
+DisplayInstructions();
+
+// Create the table and wait for it to be active.
+Console.WriteLine($"Creating the movie table: {tableName}");
+
+var success = await DynamoDBMethods.CreateMovieTableAsync(tableName);
+if (success)
+{
+    Console.WriteLine($"Successfully created table: {tableName}.");
+}
+
+WaitForEnter();
+
+// Add movie information to the table from moviedata.json. See the
+// instructions at the top of this file to download the JSON file.
+Console.WriteLine($"Inserting movies into the new table. Please wait...");
+success = await PartiQLBatchMethods.InsertMovies(tableName, movieFileName);
+if (success)
+{
+    Console.WriteLine("Movies successfully added to the table.");
+}
+else
+{
+    Console.WriteLine("Movies could not be added to the table.");
+}
+
+WaitForEnter();
+
+// Update multiple movies by using the BatchExecute statement.
+var title1 = "Star Wars";
+var year1 = 1977;
+var title2 = "Wizard of Oz";
+var year2 = 1939;
+
+Console.WriteLine($"Updating two movies with producer information: {title1} and {title2}.");
+success = await PartiQLBatchMethods.GetBatch(tableName, title1, title2, year1, year2);
+if (success)
+{
+    Console.WriteLine($"Successfully retrieved {title1} and {title2}.");
+}
+else
+{
+    Console.WriteLine("Select statement failed.");
+}
+
+WaitForEnter();
+
+// Update multiple movies by using the BatchExecute statement.
+var producer1 = "LucasFilm";
+var producer2 = "MGM";
+
+Console.WriteLine($"Updating two movies with producer information: {title1} and {title2}.");
+success = await PartiQLBatchMethods.UpdateBatch(tableName, producer1, title1, year1, producer2, title2, year2);
+if (success)
+{
+    Console.WriteLine($"Successfully updated {title1} and {title2}.");
+}
+else
+{
+    Console.WriteLine("Update failed.");
+}
+
+WaitForEnter();
+
+// Delete multiple movies by using the BatchExecute statement.
+Console.WriteLine($"Now we will delete {title1} and {title2} from the table.");
+success = await PartiQLBatchMethods.DeleteBatch(tableName, title1, year1, title2, year2);
+
+if (success)
+{
+    Console.WriteLine($"Deleted {title1} and {title2}");
+}
+else
+{
+    Console.WriteLine($"could not delete {title1} or {title2}");
+}
+
+WaitForEnter();
+
+// DNow that the PartiQL Batch scenario is complete, delete the movie table.
+success = await DynamoDBMethods.DeleteTableAsync(tableName);
+
+if (success)
+{
+    Console.WriteLine($"Successfully deleted {tableName}");
+}
+else
+{
+    Console.WriteLine($"Could not delete {tableName}");
+}
+
+/// <summary>
+/// Displays the description of the application on the console.
+/// </summary>
+void DisplayInstructions()
+{
+    Console.Clear();
+    Console.WriteLine();
+    Console.Write(new string(' ', 24));
+    Console.WriteLine("DynamoDB PartiQL Basics Example");
+    Console.WriteLine(SepBar);
+    Console.WriteLine("This demo application shows the basics of using Amazon DynamoDB with the AWS SDK for");
+    Console.WriteLine(".NET version 3.7 and .NET 6.");
+    Console.WriteLine(SepBar);
+    Console.WriteLine("Creates a table by using the CreateTable method.");
+    Console.WriteLine("Gets multiple movies by using a PartiQL SELECT statement.");
+    Console.WriteLine("Updates multiple movies by using the ExecuteBatch method.");
+    Console.WriteLine("Deletes multiple movies by using a PartiQL DELETE statement.");
+    Console.WriteLine("Cleans up the resources created for the demo by deleting the table.");
+    Console.WriteLine(SepBar);
+
+    WaitForEnter();
+}
+
+/// <summary>
+/// Simple method to wait for the <Enter> key to be pressed.
+/// </summary>
+void WaitForEnter()
+{
+    Console.WriteLine("\nPress <Enter> to continue.");
+    Console.Write(SepBar);
+    _ = Console.ReadLine();
+}
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="title1"></param>
+        /// <param name="title2"></param>
+        /// <param name="year1"></param>
+        /// <param name="year2"></param>
+        /// <returns></returns>
+        public static async Task<bool> GetBatch(
+            string tableName,
+            string title1,
+            string title2,
+            int year1,
+            int year2)
+        {
+            var getBatch = $"SELECT FROM {tableName} WHERE title = ? AND year = ?";
+            var statements = new List<BatchStatementRequest>
+            {
+                new BatchStatementRequest
+                {
+                    Statement = getBatch,
+                    Parameters = new List<AttributeValue>
+                    {
+                        new AttributeValue { S = title1 },
+                        new AttributeValue { N = year1.ToString() },
+                    },
+                },
+
+                new BatchStatementRequest
+                {
+                    Statement = getBatch,
+                    Parameters = new List<AttributeValue>
+                    {
+                        new AttributeValue { S = title2 },
+                        new AttributeValue { N = year2.ToString() },
+                    },
+                }
+            };
+
+            var response = await Client.BatchExecuteStatementAsync(new BatchExecuteStatementRequest
+            {
+                Statements = statements,
+            });
+
+            if (response.Responses.Count > 0)
+            {
+                response.Responses.ForEach(r =>
+                {
+                    Console.WriteLine($"{r.Item["title"]}\t{r.Item["year"]}");
+                });
+                return true;
+            }
+            else
+            {
+                Console.WriteLine($"Couldn't find either {title1} or {title2}.");
+                return false;
+            }
+
+        }
+
+
+
+        /// <summary>
+        /// Inserts movies imported from a JSON file into the movie table by
+        /// using an Amazon DynamoDB PartiQL INSERT statement.
+        /// </summary>
+        /// <param name="tableName">The name of the table into which the movie
+        /// information will be inserted.</param>
+        /// <param name="movieFileName">The name of the JSON file that contains
+        /// movie information.</param>
+        /// <returns>A Boolean value that indicates the success or failure of
+        /// the insert operation.</returns>
+        public static async Task<bool> InsertMovies(string tableName, string movieFileName)
+        {
+            // Get the list of movies from the JSON file.
+            var movies = ImportMovies(movieFileName);
+
+            var success = false;
+
+            if (movies is not null)
+            {
+                // Insert the movies in a batch using PartiQL. Because the
+                // batch can contain a maximum of 25 items, insert 25 movies
+                // at a time.
+                string insertBatch = $"INSERT INTO {tableName} VALUE {{'title': ?, 'year': ?}}";
+                var statements = new List<BatchStatementRequest>();
+
+                try
+                {
+                    for (var indexOffset = 0; indexOffset < 250; indexOffset += 25)
+                    {
+                        for (var i = indexOffset; i < indexOffset + 25; i++)
+                        {
+                            statements.Add(new BatchStatementRequest
+                            {
+                                Statement = insertBatch,
+                                Parameters = new List<AttributeValue>
+                                {
+                                    new AttributeValue { S = movies[i].Title },
+                                    new AttributeValue { N = movies[i].Year.ToString() },
+                                },
+                            });
+                        }
+
+                        var response = await Client.BatchExecuteStatementAsync(new BatchExecuteStatementRequest
+                        {
+                            Statements = statements,
+                        });
+
+                        // Wait between batches for movies to be successfully added.
+                        System.Threading.Thread.Sleep(3000);
+
+                        success = response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+
+                        // Clear the list of statements for the next batch.
+                        statements.Clear();
+                    }
+                }
+                catch (AmazonDynamoDBException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return success;
+        }
+
+        /// <summary>
+        /// Loads the contents of a JSON file into a list of movies to be
+        /// added to the DynamoDB table.
+        /// </summary>
+        /// <param name="movieFileName">The full path to the JSON file.</param>
+        /// <returns>A generic list of movie objects.</returns>
+        public static List<Movie> ImportMovies(string movieFileName)
+        {
+            if (!File.Exists(movieFileName))
+            {
+                return null;
+            }
+
+            using var sr = new StreamReader(movieFileName);
+            string json = sr.ReadToEnd();
+            var allMovies = JsonConvert.DeserializeObject<List<Movie>>(json);
+
+            if (allMovies is not null)
+            {
+                // Return the first 250 entries.
+                return allMovies.GetRange(0, 250);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+
+        /// <summary>
+        /// Updates information for multiple movies.
+        /// </summary>
+        /// <param name="tableName">The name of the table containing the
+        /// movies to be updated.</param>
+        /// <param name="producer1">The producer name for the first movie
+        /// to update.</param>
+        /// <param name="title1">The title of the first movie.</param>
+        /// <param name="year1">The year that the first movie was released.</param>
+        /// <param name="producer2">The producer name for the second
+        /// movie to update.</param>
+        /// <param name="title2">The title of the second movie.</param>
+        /// <param name="year2">The year that the second movie was released.</param>
+        /// <returns>A Boolean value that indicates the success of the update.</returns>
+        public static async Task<bool> UpdateBatch(
+            string tableName,
+            string producer1,
+            string title1,
+            int year1,
+            string producer2,
+            string title2,
+            int year2)
+        {
+
+            string updateBatch = $"UPDATE {tableName} SET Producer=? WHERE title = ? AND year = ?";
+            var statements = new List<BatchStatementRequest>
+            {
+                new BatchStatementRequest
+                {
+                    Statement = updateBatch,
+                    Parameters = new List<AttributeValue>
+                    {
+                        new AttributeValue { S = producer1 },
+                        new AttributeValue { S = title1 },
+                        new AttributeValue { N = year1.ToString() },
+                    },
+                },
+
+                new BatchStatementRequest
+                {
+                    Statement = updateBatch,
+                    Parameters = new List<AttributeValue>
+                    {
+                        new AttributeValue { S = producer2 },
+                        new AttributeValue { S = title2 },
+                        new AttributeValue { N = year2.ToString() },
+                    },
+                }
+            };
+
+            var response = await Client.BatchExecuteStatementAsync(new BatchExecuteStatementRequest
+            {
+                Statements = statements,
+            });
+
+            return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+        }
+
+
+
+        /// <summary>
+        /// Deletes multiple movies using a PartiQL BatchExecuteAsync
+        /// statement.
+        /// </summary>
+        /// <param name="tableName">The name of the table containing the
+        /// moves that will be deleted.</param>
+        /// <param name="title1">The title of the first movie.</param>
+        /// <param name="year1">The year the first movie was released.</param>
+        /// <param name="title2">The title of the second movie.</param>
+        /// <param name="year2">The year the second movie was released.</param>
+        /// <returns>A Boolean value indicating the success of the operation.</returns>
+        public static async Task<bool> DeleteBatch(
+            string tableName,
+            string title1,
+            int year1,
+            string title2,
+            int year2)
+        {
+
+            string updateBatch = $"DELETE FROM {tableName} WHERE title = ? AND year = ?";
+            var statements = new List<BatchStatementRequest>
+            {
+                new BatchStatementRequest
+                {
+                    Statement = updateBatch,
+                    Parameters = new List<AttributeValue>
+                    {
+                        new AttributeValue { S = title1 },
+                        new AttributeValue { N = year1.ToString() },
+                    },
+                },
+
+                new BatchStatementRequest
+                {
+                    Statement = updateBatch,
+                    Parameters = new List<AttributeValue>
+                    {
+                        new AttributeValue { S = title2 },
+                        new AttributeValue { N = year2.ToString() },
+                    },
+                }
+            };
+
+            var response = await Client.BatchExecuteStatementAsync(new BatchExecuteStatementRequest
+            {
+                Statements = statements,
+            });
+
+            return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+        }
+```
++  For API details, see [BatchExecuteStatement](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/BatchExecuteStatement) in *AWS SDK for \.NET API Reference*\. 
+
+### Query a table using PartiQL<a name="dynamodb_Scenario_PartiQLSingle_csharp_topic"></a>
+
+The following code example shows how to query a DynamoDB table using PartiQL\.
+
+**AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+  
+
+```
+namespace PartiQL_Basics_Scenario
+{
+    public class PartiQLMethods
+    {
+        private static readonly AmazonDynamoDBClient Client = new AmazonDynamoDBClient();
+
+
+        /// <summary>
+        /// Inserts movies imported from a JSON file into the movie table by
+        /// using an Amazon DynamoDB PartiQL INSERT statement.
+        /// </summary>
+        /// <param name="tableName">The name of the table where the movie
+        /// information will be inserted.</param>
+        /// <param name="movieFileName">The name of the JSON file that contains
+        /// movie information.</param>
+        /// <returns>A Boolean value that indicates the success or failure of
+        /// the insert operation.</returns>
+        public static async Task<bool> InsertMovies(string tableName, string movieFileName)
+        {
+            // Get the list of movies from the JSON file.
+            var movies = ImportMovies(movieFileName);
+
+            var success = false;
+
+            if (movies is not null)
+            {
+                // Insert the movies in a batch using PartiQL. Because the
+                // batch can contain a maximum of 25 items, insert 25 movies
+                // at a time.
+                string insertBatch = $"INSERT INTO {tableName} VALUE {{'title': ?, 'year': ?}}";
+                var statements = new List<BatchStatementRequest>();
+
+                try
+                {
+                    for (var indexOffset = 0; indexOffset < 250; indexOffset += 25)
+                    {
+                        for (var i = indexOffset; i < indexOffset + 25; i++)
+                        {
+                            statements.Add(new BatchStatementRequest
+                            {
+                                Statement = insertBatch,
+                                Parameters = new List<AttributeValue>
+                                {
+                                    new AttributeValue { S = movies[i].Title },
+                                    new AttributeValue { N = movies[i].Year.ToString() },
+                                },
+                            });
+                        }
+
+                        var response = await Client.BatchExecuteStatementAsync(new BatchExecuteStatementRequest
+                        {
+                            Statements = statements,
+                        });
+
+                        // Wait between batches for movies to be successfully added.
+                        System.Threading.Thread.Sleep(3000);
+
+                        success = response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+
+                        // Clear the list of statements for the next batch.
+                        statements.Clear();
+                    }
+                }
+                catch (AmazonDynamoDBException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return success;
+        }
+
+        /// <summary>
+        /// Loads the contents of a JSON file into a list of movies to be
+        /// added to the DynamoDB table.
+        /// </summary>
+        /// <param name="movieFileName">The full path to the JSON file.</param>
+        /// <returns>A generic list of movie objects.</returns>
+        public static List<Movie> ImportMovies(string movieFileName)
+        {
+            if (!File.Exists(movieFileName))
+            {
+                return null;
+            }
+
+            using var sr = new StreamReader(movieFileName);
+            string json = sr.ReadToEnd();
+            var allMovies = JsonConvert.DeserializeObject<List<Movie>>(json);
+
+            if (allMovies is not null)
+            {
+                // Return the first 250 entries.
+                return allMovies.GetRange(0, 250);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+
+        /// <summary>
+        /// Uses a PartiQL SELECT statement to retrieve a single movie from the
+        /// movie database.
+        /// </summary>
+        /// <param name="tableName">The name of the movie table.</param>
+        /// <param name="movieTitle">The title of the movie to retrieve.</param>
+        /// <returns>A list of movie data. If no movie matches the supplied
+        /// title, the list is empty.</returns>
+        public static async Task<List<Dictionary<string, AttributeValue>>> GetSingleMovie(string tableName, string movieTitle)
+        {
+            string selectSingle = $"SELECT * FROM {tableName} WHERE title = ?";
+            var parameters = new List<AttributeValue>
+            {
+                new AttributeValue { S = movieTitle },
+            };
+
+            var response = await Client.ExecuteStatementAsync(new ExecuteStatementRequest
+            {
+                Statement = selectSingle,
+                Parameters = parameters,
+            });
+
+            return response.Items;
+        }
+
+
+
+        /// <summary>
+        /// Retrieve multiple movies by year using a SELECT statement.
+        /// </summary>
+        /// <param name="tableName">The name of the movie table.</param>
+        /// <param name="year">The year the movies were released.</param>
+        /// <returns></returns>
+        public static async Task<List<Dictionary<string, AttributeValue>>> GetMovies(string tableName, int year)
+        {
+            string selectSingle = $"SELECT * FROM {tableName} WHERE year = ?";
+            var parameters = new List<AttributeValue>
+            {
+                new AttributeValue { N = year.ToString() },
+            };
+
+            var response = await Client.ExecuteStatementAsync(new ExecuteStatementRequest
+            {
+                Statement = selectSingle,
+                Parameters = parameters,
+            });
+
+            return response.Items;
+        }
+
+
+        /// <summary>
+        /// Inserts a single movie into the movies table.
+        /// </summary>
+        /// <param name="tableName">The name of the table.</param>
+        /// <param name="movieTitle">The title of the movie to insert.</param>
+        /// <param name="year">The year that the movie was released.</param>
+        /// <returns>A Boolean value that indicates the success or failure of
+        /// the INSERT operation.</returns>
+        public static async Task<bool> InsertSingleMovie(string tableName, string movieTitle, int year)
+        {
+            string insertBatch = $"INSERT INTO {tableName} VALUE {{'title': ?, 'year': ?}}";
+
+            var response = await Client.ExecuteStatementAsync(new ExecuteStatementRequest
+            {
+                Statement = insertBatch,
+                Parameters = new List<AttributeValue>
+                {
+                    new AttributeValue { S = movieTitle },
+                    new AttributeValue { N = year.ToString() },
+                },
+            });
+
+            return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+        }
+
+
+
+        /// <summary>
+        /// Updates a single movie in the table, adding information for the
+        /// producer.
+        /// </summary>
+        /// <param name="tableName">the name of the table.</param>
+        /// <param name="producer">The name of the producer.</param>
+        /// <param name="movieTitle">The movie title.</param>
+        /// <param name="year">The year the movie was released.</param>
+        /// <returns>A Boolean value that indicates the success of the
+        /// UPDATE operation.</returns>
+        public static async Task<bool> UpdateSingleMovie(string tableName, string producer, string movieTitle, int year)
+        {
+            string insertSingle = $"UPDATE {tableName} SET Producer=? WHERE title = ? AND year = ?";
+
+            var response = await Client.ExecuteStatementAsync(new ExecuteStatementRequest
+            {
+                Statement = insertSingle,
+                Parameters = new List<AttributeValue>
+                {
+                    new AttributeValue { S = producer },
+                    new AttributeValue { S = movieTitle },
+                    new AttributeValue { N = year.ToString() },
+                },
+            });
+
+            return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+        }
+
+
+
+        /// <summary>
+        /// Deletes a single movie from the table.
+        /// </summary>
+        /// <param name="tableName">The name of the table.</param>
+        /// <param name="movieTitle">The title of the movie to delete.</param>
+        /// <param name="year">The year that the movie was released.</param>
+        /// <returns>A Boolean value that indicates the success of the
+        /// DELETE operation.</returns>
+        public static async Task<bool> DeleteSingleMovie(string tableName, string movieTitle, int year)
+        {
+            var deleteSingle = $"DELETE FROM {tableName} WHERE title = ? AND year = ?";
+
+            var response = await Client.ExecuteStatementAsync(new ExecuteStatementRequest
+            {
+                Statement = deleteSingle,
+                Parameters = new List<AttributeValue>
+                {
+                    new AttributeValue { S = movieTitle },
+                    new AttributeValue { N = year.ToString() },
+                },
+            });
+
+            return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+        }
+
+
+        /// <summary>
+        /// Displays the list of movies returned from a database query.
+        /// </summary>
+        /// <param name="items">The list of movie information to display.</param>
+        private static void DisplayMovies(List<Dictionary<string, AttributeValue>> items)
+        {
+            if (items.Count > 0)
+            {
+                Console.WriteLine($"Found {items.Count} movies.");
+                items.ForEach(item => Console.WriteLine($"{item["year"].N}\t{item["title"].S}"));
+            }
+            else
+            {
+                Console.WriteLine($"Didn't find a movie that matched the supplied criteria.");
+            }
+        }
+
+
+    }
+}
+
+
+
+        /// <summary>
+        /// Uses a PartiQL SELECT statement to retrieve a single movie from the
+        /// movie database.
+        /// </summary>
+        /// <param name="tableName">The name of the movie table.</param>
+        /// <param name="movieTitle">The title of the movie to retrieve.</param>
+        /// <returns>A list of movie data. If no movie matches the supplied
+        /// title, the list is empty.</returns>
+        public static async Task<List<Dictionary<string, AttributeValue>>> GetSingleMovie(string tableName, string movieTitle)
+        {
+            string selectSingle = $"SELECT * FROM {tableName} WHERE title = ?";
+            var parameters = new List<AttributeValue>
+            {
+                new AttributeValue { S = movieTitle },
+            };
+
+            var response = await Client.ExecuteStatementAsync(new ExecuteStatementRequest
+            {
+                Statement = selectSingle,
+                Parameters = parameters,
+            });
+
+            return response.Items;
+        }
+
+
+
+        /// <summary>
+        /// Inserts a single movie into the movies table.
+        /// </summary>
+        /// <param name="tableName">The name of the table.</param>
+        /// <param name="movieTitle">The title of the movie to insert.</param>
+        /// <param name="year">The year that the movie was released.</param>
+        /// <returns>A Boolean value that indicates the success or failure of
+        /// the INSERT operation.</returns>
+        public static async Task<bool> InsertSingleMovie(string tableName, string movieTitle, int year)
+        {
+            string insertBatch = $"INSERT INTO {tableName} VALUE {{'title': ?, 'year': ?}}";
+
+            var response = await Client.ExecuteStatementAsync(new ExecuteStatementRequest
+            {
+                Statement = insertBatch,
+                Parameters = new List<AttributeValue>
+                {
+                    new AttributeValue { S = movieTitle },
+                    new AttributeValue { N = year.ToString() },
+                },
+            });
+
+            return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+        }
+
+
+
+        /// <summary>
+        /// Updates a single movie in the table, adding information for the
+        /// producer.
+        /// </summary>
+        /// <param name="tableName">the name of the table.</param>
+        /// <param name="producer">The name of the producer.</param>
+        /// <param name="movieTitle">The movie title.</param>
+        /// <param name="year">The year the movie was released.</param>
+        /// <returns>A Boolean value that indicates the success of the
+        /// UPDATE operation.</returns>
+        public static async Task<bool> UpdateSingleMovie(string tableName, string producer, string movieTitle, int year)
+        {
+            string insertSingle = $"UPDATE {tableName} SET Producer=? WHERE title = ? AND year = ?";
+
+            var response = await Client.ExecuteStatementAsync(new ExecuteStatementRequest
+            {
+                Statement = insertSingle,
+                Parameters = new List<AttributeValue>
+                {
+                    new AttributeValue { S = producer },
+                    new AttributeValue { S = movieTitle },
+                    new AttributeValue { N = year.ToString() },
+                },
+            });
+
+            return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+        }
+
+
+
+        /// <summary>
+        /// Deletes a single movie from the table.
+        /// </summary>
+        /// <param name="tableName">The name of the table.</param>
+        /// <param name="movieTitle">The title of the movie to delete.</param>
+        /// <param name="year">The year that the movie was released.</param>
+        /// <returns>A Boolean value that indicates the success of the
+        /// DELETE operation.</returns>
+        public static async Task<bool> DeleteSingleMovie(string tableName, string movieTitle, int year)
+        {
+            var deleteSingle = $"DELETE FROM {tableName} WHERE title = ? AND year = ?";
+
+            var response = await Client.ExecuteStatementAsync(new ExecuteStatementRequest
+            {
+                Statement = deleteSingle,
+                Parameters = new List<AttributeValue>
+                {
+                    new AttributeValue { S = movieTitle },
+                    new AttributeValue { N = year.ToString() },
+                },
+            });
+
+            return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+        }
+```
++  For API details, see [ExecuteStatement](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/ExecuteStatement) in *AWS SDK for \.NET API Reference*\. 

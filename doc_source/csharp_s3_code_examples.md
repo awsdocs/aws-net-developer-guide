@@ -9,16 +9,17 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w150aac21c18b9c25c13)
-+ [Scenarios](#w150aac21c18b9c25c15)
++ [Actions](#w155aac21c18b9c25c13)
++ [Scenarios](#w155aac21c18b9c25c15)
 
-## Actions<a name="w150aac21c18b9c25c13"></a>
+## Actions<a name="w155aac21c18b9c25c13"></a>
 
 ### Copy an object from one bucket to another<a name="s3_CopyObject_csharp_topic"></a>
 
 The following code example shows how to copy an Amazon S3 object from one bucket to another\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
   
 
 ```
@@ -59,7 +60,6 @@ The following code example shows how to copy an Amazon S3 object from one bucket
             }
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
 +  For API details, see [CopyObject](https://docs.aws.amazon.com/goto/DotNetSDKV3/s3-2006-03-01/CopyObject) in *AWS SDK for \.NET API Reference*\. 
 
 ### Create a bucket<a name="s3_CreateBucket_csharp_topic"></a>
@@ -67,6 +67,7 @@ The following code example shows how to copy an Amazon S3 object from one bucket
 The following code example shows how to create an Amazon S3 bucket\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
   
 
 ```
@@ -97,7 +98,6 @@ The following code example shows how to create an Amazon S3 bucket\.
             }
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
 +  For API details, see [CreateBucket](https://docs.aws.amazon.com/goto/DotNetSDKV3/s3-2006-03-01/CreateBucket) in *AWS SDK for \.NET API Reference*\. 
 
 ### Delete an empty bucket<a name="s3_DeleteBucket_csharp_topic"></a>
@@ -105,6 +105,7 @@ The following code example shows how to create an Amazon S3 bucket\.
 The following code example shows how to delete an empty Amazon S3 bucket\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
   
 
 ```
@@ -126,7 +127,6 @@ The following code example shows how to delete an empty Amazon S3 bucket\.
             return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
 +  For API details, see [DeleteBucket](https://docs.aws.amazon.com/goto/DotNetSDKV3/s3-2006-03-01/DeleteBucket) in *AWS SDK for \.NET API Reference*\. 
 
 ### Delete multiple objects<a name="s3_DeleteObjects_csharp_topic"></a>
@@ -134,6 +134,7 @@ The following code example shows how to delete an empty Amazon S3 bucket\.
 The following code example shows how to delete multiple objects from an Amazon S3 bucket\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
 Delete all objects in an Amazon S3 bucket\.  
 
 ```
@@ -177,7 +178,6 @@ Delete all objects in an Amazon S3 bucket\.
             }
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
 +  For API details, see [DeleteObjects](https://docs.aws.amazon.com/goto/DotNetSDKV3/s3-2006-03-01/DeleteObjects) in *AWS SDK for \.NET API Reference*\. 
 
 ### Get an object from a bucket<a name="s3_GetObject_csharp_topic"></a>
@@ -185,6 +185,7 @@ Delete all objects in an Amazon S3 bucket\.
 The following code example shows how to read data from an object in an Amazon S3 bucket\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
   
 
 ```
@@ -229,7 +230,6 @@ The following code example shows how to read data from an object in an Amazon S3
             }
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
 +  For API details, see [GetObject](https://docs.aws.amazon.com/goto/DotNetSDKV3/s3-2006-03-01/GetObject) in *AWS SDK for \.NET API Reference*\. 
 
 ### List objects in a bucket<a name="s3_ListObjects_csharp_topic"></a>
@@ -237,6 +237,7 @@ The following code example shows how to read data from an object in an Amazon S3
 The following code example shows how to list objects in an Amazon S3 bucket\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
   
 
 ```
@@ -286,7 +287,6 @@ The following code example shows how to list objects in an Amazon S3 bucket\.
             }
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
 +  For API details, see [ListObjects](https://docs.aws.amazon.com/goto/DotNetSDKV3/s3-2006-03-01/ListObjects) in *AWS SDK for \.NET API Reference*\. 
 
 ### Upload an object to a bucket<a name="s3_PutObject_csharp_topic"></a>
@@ -294,6 +294,7 @@ The following code example shows how to list objects in an Amazon S3 bucket\.
 The following code example shows how to upload an object to an Amazon S3 bucket\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
   
 
 ```
@@ -335,10 +336,9 @@ The following code example shows how to upload an object to an Amazon S3 bucket\
             }
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
 +  For API details, see [PutObject](https://docs.aws.amazon.com/goto/DotNetSDKV3/s3-2006-03-01/PutObject) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w150aac21c18b9c25c15"></a>
+## Scenarios<a name="w155aac21c18b9c25c15"></a>
 
 ### Getting started with buckets and objects<a name="s3_Scenario_GettingStarted_csharp_topic"></a>
 
@@ -352,6 +352,7 @@ The following code example shows how to:
 + Delete a bucket\.
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
   
 
 ```
@@ -494,7 +495,6 @@ The following code example shows how to:
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3#code-examples)\. 
 + For API details, see the following topics in *AWS SDK for \.NET API Reference*\.
   + [CopyObject](https://docs.aws.amazon.com/goto/DotNetSDKV3/s3-2006-03-01/CopyObject)
   + [CreateBucket](https://docs.aws.amazon.com/goto/DotNetSDKV3/s3-2006-03-01/CreateBucket)

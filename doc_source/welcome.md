@@ -4,7 +4,7 @@ The AWS SDK for \.NET makes it easier to build \.NET applications that tap into 
 
 ![\[Overview of the AWS SDK for .NET\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/overview.png)
 
-\(**OK, got it\!** I'm ready for a [tutorial](quick-start.md) or to start [setting up](net-dg-setup.md)\.\)
+\(**OK, got it\!** I'm ready for a [quick tour](quick-start.md) or to start [setting up](net-dg-setup.md)\.\)
 
 ## About this version<a name="about-this-version"></a>
 
