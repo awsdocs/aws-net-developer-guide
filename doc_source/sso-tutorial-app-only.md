@@ -1,15 +1,16 @@
-# Tutorial for AWS SSO using only \.NET applications<a name="sso-tutorial-app-only"></a>
+# Tutorial for SSO using only \.NET applications<a name="sso-tutorial-app-only"></a>
 
-This tutorial shows you how to enable AWS Single Sign\-On for a basic application and a test SSO user\. It configures the application to generate a temporary SSO token programmatically instead of [using the AWS CLI](sso-tutorial-cli-and-app.md)\.
+This tutorial shows you how to enable SSO for a basic application and a test SSO user\. It configures the application to generate a temporary SSO token programmatically instead of [using the AWS CLI](sso-tutorial-cli-and-app.md)\.
 
-Before you start this tutorial, see the [background information](sso.md) for using AWS SSO with the AWS SDK for \.NET\. Also see the high\-level description for this scenario in the subsection called [\.NET application only](sso.md#sso-generate-use-token-app-only-summary)\.
+Before you start this tutorial, see the [background information](sso.md) for using IAM Identity Center with the AWS SDK for \.NET\. Also see the high\-level description for this scenario in the subsection called [\.NET application only](sso.md#sso-generate-use-token-app-only-summary)\.
 
-Several of the steps in this tutorial help you configure services like AWS Organizations and AWS SSO\. If you've already performed that configuration, or if you're only interested in the code, you can skip to the section with the [example code](#sso-tutorial-app-only-code)\.
+**Note**  
+Several of the steps in this tutorial help you configure services like AWS Organizations and IAM Identity Center\. If you've already performed that configuration, or if you're only interested in the code, you can skip to the section with the [example code](#sso-tutorial-app-only-code)\.
 
 ## Prerequisites<a name="sso-tutorial-app-only-prereq"></a>
 + Configure your development environment if you haven't already done so\. This is described in sections like [Install and configure your toolchain](net-dg-dev-env.md) and [Setting up your project](net-dg-config.md)\.
-+ Identify or create at least one AWS account that you can use to test AWS SSO\. For the purposes of this tutorial, this is called the *test AWS account* or simply *test account*\.
-+ Identify an *SSO user* who can test AWS SSO for you\. This is a person who will be using SSO and the basic applications that you create\. For this tutorial, that person might be you \(the developer\), or someone else\. We also recommend a setup in which the SSO user is working on a computer that is not in your development environment\. However, this isn't strictly necessary\.
++ Identify or create at least one AWS account that you can use to test SSO\. For the purposes of this tutorial, this is called the *test AWS account* or simply *test account*\.
++ Identify an *SSO user* who can test SSO for you\. This is a person who will be using SSO and the basic applications that you create\. For this tutorial, that person might be you \(the developer\), or someone else\. We also recommend a setup in which the SSO user is working on a computer that is not in your development environment\. However, this isn't strictly necessary\.
 + The SSO user's computer must have a \.NET framework installed that's compatible with the one you used to set up your development environment\.
 
 ## Set up AWS<a name="sso-tutorial-app-only-setup-aws"></a>
@@ -32,17 +33,17 @@ Go to the [AWS Organizations console](https://console.aws.amazon.com/organizatio
 
 This action adds the test AWS account to the organization as the *management account*\. If you have additional test accounts, you can invite them to join the organization, but doing so isn't necessary for this tutorial\.
 
-### AWS SSO<a name="w155aac15b7c35c15b3c11"></a>
+### IAM Identity Center<a name="w155aac15b7c35c15b3c11"></a>
 
-Go to the [AWS Single Sign\-On console](https://console.aws.amazon.com/singlesignon/) and enable AWS SSO\. Perform email verification if necessary\. For more information, see [Enable AWS SSO](https://docs.aws.amazon.com/singlesignon/latest/userguide/step1.html) in the [AWS Single Sign\-On User Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/)\.
+Go to the [IAM Identity Center console](https://console.aws.amazon.com/singlesignon/) and enable SSO\. Perform email verification if necessary\. For more information, see [Enable IAM Identity Center](https://docs.aws.amazon.com/singlesignon/latest/userguide/step1.html) in the [IAM Identity Center User Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/)\.
 
 Then, perform the following configuration\.
 
-#### Configure AWS SSO<a name="w155aac15b7c35c15b3c11b7b1"></a>
+#### Configure IAM Identity Center<a name="w155aac15b7c35c15b3c11b7b1"></a>
 
 1. Go to the **Settings** page\. Look for the **"User portal URL"** and record the value for later use in the `sso_start_url` setting\.
 
-1. In the banner of the AWS Management Console, look for the AWS Region that was set when you enabled AWS SSO\. This is the dropdown menu to the left of the AWS account ID\. Record the Region code for later use in the `sso_region` setting\. This code will be similar to `us-east-1`\.
+1. In the banner of the AWS Management Console, look for the AWS Region that was set when you enabled SSO\. This is the dropdown menu to the left of the AWS account ID\. Record the Region code for later use in the `sso_region` setting\. This code will be similar to `us-east-1`\.
 
 1. Create an SSO user as follows:
 

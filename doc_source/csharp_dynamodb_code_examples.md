@@ -1536,7 +1536,11 @@ Deletes the movie table\.
 
 ### Query a table by using batches of PartiQL statements<a name="dynamodb_Scenario_PartiQLBatch_csharp_topic"></a>
 
-The following code example shows how to query a DynamoDB table by using batches of PartiQL statements\.
+The following code example shows how to:
++ Get a batch of items by running multiple SELECT statements\.
++ Add a batch of items by running multiple INSERT statements\.
++ Update a batch of items by running multiple UPDATE statements\.
++ Delete a batch of items by running multiple DELETE statements\.
 
 **AWS SDK for \.NET**  
  To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
@@ -1951,7 +1955,11 @@ void WaitForEnter()
 
 ### Query a table using PartiQL<a name="dynamodb_Scenario_PartiQLSingle_csharp_topic"></a>
 
-The following code example shows how to query a DynamoDB table using PartiQL\.
+The following code example shows how to:
++ Get an item by running a SELECT statement\.
++ Add an item by running an INSERT statement\.
++ Update an item by running an UPDATE statement\.
++ Delete an item by running a DELETE statement\.
 
 **AWS SDK for \.NET**  
  To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 

@@ -1,20 +1,20 @@
 # Single sign\-on \(SSO\) with the AWS SDK for \.NET<a name="sso"></a>
 
-AWS Single Sign\-On \(AWS SSO\) is a cloud\-based single sign\-on service that makes it easy to centrally manage SSO access to all of your AWS accounts and cloud applications\. For full details, see the [AWS Single Sign\-On User Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/)\.
+AWS IAM Identity Center \(successor to AWS Single Sign\-On\) is a cloud\-based single sign\-on \(SSO\) service that makes it easy to centrally manage SSO access to all of your AWS accounts and cloud applications\. For full details, see the [IAM Identity Center User Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/)\.
 
-If you're unfamiliar with how an SDK interacts with AWS SSO, see the following information\.
+If you're unfamiliar with how an SDK interacts with IAM Identity Center, see the following information\.
 
 ## High\-level pattern of interaction<a name="w155aac15b7b7b1"></a>
 
-At a high level, SDKs interact with AWS SSO in a manner similar to the following pattern:
+At a high level, SDKs interact with IAM Identity Center in a manner similar to the following pattern:
 
-1. AWS SSO is configured, typically through the [AWS SSO console](https://console.aws.amazon.com/singlesignon), and an SSO user is invited to participate\.
+1. IAM Identity Center is configured, typically through the [IAM Identity Center console](https://console.aws.amazon.com/singlesignon), and an SSO user is invited to participate\.
 
 1. The shared AWS `config` file on the user's computer is updated with SSO information\.
 
-1. The user signs in through AWS SSO and is given short\-term credentials for the AWS Identity and Access Management \(IAM\) permissions that have been configured for them\. This sign\-in can be initiated through a non\-SDK tool like the AWS CLI, or programmatically through a \.NET application\.
+1. The user signs in through IAM Identity Center and is given short\-term credentials for the AWS Identity and Access Management \(IAM\) permissions that have been configured for them\. This sign\-in can be initiated through a non\-SDK tool like the AWS CLI, or programmatically through a \.NET application\.
 
-1. The user proceeds to do their work\. When they run other applications that are using AWS SSO, they don't need to sign in again to open the applications\.
+1. The user proceeds to do their work\. When they run other applications that are using SSO, they don't need to sign in again to open the applications\.
 
 **Topics**
 + [Prerequisites](#sso-prereq)
@@ -25,15 +25,15 @@ At a high level, SDKs interact with AWS SSO in a manner similar to the following
 
 ## Prerequisites<a name="sso-prereq"></a>
 
-Before using AWS SSO, you must perform certain tasks, such as choosing an identity source and configuring the relevant AWS accounts and applications\. For additional information, see the following:
-+ For general information about these tasks, see [Getting started](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html) in the *AWS Single Sign\-On User Guide*\.
-+ For specific task examples, see the list of [tutorials](#sso-tutorial-links) at the end of this topic\. However, be sure to review the information in this topic before trying out the tutorials\.
+Before using IAM Identity Center, you must perform certain tasks, such as choosing an identity source and configuring the relevant AWS accounts and applications\. For additional information, see the following:
++ For general information about these tasks, see [Getting started](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html) in the *IAM Identity Center User Guide*\.
++ For specific task examples, see the list of tutorials at the end of this topic\. However, be sure to review the information in this topic before trying out the tutorials\.
 
 ## Setting up an SSO profile<a name="sso-profiles"></a>
 
-After AWS SSO is [configured](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html) in the relevant AWS account, a named profile for SSO must be added to the user's shared AWS `config` file\. This profile is used to connect to the AWS SSO *[user portal](https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html)*, which returns short\-term credentials for the IAM permissions that have been configured for the user\.
+After IAM Identity Center is [configured](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html) in the relevant AWS account, a named profile for SSO must be added to the user's shared AWS `config` file\. This profile is used to connect to the *[AWS access portal](https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html)*, which returns short\-term credentials for the IAM permissions that have been configured for the user\.
 
-The shared `config` file is typically named `%USERPROFILE%\.aws\config` in Windows and `~/.aws/config` in Linux and macOS\. You can use your preferred text editor to add a new profile for SSO\. Alternatively, you can use the `aws configure sso` command\. For more information about this command, see [Configuring the AWS CLI to use AWS Single Sign\-On](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html) in the *AWS Command Line Interface User Guide*\.
+The shared `config` file is typically named `%USERPROFILE%\.aws\config` in Windows and `~/.aws/config` in Linux and macOS\. You can use your preferred text editor to add a new profile for SSO\. Alternatively, you can use the `aws configure sso` command\. For more information about this command, see [Configuring the AWS CLI to use IAM Identity Center](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html) in the *AWS Command Line Interface User Guide*\.
 
 The new profile is similar to the following:
 
@@ -45,33 +45,33 @@ sso_account_id = 123456789012
 sso_role_name = SSOReadOnlyRole
 ```
 
-The settings for the new profile are defined below\. The first two settings define the AWS SSO user portal\. The other two settings are a pair that, taken together, define the permissions that have been configured for a user\. All four settings are required\.
+The settings for the new profile are defined below\. The first two settings define the AWS access portal\. The other two settings are a pair that, taken together, define the permissions that have been configured for a user\. All four settings are required\.
 
 **`sso_start_url`**  
-The URL that points to the organization's AWS SSO [user portal](https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html)\. To find this value, open the [AWS SSO console](https://console.aws.amazon.com/singlesignon), choose **Settings**, and find **User portal URL**\.
+The URL that points to the organization's [AWS access portal](https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html)\. To find this value, open the [IAM Identity Center console](https://console.aws.amazon.com/singlesignon), choose **Settings**, and find **portal URL**\.
 
 **`sso_region`**  
-The AWS Region that contains the user portal host\. This is the Region that was selected as you enabled AWS SSO\. It can be different from the Regions that you use for other tasks\.  
+The AWS Region that contains the access portal host\. This is the Region that was selected as you enabled IAM Identity Center\. It can be different from the Regions that you use for other tasks\.  
 For a complete list of the AWS Regions and their codes, see [Regional Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) in the *Amazon Web Services General Reference*\.
 
 **`sso_account_id`**  
-The ID of an AWS account that was added through the AWS Organizations service\. To see the list of available accounts, go to the [AWS SSO console](https://console.aws.amazon.com/singlesignon) and open the **AWS accounts** page\. The account ID that you choose for this setting will correspond to the value that you plan to give to the `sso_role_name` setting, which is shown next\.
+The ID of an AWS account that was added through the AWS Organizations service\. To see the list of available accounts, go to the [IAM Identity Center console](https://console.aws.amazon.com/singlesignon) and open the **AWS accounts** page\. The account ID that you choose for this setting will correspond to the value that you plan to give to the `sso_role_name` setting, which is shown next\.
 
 **`sso_role_name`**  
-The name of an AWS SSO permission set\. This permission set defines the permissions that a user is given through AWS SSO\.  
+The name of an IAM Identity Center permission set\. This permission set defines the permissions that a user is given through IAM Identity Center\.  
 The following procedure is one way to find the value for this setting\.  
 
-1. Go to the [AWS SSO console](https://console.aws.amazon.com/singlesignon) and open the **AWS accounts** page\.
+1. Go to the [IAM Identity Center console](https://console.aws.amazon.com/singlesignon) and open the **AWS accounts** page\.
 
 1. Choose an account to display its details\. The account you choose will be the one that contains the SSO user or group that you want to give SSO permissions to\.
 
 1. Look at the list of users and groups that are assigned to the account and find the user or group of interest\. The permission set that you specify in the `sso_role_name` setting is one of the sets associated with this user or group\.
 When giving a value to this setting, use the name of the permission set, not the Amazon Resource Name \(ARN\)\.  
-Permission sets have IAM policies and custom\-permissions policies attached to them\. For more information, see [Permission sets](https://docs.aws.amazon.com/singlesignon/latest/userguide/permissionsets.html) in the *AWS Single Sign\-On User Guide*\.
+Permission sets have IAM policies and custom\-permissions policies attached to them\. For more information, see [Permission sets](https://docs.aws.amazon.com/singlesignon/latest/userguide/permissionsets.html) in the *IAM Identity Center User Guide*\.
 
 ## Generating and using SSO tokens<a name="sso-generate-use-token-overview"></a>
 
-To use AWS SSO, a user must first generate a temporary token and then use that token to access appropriate AWS applications and resources\. For \.NET applications, you can use the following methods to generate and use these temporary tokens:
+To use SSO, a user must first generate a temporary token and then use that token to access appropriate AWS applications and resources\. For \.NET applications, you can use the following methods to generate and use these temporary tokens:
 + Generate a token with the AWS CLI and then use the token in \.NET applications\.
 + Create \.NET applications that generate a token first, if necessary, and then use the token\.
 
@@ -79,7 +79,7 @@ These methods are described in the following sections and demonstrated in the [t
 
 ### AWS CLI and \.NET application<a name="sso-generate-use-token-cli-and-app-summary"></a>
 
-This section shows you how to generate a temporary SSO token by using the AWS CLI, and how to use that token in an application\. For a full tutorial of this process, see [Tutorial for AWS SSO using the AWS CLI and \.NET applications](sso-tutorial-cli-and-app.md)\.
+This section shows you how to generate a temporary SSO token by using the AWS CLI, and how to use that token in an application\. For a full tutorial of this process, see [Tutorial for SSO using the AWS CLI and \.NET applications](sso-tutorial-cli-and-app.md)\.
 
 #### Generate an SSO token by using the AWS CLI<a name="sso-generate-token-cli"></a>
 
@@ -125,11 +125,11 @@ var S3Client_SSO = new AmazonS3Client(LoadSsoCredentials());
 **Note**  
 Using `AWSCredentials` to load temporary credentials isn't necessary if your application has been built to use the `[default]` profile for SSO\. In that case, the application can create AWS service clients without parameters, similar to "`var client = new AmazonS3Client();`"\.
 
-[Tutorial for AWS SSO using the AWS CLI and \.NET applications](sso-tutorial-cli-and-app.md)
+[Tutorial for SSO using the AWS CLI and \.NET applications](sso-tutorial-cli-and-app.md)
 
 ### \.NET application only<a name="sso-generate-use-token-app-only-summary"></a>
 
-This section shows you how to create a \.NET application that generates a temporary SSO token, if necessary, and then uses that token\. For a full tutorial of this process, see [Tutorial for AWS SSO using only \.NET applications](sso-tutorial-app-only.md)\.
+This section shows you how to create a \.NET application that generates a temporary SSO token, if necessary, and then uses that token\. For a full tutorial of this process, see [Tutorial for SSO using only \.NET applications](sso-tutorial-app-only.md)\.
 
 #### Generate and use an SSO token programmatically<a name="sso-generate-token-prog"></a>
 
@@ -166,21 +166,21 @@ static AWSCredentials LoadSsoCredentials()
 }
 ```
 
-If an appropriate SSO token isn't available, the default browser window is launched and the appropriate sign\-in page is opened\. For example, if you’re using AWS SSO as the **Identity source**, the user sees a sign\-in page similar to the following:
+If an appropriate SSO token isn't available, the default browser window is launched and the appropriate sign\-in page is opened\. For example, if you’re using IAM Identity Center as the **Identity source**, the user sees a sign\-in page similar to the following:
 
-![\[AWS Single Sign-On sign-in page.\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SSO-login.png)
+![\[AWS IAM Identity Center (successor to AWS Single Sign-On) sign-in page.\]](http://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/images/SSO-login.png)
 
 **Note**  
 The text string that you provide for `SSOAWSCredentials.Options.ClientName` can't have spaces\. If the string does have spaces, you'll get a *runtime* exception\.
 
-[Tutorial for AWS SSO using only \.NET applications](sso-tutorial-app-only.md)
+[Tutorial for SSO using only \.NET applications](sso-tutorial-app-only.md)
 
 ## Additional resources<a name="sso-resources"></a>
 
 For additional help, see the following resources\.
-+ [What is AWS Single Sign\-On?](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)
-+ [Configuring the AWS CLI to use AWS SSO](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html#sso-configure-profile)
-+ [Using AWS SSO credentials in the AWS Toolkit for Visual Studio](https://docs.aws.amazon.com/AWSToolkitVS/latest/UserGuide/sso-credentials.html)
++ [What is IAM Identity Center?](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)
++ [Configuring the AWS CLI to use IAM Identity Center](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html#sso-configure-profile)
++ [Using IAM Identity Center credentials in the AWS Toolkit for Visual Studio](https://docs.aws.amazon.com/AWSToolkitVS/latest/UserGuide/sso-credentials.html)
 
 ## Tutorials<a name="sso-tutorial-links"></a>
 
