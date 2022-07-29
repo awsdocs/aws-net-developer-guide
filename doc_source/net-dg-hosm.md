@@ -40,7 +40,7 @@ Create a \.NET Core project with the following code\. Then test the application 
 On your development machine, the \.NET Core Runtime is installed, which enables you to run the application without publishing it\. When you create an EC2 instance later in this tutorial, you can choose to install the \.NET Core Runtime on the instance\. This gives you a similar experience and a smaller file transfer\.  
  However, you can also choose not to install the \.NET Core Runtime on the instance\. If you choose this course of action, you must publish the application so that all dependencies are included when you transfer it to the instance\.
 
-### SDK references<a name="w155aac21c15c21c27c17c13b1"></a>
+### SDK references<a name="w181aac21c15c21c27c17c13b1"></a>
 
 NuGet packages:
 + [AWSSDK\.S3](https://www.nuget.org/packages/AWSSDK.S3)
@@ -53,7 +53,7 @@ Programming elements:
 
   Class [GetObjectResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/TGetObjectResponse.html)
 
-### The code<a name="w155aac21c15c21c27c17c15b1"></a>
+### The code<a name="w181aac21c15c21c27c17c15b1"></a>
 
 ```
 using System;

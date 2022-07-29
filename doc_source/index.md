@@ -106,6 +106,7 @@ Amazon's trademarks and trade dress may not be used in
          + [CloudWatch Logs examples using AWS SDK for .NET](csharp_cloudwatch-logs_code_examples.md)
          + [Amazon Comprehend examples using AWS SDK for .NET](csharp_comprehend_code_examples.md)
          + [DynamoDB examples using AWS SDK for .NET](csharp_dynamodb_code_examples.md)
+         + [AWS Glue examples using AWS SDK for .NET](csharp_glue_code_examples.md)
          + [IAM examples using AWS SDK for .NET](csharp_iam_code_examples.md)
          + [AWS KMS examples using AWS SDK for .NET](csharp_kms_code_examples.md)
          + [Amazon Rekognition examples using AWS SDK for .NET](csharp_rekognition_code_examples.md)

@@ -9,10 +9,10 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w155aac21c18b9c17c13)
-+ [Scenarios](#w155aac21c18b9c17c15)
++ [Actions](#w181aac21c18b9c17c13)
++ [Scenarios](#w181aac21c18b9c17c15)
 
-## Actions<a name="w155aac21c18b9c17c13"></a>
+## Actions<a name="w181aac21c18b9c17c13"></a>
 
 ### Create a table<a name="dynamodb_CreateTable_csharp_topic"></a>
 
@@ -904,7 +904,7 @@ Writes a batch of items to the movie table\.
 ```
 +  For API details, see [BatchWriteItem](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/BatchWriteItem) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w155aac21c18b9c17c15"></a>
+## Scenarios<a name="w181aac21c18b9c17c15"></a>
 
 ### Get started using tables, items, and queries<a name="dynamodb_Scenario_GettingStartedMovies_csharp_topic"></a>
 

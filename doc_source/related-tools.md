@@ -14,7 +14,7 @@ With the toolkit, you can do such things as the following:
 + Create serverless applications that contain AWS Lambda functions, and then deploy the applications to an AWS CloudFormation stack\.
 + Work with Amazon EventBridge schemas\.
 + Use IntelliSense when working with Amazon ECS task\-definition files\.
-+ Visualize an AWS Cloud Development Kit \(CDK\) application\.
++ Visualize an AWS Cloud Development Kit \(AWS CDK\) application\.
 
 ## Toolkit for Visual Studio<a name="tvslong"></a>
 

@@ -1,6 +1,6 @@
 # Deploying applications to AWS<a name="deploying"></a>
 
-After you've developed your cloud\-native \.NET Core application or service on a development machine, you'll want to deploy it to AWS\. You can do this by using the AWS Management Console or certain services like AWS CloudFormation or AWS Cloud Development Kit \(CDK\)\. You can also use AWS tools that have been created for the purpose of deployment\. By using these tools, you can do the following\.
+After you've developed your cloud\-native \.NET Core application or service on a development machine, you'll want to deploy it to AWS\. You can do this by using the AWS Management Console or certain services like AWS CloudFormation or AWS Cloud Development Kit \(AWS CDK\)\. You can also use AWS tools that have been created for the purpose of deployment\. By using these tools, you can do the following\.
 
 ## Deploy from the \.NET CLI<a name="deploying-from-net-cli"></a>
 
@@ -22,7 +22,7 @@ The "Publish to AWS" feature in the toolkit exposes the same functionality as th
   See [Working with serverless applications](https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/serverless-apps.html) and [Using AWS App Runner](https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/using-apprunner.html)\.
 + **[AWS Toolkit for Azure DevOps](https://docs.aws.amazon.com/vsts/latest/userguide/tutorial-eb.html)**
 
-## Use cases<a name="w155aac17b9"></a>
+## Use cases<a name="w181aac17b9"></a>
 
 The following sections contain use case scenarios for certain types of applications, including information about how you would use the \.NET CLI to deploy those applications\.
 + [ASP\.NET Core apps](deploying-asp-net.md)

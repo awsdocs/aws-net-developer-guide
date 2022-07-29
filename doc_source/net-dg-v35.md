@@ -46,7 +46,7 @@ If your code is affected by the lack of higher\-level library code for AWS AppSy
 
 ## Migrating synchronous code<a name="net-dg-v35-migrate-code"></a>
 
-Version 3\.5 of the AWS SDK for \.NET supports only asynchronous calls to AWS services\. You must change synchronous code you want to run using version 3\.5 so that it runs asynchronously\.
+Version 3\.5 of the AWS SDK for \.NET supports both \.NET Framework and \.NET Standard \(through \.NET Core versions like \.NET core 3\.1, \.NET 5, and so on\)\. Variations of the SDK that comply with \.NET Standard provide only asynchronous methods, so if you want to take advantage of \.NET Standard, you must change synchronous code so that it runs asynchronously\.
 
 The following code snippets show how you might change synchronous code into asynchronous code\. The code in these snippets is used to display the number of Amazon S3 buckets\.
 

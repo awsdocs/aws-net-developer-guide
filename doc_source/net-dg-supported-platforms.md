@@ -4,11 +4,11 @@ The AWS SDK for \.NET provides distinct groups of assemblies for developers to t
 
 ## \.NET Core<a name="net-core"></a>
 
-The AWS SDK for \.NET supports applications written for \.NET Core\. AWS service clients only support asynchronous calling patterns in \.NET core\. This also affects many of the high level abstractions built on top of service clients like Amazon S3’s `TransferUtility` which will only support asynchronous calls in the \.NET Core environment\.
+The AWS SDK for \.NET supports applications written for \.NET Core \(\.NET Core 3\.1, \.NET 5, \.NET 6, and so on\)\. AWS service clients only support asynchronous calling patterns in \.NET core\. This also affects many of the high level abstractions built on top of service clients, like the Amazon S3 `TransferUtility`, which will only support asynchronous calls in the \.NET Core environment\.
 
 ## \.NET Standard 2\.0<a name="net-standard-2"></a>
 
-Non\-Framework variations of the AWS SDK for \.NET comply with [\.NET Standard 2\.0](https://docs.microsoft.com/en-us/dotnet/standard/net-standard)\.
+Non\-Framework variations of the AWS SDK for \.NET comply with [\.NET Standard 2\.0](https://docs.microsoft.com/en-us/dotnet/standard/net-standard)\. The AWS SDK for \.NET provides only asynchronous methods for applications written against \.NET Standard\.
 
 ## \.NET Framework 4\.5<a name="net-dg-platform-diff-netfx45"></a>
 

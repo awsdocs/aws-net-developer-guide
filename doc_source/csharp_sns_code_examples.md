@@ -9,9 +9,9 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w155aac21c18b9c27c13)
++ [Actions](#w181aac21c18b9c29c13)
 
-## Actions<a name="w155aac21c18b9c27c13"></a>
+## Actions<a name="w181aac21c18b9c29c13"></a>
 
 ### Check whether a phone number is opted out<a name="sns_CheckIfPhoneNumberIsOptedOut_csharp_topic"></a>
 
