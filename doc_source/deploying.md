@@ -5,7 +5,7 @@ After you've developed your cloud\-native \.NET Core application or service on a
 ## Deploy from the \.NET CLI<a name="deploying-from-net-cli"></a>
 
 You can use the following AWS tools for \.NET CLI to deploy your applications to AWS:
-+ [AWS Deploy Tool for \.NET CLI](https://www.nuget.org/packages/AWS.Deploy.Tools) \- Supports deployments of ASP\.NET Core, \.NET Console, and Blazor WebAssembly applications\.
++ [AWS Deploy Tool for \.NET CLI](https://aws.github.io/aws-dotnet-deploy/) \- Supports deployments to [AWS App Runner](https://aws.amazon.com/apprunner/), [Amazon Elastic Container Service \(Amazon ECS\)](https://aws.amazon.com/ecs/) , and [AWS Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk/)\.
 + [AWS Lambda Tools for \.NET CLI](https://www.nuget.org/packages/Amazon.Lambda.Tools) \- Supports deployments of AWS Lambda projects\.
 
 ## Deploy from the IDE toolkits<a name="deploying-from-toolkits"></a>
@@ -22,7 +22,7 @@ The "Publish to AWS" feature in the toolkit exposes the same functionality as th
   See [Working with serverless applications](https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/serverless-apps.html) and [Using AWS App Runner](https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/using-apprunner.html)\.
 + **[AWS Toolkit for Azure DevOps](https://docs.aws.amazon.com/vsts/latest/userguide/tutorial-eb.html)**
 
-## Use cases<a name="w181aac17b9"></a>
+## Use cases<a name="w198aac17b9"></a>
 
 The following sections contain use case scenarios for certain types of applications, including information about how you would use the \.NET CLI to deploy those applications\.
 + [ASP\.NET Core apps](deploying-asp-net.md)

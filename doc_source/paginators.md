@@ -69,7 +69,7 @@ You might also need the [Microsoft\.Bcl\.AsyncInterfaces](https://www.nuget.org/
 
 This section shows relevant references and the complete code for this example\.
 
-#### SDK references<a name="w181aac13c17c23c19b5b1"></a>
+#### SDK references<a name="w198aac13c17c23c19b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.CloudWatch](https://www.nuget.org/packages/AWSSDK.CloudWatch)
@@ -86,7 +86,7 @@ Programming elements:
 
   Class [LogGroup](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/CloudWatchLogs/TLogGroup.html)
 
-#### Full code<a name="w181aac13c17c23c19b7b1"></a>
+#### Full code<a name="w198aac13c17c23c19b7b1"></a>
 
 ```
 using System;

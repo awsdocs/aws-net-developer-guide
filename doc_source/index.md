@@ -4,13 +4,13 @@
 *****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
-Amazon's trademarks and trade dress may not be used in 
-     connection with any product or service that is not Amazon's, 
-     in any manner that is likely to cause confusion among customers, 
-     or in any manner that disparages or discredits Amazon. All other 
-     trademarks not owned by Amazon are the property of their respective
-     owners, who may or may not be affiliated with, connected to, or 
-     sponsored by Amazon.
+Amazon's trademarks and trade dress may not be used in
+connection with any product or service that is not Amazon's,
+in any manner that is likely to cause confusion among customers,
+or in any manner that disparages or discredits Amazon. All other
+trademarks not owned by Amazon are the property of their respective
+owners, who may or may not be affiliated with, connected to, or
+sponsored by Amazon.
 
 -----
 ## Contents
@@ -106,11 +106,13 @@ Amazon's trademarks and trade dress may not be used in
          + [CloudWatch Logs examples using AWS SDK for .NET](csharp_cloudwatch-logs_code_examples.md)
          + [Amazon Comprehend examples using AWS SDK for .NET](csharp_comprehend_code_examples.md)
          + [DynamoDB examples using AWS SDK for .NET](csharp_dynamodb_code_examples.md)
+         + [Amazon EC2 Auto Scaling examples using AWS SDK for .NET](csharp_auto-scaling_code_examples.md)
          + [AWS Glue examples using AWS SDK for .NET](csharp_glue_code_examples.md)
          + [IAM examples using AWS SDK for .NET](csharp_iam_code_examples.md)
          + [AWS KMS examples using AWS SDK for .NET](csharp_kms_code_examples.md)
          + [Amazon Rekognition examples using AWS SDK for .NET](csharp_rekognition_code_examples.md)
          + [Amazon S3 examples using AWS SDK for .NET](csharp_s3_code_examples.md)
+         + [S3 Glacier examples using AWS SDK for .NET](csharp_glacier_code_examples.md)
          + [Amazon SNS examples using AWS SDK for .NET](csharp_sns_code_examples.md)
          + [Amazon SQS examples using AWS SDK for .NET](csharp_sqs_code_examples.md)
       + [Cross-service examples using AWS SDK for .NET](csharp_code_examples_cross_service.md)

@@ -4,7 +4,7 @@ AWS IAM Identity Center \(successor to AWS Single Sign\-On\) is a cloud\-based s
 
 If you're unfamiliar with how an SDK interacts with IAM Identity Center, see the following information\.
 
-## High\-level pattern of interaction<a name="w181aac15b7b7b1"></a>
+## High\-level pattern of interaction<a name="w198aac15b7b7b1"></a>
 
 At a high level, SDKs interact with IAM Identity Center in a manner similar to the following pattern:
 

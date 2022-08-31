@@ -55,7 +55,7 @@ The example [at the end of this topic](#enum-sec-groups-complete-code) shows thi
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w181aac21c15c19c13c15c15b5b1"></a>
+### SDK references<a name="w198aac21c15c19c13c15c15b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -74,7 +74,7 @@ Programming elements:
 
   Class [SecurityGroup](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TSecurityGroup.html)
 
-### The Code<a name="w181aac21c15c19c13c15c15b7b1"></a>
+### The Code<a name="w198aac21c15c19c13c15c15b7b1"></a>
 
 ```
 using System;

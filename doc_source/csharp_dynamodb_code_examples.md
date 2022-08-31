@@ -9,17 +9,17 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w181aac21c18b9c17c13)
-+ [Scenarios](#w181aac21c18b9c17c15)
++ [Actions](#w198aac21c17b9c17c13)
++ [Scenarios](#w198aac21c17b9c17c15)
 
-## Actions<a name="w181aac21c18b9c17c13"></a>
+## Actions<a name="w198aac21c17b9c17c13"></a>
 
 ### Create a table<a name="dynamodb_CreateTable_csharp_topic"></a>
 
 The following code example shows how to create a DynamoDB table\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
   
 
 ```
@@ -101,7 +101,7 @@ The following code example shows how to create a DynamoDB table\.
 The following code example shows how to delete a DynamoDB table\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
   
 
 ```
@@ -132,7 +132,7 @@ The following code example shows how to delete a DynamoDB table\.
 The following code example shows how to delete an item from a DynamoDB table\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
   
 
 ```
@@ -174,7 +174,7 @@ The following code example shows how to delete an item from a DynamoDB table\.
 The following code example shows how to get a batch of DynamoDB items\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
   
 
 ```
@@ -212,7 +212,7 @@ The following code example shows how to get a batch of DynamoDB items\.
 The following code example shows how to put an item in a DynamoDB table\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
   
 
 ```
@@ -249,7 +249,7 @@ The following code example shows how to put an item in a DynamoDB table\.
 The following code example shows how to query a DynamoDB table\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
   
 
 ```
@@ -309,7 +309,7 @@ The following code example shows how to query a DynamoDB table\.
 The following code example shows how to run a PartiQL statement on a DynamoDB table\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
 Use an INSERT statement to add an item\.  
 
 ```
@@ -458,7 +458,7 @@ Use a DELETE statement to delete a single movie\.
 The following code example shows how to run batches of PartiQL statements on a DynamoDB table\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
 Use batches of INSERT statements to add items\.  
 
 ```
@@ -741,7 +741,7 @@ Use batches of DELETE statements to delete items\.
 The following code example shows how to scan a DynamoDB table\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
   
 
 ```
@@ -788,7 +788,7 @@ The following code example shows how to scan a DynamoDB table\.
 The following code example shows how to update an item in a DynamoDB table\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
   
 
 ```
@@ -847,7 +847,7 @@ The following code example shows how to update an item in a DynamoDB table\.
 The following code example shows how to write a batch of DynamoDB items\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
 Writes a batch of items to the movie table\.  
 
 ```
@@ -904,7 +904,7 @@ Writes a batch of items to the movie table\.
 ```
 +  For API details, see [BatchWriteItem](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/BatchWriteItem) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w181aac21c18b9c17c15"></a>
+## Scenarios<a name="w198aac21c17b9c17c15"></a>
 
 ### Get started using tables, items, and queries<a name="dynamodb_Scenario_GettingStartedMovies_csharp_topic"></a>
 
@@ -918,7 +918,7 @@ The following code example shows how to:
 + Delete the table\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
   
 
 ```
@@ -1543,7 +1543,7 @@ The following code example shows how to:
 + Delete a batch of items by running multiple DELETE statements\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
   
 
 ```
@@ -1962,7 +1962,7 @@ The following code example shows how to:
 + Delete an item by running a DELETE statement\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/DynamoDB#code-examples)\. 
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
   
 
 ```
