@@ -9,16 +9,16 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w198aac21c17b9c13c13)
++ [Actions](#w359aac21c17c13c15c13)
 
-## Actions<a name="w198aac21c17b9c13c13"></a>
+## Actions<a name="w359aac21c17c13c15c13"></a>
 
-### Associate an AWS KMS key to log group<a name="cloudwatch-logs_AssociateKmsKey_csharp_topic"></a>
+### Associate a key with a log group<a name="cloudwatch-logs_AssociateKmsKey_csharp_topic"></a>
 
 The following code example shows how to associate an AWS KMS key with an existing CloudWatch Logs log group\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatchLogs#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatchLogs#code-examples)\. 
   
 
 ```
@@ -72,7 +72,7 @@ The following code example shows how to associate an AWS KMS key with an existin
 The following code example shows how to cancel an existing CloudWatch Logs export task\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatchLogs#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatchLogs#code-examples)\. 
   
 
 ```
@@ -121,7 +121,7 @@ The following code example shows how to cancel an existing CloudWatch Logs expor
 The following code example shows how to create a new CloudWatch Logs log group\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatchLogs#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatchLogs#code-examples)\. 
   
 
 ```
@@ -171,7 +171,7 @@ The following code example shows how to create a new CloudWatch Logs log group\.
 The following code example shows how to create a new CloudWatch Logs log stream\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatchLogs#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatchLogs#code-examples)\. 
   
 
 ```
@@ -218,12 +218,69 @@ The following code example shows how to create a new CloudWatch Logs log stream\
 ```
 +  For API details, see [CreateLogStream](https://docs.aws.amazon.com/goto/DotNetSDKV3/logs-2014-03-28/CreateLogStream) in *AWS SDK for \.NET API Reference*\. 
 
+### Create an export task<a name="cloudwatch-logs_CreateExportTask_csharp_topic"></a>
+
+The following code example shows how to create a new CloudWatch Logs export task\.
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatchLogs#code-examples)\. 
+  
+
+```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.CloudWatchLogs;
+    using Amazon.CloudWatchLogs.Model;
+
+    /// <summary>
+    /// Shows how to create an Export Task to export the contents of the Amazon
+    /// CloudWatch Logs to the specified Amazon Simple Storage Service (Amazon S3)
+    /// bucket. The example was created with the AWS SDK for .NET version 3.7 and
+    /// .NET Core 5.0.
+    /// </summary>
+    public class CreateExportTask
+    {
+        public static async Task Main()
+        {
+            // This client object will be associated with the same AWS Region
+            // as the default user on this system. If you need to use a
+            // different AWS Region, pass it as a parameter to the client
+            // constructor.
+            var client = new AmazonCloudWatchLogsClient();
+            string taskName = "export-task-example";
+            string logGroupName = "cloudwatchlogs-example-loggroup";
+            string destination = "doc-example-bucket";
+            var fromTime = 1437584472382;
+            var toTime = 1437584472833;
+
+            var request = new CreateExportTaskRequest
+            {
+                From = fromTime,
+                To = toTime,
+                TaskName = taskName,
+                LogGroupName = logGroupName,
+                Destination = destination,
+            };
+
+            var response = await client.CreateExportTaskAsync(request);
+
+            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
+            {
+                Console.WriteLine($"The task, {taskName} with ID: " +
+                                  $"{response.TaskId} has been created successfully.");
+            }
+        }
+
+    }
+```
++  For API details, see [CreateExportTask](https://docs.aws.amazon.com/goto/DotNetSDKV3/logs-2014-03-28/CreateExportTask) in *AWS SDK for \.NET API Reference*\. 
+
 ### Delete a log group<a name="cloudwatch-logs_DeleteLogGroup_csharp_topic"></a>
 
 The following code example shows how to delete an existing CloudWatch Logs log group\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatchLogs#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatchLogs#code-examples)\. 
   
 
 ```
@@ -265,7 +322,7 @@ The following code example shows how to delete an existing CloudWatch Logs log g
 The following code example shows how to describe CloudWatch Logs export tasks\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatchLogs#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatchLogs#code-examples)\. 
   
 
 ```
@@ -315,7 +372,7 @@ The following code example shows how to describe CloudWatch Logs export tasks\.
 The following code example shows how to describe CloudWatch Logs log groups\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatchLogs#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatchLogs#code-examples)\. 
   
 
 ```

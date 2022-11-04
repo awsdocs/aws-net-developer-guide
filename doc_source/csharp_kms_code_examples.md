@@ -9,16 +9,16 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w198aac21c17b9c25c13)
++ [Actions](#w359aac21c17c13c31c13)
 
-## Actions<a name="w198aac21c17b9c25c13"></a>
+## Actions<a name="w359aac21c17c13c31c13"></a>
 
 ### Create a grant for a key<a name="kms_CreateGrant_csharp_topic"></a>
 
 The following code example shows how to create a grant for a KMS key\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
 This examples grants a user permission to use a key for encryption and decryption\.  
 
 ```
@@ -63,7 +63,7 @@ This examples grants a user permission to use a key for encryption and decryptio
 The following code example shows how to create an AWS KMS key\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
   
 
 ```
@@ -74,11 +74,11 @@ The following code example shows how to create an AWS KMS key\.
 
     public class CreateKey
     {
-         public static async Task Main()
+        public static async Task Main()
         {
             // Note that if you need to create a Key in an AWS Region
-            // other than the region defined for the default user, you need to
-            // pass the region to the client constructor.
+            // other than the Region defined for the default user, you need to
+            // pass the Region to the client constructor.
             var client = new AmazonKeyManagementServiceClient();
 
             // The call to CreateKeyAsync will create a symmetrical AWS KMS
@@ -110,7 +110,7 @@ The following code example shows how to create an AWS KMS key\.
 The following code example shows how to create an alias for a KMS key key\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
   
 
 ```
@@ -160,7 +160,7 @@ The following code example shows how to create an alias for a KMS key key\.
 The following code example shows how to describe a KMS key\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
   
 
 ```
@@ -197,7 +197,7 @@ The following code example shows how to describe a KMS key\.
 The following code example shows how to disable a KMS key\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
   
 
 ```
@@ -243,7 +243,7 @@ The following code example shows how to disable a KMS key\.
 The following code example shows how to enable a KMS key\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
   
 
 ```
@@ -288,7 +288,7 @@ The following code example shows how to enable a KMS key\.
 The following code example shows how to list aliases for a KMS key\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
   
 
 ```
@@ -327,7 +327,7 @@ The following code example shows how to list aliases for a KMS key\.
 The following code example shows how to list grants for a KMS key\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
   
 
 ```
@@ -373,7 +373,7 @@ The following code example shows how to list grants for a KMS key\.
 The following code example shows how to list KMS keys\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
   
 
 ```

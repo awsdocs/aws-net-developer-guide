@@ -1,4 +1,4 @@
-# Create a dynamic web application to track DynamoDB data<a name="cross_DynamoDBDataTracker_csharp_topic"></a>
+# Create a web application to track DynamoDB data<a name="cross_DynamoDBDataTracker_csharp_topic"></a>
 
 **AWS SDK for \.NET**  
  Shows how to use the Amazon DynamoDB \.NET API to create a dynamic web application that tracks DynamoDB work data\.   

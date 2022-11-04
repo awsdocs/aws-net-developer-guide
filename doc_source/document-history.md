@@ -4,6 +4,7 @@ The following table describes the important changes since the last release of th
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Lambda Annotations \(Preview\)](aws-lambda-annotations.md) | Preview of the AWS Lambda Annotations framework\. | September 22, 2022 | 
 | [Deploying applications to AWS](deploying.md) | Moved main content to a GitHub Pages site: https://aws\.github\.io/aws\-dotnet\-deploy/ | June 28, 2022 | 
 | [Retiring EC2\-Classic](#document-history) | Added notes about retiring EC2\-Classic\. | April 13, 2022 | 
 | [Single sign\-on with the AWS SDK for \.NET](sso.md) | Added information about single sign\-on \(SSO\) when using the AWS SDK for \.NET\. | March 17, 2022 | 

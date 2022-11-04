@@ -20,27 +20,27 @@ This section shows you how to set up various AWS services for this tutorial\.
 
 To perform this setup, first sign in to the test AWS account as an administrator\. Then, do the following:
 
-### Amazon S3<a name="w198aac15b7c33c15b3b5"></a>
+### Amazon S3<a name="w359aac15b7c33c15b3b5"></a>
 
 Go to the [Amazon S3 console](https://console.aws.amazon.com/s3/home) and add some innocuous buckets\. Later in this tutorial, the SSO user will retrieve a list of these buckets\.
 
-### AWS IAM<a name="w198aac15b7c33c15b3b7"></a>
+### AWS IAM<a name="w359aac15b7c33c15b3b7"></a>
 
 Go to the [IAM console](https://console.aws.amazon.com/iam/home#/users) and add a few IAM users\. If you give the IAM users permissions, limit the permissions to a few innocuous read\-only permissions\. Later in this tutorial, the SSO user will retrieve a list of these IAM users\.
 
-### AWS Organizations<a name="w198aac15b7c33c15b3b9"></a>
+### AWS Organizations<a name="w359aac15b7c33c15b3b9"></a>
 
 Go to the [AWS Organizations console](https://console.aws.amazon.com/organizations/) and enable Organizations\. For more information, see [Creating an organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_create.html) in the [AWS Organizations User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/)\.
 
 This action adds the test AWS account to the organization as the *management account*\. If you have additional test accounts, you can invite them to join the organization, but doing so isn't necessary for this tutorial\.
 
-### IAM Identity Center<a name="w198aac15b7c33c15b3c11"></a>
+### IAM Identity Center<a name="w359aac15b7c33c15b3c11"></a>
 
 Go to the [IAM Identity Center console](https://console.aws.amazon.com/singlesignon/) and enable SSO\. Perform email verification if necessary\. For more information, see [Enable IAM Identity Center](https://docs.aws.amazon.com/singlesignon/latest/userguide/step1.html) in the [IAM Identity Center User Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/)\.
 
 Then, perform the following configuration\.
 
-#### Configure IAM Identity Center<a name="w198aac15b7c33c15b3c11b7b1"></a>
+#### Configure IAM Identity Center<a name="w359aac15b7c33c15b3c11b7b1"></a>
 
 1. Go to the **Settings** page\. Look for the **"User portal URL"** and record the value for later use in the `sso_start_url` setting\.
 

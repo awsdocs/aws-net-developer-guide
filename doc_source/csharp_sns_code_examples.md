@@ -9,16 +9,16 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w198aac21c17b9c33c13)
++ [Actions](#w359aac21c17c13c51c13)
 
-## Actions<a name="w198aac21c17b9c33c13"></a>
+## Actions<a name="w359aac21c17c13c51c13"></a>
 
 ### Check whether a phone number is opted out<a name="sns_CheckIfPhoneNumberIsOptedOut_csharp_topic"></a>
 
 The following code example shows how to check whether a phone number is opted out of receiving Amazon SNS messages\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
   
 
 ```
@@ -82,7 +82,7 @@ The following code example shows how to check whether a phone number is opted ou
 The following code example shows how to create an Amazon SNS topic\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
   
 
 ```
@@ -131,12 +131,38 @@ The following code example shows how to create an Amazon SNS topic\.
 ```
 +  For API details, see [CreateTopic](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/CreateTopic) in *AWS SDK for \.NET API Reference*\. 
 
+### Delete a subscription<a name="sns_Unsubscribe_csharp_topic"></a>
+
+The following code example shows how to delete an Amazon SNS subscription\.
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
+  
+
+```
+        /// <summary>
+        /// Given the ARN for an Amazon SNS subscription, this method deletes
+        /// the subscription.
+        /// </summary>
+        /// <param name="client">The initialized Amazon SNS client object, used
+        /// to delete an Amazon SNS subscription.</param>
+        /// <param name="subscriptionArn">The ARN of the subscription to delete.</param>
+        public static async Task TopicUnsubscribeAsync(
+            IAmazonSimpleNotificationService client,
+            string subscriptionArn)
+        {
+            var response = await client.UnsubscribeAsync(subscriptionArn);
+        }
+    }
+```
++  For API details, see [Unsubscribe](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/Unsubscribe) in *AWS SDK for \.NET API Reference*\. 
+
 ### Delete a topic<a name="sns_DeleteTopic_csharp_topic"></a>
 
 The following code example shows how to delete an Amazon SNS topic and all subscriptions to that topic\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
   
 
 ```
@@ -153,7 +179,7 @@ The following code example shows how to delete an Amazon SNS topic and all subsc
     {
         public static async Task Main()
         {
-            string topicArn = "arn:aws:sns:us-east-2:704825161248:ExampleSNSTopic";
+            string topicArn = "arn:aws:sns:us-east-2:012345678901:ExampleSNSTopic";
             IAmazonSimpleNotificationService client = new AmazonSimpleNotificationServiceClient();
 
             var response = await client.DeleteTopicAsync(topicArn);
@@ -167,7 +193,7 @@ The following code example shows how to delete an Amazon SNS topic and all subsc
 The following code example shows how to get the properties of an Amazon SNS topic\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
   
 
 ```
@@ -232,7 +258,7 @@ The following code example shows how to get the properties of an Amazon SNS topi
 The following code example shows how to retrieve the list of subscribers of an Amazon SNS topic\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
   
 
 ```
@@ -297,7 +323,7 @@ The following code example shows how to retrieve the list of subscribers of an A
 The following code example shows how to list Amazon SNS topics\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
   
 
 ```
@@ -358,10 +384,116 @@ The following code example shows how to list Amazon SNS topics\.
 ```
 +  For API details, see [ListTopics](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/ListTopics) in *AWS SDK for \.NET API Reference*\. 
 
+### Publish an SMS text message<a name="sns_PublishTextSMS_csharp_topic"></a>
+
+The following code example shows how to publish SMS messages using Amazon SNS\.
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
+  
+
+```
+using Amazon;
+using Amazon.SimpleNotificationService;
+using Amazon.SimpleNotificationService.Model;
+using System;
+using System.Threading.Tasks;
+
+namespace SNSMessageExample
+{
+    class SNSMessage
+    {
+        private AmazonSimpleNotificationServiceClient snsClient;
+
+        /// <summary>
+        /// Constructs a new SNSMessage object initializing the Amazon Simple
+        /// Notification Service (Amazon SNS) client using the supplied
+        /// Region endpoint.
+        /// </summary>
+        /// <param name="regionEndpoint">The Amazon Region endpoint to use in
+        /// sending test messages with this object.</param>
+        public SNSMessage(RegionEndpoint regionEndpoint)
+        {
+            snsClient = new AmazonSimpleNotificationServiceClient(regionEndpoint);
+        }
+
+        /// <summary>
+        /// Sends the SMS message passed in the text parameter to the phone number
+        /// in phoneNum.
+        /// </summary>
+        /// <param name="phoneNum">The ten-digit phone number to which the text
+        /// message will be sent.</param>
+        /// <param name="text">The text of the message to send.</param>
+        /// <returns></returns>
+        public async Task SendTextMessageAsync(string phoneNum, string text)
+        {
+            if (string.IsNullOrEmpty(phoneNum) || string.IsNullOrEmpty(text))
+            {
+                return;
+            }
+
+            // Now actually send the message.
+            var request = new PublishRequest
+            {
+                Message = text,
+                PhoneNumber = phoneNum
+            };
+
+            try
+            {
+                var response = await snsClient.PublishAsync(request);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error sending message: {ex}");
+            }
+        }
+
+    }
+}
+```
++  For API details, see [Publish](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/Publish) in *AWS SDK for \.NET API Reference*\. 
+
 ### Publish to a topic<a name="sns_Publish_csharp_topic"></a>
 
 The following code example shows how to publish messages to an Amazon SNS topic\.
 
 **AWS SDK for \.NET**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS/SNSMessageExample/#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS/SNSMessageExample/#code-examples)\. 
 +  For API details, see [Publish](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/Publish) in *AWS SDK for \.NET API Reference*\. 
+
+### Subscribe an email address to a topic<a name="sns_Subscribe_csharp_topic"></a>
+
+The following code example shows how to subscribe an email address to an Amazon SNS topic\.
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
+  
+
+```
+        /// <summary>
+        /// Creates a new subscription to a topic.
+        /// </summary>
+        /// <param name="client">The initialized Amazon SNS client object, used
+        /// to create an Amazon SNS subscription.</param>
+        /// <param name="topicArn">The ARN of the topic to subscribe to.</param>
+        /// <returns>A SubscribeResponse object which includes the subscription
+        /// ARN for the new subscription.</returns>
+        public static async Task<SubscribeResponse> TopicSubscribeAsync(
+            IAmazonSimpleNotificationService client,
+            string topicArn)
+        {
+            SubscribeRequest request = new SubscribeRequest()
+            {
+                TopicArn = topicArn,
+                ReturnSubscriptionArn = true,
+                Protocol = "email",
+                Endpoint = "recipient@example.com",
+            };
+
+            var response = await client.SubscribeAsync(request);
+
+            return response;
+        }
+```
++  For API details, see [Subscribe](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/Subscribe) in *AWS SDK for \.NET API Reference*\. 

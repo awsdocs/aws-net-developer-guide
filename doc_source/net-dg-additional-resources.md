@@ -46,6 +46,7 @@ The following are other resources that might prove useful:
 + [Developer net](https://aws.amazon.com/developer/language/net/)
 + [\.NET Development Environment on the AWS Cloud \- Quick Start Reference Deployment](https://aws-quickstart.github.io/quickstart-dotnet-devenvironment-setup/)
 + [Hello, Cloud\! blog](https://davidpallmann.hashnode.dev/hello-cloud)
++ AWS Whitepaper: [Developing and Deploying \.NET Applications on AWS](https://docs.aws.amazon.com/whitepapers/latest/develop-deploy-dotnet-apps-on-aws/develop-deploy-dotnet-apps-on-aws.html)
 + [AWS Microservice Extractor for \.NET](https://docs.aws.amazon.com/microservice-extractor/latest/userguide)
-+ [Porting Assistant for \.NETT](https://docs.aws.amazon.com/portingassistant/latest/userguide)
++ [Porting Assistant for \.NET](https://docs.aws.amazon.com/portingassistant/latest/userguide)
 + [AWS SDKs and Tools Reference Guide](https://docs.aws.amazon.com/sdkref/latest/guide/)

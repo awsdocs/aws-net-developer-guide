@@ -67,7 +67,7 @@ The example [at the end of this topic](#kms-s3-complete-code) shows this snippet
 
 This section shows relevant references and the complete code for this example\.
 
-### SDK references<a name="w198aac21c15c23c13c15b5b1"></a>
+### SDK references<a name="w359aac21c15c23c13c15b5b1"></a>
 
 NuGet packages:
 + [Amazon\.Extensions\.S3\.Encryption](https://www.nuget.org/packages/Amazon.Extensions.S3.Encryption)
@@ -101,7 +101,7 @@ Programming elements:
 
   Class [CreateKeyResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/KeyManagementService/TCreateKeyResponse.html)
 
-### The code<a name="w198aac21c15c23c13c15b7b1"></a>
+### The code<a name="w359aac21c15c23c13c15b7b1"></a>
 
 ```
 using System;

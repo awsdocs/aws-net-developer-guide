@@ -3,7 +3,7 @@
 **Note**  
 The information in this topic is specific to projects based on \.NET Framework\. The `App.config` and `Web.config` files are not present by default in projects based on \.NET Core\.
 
-## Open to view \.NET Framework content<a name="w198aac11c29b9b5b1"></a>
+## Open to view \.NET Framework content<a name="w359aac11c29b9b5b1"></a>
 
 In addition to [configuring credentials](net-dg-config-creds.md), you can configure a number of other application parameters:
 +  `AWSLogging` 
