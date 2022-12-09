@@ -199,7 +199,7 @@ The example [at the end of this topic](#tutor-spot-net-main) shows this snippet 
 
 The following code example calls the methods described earlier to create and cancel a Spot Instance request and terminate a Spot Instance\.
 
-### SDK references<a name="w359aac21c15c19c21c43b5b1"></a>
+### SDK references<a name="w2aac21c15c19c21c43b5b1"></a>
 
 NuGet packages:
 + [AWSSDK\.EC2](https://www.nuget.org/packages/AWSSDK.EC2)
@@ -232,7 +232,7 @@ Programming elements:
 
   Class [TerminateInstancesResponse](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TTerminateInstancesResponse.html)
 
-### The code<a name="w359aac21c15c19c21c43b7b1"></a>
+### The code<a name="w2aac21c15c19c21c43b7b1"></a>
 
 ```
 using System;

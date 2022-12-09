@@ -9,9 +9,9 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w359aac21c17c13c19c13)
++ [Actions](#w2aac21c17c13c19c13)
 
-## Actions<a name="w359aac21c17c13c19c13"></a>
+## Actions<a name="w2aac21c17c13c19c13"></a>
 
 ### Detect entities in a document<a name="comprehend_DetectEntities_csharp_topic"></a>
 

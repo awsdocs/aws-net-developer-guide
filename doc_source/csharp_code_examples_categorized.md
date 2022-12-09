@@ -24,6 +24,7 @@ The following code examples show how to perform actions and implement common sce
 + [Amazon Polly](csharp_polly_code_examples.md)
 + [Amazon RDS](csharp_rds_code_examples.md)
 + [Amazon Rekognition](csharp_rekognition_code_examples.md)
++ [Route 53 domain registration](csharp_route53-domains_code_examples.md)
 + [Amazon S3](csharp_s3_code_examples.md)
 + [S3 Glacier](csharp_glacier_code_examples.md)
 + [Amazon SES](csharp_ses_code_examples.md)

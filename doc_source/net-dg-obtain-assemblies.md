@@ -12,9 +12,10 @@ If you can't or aren't allowed to download and install NuGet packages on a per\-
 \(Remember that this isn't the [recommended method](net-dg-install-assemblies.md) for handling references to the AWS SDK for \.NET\.\)
 
 1. Download one of the following ZIP files:
-   + [aws\-sdk\-netstandard2\.0\.zip](https://sdk-for-net.amazonwebservices.com/latest/v3/aws-sdk-netstandard2.0.zip)
-   + [aws\-sdk\-net45\.zip](https://sdk-for-net.amazonwebservices.com/latest/v3/aws-sdk-net45.zip)
-   + [aws\-sdk\-net35\.zip](https://sdk-for-net.amazonwebservices.com/latest/v3/aws-sdk-net35.zip)
+   + [aws\-sdk\-netcoreapp3\.1\.zip](https://sdk-for-net.amazonwebservices.com/latest/v3/aws-sdk-netcoreapp3.1.zip) \- Assemblies that support \.NET Core 3\.1 and later\.
+   + [aws\-sdk\-netstandard2\.0\.zip](https://sdk-for-net.amazonwebservices.com/latest/v3/aws-sdk-netstandard2.0.zip) \- Assemblies that support \.NET Standard 2\.0 and 2\.1\.
+   + [aws\-sdk\-net45\.zip](https://sdk-for-net.amazonwebservices.com/latest/v3/aws-sdk-net45.zip) \- Assemblies that support \.NET Framework 4\.5 and later\.
+   + [aws\-sdk\-net35\.zip](https://sdk-for-net.amazonwebservices.com/latest/v3/aws-sdk-net35.zip) \- Assemblies that support \.NET Framework 3\.5\.
 
 1. Extract the assemblies to some "download" folder on your file system; it doesn't matter where\. Make note of this folder\.
 

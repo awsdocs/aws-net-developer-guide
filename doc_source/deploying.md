@@ -22,7 +22,7 @@ The "Publish to AWS" feature in the toolkit exposes the same functionality as th
   See [Working with serverless applications](https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/serverless-apps.html) and [Using AWS App Runner](https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/using-apprunner.html)\.
 + **[AWS Toolkit for Azure DevOps](https://docs.aws.amazon.com/vsts/latest/userguide/tutorial-eb.html)**
 
-## Use cases<a name="w359aac17b9"></a>
+## Use cases<a name="w2aac17b9"></a>
 
 The following sections contain use case scenarios for certain types of applications, including information about how you would use the \.NET CLI to deploy those applications\.
 + [ASP\.NET Core apps](deploying-asp-net.md)

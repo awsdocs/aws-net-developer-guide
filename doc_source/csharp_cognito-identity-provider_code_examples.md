@@ -9,10 +9,10 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w359aac21c17c13c17c13)
-+ [Scenarios](#w359aac21c17c13c17c15)
++ [Actions](#w2aac21c17c13c17c13)
++ [Scenarios](#w2aac21c17c13c17c15)
 
-## Actions<a name="w359aac21c17c13c17c13"></a>
+## Actions<a name="w2aac21c17c13c17c13"></a>
 
 ### Confirm a user<a name="cognito-identity-provider_ConfirmSignUp_csharp_topic"></a>
 
@@ -403,7 +403,7 @@ The following code example shows how to verify an MFA application with an Amazon
 ```
 +  For API details, see [VerifySoftwareToken](https://docs.aws.amazon.com/goto/DotNetSDKV3/cognito-idp-2016-04-18/VerifySoftwareToken) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w359aac21c17c13c17c15"></a>
+## Scenarios<a name="w2aac21c17c13c17c15"></a>
 
 ### Sign up a user with a user pool that requires MFA<a name="cognito-identity-provider_Scenario_SignUpUserWithMfa_csharp_topic"></a>
 

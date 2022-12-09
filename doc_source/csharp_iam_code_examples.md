@@ -9,10 +9,10 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w359aac21c17c13c29c13)
-+ [Scenarios](#w359aac21c17c13c29c15)
++ [Actions](#w2aac21c17c13c29c13)
++ [Scenarios](#w2aac21c17c13c29c15)
 
-## Actions<a name="w359aac21c17c13c29c13"></a>
+## Actions<a name="w2aac21c17c13c29c13"></a>
 
 ### Attach a policy to a role<a name="iam_AttachRolePolicy_csharp_topic"></a>
 
@@ -747,7 +747,7 @@ do
 ```
 +  For API details, see [ListUsers](https://docs.aws.amazon.com/goto/DotNetSDKV3/iam-2010-05-08/ListUsers) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w359aac21c17c13c29c15"></a>
+## Scenarios<a name="w2aac21c17c13c29c15"></a>
 
 ### Create a user and assume a role<a name="iam_Scenario_CreateUserAssumeRole_csharp_topic"></a>
 

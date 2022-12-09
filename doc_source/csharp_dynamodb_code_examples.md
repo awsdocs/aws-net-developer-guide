@@ -9,10 +9,10 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w359aac21c17c13c21c13)
-+ [Scenarios](#w359aac21c17c13c21c15)
++ [Actions](#w2aac21c17c13c21c13)
++ [Scenarios](#w2aac21c17c13c21c15)
 
-## Actions<a name="w359aac21c17c13c21c13"></a>
+## Actions<a name="w2aac21c17c13c21c13"></a>
 
 ### Create a table<a name="dynamodb_CreateTable_csharp_topic"></a>
 
@@ -178,6 +178,156 @@ The following code example shows how to get a batch of DynamoDB items\.
   
 
 ```
+using System;
+using System.Collections.Generic;
+using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.Model;
+
+namespace LowLevelBatchGet
+{
+    public class LowLevelBatchGet
+    {
+        private static readonly string _table1Name = "Forum";
+        private static readonly string _table2Name = "Thread";
+
+        public static async void RetrieveMultipleItemsBatchGet(AmazonDynamoDBClient client)
+        {
+            var request = new BatchGetItemRequest
+            {
+                RequestItems = new Dictionary<string, KeysAndAttributes>()
+            {
+                { _table1Name,
+                  new KeysAndAttributes
+                  {
+                      Keys = new List<Dictionary<string, AttributeValue> >()
+                      {
+                          new Dictionary<string, AttributeValue>()
+                          {
+                              { "Name", new AttributeValue {
+                            S = "Amazon DynamoDB"
+                        } }
+                          },
+                          new Dictionary<string, AttributeValue>()
+                          {
+                              { "Name", new AttributeValue {
+                            S = "Amazon S3"
+                        } }
+                          }
+                      }
+                  }},
+                {
+                    _table2Name,
+                    new KeysAndAttributes
+                    {
+                        Keys = new List<Dictionary<string, AttributeValue> >()
+                        {
+                            new Dictionary<string, AttributeValue>()
+                            {
+                                { "ForumName", new AttributeValue {
+                                      S = "Amazon DynamoDB"
+                                  } },
+                                { "Subject", new AttributeValue {
+                                      S = "DynamoDB Thread 1"
+                                  } }
+                            },
+                            new Dictionary<string, AttributeValue>()
+                            {
+                                { "ForumName", new AttributeValue {
+                                      S = "Amazon DynamoDB"
+                                  } },
+                                { "Subject", new AttributeValue {
+                                      S = "DynamoDB Thread 2"
+                                  } }
+                            },
+                            new Dictionary<string, AttributeValue>()
+                            {
+                                { "ForumName", new AttributeValue {
+                                      S = "Amazon S3"
+                                  } },
+                                { "Subject", new AttributeValue {
+                                      S = "S3 Thread 1"
+                                  } }
+                            }
+                        }
+                    }
+                }
+            }
+            };
+
+            BatchGetItemResponse response;
+            do
+            {
+                Console.WriteLine("Making request");
+                response = await client.BatchGetItemAsync(request);
+
+                // Check the response.
+                var responses = response.Responses; // Attribute list in the response.
+
+                foreach (var tableResponse in responses)
+                {
+                    var tableResults = tableResponse.Value;
+                    Console.WriteLine("Items retrieved from table {0}", tableResponse.Key);
+                    foreach (var item1 in tableResults)
+                    {
+                        PrintItem(item1);
+                    }
+                }
+
+                // Any unprocessed keys? could happen if you exceed ProvisionedThroughput or some other error.
+                Dictionary<string, KeysAndAttributes> unprocessedKeys = response.UnprocessedKeys;
+                foreach (var unprocessedTableKeys in unprocessedKeys)
+                {
+                    // Print table name.
+                    Console.WriteLine(unprocessedTableKeys.Key);
+                    // Print unprocessed primary keys.
+                    foreach (var key in unprocessedTableKeys.Value.Keys)
+                    {
+                        PrintItem(key);
+                    }
+                }
+
+                request.RequestItems = unprocessedKeys;
+            } while (response.UnprocessedKeys.Count > 0);
+        }
+
+        private static void PrintItem(Dictionary<string, AttributeValue> attributeList)
+        {
+            foreach (KeyValuePair<string, AttributeValue> kvp in attributeList)
+            {
+                string attributeName = kvp.Key;
+                AttributeValue value = kvp.Value;
+
+                Console.WriteLine(
+                    attributeName + " " +
+                    (value.S == null ? "" : "S=[" + value.S + "]") +
+                    (value.N == null ? "" : "N=[" + value.N + "]") +
+                    (value.SS == null ? "" : "SS=[" + string.Join(",", value.SS.ToArray()) + "]") +
+                    (value.NS == null ? "" : "NS=[" + string.Join(",", value.NS.ToArray()) + "]")
+                    );
+            }
+            Console.WriteLine("************************************************");
+        }
+
+        static void Main()
+        {
+            var client = new AmazonDynamoDBClient();
+
+            RetrieveMultipleItemsBatchGet(client);
+        }
+    }
+}
+```
++  For API details, see [BatchGetItem](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/BatchGetItem) in *AWS SDK for \.NET API Reference*\. 
+
+### Get an item from a table<a name="dynamodb_GetItem_csharp_topic"></a>
+
+The following code example shows how to get an item from a DynamoDB table\.
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
+  
+
+```
         /// <summary>
         /// Gets information about an existing movie from the table.
         /// </summary>
@@ -205,7 +355,72 @@ The following code example shows how to get a batch of DynamoDB items\.
             return response.Item;
         }
 ```
-+  For API details, see [BatchGetItem](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/BatchGetItem) in *AWS SDK for \.NET API Reference*\. 
++  For API details, see [GetItem](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/GetItem) in *AWS SDK for \.NET API Reference*\. 
+
+### Get information about a table<a name="dynamodb_DescribeTable_csharp_topic"></a>
+
+The following code example shows how to get information about a DynamoDB table\.
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
+  
+
+```
+        public static async Task<bool> GetTableInformation(AmazonDynamoDBClient client)
+        {
+            Console.WriteLine("\n*** Retrieving table information ***");
+            var request = new DescribeTableRequest
+            {
+                TableName = _tableName
+            };
+
+            var response = await client.DescribeTableAsync(request);
+
+            TableDescription description = response.Table;
+            Console.WriteLine("Name: {0}", description.TableName);
+            Console.WriteLine("# of items: {0}", description.ItemCount);
+            Console.WriteLine("Provision Throughput (reads/sec): {0}",
+                      description.ProvisionedThroughput.ReadCapacityUnits);
+            Console.WriteLine("Provision Throughput (writes/sec): {0}",
+                      description.ProvisionedThroughput.WriteCapacityUnits);
+
+            return true;
+        }
+```
++  For API details, see [DescribeTable](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/DescribeTable) in *AWS SDK for \.NET API Reference*\. 
+
+### List tables<a name="dynamodb_ListTables_csharp_topic"></a>
+
+The following code example shows how to list DynamoDB tables\.
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
+  
+
+```
+        public static async Task<bool> ListMyTables(AmazonDynamoDBClient client)
+        {
+            Console.WriteLine("\n*** Listing tables ***");
+            string lastTableNameEvaluated = null;
+            do
+            {
+                var request = new ListTablesRequest
+                {
+                    Limit = 2,
+                    ExclusiveStartTableName = lastTableNameEvaluated
+                };
+
+                var response = await client.ListTablesAsync(request);
+                foreach (string name in response.TableNames)
+                    Console.WriteLine(name);
+
+                lastTableNameEvaluated = response.LastEvaluatedTableName;
+            } while (lastTableNameEvaluated != null);
+
+            return true;
+        }
+```
++  For API details, see [ListTables](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/ListTables) in *AWS SDK for \.NET API Reference*\. 
 
 ### Put an item in a table<a name="dynamodb_PutItem_csharp_topic"></a>
 
@@ -904,7 +1119,7 @@ Writes a batch of items to the movie table\.
 ```
 +  For API details, see [BatchWriteItem](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/BatchWriteItem) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w359aac21c17c13c21c15"></a>
+## Scenarios<a name="w2aac21c17c13c21c15"></a>
 
 ### Get started using tables, items, and queries<a name="dynamodb_Scenario_GettingStartedMovies_csharp_topic"></a>
 
@@ -922,42 +1137,38 @@ The following code example shows how to:
   
 
 ```
-/// <summary>
-/// This example application performs the following basic Amazon DynamoDB
-/// functions:
-///
-///     CreateTableAsync
-///     PutItemAsync
-///     UpdateItemAsync
-///     BatchWriteItemAsync
-///     GetItemAsync
-///     DeleteItemAsync
-///     Query
-///     Scan
-///     DeleteItemAsync
-///
-/// The code in this example uses the AWS SDK for .NET version 3.7 and .NET 5.
-/// Before you run this example, download 'movies.json' from
-/// https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.Js.02.html,
-/// and put it in the same folder as the example.
-/// </summary>
+// This example application performs the following basic Amazon DynamoDB
+// functions:
+//
+//     CreateTableAsync
+//     PutItemAsync
+//     UpdateItemAsync
+//     BatchWriteItemAsync
+//     GetItemAsync
+//     DeleteItemAsync
+//     Query
+//     Scan
+//     DeleteItemAsync
+//
+// The code in this example uses the AWS SDK for .NET version 3.7 and .NET 5.
+// Before you run this example, download 'movies.json' from
+// https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/resources/sample_files,
+// and put it in the same folder as the example.
 namespace DynamoDB_Basics_Scenario
 {
-    using System;
-    using System.Threading.Tasks;
-    using Amazon.DynamoDBv2;
-
     public class DynamoDB_Basics
     {
         // Separator for the console display.
-        private static readonly string SepBar = new('-', 80);
+        private static readonly string SepBar = new string('-', 80);
 
         public static async Task Main()
         {
             var client = new AmazonDynamoDBClient();
 
             var tableName = "movie_table";
-            var movieFileName = "moviedata.json";
+
+            // relative path to moviedata.json in the local repository.
+            var movieFileName = @"..\..\..\..\..\..\..\..\resources\sample_files\movies.json";
 
             DisplayInstructions();
 
@@ -1032,7 +1243,7 @@ namespace DynamoDB_Basics_Scenario
                 Year = 1993,
             };
 
-            Console.WriteLine("Looking for the movie \"Spider-Man: No Way Home\".");
+            Console.WriteLine("Looking for the movie \"Jurassic Park\".");
             var item = await DynamoDbMethods.GetItemAsync(client, lookupMovie, tableName);
             if (item.Count > 0)
             {
@@ -2335,3 +2546,998 @@ namespace PartiQL_Basics_Scenario
         }
 ```
 +  For API details, see [ExecuteStatement](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/ExecuteStatement) in *AWS SDK for \.NET API Reference*\. 
+
+### Use a document model<a name="dynamodb_MidLevelInterface_csharp_topic"></a>
+
+The following code example shows how to perform Create, Read, Update, and Delete \(CRUD\) and batch operations using a document model for DynamoDB and an AWS SDK\.
+
+For more information, see [Document model](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DotNetSDKMidLevel.html)\.
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb/mid-level-api#code-examples)\. 
+Perform CRUD operations using a document model\.  
+
+```
+    /// <summary>
+    /// Performs CRUD operations on an Amazon DynamoDB table. The example was
+    /// created using the AWS SDK for .NET 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class MidlevelItemCRUD
+    {
+        public static async Task Main()
+        {
+            var tableName = "ProductCatalog";
+            var sampleBookId = 555;
+
+            var client = new AmazonDynamoDBClient();
+            var productCatalog = LoadTable(client, tableName);
+
+            await CreateBookItem(productCatalog, sampleBookId);
+            RetrieveBook(productCatalog, sampleBookId);
+
+            // Couple of sample updates.
+            UpdateMultipleAttributes(productCatalog, sampleBookId);
+            UpdateBookPriceConditionally(productCatalog, sampleBookId);
+
+            // Delete.
+            await DeleteBook(productCatalog, sampleBookId);
+        }
+
+        /// <summary>
+        /// Loads the contents of a DynamoDB table.
+        /// </summary>
+        /// <param name="client">An initialized DynamoDB client object.</param>
+        /// <param name="tableName">The name of the table to load.</param>
+        /// <returns>A DynamoDB table object.</returns>
+        public static Table LoadTable(IAmazonDynamoDB client, string tableName)
+        {
+            Table productCatalog = Table.LoadTable(client, tableName);
+            return productCatalog;
+        }
+
+        /// <summary>
+        /// Creates an example book item and adds it to the DynamoDB table
+        /// ProductCatalog.
+        /// </summary>
+        /// <param name="productCatalog">A DynamoDB table object.</param>
+        /// <param name="sampleBookId">An integer value representing the book's ID.</param>
+        public static async Task CreateBookItem(Table productCatalog, int sampleBookId)
+        {
+            Console.WriteLine("\n*** Executing CreateBookItem() ***");
+            var book = new Document
+            {
+                ["Id"] = sampleBookId,
+                ["Title"] = "Book " + sampleBookId,
+                ["Price"] = 19.99,
+                ["ISBN"] = "111-1111111111",
+                ["Authors"] = new List<string> { "Author 1", "Author 2", "Author 3" },
+                ["PageCount"] = 500,
+                ["Dimensions"] = "8.5x11x.5",
+                ["InPublication"] = new DynamoDBBool(true),
+                ["InStock"] = new DynamoDBBool(false),
+                ["QuantityOnHand"] = 0,
+            };
+
+            // Adds the book to the ProductCatalog table.
+            await productCatalog.PutItemAsync(book);
+        }
+
+        /// <summary>
+        /// Retrieves an item, a book, from the DynamoDB ProductCatalog table.
+        /// </summary>
+        /// <param name="productCatalog">A DynamoDB table object.</param>
+        /// <param name="sampleBookId">An integer value representing the book's ID.</param>
+        public static async void RetrieveBook(
+          Table productCatalog,
+          int sampleBookId)
+        {
+            Console.WriteLine("\n*** Executing RetrieveBook() ***");
+
+            // Optional configuration.
+            var config = new GetItemOperationConfig
+            {
+                AttributesToGet = new List<string> { "Id", "ISBN", "Title", "Authors", "Price" },
+                ConsistentRead = true,
+            };
+
+            Document document = await productCatalog.GetItemAsync(sampleBookId, config);
+            Console.WriteLine("RetrieveBook: Printing book retrieved...");
+            PrintDocument(document);
+        }
+
+        /// <summary>
+        /// Updates multiple attributes for a book and writes the changes to the
+        /// DynamoDB table ProductCatalog.
+        /// </summary>
+        /// <param name="productCatalog">A DynamoDB table object.</param>
+        /// <param name="sampleBookId">An integer value representing the book's ID.</param>
+        public static async void UpdateMultipleAttributes(
+          Table productCatalog,
+          int sampleBookId)
+        {
+            Console.WriteLine("\nUpdating multiple attributes....");
+            int partitionKey = sampleBookId;
+
+            var book = new Document
+            {
+                ["Id"] = partitionKey,
+
+                // List of attribute updates.
+                // The following replaces the existing authors list.
+                ["Authors"] = new List<string> { "Author x", "Author y" },
+                ["newAttribute"] = "New Value",
+                ["ISBN"] = null, // Remove it.
+            };
+
+            // Optional parameters.
+            var config = new UpdateItemOperationConfig
+            {
+                // Gets updated item in response.
+                ReturnValues = ReturnValues.AllNewAttributes,
+            };
+
+            Document updatedBook = await productCatalog.UpdateItemAsync(book, config);
+            Console.WriteLine("UpdateMultipleAttributes: Printing item after updates ...");
+            PrintDocument(updatedBook);
+        }
+
+        /// <summary>
+        /// Updates a book item if it meets the specified criteria.
+        /// </summary>
+        /// <param name="productCatalog">A DynamoDB table object.</param>
+        /// <param name="sampleBookId">An integer value representing the book's ID.</param>
+        public static async void UpdateBookPriceConditionally(
+          Table productCatalog,
+          int sampleBookId)
+        {
+            Console.WriteLine("\n*** Executing UpdateBookPriceConditionally() ***");
+
+            int partitionKey = sampleBookId;
+
+            var book = new Document
+            {
+                ["Id"] = partitionKey,
+                ["Price"] = 29.99,
+            };
+
+            // For conditional price update, creating a condition expression.
+            var expr = new Expression
+            {
+                ExpressionStatement = "Price = :val",
+            };
+            expr.ExpressionAttributeValues[":val"] = 19.00;
+
+            // Optional parameters.
+            var config = new UpdateItemOperationConfig
+            {
+                ConditionalExpression = expr,
+                ReturnValues = ReturnValues.AllNewAttributes,
+            };
+
+            Document updatedBook = await productCatalog.UpdateItemAsync(book, config);
+            Console.WriteLine("UpdateBookPriceConditionally: Printing item whose price was conditionally updated");
+            PrintDocument(updatedBook);
+        }
+
+        /// <summary>
+        /// Deletes the book with the supplied Id value from the DynamoDB table
+        /// ProductCatalog.
+        /// </summary>
+        /// <param name="productCatalog">A DynamoDB table object.</param>
+        /// <param name="sampleBookId">An integer value representing the book's ID.</param>
+        public static async Task DeleteBook(
+          Table productCatalog,
+          int sampleBookId)
+        {
+            Console.WriteLine("\n*** Executing DeleteBook() ***");
+
+            // Optional configuration.
+            var config = new DeleteItemOperationConfig
+            {
+                // Returns the deleted item.
+                ReturnValues = ReturnValues.AllOldAttributes,
+            };
+            Document document = await productCatalog.DeleteItemAsync(sampleBookId, config);
+            Console.WriteLine("DeleteBook: Printing deleted just deleted...");
+
+            PrintDocument(document);
+        }
+
+        /// <summary>
+        /// Prints the information for the supplied DynamoDB document.
+        /// </summary>
+        /// <param name="updatedDocument">A DynamoDB document object.</param>
+        public static void PrintDocument(Document updatedDocument)
+        {
+            if (updatedDocument is null)
+            {
+                return;
+            }
+
+            foreach (var attribute in updatedDocument.GetAttributeNames())
+            {
+                string stringValue = null;
+                var value = updatedDocument[attribute];
+
+                if (value is null)
+                {
+                    continue;
+                }
+
+                if (value is Primitive)
+                {
+                    stringValue = value.AsPrimitive().Value.ToString();
+                }
+                else if (value is PrimitiveList)
+                {
+                    stringValue = string.Join(",", (from primitive
+                      in value.AsPrimitiveList().Entries
+                                                    select primitive.Value).ToArray());
+                }
+
+                Console.WriteLine($"{attribute} - {stringValue}", attribute, stringValue);
+            }
+        }
+    }
+```
+Perform batch write operations using a document model\.  
+
+```
+    /// <summary>
+    /// Shows how to use mid-level Amazon DynamoDB API calls to perform batch
+    /// operations. The example was created using the AWS SDK for .NET version
+    /// 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class MidLevelBatchWriteItem
+    {
+        public static async Task Main()
+        {
+            IAmazonDynamoDB client = new AmazonDynamoDBClient();
+
+            await SingleTableBatchWrite(client);
+            await MultiTableBatchWrite(client);
+        }
+
+        /// <summary>
+        /// Perform a batch operation on a single DynamoDB table.
+        /// </summary>
+        /// <param name="client">An initialized DynamoDB object.</param>
+        public static async Task SingleTableBatchWrite(IAmazonDynamoDB client)
+        {
+            Table productCatalog = Table.LoadTable(client, "ProductCatalog");
+            var batchWrite = productCatalog.CreateBatchWrite();
+
+            var book1 = new Document
+            {
+                ["Id"] = 902,
+                ["Title"] = "My book1 in batch write using .NET helper classes",
+                ["ISBN"] = "902-11-11-1111",
+                ["Price"] = 10,
+                ["ProductCategory"] = "Book",
+                ["Authors"] = new List<string> { "Author 1", "Author 2", "Author 3" },
+                ["Dimensions"] = "8.5x11x.5",
+                ["InStock"] = new DynamoDBBool(true),
+                ["QuantityOnHand"] = new DynamoDBNull(), // Quantity is unknown at this time.
+            };
+
+            batchWrite.AddDocumentToPut(book1);
+
+            // Specify delete item using overload that takes PK.
+            batchWrite.AddKeyToDelete(12345);
+            Console.WriteLine("Performing batch write in SingleTableBatchWrite()");
+            await batchWrite.ExecuteAsync();
+        }
+
+        /// <summary>
+        /// Perform a batch operation involving multiple DynamoDB tables.
+        /// </summary>
+        /// <param name="client">An initialized DynamoDB client object.</param>
+        public static async Task MultiTableBatchWrite(IAmazonDynamoDB client)
+        {
+            // Specify item to add in the Forum table.
+            Table forum = Table.LoadTable(client, "Forum");
+            var forumBatchWrite = forum.CreateBatchWrite();
+
+            var forum1 = new Document
+            {
+                ["Name"] = "Test BatchWrite Forum",
+                ["Threads"] = 0,
+            };
+            forumBatchWrite.AddDocumentToPut(forum1);
+
+            // Specify item to add in the Thread table.
+            Table thread = Table.LoadTable(client, "Thread");
+            var threadBatchWrite = thread.CreateBatchWrite();
+
+            var thread1 = new Document
+            {
+                ["ForumName"] = "S3 forum",
+                ["Subject"] = "My sample question",
+                ["Message"] = "Message text",
+                ["KeywordTags"] = new List<string> { "S3", "Bucket" },
+            };
+            threadBatchWrite.AddDocumentToPut(thread1);
+
+            // Specify item to delete from the Thread table.
+            threadBatchWrite.AddKeyToDelete("someForumName", "someSubject");
+
+            // Create multi-table batch.
+            var superBatch = new MultiTableDocumentBatchWrite();
+            superBatch.AddBatch(forumBatchWrite);
+            superBatch.AddBatch(threadBatchWrite);
+            Console.WriteLine("Performing batch write in MultiTableBatchWrite()");
+
+            // Execute the batch.
+            await superBatch.ExecuteAsync();
+        }
+    }
+```
+Scan a table using a document model\.  
+
+```
+    /// <summary>
+    /// Shows how to use mid-level Amazon DynamoDB API calls to scan a DynamoDB
+    /// table for values. This example was created using the AWS SDK for .NET
+    /// version 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class MidLevelScanOnly
+    {
+        public static async Task Main()
+        {
+            IAmazonDynamoDB client = new AmazonDynamoDBClient();
+
+            Table productCatalogTable = Table.LoadTable(client, "ProductCatalog");
+
+            await FindProductsWithNegativePrice(productCatalogTable);
+            await FindProductsWithNegativePriceWithConfig(productCatalogTable);
+        }
+
+        /// <summary>
+        /// Retrieves any products that have a negative price in a DynamoDB table.
+        /// </summary>
+        /// <param name="productCatalogTable">A DynamoDB table object.</param>
+        public static async Task FindProductsWithNegativePrice(
+          Table productCatalogTable)
+        {
+            // Assume there is a price error. So we scan to find items priced < 0.
+            var scanFilter = new ScanFilter();
+            scanFilter.AddCondition("Price", ScanOperator.LessThan, 0);
+
+            Search search = productCatalogTable.Scan(scanFilter);
+
+            do
+            {
+                var documentList = await search.GetNextSetAsync();
+                Console.WriteLine("\nFindProductsWithNegativePrice: printing ............");
+
+                foreach (var document in documentList)
+                {
+                    PrintDocument(document);
+                }
+            }
+            while (!search.IsDone);
+        }
+
+        /// <summary>
+        /// Finds any items in the ProductCatalog table using a DynamoDB
+        /// configuration object.
+        /// </summary>
+        /// <param name="productCatalogTable">A DynamoDB table object.</param>
+        public static async Task FindProductsWithNegativePriceWithConfig(
+          Table productCatalogTable)
+        {
+            // Assume there is a price error. So we scan to find items priced < 0.
+            var scanFilter = new ScanFilter();
+            scanFilter.AddCondition("Price", ScanOperator.LessThan, 0);
+
+            var config = new ScanOperationConfig()
+            {
+                Filter = scanFilter,
+                Select = SelectValues.SpecificAttributes,
+                AttributesToGet = new List<string> { "Title", "Id" },
+            };
+
+            Search search = productCatalogTable.Scan(config);
+
+            do
+            {
+                var documentList = await search.GetNextSetAsync();
+                Console.WriteLine("\nFindProductsWithNegativePriceWithConfig: printing ............");
+
+                foreach (var document in documentList)
+                {
+                    PrintDocument(document);
+                }
+            }
+            while (!search.IsDone);
+        }
+
+        /// <summary>
+        /// Displays the details of the passed DynamoDB document object on the
+        /// console.
+        /// </summary>
+        /// <param name="document">A DynamoDB document object.</param>
+        public static void PrintDocument(Document document)
+        {
+            Console.WriteLine();
+            foreach (var attribute in document.GetAttributeNames())
+            {
+                string stringValue = null;
+                var value = document[attribute];
+                if (value is Primitive)
+                {
+                    stringValue = value.AsPrimitive().Value.ToString();
+                }
+                else if (value is PrimitiveList)
+                {
+                    stringValue = string.Join(",", (from primitive
+                      in value.AsPrimitiveList().Entries
+                                                    select primitive.Value).ToArray());
+                }
+
+                Console.WriteLine($"{attribute} - {stringValue}");
+            }
+        }
+    }
+```
+Query and scan a table using a document model\.  
+
+```
+    /// <summary>
+    /// Shows how to perform mid-level query procedures on an Amazon DynamoDB
+    /// table. The example was created using the AWS SDK for .NET version 3.7 and
+    /// .NET Core 5.0.
+    /// </summary>
+    public class MidLevelQueryAndScan
+    {
+        public static async Task Main()
+        {
+            IAmazonDynamoDB client = new AmazonDynamoDBClient();
+
+            // Query examples.
+            Table replyTable = Table.LoadTable(client, "Reply");
+            string forumName = "Amazon DynamoDB";
+            string threadSubject = "DynamoDB Thread 2";
+
+            await FindRepliesInLast15Days(replyTable);
+            await FindRepliesInLast15DaysWithConfig(replyTable, forumName, threadSubject);
+            await FindRepliesPostedWithinTimePeriod(replyTable, forumName, threadSubject);
+
+            // Get Example.
+            Table productCatalogTable = Table.LoadTable(client, "ProductCatalog");
+            int productId = 101;
+
+            await GetProduct(productCatalogTable, productId);
+        }
+
+        /// <summary>
+        /// Retrieves information about a product from the DynamoDB table
+        /// ProductCatalog based on the product ID and displays the information
+        /// on the console.
+        /// </summary>
+        /// <param name="tableName">The name of the table from which to retrieve
+        /// product information.</param>
+        /// <param name="productId">The ID of the product to retrieve.</param>
+        public static async Task GetProduct(Table tableName, int productId)
+        {
+            Console.WriteLine("*** Executing GetProduct() ***");
+            Document productDocument = await tableName.GetItemAsync(productId);
+            if (productDocument != null)
+            {
+                PrintDocument(productDocument);
+            }
+            else
+            {
+                Console.WriteLine("Error: product " + productId + " does not exist");
+            }
+        }
+
+        /// <summary>
+        /// Retrieves replies from the passed DynamoDB table object.
+        /// </summary>
+        /// <param name="table">The table we want to query.</param>
+        public static async Task FindRepliesInLast15Days(
+          Table table)
+        {
+            DateTime twoWeeksAgoDate = DateTime.UtcNow - TimeSpan.FromDays(15);
+            var filter = new QueryFilter("Id", QueryOperator.Equal, "Id");
+            filter.AddCondition("ReplyDateTime", QueryOperator.GreaterThan, twoWeeksAgoDate);
+
+            // Use Query overloads that take the minimum required query parameters.
+            Search search = table.Query(filter);
+
+            do
+            {
+                var documentSet = await search.GetNextSetAsync();
+                Console.WriteLine("\nFindRepliesInLast15Days: printing ............");
+
+                foreach (var document in documentSet)
+                {
+                    PrintDocument(document);
+                }
+            }
+            while (!search.IsDone);
+        }
+
+        /// <summary>
+        /// Retrieve replies made during a specific time period.
+        /// </summary>
+        /// <param name="table">The table we want to query.</param>
+        /// <param name="forumName">The name of the forum that we're interested in.</param>
+        /// <param name="threadSubject">The subject of the thread, which we are
+        /// searching for replies.</param>
+        public static async Task FindRepliesPostedWithinTimePeriod(
+          Table table,
+          string forumName,
+          string threadSubject)
+        {
+            DateTime startDate = DateTime.UtcNow.Subtract(new TimeSpan(21, 0, 0, 0));
+            DateTime endDate = DateTime.UtcNow.Subtract(new TimeSpan(1, 0, 0, 0));
+
+            var filter = new QueryFilter("Id", QueryOperator.Equal, forumName + "#" + threadSubject);
+            filter.AddCondition("ReplyDateTime", QueryOperator.Between, startDate, endDate);
+
+            var config = new QueryOperationConfig()
+            {
+                Limit = 2, // 2 items/page.
+                Select = SelectValues.SpecificAttributes,
+                AttributesToGet = new List<string>
+        {
+          "Message",
+          "ReplyDateTime",
+          "PostedBy",
+        },
+                ConsistentRead = true,
+                Filter = filter,
+            };
+
+            Search search = table.Query(config);
+
+            do
+            {
+                var documentList = await search.GetNextSetAsync();
+                Console.WriteLine("\nFindRepliesPostedWithinTimePeriod: printing replies posted within dates: {0} and {1} ............", startDate, endDate);
+
+                foreach (var document in documentList)
+                {
+                    PrintDocument(document);
+                }
+            }
+            while (!search.IsDone);
+        }
+
+        /// <summary>
+        /// Perform a query for replies made in the last 15 days using a DynamoDB
+        /// QueryOperationConfig object.
+        /// </summary>
+        /// <param name="table">The table we want to query.</param>
+        /// <param name="forumName">The name of the forum that we're interested in.</param>
+        /// <param name="threadName">The bane of the thread that we are searching
+        /// for replies.</param>
+        public static async Task FindRepliesInLast15DaysWithConfig(
+          Table table,
+          string forumName,
+          string threadName)
+        {
+            DateTime twoWeeksAgoDate = DateTime.UtcNow - TimeSpan.FromDays(15);
+            var filter = new QueryFilter("Id", QueryOperator.Equal, forumName + "#" + threadName);
+            filter.AddCondition("ReplyDateTime", QueryOperator.GreaterThan, twoWeeksAgoDate);
+
+            var config = new QueryOperationConfig()
+            {
+                Filter = filter,
+
+                // Optional parameters.
+                Select = SelectValues.SpecificAttributes,
+                AttributesToGet = new List<string>
+                {
+                  "Message",
+                  "ReplyDateTime",
+                  "PostedBy",
+                },
+                ConsistentRead = true,
+            };
+
+            Search search = table.Query(config);
+
+            do
+            {
+                var documentSet = await search.GetNextSetAsync();
+                Console.WriteLine("\nFindRepliesInLast15DaysWithConfig: printing ............");
+
+                foreach (var document in documentSet)
+                {
+                    PrintDocument(document);
+                }
+            }
+            while (!search.IsDone);
+        }
+
+        /// <summary>
+        /// Displays the contents of the passed DynamoDB document on the console.
+        /// </summary>
+        /// <param name="document">A DynamoDB document to display.</param>
+        public static void PrintDocument(Document document)
+        {
+            Console.WriteLine();
+            foreach (var attribute in document.GetAttributeNames())
+            {
+                string stringValue = null;
+                var value = document[attribute];
+
+                if (value is Primitive)
+                {
+                    stringValue = value.AsPrimitive().Value.ToString();
+                }
+                else if (value is PrimitiveList)
+                {
+                    stringValue = string.Join(",", (from primitive
+                      in value.AsPrimitiveList().Entries
+                                                    select primitive.Value).ToArray());
+                }
+
+                Console.WriteLine($"{attribute} - {stringValue}");
+            }
+        }
+    }
+```
+
+### Use a high\-level object persistence model<a name="dynamodb_HighLevelInterface_csharp_topic"></a>
+
+The following code example shows how to perform Create, Read, Update, and Delete \(CRUD\) and batch operations using an object persistence model for DynamoDB and an AWS SDK\.
+
+For more information, see [Object persistence model](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DotNetSDKHighLevel.html)\.
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb/high-level-api#code-examples)\. 
+Perform CRUD operations using a high\-level object persistence model\.  
+
+```
+    /// <summary>
+    /// Shows how to perform high-level CRUD operations on an Amazon DynamoDB
+    /// table. The example was created with the AWS SDK for .NET version 3.7
+    /// and .NET Core 5.0.
+    /// </summary>
+    public class HighLevelItemCrud
+    {
+        public static async Task Main()
+        {
+            var client = new AmazonDynamoDBClient();
+            DynamoDBContext context = new DynamoDBContext(client);
+            await PerformCRUDOperations(context);
+        }
+
+        public static async Task PerformCRUDOperations(IDynamoDBContext context)
+        {
+            int bookId = 1001; // Some unique value.
+            Book myBook = new Book
+            {
+                Id = bookId,
+                Title = "object persistence-AWS SDK for.NET SDK-Book 1001",
+                Isbn = "111-1111111001",
+                BookAuthors = new List<string> { "Author 1", "Author 2" },
+            };
+
+            // Save the book to the ProductCatalog table.
+            await context.SaveAsync(myBook);
+
+            // Retrieve the book from the ProductCatalog table.
+            Book bookRetrieved = await context.LoadAsync<Book>(bookId);
+
+            // Update some properties.
+            bookRetrieved.Isbn = "222-2222221001";
+
+            // Update existing authors list with the following values.
+            bookRetrieved.BookAuthors = new List<string> { " Author 1", "Author x" };
+            await context.SaveAsync(bookRetrieved);
+
+            // Retrieve the updated book. This time, add the optional
+            // ConsistentRead parameter using DynamoDBContextConfig object.
+            await context.LoadAsync<Book>(bookId, new DynamoDBContextConfig
+            {
+                ConsistentRead = true,
+            });
+
+            // Delete the book.
+            await context.DeleteAsync<Book>(bookId);
+
+            // Try to retrieve deleted book. It should return null.
+            Book deletedBook = await context.LoadAsync<Book>(bookId, new DynamoDBContextConfig
+            {
+                ConsistentRead = true,
+            });
+
+            if (deletedBook == null)
+            {
+                Console.WriteLine("Book is deleted");
+            }
+        }
+    }
+```
+Perform batch write operations using a high\-level object persistence model\.  
+
+```
+    /// <summary>
+    /// Performs high-level batch write operations to an Amazon DynamoDB table.
+    /// This example was written using the AWS SDK for .NET version 3.7 and .NET
+    /// Core 5.0.
+    /// </summary>
+    public class HighLevelBatchWriteItem
+    {
+        static async Task Main()
+        {
+            AmazonDynamoDBClient client = new AmazonDynamoDBClient();
+            DynamoDBContext context = new DynamoDBContext(client);
+
+            await SingleTableBatchWrite(context);
+            await MultiTableBatchWrite(context);
+        }
+
+        public static async Task SingleTableBatchWrite(IDynamoDBContext context)
+        {
+            Book book1 = new Book
+            {
+                Id = 902,
+                InPublication = true,
+                Isbn = "902-11-11-1111",
+                PageCount = "100",
+                Price = 10,
+                ProductCategory = "Book",
+                Title = "My book3 in batch write",
+            };
+
+            Book book2 = new Book
+            {
+                Id = 903,
+                InPublication = true,
+                Isbn = "903-11-11-1111",
+                PageCount = "200",
+                Price = 10,
+                ProductCategory = "Book",
+                Title = "My book4 in batch write",
+            };
+
+            var bookBatch = context.CreateBatchWrite<Book>();
+            bookBatch.AddPutItems(new List<Book> { book1, book2 });
+
+            Console.WriteLine("Adding two books to ProductCatalog table.");
+            await bookBatch.ExecuteAsync();
+        }
+
+        public static async Task MultiTableBatchWrite(IDynamoDBContext context)
+        {
+            // New Forum item.
+            Forum newForum = new Forum
+            {
+                Name = "Test BatchWrite Forum",
+                Threads = 0,
+            };
+            var forumBatch = context.CreateBatchWrite<Forum>();
+            forumBatch.AddPutItem(newForum);
+
+            // New Thread item.
+            Thread newThread = new Thread
+            {
+                ForumName = "S3 forum",
+                Subject = "My sample question",
+                KeywordTags = new List<string> { "S3", "Bucket" },
+                Message = "Message text",
+            };
+
+            DynamoDBOperationConfig config = new DynamoDBOperationConfig();
+            config.SkipVersionCheck = true;
+            var threadBatch = context.CreateBatchWrite<Thread>(config);
+            threadBatch.AddPutItem(newThread);
+            threadBatch.AddDeleteKey("some partition key value", "some sort key value");
+
+            var superBatch = new MultiTableBatchWrite(forumBatch, threadBatch);
+
+            Console.WriteLine("Performing batch write in MultiTableBatchWrite().");
+            await superBatch.ExecuteAsync();
+        }
+    }
+```
+Map arbitrary data to a table using a high\-level object persistence model\.  
+
+```
+    /// <summary>
+    /// Shows how to map arbitrary data to an Amazon DynamoDB table. The example
+    /// was created using the AWS SDK for .NET version 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class HighLevelMappingArbitraryData
+    {
+        static async Task Main()
+        {
+            var client = new AmazonDynamoDBClient();
+            DynamoDBContext context = new DynamoDBContext(client);
+            await AddRetrieveUpdateBook(context);
+        }
+
+        /// <summary>
+        /// Creates a book, adds it to the DynamoDB ProductCatalog table, retrieves
+        /// the new book from the table, updates the dimensions and writes the
+        /// changed item back to the table.
+        /// </summary>
+        /// <param name="context">The DynamoDB context object used to write and
+        /// read data from the table.</param>
+        public static async Task AddRetrieveUpdateBook(IDynamoDBContext context)
+        {
+
+            // Create a book.
+            DimensionType myBookDimensions = new DimensionType()
+            {
+                Length = 8M,
+                Height = 11M,
+                Thickness = 0.5M,
+            };
+
+            Book myBook = new Book
+            {
+                Id = 501,
+                Title = "AWS SDK for .NET Object Persistence Model Handling Arbitrary Data",
+                Isbn = "999-9999999999",
+                BookAuthors = new List<string> { "Author 1", "Author 2" },
+                Dimensions = myBookDimensions,
+            };
+
+            // Add the book to the DynamoDB table ProductCatalog.
+            await context.SaveAsync(myBook);
+
+            // Retrieve the book.
+            Book bookRetrieved = await context.LoadAsync<Book>(501);
+
+            // Update the book dimensions property.
+            bookRetrieved.Dimensions.Height += 1;
+            bookRetrieved.Dimensions.Length += 1;
+            bookRetrieved.Dimensions.Thickness += 0.2M;
+
+            // Write the changed item to the table.
+            await context.SaveAsync(bookRetrieved);
+        }
+    }
+```
+Query and scan a table using a high\-level object persistence model\.  
+
+```
+    /// <summary>
+    /// Shows how to perform high-level query and scan operations to Amazon
+    /// DynamoDB tables. This example was created using the AWS SDK for .NET
+    /// version 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class HighLevelQueryAndScan
+    {
+        public static async Task Main()
+        {
+            var client = new AmazonDynamoDBClient();
+
+            DynamoDBContext context = new DynamoDBContext(client);
+
+            // Get an item.
+            await GetBook(context, 101);
+
+            // Sample forum and thread to test queries.
+            string forumName = "Amazon DynamoDB";
+            string threadSubject = "DynamoDB Thread 1";
+
+            // Sample queries.
+            await FindRepliesInLast15Days(context, forumName, threadSubject);
+            await FindRepliesPostedWithinTimePeriod(context, forumName, threadSubject);
+
+            // Scan table.
+            await FindProductsPricedLessThanZero(context);
+        }
+
+        public static async Task GetBook(IDynamoDBContext context, int productId)
+        {
+            Book bookItem = await context.LoadAsync<Book>(productId);
+
+            Console.WriteLine("\nGetBook: Printing result.....");
+            Console.WriteLine($"Title: {bookItem.Title} \n ISBN:{bookItem.Isbn} \n No. of pages: {bookItem.PageCount}");
+        }
+
+        /// <summary>
+        /// Queries a DynamoDB table to find replies posted within the last 15 days.
+        /// </summary>
+        /// <param name="context">The DynamoDB context used to perform the query.</param>
+        /// <param name="forumName">The name of the forum that we're interested in.</param>
+        /// <param name="threadSubject">The thread object containing the query parameters.</param>
+        public static async Task FindRepliesInLast15Days(
+          IDynamoDBContext context,
+          string forumName,
+          string threadSubject)
+        {
+            string replyId = $"{forumName} #{threadSubject}";
+            DateTime twoWeeksAgoDate = DateTime.UtcNow - TimeSpan.FromDays(15);
+
+            List<object> times = new List<object>();
+            times.Add(twoWeeksAgoDate);
+
+            List<ScanCondition> scs = new List<ScanCondition>();
+            var sc = new ScanCondition("PostedBy", ScanOperator.GreaterThan, times.ToArray());
+            scs.Add(sc);
+
+            var cfg = new DynamoDBOperationConfig
+            {
+                QueryFilter = scs,
+            };
+
+            AsyncSearch<Reply> response = context.QueryAsync<Reply>(replyId, cfg);
+            IEnumerable<Reply> latestReplies = await response.GetRemainingAsync();
+
+            Console.WriteLine("\nReplies in last 15 days:");
+
+            foreach (Reply r in latestReplies)
+            {
+                Console.WriteLine($"{r.Id}\t{r.PostedBy}\t{r.Message}\t{r.ReplyDateTime}");
+            }
+        }
+
+        /// <summary>
+        /// Queries for replies posted within a specific time period.
+        /// </summary>
+        /// <param name="context">The DynamoDB context used to perform the query.</param>
+        /// <param name="forumName">The name of the forum that we're interested in.</param>
+        /// <param name="threadSubject">Information about the subject that we're
+        /// interested in.</param>
+        public static async Task FindRepliesPostedWithinTimePeriod(
+          IDynamoDBContext context,
+          string forumName,
+          string threadSubject)
+        {
+            string forumId = forumName + "#" + threadSubject;
+            Console.WriteLine("\nReplies posted within time period:");
+
+            DateTime startDate = DateTime.UtcNow - TimeSpan.FromDays(30);
+            DateTime endDate = DateTime.UtcNow - TimeSpan.FromDays(1);
+
+            List<object> times = new List<object>();
+            times.Add(startDate);
+            times.Add(endDate);
+
+            List<ScanCondition> scs = new List<ScanCondition>();
+            var sc = new ScanCondition("LastPostedBy", ScanOperator.Between, times.ToArray());
+            scs.Add(sc);
+
+            var cfg = new DynamoDBOperationConfig
+            {
+                QueryFilter = scs
+            };
+
+            AsyncSearch<Reply> response = context.QueryAsync<Reply>(forumId, cfg);
+            IEnumerable<Reply> repliesInAPeriod = await response.GetRemainingAsync();
+
+            foreach (Reply r in repliesInAPeriod)
+            {
+                Console.WriteLine("{r.Id}\t{r.PostedBy}\t{r.Message}\t{r.ReplyDateTime}");
+            }
+        }
+
+        /// <summary>
+        /// Queries the DynamoDB ProductCatalog table for products costing less
+        /// than zero.
+        /// </summary>
+        /// <param name="context">The DynamoDB context object used to perform the
+        /// query.</param>
+        public static async Task FindProductsPricedLessThanZero(IDynamoDBContext context)
+        {
+            int price = 0;
+
+            List<ScanCondition> scs = new List<ScanCondition>();
+            var sc1 = new ScanCondition("Price", ScanOperator.LessThan, price);
+            var sc2 = new ScanCondition("ProductCategory", ScanOperator.Equal, "Book");
+            scs.Add(sc1);
+            scs.Add(sc2);
+
+            AsyncSearch<Book> response = context.ScanAsync<Book>(scs);
+
+            IEnumerable<Book> itemsWithWrongPrice = await response.GetRemainingAsync();
+
+            Console.WriteLine("\nFindProductsPricedLessThanZero: Printing result.....");
+
+            foreach (Book r in itemsWithWrongPrice)
+            {
+                Console.WriteLine($"{r.Id}\t{r.Title}\t{r.Price}\t{r.Isbn}");
+            }
+        }
+    }
+```

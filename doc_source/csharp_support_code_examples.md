@@ -12,10 +12,7 @@ Each example includes a link to GitHub, where you can find instructions on how t
 
 ## Hello AWS Support<a name="example_support_Hello_section"></a>
 
-The following code example shows how to get started using AWS Support\.
-
-------
-#### [ \.NET ]
+The following code examples show how to get started using AWS Support\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Support#code-examples)\. 
@@ -49,13 +46,11 @@ public static class HelloSupport
 ```
 +  For API details, see [DescribeServices](https://docs.aws.amazon.com/goto/DotNetSDKV3/support-2013-04-15/DescribeServices) in *AWS SDK for \.NET API Reference*\. 
 
-------
-
 **Topics**
-+ [Actions](#w359aac21c17c13c59c17)
-+ [Scenarios](#w359aac21c17c13c59c19)
++ [Actions](#w2aac21c17c13c61c17)
++ [Scenarios](#w2aac21c17c13c61c19)
 
-## Actions<a name="w359aac21c17c13c59c17"></a>
+## Actions<a name="w2aac21c17c13c61c17"></a>
 
 ### Add a communication to a case<a name="support_AddCommunication_csharp_topic"></a>
 
@@ -357,7 +352,7 @@ The following code example shows how to resolve an AWS Support case\.
 ```
 +  For API details, see [ResolveCase](https://docs.aws.amazon.com/goto/DotNetSDKV3/support-2013-04-15/ResolveCase) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w359aac21c17c13c59c19"></a>
+## Scenarios<a name="w2aac21c17c13c61c19"></a>
 
 ### Get started with cases<a name="support_Scenario_GetStartedSupportCases_csharp_topic"></a>
 

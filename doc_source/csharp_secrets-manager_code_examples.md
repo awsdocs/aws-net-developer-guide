@@ -9,9 +9,9 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w359aac21c17c13c57c13)
++ [Actions](#w2aac21c17c13c59c13)
 
-## Actions<a name="w359aac21c17c13c57c13"></a>
+## Actions<a name="w2aac21c17c13c59c13"></a>
 
 ### Get a secret value<a name="secrets-manager_GetSecretValue_csharp_topic"></a>
 
