@@ -58,6 +58,100 @@ The following code example shows how to create an Amazon EC2 VPC\.
         }
     }
 ```
+Create a VPC endpoint to use with an Amazon Simple Storage Service \(Amazon S3\) client\.  
+
+```
+    /// <summary>
+    /// Create a VPC Endpoint and use it for an Amazon S3 client.
+    /// </summary>
+    /// <param name="configuration">Configuration to specify resource IDs.</param>
+    /// <param name="ec2Client">Initialized Amazon EC2 client.</param>
+    /// <returns>The Amazon S3 URL using the endpoint.</returns>
+    public static async Task<string?> CreateVPCforS3Client(IConfiguration configuration,
+        AmazonEC2Client ec2Client)
+    {
+        var endpointResponse = await ec2Client.CreateVpcEndpointAsync(
+            new CreateVpcEndpointRequest
+            {
+                VpcId = configuration["VpcId"],
+                VpcEndpointType = VpcEndpointType.Interface,
+                ServiceName = "com.amazonaws.us-east-1.s3",
+                SubnetIds = new List<string> { configuration["SubnetId"]! },
+                SecurityGroupIds = new List<string> { configuration["SecurityGroupId"]! },
+                TagSpecifications = new List<TagSpecification>
+                {
+                    new TagSpecification
+                    {
+                        ResourceType = ResourceType.VpcEndpoint,
+                        Tags = new List<Tag>
+                        {
+                            new Tag("service", "S3")
+                        }
+                    }
+                }
+            });
+
+        var newEndpoint = endpointResponse.VpcEndpoint;
+
+        Console.WriteLine(
+            $"VPC endpoint {newEndpoint.VpcEndpointId} was created, waiting for it to be available. " +
+            $"This might take a few minutes.");
+
+        State? endpointState = null;
+
+        while (endpointState == null ||
+               !(endpointState == State.Available || endpointState == State.Failed))
+        {
+            var endpointDescription = await ec2Client.DescribeVpcEndpointsAsync(
+                new DescribeVpcEndpointsRequest
+                {
+                    VpcEndpointIds = new List<string>
+                        { endpointResponse.VpcEndpoint.VpcEndpointId }
+                });
+            endpointState = endpointDescription.VpcEndpoints.FirstOrDefault()?.State;
+            Thread.Sleep(500);
+        }
+
+        if (endpointState == State.Failed)
+        {
+            Console.WriteLine("VPC endpoint failed.");
+            return null;
+        }
+
+        // For newly created endpoints, we may need to wait a few
+        // more minutes before using it for the Amazon S3 client.
+        Thread.Sleep(int.Parse(configuration["WaitTimeMilliseconds"]!));
+
+        // Return the endpoint to create a ServiceURL to use with the Amazon S3 client.
+        var vpceUrl =
+            @$"https://bucket{endpointResponse.VpcEndpoint.DnsEntries[0].DnsName.Trim('*')}/";
+
+        return vpceUrl;
+    }
+
+    /// <summary>
+    /// Create an Amazon S3 client with a VPC URL.
+    /// To successfully list the objects in the S3 bucket when you're using a private VPC endpoint,
+    /// you must run this code in an environment that has access to the VPC.
+    /// </summary>
+    /// <param name="configuration">Configuration to specify resource IDs.</param>
+    /// <param name="vpceUrl">The endpoint URL.</param>
+    /// <returns>Async task.</returns>
+    public static async Task<List<S3Object>> CreateS3ClientWithEndpoint(IConfiguration configuration, string vpceUrl)
+    {
+        Console.WriteLine(
+            $"Creating Amazon S3 client with endpoint {vpceUrl}.");
+
+        var s3Client = new AmazonS3Client(new AmazonS3Config { ServiceURL = vpceUrl });
+
+        var objectsList = await s3Client.ListObjectsAsync(new ListObjectsRequest
+        {
+            BucketName = configuration["BucketName"]
+        });
+
+        return objectsList.S3Objects;
+    }
+```
 +  For API details, see [CreateVpc](https://docs.aws.amazon.com/goto/DotNetSDKV3/ec2-2016-11-15/CreateVpc) in *AWS SDK for \.NET API Reference*\. 
 
 ### Create a security group<a name="ec2_CreateSecurityGroup_csharp_topic"></a>
