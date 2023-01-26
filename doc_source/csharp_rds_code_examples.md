@@ -2,17 +2,17 @@
 
 The following code examples show you how to perform actions and implement common scenarios by using the AWS SDK for \.NET with Amazon RDS\.
 
-*Actions* are code excerpts that show you how to call individual Amazon RDS functions\.
+*Actions* are code excerpts that show you how to call individual service functions\.
 
-*Scenarios* are code examples that show you how to accomplish a specific task by calling multiple Amazon RDS functions\.
+*Scenarios* are code examples that show you how to accomplish a specific task by calling multiple functions within the same service\.
 
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w2aac21c17c13c41c13)
-+ [Scenarios](#w2aac21c17c13c41c15)
++ [Actions](#w2aac21c17c13c43c13)
++ [Scenarios](#w2aac21c17c13c43c15)
 
-## Actions<a name="w2aac21c17c13c41c13"></a>
+## Actions<a name="w2aac21c17c13c43c13"></a>
 
 ### Create a DB instance<a name="rds_CreateDBInstance_csharp_topic"></a>
 
@@ -397,7 +397,7 @@ The following code example shows how to update parameters in an Amazon RDS DB pa
 ```
 +  For API details, see [ModifyDBParameterGroup](https://docs.aws.amazon.com/goto/DotNetSDKV3/rds-2014-10-31/ModifyDBParameterGroup) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w2aac21c17c13c41c15"></a>
+## Scenarios<a name="w2aac21c17c13c43c15"></a>
 
 ### Get started with DB instances<a name="rds_Scenario_GetStartedInstances_csharp_topic"></a>
 

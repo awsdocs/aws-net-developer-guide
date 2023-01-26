@@ -18,6 +18,7 @@ The following code examples show how to perform actions and implement common sce
 + [AWS Glue](csharp_glue_code_examples.md)
 + [IAM](csharp_iam_code_examples.md)
 + [AWS KMS](csharp_kms_code_examples.md)
++ [Amazon Keyspaces](csharp_keyspaces_code_examples.md)
 + [Kinesis](csharp_kinesis_code_examples.md)
 + [Lambda](csharp_lambda_code_examples.md)
 + [Organizations](csharp_organizations_code_examples.md)

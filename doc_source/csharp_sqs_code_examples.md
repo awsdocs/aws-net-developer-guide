@@ -2,16 +2,16 @@
 
 The following code examples show you how to perform actions and implement common scenarios by using the AWS SDK for \.NET with Amazon SQS\.
 
-*Actions* are code excerpts that show you how to call individual Amazon SQS functions\.
+*Actions* are code excerpts that show you how to call individual service functions\.
 
-*Scenarios* are code examples that show you how to accomplish a specific task by calling multiple Amazon SQS functions\.
+*Scenarios* are code examples that show you how to accomplish a specific task by calling multiple functions within the same service\.
 
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w2aac21c17c13c55c13)
++ [Actions](#w2aac21c17c13c57c13)
 
-## Actions<a name="w2aac21c17c13c55c13"></a>
+## Actions<a name="w2aac21c17c13c57c13"></a>
 
 ### Authorize a bucket to send messages to a queue<a name="sqs_AuthorizeS3ToSendMessage_csharp_topic"></a>
 

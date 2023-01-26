@@ -2,17 +2,17 @@
 
 The following code examples show you how to perform actions and implement common scenarios by using the AWS SDK for \.NET with Amazon S3\.
 
-*Actions* are code excerpts that show you how to call individual Amazon S3 functions\.
+*Actions* are code excerpts that show you how to call individual service functions\.
 
-*Scenarios* are code examples that show you how to accomplish a specific task by calling multiple Amazon S3 functions\.
+*Scenarios* are code examples that show you how to accomplish a specific task by calling multiple functions within the same service\.
 
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w2aac21c17c13c47c13)
-+ [Scenarios](#w2aac21c17c13c47c15)
++ [Actions](#w2aac21c17c13c49c13)
++ [Scenarios](#w2aac21c17c13c49c15)
 
-## Actions<a name="w2aac21c17c13c47c13"></a>
+## Actions<a name="w2aac21c17c13c49c13"></a>
 
 ### Add CORS rules to a bucket<a name="s3_PutBucketCors_csharp_topic"></a>
 
@@ -1843,7 +1843,7 @@ Upload an object with server\-side encryption\.
 ```
 +  For API details, see [PutObject](https://docs.aws.amazon.com/goto/DotNetSDKV3/s3-2006-03-01/PutObject) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w2aac21c17c13c47c15"></a>
+## Scenarios<a name="w2aac21c17c13c49c15"></a>
 
 ### Create a presigned URL<a name="s3_Scenario_PresignedUrl_csharp_topic"></a>
 

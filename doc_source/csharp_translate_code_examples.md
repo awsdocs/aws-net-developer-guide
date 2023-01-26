@@ -2,16 +2,16 @@
 
 The following code examples show you how to perform actions and implement common scenarios by using the AWS SDK for \.NET with Amazon Translate\.
 
-*Actions* are code excerpts that show you how to call individual Amazon Translate functions\.
+*Actions* are code excerpts that show you how to call individual service functions\.
 
-*Scenarios* are code examples that show you how to accomplish a specific task by calling multiple Amazon Translate functions\.
+*Scenarios* are code examples that show you how to accomplish a specific task by calling multiple functions within the same service\.
 
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w2aac21c17c13c65c13)
++ [Actions](#w2aac21c17c13c67c13)
 
-## Actions<a name="w2aac21c17c13c65c13"></a>
+## Actions<a name="w2aac21c17c13c67c13"></a>
 
 ### Describe a translation job<a name="translate_DescribeTranslationJob_csharp_topic"></a>
 

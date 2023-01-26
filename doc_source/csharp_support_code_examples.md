@@ -2,9 +2,9 @@
 
 The following code examples show you how to perform actions and implement common scenarios by using the AWS SDK for \.NET with AWS Support\.
 
-*Actions* are code excerpts that show you how to call individual AWS Support functions\.
+*Actions* are code excerpts that show you how to call individual service functions\.
 
-*Scenarios* are code examples that show you how to accomplish a specific task by calling multiple AWS Support functions\.
+*Scenarios* are code examples that show you how to accomplish a specific task by calling multiple functions within the same service\.
 
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
@@ -47,10 +47,10 @@ public static class HelloSupport
 +  For API details, see [DescribeServices](https://docs.aws.amazon.com/goto/DotNetSDKV3/support-2013-04-15/DescribeServices) in *AWS SDK for \.NET API Reference*\. 
 
 **Topics**
-+ [Actions](#w2aac21c17c13c61c17)
-+ [Scenarios](#w2aac21c17c13c61c19)
++ [Actions](#w2aac21c17c13c63c17)
++ [Scenarios](#w2aac21c17c13c63c19)
 
-## Actions<a name="w2aac21c17c13c61c17"></a>
+## Actions<a name="w2aac21c17c13c63c17"></a>
 
 ### Add a communication to a case<a name="support_AddCommunication_csharp_topic"></a>
 
@@ -352,7 +352,7 @@ The following code example shows how to resolve an AWS Support case\.
 ```
 +  For API details, see [ResolveCase](https://docs.aws.amazon.com/goto/DotNetSDKV3/support-2013-04-15/ResolveCase) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w2aac21c17c13c61c19"></a>
+## Scenarios<a name="w2aac21c17c13c63c19"></a>
 
 ### Get started with cases<a name="support_Scenario_GetStartedSupportCases_csharp_topic"></a>
 

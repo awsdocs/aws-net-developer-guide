@@ -113,6 +113,7 @@ sponsored by Amazon.
          + [AWS Glue examples using AWS SDK for .NET](csharp_glue_code_examples.md)
          + [IAM examples using AWS SDK for .NET](csharp_iam_code_examples.md)
          + [AWS KMS examples using AWS SDK for .NET](csharp_kms_code_examples.md)
+         + [Amazon Keyspaces examples using AWS SDK for .NET](csharp_keyspaces_code_examples.md)
          + [Kinesis examples using AWS SDK for .NET](csharp_kinesis_code_examples.md)
          + [Lambda examples using AWS SDK for .NET](csharp_lambda_code_examples.md)
          + [Organizations examples using AWS SDK for .NET](csharp_organizations_code_examples.md)
