@@ -9,10 +9,10 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w2aac21c17c13c27c13)
-+ [Scenarios](#w2aac21c17c13c27c15)
++ [Actions](#actions)
++ [Scenarios](#scenarios)
 
-## Actions<a name="w2aac21c17c13c27c13"></a>
+## Actions<a name="actions"></a>
 
 ### Create a crawler<a name="glue_CreateCrawler_csharp_topic"></a>
 
@@ -492,7 +492,7 @@ The following code example shows how to start an AWS Glue job run\.
 ```
 +  For API details, see [StartJobRun](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/StartJobRun) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w2aac21c17c13c27c15"></a>
+## Scenarios<a name="scenarios"></a>
 
 ### Get started running crawlers and jobs<a name="glue_Scenario_GetStartedCrawlersJobs_csharp_topic"></a>
 

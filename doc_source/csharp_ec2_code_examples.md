@@ -63,10 +63,10 @@ public class HelloEc2
 +  For API details, see [DescribeSecurityGroups](https://docs.aws.amazon.com/goto/DotNetSDKV3/ec2-2016-11-15/DescribeSecurityGroups) in *AWS SDK for \.NET API Reference*\. 
 
 **Topics**
-+ [Actions](#w2aac21c17c13c23c17)
-+ [Scenarios](#w2aac21c17c13c23c19)
++ [Actions](#actions)
++ [Scenarios](#scenarios)
 
-## Actions<a name="w2aac21c17c13c23c17"></a>
+## Actions<a name="actions"></a>
 
 ### Allocate an Elastic IP address<a name="ec2_AllocateAddress_csharp_topic"></a>
 
@@ -930,7 +930,7 @@ The following code example shows how to terminate an Amazon EC2 instance\.
 ```
 +  For API details, see [TerminateInstances](https://docs.aws.amazon.com/goto/DotNetSDKV3/ec2-2016-11-15/TerminateInstances) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w2aac21c17c13c23c19"></a>
+## Scenarios<a name="scenarios"></a>
 
 ### Get started with instances<a name="ec2_Scenario_GetStartedInstances_csharp_topic"></a>
 
@@ -1956,3 +1956,4 @@ public class EC2Wrapper
   + [StartInstances](https://docs.aws.amazon.com/goto/DotNetSDKV3/ec2-2016-11-15/StartInstances)
   + [StopInstances](https://docs.aws.amazon.com/goto/DotNetSDKV3/ec2-2016-11-15/StopInstances)
   + [TerminateInstances](https://docs.aws.amazon.com/goto/DotNetSDKV3/ec2-2016-11-15/TerminateInstances)
+  + [UnmonitorInstances](https://docs.aws.amazon.com/goto/DotNetSDKV3/ec2-2016-11-15/UnmonitorInstances)

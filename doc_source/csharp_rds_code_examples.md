@@ -9,10 +9,10 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w2aac21c17c13c43c13)
-+ [Scenarios](#w2aac21c17c13c43c15)
++ [Actions](#actions)
++ [Scenarios](#scenarios)
 
-## Actions<a name="w2aac21c17c13c43c13"></a>
+## Actions<a name="actions"></a>
 
 ### Create a DB instance<a name="rds_CreateDBInstance_csharp_topic"></a>
 
@@ -397,7 +397,7 @@ The following code example shows how to update parameters in an Amazon RDS DB pa
 ```
 +  For API details, see [ModifyDBParameterGroup](https://docs.aws.amazon.com/goto/DotNetSDKV3/rds-2014-10-31/ModifyDBParameterGroup) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w2aac21c17c13c43c15"></a>
+## Scenarios<a name="scenarios"></a>
 
 ### Get started with DB instances<a name="rds_Scenario_GetStartedInstances_csharp_topic"></a>
 

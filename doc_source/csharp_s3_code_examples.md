@@ -9,10 +9,10 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w2aac21c17c13c49c13)
-+ [Scenarios](#w2aac21c17c13c49c15)
++ [Actions](#actions)
++ [Scenarios](#scenarios)
 
-## Actions<a name="w2aac21c17c13c49c13"></a>
+## Actions<a name="actions"></a>
 
 ### Add CORS rules to a bucket<a name="s3_PutBucketCors_csharp_topic"></a>
 
@@ -1843,11 +1843,11 @@ Upload an object with server\-side encryption\.
 ```
 +  For API details, see [PutObject](https://docs.aws.amazon.com/goto/DotNetSDKV3/s3-2006-03-01/PutObject) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w2aac21c17c13c49c15"></a>
+## Scenarios<a name="scenarios"></a>
 
 ### Create a presigned URL<a name="s3_Scenario_PresignedUrl_csharp_topic"></a>
 
-The following code example shows how to create a presigned URL for S3 and upload an object\.
+The following code example shows how to create a presigned URL for Amazon S3 and upload an object\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3/#code-examples)\. 

@@ -8,6 +8,7 @@ The following code examples show how to perform actions and implement common sce
 
 **Topics**
 + [ACM](csharp_acm_code_examples.md)
++ [Aurora](csharp_aurora_code_examples.md)
 + [CloudWatch](csharp_cloudwatch_code_examples.md)
 + [CloudWatch Logs](csharp_cloudwatch-logs_code_examples.md)
 + [Amazon Cognito Identity Provider](csharp_cognito-identity-provider_code_examples.md)

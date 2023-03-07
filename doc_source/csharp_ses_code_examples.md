@@ -9,9 +9,9 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w2aac21c17c13c53c13)
++ [Actions](#actions)
 
-## Actions<a name="w2aac21c17c13c53c13"></a>
+## Actions<a name="actions"></a>
 
 ### Create an email template<a name="ses_CreateTemplate_csharp_topic"></a>
 

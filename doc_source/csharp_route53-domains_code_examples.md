@@ -48,10 +48,10 @@ public static class HelloRoute53Domains
 +  For API details, see [ListPrices](https://docs.aws.amazon.com/goto/DotNetSDKV3/route53domains-2014-05-15/ListPrices) in *AWS SDK for \.NET API Reference*\. 
 
 **Topics**
-+ [Actions](#w2aac21c17c13c47c17)
-+ [Scenarios](#w2aac21c17c13c47c19)
++ [Actions](#actions)
++ [Scenarios](#scenarios)
 
-## Actions<a name="w2aac21c17c13c47c17"></a>
+## Actions<a name="actions"></a>
 
 ### Check domain availability<a name="route-53_CheckDomainAvailability_csharp_topic"></a>
 
@@ -389,7 +389,7 @@ The following code example shows how to view billing records\.
 ```
 +  For API details, see [ViewBilling](https://docs.aws.amazon.com/goto/DotNetSDKV3/route53domains-2014-05-15/ViewBilling) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w2aac21c17c13c47c19"></a>
+## Scenarios<a name="scenarios"></a>
 
 ### Get started with domains<a name="route-53_Scenario_GetStartedRoute53Domains_csharp_topic"></a>
 

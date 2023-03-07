@@ -9,10 +9,10 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w2aac21c17c13c25c13)
-+ [Scenarios](#w2aac21c17c13c25c15)
++ [Actions](#actions)
++ [Scenarios](#scenarios)
 
-## Actions<a name="w2aac21c17c13c25c13"></a>
+## Actions<a name="actions"></a>
 
 ### Create a group<a name="auto-scaling_CreateAutoScalingGroup_csharp_topic"></a>
 
@@ -439,7 +439,7 @@ The following code example shows how to update the configuration for an Auto Sca
 ```
 +  For API details, see [UpdateAutoScalingGroup](https://docs.aws.amazon.com/goto/DotNetSDKV3/autoscaling-2011-01-01/UpdateAutoScalingGroup) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w2aac21c17c13c25c15"></a>
+## Scenarios<a name="scenarios"></a>
 
 ### Manage groups and instances<a name="auto-scaling_Scenario_GroupsAndInstances_csharp_topic"></a>
 

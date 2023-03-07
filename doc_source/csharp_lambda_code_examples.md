@@ -9,10 +9,10 @@ The following code examples show you how to perform actions and implement common
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
 **Topics**
-+ [Actions](#w2aac21c17c13c37c13)
-+ [Scenarios](#w2aac21c17c13c37c15)
++ [Actions](#actions)
++ [Scenarios](#scenarios)
 
-## Actions<a name="w2aac21c17c13c37c13"></a>
+## Actions<a name="actions"></a>
 
 ### Create a function<a name="lambda_CreateFunction_csharp_topic"></a>
 
@@ -415,7 +415,7 @@ The following code example shows how to update Lambda function configuration\.
 ```
 +  For API details, see [UpdateFunctionConfiguration](https://docs.aws.amazon.com/goto/DotNetSDKV3/lambda-2015-03-31/UpdateFunctionConfiguration) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w2aac21c17c13c37c15"></a>
+## Scenarios<a name="scenarios"></a>
 
 ### Get started with functions<a name="lambda_Scenario_GettingStartedFunctions_csharp_topic"></a>
 

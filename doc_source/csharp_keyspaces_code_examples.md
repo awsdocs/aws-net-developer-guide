@@ -27,7 +27,7 @@ public class HelloKeyspaces
 
     static async Task Main(string[] args)
     {
-        // Set up dependency injection for the Amazon service.
+        // Set up dependency injection for Amazon Keyspaces (for Apache Cassandra).
         using var host = Host.CreateDefaultBuilder(args)
             .ConfigureLogging(logging =>
                 logging.AddFilter("System", LogLevel.Debug)
@@ -53,10 +53,10 @@ public class HelloKeyspaces
 +  For API details, see [ListKeyspaces](https://docs.aws.amazon.com/goto/DotNetSDKV3/keyspaces-2022-02-10/ListKeyspaces) in *AWS SDK for \.NET API Reference*\. 
 
 **Topics**
-+ [Actions](#w2aac21c17c13c33c17)
-+ [Scenarios](#w2aac21c17c13c33c19)
++ [Actions](#actions)
++ [Scenarios](#scenarios)
 
-## Actions<a name="w2aac21c17c13c33c17"></a>
+## Actions<a name="actions"></a>
 
 ### Create a keyspace<a name="keyspaces_CreateKeyspace_csharp_topic"></a>
 
@@ -325,7 +325,7 @@ The following code example shows how to update an Amazon Keyspaces table\.
 ```
 +  For API details, see [UpdateTable](https://docs.aws.amazon.com/goto/DotNetSDKV3/keyspaces-2022-02-10/UpdateTable) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w2aac21c17c13c33c19"></a>
+## Scenarios<a name="scenarios"></a>
 
 ### Get started with keyspaces and tables<a name="keyspaces_Scenario_GetStartedKeyspaces_csharp_topic"></a>
 
@@ -835,7 +835,10 @@ using Cassandra;
 namespace KeyspacesScenario;
 
 /// <summary>
-/// Class to perform CRUD methods on a Keyspaces (for Apache Cassandra) database.
+/// Class to perform CRUD methods on an Amazon Keyspaces (for Apache Cassandra) database.
+///
+/// NOTE: This sample uses a plain text authenticator for example purposes only.
+/// Recommended best practice is to use a SigV4 authentication plugin, if available.
 /// </summary>
 public class CassandraWrapper
 {

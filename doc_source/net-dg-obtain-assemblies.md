@@ -23,6 +23,11 @@ If you can't or aren't allowed to download and install NuGet packages on a per\-
 
 ## Install the MSI on Windows<a name="net-dg-install-net-sdk"></a>
 
+**Note**  
+Support for the AWS Tools for Windows installer ends on June 1, 2023\. The installer will continue to be available for some time after this date, but will not contain the latest changes in the SDK\. For additional information, see the [AWS Developer Tools Blog post](http://aws.amazon.com/blogs/developer/announcing-the-end-of-windows-installer-support/)\. Also see the [recommended method](net-dg-install-assemblies.md) for handling references to the AWS SDK for \.NET\.
+
+### Open to view information about the MSI\.<a name="w2aac25b9c21b5b1"></a>
+
 \(Remember that this isn't the [recommended method](net-dg-install-assemblies.md) for handling references to the AWS SDK for \.NET\.\)
 
 If you are required to install an MSI instead of using NuGet or one of the methods described earlier, you can find the ***legacy*** MSI at [https://sdk\-for\-net\.amazonwebservices\.com/latest/AWSToolsAndSDKForNet\.msi](https://sdk-for-net.amazonwebservices.com/latest/AWSToolsAndSDKForNet.msi)\.

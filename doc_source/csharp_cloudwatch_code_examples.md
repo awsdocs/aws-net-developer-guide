@@ -12,7 +12,7 @@ Each example includes a link to GitHub, where you can find instructions on how t
 
 ## Hello CloudWatch<a name="example_cloudwatch_Hello_section"></a>
 
-The following code example shows how to get started using CloudWatch\.
+The following code examples show how to get started using CloudWatch\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatch#code-examples)\. 
@@ -61,10 +61,10 @@ public static class HelloCloudWatch
 +  For API details, see [ListMetrics](https://docs.aws.amazon.com/goto/DotNetSDKV3/monitoring-2010-08-01/ListMetrics) in *AWS SDK for \.NET API Reference*\. 
 
 **Topics**
-+ [Actions](#w2aac21c17c13c13c17)
-+ [Scenarios](#w2aac21c17c13c13c19)
++ [Actions](#actions)
++ [Scenarios](#scenarios)
 
-## Actions<a name="w2aac21c17c13c13c17"></a>
+## Actions<a name="actions"></a>
 
 ### Create a dashboard<a name="cloudwatch_PutDashboard_csharp_topic"></a>
 
@@ -832,7 +832,7 @@ The following code example shows how to publish metric data points to Amazon Clo
 ```
 +  For API details, see [PutMetricData](https://docs.aws.amazon.com/goto/DotNetSDKV3/monitoring-2010-08-01/PutMetricData) in *AWS SDK for \.NET API Reference*\. 
 
-## Scenarios<a name="w2aac21c17c13c13c19"></a>
+## Scenarios<a name="scenarios"></a>
 
 ### Get started with metrics, dashboards, and alarms<a name="cloudwatch_GetStartedMetricsDashboardsAlarms_csharp_topic"></a>
 

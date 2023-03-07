@@ -4,6 +4,7 @@ The following table describes the important changes since the last release of th
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Support for the MSI](net-dg-obtain-assemblies.md) | Added note about ending support for the AWS Tools for Windows installer\. | March 6, 2023 | 
 | [Lambda Annotations \(Preview\)](aws-lambda-annotations.md) | Preview of the AWS Lambda Annotations framework\. | September 22, 2022 | 
 | [Deploying applications to AWS](deploying.md) | Moved main content to a GitHub Pages site: https://aws\.github\.io/aws\-dotnet\-deploy/ | June 28, 2022 | 
 | [Retiring EC2\-Classic](#document-history) | Added notes about retiring EC2\-Classic\. | April 13, 2022 | 
