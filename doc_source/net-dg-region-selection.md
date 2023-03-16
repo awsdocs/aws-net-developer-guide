@@ -93,6 +93,26 @@ using (var ec2Client = new AmazonEC2Client())
 }
 ```
 
+## Region resolution<a name="net-dg-region-resolution"></a>
+
+If none of the methods described above are used to specify an AWS Region, the AWS SDK for \.NET attempts to find a Region for the AWS service client to operate in\.
+
+**Region resolution order**
+
+1. Application configuration files such as `app.config` and `web.config`\.
+
+1. Environment variables \(`AWS_REGION` and `AWS_DEFAULT_REGION`\)\.
+
+1. A profile with the name specified by a value in `AWSConfigs.AWSProfileName`\.
+
+1. A profile with the name specified by the `AWS_PROFILE` environment variable\.
+
+1. The `[default]` profile\.
+
+1. Amazon EC2 instance metadata \(if running on an EC2 instance\)\.
+
+If no Region is found, the SDK throws an exception stating that the AWS service client has no configured Region\.
+
 ## Special information about the China \(Beijing\) Region<a name="net-dg-region-cn-north-1"></a>
 
 To use services in the China \(Beijing\) Region, you must have an account and credentials that are specific to the China \(Beijing\) Region\. Accounts and credentials for other AWS Regions won't work for the China \(Beijing\) Region\. Likewise, accounts and credentials for the China \(Beijing\) Region won't work for other AWS Regions\. For information about endpoints and protocols that are available in the China \(Beijing\) Region, see [China \(Beijing\) Region](https://docs.amazonaws.cn/en_us/general/latest/gr/cnnorth_region.html)\.

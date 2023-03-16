@@ -861,8 +861,8 @@ For more information, see [Listing collections](https://docs.aws.amazon.com/reko
     using Amazon.Rekognition.Model;
 
     /// <summary>
-    /// Uses the Amazpon Rekognition Service to list the collection IDs in the
-    /// default user account. This example was crated using the AWS SDK for
+    /// Uses Amazon Rekognition to list the collection IDs in the
+    /// current account. This example was created using the AWS SDK for
     /// .NET version 3.7 and .NET Core 5.0.
     /// </summary>
     public class ListCollections

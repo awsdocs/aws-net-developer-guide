@@ -111,6 +111,7 @@ sponsored by Amazon.
          + [DynamoDB examples using AWS SDK for .NET](csharp_dynamodb_code_examples.md)
          + [Amazon EC2 examples using AWS SDK for .NET](csharp_ec2_code_examples.md)
          + [Amazon EC2 Auto Scaling examples using AWS SDK for .NET](csharp_auto-scaling_code_examples.md)
+         + [EventBridge examples using AWS SDK for .NET](csharp_eventbridge_code_examples.md)
          + [AWS Glue examples using AWS SDK for .NET](csharp_glue_code_examples.md)
          + [IAM examples using AWS SDK for .NET](csharp_iam_code_examples.md)
          + [AWS KMS examples using AWS SDK for .NET](csharp_kms_code_examples.md)

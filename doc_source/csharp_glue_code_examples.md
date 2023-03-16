@@ -8,6 +8,68 @@ The following code examples show you how to perform actions and implement common
 
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
+**Get started**
+
+## Hello AWS Glue<a name="example_glue_Hello_section"></a>
+
+The following code example shows how to get started using AWS Glue \(AWS Glue\)\.
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Glue#code-examples)\. 
+  
+
+```
+namespace GlueActions;
+
+public class HelloGlue
+{
+    private static ILogger logger = null!;
+
+    static async Task Main(string[] args)
+    {
+        // Set up dependency injection for AWS Glue.
+        using var host = Host.CreateDefaultBuilder(args)
+            .ConfigureLogging(logging =>
+                logging.AddFilter("System", LogLevel.Debug)
+                    .AddFilter<DebugLoggerProvider>("Microsoft", LogLevel.Information)
+                    .AddFilter<ConsoleLoggerProvider>("Microsoft", LogLevel.Trace))
+            .ConfigureServices((_, services) =>
+                services.AddAWSService<IAmazonGlue>()
+                .AddTransient<GlueWrapper>()
+            )
+            .Build();
+
+        logger = LoggerFactory.Create(builder => { builder.AddConsole(); })
+            .CreateLogger<HelloGlue>();
+        var glueClient = host.Services.GetRequiredService<IAmazonGlue>();
+
+        var request = new ListJobsRequest();
+
+        var jobNames = new List<string>();
+
+        do
+        {
+            var response = await glueClient.ListJobsAsync(request);
+            jobNames.AddRange(response.JobNames);
+            request.NextToken = response.NextToken;
+        }
+        while (request.NextToken is not null);
+
+        Console.Clear();
+        Console.WriteLine("Hello, Glue. Let's list your existing Glue Jobs:");
+        if (jobNames.Count == 0)
+        {
+            Console.WriteLine("You don't have any AWS Glue jobs.");
+        }
+        else
+        {
+            jobNames.ForEach(Console.WriteLine);
+        }
+    }
+}
+```
++  For API details, see [ListJobs](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/ListJobs) in *AWS SDK for \.NET API Reference*\. 
+
 **Topics**
 + [Actions](#actions)
 + [Scenarios](#scenarios)
@@ -23,64 +85,55 @@ The following code example shows how to create an AWS Glue crawler\.
   
 
 ```
-        /// <summary>
-        /// Creates an AWS Glue crawler.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="iam">The Amazon Resource Name (ARN) of the IAM role
-        /// that is used by the crawler.</param>
-        /// <param name="s3Path">The path to the Amazon S3 bucket where
-        /// data is stored.</param>
-        /// <param name="cron">The name of the CRON job that runs the crawler.</param>
-        /// <param name="dbName">The name of the database.</param>
-        /// <param name="crawlerName">The name of the AWS Glue crawler.</param>
-        /// <returns>A Boolean value indicating whether the AWS Glue crawler was
-        /// created successfully.</returns>
-        public static async Task<bool> CreateGlueCrawlerAsync(
-            AmazonGlueClient glueClient,
-            string iam,
-            string s3Path,
-            string cron,
-            string dbName,
-            string crawlerName)
+    /// <summary>
+    /// Create an AWS Glue crawler.
+    /// </summary>
+    /// <param name="crawlerName">The name for the crawler.</param>
+    /// <param name="crawlerDescription">A description of the crawler.</param>
+    /// <param name="role">The AWS Identity and Access Management (IAM) role to
+    /// be assumed by the crawler.</param>
+    /// <param name="schedule">The schedule on which the crawler will be executed.</param>
+    /// <param name="s3Path">The path to the Amazon Simple Storage Service (Amazon S3)
+    /// bucket where the Python script has been stored.</param>
+    /// <param name="dbName">The name to use for the database that will be
+    /// created by the crawler.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> CreateCrawlerAsync(
+        string crawlerName,
+        string crawlerDescription,
+        string role,
+        string schedule,
+        string s3Path,
+        string dbName)
+    {
+        var s3Target = new S3Target
         {
-            var s3Target = new S3Target
-            {
-                Path = s3Path,
-            };
+            Path = s3Path,
+        };
 
-            var targetList = new List<S3Target>
-            {
-                s3Target,
-            };
+        var targetList = new List<S3Target>
+        {
+            s3Target,
+        };
 
-            var targets = new CrawlerTargets
-            {
-                S3Targets = targetList,
-            };
+        var targets = new CrawlerTargets
+        {
+            S3Targets = targetList,
+        };
 
-            var crawlerRequest = new CreateCrawlerRequest
-            {
-                DatabaseName = dbName,
-                Name = crawlerName,
-                Description = "Created by the AWS Glue .NET API",
-                Targets = targets,
-                Role = iam,
-                Schedule = cron,
-            };
+        var crawlerRequest = new CreateCrawlerRequest
+        {
+            DatabaseName = dbName,
+            Name = crawlerName,
+            Description = crawlerDescription,
+            Targets = targets,
+            Role = role,
+            Schedule = schedule,
+        };
 
-            var response = await glueClient.CreateCrawlerAsync(crawlerRequest);
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                Console.WriteLine($"{crawlerName} was successfully created");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine($"Could not create {crawlerName}.");
-                return false;
-            }
-        }
+        var response = await _amazonGlue.CreateCrawlerAsync(crawlerRequest);
+        return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+    }
 ```
 +  For API details, see [CreateCrawler](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/CreateCrawler) in *AWS SDK for \.NET API Reference*\. 
 
@@ -93,47 +146,46 @@ The following code example shows how to create an AWS Glue job definition\.
   
 
 ```
-        /// <summary>
-        /// Creates an AWS Glue job.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="jobName">The name of the job to create.</param>
-        /// <param name="iam">The Amazon Resource Name (ARN) of the IAM role
-        /// that will be used by the job.</param>
-        /// <param name="scriptLocation">The location where the script is stored.</param>
-        /// <returns>A Boolean value indicating whether the AWS Glue job was
-        /// created successfully.</returns>
-        public static async Task<bool> CreateJobAsync(AmazonGlueClient glueClient, string jobName, string iam, string scriptLocation)
+    /// <summary>
+    /// Create an AWS Glue job.
+    /// </summary>
+    /// <param name="jobName">The name of the job.</param>
+    /// <param name="roleName">The name of the IAM role to be assumed by
+    /// the job.</param>
+    /// <param name="description">A description of the job.</param>
+    /// <param name="scriptUrl">The URL to the script.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> CreateJobAsync(string dbName, string tableName, string bucketUrl, string jobName, string roleName, string description, string scriptUrl)
+    {
+        var command = new JobCommand
         {
-            var command = new JobCommand
-            {
-                PythonVersion = "3",
-                Name = "MyJob1",
-                ScriptLocation = scriptLocation,
-            };
+            PythonVersion = "3",
+            Name = "glueetl",
+            ScriptLocation = scriptUrl,
+        };
 
-            var jobRequest = new CreateJobRequest
-            {
-                Description = "A Job created by using the AWS SDK for .NET",
-                GlueVersion = "2.0",
-                WorkerType = WorkerType.G1X,
-                NumberOfWorkers = 10,
-                Name = jobName,
-                Role = iam,
-                Command = command,
-            };
+        var arguments = new Dictionary<string, string>
+        {
+            { "--input_database", dbName },
+            { "--input_table", tableName },
+            { "--output_bucket_url", bucketUrl }
+        };
 
-            var response = await glueClient.CreateJobAsync(jobRequest);
+        var request = new CreateJobRequest
+        {
+            Command = command,
+            DefaultArguments = arguments,
+            Description = description,
+            GlueVersion = "3.0",
+            Name = jobName,
+            NumberOfWorkers = 10,
+            Role = roleName,
+            WorkerType = "G.1X"
+        };
 
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                Console.WriteLine($"{jobName} was successfully created.");
-                return true;
-            }
-
-            Console.WriteLine($"{jobName} could not be created.");
-            return false;
-        }
+        var response = await _amazonGlue.CreateJobAsync(request);
+        return response.HttpStatusCode == HttpStatusCode.OK;
+    }
 ```
 +  For API details, see [CreateJob](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/CreateJob) in *AWS SDK for \.NET API Reference*\. 
 
@@ -146,31 +198,16 @@ The following code example shows how to delete an AWS Glue crawler\.
   
 
 ```
-        /// <summary>
-        /// Deletes the named AWS Glue crawler.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="crawlerName">The name of the crawler to delete.</param>
-        /// <returns>A Boolean value indicating whether the AWS Glue crawler was
-        /// deleted successfully.</returns>
-        public static async Task<bool> DeleteSpecificCrawlerAsync(AmazonGlueClient glueClient, string crawlerName)
-        {
-            var deleteCrawlerRequest = new DeleteCrawlerRequest
-            {
-                Name = crawlerName,
-            };
-
-            var response = await glueClient.DeleteCrawlerAsync(deleteCrawlerRequest);
-
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                Console.WriteLine($"{crawlerName} was deleted");
-                return true;
-            }
-
-            Console.WriteLine($"Could not create {crawlerName}.");
-            return false;
-        }
+    /// <summary>
+    /// Delete an AWS Glue crawler.
+    /// </summary>
+    /// <param name="crawlerName">The name of the crawler.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> DeleteCrawlerAsync(string crawlerName)
+    {
+        var response = await _amazonGlue.DeleteCrawlerAsync(new DeleteCrawlerRequest { Name = crawlerName });
+        return response.HttpStatusCode == HttpStatusCode.OK;
+    }
 ```
 +  For API details, see [DeleteCrawler](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/DeleteCrawler) in *AWS SDK for \.NET API Reference*\. 
 
@@ -183,31 +220,16 @@ The following code example shows how to delete a database from the AWS Glue Data
   
 
 ```
-        /// <summary>
-        /// Deletes an AWS Glue database.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="databaseName">The name of the database to delete.</param>
-        /// <returns>A Boolean value indicating whether the AWS Glue database was
-        /// deleted successfully.</returns>
-        public static async Task<bool> DeleteDatabaseAsync(AmazonGlueClient glueClient, string databaseName)
-        {
-            var request = new DeleteDatabaseRequest
-            {
-                Name = databaseName,
-            };
-
-            var response = await glueClient.DeleteDatabaseAsync(request);
-
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                Console.WriteLine($"{databaseName} was successfully deleted");
-                return true;
-            }
-
-            Console.WriteLine($"{databaseName} could not be deleted.");
-            return false;
-        }
+    /// <summary>
+    /// Delete the AWS Glue database.
+    /// </summary>
+    /// <param name="dbName">The name of the database.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> DeleteDatabaseAsync(string dbName)
+    {
+        var response = await _amazonGlue.DeleteDatabaseAsync(new DeleteDatabaseRequest { Name = dbName });
+        return response.HttpStatusCode == HttpStatusCode.OK;
+    }
 ```
 +  For API details, see [DeleteDatabase](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/DeleteDatabase) in *AWS SDK for \.NET API Reference*\. 
 
@@ -220,33 +242,40 @@ The following code example shows how to delete an AWS Glue job definition and al
   
 
 ```
-        /// <summary>
-        /// Deletes the named job.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="jobName">The name of the job to delete.</param>
-        /// <returns>A Boolean value indicating whether the AWS Glue job was
-        /// deleted successfully.</returns>
-        public static async Task<bool> DeleteJobAsync(AmazonGlueClient glueClient, string jobName)
-        {
-            var jobRequest = new DeleteJobRequest
-            {
-                JobName = jobName,
-            };
-
-            var response = await glueClient.DeleteJobAsync(jobRequest);
-
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                Console.WriteLine($"{jobName} was successfully deleted");
-                return true;
-            }
-
-            Console.WriteLine($"{jobName} could not be deleted.");
-            return false;
-        }
+    /// <summary>
+    /// Delete an AWS Glue job.
+    /// </summary>
+    /// <param name="jobName">The name of the job.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> DeleteJobAsync(string jobName)
+    {
+        var response = await _amazonGlue.DeleteJobAsync(new DeleteJobRequest { JobName = jobName });
+        return response.HttpStatusCode == HttpStatusCode.OK;
+    }
 ```
 +  For API details, see [DeleteJob](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/DeleteJob) in *AWS SDK for \.NET API Reference*\. 
+
+### Delete a table from a database<a name="glue_DeleteTable_csharp_topic"></a>
+
+The following code example shows how to delete a table from an AWS Glue Data Catalog database\.
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Glue#code-examples)\. 
+  
+
+```
+    /// <summary>
+    /// Delete a table from an AWS Glue database.
+    /// </summary>
+    /// <param name="tableName">The table to delete.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> DeleteTableAsync(string dbName, string tableName)
+    {
+        var response = await _amazonGlue.DeleteTableAsync(new DeleteTableRequest { Name = tableName, DatabaseName = dbName });
+        return response.HttpStatusCode == HttpStatusCode.OK;
+    }
+```
++  For API details, see [DeleteTable](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/DeleteTable) in *AWS SDK for \.NET API Reference*\. 
 
 ### Get a crawler<a name="glue_GetCrawler_csharp_topic"></a>
 
@@ -257,31 +286,29 @@ The following code example shows how to get an AWS Glue crawler\.
   
 
 ```
-        /// <summary>
-        /// Retrieves information about a specific AWS Glue crawler.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="crawlerName">The name of the crawer.</param>
-        /// <returns>A Boolean value indicating whether information about
-        /// the AWS Glue crawler was retrieved successfully.</returns>
-        public static async Task<bool> GetSpecificCrawlerAsync(AmazonGlueClient glueClient, string crawlerName)
+    /// <summary>
+    /// Get information about an AWS Glue crawler.
+    /// </summary>
+    /// <param name="crawlerName">The name of the crawler.</param>
+    /// <returns>A Crawler object describing the crawler.</returns>
+    public async Task<Crawler?> GetCrawlerAsync(string crawlerName)
+    {
+        var crawlerRequest = new GetCrawlerRequest
         {
-            var crawlerRequest = new GetCrawlerRequest
-            {
-                Name = crawlerName,
-            };
+            Name = crawlerName,
+        };
 
-            var response = await glueClient.GetCrawlerAsync(crawlerRequest);
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                var databaseName = response.Crawler.DatabaseName;
-                Console.WriteLine($"{crawlerName} has the database {databaseName}");
-                return true;
-            }
-
-            Console.WriteLine($"No information regarding {crawlerName} could be found.");
-            return false;
+        var response = await _amazonGlue.GetCrawlerAsync(crawlerRequest);
+        if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
+        {
+            var databaseName = response.Crawler.DatabaseName;
+            Console.WriteLine($"{crawlerName} has the database {databaseName}");
+            return response.Crawler;
         }
+
+        Console.WriteLine($"No information regarding {crawlerName} could be found.");
+        return null;
+    }
 ```
 +  For API details, see [GetCrawler](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/GetCrawler) in *AWS SDK for \.NET API Reference*\. 
 
@@ -294,36 +321,46 @@ The following code example shows how to get a database from the AWS Glue Data Ca
   
 
 ```
-        /// <summary>
-        /// Gets information about the database created for this Glue
-        /// example.
-        /// </summary>
-        /// <param name="glueClient">The initialized Glue client.</param>
-        /// <param name="databaseName">The name of the AWS Glue database.</param>
-        /// <returns>A Boolean value indicating whether information about
-        /// the AWS Glue database was retrieved successfully.</returns>
-        public static async Task<bool> GetSpecificDatabaseAsync(
-            AmazonGlueClient glueClient,
-            string databaseName)
+    /// <summary>
+    /// Get information about an AWS Glue database.
+    /// </summary>
+    /// <param name="dbName">The name of the database.</param>
+    /// <returns>A Database object containing information about the database.</returns>
+    public async Task<Database> GetDatabaseAsync(string dbName)
+    {
+        var databasesRequest = new GetDatabaseRequest
         {
-            var databasesRequest = new GetDatabaseRequest
-            {
-                Name = databaseName,
-            };
+            Name = dbName,
+        };
 
-            var response = await glueClient.GetDatabaseAsync(databasesRequest);
-
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                Console.WriteLine($"The Create Time is {response.Database.CreateTime}");
-                return true;
-            }
-
-            Console.WriteLine($"No informaton about {databaseName}.");
-            return false;
-        }
+        var response = await _amazonGlue.GetDatabaseAsync(databasesRequest);
+        return response.Database;
+    }
 ```
 +  For API details, see [GetDatabase](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/GetDatabase) in *AWS SDK for \.NET API Reference*\. 
+
+### Get a job run<a name="glue_GetJobRun_csharp_topic"></a>
+
+The following code example shows how to get an AWS Glue job run\.
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Glue#code-examples)\. 
+  
+
+```
+    /// <summary>
+    /// Get information about a specific AWS Glue job run.
+    /// </summary>
+    /// <param name="jobName">The name of the job.</param>
+    /// <param name="jobRunId">The Id of the job run.</param>
+    /// <returns>A JobRun object with information about the job run.</returns>
+    public async Task<JobRun> GetJobRunAsync(string jobName, string jobRunId)
+    {
+        var response = await _amazonGlue.GetJobRunAsync(new GetJobRunRequest { JobName = jobName, RunId = jobRunId });
+        return response.JobRun;
+    }
+```
++  For API details, see [GetJobRun](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/GetJobRun) in *AWS SDK for \.NET API Reference*\. 
 
 ### Get runs of a job<a name="glue_GetJobRuns_csharp_topic"></a>
 
@@ -334,42 +371,34 @@ The following code example shows how to get runs of an AWS Glue job\.
   
 
 ```
-        /// <summary>
-        /// Retrieves information about an AWS Glue job.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="jobName">The AWS Glue object for which to retrieve run
-        /// information.</param>
-        /// <returns>A Boolean value indicating whether information about
-        /// the AWS Glue job runs was retrieved successfully.</returns>
-        public static async Task<bool> GetJobRunsAsync(AmazonGlueClient glueClient, string jobName)
+    /// <summary>
+    /// Get information about all AWS Glue runs of a specific job.
+    /// </summary>
+    /// <param name="jobName">The name of the job.</param>
+    /// <returns>A list of JobRun objects.</returns>
+    public async Task<List<JobRun>> GetJobRunsAsync(string jobName)
+    {
+        var jobRuns = new List<JobRun>();
+
+        var request = new GetJobRunsRequest
         {
-            var runsRequest = new GetJobRunsRequest
-            {
-                JobName = jobName,
-                MaxResults = 20,
-            };
+            JobName = jobName,
+        };
 
-            var response = await glueClient.GetJobRunsAsync(runsRequest);
-            var jobRuns = response.JobRuns;
+        // No need to loop to get all the log groups--the SDK does it for us behind the scenes
+        var paginatorForJobRuns =
+            _amazonGlue.Paginators.GetJobRuns(request);
 
-            if (jobRuns.Count > 0)
+        await foreach (var response in paginatorForJobRuns.Responses)
+        {
+            response.JobRuns.ForEach(jobRun =>
             {
-                foreach (JobRun jobRun in jobRuns)
-                {
-                    Console.WriteLine($"Job run state is {jobRun.JobRunState}");
-                    Console.WriteLine($"Job run Id is {jobRun.Id}");
-                    Console.WriteLine($"The Glue version is {jobRun.GlueVersion}");
-                }
-
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("No jobs found.");
-                return false;
-            }
+                jobRuns.Add(jobRun);
+            });
         }
+
+        return jobRuns;
+    }
 ```
 +  For API details, see [GetJobRuns](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/GetJobRuns) in *AWS SDK for \.NET API Reference*\. 
 
@@ -382,40 +411,56 @@ The following code example shows how to get tables from a database in the AWS Gl
   
 
 ```
-        /// <summary>
-        /// Gets the tables used by the database for an AWS Glue crawler.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="dbName">The name of the database.</param>
-        /// <returns>A Boolean value indicating whether information about
-        /// the AWS Glue tables was retrieved successfully.</returns>
-        public static async Task<bool> GetGlueTablesAsync(
-            AmazonGlueClient glueClient,
-            string dbName)
+    /// <summary>
+    /// Get a list of tables for an AWS Glue database.
+    /// </summary>
+    /// <param name="dbName">The name of the database.</param>
+    /// <returns>A list of Table objects.</returns>
+    public async Task<List<Table>> GetTablesAsync(string dbName)
+    {
+        var request = new GetTablesRequest { DatabaseName = dbName };
+        var tables = new List<Table>();
+
+        // Get a paginator for listing the tables.
+        var tablePaginator = _amazonGlue.Paginators.GetTables(request);
+
+        await foreach (var response in tablePaginator.Responses)
         {
-            var tableRequest = new GetTablesRequest
-            {
-                DatabaseName = dbName,
-            };
-
-            // Get the list of AWS Glue databases.
-            var response = await glueClient.GetTablesAsync(tableRequest);
-            var tables = response.TableList;
-
-            if (tables.Count > 0)
-            {
-                // Displays the list of table names.
-                tables.ForEach(table => { Console.WriteLine($"Table name is: {table.Name}"); });
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("No tables found.");
-                return false;
-            }
+            tables.AddRange(response.TableList);
         }
+
+        return tables;
+    }
 ```
 +  For API details, see [GetTables](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/GetTables) in *AWS SDK for \.NET API Reference*\. 
+
+### List job definitions<a name="glue_ListJobs_csharp_topic"></a>
+
+The following code example shows how to list AWS Glue job definitions\.
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Glue#code-examples)\. 
+  
+
+```
+    /// <summary>
+    /// List AWS Glue jobs using a paginator.
+    /// </summary>
+    /// <returns>A list of AWS Glue job names.</returns>
+    public async Task<List<string>> ListJobsAsync()
+    {
+        var jobNames = new List<string>();
+
+        var listJobsPaginator = _amazonGlue.Paginators.ListJobs(new ListJobsRequest { MaxResults = 10 });
+        await foreach (var response in listJobsPaginator.Responses)
+        {
+            jobNames.AddRange(response.JobNames);
+        }
+
+        return jobNames;
+    }
+```
++  For API details, see [ListJobs](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/ListJobs) in *AWS SDK for \.NET API Reference*\. 
 
 ### Start a crawler<a name="glue_StartCrawler_csharp_topic"></a>
 
@@ -426,31 +471,22 @@ The following code example shows how to start an AWS Glue crawler\.
   
 
 ```
-        /// <summary>
-        /// Starts the named AWS Glue crawler.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="crawlerName">The name of the crawler to start.</param>
-        /// <returns>A Boolean value indicating whether the AWS Glue crawler
-        /// was started successfully.</returns>
-        public static async Task<bool> StartSpecificCrawlerAsync(AmazonGlueClient glueClient, string crawlerName)
+    /// <summary>
+    /// Start an AWS Glue crawler.
+    /// </summary>
+    /// <param name="crawlerName">The name of the crawler.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> StartCrawlerAsync(string crawlerName)
+    {
+        var crawlerRequest = new StartCrawlerRequest
         {
-            var crawlerRequest = new StartCrawlerRequest
-            {
-                Name = crawlerName,
-            };
+            Name = crawlerName,
+        };
 
-            var response = await glueClient.StartCrawlerAsync(crawlerRequest);
+        var response = await _amazonGlue.StartCrawlerAsync(crawlerRequest);
 
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                Console.WriteLine($"{crawlerName} was successfully started!");
-                return true;
-            }
-
-            Console.WriteLine($"Could not start AWS Glue crawler, {crawlerName}.");
-            return false;
-        }
+        return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+    }
 ```
 +  For API details, see [StartCrawler](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/StartCrawler) in *AWS SDK for \.NET API Reference*\. 
 
@@ -463,32 +499,31 @@ The following code example shows how to start an AWS Glue job run\.
   
 
 ```
-        /// <summary>
-        /// Starts an AWS Glue job.
-        /// </summary>
-        /// <param name="glueClient">The initialized Glue client.</param>
-        /// <param name="jobName">The name of the AWS Glue job to start.</param>
-        /// <returns>A Boolean value indicating whether the AWS Glue job
-        /// was started successfully.</returns>
-        public static async Task<bool> StartJobAsync(AmazonGlueClient glueClient, string jobName)
+    /// <summary>
+    /// Start an AWS Glue job run.
+    /// </summary>
+    /// <param name="jobName">The name of the job.</param>
+    /// <returns>A string representing the job run Id.</returns>
+    public async Task<string> StartJobRunAsync(
+        string jobName,
+        string inputDatabase,
+        string inputTable,
+        string bucketName)
+    {
+        var request = new StartJobRunRequest
         {
-            var runRequest = new StartJobRunRequest
+            JobName = jobName,
+            Arguments = new Dictionary<string, string>
             {
-                WorkerType = WorkerType.G1X,
-                NumberOfWorkers = 10,
-                JobName = jobName,
-            };
-
-            var response = await glueClient.StartJobRunAsync(runRequest);
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                Console.WriteLine($"{jobName} successfully started. The job run id is {response.JobRunId}.");
-                return true;
+                {"--input_database", inputDatabase},
+                {"--input_table", inputTable},
+                {"--output_bucket_url", $"s3://{bucketName}/"}
             }
+        };
 
-            Console.WriteLine($"Could not start {jobName}.");
-            return false;
-        }
+        var response = await _amazonGlue.StartJobRunAsync(request);
+        return response.JobRunId;
+    }
 ```
 +  For API details, see [StartJobRun](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/StartJobRun) in *AWS SDK for \.NET API Reference*\. 
 
@@ -510,559 +545,623 @@ For more information, see [Tutorial: Getting started with AWS Glue Studio](https
 Create a class that wraps AWS Glue functions that are used in the scenario\.  
 
 ```
-namespace Glue_Basics
+using System.Net;
+
+namespace GlueActions;
+
+public class GlueWrapper
 {
+    private readonly IAmazonGlue _amazonGlue;
+
     /// <summary>
-    /// Methods for working the AWS Glue by using the AWS SDK for .NET (v3.7).
+    /// Constructor for the AWS Glue actions wrapper.
     /// </summary>
-    public static class GlueMethods
+    /// <param name="amazonGlue"></param>
+    public GlueWrapper(IAmazonGlue amazonGlue)
     {
-
-        /// <summary>
-        /// Creates a database for use by an AWS Glue crawler.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="dbName">The name of the new database.</param>
-        /// <param name="locationUri">The location of scripts that will be
-        /// used by the AWS Glue crawler.</param>
-        /// <returns>A Boolean value indicating whether the AWS Glue database
-        /// was created successfully.</returns>
-        public static async Task<bool> CreateDatabaseAsync(AmazonGlueClient glueClient, string dbName, string locationUri)
-        {
-            try
-            {
-                var dataBaseInput = new DatabaseInput
-                {
-                    Description = "Built with the AWS SDK for .NET (v3)",
-                    Name = dbName,
-                    LocationUri = locationUri,
-                };
-
-                var request = new CreateDatabaseRequest
-                {
-                    DatabaseInput = dataBaseInput,
-                };
-
-                var response = await glueClient.CreateDatabaseAsync(request);
-                if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    Console.WriteLine("The database was successfully created");
-                    return true;
-                }
-                else
-                {
-                    Console.WriteLine("Could not create the database.");
-                    return false;
-                }
-            }
-            catch (AmazonGlueException ex)
-            {
-                Console.WriteLine($"Error occurred: '{ex.Message}'");
-                return false;
-            }
-        }
-
-
-
-        /// <summary>
-        /// Creates an AWS Glue crawler.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="iam">The Amazon Resource Name (ARN) of the IAM role
-        /// that is used by the crawler.</param>
-        /// <param name="s3Path">The path to the Amazon S3 bucket where
-        /// data is stored.</param>
-        /// <param name="cron">The name of the CRON job that runs the crawler.</param>
-        /// <param name="dbName">The name of the database.</param>
-        /// <param name="crawlerName">The name of the AWS Glue crawler.</param>
-        /// <returns>A Boolean value indicating whether the AWS Glue crawler was
-        /// created successfully.</returns>
-        public static async Task<bool> CreateGlueCrawlerAsync(
-            AmazonGlueClient glueClient,
-            string iam,
-            string s3Path,
-            string cron,
-            string dbName,
-            string crawlerName)
-        {
-            var s3Target = new S3Target
-            {
-                Path = s3Path,
-            };
-
-            var targetList = new List<S3Target>
-            {
-                s3Target,
-            };
-
-            var targets = new CrawlerTargets
-            {
-                S3Targets = targetList,
-            };
-
-            var crawlerRequest = new CreateCrawlerRequest
-            {
-                DatabaseName = dbName,
-                Name = crawlerName,
-                Description = "Created by the AWS Glue .NET API",
-                Targets = targets,
-                Role = iam,
-                Schedule = cron,
-            };
-
-            var response = await glueClient.CreateCrawlerAsync(crawlerRequest);
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                Console.WriteLine($"{crawlerName} was successfully created");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine($"Could not create {crawlerName}.");
-                return false;
-            }
-        }
-
-
-
-        /// <summary>
-        /// Creates an AWS Glue job.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="jobName">The name of the job to create.</param>
-        /// <param name="iam">The Amazon Resource Name (ARN) of the IAM role
-        /// that will be used by the job.</param>
-        /// <param name="scriptLocation">The location where the script is stored.</param>
-        /// <returns>A Boolean value indicating whether the AWS Glue job was
-        /// created successfully.</returns>
-        public static async Task<bool> CreateJobAsync(AmazonGlueClient glueClient, string jobName, string iam, string scriptLocation)
-        {
-            var command = new JobCommand
-            {
-                PythonVersion = "3",
-                Name = "MyJob1",
-                ScriptLocation = scriptLocation,
-            };
-
-            var jobRequest = new CreateJobRequest
-            {
-                Description = "A Job created by using the AWS SDK for .NET",
-                GlueVersion = "2.0",
-                WorkerType = WorkerType.G1X,
-                NumberOfWorkers = 10,
-                Name = jobName,
-                Role = iam,
-                Command = command,
-            };
-
-            var response = await glueClient.CreateJobAsync(jobRequest);
-
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                Console.WriteLine($"{jobName} was successfully created.");
-                return true;
-            }
-
-            Console.WriteLine($"{jobName} could not be created.");
-            return false;
-        }
-
-
-
-        /// <summary>
-        /// Deletes the named AWS Glue crawler.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="crawlerName">The name of the crawler to delete.</param>
-        /// <returns>A Boolean value indicating whether the AWS Glue crawler was
-        /// deleted successfully.</returns>
-        public static async Task<bool> DeleteSpecificCrawlerAsync(AmazonGlueClient glueClient, string crawlerName)
-        {
-            var deleteCrawlerRequest = new DeleteCrawlerRequest
-            {
-                Name = crawlerName,
-            };
-
-            var response = await glueClient.DeleteCrawlerAsync(deleteCrawlerRequest);
-
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                Console.WriteLine($"{crawlerName} was deleted");
-                return true;
-            }
-
-            Console.WriteLine($"Could not create {crawlerName}.");
-            return false;
-        }
-
-
-
-        /// <summary>
-        /// Deletes an AWS Glue database.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="databaseName">The name of the database to delete.</param>
-        /// <returns>A Boolean value indicating whether the AWS Glue database was
-        /// deleted successfully.</returns>
-        public static async Task<bool> DeleteDatabaseAsync(AmazonGlueClient glueClient, string databaseName)
-        {
-            var request = new DeleteDatabaseRequest
-            {
-                Name = databaseName,
-            };
-
-            var response = await glueClient.DeleteDatabaseAsync(request);
-
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                Console.WriteLine($"{databaseName} was successfully deleted");
-                return true;
-            }
-
-            Console.WriteLine($"{databaseName} could not be deleted.");
-            return false;
-        }
-
-
-
-        /// <summary>
-        /// Deletes the named job.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="jobName">The name of the job to delete.</param>
-        /// <returns>A Boolean value indicating whether the AWS Glue job was
-        /// deleted successfully.</returns>
-        public static async Task<bool> DeleteJobAsync(AmazonGlueClient glueClient, string jobName)
-        {
-            var jobRequest = new DeleteJobRequest
-            {
-                JobName = jobName,
-            };
-
-            var response = await glueClient.DeleteJobAsync(jobRequest);
-
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                Console.WriteLine($"{jobName} was successfully deleted");
-                return true;
-            }
-
-            Console.WriteLine($"{jobName} could not be deleted.");
-            return false;
-        }
-
-
-
-        /// <summary>
-        /// Gets a list of AWS Glue jobs.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <returns>A Boolean value indicating whether information about the
-        /// AWS Glue jobs was retrieved successfully.</returns>
-        /// <returns>A Boolean value indicating whether information about
-        /// all AWS Glue jobs was retrieved.</returns>
-        public static async Task<bool> GetAllJobsAsync(AmazonGlueClient glueClient)
-        {
-            var jobsRequest = new GetJobsRequest
-            {
-                MaxResults = 10,
-            };
-
-            var response = await glueClient.GetJobsAsync(jobsRequest);
-            var jobs = response.Jobs;
-            if (jobs.Count > 0)
-            {
-                jobs.ForEach(job => { Console.WriteLine($"The job name is: {job.Name}"); });
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("Didn't find any jobs.");
-                return false;
-            }
-        }
-
-
-
-        /// <summary>
-        /// Gets the tables used by the database for an AWS Glue crawler.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="dbName">The name of the database.</param>
-        /// <returns>A Boolean value indicating whether information about
-        /// the AWS Glue tables was retrieved successfully.</returns>
-        public static async Task<bool> GetGlueTablesAsync(
-            AmazonGlueClient glueClient,
-            string dbName)
-        {
-            var tableRequest = new GetTablesRequest
-            {
-                DatabaseName = dbName,
-            };
-
-            // Get the list of AWS Glue databases.
-            var response = await glueClient.GetTablesAsync(tableRequest);
-            var tables = response.TableList;
-
-            if (tables.Count > 0)
-            {
-                // Displays the list of table names.
-                tables.ForEach(table => { Console.WriteLine($"Table name is: {table.Name}"); });
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("No tables found.");
-                return false;
-            }
-        }
-
-
-
-        /// <summary>
-        /// Retrieves information about an AWS Glue job.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="jobName">The AWS Glue object for which to retrieve run
-        /// information.</param>
-        /// <returns>A Boolean value indicating whether information about
-        /// the AWS Glue job runs was retrieved successfully.</returns>
-        public static async Task<bool> GetJobRunsAsync(AmazonGlueClient glueClient, string jobName)
-        {
-            var runsRequest = new GetJobRunsRequest
-            {
-                JobName = jobName,
-                MaxResults = 20,
-            };
-
-            var response = await glueClient.GetJobRunsAsync(runsRequest);
-            var jobRuns = response.JobRuns;
-
-            if (jobRuns.Count > 0)
-            {
-                foreach (JobRun jobRun in jobRuns)
-                {
-                    Console.WriteLine($"Job run state is {jobRun.JobRunState}");
-                    Console.WriteLine($"Job run Id is {jobRun.Id}");
-                    Console.WriteLine($"The Glue version is {jobRun.GlueVersion}");
-                }
-
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("No jobs found.");
-                return false;
-            }
-        }
-
-
-
-        /// <summary>
-        /// Retrieves information about a specific AWS Glue crawler.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="crawlerName">The name of the crawer.</param>
-        /// <returns>A Boolean value indicating whether information about
-        /// the AWS Glue crawler was retrieved successfully.</returns>
-        public static async Task<bool> GetSpecificCrawlerAsync(AmazonGlueClient glueClient, string crawlerName)
-        {
-            var crawlerRequest = new GetCrawlerRequest
-            {
-                Name = crawlerName,
-            };
-
-            var response = await glueClient.GetCrawlerAsync(crawlerRequest);
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                var databaseName = response.Crawler.DatabaseName;
-                Console.WriteLine($"{crawlerName} has the database {databaseName}");
-                return true;
-            }
-
-            Console.WriteLine($"No information regarding {crawlerName} could be found.");
-            return false;
-        }
-
-
-
-        /// <summary>
-        /// Gets information about the database created for this Glue
-        /// example.
-        /// </summary>
-        /// <param name="glueClient">The initialized Glue client.</param>
-        /// <param name="databaseName">The name of the AWS Glue database.</param>
-        /// <returns>A Boolean value indicating whether information about
-        /// the AWS Glue database was retrieved successfully.</returns>
-        public static async Task<bool> GetSpecificDatabaseAsync(
-            AmazonGlueClient glueClient,
-            string databaseName)
-        {
-            var databasesRequest = new GetDatabaseRequest
-            {
-                Name = databaseName,
-            };
-
-            var response = await glueClient.GetDatabaseAsync(databasesRequest);
-
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                Console.WriteLine($"The Create Time is {response.Database.CreateTime}");
-                return true;
-            }
-
-            Console.WriteLine($"No informaton about {databaseName}.");
-            return false;
-        }
-
-
-
-        /// <summary>
-        /// Starts an AWS Glue job.
-        /// </summary>
-        /// <param name="glueClient">The initialized Glue client.</param>
-        /// <param name="jobName">The name of the AWS Glue job to start.</param>
-        /// <returns>A Boolean value indicating whether the AWS Glue job
-        /// was started successfully.</returns>
-        public static async Task<bool> StartJobAsync(AmazonGlueClient glueClient, string jobName)
-        {
-            var runRequest = new StartJobRunRequest
-            {
-                WorkerType = WorkerType.G1X,
-                NumberOfWorkers = 10,
-                JobName = jobName,
-            };
-
-            var response = await glueClient.StartJobRunAsync(runRequest);
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                Console.WriteLine($"{jobName} successfully started. The job run id is {response.JobRunId}.");
-                return true;
-            }
-
-            Console.WriteLine($"Could not start {jobName}.");
-            return false;
-        }
-
-
-
-        /// <summary>
-        /// Starts the named AWS Glue crawler.
-        /// </summary>
-        /// <param name="glueClient">The initialized AWS Glue client.</param>
-        /// <param name="crawlerName">The name of the crawler to start.</param>
-        /// <returns>A Boolean value indicating whether the AWS Glue crawler
-        /// was started successfully.</returns>
-        public static async Task<bool> StartSpecificCrawlerAsync(AmazonGlueClient glueClient, string crawlerName)
-        {
-            var crawlerRequest = new StartCrawlerRequest
-            {
-                Name = crawlerName,
-            };
-
-            var response = await glueClient.StartCrawlerAsync(crawlerRequest);
-
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                Console.WriteLine($"{crawlerName} was successfully started!");
-                return true;
-            }
-
-            Console.WriteLine($"Could not start AWS Glue crawler, {crawlerName}.");
-            return false;
-        }
-
+        _amazonGlue = amazonGlue;
     }
+
+    /// <summary>
+    /// Create an AWS Glue crawler.
+    /// </summary>
+    /// <param name="crawlerName">The name for the crawler.</param>
+    /// <param name="crawlerDescription">A description of the crawler.</param>
+    /// <param name="role">The AWS Identity and Access Management (IAM) role to
+    /// be assumed by the crawler.</param>
+    /// <param name="schedule">The schedule on which the crawler will be executed.</param>
+    /// <param name="s3Path">The path to the Amazon Simple Storage Service (Amazon S3)
+    /// bucket where the Python script has been stored.</param>
+    /// <param name="dbName">The name to use for the database that will be
+    /// created by the crawler.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> CreateCrawlerAsync(
+        string crawlerName,
+        string crawlerDescription,
+        string role,
+        string schedule,
+        string s3Path,
+        string dbName)
+    {
+        var s3Target = new S3Target
+        {
+            Path = s3Path,
+        };
+
+        var targetList = new List<S3Target>
+        {
+            s3Target,
+        };
+
+        var targets = new CrawlerTargets
+        {
+            S3Targets = targetList,
+        };
+
+        var crawlerRequest = new CreateCrawlerRequest
+        {
+            DatabaseName = dbName,
+            Name = crawlerName,
+            Description = crawlerDescription,
+            Targets = targets,
+            Role = role,
+            Schedule = schedule,
+        };
+
+        var response = await _amazonGlue.CreateCrawlerAsync(crawlerRequest);
+        return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+    }
+
+
+    /// <summary>
+    /// Create an AWS Glue job.
+    /// </summary>
+    /// <param name="jobName">The name of the job.</param>
+    /// <param name="roleName">The name of the IAM role to be assumed by
+    /// the job.</param>
+    /// <param name="description">A description of the job.</param>
+    /// <param name="scriptUrl">The URL to the script.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> CreateJobAsync(string dbName, string tableName, string bucketUrl, string jobName, string roleName, string description, string scriptUrl)
+    {
+        var command = new JobCommand
+        {
+            PythonVersion = "3",
+            Name = "glueetl",
+            ScriptLocation = scriptUrl,
+        };
+
+        var arguments = new Dictionary<string, string>
+        {
+            { "--input_database", dbName },
+            { "--input_table", tableName },
+            { "--output_bucket_url", bucketUrl }
+        };
+
+        var request = new CreateJobRequest
+        {
+            Command = command,
+            DefaultArguments = arguments,
+            Description = description,
+            GlueVersion = "3.0",
+            Name = jobName,
+            NumberOfWorkers = 10,
+            Role = roleName,
+            WorkerType = "G.1X"
+        };
+
+        var response = await _amazonGlue.CreateJobAsync(request);
+        return response.HttpStatusCode == HttpStatusCode.OK;
+    }
+
+
+    /// <summary>
+    /// Delete an AWS Glue crawler.
+    /// </summary>
+    /// <param name="crawlerName">The name of the crawler.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> DeleteCrawlerAsync(string crawlerName)
+    {
+        var response = await _amazonGlue.DeleteCrawlerAsync(new DeleteCrawlerRequest { Name = crawlerName });
+        return response.HttpStatusCode == HttpStatusCode.OK;
+    }
+
+
+    /// <summary>
+    /// Delete the AWS Glue database.
+    /// </summary>
+    /// <param name="dbName">The name of the database.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> DeleteDatabaseAsync(string dbName)
+    {
+        var response = await _amazonGlue.DeleteDatabaseAsync(new DeleteDatabaseRequest { Name = dbName });
+        return response.HttpStatusCode == HttpStatusCode.OK;
+    }
+
+
+    /// <summary>
+    /// Delete an AWS Glue job.
+    /// </summary>
+    /// <param name="jobName">The name of the job.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> DeleteJobAsync(string jobName)
+    {
+        var response = await _amazonGlue.DeleteJobAsync(new DeleteJobRequest { JobName = jobName });
+        return response.HttpStatusCode == HttpStatusCode.OK;
+    }
+
+
+    /// <summary>
+    /// Delete a table from an AWS Glue database.
+    /// </summary>
+    /// <param name="tableName">The table to delete.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> DeleteTableAsync(string dbName, string tableName)
+    {
+        var response = await _amazonGlue.DeleteTableAsync(new DeleteTableRequest { Name = tableName, DatabaseName = dbName });
+        return response.HttpStatusCode == HttpStatusCode.OK;
+    }
+
+
+    /// <summary>
+    /// Get information about an AWS Glue crawler.
+    /// </summary>
+    /// <param name="crawlerName">The name of the crawler.</param>
+    /// <returns>A Crawler object describing the crawler.</returns>
+    public async Task<Crawler?> GetCrawlerAsync(string crawlerName)
+    {
+        var crawlerRequest = new GetCrawlerRequest
+        {
+            Name = crawlerName,
+        };
+
+        var response = await _amazonGlue.GetCrawlerAsync(crawlerRequest);
+        if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
+        {
+            var databaseName = response.Crawler.DatabaseName;
+            Console.WriteLine($"{crawlerName} has the database {databaseName}");
+            return response.Crawler;
+        }
+
+        Console.WriteLine($"No information regarding {crawlerName} could be found.");
+        return null;
+    }
+
+
+    /// <summary>
+    /// Get information about the state of an AWS Glue crawler.
+    /// </summary>
+    /// <param name="crawlerName">The name of the crawler.</param>
+    /// <returns>A value describing the state of the crawler.</returns>
+    public async Task<CrawlerState> GetCrawlerStateAsync(string crawlerName)
+    {
+        var response = await _amazonGlue.GetCrawlerAsync(
+            new GetCrawlerRequest { Name = crawlerName });
+        return response.Crawler.State;
+    }
+
+
+    /// <summary>
+    /// Get information about an AWS Glue database.
+    /// </summary>
+    /// <param name="dbName">The name of the database.</param>
+    /// <returns>A Database object containing information about the database.</returns>
+    public async Task<Database> GetDatabaseAsync(string dbName)
+    {
+        var databasesRequest = new GetDatabaseRequest
+        {
+            Name = dbName,
+        };
+
+        var response = await _amazonGlue.GetDatabaseAsync(databasesRequest);
+        return response.Database;
+    }
+
+
+    /// <summary>
+    /// Get information about a specific AWS Glue job run.
+    /// </summary>
+    /// <param name="jobName">The name of the job.</param>
+    /// <param name="jobRunId">The Id of the job run.</param>
+    /// <returns>A JobRun object with information about the job run.</returns>
+    public async Task<JobRun> GetJobRunAsync(string jobName, string jobRunId)
+    {
+        var response = await _amazonGlue.GetJobRunAsync(new GetJobRunRequest { JobName = jobName, RunId = jobRunId });
+        return response.JobRun;
+    }
+
+
+    /// <summary>
+    /// Get information about all AWS Glue runs of a specific job.
+    /// </summary>
+    /// <param name="jobName">The name of the job.</param>
+    /// <returns>A list of JobRun objects.</returns>
+    public async Task<List<JobRun>> GetJobRunsAsync(string jobName)
+    {
+        var jobRuns = new List<JobRun>();
+
+        var request = new GetJobRunsRequest
+        {
+            JobName = jobName,
+        };
+
+        // No need to loop to get all the log groups--the SDK does it for us behind the scenes
+        var paginatorForJobRuns =
+            _amazonGlue.Paginators.GetJobRuns(request);
+
+        await foreach (var response in paginatorForJobRuns.Responses)
+        {
+            response.JobRuns.ForEach(jobRun =>
+            {
+                jobRuns.Add(jobRun);
+            });
+        }
+
+        return jobRuns;
+    }
+
+
+    /// <summary>
+    /// Get a list of tables for an AWS Glue database.
+    /// </summary>
+    /// <param name="dbName">The name of the database.</param>
+    /// <returns>A list of Table objects.</returns>
+    public async Task<List<Table>> GetTablesAsync(string dbName)
+    {
+        var request = new GetTablesRequest { DatabaseName = dbName };
+        var tables = new List<Table>();
+
+        // Get a paginator for listing the tables.
+        var tablePaginator = _amazonGlue.Paginators.GetTables(request);
+
+        await foreach (var response in tablePaginator.Responses)
+        {
+            tables.AddRange(response.TableList);
+        }
+
+        return tables;
+    }
+
+
+    /// <summary>
+    /// List AWS Glue jobs using a paginator.
+    /// </summary>
+    /// <returns>A list of AWS Glue job names.</returns>
+    public async Task<List<string>> ListJobsAsync()
+    {
+        var jobNames = new List<string>();
+
+        var listJobsPaginator = _amazonGlue.Paginators.ListJobs(new ListJobsRequest { MaxResults = 10 });
+        await foreach (var response in listJobsPaginator.Responses)
+        {
+            jobNames.AddRange(response.JobNames);
+        }
+
+        return jobNames;
+    }
+
+
+    /// <summary>
+    /// Start an AWS Glue crawler.
+    /// </summary>
+    /// <param name="crawlerName">The name of the crawler.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> StartCrawlerAsync(string crawlerName)
+    {
+        var crawlerRequest = new StartCrawlerRequest
+        {
+            Name = crawlerName,
+        };
+
+        var response = await _amazonGlue.StartCrawlerAsync(crawlerRequest);
+
+        return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+    }
+
+
+    /// <summary>
+    /// Start an AWS Glue job run.
+    /// </summary>
+    /// <param name="jobName">The name of the job.</param>
+    /// <returns>A string representing the job run Id.</returns>
+    public async Task<string> StartJobRunAsync(
+        string jobName,
+        string inputDatabase,
+        string inputTable,
+        string bucketName)
+    {
+        var request = new StartJobRunRequest
+        {
+            JobName = jobName,
+            Arguments = new Dictionary<string, string>
+            {
+                {"--input_database", inputDatabase},
+                {"--input_table", inputTable},
+                {"--output_bucket_url", $"s3://{bucketName}/"}
+            }
+        };
+
+        var response = await _amazonGlue.StartJobRunAsync(request);
+        return response.JobRunId;
+    }
+
 }
 ```
 Create a class that runs the scenario\.  
 
 ```
+global using GlueActions;
 global using Amazon.Glue;
-global using Amazon.Glue.Model;
-global using Glue_Basics;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Microsoft.Extensions.Logging;
+global using Microsoft.Extensions.Logging.Console;
+global using Microsoft.Extensions.Logging.Debug;
 
 
-// This example uses .NET Core 6 and the AWS SDK for .NET (v3.7)
-// Before running the code, set up your development environment,
-// including your credentials. For more information, see the
-// following topic:
-//    https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config.html
-//
-// To set up the resources you need, see the following topic:
-//    https://docs.aws.amazon.com/glue/latest/ug/tutorial-add-crawler.html
-//
-// This example performs the following tasks:
-//    1. CreateDatabase
-//    2. CreateCrawler
-//    3. GetCrawler
-//    4. StartCrawler
-//    5. GetDatabase
-//    6. GetTables
-//    7. CreateJob
-//    8. StartJobRun
-//    9. ListJobs
-//   10. GetJobRuns
-//   11. DeleteJob
-//   12. DeleteDatabase
-//   13. DeleteCrawler
 
-// Initialize the values that we need for the scenario.
-// The Amazon Resource Name (ARN) of the service role used by the crawler.
-var iam = "arn:aws:iam::012345678901:role/AWSGlueServiceRole-CrawlerTutorial";
+using Amazon.Glue.Model;
+using Amazon.S3;
+using Amazon.S3.Model;
 
-// The path to the Amazon S3 bucket where the comma-delimited file is stored.
-var s3Path = "s3://crawler-public-us-east-1/flight/2016/csv";
+namespace GlueBasics;
 
-var cron = "cron(15 12 * * ? *)";
+public class GlueBasics
+{
+    private static ILogger logger = null!;
+    private static IConfiguration _configuration;
 
-// The name of the database used by the crawler.
-var dbName = "example-flights-db";
+    static async Task Main(string[] args)
+    {
+        // Set up dependency injection for AWS Glue.
+        using var host = Host.CreateDefaultBuilder(args)
+            .ConfigureLogging(logging =>
+                logging.AddFilter("System", LogLevel.Debug)
+                    .AddFilter<DebugLoggerProvider>("Microsoft", LogLevel.Information)
+                    .AddFilter<ConsoleLoggerProvider>("Microsoft", LogLevel.Trace))
+            .ConfigureServices((_, services) =>
+            services.AddAWSService<IAmazonGlue>()
+            .AddTransient<GlueWrapper>()
+            .AddTransient<UiWrapper>()
+            )
+            .Build();
 
-var crawlerName = "Flight Data Crawler";
-var jobName = "glue-job34";
-var scriptLocation = "s3://aws-glue-scripts-012345678901-us-west-1/GlueDemoUser";
-var locationUri = "s3://crawler-public-us-east-1/flight/2016/csv/";
+        logger = LoggerFactory.Create(builder => { builder.AddConsole(); })
+        .CreateLogger<GlueBasics>();
 
-var glueClient = new AmazonGlueClient();
-await GlueMethods.DeleteDatabaseAsync(glueClient, dbName);
+        _configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("settings.json") // Load settings from .json file.
+            .AddJsonFile("settings.local.json",
+                true) // Optionally load local settings.
+            .Build();
 
-Console.WriteLine("Creating the database and crawler for the AWS Glue example.");
-var success = await GlueMethods.CreateDatabaseAsync(glueClient, dbName, locationUri);
-success = await GlueMethods.CreateGlueCrawlerAsync(glueClient, iam, s3Path, cron, dbName, crawlerName);
+        // These values are stored in settings.json
+        // Once you have run the CDK script to deploy the resources,
+        // edit the file to set "BucketName", "RoleName", and "ScriptURL"
+        // to the appropriate values. Also set "CrawlerName" to the name
+        // you want to give the crawler when it is created.
+        string bucketName = _configuration["BucketName"];
+        string bucketUrl = _configuration["BucketUrl"];
+        string crawlerName = _configuration["CrawlerName"];
+        string roleName = _configuration["RoleName"];
+        string sourceData = _configuration["SourceData"];
+        string dbName = _configuration["DbName"];
+        string cron = _configuration["Cron"];
+        string scriptUrl = _configuration["ScriptURL"];
+        string jobName = _configuration["JobName"];
 
-// Get information about the AWS Glue crawler.
-Console.WriteLine("Showing information about the newly created AWS Glue crawler.");
-success = await GlueMethods.GetSpecificCrawlerAsync(glueClient, crawlerName);
+        var wrapper = host.Services.GetRequiredService<GlueWrapper>();
+        var uiWrapper = host.Services.GetRequiredService<UiWrapper>();
 
-Console.WriteLine("Starting the new AWS Glue crawler.");
-success = await GlueMethods.StartSpecificCrawlerAsync(glueClient, crawlerName);
+        uiWrapper.DisplayOverview();
+        uiWrapper.PressEnter();
 
-Console.WriteLine("Displaying information about the database used by the crawler.");
-success = await GlueMethods.GetSpecificDatabaseAsync(glueClient, dbName);
-success = await GlueMethods.GetGlueTablesAsync(glueClient, dbName);
+        // Create the crawler and wait for it to be ready.
+        uiWrapper.DisplayTitle("Create AWS Glue crawler");
+        Console.WriteLine("Let's begin by creating the AWS Glue crawler.");
 
-Console.WriteLine("Creating a new AWS Glue job.");
-success = await GlueMethods.CreateJobAsync(glueClient, jobName, iam, scriptLocation);
+        var crawlerDescription = "Crawler created for the AWS Glue Basics scenario.";
+        var crawlerCreated = await wrapper.CreateCrawlerAsync(crawlerName, crawlerDescription, roleName, cron, sourceData, dbName);
+        if (crawlerCreated)
+        {
+            Console.WriteLine($"The crawler: {crawlerName} has been created. Now let's wait until it's ready.");
+            CrawlerState crawlerState;
+            do
+            {
+                crawlerState = await wrapper.GetCrawlerStateAsync(crawlerName);
+            }
+            while (crawlerState != "READY");
+            Console.WriteLine($"The crawler {crawlerName} is now ready for use.");
+        }
+        else
+        {
+            Console.WriteLine($"Couldn't create crawler {crawlerName}.");
+            return; // Exit the application.
+        }
 
-Console.WriteLine("Starting the new AWS Glue job.");
-success = await GlueMethods.StartJobAsync(glueClient, jobName);
+        uiWrapper.DisplayTitle("Start AWS Glue crawler");
+        Console.WriteLine("Now let's wait until the crawler has successfully started.");
+        var crawlerStarted = await wrapper.StartCrawlerAsync(crawlerName);
+        if (crawlerStarted)
+        {
+            CrawlerState crawlerState;
+            do
+            {
+                crawlerState = await wrapper.GetCrawlerStateAsync(crawlerName);
+            }
+            while (crawlerState != "READY");
+            Console.WriteLine($"The crawler {crawlerName} is now ready for use.");
+        }
+        else
+        {
+            Console.WriteLine($"Couldn't start the crawler {crawlerName}.");
+            return; // Exit the application.
+        }
 
-Console.WriteLine("Getting information about the AWS Glue job.");
-success = await GlueMethods.GetAllJobsAsync(glueClient);
-success = await GlueMethods.GetJobRunsAsync(glueClient, jobName);
+        uiWrapper.PressEnter();
 
-Console.WriteLine("Deleting the AWS Glue job used by the exmple.");
-success = await GlueMethods.DeleteJobAsync(glueClient, jobName);
+        Console.WriteLine($"\nLet's take a look at the database: {dbName}");
+        var database = await wrapper.GetDatabaseAsync(dbName);
 
-Console.WriteLine("\n*** Waiting 5 MIN for the " + crawlerName + " to stop. ***");
-System.Threading.Thread.Sleep(300000);
+        if (database != null)
+        {
+            uiWrapper.DisplayTitle($"{database.Name} Details");
+            Console.WriteLine($"{database.Name} created on {database.CreateTime}");
+            Console.WriteLine(database.Description);
+        }
 
-Console.WriteLine("Clean up the resources created for the example.");
-success = await GlueMethods.DeleteDatabaseAsync(glueClient, dbName);
-success = await GlueMethods.DeleteSpecificCrawlerAsync(glueClient, crawlerName);
+        uiWrapper.PressEnter();
 
-Console.WriteLine("Successfully completed the AWS Glue Scenario ");
+        var tables = await wrapper.GetTablesAsync(dbName);
+        if (tables.Count > 0)
+        {
+            tables.ForEach(table =>
+            {
+                Console.WriteLine($"{table.Name}\tCreated: {table.CreateTime}\tUpdated: {table.UpdateTime}");
+            });
+        }
+
+        uiWrapper.PressEnter();
+
+        uiWrapper.DisplayTitle("Create AWS Glue job");
+        Console.WriteLine("Creating a new AWS Glue job.");
+        var description = "An AWS Glue job created using the AWS SDK for .NET";
+        await wrapper.CreateJobAsync(dbName, tables[0].Name, bucketUrl, jobName, roleName, description, scriptUrl);
+
+        uiWrapper.PressEnter();
+
+        uiWrapper.DisplayTitle("Starting AWS Glue job");
+        Console.WriteLine("Starting the new AWS Glue job...");
+        var jobRunId = await wrapper.StartJobRunAsync(jobName, dbName, tables[0].Name, bucketName);
+        var jobRunComplete = false;
+        var jobRun = new JobRun();
+        do
+        {
+            jobRun = await wrapper.GetJobRunAsync(jobName, jobRunId);
+            if (jobRun.JobRunState == "SUCCEEDED" || jobRun.JobRunState == "STOPPED" ||
+                jobRun.JobRunState == "FAILED" || jobRun.JobRunState == "TIMEOUT")
+            {
+                jobRunComplete = true;
+            }
+        } while (!jobRunComplete);
+
+        uiWrapper.DisplayTitle($"Data in {bucketName}");
+
+        // Get the list of data stored in the S3 bucket.
+        var s3Client = new AmazonS3Client();
+
+        var response = await s3Client.ListObjectsAsync(new ListObjectsRequest { BucketName = bucketName });
+        response.S3Objects.ForEach(s3Object =>
+        {
+            Console.WriteLine(s3Object.Key);
+        });
+
+        uiWrapper.DisplayTitle("AWS Glue jobs");
+        var jobNames = await wrapper.ListJobsAsync();
+        jobNames.ForEach(jobName =>
+        {
+            Console.WriteLine(jobName);
+        });
+
+        uiWrapper.PressEnter();
+
+        uiWrapper.DisplayTitle("Get AWS Glue job run information");
+        Console.WriteLine("Getting information about the AWS Glue job.");
+        var jobRuns = await wrapper.GetJobRunsAsync(jobName);
+
+        jobRuns.ForEach(jobRun =>
+        {
+            Console.WriteLine($"{jobRun.JobName}\t{jobRun.JobRunState}\t{jobRun.CompletedOn}");
+        });
+
+        uiWrapper.PressEnter();
+
+        uiWrapper.DisplayTitle("Deleting resources");
+        Console.WriteLine("Deleting the AWS Glue job used by the example.");
+        await wrapper.DeleteJobAsync(jobName);
+
+        Console.WriteLine("Deleting the tables from the database.");
+        tables.ForEach(async table =>
+        {
+            await wrapper.DeleteTableAsync(dbName, table.Name);
+        });
+
+        Console.WriteLine("Deleting the database.");
+        await wrapper.DeleteDatabaseAsync(dbName);
+
+        Console.WriteLine("Deleting the AWS Glue crawler.");
+        await wrapper.DeleteCrawlerAsync(crawlerName);
+
+        Console.WriteLine("The AWS Glue scenario has completed.");
+        uiWrapper.PressEnter();
+    }
+}
+
+
+namespace GlueBasics;
+
+public class UiWrapper
+{
+    public readonly string SepBar = new string('-', Console.WindowWidth);
+
+    /// <summary>
+    /// Show information about the scenario.
+    /// </summary>
+    public void DisplayOverview()
+    {
+        Console.Clear();
+        DisplayTitle("Amazon Glue: get started with crawlers and jobs");
+
+        Console.WriteLine("This example application does the following:");
+        Console.WriteLine("\t 1. Create a crawler, pass it the IAM role and the URL to the public S3 bucket that contains the source data");
+        Console.WriteLine("\t 2. Start the crawler.");
+        Console.WriteLine("\t 3. Get the database created by the crawler and the tables in the database.");
+        Console.WriteLine("\t 4. Create a job.");
+        Console.WriteLine("\t 5. Start a job run.");
+        Console.WriteLine("\t 6. Wait for the job run to complete.");
+        Console.WriteLine("\t 7. Show the data stored in the bucket.");
+        Console.WriteLine("\t 8. List jobs for the account.");
+        Console.WriteLine("\t 9. Get job run details for the job that was run.");
+        Console.WriteLine("\t10. Delete the demo job.");
+        Console.WriteLine("\t11. Delete the database and tables created for the demo.");
+        Console.WriteLine("\t12. Delete the crawler.");
+    }
+
+    /// <summary>
+    /// Display a message and wait until the user presses enter.
+    /// </summary>
+    public void PressEnter()
+    {
+        Console.Write("\nPlease press <Enter> to continue. ");
+        _ = Console.ReadLine();
+    }
+
+    /// <summary>
+    /// Pad a string with spaces to center it on the console display.
+    /// </summary>
+    /// <param name="strToCenter">The string to center on the screen.</param>
+    /// <returns>The string padded to make it center on the screen.</returns>
+    public string CenterString(string strToCenter)
+    {
+        var padAmount = (Console.WindowWidth - strToCenter.Length) / 2;
+        var leftPad = new string(' ', padAmount);
+        return $"{leftPad}{strToCenter}";
+    }
+
+    /// <summary>
+    /// Display a line of hyphens, the centered text of the title and another
+    /// line of hyphens.
+    /// </summary>
+    /// <param name="strTitle">The string to be displayed.</param>
+    public void DisplayTitle(string strTitle)
+    {
+        Console.WriteLine(SepBar);
+        Console.WriteLine(CenterString(strTitle));
+        Console.WriteLine(SepBar);
+    }
+}
 ```
 + For API details, see the following topics in *AWS SDK for \.NET API Reference*\.
   + [CreateCrawler](https://docs.aws.amazon.com/goto/DotNetSDKV3/glue-2017-03-31/CreateCrawler)

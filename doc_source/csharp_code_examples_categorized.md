@@ -16,6 +16,7 @@ The following code examples show how to perform actions and implement common sce
 + [DynamoDB](csharp_dynamodb_code_examples.md)
 + [Amazon EC2](csharp_ec2_code_examples.md)
 + [Amazon EC2 Auto Scaling](csharp_auto-scaling_code_examples.md)
++ [EventBridge](csharp_eventbridge_code_examples.md)
 + [AWS Glue](csharp_glue_code_examples.md)
 + [IAM](csharp_iam_code_examples.md)
 + [AWS KMS](csharp_kms_code_examples.md)

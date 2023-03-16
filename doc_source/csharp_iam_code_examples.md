@@ -124,7 +124,10 @@ The following code example shows how to create an IAM role\.
 
 ### Create a user<a name="iam_CreateUser_csharp_topic"></a>
 
-The following code example shows how to create an IAM user\.
+The following code example shows how to create an IAM user\. 
+
+**Warning**  
+To avoid security risks, don't use IAM users for authentication when developing purpose\-built software or working with real data\. Instead, use federation with an identity provider such as [AWS IAM Identity Center \(successor to AWS Single Sign\-On\)](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
@@ -156,7 +159,10 @@ The following code example shows how to create an IAM user\.
 
 ### Create an access key<a name="iam_CreateAccessKey_csharp_topic"></a>
 
-The following code example shows how to create an IAM access key\.
+The following code example shows how to create an IAM access key\. 
+
+**Warning**  
+To avoid security risks, don't use IAM users for authentication when developing purpose\-built software or working with real data\. Instead, use federation with an identity provider such as [AWS IAM Identity Center \(successor to AWS Single Sign\-On\)](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
@@ -234,7 +240,10 @@ The following code example shows how to delete an IAM role policy\.
 
 ### Delete a user<a name="iam_DeleteUser_csharp_topic"></a>
 
-The following code example shows how to delete an IAM user\.
+The following code example shows how to delete an IAM user\. 
+
+**Warning**  
+To avoid security risks, don't use IAM users for authentication when developing purpose\-built software or working with real data\. Instead, use federation with an identity provider such as [AWS IAM Identity Center \(successor to AWS Single Sign\-On\)](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
@@ -290,7 +299,10 @@ The following code example shows how to delete an IAM user\.
 
 ### Delete an access key<a name="iam_DeleteAccessKey_csharp_topic"></a>
 
-The following code example shows how to delete an IAM access key\.
+The following code example shows how to delete an IAM access key\. 
+
+**Warning**  
+To avoid security risks, don't use IAM users for authentication when developing purpose\-built software or working with real data\. Instead, use federation with an identity provider such as [AWS IAM Identity Center \(successor to AWS Single Sign\-On\)](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
@@ -715,7 +727,10 @@ do
 
 ### List users<a name="iam_ListUsers_csharp_topic"></a>
 
-The following code example shows how to list IAM users\.
+The following code example shows how to list IAM users\. 
+
+**Warning**  
+To avoid security risks, don't use IAM users for authentication when developing purpose\-built software or working with real data\. Instead, use federation with an identity provider such as [AWS IAM Identity Center \(successor to AWS Single Sign\-On\)](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/IAM#code-examples)\. 
@@ -751,7 +766,10 @@ do
 
 ### Create a user and assume a role<a name="iam_Scenario_CreateUserAssumeRole_csharp_topic"></a>
 
-The following code example shows how to:
+The following code example shows how to create a user and assume a role\. 
+
+**Warning**  
+To avoid security risks, don't use IAM users for authentication when developing purpose\-built software or working with real data\. Instead, use federation with an identity provider such as [AWS IAM Identity Center \(successor to AWS Single Sign\-On\)](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)\.
 + Create a user who has no permissions\.
 + Create a role that grants permission to list Amazon S3 buckets for the account\.
 + Add a policy to let the user assume the role\.

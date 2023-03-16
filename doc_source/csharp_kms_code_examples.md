@@ -19,7 +19,7 @@ The following code example shows how to create a grant for a KMS key\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/KMS#code-examples)\. 
-This examples grants a user permission to use a key for encryption and decryption\.  
+  
 
 ```
         public static async Task Main()

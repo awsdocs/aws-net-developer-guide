@@ -30,7 +30,7 @@ public static class HelloCloudWatch
 {
     static async Task Main(string[] args)
     {
-        // Use the AWS .NET Core Setup package to set up dependency injection for the Amazon CloudWatch domain registration service.
+        // Use the AWS .NET Core Setup package to set up dependency injection for the Amazon CloudWatch service.
         // Use your AWS profile name, or leave it blank to use the default profile.
         using var host = Host.CreateDefaultBuilder(args)
             .ConfigureServices((_, services) =>
@@ -1564,7 +1564,7 @@ public class CloudWatchScenario
     }
 
     /// <summary>
-    /// Create a dashboard with metrics.
+    /// Clean up created resources.
     /// </summary>
     /// <param name="metricNamespace">The namespace for metrics.</param>
     /// <param name="metric">The CloudWatch metric.</param>

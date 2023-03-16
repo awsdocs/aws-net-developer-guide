@@ -4,6 +4,7 @@ The following table describes the important changes since the last release of th
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Region resolution](net-dg-region-selection.md) | Added information about how the SDK resolves a missing Region specification\. | March 14, 2023 | 
 | [Support for the MSI](net-dg-obtain-assemblies.md) | Added note about ending support for the AWS Tools for Windows installer\. | March 6, 2023 | 
 | [Lambda Annotations \(Preview\)](aws-lambda-annotations.md) | Preview of the AWS Lambda Annotations framework\. | September 22, 2022 | 
 | [Deploying applications to AWS](deploying.md) | Moved main content to a GitHub Pages site: https://aws\.github\.io/aws\-dotnet\-deploy/ | June 28, 2022 | 
