@@ -1,4 +1,4 @@
-## [Developer guide](doc_source/index.md) for the AWS SDK for .NET
+## The [Developer guide](doc_source/index.md) for the AWS SDK for .NET
 
 This is the open source version of the developer guide for the AWS SDK for .NET version 3.x.
 
