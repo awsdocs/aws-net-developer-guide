@@ -838,15 +838,12 @@ The following code example shows how to publish metric data points to Amazon Clo
 
 The following code example shows how to:
 + List CloudWatch namespaces and metrics\.
-+ Get statistics for a CloudWatch metric\.
-+ Get statistics for estimated billing\.
-+ Create and update a CloudWatch dashboard\.
-+ Create and add data to a CloudWatch metric\.
-+ Create and trigger a CloudWatch alarm\.
-+ View CloudWatch alarm history\.
-+ Add a CloudWatch anomaly detector\.
-+ Get a CloudWatch metric image\.
-+ Clean up dashboards, alarms, and anomaly detectors\.
++ Get statistics for a metric and for estimated billing\.
++ Create and update a dashboard\.
++ Create and add data to a metric\.
++ Create and trigger an alarm, then view alarm history\.
++ Add an anomaly detector\.
++ Get a metric image, then clean up resources\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/CloudWatch#code-examples)\. 

@@ -12,7 +12,7 @@ Each example includes a link to GitHub, where you can find instructions on how t
 
 ## Hello Route 53 domain registration<a name="example_route-53_Hello_section"></a>
 
-The following code examples show how to get started using Amazon Route 53 domain registration\.
+The following code examples show how to get started using Route 53 domain registration\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Route53#code-examples)\. 
@@ -394,13 +394,10 @@ The following code example shows how to view billing records\.
 ### Get started with domains<a name="route-53_Scenario_GetStartedRoute53Domains_csharp_topic"></a>
 
 The following code example shows how to:
-+ List current domains\.
-+ List operations in the past year\.
-+ View billing for the account in the past year\.
-+ View prices for domain types\.
++ List current domains, and list operations in the past year\.
++ View billing for the past year, and view prices for domain types\.
 + Get domain suggestions\.
-+ Check domain availability\.
-+ Check domain transferability\.
++ Check domain availability and transferability\.
 + Optionally, request a domain registration\.
 + Get an operation detail\.
 + Optionally, get a domain detail\.

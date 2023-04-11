@@ -12,7 +12,7 @@ Each example includes a link to GitHub, where you can find instructions on how t
 
 ## Hello AWS Glue<a name="example_glue_Hello_section"></a>
 
-The following code example shows how to get started using AWS Glue \(AWS Glue\)\.
+The following code example shows how to get started using AWS Glue\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Glue#code-examples)\. 
@@ -529,14 +529,13 @@ The following code example shows how to start an AWS Glue job run\.
 
 ## Scenarios<a name="scenarios"></a>
 
-### Get started running crawlers and jobs<a name="glue_Scenario_GetStartedCrawlersJobs_csharp_topic"></a>
+### Get started with crawlers and jobs<a name="glue_Scenario_GetStartedCrawlersJobs_csharp_topic"></a>
 
 The following code example shows how to:
-+ Create and run a crawler that crawls a public Amazon Simple Storage Service \(Amazon S3\) bucket and generates a metadata database that describes the CSV\-formatted data it finds\.
++ Create a crawler that crawls a public Amazon S3 bucket and generates a database of CSV\-formatted metadata\.
 + List information about databases and tables in your AWS Glue Data Catalog\.
-+ Create and run a job that extracts CSV data from the source Amazon S3 bucket, transforms it by removing and renaming fields, and loads JSON\-formatted output into another Amazon S3 bucket\.
-+ List information about job runs and view some of the transformed data\.
-+ Delete all resources created by the demo\.
++ Create a job to extract CSV data from the S3 bucket, transform the data, and load JSON\-formatted output into another S3 bucket\.
++ List information about job runs, view transformed data, and clean up resources\.
 
 For more information, see [Tutorial: Getting started with AWS Glue Studio](https://docs.aws.amazon.com/glue/latest/ug/tutorial-create-job.html)\.
 

@@ -222,8 +222,8 @@ The following code example shows how to describe AWS Support cases\.
                 DisplayId = displayId,
                 IncludeCommunications = includeCommunication,
                 IncludeResolvedCases = includeResolvedCases,
-                AfterTime = afterTime?.ToString("o"),
-                BeforeTime = beforeTime?.ToString("o"),
+                AfterTime = afterTime?.ToString("s"),
+                BeforeTime = beforeTime?.ToString("s"),
                 Language = language
             });
         // Get the entire list using the paginator.
@@ -259,8 +259,8 @@ The following code example shows how to describe AWS Support communications for 
             new DescribeCommunicationsRequest()
             {
                 CaseId = caseId,
-                AfterTime = afterTime?.ToString("G"),
-                BeforeTime = beforeTime?.ToString("G")
+                AfterTime = afterTime?.ToString("s"),
+                BeforeTime = beforeTime?.ToString("s")
             });
         // Get the entire list using the paginator.
         await foreach (var communications in paginateCommunications.Communications)
@@ -591,8 +591,8 @@ public static class SupportCaseScenario
                 null,
                 false,
                 false,
-                DateTime.Today,
-                DateTime.Now);
+                DateTime.UtcNow.Date,
+                DateTime.UtcNow);
         }
 
         foreach (var openCase in currentOpenCases)
@@ -727,8 +727,8 @@ public static class SupportCaseScenario
             null,
             false,
             true,
-            DateTime.Today,
-            DateTime.Now);
+            DateTime.UtcNow.Date,
+            DateTime.UtcNow);
 
         foreach (var currentCase in currentCases)
         {
@@ -909,8 +909,8 @@ public class SupportWrapper
             new DescribeCommunicationsRequest()
             {
                 CaseId = caseId,
-                AfterTime = afterTime?.ToString("G"),
-                BeforeTime = beforeTime?.ToString("G")
+                AfterTime = afterTime?.ToString("s"),
+                BeforeTime = beforeTime?.ToString("s")
             });
         // Get the entire list using the paginator.
         await foreach (var communications in paginateCommunications.Communications)
@@ -946,8 +946,8 @@ public class SupportWrapper
                 DisplayId = displayId,
                 IncludeCommunications = includeCommunication,
                 IncludeResolvedCases = includeResolvedCases,
-                AfterTime = afterTime?.ToString("o"),
-                BeforeTime = beforeTime?.ToString("o"),
+                AfterTime = afterTime?.ToString("s"),
+                BeforeTime = beforeTime?.ToString("s"),
                 Language = language
             });
         // Get the entire list using the paginator.

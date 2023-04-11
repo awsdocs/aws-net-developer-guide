@@ -345,7 +345,7 @@ The following code example shows how to sign up a user with Amazon Cognito\.
         };
 
         var response = await _cognitoService.SignUpAsync(signUpRequest);
-        return response.UserConfirmed;
+        return response.HttpStatusCode == HttpStatusCode.OK;
     }
 ```
 +  For API details, see [SignUp](https://docs.aws.amazon.com/goto/DotNetSDKV3/cognito-idp-2016-04-18/SignUp) in *AWS SDK for \.NET API Reference*\. 
@@ -452,8 +452,7 @@ The following code example shows how to verify an MFA application with an Amazon
 ### Sign up a user with a user pool that requires MFA<a name="cognito-identity-provider_Scenario_SignUpUserWithMfa_csharp_topic"></a>
 
 The following code example shows how to:
-+ Sign up a user with a user name, password, and email address\.
-+ Confirm the user from a code sent in email\.
++ Sign up and confirm a user with a username, password, and email address\.
 + Set up multi\-factor authentication by associating an MFA application with the user\.
 + Sign in by using a password and an MFA code\.
 
@@ -916,7 +915,7 @@ public class CognitoWrapper
         };
 
         var response = await _cognitoService.SignUpAsync(signUpRequest);
-        return response.UserConfirmed;
+        return response.HttpStatusCode == HttpStatusCode.OK;
     }
 
 }

@@ -2022,13 +2022,11 @@ Generate a presigned URL and perform an upload using that URL\.
 ### Get started with buckets and objects<a name="s3_Scenario_GettingStarted_csharp_topic"></a>
 
 The following code example shows how to:
-+ Create a bucket\.
-+ Upload a file to the bucket\.
++ Create a bucket and upload a file to it\.
 + Download an object from a bucket\.
 + Copy an object to a subfolder in a bucket\.
 + List the objects in a bucket\.
-+ Delete the objects in a bucket\.
-+ Delete a bucket\.
++ Delete the bucket objects and the bucket\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/S3/S3_Basics#code-examples)\. 

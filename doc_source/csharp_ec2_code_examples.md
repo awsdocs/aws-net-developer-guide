@@ -12,10 +12,10 @@ Each example includes a link to GitHub, where you can find instructions on how t
 
 ## Hello Amazon EC2<a name="example_ec2_Hello_section"></a>
 
-The following code examples show how to get started using Amazon Elastic Compute Cloud \(Amazon EC2\)\.
+The following code examples show how to get started using Amazon EC2\.
 
 **AWS SDK for \.NET**  
- There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/ec2#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/EC2#code-examples)\. 
   
 
 ```
@@ -935,17 +935,14 @@ The following code example shows how to terminate an Amazon EC2 instance\.
 ### Get started with instances<a name="ec2_Scenario_GetStartedInstances_csharp_topic"></a>
 
 The following code example shows how to:
-+ Create a key pair that is used to secure SSH communication between your computer and an EC2 instance\.
-+ Create a security group that acts as a virtual firewall for your EC2 instances to control incoming and outgoing traffic\.
-+ Find an Amazon Machine Image \(AMI\) and a compatible instance type\.
-+ Create an instance that is created from the instance type and AMI you select, and is configured to use the security group and key pair created in this example\.
++ Create a key pair and security group\.
++ Select an Amazon Machine Image \(AMI\) and compatible instance type, then create an instance\.
 + Stop and restart the instance\.
-+ Create an Elastic IP address and associate it as a consistent IP address for your instance\.
-+ Connect to your instance with SSH, using both its public IP address and your Elastic IP address\.
-+ Clean up all of the resources created by this example\.
++ Associate an Elastic IP address with your instance\.
++ Connect to your instance with SSH, then clean up resources\.
 
 **AWS SDK for \.NET**  
- There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/ec2#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/EC2#code-examples)\. 
 Run a scenario at a command prompt\.  
 
 ```

@@ -8,6 +8,40 @@ The following code examples show you how to perform actions and implement common
 
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
+**Get started**
+
+## Hello Lambda<a name="example_lambda_Hello_section"></a>
+
+The following code example shows how to get started using Lambda\.
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Lambda#code-examples)\. 
+  
+
+```
+namespace LambdaActions;
+
+using Amazon.Lambda;
+
+public class HelloLambda
+{
+    static async Task Main(string[] args)
+    {
+        var lambdaClient = new AmazonLambdaClient();
+
+        Console.WriteLine("Hello AWS Lambda");
+        Console.WriteLine("Let's get started with AWS Lambda by listing your existing Lambda functions:");
+
+        var response = await lambdaClient.ListFunctionsAsync();
+        response.Functions.ForEach(function =>
+        {
+            Console.WriteLine($"{function.FunctionName}\t{function.Description}");
+        });
+    }
+}
+```
++  For API details, see [ListFunctions](https://docs.aws.amazon.com/goto/DotNetSDKV3/lambda-2015-03-31/ListFunctions) in *AWS SDK for \.NET API Reference*\. 
+
 **Topics**
 + [Actions](#actions)
 + [Scenarios](#scenarios)
@@ -23,46 +57,48 @@ The following code example shows how to create a Lambda function\.
   
 
 ```
-        /// <summary>
-        /// Creates a new Lambda function.
-        /// </summary>
-        /// <param name="client">The initialized Lambda client object.</param>
-        /// <param name="functionName">The name of the function.</param>
-        /// <param name="s3Bucket">The S3 bucket where the zip file containing
-        /// the code is located.</param>
-        /// <param name="s3Key">The Amazon S3 key of the zip file.</param>
-        /// <param name="role">A role with the appropriate Lambda
-        /// permissions.</param>
-        /// <param name="handler">The name of the handler function.</param>
-        /// <returns>The Amazon Resource Name (ARN) of the newly created
-        /// Lambda function.</returns>
-        public async Task<string> CreateLambdaFunction(
-            AmazonLambdaClient client,
-            string functionName,
-            string s3Bucket,
-            string s3Key,
-            string role,
-            string handler)
+    /// <summary>
+    /// Creates a new Lambda function.
+    /// </summary>
+    /// <param name="functionName">The name of the function.</param>
+    /// <param name="s3Bucket">The Amazon Simple Storage Service (Amazon S3)
+    /// bucket where the zip file containing the code is located.</param>
+    /// <param name="s3Key">The Amazon S3 key of the zip file.</param>
+    /// <param name="role">The Amazon Resource Name (ARN) of a role with the
+    /// appropriate Lambda permissions.</param>
+    /// <param name="handler">The name of the handler function.</param>
+    /// <returns>The Amazon Resource Name (ARN) of the newly created
+    /// Lambda function.</returns>
+    public async Task<string> CreateLambdaFunctionAsync(
+        string functionName,
+        string s3Bucket,
+        string s3Key,
+        string role,
+        string handler)
+    {
+        // Defines the location for the function code.
+        // S3Bucket - The S3 bucket where the file containing
+        //            the source code is stored.
+        // S3Key    - The name of the file containing the code.
+        var functionCode = new FunctionCode
         {
-            var functionCode = new FunctionCode
-            {
-                S3Bucket = s3Bucket,
-                S3Key = s3Key,
-            };
+            S3Bucket = s3Bucket,
+            S3Key = s3Key,
+        };
 
-            var createFunctionRequest = new CreateFunctionRequest
-            {
-                FunctionName = functionName,
-                Description = "Created by the Lambda .NET API",
-                Code = functionCode,
-                Handler = handler,
-                Runtime = Runtime.Dotnet6,
-                Role = role,
-            };
+        var createFunctionRequest = new CreateFunctionRequest
+        {
+            FunctionName = functionName,
+            Description = "Created by the Lambda .NET API",
+            Code = functionCode,
+            Handler = handler,
+            Runtime = Runtime.Dotnet6,
+            Role = role,
+        };
 
-            var reponse = await client.CreateFunctionAsync(createFunctionRequest);
-            return reponse.FunctionArn;
-        }
+        var reponse = await _lambdaService.CreateFunctionAsync(createFunctionRequest);
+        return reponse.FunctionArn;
+    }
 ```
 +  For API details, see [CreateFunction](https://docs.aws.amazon.com/goto/DotNetSDKV3/lambda-2015-03-31/CreateFunction) in *AWS SDK for \.NET API Reference*\. 
 
@@ -75,28 +111,26 @@ The following code example shows how to delete a Lambda function\.
   
 
 ```
-        /// <summary>
-        /// Deletes an AWS Lambda function.
-        /// </summary>
-        /// <param name="client">An initialized Lambda client object.</param>
-        /// <param name="functionName">The name of the Lambda function to
-        /// delete.</param>
-        /// <returns>A Boolean value that indicates where the function was
-        /// successfully deleted.</returns>
-        public async Task<bool> DeleteLambdaFunction(AmazonLambdaClient client, string functionName)
+    /// <summary>
+    /// Delete an AWS Lambda function.
+    /// </summary>
+    /// <param name="functionName">The name of the Lambda function to
+    /// delete.</param>
+    /// <returns>A Boolean value that indicates the success of the action.</returns>
+    public async Task<bool> DeleteFunctionAsync(string functionName)
+    {
+        var request = new DeleteFunctionRequest
         {
-            var request = new DeleteFunctionRequest
-            {
-                FunctionName = functionName,
-            };
+            FunctionName = functionName,
+        };
 
-            var response = await client.DeleteFunctionAsync(request);
+        var response = await _lambdaService.DeleteFunctionAsync(request);
 
-            // A return value of NoContent means that the request was processed
-            // (in this case, the function was deleted, and the return value
-            // is intentionally blank.
-            return response.HttpStatusCode == System.Net.HttpStatusCode.NoContent;
-        }
+        // A return value of NoContent means that the request was processed.
+        // In this case, the function was deleted, and the return value
+        // is intentionally blank.
+        return response.HttpStatusCode == System.Net.HttpStatusCode.NoContent;
+    }
 ```
 +  For API details, see [DeleteFunction](https://docs.aws.amazon.com/goto/DotNetSDKV3/lambda-2015-03-31/DeleteFunction) in *AWS SDK for \.NET API Reference*\. 
 
@@ -109,23 +143,22 @@ The following code example shows how to get a Lambda function\.
   
 
 ```
-        /// <summary>
-        /// Gets information about a Lambda function.
-        /// </summary>
-        /// <param name="client">The initialized Lambda client object.</param>
-        /// <param name="functionName">The name of the Lambda function for
-        /// which to retrieve information.</param>
-        /// <returns>A System Threading Task.</returns>
-        public async Task<FunctionConfiguration> GetFunction(AmazonLambdaClient client, string functionName)
+    /// <summary>
+    /// Gets information about a Lambda function.
+    /// </summary>
+    /// <param name="functionName">The name of the Lambda function for
+    /// which to retrieve information.</param>
+    /// <returns>Async Task.</returns>
+    public async Task<FunctionConfiguration> GetFunctionAsync(string functionName)
+    {
+        var functionRequest = new GetFunctionRequest
         {
-            var functionRequest = new GetFunctionRequest
-            {
-                FunctionName = functionName,
-            };
+            FunctionName = functionName,
+        };
 
-            var response = await client.GetFunctionAsync(functionRequest);
-            return response.Configuration;
-        }
+        var response = await _lambdaService.GetFunctionAsync(functionRequest);
+        return response.Configuration;
+    }
 ```
 +  For API details, see [GetFunction](https://docs.aws.amazon.com/goto/DotNetSDKV3/lambda-2015-03-31/GetFunction) in *AWS SDK for \.NET API Reference*\. 
 
@@ -138,63 +171,29 @@ The following code example shows how to invoke a Lambda function\.
   
 
 ```
-    using System.Threading.Tasks;
-    using Amazon.Lambda;
-    using Amazon.Lambda.Model;
-
     /// <summary>
-    /// Shows how to invoke an existing Amazon Lambda Function from a C#
-    /// application. The example was created using the AWS SDK for .NET and
-    /// .NET Core 5.0.
+    /// Invoke a Lambda function.
     /// </summary>
-    public class InvokeFunction
+    /// <param name="functionName">The name of the Lambda function to
+    /// invoke.</param
+    /// <param name="parameters">The parameter values that will be passed to the function.</param>
+    /// <returns>A System Threading Task.</returns>
+    public async Task<string> InvokeFunctionAsync(
+        string functionName,
+        string parameters)
     {
-        /// <summary>
-        /// Initializes the Lambda client and then invokes the Lambda Function
-        /// called "CreateDDBTable" with the parameter "\"DDBWorkTable\"" to
-        /// create the table called DDBWorkTable.
-        /// </summary>
-        public static async Task Main()
+        var payload = parameters;
+        var request = new InvokeRequest
         {
-            IAmazonLambda client = new AmazonLambdaClient();
-            string functionName = "CreateDDBTable";
-            string invokeArgs = "\"DDBWorkTable\"";
+            FunctionName = functionName,
+            Payload = payload,
+        };
 
-            var response = await client.InvokeAsync(
-                new InvokeRequest
-                {
-                    FunctionName = functionName,
-                    Payload = invokeArgs,
-                    InvocationType = "Event",
-                });
-        }
+        var response = await _lambdaService.InvokeAsync(request);
+        MemoryStream stream = response.Payload;
+        string returnValue = System.Text.Encoding.UTF8.GetString(stream.ToArray());
+        return returnValue;
     }
-
-
-        /// <summary>
-        /// Invokes a Lambda function.
-        /// </summary>
-        /// <param name="client">An initialized Lambda client object.</param>
-        /// <param name="functionName">The name of the Lambda function to
-        /// invoke.</param>
-        /// <returns>A System Threading Task.</returns>
-        public async Task<string> InvokeFunctionAsync(
-            AmazonLambdaClient client,
-            string functionName,
-            string parameters)
-        {
-            var payload = parameters;
-            var request = new InvokeRequest
-            {
-                FunctionName = functionName,
-                Payload = payload,
-            };
-
-            var response = await client.InvokeAsync(request);
-            MemoryStream stream = response.Payload;
-            string returnValue = System.Text.Encoding.UTF8.GetString(stream.ToArray());
-            return returnValue;
-        }
 ```
 +  For API details, see [Invoke](https://docs.aws.amazon.com/goto/DotNetSDKV3/lambda-2015-03-31/Invoke) in *AWS SDK for \.NET API Reference*\. 
 
@@ -207,142 +206,23 @@ The following code example shows how to list Lambda functions\.
   
 
 ```
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using Amazon;
-    using Amazon.Lambda;
-    using Amazon.Lambda.Model;
-
     /// <summary>
-    /// This example shows two ways to list the AWS Lambda functions you have
-    /// created for your account. It will only list the functions within one
-    /// AWS Region at a time, however, so you need to pass the AWS Region you
-    /// are interested in to the Lambda client object constructor. This example
-    /// was created with the AWS SDK for .NET version 3.7 and .NET Core 5.0.
+    /// Get a list of Lambda functions.
     /// </summary>
-    public class ListFunctions
+    /// <returns>A list of FunctionConfiguration objects.</returns>
+    public async Task<List<FunctionConfiguration>> ListFunctionsAsync()
     {
-        public static async Task Main()
+        var functionList = new List<FunctionConfiguration>();
+
+        var functionPaginator =
+            _lambdaService.Paginators.ListFunctions(new ListFunctionsRequest());
+        await foreach (var function in functionPaginator.Functions)
         {
-            // If the AWS Region you are interested in listing is the same as
-            // the AWS Region defined for the default user, you don't have to
-            // supply the RegionEndpoint constant to the constructor.
-            IAmazonLambda client = new AmazonLambdaClient(RegionEndpoint.USEast2);
-
-            // First use the ListFunctionsAsync method.
-            var functions1 = await ListFunctionsAsync(client);
-
-            DisplayFunctionList(functions1);
-
-            // Get the list again useing a Lambda client paginator.
-            var functions2 = await ListFunctionsPaginatorAsync(client);
-
-            DisplayFunctionList(functions2);
+            functionList.Add(function);
         }
 
-        /// <summary>
-        /// Calls the asynchronous ListFunctionsAsync method of the Lambda
-        /// client to retrieve the list of functions in the AWS Region with
-        /// which the Lambda client was initialized.
-        /// </summary>
-        /// <param name="client">The initialized Lambda client which will be
-        /// used to retrieve the list of Lambda functions.</param>
-        /// <returns>A list of Lambda functions configuration information.</returns>
-        public static async Task<List<FunctionConfiguration>> ListFunctionsAsync(IAmazonLambda client)
-        {
-            // Get the list of functions. The response will have a property
-            // called Functions, a list of information about the Lambda
-            // functions defined on your account in the specified Region.
-            var response = await client.ListFunctionsAsync();
-
-            return response.Functions;
-        }
-
-
-        /// <summary>
-        /// Uses a Lambda paginator to retrieve the list of functions in the
-        /// AWS Region with which the Lambda client was initialized.
-        /// </summary>
-        /// <param name="client">The initialized Lambda client which will be
-        /// used to retrieve the list of Lambda functions.</param>
-        /// <returns>A list of Lambda functions configuration information.</returns>
-        public static async Task<List<FunctionConfiguration>> ListFunctionsPaginatorAsync(IAmazonLambda client)
-        {
-            Console.WriteLine("\nNow let's show the list using a paginator.\n");
-
-            // Get the list of functions using a paginator.
-            var paginator = client.Paginators.ListFunctions(new ListFunctionsRequest());
-
-            // Defined return a list of function information to the caller
-            // for display using the DisplayFunctionList method.
-            var functions = new List<FunctionConfiguration>();
-
-            await foreach (var resp in paginator.Responses)
-            {
-                resp.Functions
-                    .ForEach(f => functions.Add(f));
-            }
-
-            return functions;
-        }
-
-
-        /// <summary>
-        /// Displays the details of each function in the list of functions
-        /// passed to the method.
-        /// </summary>
-        /// <param name="functions">A list of FunctionConfiguration objects.</param>
-        public static void DisplayFunctionList(List<FunctionConfiguration> functions)
-        {
-            // Display a list of the Lambda functions on the console.
-            functions
-                .ForEach(f => Console.WriteLine($"{f.FunctionName}\t{f.Handler}"));
-        }
+        return functionList;
     }
-
-
-        /// <summary>
-        /// Gets a list of Lambda functions.
-        /// </summary>
-        /// <param name="client">The initialized Lambda client object.</param>
-        /// <returns>A list of FunctionConfiguration objects.</returns>
-        public async Task<List<FunctionConfiguration>> ListFunctions(AmazonLambdaClient client)
-        {
-            var reponse = await client.ListFunctionsAsync();
-            var functionList = reponse.Functions;
-            return functionList;
-        }
-```
-List functions using a paginator\.  
-
-```
-        /// <summary>
-        /// Uses a Lambda paginator to retrieve the list of functions in the
-        /// AWS Region with which the Lambda client was initialized.
-        /// </summary>
-        /// <param name="client">The initialized Lambda client which will be
-        /// used to retrieve the list of Lambda functions.</param>
-        /// <returns>A list of Lambda functions configuration information.</returns>
-        public static async Task<List<FunctionConfiguration>> ListFunctionsPaginatorAsync(IAmazonLambda client)
-        {
-            Console.WriteLine("\nNow let's show the list using a paginator.\n");
-
-            // Get the list of functions using a paginator.
-            var paginator = client.Paginators.ListFunctions(new ListFunctionsRequest());
-
-            // Defined return a list of function information to the caller
-            // for display using the DisplayFunctionList method.
-            var functions = new List<FunctionConfiguration>();
-
-            await foreach (var resp in paginator.Responses)
-            {
-                resp.Functions
-                    .ForEach(f => functions.Add(f));
-            }
-
-            return functions;
-        }
 ```
 +  For API details, see [ListFunctions](https://docs.aws.amazon.com/goto/DotNetSDKV3/lambda-2015-03-31/ListFunctions) in *AWS SDK for \.NET API Reference*\. 
 
@@ -355,32 +235,30 @@ The following code example shows how to update Lambda function code\.
   
 
 ```
-        /// <summary>
-        /// Updates an existing Lambda function.
-        /// </summary>
-        /// <param name="client">An initialized Lambda client object.</param>
-        /// <param name="functionName">The name of the Lambda function to update.</param>
-        /// <param name="bucketName">The bucket where the zip file containing
-        /// the Lambda function code is stored.</param>
-        /// <param name="key">The key name of the source code file.</param>
-        /// <returns>A System Threading Task.</returns>
-        public async Task UpdateFunctionCode(
-            AmazonLambdaClient client,
-            string functionName,
-            string bucketName,
-            string key)
+    /// <summary>
+    /// Update an existing Lambda function.
+    /// </summary>
+    /// <param name="functionName">The name of the Lambda function to update.</param>
+    /// <param name="bucketName">The bucket where the zip file containing
+    /// the Lambda function code is stored.</param>
+    /// <param name="key">The key name of the source code file.</param>
+    /// <returns>Async Task.</returns>
+    public async Task UpdateFunctionCodeAsync(
+        string functionName,
+        string bucketName,
+        string key)
+    {
+        var functionCodeRequest = new UpdateFunctionCodeRequest
         {
-            var functionCodeRequest = new UpdateFunctionCodeRequest
-            {
-                FunctionName = functionName,
-                Publish = true,
-                S3Bucket = bucketName,
-                S3Key = key,
-            };
+            FunctionName = functionName,
+            Publish = true,
+            S3Bucket = bucketName,
+            S3Key = key,
+        };
 
-            var response = await client.UpdateFunctionCodeAsync(functionCodeRequest);
-            Console.WriteLine($"The Function was last modified at {response.LastModified}.");
-        }
+        var response = await _lambdaService.UpdateFunctionCodeAsync(functionCodeRequest);
+        Console.WriteLine($"The Function was last modified at {response.LastModified}.");
+    }
 ```
 +  For API details, see [UpdateFunctionCode](https://docs.aws.amazon.com/goto/DotNetSDKV3/lambda-2015-03-31/UpdateFunctionCode) in *AWS SDK for \.NET API Reference*\. 
 
@@ -393,25 +271,31 @@ The following code example shows how to update Lambda function configuration\.
   
 
 ```
-        public async Task<bool> UpdateFunctionConfigurationAsync(
-            AmazonLambdaClient client,
-            string functionName,
-            string functionHandler,
-            Dictionary<string, string> environmentVariables)
+    /// <summary>
+    /// Update the code of a Lambda function.
+    /// </summary>
+    /// <param name="functionName">The name of the function to update.</param>
+    /// <param name="functionHandler">The code that performs the function's actions.</param>
+    /// <param name="environmentVariables">A dictionary of environment variables.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> UpdateFunctionConfigurationAsync(
+        string functionName,
+        string functionHandler,
+        Dictionary<string, string> environmentVariables)
+    {
+        var request = new UpdateFunctionConfigurationRequest
         {
-            var request = new UpdateFunctionConfigurationRequest
-            {
-                Handler = functionHandler,
-                FunctionName = functionName,
-                Environment = new Amazon.Lambda.Model.Environment { Variables = environmentVariables },
-            };
+            Handler = functionHandler,
+            FunctionName = functionName,
+            Environment = new Amazon.Lambda.Model.Environment { Variables = environmentVariables },
+        };
 
-            var response = await client.UpdateFunctionConfigurationAsync(request);
+        var response = await _lambdaService.UpdateFunctionConfigurationAsync(request);
 
-            Console.WriteLine(response.LastModified);
+        Console.WriteLine(response.LastModified);
 
-            return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
-        }
+        return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+    }
 ```
 +  For API details, see [UpdateFunctionConfiguration](https://docs.aws.amazon.com/goto/DotNetSDKV3/lambda-2015-03-31/UpdateFunctionConfiguration) in *AWS SDK for \.NET API Reference*\. 
 
@@ -420,284 +304,652 @@ The following code example shows how to update Lambda function configuration\.
 ### Get started with functions<a name="lambda_Scenario_GettingStartedFunctions_csharp_topic"></a>
 
 The following code example shows how to:
-+ Create an AWS Identity and Access Management \(IAM\) role that grants Lambda permission to write to logs\.
-+ Create a Lambda function and upload handler code\.
++ Create an IAM role and Lambda function, then upload handler code\.
 + Invoke the function with a single parameter and get results\.
-+ Update the function code and configure its Lambda environment with an environment variable\.
-+ Invoke the function with new parameters and get results\. Display the execution log that's returned from the invocation\.
-+ List the functions for your account\.
-+ Delete the IAM role and the Lambda function\.
++ Update the function code and configure with an environment variable\.
++ Invoke the function with new parameters and get results\. Display the returned execution log\.
++ List the functions for your account, then clean up resources\.
 
 For more information, see [Create a Lambda function with the console](https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html)\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Lambda#code-examples)\. 
-  
+Create methods that perform Lambda actions\.  
 
 ```
-global using Amazon;
-global using Amazon.Lambda;
-global using Amazon.Lambda.Model;
-global using Amazon.IdentityManagement;
-global using Amazon.IdentityManagement.Model;
-global using Lambda_Basics;
-global using Microsoft.Extensions.Configuration;
+namespace LambdaActions;
 
+using Amazon.Lambda;
+using Amazon.Lambda.Model;
 
-// The following variables will be loaded from a configuration file:
-//
-//   functionName - The name of the Lambda function.
-//   roleName - The IAM service role that has Lambda permissions.
-//   handler - The fully qualified method name (for example,
-//       example.Handler::handleRequest).
-//   bucketName - The Amazon Simple Storage Service (Amazon S3) bucket name
-//       that contains the .zip or .jar used to update the Lambda function's code.
-//   key - The Amazon S3 key name that represents the .zip or .jar (for
-//       example, LambdaHello-1.0-SNAPSHOT.jar).
-//   keyUpdate - The Amazon S3 key name that represents the updated .zip (for
-//      example, "updated-function.zip").
-
-var configuration = new ConfigurationBuilder()
-    .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("settings.json") // Load test settings from JSON file.
-    .AddJsonFile("settings.local.json",
-    true) // Optionally load local settings.
-.Build();
-
-string functionName = configuration["FunctionName"];
-string roleName = configuration["RoleName"];
-string policyDocument = "{" +
-    " \"Version\": \"2012-10-17\"," +
-    " \"Statement\": [ " +
-    "    {" +
-    "        \"Effect\": \"Allow\"," +
-    "        \"Principal\": {" +
-    "            \"Service\": \"lambda.amazonaws.com\" " +
-    "    }," +
-    "        \"Action\": \"sts:AssumeRole\" " +
-    "    }" +
-    "]" +
-"}";
-
-var incrementHandler = configuration["IncrementHandler"];
-var calculatorHandler = configuration["CalculatorHandler"];
-var bucketName = configuration["BucketName"];
-var key = configuration["Key"];
-var updateKey = configuration["UpdateKey"];
-
-string sepBar = new('-', 80);
-
-var lambdaClient = new AmazonLambdaClient();
-var lambdaMethods = new LambdaMethods();
-var lambdaRoleMethods = new LambdaRoleMethods();
-
-ShowOverview();
-
-// Create the policy to use with the Lambda functions and then attach the
-// policy to a new role.
-var roleArn = await lambdaRoleMethods.CreateLambdaRole(roleName, policyDocument);
-
-Console.WriteLine("Waiting for role to become active.");
-System.Threading.Thread.Sleep(10000);
-
-// Create the Lambda function using a zip file stored in an S3 bucket.
-Console.WriteLine(sepBar);
-Console.WriteLine($"Creating the AWS Lambda function: {functionName}.");
-var lambdaArn = await lambdaMethods.CreateLambdaFunction(
-    lambdaClient,
-    functionName,
-    bucketName,
-    key,
-    roleArn,
-    incrementHandler);
-
-Console.WriteLine(sepBar);
-Console.WriteLine($"The AWS Lambda ARN is {lambdaArn}");
-
-// Get the Lambda function.
-Console.WriteLine($"Getting the {functionName} AWS Lambda function.");
-FunctionConfiguration config;
-do
+/// <summary>
+/// A class that implements AWS Lambda methods.
+/// </summary>
+public class LambdaWrapper
 {
-    config = await lambdaMethods.GetFunction(lambdaClient, functionName);
-    Console.Write(".");
-}
-while (config.State != State.Active);
+    private readonly IAmazonLambda _lambdaService;
 
-Console.WriteLine($"\nThe function, {functionName} has been created.");
-Console.WriteLine($"The runtime of this Lambda function is {config.Runtime}.");
-
-PressEnter();
-
-// List the Lambda functions.
-Console.WriteLine(sepBar);
-Console.WriteLine("Listing all Lambda functions.");
-var functions = await lambdaMethods.ListFunctions(lambdaClient);
-DisplayFunctionList(functions);
-Console.WriteLine(sepBar);
-
-Console.WriteLine(sepBar);
-Console.WriteLine("Invoke the Lambda increment function.");
-string? value;
-do
-{
-    Console.Write("Enter a value to increment: ");
-    value = Console.ReadLine();
-}
-while (value == string.Empty);
-
-string functionParameters = "{" +
-    "\"action\": \"increment\", " +
-    "\"x\": \"" + value + "\"" +
-"}";
-var answer = await lambdaMethods.InvokeFunctionAsync(lambdaClient, functionName, functionParameters);
-Console.WriteLine($"{value} + 1 = {answer}.");
-
-Console.WriteLine(sepBar);
-Console.WriteLine("Now update the Lambda function code.");
-await lambdaMethods.UpdateFunctionCode(lambdaClient, functionName, bucketName, updateKey);
-
-do
-{
-    config = await lambdaMethods.GetFunction(lambdaClient, functionName);
-    Console.Write(".");
-}
-while (config.LastUpdateStatus == LastUpdateStatus.InProgress);
-
-await lambdaMethods.UpdateFunctionConfigurationAsync(
-    lambdaClient,
-    functionName,
-    configuration["CalculatorHandler"],
-    new Dictionary<string, string> { { "LOG_LEVEL", "DEBUG" } });
-
-do
-{
-    config = await lambdaMethods.GetFunction(lambdaClient, functionName);
-    Console.Write(".");
-}
-while (config.LastUpdateStatus == LastUpdateStatus.InProgress);
-
-Console.WriteLine();
-Console.WriteLine(sepBar);
-Console.WriteLine("Now call the updated function...");
-
-// Get two numbers and an action from the user.
-value = string.Empty;
-do
-{
-    Console.Write("Enter the first value: ");
-    value = Console.ReadLine();
-}
-while (value == string.Empty);
-
-string? value2;
-do
-{
-    Console.Write("Enter a second value: ");
-    value2 = Console.ReadLine();
-}
-while (value2 == string.Empty);
-
-string? opSelected;
-
-Console.WriteLine("Select the operation to perform:");
-Console.WriteLine("\t1. add");
-Console.WriteLine("\t2. subtract");
-Console.WriteLine("\t3. multiply");
-Console.WriteLine("\t4. divide");
-Console.WriteLine("Enter the number (1, 2, 3, or 4) of the operation you want to perform: ");
-do
-{
-    Console.Write("Your choice? ");
-    opSelected = Console.ReadLine();
-}
-while (opSelected == string.Empty);
-
-var operation = (opSelected) switch
-{
-    "1" => "add",
-    "2" => "subtract",
-    "3" => "multiply",
-    "4" => "divide",
-    _ => "add",
-};
-
-functionParameters = "{" +
-    "\"action\": \"" + operation + "\", " +
-    "\"x\": \"" + value + "\"," +
-    "\"y\": \"" + value2 + "\"" +
-"}";
-
-answer = await lambdaMethods.InvokeFunctionAsync(lambdaClient, functionName, functionParameters);
-Console.WriteLine($"The answer when we {operation} the two numbers is: {answer}.");
-
-PressEnter();
-
-// Delete the function created earlier.
-Console.WriteLine(sepBar);
-Console.WriteLine("Delete the AWS Lambda function.");
-var success = await lambdaMethods.DeleteLambdaFunction(lambdaClient, functionName);
-if (success)
-{
-    Console.WriteLine($"The {functionName} function was deleted.");
-}
-else
-{
-    Console.WriteLine($"Could not remove the function {functionName}");
-}
-
-// Now delete the IAM role created for use with the functions
-// created by the application.
-success = await lambdaRoleMethods.DeleteLambdaRole(roleName);
-if (success)
-{
-    Console.WriteLine("The role has been successfully removed.");
-}
-else
-{
-    Console.WriteLine("Couldn't delete the role.");
-}
-
-Console.WriteLine("The Lambda Scenario is now complete.");
-PressEnter();
-
-// Displays a formatted list of existing functions returned by the
-// LambdaMethods.ListFunctions.
-void DisplayFunctionList(List<FunctionConfiguration> functions)
-{
-    functions.ForEach(functionConfig =>
+    /// <summary>
+    /// Constructor for the LambdaWrapper class.
+    /// </summary>
+    /// <param name="lambdaService">An initialized Lambda service client.</param>
+    public LambdaWrapper(IAmazonLambda lambdaService)
     {
-        Console.WriteLine($"{functionConfig.FunctionName}\t{functionConfig.Description}");
-    });
+        _lambdaService = lambdaService;
+    }
+
+    /// <summary>
+    /// Creates a new Lambda function.
+    /// </summary>
+    /// <param name="functionName">The name of the function.</param>
+    /// <param name="s3Bucket">The Amazon Simple Storage Service (Amazon S3)
+    /// bucket where the zip file containing the code is located.</param>
+    /// <param name="s3Key">The Amazon S3 key of the zip file.</param>
+    /// <param name="role">The Amazon Resource Name (ARN) of a role with the
+    /// appropriate Lambda permissions.</param>
+    /// <param name="handler">The name of the handler function.</param>
+    /// <returns>The Amazon Resource Name (ARN) of the newly created
+    /// Lambda function.</returns>
+    public async Task<string> CreateLambdaFunctionAsync(
+        string functionName,
+        string s3Bucket,
+        string s3Key,
+        string role,
+        string handler)
+    {
+        // Defines the location for the function code.
+        // S3Bucket - The S3 bucket where the file containing
+        //            the source code is stored.
+        // S3Key    - The name of the file containing the code.
+        var functionCode = new FunctionCode
+        {
+            S3Bucket = s3Bucket,
+            S3Key = s3Key,
+        };
+
+        var createFunctionRequest = new CreateFunctionRequest
+        {
+            FunctionName = functionName,
+            Description = "Created by the Lambda .NET API",
+            Code = functionCode,
+            Handler = handler,
+            Runtime = Runtime.Dotnet6,
+            Role = role,
+        };
+
+        var reponse = await _lambdaService.CreateFunctionAsync(createFunctionRequest);
+        return reponse.FunctionArn;
+    }
+
+
+    /// <summary>
+    /// Delete an AWS Lambda function.
+    /// </summary>
+    /// <param name="functionName">The name of the Lambda function to
+    /// delete.</param>
+    /// <returns>A Boolean value that indicates the success of the action.</returns>
+    public async Task<bool> DeleteFunctionAsync(string functionName)
+    {
+        var request = new DeleteFunctionRequest
+        {
+            FunctionName = functionName,
+        };
+
+        var response = await _lambdaService.DeleteFunctionAsync(request);
+
+        // A return value of NoContent means that the request was processed.
+        // In this case, the function was deleted, and the return value
+        // is intentionally blank.
+        return response.HttpStatusCode == System.Net.HttpStatusCode.NoContent;
+    }
+
+
+    /// <summary>
+    /// Gets information about a Lambda function.
+    /// </summary>
+    /// <param name="functionName">The name of the Lambda function for
+    /// which to retrieve information.</param>
+    /// <returns>Async Task.</returns>
+    public async Task<FunctionConfiguration> GetFunctionAsync(string functionName)
+    {
+        var functionRequest = new GetFunctionRequest
+        {
+            FunctionName = functionName,
+        };
+
+        var response = await _lambdaService.GetFunctionAsync(functionRequest);
+        return response.Configuration;
+    }
+
+
+    /// <summary>
+    /// Invoke a Lambda function.
+    /// </summary>
+    /// <param name="functionName">The name of the Lambda function to
+    /// invoke.</param
+    /// <param name="parameters">The parameter values that will be passed to the function.</param>
+    /// <returns>A System Threading Task.</returns>
+    public async Task<string> InvokeFunctionAsync(
+        string functionName,
+        string parameters)
+    {
+        var payload = parameters;
+        var request = new InvokeRequest
+        {
+            FunctionName = functionName,
+            Payload = payload,
+        };
+
+        var response = await _lambdaService.InvokeAsync(request);
+        MemoryStream stream = response.Payload;
+        string returnValue = System.Text.Encoding.UTF8.GetString(stream.ToArray());
+        return returnValue;
+    }
+
+
+    /// <summary>
+    /// Get a list of Lambda functions.
+    /// </summary>
+    /// <returns>A list of FunctionConfiguration objects.</returns>
+    public async Task<List<FunctionConfiguration>> ListFunctionsAsync()
+    {
+        var functionList = new List<FunctionConfiguration>();
+
+        var functionPaginator =
+            _lambdaService.Paginators.ListFunctions(new ListFunctionsRequest());
+        await foreach (var function in functionPaginator.Functions)
+        {
+            functionList.Add(function);
+        }
+
+        return functionList;
+    }
+
+
+    /// <summary>
+    /// Update an existing Lambda function.
+    /// </summary>
+    /// <param name="functionName">The name of the Lambda function to update.</param>
+    /// <param name="bucketName">The bucket where the zip file containing
+    /// the Lambda function code is stored.</param>
+    /// <param name="key">The key name of the source code file.</param>
+    /// <returns>Async Task.</returns>
+    public async Task UpdateFunctionCodeAsync(
+        string functionName,
+        string bucketName,
+        string key)
+    {
+        var functionCodeRequest = new UpdateFunctionCodeRequest
+        {
+            FunctionName = functionName,
+            Publish = true,
+            S3Bucket = bucketName,
+            S3Key = key,
+        };
+
+        var response = await _lambdaService.UpdateFunctionCodeAsync(functionCodeRequest);
+        Console.WriteLine($"The Function was last modified at {response.LastModified}.");
+    }
+
+
+    /// <summary>
+    /// Update the code of a Lambda function.
+    /// </summary>
+    /// <param name="functionName">The name of the function to update.</param>
+    /// <param name="functionHandler">The code that performs the function's actions.</param>
+    /// <param name="environmentVariables">A dictionary of environment variables.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> UpdateFunctionConfigurationAsync(
+        string functionName,
+        string functionHandler,
+        Dictionary<string, string> environmentVariables)
+    {
+        var request = new UpdateFunctionConfigurationRequest
+        {
+            Handler = functionHandler,
+            FunctionName = functionName,
+            Environment = new Amazon.Lambda.Model.Environment { Variables = environmentVariables },
+        };
+
+        var response = await _lambdaService.UpdateFunctionConfigurationAsync(request);
+
+        Console.WriteLine(response.LastModified);
+
+        return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+    }
+
+
+}
+```
+Create a function that runs the scenario\.  
+
+```
+global using LambdaActions;
+global using LambdaScenarioCommon;
+global using Amazon.Lambda;
+global using Amazon.IdentityManagement;
+global using System.Threading.Tasks;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Microsoft.Extensions.Logging;
+global using Microsoft.Extensions.Logging.Console;
+global using Microsoft.Extensions.Logging.Debug;
+
+
+using Amazon.IdentityManagement;
+using Amazon.Lambda.Model;
+using Microsoft.Extensions.Configuration;
+
+namespace LambdaBasics;
+
+public class LambdaBasics
+{
+    private static ILogger logger = null!;
+
+    static async Task Main(string[] args)
+    {
+        // Set up dependency injection for the Amazon service.
+        using var host = Host.CreateDefaultBuilder(args)
+            .ConfigureLogging(logging =>
+                logging.AddFilter("System", LogLevel.Debug)
+                    .AddFilter<DebugLoggerProvider>("Microsoft", LogLevel.Information)
+                    .AddFilter<ConsoleLoggerProvider>("Microsoft", LogLevel.Trace))
+            .ConfigureServices((_, services) =>
+            services.AddAWSService<IAmazonLambda>()
+            .AddAWSService<IAmazonIdentityManagementService>()
+            .AddTransient<LambdaWrapper>()
+            .AddTransient<LambdaRoleWrapper>()
+            .AddTransient<UIWrapper>()
+        )
+        .Build();
+
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("settings.json") // Load test settings from .json file.
+            .AddJsonFile("settings.local.json",
+            true) // Optionally load local settings.
+        .Build();
+
+
+        logger = LoggerFactory.Create(builder => { builder.AddConsole(); })
+            .CreateLogger<LambdaBasics>();
+
+        var lambdaWrapper = host.Services.GetRequiredService<LambdaWrapper>();
+        var lambdaRoleWrapper = host.Services.GetRequiredService<LambdaRoleWrapper>();
+        var uiWrapper = host.Services.GetRequiredService<UIWrapper>();
+
+        string functionName = configuration["FunctionName"];
+        string roleName = configuration["RoleName"];
+        string policyDocument = "{" +
+            " \"Version\": \"2012-10-17\"," +
+            " \"Statement\": [ " +
+            "    {" +
+            "        \"Effect\": \"Allow\"," +
+            "        \"Principal\": {" +
+            "            \"Service\": \"lambda.amazonaws.com\" " +
+            "    }," +
+            "        \"Action\": \"sts:AssumeRole\" " +
+            "    }" +
+            "]" +
+        "}";
+
+        var incrementHandler = configuration["IncrementHandler"];
+        var calculatorHandler = configuration["CalculatorHandler"];
+        var bucketName = configuration["BucketName"];
+        var incrementKey = configuration["IncrementKey"];
+        var calculatorKey = configuration["CalculatorKey"];
+        var policyArn = configuration["PolicyArn"];
+
+        uiWrapper.DisplayLambdaBasicsOverview();
+
+        // Create the policy to use with the AWS Lambda functions and then attach the
+        // policy to a new role.
+        var roleArn = await lambdaRoleWrapper.CreateLambdaRoleAsync(roleName, policyDocument);
+
+        Console.WriteLine("Waiting for role to become active.");
+        uiWrapper.WaitABit(15, "Wait until the role is active before trying to use it.");
+
+        // Attach the appropriate AWS Identity and Access Management (IAM) role policy to the new role.
+        var success = await lambdaRoleWrapper.AttachLambdaRolePolicyAsync(policyArn, roleName);
+        uiWrapper.WaitABit(10, "Allow time for the IAM policy to be attached to the role.");
+
+        // Create the Lambda function using a zip file stored in an Amazon Simple Storage Service
+        // (Amazon S3) bucket.
+        uiWrapper.DisplayTitle("Create Lambda Function");
+        Console.WriteLine($"Creating the AWS Lambda function: {functionName}.");
+        var lambdaArn = await lambdaWrapper.CreateLambdaFunctionAsync(
+            functionName,
+            bucketName,
+            incrementKey,
+            roleArn,
+            incrementHandler);
+
+        Console.WriteLine("Waiting for the new function to be available.");
+        Console.WriteLine($"The AWS Lambda ARN is {lambdaArn}");
+
+        // Get the Lambda function.
+        Console.WriteLine($"Getting the {functionName} AWS Lambda function.");
+        FunctionConfiguration config;
+        do
+        {
+            config = await lambdaWrapper.GetFunctionAsync(functionName);
+            Console.Write(".");
+        }
+        while (config.State != State.Active);
+
+        Console.WriteLine($"\nThe function, {functionName} has been created.");
+        Console.WriteLine($"The runtime of this Lambda function is {config.Runtime}.");
+
+        uiWrapper.PressEnter();
+
+        // List the Lambda functions.
+        uiWrapper.DisplayTitle("Listing all Lambda functions.");
+        var functions = await lambdaWrapper.ListFunctionsAsync();
+        DisplayFunctionList(functions);
+
+        uiWrapper.DisplayTitle("Invoke increment function");
+        Console.WriteLine("Now that it has been created, invoke the Lambda increment function.");
+        string? value;
+        do
+        {
+            Console.Write("Enter a value to increment: ");
+            value = Console.ReadLine();
+        }
+        while (string.IsNullOrEmpty(value));
+
+        string functionParameters = "{" +
+            "\"action\": \"increment\", " +
+            "\"x\": \"" + value + "\"" +
+        "}";
+        var answer = await lambdaWrapper.InvokeFunctionAsync(functionName, functionParameters);
+        Console.WriteLine($"{value} + 1 = {answer}.");
+
+        uiWrapper.DisplayTitle("Update function");
+        Console.WriteLine("Now update the Lambda function code.");
+        await lambdaWrapper.UpdateFunctionCodeAsync(functionName, bucketName, calculatorKey);
+
+        do
+        {
+            config = await lambdaWrapper.GetFunctionAsync(functionName);
+            Console.Write(".");
+        }
+        while (config.LastUpdateStatus == LastUpdateStatus.InProgress);
+
+        await lambdaWrapper.UpdateFunctionConfigurationAsync(
+            functionName,
+            calculatorHandler,
+            new Dictionary<string, string> { { "LOG_LEVEL", "DEBUG" } });
+
+        do
+        {
+            config = await lambdaWrapper.GetFunctionAsync(functionName);
+            Console.Write(".");
+        }
+        while (config.LastUpdateStatus == LastUpdateStatus.InProgress);
+
+        uiWrapper.DisplayTitle("Call updated function");
+        Console.WriteLine("Now call the updated function...");
+
+        bool done = false;
+
+        do
+        {
+            string? opSelected;
+
+            Console.WriteLine("Select the operation to perform:");
+            Console.WriteLine("\t1. add");
+            Console.WriteLine("\t2. subtract");
+            Console.WriteLine("\t3. multiply");
+            Console.WriteLine("\t4. divide");
+            Console.WriteLine("\tOr enter \"q\" to quit.");
+            Console.WriteLine("Enter the number (1, 2, 3, 4, or q) of the operation you want to perform: ");
+            do
+            {
+                Console.Write("Your choice? ");
+                opSelected = Console.ReadLine();
+            }
+            while (opSelected == string.Empty);
+
+            var operation = (opSelected) switch
+            {
+                "1" => "add",
+                "2" => "subtract",
+                "3" => "multiply",
+                "4" => "divide",
+                "q" => "quit",
+                _ => "add",
+            };
+
+            if (operation == "quit")
+            {
+                done = true;
+            }
+            else
+            {
+                // Get two numbers and an action from the user.
+                value = string.Empty;
+                do
+                {
+                    Console.Write("Enter the first value: ");
+                    value = Console.ReadLine();
+                }
+                while (value == string.Empty);
+
+                string? value2;
+                do
+                {
+                    Console.Write("Enter a second value: ");
+                    value2 = Console.ReadLine();
+                }
+                while (value2 == string.Empty);
+
+                functionParameters = "{" +
+                    "\"action\": \"" + operation + "\", " +
+                    "\"x\": \"" + value + "\"," +
+                    "\"y\": \"" + value2 + "\"" +
+                "}";
+
+                answer = await lambdaWrapper.InvokeFunctionAsync(functionName, functionParameters);
+                Console.WriteLine($"The answer when we {operation} the two numbers is: {answer}.");
+            }
+
+            uiWrapper.PressEnter();
+        } while (!done);
+
+        // Delete the function created earlier.
+
+        uiWrapper.DisplayTitle("Clean up resources");
+        // Detach the IAM policy from the IAM role.
+        Console.WriteLine("First detach the IAM policy from the role.");
+        success = await lambdaRoleWrapper.DetachLambdaRolePolicyAsync(policyArn, roleName);
+        uiWrapper.WaitABit(15, "Let's wait for the policy to be fully detached from the role.");
+
+        Console.WriteLine("Delete the AWS Lambda function.");
+        success = await lambdaWrapper.DeleteFunctionAsync(functionName);
+        if (success)
+        {
+            Console.WriteLine($"The {functionName} function was deleted.");
+        }
+        else
+        {
+            Console.WriteLine($"Could not remove the function {functionName}");
+        }
+
+        // Now delete the IAM role created for use with the functions
+        // created by the application.
+        Console.WriteLine("Now we can delete the role that we created.");
+        success = await lambdaRoleWrapper.DeleteLambdaRoleAsync(roleName);
+        if (success)
+        {
+            Console.WriteLine("The role has been successfully removed.");
+        }
+        else
+        {
+            Console.WriteLine("Couldn't delete the role.");
+        }
+
+        Console.WriteLine("The Lambda Scenario is now complete.");
+        uiWrapper.PressEnter();
+
+        // Displays a formatted list of existing functions returned by the
+        // LambdaMethods.ListFunctions.
+        void DisplayFunctionList(List<FunctionConfiguration> functions)
+        {
+            functions.ForEach(functionConfig =>
+            {
+                Console.WriteLine($"{functionConfig.FunctionName}\t{functionConfig.Description}");
+            });
+        }
+    }
 }
 
-// Displays an overview of the application.
-void ShowOverview()
+
+namespace LambdaActions;
+
+using Amazon.IdentityManagement;
+using Amazon.IdentityManagement.Model;
+
+public class LambdaRoleWrapper
 {
-    Console.WriteLine("Welcome to the AWS Lambda Basics Example");
-    Console.WriteLine("Getting started with functions");
-    Console.WriteLine(sepBar);
-    Console.WriteLine("This scenario performs the following operations:");
-    Console.WriteLine("\t 1. Creates an IAM policy that will be used by AWS Lambda.");
-    Console.WriteLine("\t 2. Attaches the policy to a new IAM role.");
-    Console.WriteLine("\t 3. Creates an AWS Lambda function.");
-    Console.WriteLine("\t 4. Gets a specific AWS Lambda function.");
-    Console.WriteLine("\t 5. Lists all Lambda functions.");
-    Console.WriteLine("\t 6. Invokes the Lambda function.");
-    Console.WriteLine("\t 7. Updates the Lambda function's code.");
-    Console.WriteLine("\t 8. Updates the Lambda function's configuration.");
-    Console.WriteLine("\t 9. Invokes the updated function.");
-    Console.WriteLine("\t10. Deletes the Lambda function.");
-    Console.WriteLine("\t11. Deletes the IAM role.");
-    PressEnter();
+    private readonly IAmazonIdentityManagementService _lambdaRoleService;
+
+    public LambdaRoleWrapper(IAmazonIdentityManagementService lambdaRoleService)
+    {
+        _lambdaRoleService = lambdaRoleService;
+    }
+
+    /// <summary>
+    /// Attach an AWS Identity and Access Management (IAM) role policy to the
+    /// IAM role to be assumed by the AWS Lambda functions created for the scenario.
+    /// </summary>
+    /// <param name="policyArn">The Amazon Resource Name (ARN) of the IAM policy.</param>
+    /// <param name="roleName">The name of the IAM role to attach the IAM policy to.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> AttachLambdaRolePolicyAsync(string policyArn, string roleName)
+    {
+        var response = await _lambdaRoleService.AttachRolePolicyAsync(new AttachRolePolicyRequest { PolicyArn = policyArn, RoleName = roleName });
+        return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+    }
+
+    /// <summary>
+    /// Create a new IAM role.
+    /// </summary>
+    /// <param name="roleName">The name of the IAM role to create.</param>
+    /// <param name="policyDocument">The policy document for the new IAM role.</param>
+    /// <returns>A string representing the ARN for newly created role.</returns>
+    public async Task<string> CreateLambdaRoleAsync(string roleName, string policyDocument)
+    {
+        var request = new CreateRoleRequest
+        {
+            AssumeRolePolicyDocument = policyDocument,
+            RoleName = roleName,
+        };
+
+        var response = await _lambdaRoleService.CreateRoleAsync(request);
+        return response.Role.Arn;
+    }
+
+    /// <summary>
+    /// Deletes an IAM role.
+    /// </summary>
+    /// <param name="roleName">The name of the role to delete.</param>
+    /// <returns>A Boolean value indicating the success of the operation.</returns>
+    public async Task<bool> DeleteLambdaRoleAsync(string roleName)
+    {
+        var request = new DeleteRoleRequest
+        {
+            RoleName = roleName,
+        };
+
+        var response = await _lambdaRoleService.DeleteRoleAsync(request);
+        return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+    }
+
+    public async Task<bool> DetachLambdaRolePolicyAsync(string policyArn, string roleName)
+    {
+        var response = await _lambdaRoleService.DetachRolePolicyAsync(new DetachRolePolicyRequest { PolicyArn = policyArn, RoleName = roleName });
+        return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
+    }
 }
 
-// Wait for the user to press the Enter key.
-void PressEnter()
+
+namespace LambdaScenarioCommon;
+public class UIWrapper
 {
-    Console.Write("Press <Enter> to continue.");
-    _ = Console.ReadLine();
-    Console.WriteLine();
+    public readonly string SepBar = new('-', Console.WindowWidth);
+
+    /// <summary>
+    /// Show information about the AWS Lambda Basics scenario.
+    /// </summary>
+    public void DisplayLambdaBasicsOverview()
+    {
+        Console.Clear();
+
+        DisplayTitle("Welcome to AWS Lambda Basics");
+        Console.WriteLine("This example application does the following:");
+        Console.WriteLine("\t1. Creates an AWS Identity and Access Management (IAM) role that will be assumed by the functions we create.");
+        Console.WriteLine("\t2. Attaches an IAM role policy that has Lambda permissions.");
+        Console.WriteLine("\t3. Creates a Lambda function that increments the value passed to it.");
+        Console.WriteLine("\t4. Calls the increment function and passes a value.");
+        Console.WriteLine("\t5. Updates the code so that the function is a simple calculator.");
+        Console.WriteLine("\t6. Calls the calculator function with the values entered.");
+        Console.WriteLine("\t7. Deletes the Lambda function.");
+        Console.WriteLine("\t7. Detaches the IAM role policy.");
+        Console.WriteLine("\t8. Deletes the IAM role.");
+        PressEnter();
+    }
+
+    /// <summary>
+    /// Display a message and wait until the user presses enter.
+    /// </summary>
+    public void PressEnter()
+    {
+        Console.Write("\nPress <Enter> to continue. ");
+        _ = Console.ReadLine();
+        Console.WriteLine();
+    }
+
+    /// <summary>
+    /// Pad a string with spaces to center it on the console display.
+    /// </summary>
+    /// <param name="strToCenter">The string to be centered.</param>
+    /// <returns>The padded string.</returns>
+    public string CenterString(string strToCenter)
+    {
+        var padAmount = (Console.WindowWidth - strToCenter.Length) / 2;
+        var leftPad = new string(' ', padAmount);
+        return $"{leftPad}{strToCenter}";
+    }
+
+    /// <summary>
+    /// Display a line of hyphens, the centered text of the title and another
+    /// line of hyphens.
+    /// </summary>
+    /// <param name="strTitle">The string to be displayed.</param>
+    public void DisplayTitle(string strTitle)
+    {
+        Console.WriteLine(SepBar);
+        Console.WriteLine(CenterString(strTitle));
+        Console.WriteLine(SepBar);
+    }
+
+    /// <summary>
+    /// Display a countdown and wait for a number of seconds.
+    /// </summary>
+    /// <param name="numSeconds">The number of seconds to wait.</param>
+    public void WaitABit(int numSeconds, string msg)
+    {
+        Console.WriteLine(msg);
+
+        // Wait for the requested number of seconds.
+        for (int i = numSeconds; i > 0; i--)
+        {
+            System.Threading.Thread.Sleep(1000);
+            Console.Write($"{i}...");
+        }
+
+        PressEnter();
+    }
 }
 ```
 Define a Lambda handler that increments a number\.  

@@ -40,12 +40,12 @@ The following code example shows how to create a DynamoDB table\.
                     new AttributeDefinition
                     {
                         AttributeName = "title",
-                        AttributeType = "S",
+                        AttributeType = ScalarAttributeType.S,
                     },
                     new AttributeDefinition
                     {
                         AttributeName = "year",
-                        AttributeType = "N",
+                        AttributeType = ScalarAttributeType.N,
                     },
                 },
                 KeySchema = new List<KeySchemaElement>()
@@ -53,12 +53,12 @@ The following code example shows how to create a DynamoDB table\.
                     new KeySchemaElement
                     {
                         AttributeName = "year",
-                        KeyType = "HASH",
+                        KeyType = KeyType.HASH,
                     },
                     new KeySchemaElement
                     {
                         AttributeName = "title",
-                        KeyType = "RANGE",
+                        KeyType = KeyType.RANGE,
                     },
                 },
                 ProvisionedThroughput = new ProvisionedThroughput
@@ -366,26 +366,23 @@ The following code example shows how to get information about a DynamoDB table\.
   
 
 ```
-        public static async Task<bool> GetTableInformation(AmazonDynamoDBClient client)
+    private static async Task GetTableInformation()
+    {
+        Console.WriteLine("\n*** Retrieving table information ***");
+
+        var response = await Client.DescribeTableAsync(new DescribeTableRequest
         {
-            Console.WriteLine("\n*** Retrieving table information ***");
-            var request = new DescribeTableRequest
-            {
-                TableName = _tableName
-            };
+            TableName = ExampleTableName
+        });
 
-            var response = await client.DescribeTableAsync(request);
-
-            TableDescription description = response.Table;
-            Console.WriteLine("Name: {0}", description.TableName);
-            Console.WriteLine("# of items: {0}", description.ItemCount);
-            Console.WriteLine("Provision Throughput (reads/sec): {0}",
-                      description.ProvisionedThroughput.ReadCapacityUnits);
-            Console.WriteLine("Provision Throughput (writes/sec): {0}",
-                      description.ProvisionedThroughput.WriteCapacityUnits);
-
-            return true;
-        }
+        var table = response.Table;
+        Console.WriteLine($"Name: {table.TableName}");
+        Console.WriteLine($"# of items: {table.ItemCount}");
+        Console.WriteLine($"Provision Throughput (reads/sec): " +
+                          $"{table.ProvisionedThroughput.ReadCapacityUnits}");
+        Console.WriteLine($"Provision Throughput (writes/sec): " +
+                          $"{table.ProvisionedThroughput.WriteCapacityUnits}");
+    }
 ```
 +  For API details, see [DescribeTable](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/DescribeTable) in *AWS SDK for \.NET API Reference*\. 
 
@@ -398,27 +395,27 @@ The following code example shows how to list DynamoDB tables\.
   
 
 ```
-        public static async Task<bool> ListMyTables(AmazonDynamoDBClient client)
+    private static async Task ListMyTables()
+    {
+        Console.WriteLine("\n*** Listing tables ***");
+
+        string? lastTableNameEvaluated = null;
+        do
         {
-            Console.WriteLine("\n*** Listing tables ***");
-            string lastTableNameEvaluated = null;
-            do
+            var response = await Client.ListTablesAsync(new ListTablesRequest
             {
-                var request = new ListTablesRequest
-                {
-                    Limit = 2,
-                    ExclusiveStartTableName = lastTableNameEvaluated
-                };
+                Limit = 2,
+                ExclusiveStartTableName = lastTableNameEvaluated
+            });
 
-                var response = await client.ListTablesAsync(request);
-                foreach (string name in response.TableNames)
-                    Console.WriteLine(name);
+            foreach (var name in response.TableNames)
+            {
+                Console.WriteLine(name);
+            }
 
-                lastTableNameEvaluated = response.LastEvaluatedTableName;
-            } while (lastTableNameEvaluated != null);
-
-            return true;
-        }
+            lastTableNameEvaluated = response.LastEvaluatedTableName;
+        } while (lastTableNameEvaluated != null);
+    }
 ```
 +  For API details, see [ListTables](https://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/ListTables) in *AWS SDK for \.NET API Reference*\. 
 
@@ -1121,7 +1118,7 @@ Writes a batch of items to the movie table\.
 
 ## Scenarios<a name="scenarios"></a>
 
-### Get started using tables, items, and queries<a name="dynamodb_Scenario_GettingStartedMovies_csharp_topic"></a>
+### Get started with tables, items, and queries<a name="dynamodb_Scenario_GettingStartedMovies_csharp_topic"></a>
 
 The following code example shows how to:
 + Create a table that can hold movie data\.
@@ -1129,8 +1126,7 @@ The following code example shows how to:
 + Write movie data to the table from a sample JSON file\.
 + Query for movies that were released in a given year\.
 + Scan for movies that were released in a range of years\.
-+ Delete a movie from the table\.
-+ Delete the table\.
++ Delete a movie from the table, then delete the table\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/dynamodb#code-examples)\. 
@@ -1367,12 +1363,12 @@ Creates a table to contain movie data\.
                     new AttributeDefinition
                     {
                         AttributeName = "title",
-                        AttributeType = "S",
+                        AttributeType = ScalarAttributeType.S,
                     },
                     new AttributeDefinition
                     {
                         AttributeName = "year",
-                        AttributeType = "N",
+                        AttributeType = ScalarAttributeType.N,
                     },
                 },
                 KeySchema = new List<KeySchemaElement>()
@@ -1380,12 +1376,12 @@ Creates a table to contain movie data\.
                     new KeySchemaElement
                     {
                         AttributeName = "year",
-                        KeyType = "HASH",
+                        KeyType = KeyType.HASH,
                     },
                     new KeySchemaElement
                     {
                         AttributeName = "title",
-                        KeyType = "RANGE",
+                        KeyType = KeyType.RANGE,
                     },
                 },
                 ProvisionedThroughput = new ProvisionedThroughput

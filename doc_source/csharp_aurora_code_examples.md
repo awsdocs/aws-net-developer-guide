@@ -12,7 +12,7 @@ Each example includes a link to GitHub, where you can find instructions on how t
 
 ## Hello Aurora<a name="example_aurora_Hello_section"></a>
 
-The following code example shows how to get started using Amazon Aurora\.
+The following code example shows how to get started using Aurora\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Aurora#code-examples)\. 
@@ -584,10 +584,9 @@ The following code example shows how to update parameters in an Aurora DB cluste
 
 The following code example shows how to:
 + Create a custom Aurora DB cluster parameter group and set parameter values\.
-+ Create a DB cluster that is configured to use the parameter group\.
-+ Create a DB instance in the DB cluster that contains a database\.
-+ Take a snapshot of the DB cluster\.
-+ Delete the instance, DB cluster, and parameter group\.
++ Create a DB cluster that uses the parameter group\.
++ Create a DB instance that contains a database\.
++ Take a snapshot of the DB cluster, then clean up resources\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Aurora#code-examples)\. 

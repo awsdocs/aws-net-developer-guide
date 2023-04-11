@@ -12,7 +12,7 @@ Each example includes a link to GitHub, where you can find instructions on how t
 
 ## Hello Amazon Keyspaces<a name="example_keyspaces_Hello_section"></a>
 
-The following code examples show how to get started using Amazon Keyspaces \(for Apache Cassandra\)\.
+The following code examples show how to get started using Amazon Keyspaces\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Keyspaces#code-examples)\. 
@@ -330,13 +330,11 @@ The following code example shows how to update an Amazon Keyspaces table\.
 ### Get started with keyspaces and tables<a name="keyspaces_Scenario_GetStartedKeyspaces_csharp_topic"></a>
 
 The following code example shows how to:
-+ Create a keyspace\.
-+ Create a table in the keyspace\. The table is configured with a schema to hold movie data and has point\-in\-time recovery enabled\.
-+ Connect to the keyspace with a connection secured by TLS and authenticated with Signature V4 \(SigV4\)\.
-+ Query the table by adding, retrieving, and updating movie data\.
-+ Update the table by adding a column to track watched movies\.
-+ Restore the table to a previous point in time\.
-+ Delete the table and keyspace\.
++ Create a keyspace and table\. The table schema holds movie data and has point\-in\-time recovery enabled\.
++ Connect to the keyspace using a secure TLS connection with SigV4 authentication\.
++ Query the table\. Add, retrieve, and update movie data\.
++ Update the table\. Add a column to track watched movies\.
++ Restore the table to its previous state and clean up resources\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Keyspaces#code-examples)\. 
