@@ -12,7 +12,7 @@ Each example includes a link to GitHub, where you can find instructions on how t
 
 ## Hello Auto Scaling<a name="example_auto-scaling_Hello_section"></a>
 
-The following code example shows how to get started using Auto Scaling\.
+The following code examples show how to get started using Auto Scaling\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/AutoScaling#code-examples)\. 

@@ -12,7 +12,7 @@ Each example includes a link to GitHub, where you can find instructions on how t
 
 ## Hello EventBridge<a name="example_eventbridge_Hello_section"></a>
 
-The following code example shows how to get started using EventBridge\.
+The following code examples show how to get started using EventBridge\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/EventBridge#code-examples)\. 

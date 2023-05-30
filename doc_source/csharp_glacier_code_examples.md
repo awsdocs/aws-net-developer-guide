@@ -8,6 +8,45 @@ The following code examples show you how to perform actions and implement common
 
 Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
+**Get started**
+
+## Hello Amazon S3 Glacier<a name="example_glacier_Hello_section"></a>
+
+The following code example shows how to get started using Amazon S3 Glacier\.
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/EventBridge#code-examples)\. 
+  
+
+```
+using Amazon.Glacier;
+using Amazon.Glacier.Model;
+
+namespace GlacierActions;
+
+public static class HelloGlacier
+{
+    static async Task Main()
+    {
+        var glacierService = new AmazonGlacierClient();
+
+        Console.WriteLine("Hello Amazon Glacier!");
+        Console.WriteLine("Let's list your Glacier vaults:");
+
+        // You can use await and any of the async methods to get a response.
+        // Let's get the vaults using a paginator.
+        var glacierVaultPaginator = glacierService.Paginators.ListVaults(
+            new ListVaultsRequest { AccountId = "-" });
+
+        await foreach (var vault in glacierVaultPaginator.VaultList)
+        {
+            Console.WriteLine($"{vault.CreationDate}:{vault.VaultName}, ARN:{vault.VaultARN}");
+        }
+    }
+}
+```
++  For API details, see [ListVaults](https://docs.aws.amazon.com/goto/DotNetSDKV3/glacier-2012-06-01/ListVaults) in *AWS SDK for \.NET API Reference*\. 
+
 **Topics**
 + [Actions](#actions)
 
@@ -22,32 +61,27 @@ The following code example shows how to add tags to an Amazon S3 Glacier vault\.
   
 
 ```
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using Amazon.Glacier;
-    using Amazon.Glacier.Model;
-
-    public class AddTagsToVault
+    /// <summary>
+    /// Add tags to the items in an Amazon S3 Glacier vault.
+    /// </summary>
+    /// <param name="vaultName">The name of the vault to add tags to.</param>
+    /// <param name="key">The name of the object to tag.</param>
+    /// <param name="value">The tag value to add.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> AddTagsToVaultAsync(string vaultName, string key, string value)
     {
-        public static async Task Main(string[] args)
+        var request = new AddTagsToVaultRequest
         {
-            string vaultName = "example-vault";
-
-            var client = new AmazonGlacierClient();
-            var request = new AddTagsToVaultRequest
-            {
-                Tags = new Dictionary<string, string>
+            Tags = new Dictionary<string, string>
                 {
-                    { "examplekey1", "examplevalue1" },
-                    { "examplekey2", "examplevalue2" },
+                    { key, value },
                 },
-                AccountId = "-",
-                VaultName = vaultName,
-            };
+            AccountId = "-",
+            VaultName = vaultName,
+        };
 
-            var response = await client.AddTagsToVaultAsync(request);
-        }
+        var response = await _glacierService.AddTagsToVaultAsync(request);
+        return response.HttpStatusCode == HttpStatusCode.NoContent;
     }
 ```
 +  For API details, see [AddTagsToVault](https://docs.aws.amazon.com/goto/DotNetSDKV3/glacier-2012-06-01/AddTagsToVault) in *AWS SDK for \.NET API Reference*\. 
@@ -61,73 +95,67 @@ The following code example shows how to create an Amazon S3 Glacier vault\.
   
 
 ```
-    using System;
-    using System.Threading.Tasks;
-    using Amazon.Glacier;
-    using Amazon.Glacier.Model;
-
-    public class CreateVault
+    /// <summary>
+    /// Create an Amazon S3 Glacier vault.
+    /// </summary>
+    /// <param name="vaultName">The name of the vault to create.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<bool> CreateVaultAsync(string vaultName)
     {
-        static async Task Main(string[] args)
+        var request = new CreateVaultRequest
         {
-            string vaultName = "example-vault";
-            var client = new AmazonGlacierClient();
-            var request = new CreateVaultRequest
-            {
-                // Setting the AccountId to "-" means that
-                // the account associated with the default
-                // client will be used.
-                AccountId = "-",
-                VaultName = vaultName,
-            };
+            // Setting the AccountId to "-" means that
+            // the account associated with the current
+            // account will be used.
+            AccountId = "-",
+            VaultName = vaultName,
+        };
 
-            var response = await client.CreateVaultAsync(request);
+        var response = await _glacierService.CreateVaultAsync(request);
 
-            Console.WriteLine($"Created {vaultName} at: {response.Location}");
-        }
+        Console.WriteLine($"Created {vaultName} at: {response.Location}");
+
+        return response.HttpStatusCode == HttpStatusCode.Created;
     }
 ```
 +  For API details, see [CreateVault](https://docs.aws.amazon.com/goto/DotNetSDKV3/glacier-2012-06-01/CreateVault) in *AWS SDK for \.NET API Reference*\. 
 
-### Describe a job<a name="glacier_DescribeJob_csharp_topic"></a>
+### Describe a vault<a name="glacier_DescribeVault_csharp_topic"></a>
 
-The following code example shows how to describe an Amazon S3 Glacier job\.
+The following code example shows how to describe an Amazon S3 Glacier vault\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Glacier#code-examples)\. 
   
 
 ```
-    using System;
-    using System.Threading.Tasks;
-    using Amazon.Glacier;
-    using Amazon.Glacier.Model;
-
-    public class DescribeVault
+    /// <summary>
+    /// Describe an Amazon S3 Glacier vault.
+    /// </summary>
+    /// <param name="vaultName">The name of the vault to describe.</param>
+    /// <returns>The Amazon Resource Name (ARN) of the vault.</returns>
+    public async Task<string> DescribeVaultAsync(string vaultName)
     {
-        public static async Task Main(string[] args)
+        var request = new DescribeVaultRequest
         {
-            string vaultName = "example-vault";
-            var client = new AmazonGlacierClient();
-            var request = new DescribeVaultRequest
-            {
-                AccountId = "-",
-                VaultName = vaultName,
-            };
+            AccountId = "-",
+            VaultName = vaultName,
+        };
 
-            var response = await client.DescribeVaultAsync(request);
+        var response = await _glacierService.DescribeVaultAsync(request);
 
-            // Display the information about the vault.
-            Console.WriteLine($"{response.VaultName}\tARN: {response.VaultARN}");
-            Console.WriteLine($"Created on: {response.CreationDate}\tNumber of Archives: {response.NumberOfArchives}\tSize (in bytes): {response.SizeInBytes}");
-            if (response.LastInventoryDate != DateTime.MinValue)
-            {
-                Console.WriteLine($"Last inventory: {response.LastInventoryDate}");
-            }
+        // Display the information about the vault.
+        Console.WriteLine($"{response.VaultName}\tARN: {response.VaultARN}");
+        Console.WriteLine($"Created on: {response.CreationDate}\tNumber of Archives: {response.NumberOfArchives}\tSize (in bytes): {response.SizeInBytes}");
+        if (response.LastInventoryDate != DateTime.MinValue)
+        {
+            Console.WriteLine($"Last inventory: {response.LastInventoryDate}");
         }
+
+        return response.VaultARN;
     }
 ```
-+  For API details, see [DescribeJob](https://docs.aws.amazon.com/goto/DotNetSDKV3/glacier-2012-06-01/DescribeJob) in *AWS SDK for \.NET API Reference*\. 
++  For API details, see [DescribeVault](https://docs.aws.amazon.com/goto/DotNetSDKV3/glacier-2012-06-01/DescribeVault) in *AWS SDK for \.NET API Reference*\. 
 
 ### Download an archive<a name="glacier_DownloadArchive_csharp_topic"></a>
 
@@ -138,56 +166,56 @@ The following code example shows how to download an Amazon S3 Glacier archive\.
   
 
 ```
-    using System;
-    using Amazon;
-    using Amazon.Glacier;
-    using Amazon.Glacier.Transfer;
-    using Amazon.Runtime;
-
-    class DownloadArchiveHighLevel
+    /// <summary>
+    /// Download an archive from an Amazon S3 Glacier vault using the Archive
+    /// Transfer Manager.
+    /// </summary>
+    /// <param name="vaultName">The name of the vault containing the object.</param>
+    /// <param name="archiveId">The Id of the archive to download.</param>
+    /// <param name="localFilePath">The local directory where the file will
+    /// be stored after download.</param>
+    /// <returns>Async Task.</returns>
+    public async Task<bool> DownloadArchiveWithArchiveManagerAsync(string vaultName, string archiveId, string localFilePath)
     {
-        private static readonly string VaultName = "examplevault";
-        private static readonly string ArchiveId = "*** Provide archive ID ***";
-        private static readonly string DownloadFilePath = "*** Provide the file name and path to where to store the download ***";
-        private static int currentPercentage = -1;
-
-        static void Main()
+        try
         {
-            try
+            var manager = new ArchiveTransferManager(_glacierService);
+
+            var options = new DownloadOptions
             {
-                var manager = new ArchiveTransferManager(RegionEndpoint.USEast2);
+                StreamTransferProgress = Progress,
+            };
 
-                var options = new DownloadOptions
-                {
-                    StreamTransferProgress = Progress,
-                };
+            // Download an archive.
+            Console.WriteLine("Initiating the archive retrieval job and then polling SQS queue for the archive to be available.");
+            Console.WriteLine("When the archive is available, downloading will begin.");
+            await manager.DownloadAsync(vaultName, archiveId, localFilePath, options);
 
-                // Download an archive.
-                Console.WriteLine("Intiating the archive retrieval job and then polling SQS queue for the archive to be available.");
-                Console.WriteLine("Once the archive is available, downloading will begin.");
-                manager.DownloadAsync(VaultName, ArchiveId, DownloadFilePath, options);
-                Console.WriteLine("To continue, press Enter");
-                Console.ReadKey();
-            }
-            catch (AmazonGlacierException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-            Console.WriteLine("To continue, press Enter");
-            Console.ReadKey();
+            return true;
         }
-
-        static void Progress(object sender, StreamTransferProgressArgs args)
+        catch (AmazonGlacierException ex)
         {
-            if (args.PercentDone != currentPercentage)
-            {
-                currentPercentage = args.PercentDone;
-                Console.WriteLine("Downloaded {0}%", args.PercentDone);
-            }
+            Console.WriteLine(ex.Message);
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// Event handler to track the progress of the Archive Transfer Manager.
+    /// </summary>
+    /// <param name="sender">The object that raised the event.</param>
+    /// <param name="args">The argument values from the object that raised the
+    /// event.</param>
+    static void Progress(object sender, StreamTransferProgressArgs args)
+    {
+        if (args.PercentDone != _currentPercentage)
+        {
+            _currentPercentage = args.PercentDone;
+            Console.WriteLine($"Downloaded {_currentPercentage}%");
         }
     }
 ```
++  For API details, see [DownloadArchive](https://docs.aws.amazon.com/goto/DotNetSDKV3/glacier-2012-06-01/DownloadArchive) in *AWS SDK for \.NET API Reference*\. 
 
 ### List jobs<a name="glacier_ListJobs_csharp_topic"></a>
 
@@ -198,41 +226,25 @@ The following code example shows how to list Amazon S3 Glacier jobs\.
   
 
 ```
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using Amazon.Glacier;
-    using Amazon.Glacier.Model;
-
-    class ListJobs
+    /// <summary>
+    /// List Amazon S3 Glacier jobs.
+    /// </summary>
+    /// <param name="vaultName">The name of the vault to list jobs for.</param>
+    /// <returns>A list of Amazon S3 Glacier jobs.</returns>
+    public async Task<List<GlacierJobDescription>> ListJobsAsync(string vaultName)
     {
-        static async Task Main(string[] args)
+        var request = new ListJobsRequest
         {
-            var client = new AmazonGlacierClient();
-            var vaultName = "example-vault";
+            // Using a hyphen "-" for the Account Id will
+            // cause the SDK to use the Account Id associated
+            // with the current account.
+            AccountId = "-",
+            VaultName = vaultName,
+        };
 
-            var request = new ListJobsRequest
-            {
-                // Using a hyphen "=" for the Account Id will
-                // cause the SDK to use the Account Id associated
-                // with the default user.
-                AccountId = "-",
-                VaultName = vaultName,
-            };
+        var response = await _glacierService.ListJobsAsync(request);
 
-            var response = await client.ListJobsAsync(request);
-
-            if (response.JobList.Count > 0)
-            {
-                response.JobList.ForEach(job => {
-                    Console.WriteLine($"{job.CreationDate} {job.JobDescription}");
-                });
-            }
-            else
-            {
-                Console.WriteLine($"No jobs were found for {vaultName}.");
-            }
-        }
+        return response.JobList;
     }
 ```
 +  For API details, see [ListJobs](https://docs.aws.amazon.com/goto/DotNetSDKV3/glacier-2012-06-01/ListJobs) in *AWS SDK for \.NET API Reference*\. 
@@ -246,42 +258,26 @@ The following code example shows how to list tags for an Amazon S3 Glacier vault
   
 
 ```
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using Amazon.Glacier;
-    using Amazon.Glacier.Model;
-
-    class ListTagsForVault
+    /// <summary>
+    /// List tags for an Amazon S3 Glacier vault.
+    /// </summary>
+    /// <param name="vaultName">The name of the vault to list tags for.</param>
+    /// <returns>A dictionary listing the tags attached to each object in the
+    /// vault and its tags.</returns>
+    public async Task<Dictionary<string, string>> ListTagsForVaultAsync(string vaultName)
     {
-        static async Task Main(string[] args)
+        var request = new ListTagsForVaultRequest
         {
-            var client = new AmazonGlacierClient();
-            var vaultName = "example-vault";
+            // Using a hyphen "-" for the Account Id will
+            // cause the SDK to use the Account Id associated
+            // with the default user.
+            AccountId = "-",
+            VaultName = vaultName,
+        };
 
-            var request = new ListTagsForVaultRequest
-            {
-                // Using a hyphen "=" for the Account Id will
-                // cause the SDK to use the Account Id associated
-                // with the default user.
-                AccountId = "-",
-                VaultName = vaultName,
-            };
+        var response = await _glacierService.ListTagsForVaultAsync(request);
 
-            var response = await client.ListTagsForVaultAsync(request);
-
-            if (response.Tags.Count > 0)
-            {
-                foreach (KeyValuePair<string, string> tag in response.Tags)
-                {
-                    Console.WriteLine($"Key: {tag.Key}, value: {tag.Value}");
-                }
-            }
-            else
-            {
-                Console.WriteLine($"{vaultName} has no tags.");
-            }
-        }
+        return response.Tags;
     }
 ```
 +  For API details, see [ListTagsForVault](https://docs.aws.amazon.com/goto/DotNetSDKV3/glacier-2012-06-01/ListTagsForVault) in *AWS SDK for \.NET API Reference*\. 
@@ -295,29 +291,22 @@ The following code example shows how to list Amazon S3 Glacier vaults\.
   
 
 ```
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using Amazon.Glacier;
-    using Amazon.Glacier.Model;
-
-    public class ListVaults
+    /// <summary>
+    /// List the Amazon S3 Glacier vaults associated with the current account.
+    /// </summary>
+    /// <returns>A list containing information about each vault.</returns>
+    public async Task<List<DescribeVaultOutput>> ListVaultsAsync()
     {
-        public static async Task Main(string[] args)
+        var glacierVaultPaginator = _glacierService.Paginators.ListVaults(
+            new ListVaultsRequest { AccountId = "-" });
+        var vaultList = new List<DescribeVaultOutput>();
+
+        await foreach (var vault in glacierVaultPaginator.VaultList)
         {
-            var client = new AmazonGlacierClient();
-            var request = new ListVaultsRequest
-            {
-                AccountId = "-",
-                Limit = 5,
-            };
-
-            var response = await client.ListVaultsAsync(request);
-
-            List<DescribeVaultOutput> vaultList = response.VaultList;
-
-            vaultList.ForEach(v => { Console.WriteLine($"{v.VaultName} ARN: {v.VaultARN}"); });
+            vaultList.Add(vault);
         }
+
+        return vaultList;
     }
 ```
 +  For API details, see [ListVaults](https://docs.aws.amazon.com/goto/DotNetSDKV3/glacier-2012-06-01/ListVaults) in *AWS SDK for \.NET API Reference*\. 
@@ -331,35 +320,27 @@ The following code example shows how to upload an archive to an Amazon S3 Glacie
   
 
 ```
-    using System;
-    using System.Threading.Tasks;
-    using Amazon;
-    using Amazon.Glacier;
-    using Amazon.Glacier.Transfer;
-
-    public class UploadArchiveHighLevel
+    /// <summary>
+    /// Upload an object to an Amazon S3 Glacier vault.
+    /// </summary>
+    /// <param name="vaultName">The name of the Amazon S3 Glacier vault to upload
+    /// the archive to.</param>
+    /// <param name="archiveFilePath">The file path of the archive to upload to the vault.</param>
+    /// <returns>A Boolean value indicating the success of the action.</returns>
+    public async Task<string> UploadArchiveWithArchiveManager(string vaultName, string archiveFilePath)
     {
-        private static readonly string VaultName = "example-vault";
-        private static readonly string ArchiveToUpload = "*** Provide file name (with full path) to upload ***";
-
-        public static async Task Main()
+        try
         {
-            try
-            {
-                var manager = new ArchiveTransferManager(RegionEndpoint.USWest2);
+            var manager = new ArchiveTransferManager(_glacierService);
 
-                // Upload an archive.
-                var response = await manager.UploadAsync(VaultName, "upload archive test", ArchiveToUpload);
-
-                Console.WriteLine("Copy and save the ID for use in other examples.");
-                Console.WriteLine($"Archive ID: {response.ArchiveId}");
-                Console.WriteLine("To continue, press Enter");
-                Console.ReadKey();
-            }
-            catch (AmazonGlacierException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            // Upload an archive.
+            var response = await manager.UploadAsync(vaultName, "upload archive test", archiveFilePath);
+            return response.ArchiveId;
+        }
+        catch (AmazonGlacierException ex)
+        {
+            Console.WriteLine(ex.Message);
+            return string.Empty;
         }
     }
 ```

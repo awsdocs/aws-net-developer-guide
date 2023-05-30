@@ -675,70 +675,6 @@ Use batches of INSERT statements to add items\.
 
 ```
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="tableName"></param>
-        /// <param name="title1"></param>
-        /// <param name="title2"></param>
-        /// <param name="year1"></param>
-        /// <param name="year2"></param>
-        /// <returns></returns>
-        public static async Task<bool> GetBatch(
-            string tableName,
-            string title1,
-            string title2,
-            int year1,
-            int year2)
-        {
-            var getBatch = $"SELECT FROM {tableName} WHERE title = ? AND year = ?";
-            var statements = new List<BatchStatementRequest>
-            {
-                new BatchStatementRequest
-                {
-                    Statement = getBatch,
-                    Parameters = new List<AttributeValue>
-                    {
-                        new AttributeValue { S = title1 },
-                        new AttributeValue { N = year1.ToString() },
-                    },
-                },
-
-                new BatchStatementRequest
-                {
-                    Statement = getBatch,
-                    Parameters = new List<AttributeValue>
-                    {
-                        new AttributeValue { S = title2 },
-                        new AttributeValue { N = year2.ToString() },
-                    },
-                }
-            };
-
-            var response = await Client.BatchExecuteStatementAsync(new BatchExecuteStatementRequest
-            {
-                Statements = statements,
-            });
-
-            if (response.Responses.Count > 0)
-            {
-                response.Responses.ForEach(r =>
-                {
-                    Console.WriteLine($"{r.Item["title"]}\t{r.Item["year"]}");
-                });
-                return true;
-            }
-            else
-            {
-                Console.WriteLine($"Couldn't find either {title1} or {title2}.");
-                return false;
-            }
-
-        }
-```
-Use batches of SELECT statements to get items\.  
-
-```
-        /// <summary>
         /// Inserts movies imported from a JSON file into the movie table by
         /// using an Amazon DynamoDB PartiQL INSERT statement.
         /// </summary>
@@ -829,6 +765,71 @@ Use batches of SELECT statements to get items\.
             {
                 return null;
             }
+        }
+```
+Use batches of SELECT statements to get items\.  
+
+```
+        /// <summary>
+        /// Gets movies from the movie table by
+        /// using an Amazon DynamoDB PartiQL SELECT statement.
+        /// </summary>
+        /// <param name="tableName">The name of the table.</param>
+        /// <param name="title1">The title of the first movie.</param>
+        /// <param name="title2">The title of the second movie.</param>
+        /// <param name="year1">The year of the first movie.</param>
+        /// <param name="year2">The year of the second movie.</param>
+        /// <returns>True if successful.</returns>
+        public static async Task<bool> GetBatch(
+            string tableName,
+            string title1,
+            string title2,
+            int year1,
+            int year2)
+        {
+            var getBatch = $"SELECT FROM {tableName} WHERE title = ? AND year = ?";
+            var statements = new List<BatchStatementRequest>
+            {
+                new BatchStatementRequest
+                {
+                    Statement = getBatch,
+                    Parameters = new List<AttributeValue>
+                    {
+                        new AttributeValue { S = title1 },
+                        new AttributeValue { N = year1.ToString() },
+                    },
+                },
+
+                new BatchStatementRequest
+                {
+                    Statement = getBatch,
+                    Parameters = new List<AttributeValue>
+                    {
+                        new AttributeValue { S = title2 },
+                        new AttributeValue { N = year2.ToString() },
+                    },
+                }
+            };
+
+            var response = await Client.BatchExecuteStatementAsync(new BatchExecuteStatementRequest
+            {
+                Statements = statements,
+            });
+
+            if (response.Responses.Count > 0)
+            {
+                response.Responses.ForEach(r =>
+                {
+                    Console.WriteLine($"{r.Item["title"]}\t{r.Item["year"]}");
+                });
+                return true;
+            }
+            else
+            {
+                Console.WriteLine($"Couldn't find either {title1} or {title2}.");
+                return false;
+            }
+
         }
 ```
 Use batches of UPDATE statements to update items\.  
@@ -1888,16 +1889,16 @@ void WaitForEnter()
 }
 
 
-
         /// <summary>
-        /// 
+        /// Gets movies from the movie table by
+        /// using an Amazon DynamoDB PartiQL SELECT statement.
         /// </summary>
-        /// <param name="tableName"></param>
-        /// <param name="title1"></param>
-        /// <param name="title2"></param>
-        /// <param name="year1"></param>
-        /// <param name="year2"></param>
-        /// <returns></returns>
+        /// <param name="tableName">The name of the table.</param>
+        /// <param name="title1">The title of the first movie.</param>
+        /// <param name="title2">The title of the second movie.</param>
+        /// <param name="year1">The year of the first movie.</param>
+        /// <param name="year2">The year of the second movie.</param>
+        /// <returns>True if successful.</returns>
         public static async Task<bool> GetBatch(
             string tableName,
             string title1,
@@ -1949,8 +1950,6 @@ void WaitForEnter()
             }
 
         }
-
-
 
         /// <summary>
         /// Inserts movies imported from a JSON file into the movie table by
@@ -2045,8 +2044,6 @@ void WaitForEnter()
             }
         }
 
-
-
         /// <summary>
         /// Updates information for multiple movies.
         /// </summary>
@@ -2104,8 +2101,6 @@ void WaitForEnter()
 
             return response.HttpStatusCode == System.Net.HttpStatusCode.OK;
         }
-
-
 
         /// <summary>
         /// Deletes multiple movies using a PartiQL BatchExecuteAsync

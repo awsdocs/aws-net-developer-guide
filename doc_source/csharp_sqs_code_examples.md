@@ -53,6 +53,7 @@ The following code example shows how to authorize an Amazon S3 bucket to send me
         }
     }
 ```
++  For API details, see [SendMessage](https://docs.aws.amazon.com/goto/DotNetSDKV3/sqs-2012-11-05/SendMessage) in *AWS SDK for \.NET API Reference*\. 
 
 ### Create a queue<a name="sqs_CreateQueue_csharp_topic"></a>
 

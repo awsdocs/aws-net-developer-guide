@@ -14,7 +14,6 @@ The following information introduces these models and their APIs, provides examp
 + [More Info](#dynamodb-intro-more-info)
 + [Using expressions](dynamodb-expressions.md)
 + [JSON support](dynamodb-json.md)
-+ [Managing ASP\.NET session state](dynamodb-session-net-sdk.md)
 
 ## Low\-Level Model<a name="dynamodb-intro-apis-low-level"></a>
 
@@ -288,7 +287,6 @@ Console.WriteLine("Name = {0}", item.Name);
 +  [DynamoDB Series \- Expressions](http://blogs.aws.amazon.com/net/post/TxZQM7VA9AUZ9L/DynamoDB-Series-Expressions) 
 +  [Using Expressions with Amazon DynamoDB and the AWS SDK for \.NET](dynamodb-expressions.md) 
 +  [JSON Support in Amazon DynamoDB with the AWS SDK for \.NET](dynamodb-json.md) 
-+  [Managing ASP\.NET session state with Amazon DynamoDB](dynamodb-session-net-sdk.md) 
 
  **Low\-Level model information and examples** 
 +  [Working with Tables Using the AWS SDK for \.NET Low\-Level API](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LowLevelDotNetWorkingWithTables.html) 
