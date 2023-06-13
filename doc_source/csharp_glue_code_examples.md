@@ -2,7 +2,7 @@
 
 The following code examples show you how to perform actions and implement common scenarios by using the AWS SDK for \.NET with AWS Glue\.
 
-*Actions* are code excerpts that show you how to call individual service functions\.
+*Actions* are code excerpts from larger programs and must be run in context\. While actions show you how to call individual service functions, you can see actions in context in their related scenarios and cross\-service examples\.
 
 *Scenarios* are code examples that show you how to accomplish a specific task by calling multiple functions within the same service\.
 
@@ -12,7 +12,7 @@ Each example includes a link to GitHub, where you can find instructions on how t
 
 ## Hello AWS Glue<a name="example_glue_Hello_section"></a>
 
-The following code example shows how to get started using AWS Glue\.
+The following code examples show how to get started using AWS Glue\.
 
 **AWS SDK for \.NET**  
  There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/Glue#code-examples)\. 

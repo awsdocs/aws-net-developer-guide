@@ -10,7 +10,6 @@ Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. 
 
 **Topics**
 + [Code examples with guidance](tutorials-examples.md)
-+ [Additional code examples](csharp_code_examples.md)
 + [AWS Lambda](aws-lambda.md)
 + [AWS OpsWorks](opsworks-apis-intro.md)
 + [Other services and configuration](other-apis-intro.md)
