@@ -29,4 +29,4 @@ The following are required for development on Windows with Visual Studio and \.N
 
 ## Next step<a name="net-dg-dev-env-next"></a>
 
-[Setting up your project](net-dg-config.md)
+[Set up your project](net-dg-config.md)

@@ -1,4 +1,4 @@
-# Deploying applications to AWS<a name="deploying"></a>
+# Deploy applications to AWS<a name="deploying"></a>
 
 After you've developed your cloud\-native \.NET Core application or service on a development machine, you'll want to deploy it to AWS\. You can do this by using the AWS Management Console or certain services like AWS CloudFormation or AWS Cloud Development Kit \(AWS CDK\)\. You can also use AWS tools that have been created for the purpose of deployment\. By using these tools, you can do the following\.
 

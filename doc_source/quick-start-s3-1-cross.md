@@ -11,7 +11,7 @@ This tutorial uses the AWS SDK for \.NET and \.NET Core for cross\-platform deve
 
 ## Setup for this tutorial<a name="s3-1-cross-setup"></a>
 
-This section provides the minimal setup needed to complete this tutorial\. You shouldn't consider this to be a full setup\. For that, see [Setting up your AWS SDK for \.NET environment](net-dg-setup.md)\.
+This section provides the minimal setup needed to complete this tutorial\. You shouldn't consider this to be a full setup\. For that, see [Set up your AWS SDK for \.NET environment](net-dg-setup.md)\.
 
 **Note**  
 If you've already completed any of the following steps through other tutorials or existing configuration, skip those steps\.

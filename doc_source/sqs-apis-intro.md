@@ -15,7 +15,7 @@ The Amazon SQS APIs are provided by the [AWSSDK\.SQS](https://www.nuget.org/pack
 
 ## Prerequisites<a name="w2aac21c15c27c13"></a>
 
-Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Setting up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.
+Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Set up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.
 
 ## Topics<a name="w2aac21c15c27c15"></a>
 

@@ -62,7 +62,7 @@ The following example shows you how to use the AWS SDK for \.NET to display a li
 The results of these two snippets are exactly the same, so the advantage in using paginators can clearly be seen\.
 
 **Note**  
-Before you try to build and run the full code, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Setting up your project](net-dg-config.md)\.  
+Before you try to build and run the full code, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Set up your project](net-dg-config.md)\.  
 You might also need the [Microsoft\.Bcl\.AsyncInterfaces](https://www.nuget.org/packages/Microsoft.Bcl.AsyncInterfaces/) NuGet package because asynchronous paginators use the `IAsyncEnumerable` interface\.
 
 ### Complete code<a name="paginators-complete-code"></a>

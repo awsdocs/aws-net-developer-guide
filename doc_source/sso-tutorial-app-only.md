@@ -8,7 +8,7 @@ Before you start this tutorial, see the [background information](sso.md) for usi
 Several of the steps in this tutorial help you configure services like AWS Organizations and IAM Identity Center\. If you've already performed that configuration, or if you're only interested in the code, you can skip to the section with the [example code](#sso-tutorial-app-only-code)\.
 
 ## Prerequisites<a name="sso-tutorial-app-only-prereq"></a>
-+ Configure your development environment if you haven't already done so\. This is described in sections like [Install and configure your toolchain](net-dg-dev-env.md) and [Setting up your project](net-dg-config.md)\.
++ Configure your development environment if you haven't already done so\. This is described in sections like [Install and configure your toolchain](net-dg-dev-env.md) and [Set up your project](net-dg-config.md)\.
 + Identify or create at least one AWS account that you can use to test SSO\. For the purposes of this tutorial, this is called the *test AWS account* or simply *test account*\.
 + Identify an *SSO user* who can test SSO for you\. This is a person who will be using SSO and the basic applications that you create\. For this tutorial, that person might be you \(the developer\), or someone else\. We also recommend a setup in which the SSO user is working on a computer that is not in your development environment\. However, this isn't strictly necessary\.
 + The SSO user's computer must have a \.NET framework installed that's compatible with the one you used to set up your development environment\.

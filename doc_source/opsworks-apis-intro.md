@@ -10,4 +10,4 @@ The AWS OpsWorks APIs are provided by the [AWSSDK\.OpsWorks](https://www.nuget.o
 
 ## Prerequisites<a name="w2aac21c19b7"></a>
 
-Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Setting up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.
+Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Set up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.

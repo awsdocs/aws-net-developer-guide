@@ -1,4 +1,4 @@
-# Setting up your AWS SDK for \.NET project<a name="net-dg-config"></a>
+# Set up your AWS SDK for \.NET project<a name="net-dg-config"></a>
 
 In addition to [setting up your environment](net-dg-setup.md), you need to configure each project that you create\.
 

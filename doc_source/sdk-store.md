@@ -29,8 +29,8 @@ This example shows you how to create a profile and save it to the SDK Store prog
 using Amazon.Runtime.CredentialManagement;
 ...
 
-// For illustrative purposes only--do not include credentials in your code.
-WriteProfile("my_new_profile", "AKIAIOSFODNN7EXAMPLE", "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY");
+// Do not include credentials in your code.
+WriteProfile("my_new_profile", SecurelyStoredKeyID, SecurelyStoredSecretAccessKey);
 ...
 
 void WriteProfile(string profileName, string keyId, string secret)

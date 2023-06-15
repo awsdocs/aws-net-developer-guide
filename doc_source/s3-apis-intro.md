@@ -14,7 +14,7 @@ The Amazon S3 APIs are provided by the following NuGet packages:
 
 ## Prerequisites<a name="w2aac21c15c23b7"></a>
 
-Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Setting up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.
+Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Set up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.
 
 ## Examples in this document<a name="s3-apis-examples"></a>
 

@@ -4,7 +4,7 @@ The following sections contain code examples and provide guidance for the exampl
 
 If you're new to the AWS SDK for \.NET, you might want to check out the [Quick tour](quick-start.md) topic first\. It gives you an introduction to the SDK\.
 
-Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Setting up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.
+Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Set up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.
 
 **Topics**
 + [AWS CloudFormation](cloudformation-apis-intro.md)

@@ -10,7 +10,7 @@ The Lambda APIs are provided by [NuGet packages](https://www.nuget.org/packages?
 
 ## Prerequisites<a name="w2aac21c17b7"></a>
 
-Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Setting up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.
+Before you begin, be sure you have [set up your environment](net-dg-setup.md)\. Also review the information in [Set up your project](net-dg-config.md) and [SDK features](net-dg-sdk-features.md)\.
 
 ## Topics<a name="w2aac21c17b9"></a>
 

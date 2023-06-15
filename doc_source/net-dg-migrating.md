@@ -1,4 +1,4 @@
-# Migrating your project for the AWS SDK for \.NET<a name="net-dg-migrating"></a>
+# Migrate your project for the AWS SDK for \.NET<a name="net-dg-migrating"></a>
 
 This section provides information about migration tasks that might apply to you, and instructions about how to perform those tasks\.
 

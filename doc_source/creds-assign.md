@@ -60,11 +60,11 @@ For application scenarios in which the software executable is available to users
 
 If your software communicates with AWS through a proxy, you can specify credentials for the proxy by using the `ProxyCredentials` property of the `Config` class of a service\. The `Config` class of a service is typically part of the primary namespace for the service\. Examples include the following: [AmazonCloudDirectoryConfig](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/CloudDirectory/TCloudDirectoryConfig.html) in the [Amazon\.CloudDirectory](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/CloudDirectory/NCloudDirectory.html) namespace and [AmazonGameLiftConfig](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/GameLift/TGameLiftConfig.html) in the [Amazon\.GameLift](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/GameLift/NGameLift.html) namespace\.
 
-For [Amazon S3](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/TS3Config.html), for example, you could use code similar to the following, where \{my\-username\} and \{my\-password\} are the proxy user name and password specified in a [NetworkCredential](https://docs.microsoft.com/en-us/dotnet/api/system.net.networkcredential) object\.
+For [Amazon S3](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/TS3Config.html), for example, you could use code similar to the following, where `SecurelyStoredUserName` and `SecurelyStoredPassword` are the proxy user name and password specified in a [NetworkCredential](https://docs.microsoft.com/en-us/dotnet/api/system.net.networkcredential) object\.
 
 ```
 AmazonS3Config config = new AmazonS3Config();
-config.ProxyCredentials = new NetworkCredential("my-username", "my-password");
+config.ProxyCredentials = new NetworkCredential(SecurelyStoredUserName, SecurelyStoredPassword);
 ```
 
 **Note**  
